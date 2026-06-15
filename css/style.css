@@ -60,7 +60,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 40px 0 8px;
+  padding: 40px 0 0;
 }
 
 .site-title {
@@ -131,13 +131,13 @@ body {
 
 /* Layout */
 main {
-  padding: 32px 0 80px;
+  padding: 0 0 80px;
 }
 
 .intro {
   color: var(--text-muted);
-  font-size: 18px;
-  margin: 8px 0 48px;
+  font-size: 15px;
+  margin: 0 0 48px;
 }
 
 /* Post list */

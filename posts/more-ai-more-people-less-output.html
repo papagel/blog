@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More AI. More People. Less Output. &middot; Thanos Papangelis</title>
+    <meta
+      name="description"
+      content="AI can make individuals faster while making the organisation slower. Why more tools and more people can mean less output &mdash; and what to redesign instead."
+    />
+    <meta name="author" content="Thanos Papangelis" />
+    <link
+      rel="canonical"
+      href="https://papangelis.com/posts/more-ai-more-people-less-output.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Thanos Papangelis" />
+    <meta property="og:title" content="More AI. More People. Less Output." />
+    <meta
+      property="og:description"
+      content="AI can make individuals faster while making the organisation slower. Why more tools and more people can mean less output &mdash; and what to redesign instead."
+    />
+    <meta
+      property="og:url"
+      content="https://papangelis.com/posts/more-ai-more-people-less-output.html"
+    />
+    <meta property="article:author" content="Thanos Papangelis" />
+    <meta property="article:published_time" content="2026-06-08" />
+    <meta
+      property="og:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thanos Papangelis" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta name="twitter:title" content="More AI. More People. Less Output." />
+    <meta
+      name="twitter:description"
+      content="AI can make individuals faster while making the organisation slower. Why more tools and more people can mean less output &mdash; and what to redesign instead."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t)
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <h1 class="site-title"><a href="/">Thanos Papangelis</a></h1>
+        <nav class="site-nav">
+          <a href="/about.html">About</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+              ></path>
+            </svg>
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <a class="back-link" href="/">&larr; Back home</a>
+          <h1>More AI. More People. Less Output.</h1>
+          <p class="article-meta">June 8, 2026</p>
+
+          <p>
+            The AI story sounds obvious: give people better tools, make them
+            faster, add more AI, get more output. And yet many companies are
+            seeing something stranger &mdash; more tools, more AI-generated work,
+            more experiments, more internal activity, but no more shipped product,
+            no faster decisions, no better customer outcomes. Sometimes, even less
+            output than before. How can that be?
+          </p>
+
+          <h2>The Bottleneck Doesn&rsquo;t Disappear. It Moves.</h2>
+
+          <p>AI can make individuals faster while making the organisation slower.</p>
+
+          <p>
+            A company is not a collection of isolated tasks; it is a system, and
+            systems are constrained by bottlenecks. This is not a new idea &mdash;
+            Eliyahu Goldratt described it in <em>The Goal</em> back in 1984. What
+            is new is that AI creates the illusion that the bottleneck has been
+            resolved, when in fact it has simply shifted.
+          </p>
+
+          <p>
+            A developer may write code twice as fast, but the release still waits
+            for code review, QA, staging, and someone to actually press deploy. A
+            marketer may generate ten campaign concepts before lunch, but a human
+            still has to choose one, get sign-off, brief the designer, and
+            coordinate with sales. A product manager may produce specifications at
+            a pace that would have taken weeks before, but engineering capacity,
+            strategic focus, and cross-functional alignment remain stubbornly
+            finite. AI speeds up one part of the work, and the bottleneck simply
+            moves to the next part.
+          </p>
+
+          <p>
+            The system&rsquo;s output does not increase just because one node
+            became faster. Often it gets worse &mdash; because that node now floods
+            the downstream stages with more work than they can absorb.
+          </p>
+
+          <h2>Creation Has Become Cheap. Attention Has Not.</h2>
+
+          <p>
+            There is a second problem, and it may be more serious: AI makes
+            creation cheap. Drafts, slides, analysis, code, ideas, documents,
+            research summaries, strategy decks, meeting prep, performance reviews
+            &mdash; all of it faster, easier, cheaper to produce. That feels
+            productive, and it looks productive. The calendar is full, the folders
+            are full, the Slack messages are full.
+          </p>
+
+          <p>But more output is not more value.</p>
+
+          <p>
+            Here is the asymmetry that most organisations are not yet accounting
+            for: the cost of creating something has fallen dramatically, but the
+            cost of reviewing, deciding on, and acting on something has not fallen
+            at all. Attention is still scarce, judgment is still scarce, trust is
+            still scarce. When creation was hard, that scarcity acted as a filter
+            &mdash; not everything got written down, not every idea became a
+            document, not every opinion became a proposal. The friction was real,
+            but it served a function: it prioritised, so only the things worth the
+            effort got made.
+          </p>
+
+          <p>Remove that friction and you remove the filter.</p>
+
+          <p>
+            The result is not better decisions; it is more decisions to make, with
+            the same capacity to make them well.
+          </p>
+
+          <h2>The Old Operating Model Is Still Running</h2>
+
+          <p>
+            Many companies are making a subtle but consequential mistake: they are
+            adding AI on top of the old operating model. Same meetings, same
+            approval layers, same reporting lines, same unclear ownership, same
+            habit of involving too many people in too many decisions, same instinct
+            to socialise every idea before acting on it. Only now, everyone can
+            generate more material to circulate through that system. This is not
+            transformation; it is acceleration without direction. The pipes are the
+            same, the water pressure is higher, and the leaks are more obvious.
+          </p>
+
+          <p>
+            Think about what happened when email replaced memos. Communication got
+            faster. Response expectations got higher. The volume of messages
+            exploded. But the organisational structures that determined who needed
+            to be informed, who needed to approve, and who actually made decisions
+            &mdash; those did not change. Most companies ended up with the same
+            hierarchies, only now drowning in inboxes. The speed of the medium
+            outpaced the organisation&rsquo;s design. AI is doing the same thing,
+            at a much larger scale, with a much more convincing appearance of
+            productivity.
+          </p>
+
+          <p>
+            The organisations that figure this out fastest are the ones asking a
+            different question. Not &ldquo;how do we use AI to do what we already
+            do?&rdquo; but &ldquo;what does the way we work assume that AI has now
+            made unnecessary?&rdquo;
+          </p>
+
+          <h2>More People Can Make This Worse</h2>
+
+          <p>
+            Here is where it becomes counterintuitive. Every additional person in an
+            organisation creates more communication overhead &mdash; more meetings,
+            more handoffs, more context that needs to be shared, more coordination,
+            more decisions about who decides. This is not a failure of management;
+            it is just how groups work. Fred Brooks captured it in 1975: adding
+            people to a late software project makes it later. Now add AI, and each
+            person can generate more material than before &mdash; more proposals,
+            more documents, more feedback, more requests for review, more &ldquo;can
+            you take a look at this?&rdquo; messages. Each individual is more
+            capable, and the team becomes more congested.
+          </p>
+
+          <p>
+            The organisation becomes busier, but busier is not better, and faster
+            individuals in a slow organisation are not the same as in a fast one. In
+            some cases a smaller team &mdash; with AI tools and a much cleaner
+            operating model &mdash; will outship a larger team still running the old
+            way. Not because the larger team lacks capability, but because it is
+            spending most of that capability coordinating itself.
+          </p>
+
+          <h2>AI Exposes What Was Always True</h2>
+
+          <p>
+            This is perhaps the most important thing AI is doing right now, and it
+            is not getting enough attention: AI is not creating new organisational
+            problems, it is making pre-existing ones visible and urgent. The
+            bottleneck was often never individual productivity. It was
+            decision-making speed. It was unclear ownership &mdash; the situation
+            where everyone is involved and no one is accountable. It was too many
+            approvals required before anything could move, weak product judgment
+            &mdash; the tendency to rely on consensus rather than taste &mdash; and
+            a lack of focus, the organisational inability to say no to things that
+            sound reasonable.
+          </p>
+
+          <p>
+            These problems existed before AI. They were tolerable because the pace
+            of work was slower, and AI removes that tolerance. When everyone can
+            produce more, the structural inefficiencies that slowed everything down
+            are no longer background noise &mdash; they become the loudest thing in
+            the room. This is actually good news, if you are willing to look at it
+            directly.
+          </p>
+
+          <h2>The Real Redesign</h2>
+
+          <p>
+            The companies that will benefit most from AI are not the ones that have
+            deployed the most tools. They are the ones who have used AI as an
+            occasion to redesign how they actually work.
+          </p>
+
+          <p>What does that redesign look like in practice?</p>
+
+          <h3>Fewer handoffs.</h3>
+
+          <p>
+            Every handoff is a place where context gets lost, speed decreases, and
+            accountability diffuses. Most organisations do not know how many
+            handoffs their core processes contain, because no one has ever counted
+            them.
+          </p>
+
+          <p>
+            Start there. Take one high-frequency process &mdash; a product feature
+            going from idea to launch, a sales proposal going from qualification to
+            signature, a support issue going from report to resolution &mdash; and
+            map every step. Count the handoffs. Then ask: which of these exist
+            because the work genuinely requires a different person, and which exist
+            because of how the organisation is structured?
+          </p>
+
+          <h3>Clearer ownership.</h3>
+
+          <p>
+            &ldquo;We need alignment&rdquo; is one of the most expensive sentences
+            in business. It sounds responsible. It usually means ownership is
+            unclear and no single person feels empowered to make decisions.
+          </p>
+
+          <p>
+            Pick a domain &mdash; pricing decisions, content approvals, hiring
+            calls below a certain level, product scope changes within a sprint.
+            Ask: who is actually accountable for the outcome here? Not who gets
+            consulted, not who gets informed &mdash; who is accountable? If the
+            answer is more than one person, the answer is effectively no one.
+          </p>
+
+          <p>
+            The redesign is not about removing collaboration. It is about being
+            clear that one person carries the decision, consults whom they need to
+            consult, and then moves. Everyone else trusts the outcome or escalates
+            explicitly &mdash; they do not slow the process by default.
+          </p>
+
+          <h3>Smaller decision-making groups.</h3>
+
+          <p>
+            The research on group decision-making is consistent: past a certain
+            size, groups do not make better decisions. They make more cautious,
+            slower, more political ones. Each additional voice adds surface area for
+            objection and delay, not quality.
+          </p>
+
+          <p>
+            In practice, this means auditing your standing meetings and recurring
+            review processes. If a meeting has more than six people and a decision
+            is supposed to come out of it, something is wrong. Either the decision
+            does not need that many people &mdash; in which case, reduce the group
+            &mdash; or it is not really a decision meeting, it is an alignment
+            meeting, in which case, ask whether the alignment could happen
+            asynchronously instead.
+          </p>
+
+          <p>
+            One useful test: if you removed three people from this meeting, would
+            the quality of the decision actually suffer? In most cases, the honest
+            answer is no.
+          </p>
+
+          <h3>Faster feedback loops.</h3>
+
+          <p>
+            Most organisations treat speed as a risk. Move faster, make more
+            mistakes. The redesign inverts this: moving slowly is itself a risk,
+            because it delays the information you need to make the next decision
+            well.
+          </p>
+
+          <p>
+            The goal is not to be reckless. It is to get something real in front of
+            real users or real conditions as fast as possible, then use what you
+            learn. A marketing team that launches a rough campaign, sees the data
+            in a week, and adjusts will outlearn a team that spends a month
+            perfecting a campaign before launch. A product team that ships a limited
+            release to ten customers in week two will know things that a team doing
+            internal reviews for six weeks simply cannot know.
+          </p>
+
+          <p>
+            AI can help here directly &mdash; not by replacing the judgment, but by
+            compressing the time between &ldquo;we have an idea&rdquo; and &ldquo;we
+            have something testable.&rdquo; Use it for that.
+          </p>
+
+          <h3>More discipline about what not to do.</h3>
+
+          <p>This is the hardest one, and the most important.</p>
+
+          <p>
+            AI makes it easier to start things. A new initiative that would have
+            required weeks of groundwork can now be prototyped in days. A report
+            that would have taken a team a week can be drafted in hours. The
+            activation energy for new work has fallen dramatically.
+          </p>
+
+          <p>
+            But finishing things, and finishing the right things, still requires the
+            same focused attention as before. The discipline to stop a project that
+            is no longer the priority, to say no to a request that sounds reasonable
+            but is not, to remove a meeting that everyone attends but no one would
+            miss &mdash; that discipline is now worth more than ever, because there
+            are more things competing for the finite capacity of your organisation.
+          </p>
+
+          <p>
+            A practical starting point: every quarter, before asking what to add,
+            ask what to stop. Not what to pause. What to actually stop, close, and
+            remove from the list. If that question is harder than the question of
+            what to add, your organisation is accumulating work faster than it is
+            completing it. AI will make that problem worse, not better.
+          </p>
+
+          <h2>The Tools That Should Not Survive the Redesign</h2>
+
+          <p>
+            Here is the part that most AI conversations avoid. The standard
+            narrative is additive: buy more tools, deploy more capabilities, build a
+            bigger stack. But if the redesign is real &mdash;
+            if you genuinely reduce handoffs, clarify ownership, shrink decision
+            groups, and cut what is not working &mdash; then certain categories of
+            tools become redundant. Not because they are bad tools. Because they
+            were built to manage complexity that no longer exists.
+          </p>
+
+          <h3>Status and coordination layers.</h3>
+
+          <p>
+            Project management platforms are full of boards, cards, status fields,
+            and update threads. Most of that infrastructure exists for one reason:
+            because ownership is unclear, no one trusts that things are moving, and
+            visibility has to be manufactured through process. When one person owns
+            a thing and is accountable for it, the status is either done or not
+            done. You do not need a system to track what a person already knows
+            about their own work. If your project management tool is primarily used
+            to answer the question &ldquo;where does this stand?&rdquo;, ask why that
+            question keeps needing to be answered at all.
+          </p>
+
+          <h3>Approval workflow tools.</h3>
+
+          <p>
+            There is an entire category of software built around the assumption that
+            content, decisions, and spend must pass through multiple sign-offs
+            before anything moves. Contract approval chains. Content review
+            platforms. Multi-stage request management systems. These tools are
+            well-designed solutions to a real problem &mdash; but the problem they
+            solve is diffuse ownership, not the nature of the work itself. Redesign
+            the ownership model, and most of the workflow the tool was managing
+            disappears with it.
+          </p>
+
+          <h3>Meeting infrastructure.</h3>
+
+          <p>
+            AI meeting summarisers, automated note-takers, transcript tools,
+            scheduling assistants &mdash; all useful in a world where meetings are a
+            fixed constraint. But if the redesign reduces the number of meetings,
+            particularly the alignment meetings that exist because no one is
+            empowered to decide without them, then the tools built around those
+            meetings lose their purpose. The right response to a bad meeting is not
+            a better summary of it.
+          </p>
+
+          <h3>Reporting and visibility dashboards.</h3>
+
+          <p>
+            Management dashboards often exist because leaders lack direct visibility
+            into the work, and teams are too large and layered to provide it. The
+            dashboard is a proxy for trust and proximity. Smaller teams, clearer
+            ownership, and faster feedback loops reduce the need for dashboards that
+            tell you what is happening &mdash; because you are close enough to
+            already know. This does not mean metrics are wrong. It means that many
+            reporting layers are a symptom of organisational distance rather than a
+            management best practice.
+          </p>
+
+          <h3>AI tools built on top of broken processes.</h3>
+
+          <p>
+            This is the most uncomfortable one. A significant portion of the AI
+            tools being sold right now are automating steps in processes that a
+            well-designed organisation would not have in the first place: AI that
+            summarises the output of a meeting that should not have happened, AI
+            that drafts the status update that exists because ownership is unclear,
+            AI that speeds up an approval workflow that could be handled by one
+            person with authority.
+          </p>
+
+          <p>
+            Automating a broken process does not fix it. It makes it faster,
+            cheaper, and more permanent.
+          </p>
+
+          <p>
+            The question to ask of every tool in your stack is not &ldquo;does this
+            work well?&rdquo; It is &ldquo;does the problem this tool solves still
+            exist after we have redesigned how we work?&rdquo; If the answer is no,
+            the tool should go &mdash; regardless of how much was spent on it, how
+            long it has been in use, or how many people have built habits around it.
+          </p>
+
+          <p>
+            Fewer tools, used with intent, in a system designed to move, will always
+            outperform more tools layered on top of an organisation that was not
+            designed to move at all.
+          </p>
+
+          <h2>The Question Worth Asking</h2>
+
+          <p>
+            The key question is not &ldquo;how can we add AI to this workflow?&rdquo;
+            It is: if we were designing this workflow today, with AI available from
+            the start, would we build it this way at all? The answer, in most cases,
+            is no. Most workflows were designed around the constraints of a world
+            without AI &mdash; the cost of writing things down, searching for
+            information, drafting, and first-pass analysis. Many of those
+            constraints are gone, but the workflows remain, because workflows are
+            sticky, because people are comfortable, and because redesigning how work
+            gets done is genuinely difficult and disruptive. The companies willing
+            to do that work &mdash; to start from a blank sheet and ask what the
+            process should be, not what it has been &mdash; are the ones that will
+            actually capture the value that AI makes possible.
+          </p>
+
+          <h2>The Uncomfortable Conclusion</h2>
+
+          <p>
+            The competitive advantage will not belong to the companies with the most
+            AI tools, the largest AI budgets, or the most AI mentions in board
+            presentations. It will belong to the companies that can turn additional
+            capability into actual progress. That requires something AI cannot
+            provide: organisational clarity, a shared understanding of what matters,
+            the discipline to focus, and the courage to remove things &mdash;
+            layers, approvals, roles, meetings, processes &mdash; that feel safe but
+            slow everything down.
+          </p>
+
+          <p>
+            Otherwise, the outcome is predictable. More people. More AI. More
+            activity. Less output.
+          </p>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <span>&copy; 2026 Thanos Papangelis</span>
+        <span><a href="/">Home</a> &middot; <a href="/about.html">About</a></span>
+      </footer>
+    </div>
+
+    <script src="/js/theme.js"></script>
+  </body>
+</html>

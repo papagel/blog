@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local LLMs Will Not Replace Private Models &middot; Thanos Papangelis</title>
+    <meta
+      name="description"
+      content="Open-source local LLMs are improving fast, but the gap with the best private models is structural, not temporary. Why the default will stay public."
+    />
+    <meta name="author" content="Thanos Papangelis" />
+    <link
+      rel="canonical"
+      href="https://papangelis.com/posts/local-llms-vs-private-models.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Thanos Papangelis" />
+    <meta property="og:title" content="Local LLMs Will Not Replace Private Models" />
+    <meta
+      property="og:description"
+      content="Open-source local LLMs are improving fast, but the gap with the best private models is structural, not temporary. Why the default will stay public."
+    />
+    <meta
+      property="og:url"
+      content="https://papangelis.com/posts/local-llms-vs-private-models.html"
+    />
+    <meta property="article:author" content="Thanos Papangelis" />
+    <meta property="article:published_time" content="2026-05-05" />
+    <meta
+      property="og:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thanos Papangelis" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta name="twitter:title" content="Local LLMs Will Not Replace Private Models" />
+    <meta
+      name="twitter:description"
+      content="Open-source local LLMs are improving fast, but the gap with the best private models is structural, not temporary. Why the default will stay public."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t)
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <h1 class="site-title"><a href="/">Thanos Papangelis</a></h1>
+        <nav class="site-nav">
+          <a href="/about.html">About</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+              ></path>
+            </svg>
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <a class="back-link" href="/">&larr; Back home</a>
+          <h1>Local LLMs Will Not Replace Private Models</h1>
+          <p class="article-meta">May 5, 2026</p>
+
+          <p>
+            Open-source and locally runnable LLMs are improving fast. That trend
+            is real. What does not follow is the assumption that local models will
+            eventually eliminate the need for the best private ones.
+          </p>
+
+          <p>They won&rsquo;t.</p>
+
+          <p>
+            Local and private models solve different problems under different
+            constraints. The question isn&rsquo;t whether local models will improve
+            &mdash; they will. The question is whether they can close the gap with
+            systems backed by orders of magnitude more compute, infrastructure,
+            data pipelines, and operational investment.
+          </p>
+
+          <p>They cannot.</p>
+
+          <p>The gap is structural, not temporary.</p>
+
+          <p>
+            As consumer hardware improves, local models benefit &mdash; but private
+            models benefit from the same advances while scaling across far larger
+            clusters, memory budgets, and specialized infrastructure. Progress on
+            one side does not erase the advantage of the other. There is also a
+            deployment reality worth naming: most locally run LLMs are quantized
+            versions of the original models, compressed to fit on consumer hardware
+            at the cost of performance. Comparisons with frontier systems are often
+            comparisons between resource-constrained deployments and models running
+            at full scale.
+          </p>
+
+          <p>
+            Local inference is not free either. Serious local compute requires
+            high-end GPUs, substantial RAM, and real power consumption. Those costs
+            are upfront and ongoing, placing hard limits on how much an individual
+            user can deploy. And hardware is only part of it. Smaller models can be
+            remarkably capable, but the differences sharpen on tasks requiring
+            sustained reasoning, ambiguity, multi-step coordination, or reliable
+            unsupervised operation. The most capable private systems also come
+            integrated with tools, retrieval, external services, and live
+            information &mdash; capabilities a local model running offline cannot
+            match.
+          </p>
+
+          <p>
+            None of this makes local LLMs unimportant. They are the right tool for
+            offline use, sensitive workloads, and lightweight automation. But
+            useful is not the same as equivalent. And equivalent is not the same as
+            replacing.
+          </p>
+
+          <p>
+            Local models will remain essential for privacy, portability, and
+            control. Private models will retain the edge in capability,
+            integration, and scale. For most users, though, convenience and raw
+            capability will win &mdash; just as most people use cloud services
+            rather than running their own servers.
+          </p>
+
+          <p>The default will be public models. Local models will matter at the margins.</p>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <span>&copy; 2026 Thanos Papangelis</span>
+        <span><a href="/">Home</a> &middot; <a href="/about.html">About</a></span>
+      </footer>
+    </div>
+
+    <script src="/js/theme.js"></script>
+  </body>
+</html>
