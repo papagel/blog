@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not found &middot; Athanasios Papangelis</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t)
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <main>
+        <article style="padding-top: 80px">
+          <h1>404</h1>
+          <p>That page doesn't exist.</p>
+          <a class="back-link" href="/">&larr; Back home</a>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
