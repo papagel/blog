@@ -64,9 +64,9 @@ body {
 }
 
 .site-title {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
@@ -136,8 +136,10 @@ main {
 
 .intro {
   color: var(--text-muted);
-  font-size: 15px;
-  margin: 0 0 48px;
+  font-size: 16px;
+  margin: 0 0 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
 }
 
 /* Post list */
@@ -312,5 +314,8 @@ article li {
   }
   .site-header {
     padding-top: 28px;
+  }
+  .site-title {
+    font-size: 22px;
   }
 }
