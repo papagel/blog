@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Death Is Optional &middot; Thanos Papangelis</title>
+    <title>Death Is Optional &middot; Downstream</title>
     <meta
       name="description"
       content="We die twice &mdash; once when the body stops, and again the last time someone says our name. AI may turn the second death into a choice."
@@ -14,7 +14,7 @@
       href="https://papangelis.com/posts/death-is-optional.html"
     />
     <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Thanos Papangelis" />
+    <meta property="og:site_name" content="Downstream" />
     <meta property="og:title" content="Death Is Optional" />
     <meta
       property="og:description"
@@ -32,7 +32,7 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Thanos Papangelis" />
+    <meta property="og:image:alt" content="Downstream" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:image"
@@ -62,121 +62,104 @@
   </head>
   <body>
     <div class="wrap">
-      <header class="site-header">
-        <h1 class="site-title"><a href="/">Thanos Papangelis</a></h1>
-        <nav class="site-nav">
-          <a href="/about.html">About</a>
-          <button
-            class="theme-toggle"
-            type="button"
-            aria-label="Toggle dark mode"
-          >
-            <svg
-              class="icon-sun"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="4"></circle>
-              <path
-                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-              ></path>
-            </svg>
-            <svg
-              class="icon-moon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
-        </nav>
-      </header>
-
-      <main>
-        <article>
+      <main class="reading">
+        <article data-timing="/assets/audio/death-is-optional.timing.json">
           <a class="back-link" href="/">&larr; Back home</a>
           <h1>Death Is Optional</h1>
           <p class="article-meta">June 11, 2026</p>
 
+          <div class="audio-player">
+            <button class="audio-toggle" type="button" aria-label="Play audio">
+              <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            </button>
+            <div class="audio-body">
+              <div class="audio-label">Listen to this article</div>
+              <div class="audio-progress"><div class="audio-bar"></div></div>
+            </div>
+            <button class="audio-speed" type="button" aria-label="Playback speed">1&times;</button>
+            <span class="audio-time">--:--</span>
+            <audio
+              preload="metadata"
+              src="/assets/audio/death-is-optional.mp3"
+            ></audio>
+          </div>
+
           <p>
-            There is an old idea that we die twice. The first time is when our body
-            stops working. The second is the last time someone says our name.
+            <span class="w" data-i="0">There</span> <span class="w" data-i="1">is</span> <span class="w" data-i="2">an</span> <span class="w" data-i="3">old</span> <span class="w" data-i="4">idea</span> <span class="w" data-i="5">that</span> <span class="w" data-i="6">we</span> <span class="w" data-i="7">die</span> <span class="w" data-i="8">twice.</span> <span class="w" data-i="9">The</span> <span class="w" data-i="10">first</span> <span class="w" data-i="11">time</span> <span class="w" data-i="12">is</span> <span class="w" data-i="13">when</span> <span class="w" data-i="14">our</span> <span class="w" data-i="15">body</span>
+            <span class="w" data-i="16">stops</span> <span class="w" data-i="17">working.</span> <span class="w" data-i="18">The</span> <span class="w" data-i="19">second</span> <span class="w" data-i="20">is</span> <span class="w" data-i="21">the</span> <span class="w" data-i="22">last</span> <span class="w" data-i="23">time</span> <span class="w" data-i="24">someone</span> <span class="w" data-i="25">says</span> <span class="w" data-i="26">our</span> <span class="w" data-i="27">name.</span>
           </p>
 
           <p>
-            For most people, throughout most of history, that second death came
-            surprisingly quickly after the first &mdash; a few stories passed down
-            by children and grandchildren, a name on a gravestone, then gradually
-            less and less. Only a small number escaped it: kings, writers,
-            generals, religious figures, people important enough or wealthy enough
-            to leave something behind. For everyone else, disappearing was simply
-            part of the deal.
+            <span class="w" data-i="28">For</span> <span class="w" data-i="29">most</span> <span class="w" data-i="30">people,</span> <span class="w" data-i="31">throughout</span> <span class="w" data-i="32">most</span> <span class="w" data-i="33">of</span> <span class="w" data-i="34">history,</span> <span class="w" data-i="35">that</span> <span class="w" data-i="36">second</span> <span class="w" data-i="37">death</span> <span class="w" data-i="38">came</span>
+            <span class="w" data-i="39">surprisingly</span> <span class="w" data-i="40">quickly</span> <span class="w" data-i="41">after</span> <span class="w" data-i="42">the</span> <span class="w" data-i="43">first</span> <span class="w" data-i="44">&mdash;</span> <span class="w" data-i="45">a</span> <span class="w" data-i="46">few</span> <span class="w" data-i="47">stories</span> <span class="w" data-i="48">passed</span> <span class="w" data-i="49">down</span>
+            <span class="w" data-i="50">by</span> <span class="w" data-i="51">children</span> <span class="w" data-i="52">and</span> <span class="w" data-i="53">grandchildren,</span> <span class="w" data-i="54">a</span> <span class="w" data-i="55">name</span> <span class="w" data-i="56">on</span> <span class="w" data-i="57">a</span> <span class="w" data-i="58">gravestone,</span> <span class="w" data-i="59">then</span> <span class="w" data-i="60">gradually</span>
+            <span class="w" data-i="61">less</span> <span class="w" data-i="62">and</span> <span class="w" data-i="63">less.</span> <span class="w" data-i="64">Only</span> <span class="w" data-i="65">a</span> <span class="w" data-i="66">small</span> <span class="w" data-i="67">number</span> <span class="w" data-i="68">escaped</span> <span class="w" data-i="69">it:</span> <span class="w" data-i="70">kings,</span> <span class="w" data-i="71">writers,</span>
+            <span class="w" data-i="72">generals,</span> <span class="w" data-i="73">religious</span> <span class="w" data-i="74">figures,</span> <span class="w" data-i="75">people</span> <span class="w" data-i="76">important</span> <span class="w" data-i="77">enough</span> <span class="w" data-i="78">or</span> <span class="w" data-i="79">wealthy</span> <span class="w" data-i="80">enough</span>
+            <span class="w" data-i="81">to</span> <span class="w" data-i="82">leave</span> <span class="w" data-i="83">something</span> <span class="w" data-i="84">behind.</span> <span class="w" data-i="85">For</span> <span class="w" data-i="86">everyone</span> <span class="w" data-i="87">else,</span> <span class="w" data-i="88">disappearing</span> <span class="w" data-i="89">was</span> <span class="w" data-i="90">simply</span>
+            <span class="w" data-i="91">part</span> <span class="w" data-i="92">of</span> <span class="w" data-i="93">the</span> <span class="w" data-i="94">deal.</span>
           </p>
 
-          <p>I am not sure this is true anymore.</p>
+          <p><span class="w" data-i="95">I</span> <span class="w" data-i="96">am</span> <span class="w" data-i="97">not</span> <span class="w" data-i="98">sure</span> <span class="w" data-i="99">this</span> <span class="w" data-i="100">is</span> <span class="w" data-i="101">true</span> <span class="w" data-i="102">anymore.</span></p>
 
           <p>
-            We already leave behind far more than any previous generation could
-            have imagined &mdash; thousands of
-            photographs, videos, voice messages, emails, conversations, random
-            thoughts sent on an ordinary Tuesday afternoon. Our great-grandchildren
-            may not just know what we looked like; they may hear us laugh, watch us
-            move around a room, and read what we thought about work, family,
-            politics, love, or something completely trivial. That alone is a big
-            change.
-          </p>
-
-          <p>
-            But AI takes this one step further. Imagine a system trained on
-            everything you have written, the conversations you have recorded, the
-            stories you have told, the things you believe, the way you speak, your
-            sense of humor, even your contradictions. It would not be you &mdash; I
-            think we should be honest about that &mdash; but it could be much more
-            than a photo album or a biography. Your grandchildren could ask it
-            questions: What were you afraid of when you were young? Why did you
-            start your company? What mistakes did you regret? What did you believe
-            mattered most? What advice would you give me now? And the answers would
-            not be generic. They would be based on you.
+            <span class="w" data-i="103">We</span> <span class="w" data-i="104">already</span> <span class="w" data-i="105">leave</span> <span class="w" data-i="106">behind</span> <span class="w" data-i="107">far</span> <span class="w" data-i="108">more</span> <span class="w" data-i="109">than</span> <span class="w" data-i="110">any</span> <span class="w" data-i="111">previous</span> <span class="w" data-i="112">generation</span> <span class="w" data-i="113">could</span>
+            <span class="w" data-i="114">have</span> <span class="w" data-i="115">imagined</span> <span class="w" data-i="116">&mdash;</span> <span class="w" data-i="117">thousands</span> <span class="w" data-i="118">of</span>
+            <span class="w" data-i="119">photographs,</span> <span class="w" data-i="120">videos,</span> <span class="w" data-i="121">voice</span> <span class="w" data-i="122">messages,</span> <span class="w" data-i="123">emails,</span> <span class="w" data-i="124">conversations,</span> <span class="w" data-i="125">random</span>
+            <span class="w" data-i="126">thoughts</span> <span class="w" data-i="127">sent</span> <span class="w" data-i="128">on</span> <span class="w" data-i="129">an</span> <span class="w" data-i="130">ordinary</span> <span class="w" data-i="131">Tuesday</span> <span class="w" data-i="132">afternoon.</span> <span class="w" data-i="133">Our</span> <span class="w" data-i="134">great-grandchildren</span>
+            <span class="w" data-i="135">may</span> <span class="w" data-i="136">not</span> <span class="w" data-i="137">just</span> <span class="w" data-i="138">know</span> <span class="w" data-i="139">what</span> <span class="w" data-i="140">we</span> <span class="w" data-i="141">looked</span> <span class="w" data-i="142">like;</span> <span class="w" data-i="143">they</span> <span class="w" data-i="144">may</span> <span class="w" data-i="145">hear</span> <span class="w" data-i="146">us</span> <span class="w" data-i="147">laugh,</span> <span class="w" data-i="148">watch</span> <span class="w" data-i="149">us</span>
+            <span class="w" data-i="150">move</span> <span class="w" data-i="151">around</span> <span class="w" data-i="152">a</span> <span class="w" data-i="153">room,</span> <span class="w" data-i="154">and</span> <span class="w" data-i="155">read</span> <span class="w" data-i="156">what</span> <span class="w" data-i="157">we</span> <span class="w" data-i="158">thought</span> <span class="w" data-i="159">about</span> <span class="w" data-i="160">work,</span> <span class="w" data-i="161">family,</span>
+            <span class="w" data-i="162">politics,</span> <span class="w" data-i="163">love,</span> <span class="w" data-i="164">or</span> <span class="w" data-i="165">something</span> <span class="w" data-i="166">completely</span> <span class="w" data-i="167">trivial.</span> <span class="w" data-i="168">That</span> <span class="w" data-i="169">alone</span> <span class="w" data-i="170">is</span> <span class="w" data-i="171">a</span> <span class="w" data-i="172">big</span>
+            <span class="w" data-i="173">change.</span>
           </p>
 
           <p>
-            I am not making a claim about consciousness, or the soul, or what
-            happens after death; those questions are much bigger than technology. I
-            am making a simpler point: the part of us that affects other people
-            &mdash; our stories, our ideas, our voice, our way of looking at the
-            world &mdash; no longer has to disappear as quickly as it used to.
+            <span class="w" data-i="174">But</span> <span class="w" data-i="175">AI</span> <span class="w" data-i="176">takes</span> <span class="w" data-i="177">this</span> <span class="w" data-i="178">one</span> <span class="w" data-i="179">step</span> <span class="w" data-i="180">further.</span> <span class="w" data-i="181">Imagine</span> <span class="w" data-i="182">a</span> <span class="w" data-i="183">system</span> <span class="w" data-i="184">trained</span> <span class="w" data-i="185">on</span>
+            <span class="w" data-i="186">everything</span> <span class="w" data-i="187">you</span> <span class="w" data-i="188">have</span> <span class="w" data-i="189">written,</span> <span class="w" data-i="190">the</span> <span class="w" data-i="191">conversations</span> <span class="w" data-i="192">you</span> <span class="w" data-i="193">have</span> <span class="w" data-i="194">recorded,</span> <span class="w" data-i="195">the</span>
+            <span class="w" data-i="196">stories</span> <span class="w" data-i="197">you</span> <span class="w" data-i="198">have</span> <span class="w" data-i="199">told,</span> <span class="w" data-i="200">the</span> <span class="w" data-i="201">things</span> <span class="w" data-i="202">you</span> <span class="w" data-i="203">believe,</span> <span class="w" data-i="204">the</span> <span class="w" data-i="205">way</span> <span class="w" data-i="206">you</span> <span class="w" data-i="207">speak,</span> <span class="w" data-i="208">your</span>
+            <span class="w" data-i="209">sense</span> <span class="w" data-i="210">of</span> <span class="w" data-i="211">humor,</span> <span class="w" data-i="212">even</span> <span class="w" data-i="213">your</span> <span class="w" data-i="214">contradictions.</span> <span class="w" data-i="215">It</span> <span class="w" data-i="216">would</span> <span class="w" data-i="217">not</span> <span class="w" data-i="218">be</span> <span class="w" data-i="219">you</span> <span class="w" data-i="220">&mdash;</span> <span class="w" data-i="221">I</span>
+            <span class="w" data-i="222">think</span> <span class="w" data-i="223">we</span> <span class="w" data-i="224">should</span> <span class="w" data-i="225">be</span> <span class="w" data-i="226">honest</span> <span class="w" data-i="227">about</span> <span class="w" data-i="228">that</span> <span class="w" data-i="229">&mdash;</span> <span class="w" data-i="230">but</span> <span class="w" data-i="231">it</span> <span class="w" data-i="232">could</span> <span class="w" data-i="233">be</span> <span class="w" data-i="234">much</span> <span class="w" data-i="235">more</span>
+            <span class="w" data-i="236">than</span> <span class="w" data-i="237">a</span> <span class="w" data-i="238">photo</span> <span class="w" data-i="239">album</span> <span class="w" data-i="240">or</span> <span class="w" data-i="241">a</span> <span class="w" data-i="242">biography.</span> <span class="w" data-i="243">Your</span> <span class="w" data-i="244">grandchildren</span> <span class="w" data-i="245">could</span> <span class="w" data-i="246">ask</span> <span class="w" data-i="247">it</span>
+            <span class="w" data-i="248">questions:</span> <span class="w" data-i="249">What</span> <span class="w" data-i="250">were</span> <span class="w" data-i="251">you</span> <span class="w" data-i="252">afraid</span> <span class="w" data-i="253">of</span> <span class="w" data-i="254">when</span> <span class="w" data-i="255">you</span> <span class="w" data-i="256">were</span> <span class="w" data-i="257">young?</span> <span class="w" data-i="258">Why</span> <span class="w" data-i="259">did</span> <span class="w" data-i="260">you</span>
+            <span class="w" data-i="261">start</span> <span class="w" data-i="262">your</span> <span class="w" data-i="263">company?</span> <span class="w" data-i="264">What</span> <span class="w" data-i="265">mistakes</span> <span class="w" data-i="266">did</span> <span class="w" data-i="267">you</span> <span class="w" data-i="268">regret?</span> <span class="w" data-i="269">What</span> <span class="w" data-i="270">did</span> <span class="w" data-i="271">you</span> <span class="w" data-i="272">believe</span>
+            <span class="w" data-i="273">mattered</span> <span class="w" data-i="274">most?</span> <span class="w" data-i="275">What</span> <span class="w" data-i="276">advice</span> <span class="w" data-i="277">would</span> <span class="w" data-i="278">you</span> <span class="w" data-i="279">give</span> <span class="w" data-i="280">me</span> <span class="w" data-i="281">now?</span> <span class="w" data-i="282">And</span> <span class="w" data-i="283">the</span> <span class="w" data-i="284">answers</span> <span class="w" data-i="285">would</span>
+            <span class="w" data-i="286">not</span> <span class="w" data-i="287">be</span> <span class="w" data-i="288">generic.</span> <span class="w" data-i="289">They</span> <span class="w" data-i="290">would</span> <span class="w" data-i="291">be</span> <span class="w" data-i="292">based</span> <span class="w" data-i="293">on</span> <span class="w" data-i="294">you.</span>
           </p>
 
           <p>
-            Of course, this raises uncomfortable questions. Who decides what should
-            be preserved? How accurate should such a system be before it can speak
-            on someone&rsquo;s behalf? Can a person consent to the ways their
-            digital self may be used decades later? Should families be able to
-            update it, restrict it, or switch it off? These are serious questions,
-            and we will have to answer them. But I suspect the technology will
-            become normal faster than we expect. At first it may feel strange,
-            perhaps even a little disturbing. Then one day it may seem equally
-            strange that previous generations accepted losing so much of the people
-            they loved. For the first time in history, forgetting is not entirely
-            inevitable.
+            <span class="w" data-i="295">I</span> <span class="w" data-i="296">am</span> <span class="w" data-i="297">not</span> <span class="w" data-i="298">making</span> <span class="w" data-i="299">a</span> <span class="w" data-i="300">claim</span> <span class="w" data-i="301">about</span> <span class="w" data-i="302">consciousness,</span> <span class="w" data-i="303">or</span> <span class="w" data-i="304">the</span> <span class="w" data-i="305">soul,</span> <span class="w" data-i="306">or</span> <span class="w" data-i="307">what</span>
+            <span class="w" data-i="308">happens</span> <span class="w" data-i="309">after</span> <span class="w" data-i="310">death;</span> <span class="w" data-i="311">those</span> <span class="w" data-i="312">questions</span> <span class="w" data-i="313">are</span> <span class="w" data-i="314">much</span> <span class="w" data-i="315">bigger</span> <span class="w" data-i="316">than</span> <span class="w" data-i="317">technology.</span> <span class="w" data-i="318">I</span>
+            <span class="w" data-i="319">am</span> <span class="w" data-i="320">making</span> <span class="w" data-i="321">a</span> <span class="w" data-i="322">simpler</span> <span class="w" data-i="323">point:</span> <span class="w" data-i="324">the</span> <span class="w" data-i="325">part</span> <span class="w" data-i="326">of</span> <span class="w" data-i="327">us</span> <span class="w" data-i="328">that</span> <span class="w" data-i="329">affects</span> <span class="w" data-i="330">other</span> <span class="w" data-i="331">people</span>
+            <span class="w" data-i="332">&mdash;</span> <span class="w" data-i="333">our</span> <span class="w" data-i="334">stories,</span> <span class="w" data-i="335">our</span> <span class="w" data-i="336">ideas,</span> <span class="w" data-i="337">our</span> <span class="w" data-i="338">voice,</span> <span class="w" data-i="339">our</span> <span class="w" data-i="340">way</span> <span class="w" data-i="341">of</span> <span class="w" data-i="342">looking</span> <span class="w" data-i="343">at</span> <span class="w" data-i="344">the</span>
+            <span class="w" data-i="345">world</span> <span class="w" data-i="346">&mdash;</span> <span class="w" data-i="347">no</span> <span class="w" data-i="348">longer</span> <span class="w" data-i="349">has</span> <span class="w" data-i="350">to</span> <span class="w" data-i="351">disappear</span> <span class="w" data-i="352">as</span> <span class="w" data-i="353">quickly</span> <span class="w" data-i="354">as</span> <span class="w" data-i="355">it</span> <span class="w" data-i="356">used</span> <span class="w" data-i="357">to.</span>
           </p>
 
           <p>
-            Biological death is still with us; that part remains stubbornly
-            non-negotiable.
+            <span class="w" data-i="358">Of</span> <span class="w" data-i="359">course,</span> <span class="w" data-i="360">this</span> <span class="w" data-i="361">raises</span> <span class="w" data-i="362">uncomfortable</span> <span class="w" data-i="363">questions.</span> <span class="w" data-i="364">Who</span> <span class="w" data-i="365">decides</span> <span class="w" data-i="366">what</span> <span class="w" data-i="367">should</span>
+            <span class="w" data-i="368">be</span> <span class="w" data-i="369">preserved?</span> <span class="w" data-i="370">How</span> <span class="w" data-i="371">accurate</span> <span class="w" data-i="372">should</span> <span class="w" data-i="373">such</span> <span class="w" data-i="374">a</span> <span class="w" data-i="375">system</span> <span class="w" data-i="376">be</span> <span class="w" data-i="377">before</span> <span class="w" data-i="378">it</span> <span class="w" data-i="379">can</span> <span class="w" data-i="380">speak</span>
+            <span class="w" data-i="381">on</span> <span class="w" data-i="382">someone&rsquo;s</span> <span class="w" data-i="383">behalf?</span> <span class="w" data-i="384">Can</span> <span class="w" data-i="385">a</span> <span class="w" data-i="386">person</span> <span class="w" data-i="387">consent</span> <span class="w" data-i="388">to</span> <span class="w" data-i="389">the</span> <span class="w" data-i="390">ways</span> <span class="w" data-i="391">their</span>
+            <span class="w" data-i="392">digital</span> <span class="w" data-i="393">self</span> <span class="w" data-i="394">may</span> <span class="w" data-i="395">be</span> <span class="w" data-i="396">used</span> <span class="w" data-i="397">decades</span> <span class="w" data-i="398">later?</span> <span class="w" data-i="399">Should</span> <span class="w" data-i="400">families</span> <span class="w" data-i="401">be</span> <span class="w" data-i="402">able</span> <span class="w" data-i="403">to</span>
+            <span class="w" data-i="404">update</span> <span class="w" data-i="405">it,</span> <span class="w" data-i="406">restrict</span> <span class="w" data-i="407">it,</span> <span class="w" data-i="408">or</span> <span class="w" data-i="409">switch</span> <span class="w" data-i="410">it</span> <span class="w" data-i="411">off?</span> <span class="w" data-i="412">These</span> <span class="w" data-i="413">are</span> <span class="w" data-i="414">serious</span> <span class="w" data-i="415">questions,</span>
+            <span class="w" data-i="416">and</span> <span class="w" data-i="417">we</span> <span class="w" data-i="418">will</span> <span class="w" data-i="419">have</span> <span class="w" data-i="420">to</span> <span class="w" data-i="421">answer</span> <span class="w" data-i="422">them.</span> <span class="w" data-i="423">But</span> <span class="w" data-i="424">I</span> <span class="w" data-i="425">suspect</span> <span class="w" data-i="426">the</span> <span class="w" data-i="427">technology</span> <span class="w" data-i="428">will</span>
+            <span class="w" data-i="429">become</span> <span class="w" data-i="430">normal</span> <span class="w" data-i="431">faster</span> <span class="w" data-i="432">than</span> <span class="w" data-i="433">we</span> <span class="w" data-i="434">expect.</span> <span class="w" data-i="435">At</span> <span class="w" data-i="436">first</span> <span class="w" data-i="437">it</span> <span class="w" data-i="438">may</span> <span class="w" data-i="439">feel</span> <span class="w" data-i="440">strange,</span>
+            <span class="w" data-i="441">perhaps</span> <span class="w" data-i="442">even</span> <span class="w" data-i="443">a</span> <span class="w" data-i="444">little</span> <span class="w" data-i="445">disturbing.</span> <span class="w" data-i="446">Then</span> <span class="w" data-i="447">one</span> <span class="w" data-i="448">day</span> <span class="w" data-i="449">it</span> <span class="w" data-i="450">may</span> <span class="w" data-i="451">seem</span> <span class="w" data-i="452">equally</span>
+            <span class="w" data-i="453">strange</span> <span class="w" data-i="454">that</span> <span class="w" data-i="455">previous</span> <span class="w" data-i="456">generations</span> <span class="w" data-i="457">accepted</span> <span class="w" data-i="458">losing</span> <span class="w" data-i="459">so</span> <span class="w" data-i="460">much</span> <span class="w" data-i="461">of</span> <span class="w" data-i="462">the</span> <span class="w" data-i="463">people</span>
+            <span class="w" data-i="464">they</span> <span class="w" data-i="465">loved.</span> <span class="w" data-i="466">For</span> <span class="w" data-i="467">the</span> <span class="w" data-i="468">first</span> <span class="w" data-i="469">time</span> <span class="w" data-i="470">in</span> <span class="w" data-i="471">history,</span> <span class="w" data-i="472">forgetting</span> <span class="w" data-i="473">is</span> <span class="w" data-i="474">not</span> <span class="w" data-i="475">entirely</span>
+            <span class="w" data-i="476">inevitable.</span>
           </p>
 
           <p>
-            But the second death &mdash; the slow disappearance of a person from the
-            world &mdash; may increasingly become a choice.
+            <span class="w" data-i="477">Biological</span> <span class="w" data-i="478">death</span> <span class="w" data-i="479">is</span> <span class="w" data-i="480">still</span> <span class="w" data-i="481">with</span> <span class="w" data-i="482">us;</span> <span class="w" data-i="483">that</span> <span class="w" data-i="484">part</span> <span class="w" data-i="485">remains</span> <span class="w" data-i="486">stubbornly</span>
+            <span class="w" data-i="487">non-negotiable.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="488">But</span> <span class="w" data-i="489">the</span> <span class="w" data-i="490">second</span> <span class="w" data-i="491">death</span> <span class="w" data-i="492">&mdash;</span> <span class="w" data-i="493">the</span> <span class="w" data-i="494">slow</span> <span class="w" data-i="495">disappearance</span> <span class="w" data-i="496">of</span> <span class="w" data-i="497">a</span> <span class="w" data-i="498">person</span> <span class="w" data-i="499">from</span> <span class="w" data-i="500">the</span>
+            <span class="w" data-i="501">world</span> <span class="w" data-i="502">&mdash;</span> <span class="w" data-i="503">may</span> <span class="w" data-i="504">increasingly</span> <span class="w" data-i="505">become</span> <span class="w" data-i="506">a</span> <span class="w" data-i="507">choice.</span>
           </p>
         </article>
       </main>
@@ -188,5 +171,6 @@
     </div>
 
     <script src="/js/theme.js"></script>
+    <script src="/js/audio.js?v=6"></script>
   </body>
 </html>

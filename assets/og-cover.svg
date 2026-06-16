@@ -2,7 +2,7 @@
   <rect width="1200" height="630" fill="#ffffff"/>
   <rect x="0" y="0" width="12" height="630" fill="#2563eb"/>
   <g font-family="Helvetica, Arial, sans-serif">
-    <text x="96" y="300" font-size="76" font-weight="700" fill="#1a1a1a" letter-spacing="-1.5">Thanos Papangelis</text>
+    <text x="96" y="300" font-size="92" font-weight="700" fill="#1a1a1a" letter-spacing="-2">Downstream</text>
     <text x="96" y="372" font-size="34" font-weight="400" fill="#6b7280">How AI is transforming our world &#8212; work, building, and life.</text>
     <text x="96" y="552" font-size="28" font-weight="500" fill="#2563eb">papangelis.com</text>
   </g>
