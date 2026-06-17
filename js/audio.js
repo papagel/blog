@@ -3,6 +3,7 @@
 (function () {
   var SKIP = 15; // seconds to jump on back/forward
   var RATES = [1, 1.25, 1.5, 2, 0.75]; // cycled by the speed button
+  var HIGHLIGHT_LEAD = 0.18; // seconds the word highlight runs ahead of the audio
 
   function format(seconds) {
     if (!isFinite(seconds)) return "--:--";
@@ -168,7 +169,7 @@
 
     function update() {
       if (!timings.length || !words.length) return;
-      var idx = findIndex(audio.currentTime);
+      var idx = findIndex(audio.currentTime + HIGHLIGHT_LEAD);
       if (idx === lastIdx) return;
       if (lastIdx >= 0 && words[lastIdx]) words[lastIdx].classList.remove("is-active");
       if (idx >= 0 && words[idx]) words[idx].classList.add("is-active");
