@@ -37,9 +37,14 @@ if (!SLUG || SLUG.startsWith("--")) {
 const API_KEY = process.env.XAI_API_KEY;
 const VOICE = process.env.VOICE || "leo";
 const URL = "https://api.x.ai/v1/tts";
-const MAX_CHARS = 2500;
+// Larger cap so a normal-length post is a single TTS request (no seams at all).
+// Only long posts get split; xAI's hard cap is ~15,000 chars per request.
+const MAX_CHARS = 4800;
 const PARA_SEP = " [long-pause] ";
 const SENT_PAUSE = " [pause] ";
+// Prepended to every chunk after the first so the join between independently
+// encoded MP3 chunks lands inside silence, where the concat seam is inaudible.
+const LEAD_PAUSE = "[long-pause] ";
 
 const ENTITIES = {
   "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&apos;": "'",
@@ -107,13 +112,15 @@ function chunkTexts(blocks) {
     cur += (cur ? PARA_SEP : "") + t;
   }
   push();
-  return chunks;
+  // Start every continuation chunk on a long pause so the raw-MP3 concat seam
+  // sits in silence (masks the click/gap and avoids clipping the first word).
+  return chunks.map((c, i) => (i === 0 ? c : LEAD_PAUSE + c));
 }
 
 async function synthesizeTimed(text) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 90000);
+    const timer = setTimeout(() => ctrl.abort(), 180000);
     try {
       const res = await fetch(URL, {
         method: "POST",
@@ -240,21 +247,30 @@ async function run(file, html, blocks, chunks) {
   const content = html.slice(contentStart, articleClose);
   const after = html.slice(articleClose);
 
+  let wrapped;
   if (/class="w"/.test(content)) {
-    console.log("  ! content already wrapped; aborting to avoid double-wrap.");
-    process.exit(1);
-  }
-
-  let gi = 0;
-  const wrapped = content.replace(/<[^>]+>|[^<]+/g, (seg) => {
-    if (seg[0] === "<") return seg; // tag: pass through untouched
-    return seg.replace(/\S+/g, (w) => `<span class="w" data-i="${gi++}">${w}</span>`);
-  });
-
-  if (gi !== timings.length) {
-    console.log(
-      `  ! word count mismatch: ${gi} wrapped vs ${timings.length} timed (highlight may drift)`
-    );
+    // Already wrapped from a previous run: keep the spans (and any manual
+    // fixes) intact and only refresh the audio + timing for them.
+    const existing = (content.match(/class="w"/g) || []).length;
+    if (existing !== timings.length) {
+      console.log(
+        `  ! span/timing mismatch: ${existing} existing spans vs ${timings.length} timed (highlight may drift)`
+      );
+    } else {
+      console.log(`  reusing ${existing} existing word spans`);
+    }
+    wrapped = content;
+  } else {
+    let gi = 0;
+    wrapped = content.replace(/<[^>]+>|[^<]+/g, (seg) => {
+      if (seg[0] === "<") return seg; // tag: pass through untouched
+      return seg.replace(/\S+/g, (w) => `<span class="w" data-i="${gi++}">${w}</span>`);
+    });
+    if (gi !== timings.length) {
+      console.log(
+        `  ! word count mismatch: ${gi} wrapped vs ${timings.length} timed (highlight may drift)`
+      );
+    }
   }
 
   // Tag the <article> with the timing file.

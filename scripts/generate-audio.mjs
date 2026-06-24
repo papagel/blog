@@ -40,6 +40,7 @@ const PROVIDERS = {
     defaultVoice: "alloy",
     paraSep: "\n\n", // plain paragraph break
     headPause: "", // OpenAI reads bracket tags literally, so keep none
+    leadPause: "", // (no bracket tags for OpenAI)
     body: (text, voice) => ({
       model: process.env.TTS_MODEL || "gpt-4o-mini-tts",
       voice,
@@ -51,15 +52,18 @@ const PROVIDERS = {
   xai: {
     url: "https://api.x.ai/v1/tts",
     keyVar: "XAI_API_KEY",
-    // Cap is 15,000, but smaller requests synthesize far faster and more
-    // reliably; the per-post MP3 is concatenated from these chunks.
-    maxChars: 2500,
+    // Cap is 15,000. We keep chunks large enough that a normal-length post is
+    // a single request (no concatenation seams); only long posts get split.
+    maxChars: 4800,
     defaultVoice: "eve", // built-in: ara, eve, leo, rex, sal (or a cloned voice id)
     // Inline speech tags make delivery more expressive: a small beat between
     // sentences (added in extractText) and a longer beat between paragraphs
     // and before each new section.
     paraSep: " [long-pause] ",
     headPause: " [long-pause] ",
+    // Prepended to continuation chunks so the raw-MP3 concat seam sits in
+    // silence (these MP3s are headerless VBR; a hard seam clicks/clips words).
+    leadPause: "[long-pause] ",
     body: (text, voice) => {
       const payload = { text, voice_id: voice, language: "en" };
       const speed = Number(process.env.SPEED);
@@ -160,14 +164,16 @@ function chunk(blocks) {
     cur += (cur ? cfg.paraSep : "") + block;
   }
   push();
-  return chunks;
+  // Start every continuation chunk on a pause so the raw-MP3 concat seam lands
+  // in silence (provider-aware: OpenAI gets no bracket tag).
+  return chunks.map((c, i) => (i === 0 || !cfg.leadPause ? c : cfg.leadPause + c));
 }
 
 async function synthesize(text) {
   let lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 60000); // don't hang forever
+    const timer = setTimeout(() => ctrl.abort(), 180000); // don't hang forever
     try {
       const res = await fetch(cfg.url, {
         method: "POST",
