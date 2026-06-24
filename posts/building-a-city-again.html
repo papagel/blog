@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I&rsquo;m Building a City. Again. &middot; Downstream</title>
+    <meta
+      name="description"
+      content="A city simulation called Polis, built for fun with a lot of help from Claude &mdash; and a look back at how much SimCity taught me about systems, trade-offs, and consequences."
+    />
+    <meta name="author" content="Thanos Papangelis" />
+    <link
+      rel="canonical"
+      href="https://papangelis.com/posts/building-a-city-again.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Downstream" />
+    <meta property="og:title" content="I&rsquo;m Building a City. Again." />
+    <meta
+      property="og:description"
+      content="A city simulation called Polis, built for fun with a lot of help from Claude &mdash; and a look back at how much SimCity taught me about systems, trade-offs, and consequences."
+    />
+    <meta
+      property="og:url"
+      content="https://papangelis.com/posts/building-a-city-again.html"
+    />
+    <meta property="article:author" content="Thanos Papangelis" />
+    <meta property="article:published_time" content="2026-06-24" />
+    <meta
+      property="og:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Downstream" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://papangelis.com/assets/og-cover.png"
+    />
+    <meta name="twitter:title" content="I&rsquo;m Building a City. Again." />
+    <meta
+      name="twitter:description"
+      content="A city simulation called Polis, built for fun with a lot of help from Claude &mdash; and a look back at how much SimCity taught me about systems, trade-offs, and consequences."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t)
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <main class="reading">
+        <article data-timing="/assets/audio/building-a-city-again.timing.json">
+          <a class="back-link" href="/">&larr; Back home</a>
+          <h1>I&rsquo;m Building a City. Again.</h1>
+          <p class="article-meta">June 24, 2026</p>
+
+          <div class="audio-player">
+            <button class="audio-toggle" type="button" aria-label="Play audio">
+              <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            </button>
+            <div class="audio-body">
+              <div class="audio-label">Listen to this article</div>
+              <div class="audio-progress"><div class="audio-bar"></div></div>
+            </div>
+            <button class="audio-speed" type="button" aria-label="Playback speed">1&times;</button>
+            <span class="audio-time">--:--</span>
+            <audio
+              preload="metadata"
+              src="/assets/audio/building-a-city-again.mp3"
+            ></audio>
+          </div>
+
+          <p>
+            <span class="w" data-i="0">A</span> <span class="w" data-i="1">few</span> <span class="w" data-i="2">weeks</span> <span class="w" data-i="3">ago,</span> <span class="w" data-i="4">I</span> <span class="w" data-i="5">started</span> <span class="w" data-i="6">building</span> <span class="w" data-i="7">a</span> <span class="w" data-i="8">city</span> <span class="w" data-i="9">simulation</span> <span class="w" data-i="10">in</span> <span class="w" data-i="11">my</span> <span class="w" data-i="12">free</span>
+            <span class="w" data-i="13">time.</span> <span class="w" data-i="14">I</span> <span class="w" data-i="15">called</span> <span class="w" data-i="16">it</span> <span class="w" data-i="17">Polis.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="18">I</span> <span class="w" data-i="19">am</span> <span class="w" data-i="20">building</span> <span class="w" data-i="21">it</span> <span class="w" data-i="22">mostly</span> <span class="w" data-i="23">for</span> <span class="w" data-i="24">fun,</span> <span class="w" data-i="25">with</span> <span class="w" data-i="26">a</span> <span class="w" data-i="27">lot</span> <span class="w" data-i="28">of</span> <span class="w" data-i="29">help</span> <span class="w" data-i="30">from</span> <span class="w" data-i="31">Claude.</span> <span class="w" data-i="32">The</span>
+            <span class="w" data-i="33">fact</span> <span class="w" data-i="34">that</span> <span class="w" data-i="35">I</span> <span class="w" data-i="36">can</span> <span class="w" data-i="37">now</span> <span class="w" data-i="38">turn</span> <span class="w" data-i="39">a</span> <span class="w" data-i="40">small</span> <span class="w" data-i="41">idea</span> <span class="w" data-i="42">into</span> <span class="w" data-i="43">a</span> <span class="w" data-i="44">working</span> <span class="w" data-i="45">game</span> <span class="w" data-i="46">in</span> <span class="w" data-i="47">the</span>
+            <span class="w" data-i="48">evenings</span> <span class="w" data-i="49">and</span> <span class="w" data-i="50">on</span> <span class="w" data-i="51">weekends</span> <span class="w" data-i="52">is,</span> <span class="w" data-i="53">in</span> <span class="w" data-i="54">itself,</span> <span class="w" data-i="55">a</span> <span class="w" data-i="56">reflection</span> <span class="w" data-i="57">of</span> <span class="w" data-i="58">how</span> <span class="w" data-i="59">much</span>
+            <span class="w" data-i="60">software</span> <span class="w" data-i="61">development</span> <span class="w" data-i="62">has</span> <span class="w" data-i="63">changed.</span>
+          </p>
+
+          <p><span class="w" data-i="64">Part</span> <span class="w" data-i="65">of</span> <span class="w" data-i="66">the</span> <span class="w" data-i="67">motivation</span> <span class="w" data-i="68">is</span> <span class="w" data-i="69">simple</span> <span class="w" data-i="70">nostalgia.</span></p>
+
+          <p>
+            <span class="w" data-i="71">I</span> <span class="w" data-i="72">played</span> <span class="w" data-i="73">SimCity</span> <span class="w" data-i="74">obsessively</span> <span class="w" data-i="75">as</span> <span class="w" data-i="76">a</span> <span class="w" data-i="77">kid.</span> <span class="w" data-i="78">Hundreds</span> <span class="w" data-i="79">of</span> <span class="w" data-i="80">hours.</span> <span class="w" data-i="81">My</span> <span class="w" data-i="82">parents</span>
+            <span class="w" data-i="83">thought</span> <span class="w" data-i="84">I</span> <span class="w" data-i="85">was</span> <span class="w" data-i="86">wasting</span> <span class="w" data-i="87">time.</span>
+          </p>
+
+          <p><span class="w" data-i="88">They</span> <span class="w" data-i="89">were</span> <span class="w" data-i="90">not</span> <span class="w" data-i="91">entirely</span> <span class="w" data-i="92">wrong.</span> <span class="w" data-i="93">But</span> <span class="w" data-i="94">they</span> <span class="w" data-i="95">were</span> <span class="w" data-i="96">not</span> <span class="w" data-i="97">entirely</span> <span class="w" data-i="98">right</span> <span class="w" data-i="99">either.</span></p>
+
+          <h2><span class="w" data-i="100">What</span> <span class="w" data-i="101">I</span> <span class="w" data-i="102">Actually</span> <span class="w" data-i="103">Learned</span> <span class="w" data-i="104">from</span> <span class="w" data-i="105">SimCity</span></h2>
+
+          <p>
+            <span class="w" data-i="106">I</span> <span class="w" data-i="107">studied</span> <span class="w" data-i="108">engineering,</span> <span class="w" data-i="109">started</span> <span class="w" data-i="110">a</span> <span class="w" data-i="111">company</span> <span class="w" data-i="112">and</span> <span class="w" data-i="113">figured</span> <span class="w" data-i="114">things</span> <span class="w" data-i="115">out</span> <span class="w" data-i="116">as</span> <span class="w" data-i="117">I</span>
+            <span class="w" data-i="118">went.</span> <span class="w" data-i="119">I</span> <span class="w" data-i="120">never</span> <span class="w" data-i="121">went</span> <span class="w" data-i="122">to</span> <span class="w" data-i="123">business</span> <span class="w" data-i="124">school.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="125">Looking</span> <span class="w" data-i="126">back,</span> <span class="w" data-i="127">a</span> <span class="w" data-i="128">surprising</span> <span class="w" data-i="129">amount</span> <span class="w" data-i="130">of</span> <span class="w" data-i="131">what</span> <span class="w" data-i="132">I</span> <span class="w" data-i="133">learned</span> <span class="w" data-i="134">about</span> <span class="w" data-i="135">systems,</span>
+            <span class="w" data-i="136">trade-offs,</span> <span class="w" data-i="137">limited</span> <span class="w" data-i="138">resources,</span> <span class="w" data-i="139">and</span> <span class="w" data-i="140">delayed</span> <span class="w" data-i="141">consequences</span> <span class="w" data-i="142">traces</span> <span class="w" data-i="143">back</span>
+            <span class="w" data-i="144">to</span> <span class="w" data-i="145">those</span> <span class="w" data-i="146">hours</span> <span class="w" data-i="147">spent</span> <span class="w" data-i="148">in</span> <span class="w" data-i="149">front</span> <span class="w" data-i="150">of</span> <span class="w" data-i="151">a</span> <span class="w" data-i="152">city</span> <span class="w" data-i="153">simulation.</span>
+          </p>
+
+          <p><span class="w" data-i="154">Not</span> <span class="w" data-i="155">simply</span> <span class="w" data-i="156">as</span> <span class="w" data-i="157">a</span> <span class="w" data-i="158">metaphor.</span> <span class="w" data-i="159">As</span> <span class="w" data-i="160">a</span> <span class="w" data-i="161">real</span> <span class="w" data-i="162">experience</span> <span class="w" data-i="163">that</span> <span class="w" data-i="164">shaped</span> <span class="w" data-i="165">how</span> <span class="w" data-i="166">I</span> <span class="w" data-i="167">reason.</span></p>
+
+          <p><span class="w" data-i="168">In</span> <span class="w" data-i="169">SimCity,</span> <span class="w" data-i="170">you</span> <span class="w" data-i="171">start</span> <span class="w" data-i="172">simple.</span> <span class="w" data-i="173">Roads.</span> <span class="w" data-i="174">Zones.</span> <span class="w" data-i="175">Power.</span> <span class="w" data-i="176">Water.</span></p>
+
+          <p><span class="w" data-i="177">People</span> <span class="w" data-i="178">arrive.</span> <span class="w" data-i="179">The</span> <span class="w" data-i="180">city</span> <span class="w" data-i="181">grows.</span> <span class="w" data-i="182">For</span> <span class="w" data-i="183">a</span> <span class="w" data-i="184">while,</span> <span class="w" data-i="185">it</span> <span class="w" data-i="186">feels</span> <span class="w" data-i="187">easy.</span></p>
+
+          <p>
+            <span class="w" data-i="188">Starting</span> <span class="w" data-i="189">a</span> <span class="w" data-i="190">business</span> <span class="w" data-i="191">can</span> <span class="w" data-i="192">feel</span> <span class="w" data-i="193">similar.</span> <span class="w" data-i="194">Building</span> <span class="w" data-i="195">something</span> <span class="w" data-i="196">and</span>
+            <span class="w" data-i="197">launching</span> <span class="w" data-i="198">it</span> <span class="w" data-i="199">is</span> <span class="w" data-i="200">often</span> <span class="w" data-i="201">the</span> <span class="w" data-i="202">easy</span> <span class="w" data-i="203">part.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="204">The</span> <span class="w" data-i="205">first</span> <span class="w" data-i="206">difficult</span> <span class="w" data-i="207">question</span> <span class="w" data-i="208">is</span> <span class="w" data-i="209">whether</span> <span class="w" data-i="210">people</span> <span class="w" data-i="211">genuinely</span> <span class="w" data-i="212">want</span> <span class="w" data-i="213">what</span>
+            <span class="w" data-i="214">you</span> <span class="w" data-i="215">have</span> <span class="w" data-i="216">built.</span> <span class="w" data-i="217">In</span> <span class="w" data-i="218">business</span> <span class="w" data-i="219">language,</span> <span class="w" data-i="220">that</span> <span class="w" data-i="221">is</span> <span class="w" data-i="222">product-market</span> <span class="w" data-i="223">fit.</span>
+            <span class="w" data-i="224">Getting</span> <span class="w" data-i="225">there</span> <span class="w" data-i="226">usually</span> <span class="w" data-i="227">requires</span> <span class="w" data-i="228">iteration,</span> <span class="w" data-i="229">persistence</span> <span class="w" data-i="230">and</span> <span class="w" data-i="231">some</span> <span class="w" data-i="232">luck.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="233">The</span> <span class="w" data-i="234">second</span> <span class="w" data-i="235">difficult</span> <span class="w" data-i="236">question</span> <span class="w" data-i="237">is</span> <span class="w" data-i="238">whether</span> <span class="w" data-i="239">you</span> <span class="w" data-i="240">can</span> <span class="w" data-i="241">grow</span> <span class="w" data-i="242">without</span>
+            <span class="w" data-i="243">breaking</span> <span class="w" data-i="244">the</span> <span class="w" data-i="245">system</span> <span class="w" data-i="246">around</span> <span class="w" data-i="247">it.</span> <span class="w" data-i="248">Citizens</span> <span class="w" data-i="249">need</span> <span class="w" data-i="250">jobs.</span> <span class="w" data-i="251">Roads</span> <span class="w" data-i="252">become</span>
+            <span class="w" data-i="253">congested.</span> <span class="w" data-i="254">Neighbourhoods</span> <span class="w" data-i="255">decline</span> <span class="w" data-i="256">because</span> <span class="w" data-i="257">you</span> <span class="w" data-i="258">stopped</span> <span class="w" data-i="259">paying</span>
+            <span class="w" data-i="260">attention</span> <span class="w" data-i="261">to</span> <span class="w" data-i="262">them.</span> <span class="w" data-i="263">You</span> <span class="w" data-i="264">cut</span> <span class="w" data-i="265">a</span> <span class="w" data-i="266">budget</span> <span class="w" data-i="267">that</span> <span class="w" data-i="268">seemed</span> <span class="w" data-i="269">unimportant</span> <span class="w" data-i="270">and</span> <span class="w" data-i="271">the</span>
+            <span class="w" data-i="272">consequences</span> <span class="w" data-i="273">appear</span> <span class="w" data-i="274">much</span> <span class="w" data-i="275">later,</span> <span class="w" data-i="276">when</span> <span class="w" data-i="277">the</span> <span class="w" data-i="278">original</span> <span class="w" data-i="279">decision</span> <span class="w" data-i="280">is</span> <span class="w" data-i="281">almost</span>
+            <span class="w" data-i="282">forgotten.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="283">The</span> <span class="w" data-i="284">game</span> <span class="w" data-i="285">does</span> <span class="w" data-i="286">not</span> <span class="w" data-i="287">always</span> <span class="w" data-i="288">tell</span> <span class="w" data-i="289">you</span> <span class="w" data-i="290">when</span> <span class="w" data-i="291">you</span> <span class="w" data-i="292">have</span> <span class="w" data-i="293">made</span> <span class="w" data-i="294">a</span> <span class="w" data-i="295">bad</span> <span class="w" data-i="296">decision.</span>
+            <span class="w" data-i="297">It</span> <span class="w" data-i="298">just</span> <span class="w" data-i="299">plays</span> <span class="w" data-i="300">out.</span>
+          </p>
+
+          <p><span class="w" data-i="301">I</span> <span class="w" data-i="302">have</span> <span class="w" data-i="303">watched</span> <span class="w" data-i="304">the</span> <span class="w" data-i="305">same</span> <span class="w" data-i="306">thing</span> <span class="w" data-i="307">happen</span> <span class="w" data-i="308">in</span> <span class="w" data-i="309">companies.</span></p>
+
+          <p>
+            <span class="w" data-i="310">Underinvest</span> <span class="w" data-i="311">in</span> <span class="w" data-i="312">product</span> <span class="w" data-i="313">quality,</span> <span class="w" data-i="314">and</span> <span class="w" data-i="315">customers</span> <span class="w" data-i="316">may</span> <span class="w" data-i="317">not</span> <span class="w" data-i="318">leave</span> <span class="w" data-i="319">this</span>
+            <span class="w" data-i="320">quarter.</span> <span class="w" data-i="321">They</span> <span class="w" data-i="322">leave</span> <span class="w" data-i="323">next</span> <span class="w" data-i="324">year.</span> <span class="w" data-i="325">By</span> <span class="w" data-i="326">then,</span> <span class="w" data-i="327">recommendations</span> <span class="w" data-i="328">have</span> <span class="w" data-i="329">slowed</span>
+            <span class="w" data-i="330">down,</span> <span class="w" data-i="331">the</span> <span class="w" data-i="332">data</span> <span class="w" data-i="333">is</span> <span class="w" data-i="334">quietly</span> <span class="w" data-i="335">getting</span> <span class="w" data-i="336">worse,</span> <span class="w" data-i="337">and</span> <span class="w" data-i="338">the</span> <span class="w" data-i="339">original</span> <span class="w" data-i="340">cause</span> <span class="w" data-i="341">is</span>
+            <span class="w" data-i="342">difficult</span> <span class="w" data-i="343">to</span> <span class="w" data-i="344">identify.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="345">Dashboards</span> <span class="w" data-i="346">tell</span> <span class="w" data-i="347">you</span> <span class="w" data-i="348">what</span> <span class="w" data-i="349">has</span> <span class="w" data-i="350">already</span> <span class="w" data-i="351">happened.</span> <span class="w" data-i="352">The</span> <span class="w" data-i="353">real</span> <span class="w" data-i="354">skill</span> <span class="w" data-i="355">is</span>
+            <span class="w" data-i="356">reading</span> <span class="w" data-i="357">the</span> <span class="w" data-i="358">system</span> <span class="w" data-i="359">well</span> <span class="w" data-i="360">enough</span> <span class="w" data-i="361">to</span> <span class="w" data-i="362">see</span> <span class="w" data-i="363">what</span> <span class="w" data-i="364">may</span> <span class="w" data-i="365">happen</span> <span class="w" data-i="366">next.</span>
+          </p>
+
+          <h2><span class="w" data-i="367">Why</span> <span class="w" data-i="368">I</span> <span class="w" data-i="369">Called</span> <span class="w" data-i="370">It</span> <span class="w" data-i="371">Polis</span></h2>
+
+          <p>
+            <span class="w" data-i="372">The</span> <span class="w" data-i="373">name</span> <span class="w" data-i="374">Polis</span> <span class="w" data-i="375">was</span> <span class="w" data-i="376">not</span> <span class="w" data-i="377">my</span> <span class="w" data-i="378">idea.</span> <span class="w" data-i="379">Full</span> <span class="w" data-i="380">credit</span> <span class="w" data-i="381">belongs</span> <span class="w" data-i="382">to</span> <span class="w" data-i="383">my</span> <span class="w" data-i="384">colleague</span>
+            <span class="w" data-i="385">Dimitris</span> <span class="w" data-i="386">Tsigkos.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="387">Some</span> <span class="w" data-i="388">time</span> <span class="w" data-i="389">ago,</span> <span class="w" data-i="390">Dimitris</span> <span class="w" data-i="391">used</span> <span class="w" data-i="392">the</span> <span class="w" data-i="393">contrast</span> <span class="w" data-i="394">between</span> <span class="w" data-i="395">polis</span> <span class="w" data-i="396">and</span>
+            <span class="w" data-i="397">idiōtēs</span> <span class="w" data-i="398">as</span> <span class="w" data-i="399">part</span> <span class="w" data-i="400">of</span> <span class="w" data-i="401">an</span> <span class="w" data-i="402">internal</span> <span class="w" data-i="403">rallying</span> <span class="w" data-i="404">message</span> <span class="w" data-i="405">in</span> <span class="w" data-i="406">our</span> <span class="w" data-i="407">company.</span>
+          </p>
+
+          <p><span class="w" data-i="408">The</span> <span class="w" data-i="409">polis</span> <span class="w" data-i="410">is</span> <span class="w" data-i="411">the</span> <span class="w" data-i="412">community.</span></p>
+
+          <p>
+            <span class="w" data-i="413">The</span> <span class="w" data-i="414">idiōtēs</span> <span class="w" data-i="415">is</span> <span class="w" data-i="416">the</span> <span class="w" data-i="417">private</span> <span class="w" data-i="418">individual,</span> <span class="w" data-i="419">focused</span> <span class="w" data-i="420">mainly</span> <span class="w" data-i="421">on</span> <span class="w" data-i="422">their</span> <span class="w" data-i="423">own</span>
+            <span class="w" data-i="424">affairs.</span> <span class="w" data-i="425">The</span> <span class="w" data-i="426">word</span> <span class="w" data-i="427">later</span> <span class="w" data-i="428">became</span> <span class="w" data-i="429">the</span> <span class="w" data-i="430">ancestor</span> <span class="w" data-i="431">of</span> <span class="w" data-i="432">the</span> <span class="w" data-i="433">modern</span> <span class="w" data-i="434">English</span>
+            <span class="w" data-i="435">word</span> <span class="w" data-i="436">&ldquo;idiot.&rdquo;</span>
+          </p>
+
+          <p><span class="w" data-i="437">The</span> <span class="w" data-i="438">contrast</span> <span class="w" data-i="439">stayed</span> <span class="w" data-i="440">with</span> <span class="w" data-i="441">me.</span></p>
+
+          <p>
+            <span class="w" data-i="442">A</span> <span class="w" data-i="443">city</span> <span class="w" data-i="444">cannot</span> <span class="w" data-i="445">work</span> <span class="w" data-i="446">if</span> <span class="w" data-i="447">every</span> <span class="w" data-i="448">neighbourhood</span> <span class="w" data-i="449">optimizes</span> <span class="w" data-i="450">only</span> <span class="w" data-i="451">for</span> <span class="w" data-i="452">itself.</span>
+            <span class="w" data-i="453">A</span> <span class="w" data-i="454">company</span> <span class="w" data-i="455">cannot</span> <span class="w" data-i="456">work</span> <span class="w" data-i="457">if</span> <span class="w" data-i="458">every</span> <span class="w" data-i="459">team</span> <span class="w" data-i="460">optimizes</span> <span class="w" data-i="461">only</span> <span class="w" data-i="462">for</span> <span class="w" data-i="463">its</span> <span class="w" data-i="464">own</span>
+            <span class="w" data-i="465">metrics.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="466">Engineering</span> <span class="w" data-i="467">cannot</span> <span class="w" data-i="468">ignore</span> <span class="w" data-i="469">support.</span> <span class="w" data-i="470">Sales</span> <span class="w" data-i="471">cannot</span> <span class="w" data-i="472">ignore</span> <span class="w" data-i="473">onboarding.</span>
+            <span class="w" data-i="474">Product</span> <span class="w" data-i="475">cannot</span> <span class="w" data-i="476">ignore</span> <span class="w" data-i="477">complexity.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="478">The</span> <span class="w" data-i="479">health</span> <span class="w" data-i="480">of</span> <span class="w" data-i="481">the</span> <span class="w" data-i="482">whole</span> <span class="w" data-i="483">system</span> <span class="w" data-i="484">matters</span> <span class="w" data-i="485">more</span> <span class="w" data-i="486">than</span> <span class="w" data-i="487">the</span> <span class="w" data-i="488">local</span> <span class="w" data-i="489">optimum</span>
+            <span class="w" data-i="490">of</span> <span class="w" data-i="491">any</span> <span class="w" data-i="492">single</span> <span class="w" data-i="493">part.</span>
+          </p>
+
+          <p><span class="w" data-i="494">That</span> <span class="w" data-i="495">is</span> <span class="w" data-i="496">the</span> <span class="w" data-i="497">idea</span> <span class="w" data-i="498">behind</span> <span class="w" data-i="499">the</span> <span class="w" data-i="500">name.</span></p>
+
+          <h2><span class="w" data-i="501">Why</span> <span class="w" data-i="502">I</span> <span class="w" data-i="503">Built</span> <span class="w" data-i="504">It</span></h2>
+
+          <p><span class="w" data-i="505">I</span> <span class="w" data-i="506">am</span> <span class="w" data-i="507">building</span> <span class="w" data-i="508">Polis</span> <span class="w" data-i="509">because</span> <span class="w" data-i="510">I</span> <span class="w" data-i="511">enjoy</span> <span class="w" data-i="512">it.</span></p>
+
+          <p>
+            <span class="w" data-i="513">But</span> <span class="w" data-i="514">I</span> <span class="w" data-i="515">also</span> <span class="w" data-i="516">think</span> <span class="w" data-i="517">simulations</span> <span class="w" data-i="518">can</span> <span class="w" data-i="519">teach</span> <span class="w" data-i="520">things</span> <span class="w" data-i="521">that</span> <span class="w" data-i="522">are</span> <span class="w" data-i="523">difficult</span> <span class="w" data-i="524">to</span>
+            <span class="w" data-i="525">teach</span> <span class="w" data-i="526">in</span> <span class="w" data-i="527">a</span> <span class="w" data-i="528">classroom:</span> <span class="w" data-i="529">systems</span> <span class="w" data-i="530">thinking,</span> <span class="w" data-i="531">trade-offs</span> <span class="w" data-i="532">under</span> <span class="w" data-i="533">real</span>
+            <span class="w" data-i="534">constraints</span> <span class="w" data-i="535">and</span> <span class="w" data-i="536">the</span> <span class="w" data-i="537">gap</span> <span class="w" data-i="538">between</span> <span class="w" data-i="539">a</span> <span class="w" data-i="540">decision</span> <span class="w" data-i="541">and</span> <span class="w" data-i="542">its</span> <span class="w" data-i="543">consequences.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="544">These</span> <span class="w" data-i="545">are</span> <span class="w" data-i="546">not</span> <span class="w" data-i="547">abstract</span> <span class="w" data-i="548">ideas.</span> <span class="w" data-i="549">You</span> <span class="w" data-i="550">understand</span> <span class="w" data-i="551">them</span> <span class="w" data-i="552">better</span> <span class="w" data-i="553">when</span> <span class="w" data-i="554">you</span>
+            <span class="w" data-i="555">experience</span> <span class="w" data-i="556">them.</span>
+          </p>
+
+          <p>
+            <span class="w" data-i="557">Polis</span> <span class="w" data-i="558">is</span>
+            <a href="https://www.polis-game.com"><span class="w" data-i="559">free</span> <span class="w" data-i="560">to</span> <span class="w" data-i="561">play.</span></a> <span class="w" data-i="563">If</span> <span class="w" data-i="564">you</span> <span class="w" data-i="565">want</span> <span class="w" data-i="566">to</span>
+            <span class="w" data-i="567">look</span> <span class="w" data-i="568">under</span> <span class="w" data-i="569">the</span> <span class="w" data-i="570">hood,</span> <span class="w" data-i="571">I</span> <span class="w" data-i="572">put</span> <span class="w" data-i="573">together</span> <span class="w" data-i="574">a</span> <span class="w" data-i="575">short</span>
+            <a href="https://www.polis-game.com/presentation.html"><span class="w" data-i="576">presentation</span></a>
+            <span class="w" data-i="577">and</span> <span class="w" data-i="578">a</span> <span class="w" data-i="579">more</span> <span class="w" data-i="580">detailed</span>
+            <a href="https://www.polis-game.com/technical.html"><span class="w" data-i="581">technical</span> <span class="w" data-i="582">overview</span></a>
+            <span class="w" data-i="583">&mdash;</span> <span class="w" data-i="584">and</span> <span class="w" data-i="585">if</span> <span class="w" data-i="586">you</span> <span class="w" data-i="587">would</span> <span class="w" data-i="588">rather</span> <span class="w" data-i="589">just</span> <span class="w" data-i="590">make</span> <span class="w" data-i="591">something,</span> <span class="w" data-i="592">you</span> <span class="w" data-i="593">can</span> <span class="w" data-i="594">build</span>
+            <span class="w" data-i="595">your</span> <span class="w" data-i="596">own</span> <span class="w" data-i="597">map</span> <span class="w" data-i="598">with</span> <span class="w" data-i="599">the</span>
+            <a href="https://www.polis-game.com/generator.html"><span class="w" data-i="600">city</span> <span class="w" data-i="601">generator.</span></a>
+          </p>
+
+          <p>
+            <span class="w" data-i="603">Let</span> <span class="w" data-i="604">your</span> <span class="w" data-i="605">kids</span> <span class="w" data-i="606">try</span> <span class="w" data-i="607">it.</span> <span class="w" data-i="608">Maybe</span> <span class="w" data-i="609">they&rsquo;ll</span> <span class="w" data-i="610">build</span> <span class="w" data-i="611">something</span> <span class="w" data-i="612">one</span> <span class="w" data-i="613">day.</span>
+            <span class="w" data-i="614">Maybe</span> <span class="w" data-i="615">they&rsquo;ll</span> <span class="w" data-i="616">just</span> <span class="w" data-i="617">enjoy</span> <span class="w" data-i="618">it.</span> <span class="w" data-i="619">Either</span> <span class="w" data-i="620">way,</span> <span class="w" data-i="621">they</span> <span class="w" data-i="622">probably</span>
+            <span class="w" data-i="623">won&rsquo;t</span> <span class="w" data-i="624">realise</span> <span class="w" data-i="625">they&rsquo;re</span> <span class="w" data-i="626">learning</span> <span class="w" data-i="627">anything.</span>
+          </p>
+
+          <p><span class="w" data-i="628">Neither</span> <span class="w" data-i="629">did</span> <span class="w" data-i="630">I.</span></p>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <span>&copy; 2026 Thanos Papangelis</span>
+        <span><a href="/">Home</a> &middot; <a href="/about.html">About</a></span>
+      </footer>
+    </div>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/audio.js?v=6"></script>
+  </body>
+</html>
