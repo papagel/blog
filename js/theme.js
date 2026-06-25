@@ -1,5 +1,5 @@
 // Toggle between light and dark, persisting the choice.
-// The initial theme is set by an inline script in <head> to avoid a flash.
+// Dark is the default; the initial theme is set by an inline script in <head> to avoid a flash.
 (function () {
   var root = document.documentElement;
 
@@ -22,16 +22,4 @@
     });
   });
 
-  // Follow system changes only if the user hasn't made an explicit choice.
-  if (window.matchMedia) {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", function (e) {
-        var stored;
-        try {
-          stored = localStorage.getItem("theme");
-        } catch (err) {}
-        if (!stored) root.setAttribute("data-theme", e.matches ? "dark" : "light");
-      });
-  }
 })();

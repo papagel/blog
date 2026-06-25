@@ -13,6 +13,8 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 │   └── hello-world.html
 ├── css/style.css       # All styling (light + dark)
 ├── js/theme.js         # Dark mode toggle
+├── assets/og/          # Per-page social-share cards (generated)
+├── scripts/generate-og.mjs  # Builds the social cards
 ├── CNAME               # Your custom domain (for GitHub Pages)
 └── .nojekyll           # Tells GitHub Pages to serve files as-is
 ```
@@ -31,7 +33,19 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
    </li>
    ```
 
-4. Save, commit, and push. It's live in a minute.
+4. Generate the social-share card so the post has its own branded preview
+   when shared on X, LinkedIn, etc. (uses the post's `og:title` as the
+   headline and `og:description` as the subhead):
+
+   ```bash
+   node scripts/generate-og.mjs
+   ```
+
+   This regenerates `assets/og/<slug>.png` for every page and points each
+   page's `og:image` / `twitter:image` at its own card. Requires
+   `rsvg-convert` (install once with `brew install librsvg`).
+
+5. Save, commit, and push. It's live in a minute.
 
 ## Preview locally
 
