@@ -30,6 +30,6 @@
 
     <line x1="90" y1="540" x2="1120" y2="540" stroke="#2a2a2e" stroke-width="1"/>
     <text x="90" y="578" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com</text>
-    <text x="1120" y="578" font-size="24" font-weight="400" text-anchor="end" fill="#9a9aa3">Thanos Papangelis</text>
+    
   </g>
 </svg>

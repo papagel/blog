@@ -227,7 +227,6 @@ function run() {
     ...globSync("posts/*.html", { cwd: ROOT }),
   ];
 
-  const author = "Thanos Papangelis";
   const results = [];
 
   for (const rel of files) {
@@ -248,7 +247,7 @@ function run() {
     const svg = svgFor({
       headline,
       subhead: isHome ? subhead : ogType === "article" ? subhead : "",
-      footerRight: author,
+      footerRight: "",
       isHome,
     });
 
