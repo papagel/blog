@@ -4,31 +4,42 @@
       <stop offset="0" stop-color="#17171b"/>
       <stop offset="1" stop-color="#0d0d0f"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.85" cy="0.12" r="0.7">
-      <stop offset="0" stop-color="#6ea8fe" stop-opacity="0.20"/>
+    <radialGradient id="glow" cx="0.5" cy="0.28" r="0.75">
+      <stop offset="0" stop-color="#6ea8fe" stop-opacity="0.22"/>
       <stop offset="1" stop-color="#6ea8fe" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#93bbff"/>
       <stop offset="1" stop-color="#6ea8fe"/>
     </linearGradient>
+    <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6ea8fe" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#93bbff"/>
+      <stop offset="1" stop-color="#6ea8fe" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
     <rect width="1200" height="630" fill="url(#bg)"/>
     <rect width="1200" height="630" fill="url(#glow)"/>
-    <rect x="0" y="0" width="10" height="630" fill="url(#bar)"/>
+    <path d="M -60 120 C 280 170, 620 60, 1260 230" fill="none" stroke="url(#stream)" stroke-width="3" stroke-opacity="0.3"/>
+    <path d="M -60 200 C 320 260, 680 150, 1260 330" fill="none" stroke="url(#stream)" stroke-width="2.5" stroke-opacity="0.2"/>
+    <path d="M -60 300 C 300 360, 700 260, 1260 440" fill="none" stroke="url(#stream)" stroke-width="2" stroke-opacity="0.13"/>
+    <path d="M -60 420 C 340 480, 720 380, 1260 560" fill="none" stroke="url(#stream)" stroke-width="2" stroke-opacity="0.08"/>
 
     <g>
-      <rect x="90" y="78" width="22" height="22" rx="5" fill="url(#bar)"/>
-      <text x="126" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#f4f4f6">Downstream</text>
+      <rect x="552" y="128" width="96" height="96" rx="21" fill="url(#bar)"/>
+      <path d="M 588 201 V 156 h 16.5 a 15 15 0 0 1 0 30 H 588"
+        fill="none" stroke="#ffffff" stroke-width="13.5" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
 
-    <text x="90" y="347" font-size="104" font-weight="700" letter-spacing="-1.5" fill="#f4f4f6">Downstream</text>
-    <text x="90" y="411" font-size="30" font-weight="400" fill="#9a9aa3">Notes on how AI is transforming our world — the way we work,</text>
-    <text x="90" y="453" font-size="30" font-weight="400" fill="#9a9aa3">build, and live.</text>
+    <text x="600" y="366" text-anchor="middle" font-size="112" font-weight="700" letter-spacing="-3" fill="#f4f4f6">Downstream</text>
+    <text x="600" y="432" text-anchor="middle" font-size="33" font-weight="400" fill="#9a9aa3">Notes on how AI is transforming our world — the way</text>
+    <text x="600" y="478" text-anchor="middle" font-size="33" font-weight="400" fill="#9a9aa3">we work, build, and live.</text>
 
-    <line x1="90" y1="540" x2="1120" y2="540" stroke="#2a2a2e" stroke-width="1"/>
-    <text x="90" y="578" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com</text>
-    
+    <g>
+      <line x1="410" y1="522" x2="480" y2="522" stroke="#2a2a2e" stroke-width="1"/>
+      <line x1="720" y1="522" x2="790" y2="522" stroke="#2a2a2e" stroke-width="1"/>
+      <text x="600" y="531" text-anchor="middle" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com</text>
+    </g>
   </g>
 </svg>

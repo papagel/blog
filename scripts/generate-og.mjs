@@ -123,25 +123,125 @@ function fitHeadline(text, maxWidth, maxLines, sizes) {
   return { size, lines: wrapToWidth(text, size, 700, maxWidth) };
 }
 
-function svgFor({ headline, subhead, footerRight, isHome }) {
+// The rounded-square "P" mark (same design as the favicon), at any size.
+function pMark(x, y, size) {
+  const s = size / 96;
+  const stemX = x + 36 * s;
+  const topY = y + 28 * s;
+  const bottomY = y + 73 * s;
+  return `<g>
+      <rect x="${x}" y="${y}" width="${size}" height="${size}" rx="${21 * s}" fill="url(#bar)"/>
+      <path d="M ${stemX} ${bottomY} V ${topY} h ${16.5 * s} a ${15 * s} ${15 * s} 0 0 1 0 ${30 * s} H ${stemX}"
+        fill="none" stroke="#ffffff" stroke-width="${13.5 * s}" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>`;
+}
+
+// Wrap text, keeping at most maxLines; if truncated, end with an ellipsis.
+function wrapClamped(text, size, weight, maxWidth, maxLines) {
+  const lines = wrapToWidth(text, size, weight, maxWidth);
+  if (lines.length <= maxLines) return lines;
+  const kept = lines.slice(0, maxLines);
+  const last = kept[maxLines - 1].replace(/[\s,;:.]+$/, "");
+  kept[maxLines - 1] = `${last}\u2026`;
+  return kept;
+}
+
+// Dedicated homepage card: centered brand lockup (P mark + wordmark + tagline)
+// over a flowing "stream" motif, so the site link itself has a visual identity
+// distinct from the headline-driven article cards.
+function homeSvg({ tagline }) {
+  const W = 1200;
+  const H = 630;
+
+  // Gentle beziers drifting down and to the right — the "downstream" motif.
+  const streams = [
+    { d: `M -60 120 C 280 170, 620 60, 1260 230`, opacity: 0.3, width: 3 },
+    { d: `M -60 200 C 320 260, 680 150, 1260 330`, opacity: 0.2, width: 2.5 },
+    { d: `M -60 300 C 300 360, 700 260, 1260 440`, opacity: 0.13, width: 2 },
+    { d: `M -60 420 C 340 480, 720 380, 1260 560`, opacity: 0.08, width: 2 },
+  ];
+
+  const streamPaths = streams
+    .map(
+      (s) =>
+        `<path d="${s.d}" fill="none" stroke="url(#stream)" stroke-width="${s.width}" stroke-opacity="${s.opacity}"/>`
+    )
+    .join("\n    ");
+
+  const CX = W / 2;
+  const markSize = 96;
+  const markX = CX - markSize / 2;
+  const markY = 128;
+
+  const taglineLines = wrapToWidth(tagline, 33, 400, 900).slice(0, 2);
+  const taglineSvg = taglineLines
+    .map(
+      (ln, i) =>
+        `<text x="${CX}" y="${432 + i * 46}" text-anchor="middle" font-size="33" font-weight="400" fill="${C.muted}">${xmlEscape(
+          ln
+        )}</text>`
+    )
+    .join("\n    ");
+
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${C.bgTop}"/>
+      <stop offset="1" stop-color="${C.bgBottom}"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.28" r="0.75">
+      <stop offset="0" stop-color="${C.accent}" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="${C.accent}" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${C.accentSoft}"/>
+      <stop offset="1" stop-color="${C.accent}"/>
+    </linearGradient>
+    <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="${C.accent}" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="${C.accentSoft}"/>
+      <stop offset="1" stop-color="${C.accent}" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g font-family="${FONT}">
+    <rect width="${W}" height="${H}" fill="url(#bg)"/>
+    <rect width="${W}" height="${H}" fill="url(#glow)"/>
+    ${streamPaths}
+
+    ${pMark(markX, markY, markSize)}
+
+    <text x="${CX}" y="366" text-anchor="middle" font-size="112" font-weight="700" letter-spacing="-3" fill="${C.title}">Downstream</text>
+    ${taglineSvg}
+
+    <g>
+      <line x1="${CX - 190}" y1="522" x2="${CX - 120}" y2="522" stroke="${C.hairline}" stroke-width="1"/>
+      <line x1="${CX + 120}" y1="522" x2="${CX + 190}" y2="522" stroke="${C.hairline}" stroke-width="1"/>
+      <text x="${CX}" y="531" text-anchor="middle" font-size="26" font-weight="600" fill="${C.accent}">papangelis.com</text>
+    </g>
+  </g>
+</svg>`;
+}
+
+// Article card: left-aligned headline under the brand lockup, with the same
+// P mark and stream motif as the homepage card (fainter, so text stays legible).
+function articleSvg({ headline, subhead, footerRight }) {
   const W = 1200;
   const H = 630;
   const PAD = 90;
   const usable = W - PAD - 80;
 
-  const headSizes = isHome ? [104, 92, 80] : [86, 76, 66, 58];
-  const maxLines = isHome ? 2 : 3;
+  const headSizes = [86, 76, 66, 58];
   const { size: hSize, lines: hLines } = fitHeadline(
     headline,
     usable,
-    maxLines,
+    3,
     headSizes
   );
   const lineHeight = Math.round(hSize * 1.12);
 
   // Vertically center the headline block in the available canvas.
   const blockHeight = hLines.length * lineHeight;
-  let startY = Math.round((H - blockHeight) / 2) + hSize - 14;
+  const startY = Math.round((H - blockHeight) / 2) + hSize - 14;
 
   const headlineTspans = hLines
     .map((ln, i) => {
@@ -154,7 +254,7 @@ function svgFor({ headline, subhead, footerRight, isHome }) {
 
   let subheadSvg = "";
   if (subhead && hLines.length <= 2) {
-    const subLines = wrapToWidth(subhead, 30, 400, usable).slice(0, 2);
+    const subLines = wrapClamped(subhead, 30, 400, usable, 2);
     const subStartY = startY + (hLines.length - 1) * lineHeight + 64;
     subheadSvg = subLines
       .map(
@@ -165,6 +265,19 @@ function svgFor({ headline, subhead, footerRight, isHome }) {
       )
       .join("\n    ");
   }
+
+  // Same downstream motif as the homepage, kept faint behind the text.
+  const streams = [
+    { d: `M -60 90 C 280 140, 620 30, 1260 200`, opacity: 0.18, width: 2.5 },
+    { d: `M -60 170 C 320 230, 680 120, 1260 300`, opacity: 0.1, width: 2 },
+    { d: `M -60 470 C 340 530, 720 430, 1260 610`, opacity: 0.07, width: 2 },
+  ];
+  const streamPaths = streams
+    .map(
+      (s) =>
+        `<path d="${s.d}" fill="none" stroke="url(#stream)" stroke-width="${s.width}" stroke-opacity="${s.opacity}"/>`
+    )
+    .join("\n    ");
 
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -180,15 +293,21 @@ function svgFor({ headline, subhead, footerRight, isHome }) {
       <stop offset="0" stop-color="${C.accentSoft}"/>
       <stop offset="1" stop-color="${C.accent}"/>
     </linearGradient>
+    <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="${C.accent}" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="${C.accentSoft}"/>
+      <stop offset="1" stop-color="${C.accent}" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   <g font-family="${FONT}">
     <rect width="${W}" height="${H}" fill="url(#bg)"/>
     <rect width="${W}" height="${H}" fill="url(#glow)"/>
+    ${streamPaths}
     <rect x="0" y="0" width="10" height="${H}" fill="url(#bar)"/>
 
     <g>
-      <rect x="${PAD}" y="78" width="22" height="22" rx="5" fill="url(#bar)"/>
-      <text x="${PAD + 36}" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="${C.title}">Downstream</text>
+      ${pMark(PAD, 66, 40)}
+      <text x="${PAD + 56}" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="${C.title}">Downstream</text>
     </g>
 
     ${headlineTspans}
@@ -244,12 +363,13 @@ function run() {
     const subhead = decodeEntities(rawDesc);
 
     const slug = slugFor(rel);
-    const svg = svgFor({
-      headline,
-      subhead: isHome ? subhead : ogType === "article" ? subhead : "",
-      footerRight: "",
-      isHome,
-    });
+    const svg = isHome
+      ? homeSvg({ tagline: subhead })
+      : articleSvg({
+          headline,
+          subhead,
+          footerRight: "",
+        });
 
     const svgPath = join(OUT_DIR, `${slug}.svg`);
     const pngPath = join(OUT_DIR, `${slug}.png`);
