@@ -18,6 +18,7 @@ import {
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = join(ROOT, "assets", "og");
@@ -384,8 +385,14 @@ function run() {
       pngPath,
     ]);
 
-    // Rewire the page's social image + alt to its own card.
-    const imageUrl = `${SITE}/assets/og/${slug}.png`;
+    // Rewire the page's social image + alt to its own card. A content-hash
+    // query param makes the URL change whenever the card's pixels change, so
+    // scrapers (LinkedIn especially) can't serve a stale cached image.
+    const hash = createHash("md5")
+      .update(readFileSync(pngPath))
+      .digest("hex")
+      .slice(0, 8);
+    const imageUrl = `${SITE}/assets/og/${slug}.png?v=${hash}`;
     const altText = isHome ? "Downstream" : headline;
     const before = html;
     html = html.replace(
