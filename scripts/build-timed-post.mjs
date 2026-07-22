@@ -1,22 +1,30 @@
-// Prototype: build a single post with word-level audio highlighting.
+// Build a single post with word-level audio highlighting.
 //
 //   node scripts/build-timed-post.mjs <slug> [--dry-run]
 //
 // For the given post it:
 //   1. extracts the article content (skipping title + date),
-//   2. sends it to xAI TTS with `with_timestamps` to get per-character timing,
-//   3. writes assets/audio/<slug>.mp3 and assets/audio/<slug>.timing.json
-//      (an array of [start, end] seconds per word, in document order),
-//   4. rewrites the post body so each word is wrapped in a <span class="w">
+//   2. synthesizes each paragraph separately via xAI TTS (with timestamps),
+//   3. inserts real silence between paragraphs (more reliable than stacked
+//      speech tags, which the model sometimes vocalizes or bridges over),
+//   4. writes assets/audio/<slug>.mp3 and assets/audio/<slug>.timing.json,
+//   5. rewrites the post body so each word is wrapped in a <span class="w">
 //      and tags the <article> with data-timing.
 //
-// The player (js/audio.js) reads the timing file and highlights the word
-// currently being spoken. This mirrors generate-audio.mjs so the audio and
-// pacing match the other posts.
+// Requires: ffmpeg (brew install ffmpeg), XAI_API_KEY in .env
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  mkdtempSync,
+  rmSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -37,14 +45,12 @@ if (!SLUG || SLUG.startsWith("--")) {
 const API_KEY = process.env.XAI_API_KEY;
 const VOICE = process.env.VOICE || "leo";
 const URL = "https://api.x.ai/v1/tts";
-// Larger cap so a normal-length post is a single TTS request (no seams at all).
-// Only long posts get split; xAI's hard cap is ~15,000 chars per request.
-const MAX_CHARS = 4800;
-const PARA_SEP = " [long-pause] ";
-const SENT_PAUSE = " [pause] ";
-// Prepended to every chunk after the first so the join between independently
-// encoded MP3 chunks lands inside silence, where the concat seam is inaudible.
-const LEAD_PAUSE = "[long-pause] ";
+const SAMPLE_RATE = 24000;
+// Real silence between paragraphs / before section headings (seconds).
+const PARA_SILENCE = Number(process.env.PARA_SILENCE) || 0.85;
+const HEAD_SILENCE = Number(process.env.HEAD_SILENCE) || 1.2;
+const SPEED = Number(process.env.SPEED);
+const TAG_TOKEN = /^\[(pause|long-pause)\]$/;
 
 const ENTITIES = {
   "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&apos;": "'",
@@ -63,11 +69,25 @@ function stripTags(html) {
   return html.replace(/<[^>]+>/g, "");
 }
 
-function escapeHtml(s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function ensureFfmpeg() {
+  try {
+    execFileSync("ffmpeg", ["-version"], { stdio: "ignore" });
+  } catch {
+    console.error("Error: ffmpeg not found. Install with `brew install ffmpeg`.");
+    process.exit(1);
+  }
 }
 
-// Clean content blocks, in order, skipping the title and the date line.
+// Soften punctuation that tends to make xAI TTS invent bridge words or
+// re-read a clause. Prefer commas over em dashes.
+function normalizeForSpeech(text) {
+  return text
+    .replace(/\u2014\s*/g, ", ")
+    .replace(/\u2013\s*/g, ", ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function extractBlocks(body) {
   const blocks = [];
   const re = /<(h1|h2|h3|p|blockquote|li)\b([^>]*)>([\s\S]*?)<\/\1>/gi;
@@ -77,44 +97,28 @@ function extractBlocks(body) {
     const attrs = m[2] || "";
     if (tag === "h1") continue;
     if (/class\s*=\s*["'][^"']*\barticle-meta\b/.test(attrs)) continue;
-    const text = decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim();
+    const text = normalizeForSpeech(
+      decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim()
+    );
     if (text) blocks.push({ tag, text });
   }
   return blocks;
 }
 
-// Insert a sentence pause, matching generate-audio.mjs.
+// Light sentence pauses only after short beats. Pausing after every sentence
+// makes the model lose the thread and invent connectors across the gap.
 function withSentencePauses(text) {
-  return text.replace(/([.!?])\s+(?=["'A-Z])/g, "$1 [pause] ");
+  return text.replace(/([.!?])\s+(?=["'A-Z])/g, (match, punct, offset, full) => {
+    const before = full.slice(0, offset);
+    const sentence = (before.split(/[.!?]\s+/).pop() || before).trim();
+    const words = sentence.split(/\s+/).filter(Boolean).length;
+    return words <= 8 ? `${punct} [pause] ` : `${punct} `;
+  });
 }
 
-// Group blocks (with pause tags) into chunks under the char cap.
-function chunkTexts(blocks) {
-  const texts = blocks.map((b) => withSentencePauses(b.text));
-  const chunks = [];
-  let cur = "";
-  const push = () => {
-    if (cur.trim()) chunks.push(cur.trim());
-    cur = "";
-  };
-  for (const t of texts) {
-    if (t.length > MAX_CHARS) {
-      push();
-      const sentences = t.match(/[^.!?]+[.!?]*\s*/g) || [t];
-      for (const s of sentences) {
-        if ((cur + s).length > MAX_CHARS) push();
-        cur += s;
-      }
-      push();
-      continue;
-    }
-    if ((cur + PARA_SEP + t).length > MAX_CHARS) push();
-    cur += (cur ? PARA_SEP : "") + t;
-  }
-  push();
-  // Start every continuation chunk on a long pause so the raw-MP3 concat seam
-  // sits in silence (masks the click/gap and avoids clipping the first word).
-  return chunks.map((c, i) => (i === 0 ? c : LEAD_PAUSE + c));
+function spokenText(block) {
+  if (block.tag === "h2" || block.tag === "h3") return block.text;
+  return withSentencePauses(block.text);
 }
 
 async function synthesizeTimed(text) {
@@ -122,18 +126,20 @@ async function synthesizeTimed(text) {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 180000);
     try {
+      const payload = {
+        text,
+        voice_id: VOICE,
+        language: "en",
+        with_timestamps: true,
+      };
+      if (Number.isFinite(SPEED)) payload.speed = SPEED;
       const res = await fetch(URL, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          text,
-          voice_id: VOICE,
-          language: "en",
-          with_timestamps: true,
-        }),
+        body: JSON.stringify(payload),
         signal: ctrl.signal,
       });
       if (!res.ok) {
@@ -150,7 +156,47 @@ async function synthesizeTimed(text) {
   }
 }
 
-const TAG_TOKEN = /^\[(pause|long-pause)\]$/;
+function mp3ToPcm(mp3Buf, workDir, label) {
+  const mp3Path = join(workDir, `${label}.mp3`);
+  const pcmPath = join(workDir, `${label}.pcm`);
+  writeFileSync(mp3Path, mp3Buf);
+  execFileSync(
+    "ffmpeg",
+    [
+      "-y", "-hide_banner", "-loglevel", "error",
+      "-i", mp3Path,
+      "-f", "s16le", "-acodec", "pcm_s16le",
+      "-ac", "1", "-ar", String(SAMPLE_RATE),
+      pcmPath,
+    ],
+    { stdio: "ignore" }
+  );
+  return readFileSync(pcmPath);
+}
+
+function pcmToMp3(pcmBuf, outPath, workDir) {
+  const pcmPath = join(workDir, "final.pcm");
+  writeFileSync(pcmPath, pcmBuf);
+  execFileSync(
+    "ffmpeg",
+    [
+      "-y", "-hide_banner", "-loglevel", "error",
+      "-f", "s16le", "-ar", String(SAMPLE_RATE), "-ac", "1",
+      "-i", pcmPath,
+      "-codec:a", "libmp3lame", "-q:a", "2",
+      outPath,
+    ],
+    { stdio: "ignore" }
+  );
+}
+
+function silencePcm(seconds) {
+  return Buffer.alloc(Math.round(seconds * SAMPLE_RATE) * 2);
+}
+
+function pcmDuration(pcmBuf) {
+  return pcmBuf.length / 2 / SAMPLE_RATE;
+}
 
 function main() {
   const file = join(POSTS_DIR, `${SLUG}.html`);
@@ -165,17 +211,16 @@ function main() {
     process.exit(1);
   }
   const blocks = extractBlocks(articleMatch[1]);
-  const chunks = chunkTexts(blocks);
   const totalWords = blocks.reduce((n, b) => n + b.text.split(/\s+/).length, 0);
 
   console.log(
-    `${SLUG}: ${blocks.length} blocks, ${totalWords} words, ${chunks.length} request(s)${
-      DRY_RUN ? " (dry run)" : ""
-    }`
+    `${SLUG}: ${blocks.length} paragraphs, ${totalWords} words` +
+      ` (para silence ${PARA_SILENCE}s, heading ${HEAD_SILENCE}s)` +
+      `${DRY_RUN ? " (dry run)" : ""}`
   );
 
   if (DRY_RUN) {
-    console.log(`  first chunk: "${chunks[0].slice(0, 140)}..."`);
+    console.log(`  first: "${spokenText(blocks[0]).slice(0, 140)}..."`);
     return;
   }
 
@@ -183,113 +228,128 @@ function main() {
     console.error("Missing XAI_API_KEY in .env");
     process.exit(1);
   }
+  ensureFfmpeg();
 
-  return run(file, html, blocks, chunks);
+  return run(file, html, blocks);
 }
 
-async function run(file, html, blocks, chunks) {
-  const buffers = [];
-  const timings = []; // [start, end] per word, document order
-  let offset = 0; // cumulative seconds across chunks
+async function run(file, html, blocks) {
+  const workDir = mkdtempSync(join(tmpdir(), "blog-tts-"));
+  const pcmParts = [];
+  const timings = [];
+  let offset = 0;
 
-  for (let ci = 0; ci < chunks.length; ci++) {
-    const chunk = chunks[ci];
-    process.stdout.write(`  request ${ci + 1}/${chunks.length} ... `);
-    const payload = await synthesizeTimed(chunk);
-    buffers.push(Buffer.from(payload.audio, "base64"));
+  try {
+    for (let i = 0; i < blocks.length; i++) {
+      const block = blocks[i];
+      const chunk = spokenText(block);
+      const isHeading = block.tag === "h2" || block.tag === "h3";
 
-    const ts = payload.audio_timestamps;
-    const times = ts ? ts.graph_times : null;
-    const len = ts ? ts.graph_chars.length : 0;
-    const dur = typeof payload.duration === "number" ? payload.duration : 0;
-
-    if (!times || len !== chunk.length) {
-      console.log(
-        `\n  ! timestamp/text length mismatch (${len} vs ${chunk.length}); using estimate`
-      );
-    }
-
-    const tokenRe = /\S+/g;
-    let m;
-    while ((m = tokenRe.exec(chunk)) !== null) {
-      if (TAG_TOKEN.test(m[0])) continue; // skip pause tags
-      const s = m.index;
-      const e = m.index + m[0].length - 1;
-      let start, end;
-      if (times && len === chunk.length) {
-        start = times[s][0] + offset;
-        end = times[e][1] + offset;
-      } else {
-        // proportional fallback
-        start = (s / chunk.length) * dur + offset;
-        end = ((e + 1) / chunk.length) * dur + offset;
+      if (i > 0) {
+        const gap = isHeading ? HEAD_SILENCE : PARA_SILENCE;
+        pcmParts.push(silencePcm(gap));
+        offset += gap;
       }
-      timings.push([Math.round(start * 1000) / 1000, Math.round(end * 1000) / 1000]);
-    }
-    offset += dur;
-    console.log("done");
-  }
 
-  // Write audio + timing.
-  if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
-  const mp3Path = join(OUT_DIR, `${SLUG}.mp3`);
-  const timingPath = join(OUT_DIR, `${SLUG}.timing.json`);
-  writeFileSync(mp3Path, Buffer.concat(buffers));
-  writeFileSync(timingPath, JSON.stringify(timings));
-
-  // Wrap each word in place, preserving inline tags (<em>, <a>, …) and
-  // structural elements (<hr>). Only the content region (after the player,
-  // before </article>) is touched, so the title, date, and player are intact.
-  const audioCloseIdx = html.indexOf("</div>", html.indexOf("</audio>"));
-  const contentStart = audioCloseIdx + "</div>".length;
-  const articleClose = html.lastIndexOf("</article>");
-  let before = html.slice(0, contentStart);
-  const content = html.slice(contentStart, articleClose);
-  const after = html.slice(articleClose);
-
-  let wrapped;
-  if (/class="w"/.test(content)) {
-    // Already wrapped from a previous run: keep the spans (and any manual
-    // fixes) intact and only refresh the audio + timing for them.
-    const existing = (content.match(/class="w"/g) || []).length;
-    if (existing !== timings.length) {
-      console.log(
-        `  ! span/timing mismatch: ${existing} existing spans vs ${timings.length} timed (highlight may drift)`
+      process.stdout.write(
+        `  ${String(i + 1).padStart(2)}/${blocks.length} ${isHeading ? "h2" : "p "} ... `
       );
+      const payload = await synthesizeTimed(chunk);
+      const mp3Buf = Buffer.from(payload.audio, "base64");
+      const pcm = mp3ToPcm(mp3Buf, workDir, `part-${i}`);
+      const measured = pcmDuration(pcm);
+      const apiDur =
+        typeof payload.duration === "number" && payload.duration > 0
+          ? payload.duration
+          : measured;
+      const scale = measured / apiDur;
+
+      const ts = payload.audio_timestamps;
+      const times = ts ? ts.graph_times : null;
+      const len = ts ? ts.graph_chars.length : 0;
+      if (!times || len === 0 || len !== chunk.length) {
+        process.stdout.write("(est) ");
+      }
+
+      const tokenRe = /\S+/g;
+      let m;
+      while ((m = tokenRe.exec(chunk)) !== null) {
+        if (TAG_TOKEN.test(m[0])) continue;
+        const s = m.index;
+        const e = m.index + m[0].length - 1;
+        let start;
+        let end;
+        if (times && len === chunk.length) {
+          start = times[s][0] * scale + offset;
+          end = times[e][1] * scale + offset;
+        } else {
+          start = (s / chunk.length) * measured + offset;
+          end = ((e + 1) / chunk.length) * measured + offset;
+        }
+        timings.push([
+          Math.round(start * 1000) / 1000,
+          Math.round(end * 1000) / 1000,
+        ]);
+      }
+
+      pcmParts.push(pcm);
+      offset += measured;
+      console.log(`done (${measured.toFixed(1)}s)`);
+    }
+
+    if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
+    const mp3Path = join(OUT_DIR, `${SLUG}.mp3`);
+    const timingPath = join(OUT_DIR, `${SLUG}.timing.json`);
+    pcmToMp3(Buffer.concat(pcmParts), mp3Path, workDir);
+    writeFileSync(timingPath, JSON.stringify(timings));
+
+    const audioCloseIdx = html.indexOf("</div>", html.indexOf("</audio>"));
+    const contentStart = audioCloseIdx + "</div>".length;
+    const articleClose = html.lastIndexOf("</article>");
+    let before = html.slice(0, contentStart);
+    const content = html.slice(contentStart, articleClose);
+    const after = html.slice(articleClose);
+
+    let wrapped;
+    if (/class="w"/.test(content)) {
+      const existing = (content.match(/class="w"/g) || []).length;
+      if (existing !== timings.length) {
+        console.log(
+          `  ! span/timing mismatch: ${existing} existing spans vs ${timings.length} timed`
+        );
+      } else {
+        console.log(`  reusing ${existing} existing word spans`);
+      }
+      wrapped = content;
     } else {
-      console.log(`  reusing ${existing} existing word spans`);
+      let gi = 0;
+      wrapped = content.replace(/<[^>]+>|[^<]+/g, (seg) => {
+        if (seg[0] === "<") return seg;
+        return seg.replace(/\S+/g, (w) => `<span class="w" data-i="${gi++}">${w}</span>`);
+      });
+      if (gi !== timings.length) {
+        console.log(
+          `  ! word count mismatch: ${gi} wrapped vs ${timings.length} timed`
+        );
+      }
     }
-    wrapped = content;
-  } else {
-    let gi = 0;
-    wrapped = content.replace(/<[^>]+>|[^<]+/g, (seg) => {
-      if (seg[0] === "<") return seg; // tag: pass through untouched
-      return seg.replace(/\S+/g, (w) => `<span class="w" data-i="${gi++}">${w}</span>`);
-    });
-    if (gi !== timings.length) {
-      console.log(
-        `  ! word count mismatch: ${gi} wrapped vs ${timings.length} timed (highlight may drift)`
-      );
-    }
+
+    before = before.replace(
+      /<article\b[^>]*>/i,
+      `<article data-timing="/assets/audio/${SLUG}.timing.json">`
+    );
+
+    let out = before + wrapped + after;
+    out = out.replace(/\/js\/audio\.js(\?v=\d+)?/, "/js/audio.js?v=6");
+    writeFileSync(file, out);
+
+    console.log(
+      `\nWrote ${mp3Path}\n      ${timingPath} (${timings.length} words)\n      ${file}`
+    );
+    console.log(`Audio duration ~${Math.round(offset)}s.`);
+  } finally {
+    rmSync(workDir, { recursive: true, force: true });
   }
-
-  // Tag the <article> with the timing file.
-  before = before.replace(
-    /<article\b[^>]*>/i,
-    `<article data-timing="/assets/audio/${SLUG}.timing.json">`
-  );
-
-  let out = before + wrapped + after;
-  // Make sure the updated player JS (with highlighting) loads.
-  out = out.replace(/\/js\/audio\.js(\?v=\d+)?/, "/js/audio.js?v=6");
-
-  writeFileSync(file, out);
-
-  const totalDur = offset;
-  console.log(
-    `\nWrote ${mp3Path}\n      ${timingPath} (${timings.length} words)\n      ${file} (rewrapped)`
-  );
-  console.log(`Audio duration ~${Math.round(totalDur)}s.`);
 }
 
 main();

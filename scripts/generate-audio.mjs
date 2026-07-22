@@ -56,11 +56,11 @@ const PROVIDERS = {
     // a single request (no concatenation seams); only long posts get split.
     maxChars: 4800,
     defaultVoice: "eve", // built-in: ara, eve, leo, rex, sal (or a cloned voice id)
-    // Inline speech tags make delivery more expressive: a small beat between
-    // sentences (added in extractText) and a longer beat between paragraphs
-    // and before each new section.
-    paraSep: " [long-pause] ",
-    headPause: " [long-pause] ",
+    // Longer stacked pauses between paragraphs. Avoid [breath]/ the model
+    // sometimes vocalizes stacked expressive tags. For timed posts, prefer
+    // build-timed-post.mjs which inserts real silence between paragraphs.
+    paraSep: " [long-pause] [long-pause] ",
+    headPause: " [long-pause] [long-pause] [long-pause] ",
     // Prepended to continuation chunks so the raw-MP3 concat seam sits in
     // silence (these MP3s are headerless VBR; a hard seam clicks/clips words).
     leadPause: "[long-pause] ",
@@ -112,6 +112,17 @@ function stripTags(html) {
   return html.replace(/<[^>]+>/g, "");
 }
 
+// Normalize punctuation that tends to make xAI TTS invent bridge words or
+// re-read a clause (em dashes mid-sentence are a common trigger).
+function normalizeForSpeech(text) {
+  return text
+    .replace(/\u2014\s*/g, ". ")
+    .replace(/\u2013\s*/g, ", ")
+    .replace(/\.\s+([a-z])/g, (_, c) => `. ${c.toUpperCase()}`)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 // Pull readable text from an article's block-level elements, in order.
 function extractText(html) {
   const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
@@ -125,10 +136,18 @@ function extractText(html) {
     // Start narration from the content: skip the title and the date line.
     if (tag === "h1") continue;
     if (/class\s*=\s*["'][^"']*\barticle-meta\b/.test(attrs)) continue;
-    let text = decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim();
-    if (cfg.headPause) {
-      // xAI only: a small beat between sentences (not after the final one).
-      text = text.replace(/([.!?])\s+(?=["'A-Z])/g, "$1 [pause] ");
+    let text = normalizeForSpeech(
+      decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim()
+    );
+    if (cfg.headPause && tag !== "h2" && tag !== "h3") {
+      // Light beat only after short sentences — pausing after every sentence
+      // makes the model invent connectors across the gap.
+      text = text.replace(/([.!?])\s+(?=["'A-Z])/g, (match, punct, offset, full) => {
+        const before = full.slice(0, offset);
+        const sentence = (before.split(/[.!?]\s+/).pop() || before).trim();
+        const words = sentence.split(/\s+/).filter(Boolean).length;
+        return words <= 8 ? `${punct} [pause] ` : `${punct} `;
+      });
     }
     if (text) blocks.push({ tag, text });
   }
@@ -160,8 +179,9 @@ function chunk(blocks) {
       push();
       continue;
     }
-    if ((cur + cfg.paraSep + block).length > MAX_CHARS) push();
-    cur += (cur ? cfg.paraSep : "") + block;
+    const sep = block.startsWith(" [long-pause]") ? "" : cfg.paraSep;
+    if ((cur + sep + block).length > MAX_CHARS) push();
+    cur += (cur ? sep : "") + block;
   }
   push();
   // Start every continuation chunk on a pause so the raw-MP3 concat seam lands
