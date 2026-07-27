@@ -341,6 +341,21 @@ article li {
   color: var(--text);
 }
 
+.about-links {
+  margin-top: 40px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.about-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.about-links a:hover {
+  color: var(--text);
+}
+
 /* Audio player */
 .audio-player {
   display: flex;
