@@ -363,10 +363,6 @@ article li {
   text-decoration: underline;
 }
 
-article h2 {
-  margin-top: 40px;
-}
-
 /* Audio player */
 .audio-player {
   display: flex;
