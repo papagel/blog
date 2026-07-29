@@ -344,14 +344,14 @@ article li {
 .about-links {
   list-style: none;
   padding: 0;
-  margin: 40px 0 0;
+  margin: 8px 0 0;
   color: var(--text-muted);
   font-size: 15px;
   line-height: 1.55;
 }
 
 .about-links li {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 .about-links a {
@@ -361,6 +361,10 @@ article li {
 
 .about-links a:hover {
   text-decoration: underline;
+}
+
+article h2 {
+  margin-top: 40px;
 }
 
 /* Audio player */
