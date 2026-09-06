@@ -35,10 +35,10 @@
       <text x="146" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#f4f4f6">Downstream</text>
     </g>
 
-    <text x="90" y="291" font-size="86" font-weight="700" letter-spacing="-1.5" fill="#f4f4f6">How AI Actually Takes</text>
-    <text x="90" y="387" font-size="86" font-weight="700" letter-spacing="-1.5" fill="#f4f4f6">Over</text>
-    <text x="90" y="451" font-size="30" font-weight="400" fill="#9a9aa3">People imagine AI taking control by force. Inside companies it</text>
-    <text x="90" y="493" font-size="30" font-weight="400" fill="#9a9aa3">happens quietly: nobody hands over control — they hand over the…</text>
+    <text x="90" y="291" font-size="86" font-weight="700" letter-spacing="-1.5" fill="#f4f4f6">The War We Already</text>
+    <text x="90" y="387" font-size="86" font-weight="700" letter-spacing="-1.5" fill="#f4f4f6">Lost</text>
+    <text x="90" y="451" font-size="30" font-weight="400" fill="#9a9aa3">There was a war on intelligence, and we lost it. What’s left is</text>
+    <text x="90" y="493" font-size="30" font-weight="400" fill="#9a9aa3">not taste or judgment — it’s the years you carry a cost, and the…</text>
 
     <line x1="90" y1="540" x2="1120" y2="540" stroke="#2a2a2e" stroke-width="1"/>
     <text x="90" y="578" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com</text>
