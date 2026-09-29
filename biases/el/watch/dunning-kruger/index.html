@@ -140,7 +140,6 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 .bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}
 .bp-pill:hover{border-color:var(--ink)}
 .bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.bp-url{font:500 12px/1 var(--mono);color:var(--q);letter-spacing:.04em}
 
 /* share menu */
 .bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}
@@ -195,7 +194,6 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 .bp.capture .bp-bm{width:22px;height:22px}
 .bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}
 .bp.capture .bp-row{display:none}
-.bp.capture .bp-url{font-size:14px}
 
 </style>
 </head>
@@ -323,7 +321,6 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
             <p class="bp-name">${T.name}</p>
             <p class="bp-line">${T.ecline}</p>
             <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}</span></button><button class="bp-pill" type="button" data-a="again">${U.ecagain}</button></div>
-            <span class="bp-url">${U.site}</span>
           </div>
           <div class="bp-menu" role="menu" hidden></div>
           <div class="bp-ctl">
