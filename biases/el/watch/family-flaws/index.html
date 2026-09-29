@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="el" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Γιατί βλέπουμε τα λάθη των άλλων κι όχι τα δικά μας, σε 30 δευτερόλεπτα · Downstream</title>
+<meta name="description" content="Ξέρουμε από μέσα τι θέλουμε, γιατί κάνουμε ό,τι κάνουμε και σε τι συνθήκες βρισκόμαστε, ενώ από τους άλλους βλέπουμε μόνο τις πράξεις τους, απ' έξω. Όταν εμπιστευόμαστε τη δική μας ματιά, δρούμε με σιγουριά και μένουμε σε επιφυλακή απέναντι σε όσους μπορεί να μας εκμεταλλευτούν.">
+<meta name="author" content="Thanos Papangelis">
+<link rel="canonical" href="https://papangelis.com/biases/el/watch/family-flaws/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/watch/family-flaws/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/watch/family-flaws/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/watch/family-flaws/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="el_GR">
+<meta property="og:title" content="Γιατί βλέπουμε τα λάθη των άλλων κι όχι τα δικά μας, σε 30 δευτερόλεπτα">
+<meta property="og:description" content="Ξέρουμε από μέσα τι θέλουμε, γιατί κάνουμε ό,τι κάνουμε και σε τι συνθήκες βρισκόμαστε, ενώ από τους άλλους βλέπουμε μόνο τις πράξεις τους, απ' έξω. Όταν εμπιστευόμαστε τη δική μας ματιά, δρούμε με σιγουριά και μένουμε σε επιφυλακή απέναντι σε όσους μπορεί να μας εκμεταλλευτούν.">
+<meta property="og:url" content="https://papangelis.com/biases/el/watch/family-flaws/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Γιατί βλέπουμε τα λάθη των άλλων κι όχι τα δικά μας, σε 30 δευτερόλεπτα">
+<meta name="twitter:description" content="Ξέρουμε από μέσα τι θέλουμε, γιατί κάνουμε ό,τι κάνουμε και σε τι συνθήκες βρισκόμαστε, ενώ από τους άλλους βλέπουμε μόνο τις πράξεις τους, απ' έξω. Όταν εμπιστευόμαστε τη δική μας ματιά, δρούμε με σιγουριά και μένουμε σε επιφυλακή απέναντι σε όσους μπορεί να μας εκμεταλλευτούν.">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-family-flaws-el.png?v=5cffffc5">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-family-flaws-el.png?v=5cffffc5">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap&subset=greek">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), h = document.documentElement;
+    try { h.setAttribute("data-theme", localStorage.getItem("theme") || "dark"); } catch (e) {}
+    if (q.has("embed")) h.classList.add("embed");
+    if (q.get("capture") === "video") h.classList.add("cap-video");
+    if (q.get("capture") === "og") { h.classList.add("cap-og"); h.setAttribute("data-theme", "dark"); }
+  })();
+</script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Commissioner", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+:root{--q:var(--tmi)}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
+.og{display:none}
+/* embed: just the player */
+html.embed body{padding:0;background:transparent}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
+/* capture: square video frame */
+html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
+/* capture: 1200x630 social card, drawn at 600x315 and 2x */
+html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
+html.cap-og .wp{display:none}
+html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
+.og-l{display:flex;flex-direction:column;gap:10px}
+.og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
+.og-b svg{width:18px;height:18px}
+.og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+.og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
+
+
+</style>
+</head>
+<body>
+<div class="wp">
+  <main class="wp-main">
+    <h1>Τα λάθη των άλλων</h1>
+    <p class="wp-def">Ξέρουμε από μέσα τι θέλουμε, γιατί κάνουμε ό,τι κάνουμε και σε τι συνθήκες βρισκόμαστε, ενώ από τους άλλους βλέπουμε μόνο τις πράξεις τους, απ' έξω. Όταν εμπιστευόμαστε τη δική μας ματιά, δρούμε με σιγουριά και μένουμε σε επιφυλακή απέναντι σε όσους μπορεί να μας εκμεταλλευτούν.</p>
+    <div id="player"></div>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/el/#g-flaws">Δες τις 3 μεροληψίες της</a></nav>
+  </main>
+</div>
+<div class="og">
+  <div class="og-l">
+    <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Εξερευνητής γνωστικών μεροληψιών</div>
+    <p class="og-t" style="font-size:40px">Τα λάθη των άλλων</p>
+    <p class="og-s">Σε 30 δευτερόλεπτα</p>
+  </div>
+  <div id="og-player"></div>
+</div>
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink);text-wrap:balance;max-width:22ch}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch;text-wrap:balance}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* thumbnail: the finished drawing, framed by whatever holds it */\n.bp.still .bp-stage{border:0;border-radius:0;background:transparent}\n.bp.still .bp-svg{padding:0}\n";
+/* Cognitive Bias Explorer: animated explainers.
+   A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
+   so looping, stepping between beats, and frame-by-frame video capture all agree.
+   Share icons: Lucide (lucide.dev), ISC licence. The brain icon is our own (icon.py). */
+(function () {
+  "use strict";
+
+  const EASE = {
+    lin: t => t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+    bounce: t => {
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+      return n * (t -= 2.625 / d) * t + .984375;
+    }
+  };
+
+  const ICON = {
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
+  };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
+  // the friendly four-colour brain; same drawing as icon.py, keep the two in step
+  const BRAIN_LOBES = [[8.2, 7.6, 3.9], [5.4, 11.2, 3.7], [9.6, 11.8, 4.2], [6.4, 15.6, 3.6], [10.2, 17.4, 3.3]];
+  const BRAIN = (() => {
+    const all = [...BRAIN_LOBES.map(([x, y, r]) => [x, y, r, "l"]), ...BRAIN_LOBES.map(([x, y, r]) => [24 - x, y, r, "r"])];
+    const lobe = (y, s) => s === "l" ? (y > 14 ? "fast" : "tmi") : (y > 14 ? "mem" : "nem");
+    const F = "#2a2320";
+    return all.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${+(r + 1.1).toFixed(2)}" style="fill:var(--ink)"/>`).join("") +
+      all.map(([x, y, r, s]) => `<circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--${lobe(y, s)})"/>`).join("") +
+      `<g fill="none" stroke="${F}" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/>` +
+      `<path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/><\/g><circle cx="9.7" cy="12.4" r="1.1" fill="${F}"/><circle cx="14.3" cy="12.4" r="1.1" fill="${F}"/>`;
+  })();
+  const brainMark = cls => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${BRAIN}<\/svg>`;
+
+  const UI = {
+    en: {
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
+      ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
+      copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
+      open: "Open on its own page", site: "papangelis.com/biases"
+    },
+    el: {
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
+      ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
+      copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
+      open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
+    }
+  };
+
+  /* ------------------------------------------------------------------ scenes */
+  const SCENES = {};
+
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
+
+  /* ------------------------------------------------------------------ timeline */
+  const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
+    let t = 0;
+    const push = (to, ms, ease) => {
+      const from = {}; for (const key in to) from[key] = S[key];
+      segs.push({ t0: t, t1: t + (ms || 0), from, to, ease: EASE[ease || "out"] });
+      Object.assign(S, to); t += ms || 0;
+    };
+    scene.beats.forEach(b => {
+      starts.push(t);
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
+      ends.push(t);
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
+    });
+    const cardAt = t;
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
+  }
+  function stateAt(tl, t) {
+    const S = { ...tl.S0 };
+    for (const g of tl.segs) {
+      if (t < g.t0) break;
+      const p = g.t1 > g.t0 ? Math.min(1, (t - g.t0) / (g.t1 - g.t0)) : 1, e = g.ease(p);
+      for (const key in g.to) S[key] = g.from[key] + (g.to[key] - g.from[key]) * e;
+    }
+    return S;
+  }
+
+  /* ------------------------------------------------------------------ player */
+  let uid = 0;
+  function mount(host, key, opts = {}) {
+    const scene = SCENES[key]; if (!scene || !host) return null;
+    const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const still = !!opts.still;   // a thumbnail: the finished drawing only, no controls, never plays
+    const capture = !!opts.capture || still;
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og || still ? " og" : ""}${still ? " still" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+        <div class="bp-stage">
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
+          <div class="bp-card" aria-hidden="true">
+            ${brainMark("bp-mark")}
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
+          <div class="bp-ctl">
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
+    const $ = sel => root.querySelector(sel);
+    const cache = {};
+    const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
+    const all = $(".bp-all"), card = $(".bp-card"), text = $(".bp-text"), no = $(".bp-no"), menu = $(".bp-menu");
+    const dots = [...root.querySelectorAll(".bp-dot i")];
+
+    let t = 0, playing = false, userPaused = false, visible = false, raf = 0, last = 0, capShown = -1, started = false;
+    function beatAt(time) { let i = 0; while (i + 1 < n && time >= tl.starts[i + 1]) i++; return i; }
+    function draw() {
+      const S = stateAt(tl, t);
+      scene.render(S, k, T);
+      all.style.opacity = S.all;
+      card.style.opacity = S.card;
+      card.classList.toggle("on", S.card > .5);
+      card.setAttribute("aria-hidden", S.card > .5 ? "false" : "true");
+      const i = beatAt(t);
+      if (i !== capShown) { text.innerHTML = T.caps[i]; no.textContent = `${i + 1}/${n}`; capShown = i; }
+      // captions fade in at the start of each beat and out just before the next
+      const next = i + 1 < n ? tl.starts[i + 1] : tl.total;
+      text.style.opacity = Math.max(0, Math.min(1, (t - tl.starts[i]) / 220, (next - t) / 160, i === n - 1 ? 1 - S.card : 1));
+      dots.forEach((d, j) => {
+        const end = j + 1 < n ? tl.starts[j + 1] : tl.cardAt;
+        d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
+      });
+    }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
+    function frame(now) {
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
+      draw();
+      raf = playing ? requestAnimationFrame(frame) : 0;
+    }
+    function setIcon() {
+      const b = $('[data-a="play"]');
+      b.innerHTML = playing ? ICON.pause : ICON.play;
+      b.setAttribute("aria-label", playing ? U.pause : U.play);
+    }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
+
+    function closeMenu() { menu.hidden = true; }
+    function openMenu() {
+      const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
+      menu.hidden = false;
+      const copy = async (btn, value) => {
+        try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
+        catch (e) { btn.querySelector("small").textContent = value.length > 60 ? "✕" : value; }
+      };
+      menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
+      const em = menu.querySelector('[data-m="embed"]');
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
+      menu.querySelector('[role="menuitem"]').focus();
+    }
+    async function share() {
+      if (playing) { userPaused = true; pause(); }
+      const url = opts.shareUrl || location.href;
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ title: T.shareTitle, url }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      menu.hidden ? openMenu() : closeMenu();
+    }
+
+    root.addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), d = e.target.closest(".bp-dot");
+      if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
+      if (!a) return;
+      const act = a.dataset.a;
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
+      else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
+      else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
+    });
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    const esc = e => { if (e.key === "Escape") closeMenu(); };
+    if (!still) {
+      document.addEventListener("bp-sound", soundBtn);
+      if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+      document.addEventListener("click", outside);
+      document.addEventListener("keydown", esc);
+    }
+
+    let io = null;
+    if (!capture && !reduced && opts.autoplay !== false) {
+      io = new IntersectionObserver(es => {
+        visible = es[0].isIntersecting;
+        if (visible && !userPaused) play(); else if (!visible) pause();
+      }, { threshold: .35 });
+      io.observe(root);
+    }
+    // at rest (before playing, or with reduced motion) show the finished story
+    seek(capture && !still ? 0 : tl.ends[n - 1]);
+    setIcon();
+
+    const api = {
+      total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      seek, play, pause,
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
+    };
+    if (capture && !still) window.__bp = api;
+    return api;
+  }
+
+  // Scenes can also be fetched on demand: SRC maps a key to its script, and load(key) resolves once it has registered.
+  const SRC = {}, LOADING = {};
+  function load(key) {
+    if (SCENES[key]) return Promise.resolve(true);
+    if (!SRC[key] || typeof document === "undefined") return Promise.resolve(false);
+    return LOADING[key] || (LOADING[key] = new Promise(res => {
+      const el = document.createElement("script");
+      el.src = SRC[key]; el.async = true;
+      el.onload = () => res(!!SCENES[key]);
+      el.onerror = () => { delete LOADING[key]; res(false); };
+      document.head.appendChild(el);
+    }));
+  }
+  window.BiasAnim = { SCENES, SRC, mount, load, has: key => !!(SCENES[key] || SRC[key]) };
+})();
+
+/* Family: others' flaws. A window onto other people and a mirror for you. Blame stickers land on everyone
+   out there, while a fog on the mirror hides your own. Clear the fog and the same stickers are on you too.
+   Scene for anim.js. */
+(function () {
+  const KEY = "family-flaws", P = `.bp[data-scene="${KEY}"]`;
+  const WX0 = 16, WX1 = 240, WY0 = 14, WY1 = 188;      // the window (glass edge; the sill sits under it)
+  const MX0 = 260, MX1 = 388, MY0 = 14, MY1 = 188;     // the mirror
+  const IX0 = MX0 + 5, IX1 = MX1 - 5, IY1 = MY1 - 5;    // ...its glass
+  const HY = 100, PX = [58, 128, 198], YX = 324;       // head line, the three people, your reflection
+  const TY = 146, ROT = [-3, 2.5, -2.5];               // their stickers: chest height, tilt
+  const YT = [[-3, 128, -4], [5, 150, 3], [-1, 172, -2]]; // your stickers: dx, y, tilt
+  const FOG = 114;                                     // top of the fog on the mirror
+  const cl = v => Math.max(0, Math.min(1, v));
+  const f2 = n => +n.toFixed(2);
+  // text width in viewBox units: measured for each label (T.w), or a safe guess for anything new
+  const tw = (T, s, px) => (T.w && T.w[s]) || Math.ceil(s.length * px * .58);
+  const tagW = (T, s) => tw(T, s, 10) + 14;
+
+  // a person seen through glass: head and shoulders, the body runs down out of frame
+  const bust = (key, cls, x, y, bottom) => `<g class="ff-p ${cls}" data-k="${key}">` +
+    `<path class="b" d="M${x - 17} ${bottom} V${y + 27} C${x - 17} ${y + 18} ${x - 10} ${y + 13} ${x} ${y + 13} C${x + 10} ${y + 13} ${x + 17} ${y + 18} ${x + 17} ${y + 27} V${bottom}"/>` +
+    `<circle class="b" cx="${x}" cy="${y}" r="9"/><circle class="e" cx="${x - 3.2}" cy="${y - .6}" r="1.3"/><circle class="e" cx="${x + 3.2}" cy="${y - .6}" r="1.3"/>` +
+    `<path class="sm" data-k="${key}s" d="M${x - 3.6} ${y + 3.3} Q${x} ${y + 6.6} ${x + 3.6} ${y + 3.3}"/><\/g>`;
+  // a sticker, drawn around (0, 0); placed, tilted and slapped on in render
+  const sticker = (key, cls, s, w) => { return `<g class="ff-tag ${cls}" data-k="${key}"><rect x="${-w / 2}" y="-9.5" width="${w}" height="19" rx="4"/><text y="3.6">${s}<\/text><\/g>`; };
+  // rounded box with a tail pointing down at (tx, y0 + h + th)
+  const callout = (x0, y0, w, h, r, tx, th) => `M${x0 + r} ${y0} H${x0 + w - r} Q${x0 + w} ${y0} ${x0 + w} ${y0 + r} V${y0 + h - r} Q${x0 + w} ${y0 + h} ${x0 + w - r} ${y0 + h}` +
+    ` H${tx + 6} L${tx} ${y0 + h + th} L${tx - 6} ${y0 + h} H${x0 + r} Q${x0} ${y0 + h} ${x0} ${y0 + h - r} V${y0 + r} Q${x0} ${y0} ${x0 + r} ${y0} Z`;
+  // what someone behind the window says, kept inside the glass
+  const speech = (key, x, s, w) => {
+    const x0 = Math.max(WX0 + 9, Math.min(x - w / 2, WX1 - 9 - w));
+    return `<g class="ff-sp" data-k="${key}"><path d="${callout(x0, 42, w, 24, 10, x, 9)}"/><text x="${x0 + w / 2}" y="58.2">${s}<\/text><\/g>`;
+  };
+  // your thoughts, in the top of the mirror, trailing down to your head
+  const thought = (key, lines, w, inner) => {
+    const h = lines.length > 1 ? 36 : 25, y0 = 60 - h;
+    return `<g class="ff-th" data-k="${key}"><rect x="${YX - w / 2}" y="${y0}" width="${w}" height="${h}" rx="12"/>` +
+      `<circle cx="${YX - 4}" cy="69" r="2.8"/><circle cx="${YX - 1}" cy="80" r="1.9"/>` +
+      (inner || lines.map((l, i) => `<text x="${YX}" y="${y0 + (h > 30 ? 15.3 + 13 * i : 16.3)}">${l}<\/text>`).join("")) + `<\/g>`;
+  };
+  // what you see from the inside: your intentions, your reasons, your situation
+  const INNER = `<g class="ff-ic" transform="translate(${YX - 22} 47.5)"><path d="M0 4.6 C-6 .6 -6.4 -3.6 -3.4 -4.9 C-1.6 -5.6 -.3 -4.5 0 -3.1 C.3 -4.5 1.6 -5.6 3.4 -4.9 C6.4 -3.6 6 .6 0 4.6 Z"/><\/g>` +
+    `<g class="ff-ic" transform="translate(${YX} 48)"><path d="M-2.2 2.8 C-2.2 1 -4.6 -.2 -4.6 -2.8 C-4.6 -5.4 -2.6 -7 0 -7 C2.6 -7 4.6 -5.4 4.6 -2.8 C4.6 -.2 2.2 1 2.2 2.8 Z M-2 5.4 H2"/><\/g>` +
+    `<g class="ff-ic" transform="translate(${YX + 22} 47.5)"><circle r="5.6"/><path d="M0 -3.2 V0 L2.5 1.7"/><\/g>`;
+  // the fog: a bank of cloud over your chest, a few puffs inside it, and (for the blind spot) an eye that can't see
+  const fogPath = `M${IX0} ${FOG + 12} A12 12 0 0 1 ${IX0 + 22} ${FOG + 6} A16 16 0 0 1 ${IX0 + 52} ${FOG + 2} A13 13 0 0 1 ${IX0 + 76} ${FOG + 8}` +
+    ` A15 15 0 0 1 ${IX0 + 102} ${FOG + 2} A10 10 0 0 1 ${IX1} ${FOG + 12} V${IY1 - 13} Q${IX1} ${IY1} ${IX1 - 13} ${IY1} H${IX0 + 13} Q${IX0} ${IY1} ${IX0} ${IY1 - 13} Z`;
+  const MIST = `M${IX0 + 10} ${FOG + 40} A11 11 0 0 1 ${IX0 + 30} ${FOG + 34} M${IX0 + 60} ${FOG + 58} A13 13 0 0 1 ${IX0 + 84} ${FOG + 52}` +
+    ` M${IX0 + 78} ${FOG + 30} A9 9 0 0 1 ${IX0 + 94} ${FOG + 26} M${IX0 + 16} ${FOG + 64} A10 10 0 0 1 ${IX0 + 34} ${FOG + 60}`;
+  const pill = (key, s, w) => { return `<g class="ff-pill" data-k="${key}"><rect x="${200 - w / 2}" y="230" width="${w}" height="26" rx="13"/><text x="200" y="247.3">${s}<\/text><\/g>`; };
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "tmi", viewBox: "0 0 400 272",
+    css: `
+      ${P} .ff-glass{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+      ${P} .ff-in{fill:none;stroke:var(--rule);stroke-width:1.6}
+      ${P} .ff-sill{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+      ${P} .ff-glint{fill:none;stroke:var(--faint);stroke-width:2;stroke-linecap:round}
+      ${P} .ff-p .b{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ff-p .e{fill:var(--ink)}
+      ${P} .ff-p .sm{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round}
+      ${P} .ff-p.you .b{stroke:var(--q)}
+      ${P} .ff-p.you .e{fill:var(--q)}
+      ${P} .ff-p.you .sm{stroke:var(--q)}
+      ${P} .ff-tag rect{fill:var(--surface);stroke:var(--bad);stroke-width:1.8}
+      ${P} .ff-tag text{font:600 10px var(--display);fill:var(--bad);text-anchor:middle}
+      ${P} .ff-tag.good rect{stroke:var(--good);stroke-width:2}
+      ${P} .ff-tag.good text{fill:var(--good)}
+      ${P} .ff-tag.mute rect{stroke:var(--muted)}
+      ${P} .ff-tag.mute text{fill:var(--muted)}
+      ${P} .ff-sp path{fill:var(--surface);stroke:var(--muted);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .ff-sp.q path{stroke:var(--q)}
+      ${P} .ff-sp text{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .ff-th rect,${P} .ff-th circle{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .ff-th text{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .ff-ic *{fill:none;stroke:var(--q);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ff-fog{fill:var(--faint);fill-opacity:.72;stroke:var(--muted);stroke-width:1.6;stroke-opacity:.6;stroke-linejoin:round}
+      ${P} .ff-mist{fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;opacity:.8}
+      ${P} .ff-eye{fill:none;stroke:var(--ink);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ff-eye .pu{fill:var(--ink);stroke:none}
+      ${P} .ff-lab{font:500 10px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .ff-lab.q{fill:var(--q)}
+      ${P} .ff-pill rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .ff-pill text{font:600 12px var(--display);fill:var(--q);text-anchor:middle}
+    `,
+    text: {
+      en: {
+        name: "Others' flaws", shareTitle: "Why we spot flaws in others, not ourselves, in 30 seconds",
+        ecline: "Whatever bias you spot in others, look for it in yourself too.",
+        others: "others", you: "you", outside: "from the outside", inside: "from the inside",
+        asIs: ["I see things", "as they are."], notMe: "Not me.", meToo: "Me too?", fair: "Fair point.",
+        sayA: "I disagree.", sayB: "Need a hand?",
+        tags: ["clueless", "selfish", "biased"], point: "has a point",
+        names: ["Naive realism", "Naive cynicism", "Bias blind spot"],
+        w: { clueless: 40, selfish: 33, biased: 33, "has a point": 54, "I see things": 61, "as they are.": 62, "Not me.": 41, "Me too?": 42,
+          "Fair point.": 54, "I disagree.": 55, "Need a hand?": 72, "Naive realism": 79, "Naive cynicism": 88, "Bias blind spot": 86 },
+        caps: [
+          "You only see other people <b>from the outside<\/b>.",
+          "You see yourself <b>from the inside<\/b>, which helps you act with confidence.",
+          "So you feel you see the world <b>as it is<\/b>…",
+          "…and anyone who disagrees must be <b>clueless<\/b>.",
+          "Someone offers to help? You suspect a <b>selfish<\/b> motive.",
+          "You see <b>bias<\/b> in everyone, except the face in the mirror.",
+          "<b>The fix:<\/b> spot a bias in someone? Look for it <b>in yourself<\/b>.",
+          "Then name one point where <b>they could be right<\/b>. Tempers cool."
+        ],
+        say: [
+          "You only see other people from the outside: what they do, not why.",
+          "You see yourself from the inside: your reasons, your intentions, your situation. Trusting that view helps you act with confidence.",
+          "So you feel you see the world as it is. That's naive realism...",
+          "...and anyone who disagrees with you must be clueless.",
+          "Someone offers to help? You suspect a selfish motive. That's naive cynicism.",
+          "You see bias in everyone, except the face in the mirror. That's the bias blind spot.",
+          "The fix: when you spot a bias in someone else, look for the same one in yourself.",
+          "Then name one point where they could be right. Tempers cool, and you learn something too.",
+          "Others' flaws. Whatever bias you spot in others, look for it in yourself too."
+        ]
+      },
+      el: {
+        name: "Τα λάθη των άλλων", shareTitle: "Γιατί βλέπουμε τα λάθη των άλλων κι όχι τα δικά μας, σε 30 δευτερόλεπτα",
+        ecline: "Όποια μεροληψία βλέπεις στους άλλους, ψάξε\u00a0την και στον εαυτό σου.",
+        others: "οι άλλοι", you: "εσύ", outside: "απ’ έξω", inside: "από μέσα",
+        asIs: ["Βλέπω τον κόσμο", "όπως είναι."], notMe: "Εγώ όχι.", meToo: "Κι εγώ;", fair: "Εδώ έχεις δίκιο.",
+        sayA: "Διαφωνώ.", sayB: "Να βοηθήσω;",
+        tags: ["δεν ξέρει", "κάτι θέλει", "μεροληπτεί"], point: "έχει ένα δίκιο",
+        names: ["Αφελής ρεαλισμός", "Αφελής κυνισμός", "Τυφλό σημείο της μεροληψίας"],
+        w: { "δεν ξέρει": 43, "κάτι θέλει": 47, "μεροληπτεί": 54, "έχει ένα δίκιο": 63, "Βλέπω τον κόσμο": 89, "όπως είναι.": 57, "Εγώ όχι.": 42,
+          "Κι εγώ;": 36, "Εδώ έχεις δίκιο.": 81, "Διαφωνώ.": 52, "Να βοηθήσω;": 68, "Αφελής ρεαλισμός": 104, "Αφελής κυνισμός": 97, "Τυφλό σημείο της μεροληψίας": 167 },
+        caps: [
+          "Τους άλλους τους βλέπεις μόνο <b>απ’ έξω<\/b>.",
+          "Τον εαυτό σου τον βλέπεις <b>από\u00a0μέσα<\/b>, κι έτσι κινείσαι με σιγουριά.",
+          "Νιώθεις λοιπόν ότι βλέπεις τον κόσμο <b>όπως είναι<\/b>…",
+          "…άρα όποιος διαφωνεί απλώς <b>δεν ξέρει<\/b>.",
+          "Κάποιος προσφέρεται να βοηθήσει; Υποψιάζεσαι ότι <b>κάτι θέλει<\/b>.",
+          "Βλέπεις <b>μεροληψία<\/b> σε όλους, εκτός από το πρόσωπο στον καθρέφτη.",
+          "<b>Η λύση:<\/b> βλέπεις μια μεροληψία σε κάποιον; Ψάξε την και <b>σε σένα<\/b>.",
+          "Μετά πες ένα σημείο όπου <b>μπορεί να\u00a0έχουν δίκιο<\/b>. Τα πνεύματα ηρεμούν."
+        ],
+        say: [
+          "Τους άλλους τους βλέπεις μόνο απ’ έξω: βλέπεις τι κάνουν, όχι γιατί.",
+          "Τον εαυτό σου τον βλέπεις από μέσα: ξέρεις τους λόγους, τις προθέσεις και τις συνθήκες σου. Όταν εμπιστεύεσαι αυτή τη ματιά, κινείσαι με σιγουριά.",
+          "Νιώθεις λοιπόν ότι βλέπεις τον κόσμο όπως είναι. Λέγεται αφελής ρεαλισμός...",
+          "...άρα όποιος διαφωνεί μαζί σου απλώς δεν ξέρει.",
+          "Κάποιος προσφέρεται να βοηθήσει; Υποψιάζεσαι ότι κάτι θέλει. Λέγεται αφελής κυνισμός.",
+          "Βλέπεις μεροληψία σε όλους, εκτός από το πρόσωπο στον καθρέφτη. Λέγεται τυφλό σημείο της μεροληψίας.",
+          "Η λύση: όταν βλέπεις μια μεροληψία σε κάποιον άλλον, ψάξε την ίδια και σε σένα.",
+          "Μετά πες ένα σημείο όπου μπορεί να έχουν δίκιο. Τα πνεύματα ηρεμούν, και μαθαίνεις κι εσύ κάτι.",
+          "Τα λάθη των άλλων. Όποια μεροληψία βλέπεις στους άλλους, ψάξε την και στον εαυτό σου."
+        ]
+      }
+    },
+    svg(T) {
+      const people = PX.map((x, i) => bust("p" + i, "", x, HY, WY1 - 1)).join("");
+      const theirs = PX.map((x, i) => sticker("t" + i, "", T.tags[i], tagW(T, T.tags[i]))).join("");
+      const mine = YT.map((_, i) => sticker("y" + i, "", T.tags[i], tagW(T, T.tags[i])) + sticker("ym" + i, "mute", T.tags[i], tagW(T, T.tags[i]))).join("");
+      const sw = s => tw(T, s, 11) + 22, fw = sw(T.fair);
+      return `
+        <g data-k="win">
+          <rect class="ff-glass" x="${WX0}" y="${WY0}" width="${WX1 - WX0}" height="${WY1 - WY0}" rx="3"/>
+          <path class="ff-glint" d="M${WX1 - 30} ${WY0 + 14} L${WX1 - 14} ${WY0 + 30} M${WX1 - 30} ${WY0 + 26} L${WX1 - 22} ${WY0 + 34}"/>
+          ${people}
+          <rect class="ff-in" x="${WX0 + 6}" y="${WY0 + 6}" width="${WX1 - WX0 - 12}" height="${WY1 - WY0 - 6}" rx="1"/>
+          <rect class="ff-sill" x="${WX0 - 6}" y="${WY1}" width="${WX1 - WX0 + 12}" height="7" rx="2"/>
+          ${theirs}
+          <g data-k="good"><g data-k="t0g">${sticker("t0gi", "good", T.point, tagW(T, T.point))}<\/g><\/g>
+          <text class="ff-lab" x="${(WX0 + WX1) / 2}" y="212">${T.others}<\/text>
+          <text class="ff-lab q" data-k="outL" x="${(WX0 + WX1) / 2}" y="225">${T.outside}<\/text>
+        <\/g>
+        <g data-k="mir">
+          <rect class="ff-glass" x="${MX0}" y="${MY0}" width="${MX1 - MX0}" height="${MY1 - MY0}" rx="18"/>
+          <path class="ff-glint" d="M${IX0 + 7} ${HY + 2} L${IX0 + 21} ${HY - 12} M${IX0 + 7} ${HY + 12} L${IX0 + 14} ${HY + 5}"/>
+          ${bust("me", "you", YX, HY, IY1)}
+          ${mine}
+          <g data-k="fog"><path class="ff-fog" d="${fogPath}"/><path class="ff-mist" data-k="mist" d="${MIST}"/>
+            <g class="ff-eye" data-k="eye" transform="translate(${IX1 - 19} ${FOG + 30}) scale(1.15)"><path d="M-8.5 0 Q0 -7.5 8.5 0 Q0 7.5 -8.5 0 Z"/><circle class="pu" r="2.3"/><path d="M-7.5 6.5 L7.5 -6.5"/><\/g><\/g>
+          <rect class="ff-in" x="${IX0}" y="${MY0 + 5}" width="${IX1 - IX0}" height="${IY1 - MY0 - 5}" rx="13"/>
+          <text class="ff-lab q" x="${YX}" y="212">${T.you}<\/text>
+          <text class="ff-lab q" data-k="inL" x="${YX}" y="225">${T.inside}<\/text>
+        <\/g>
+        ${speech("bA", PX[0], T.sayA, sw(T.sayA))}${speech("bB", PX[1], T.sayB, sw(T.sayB))}
+        ${thought("inner", [], 84, INNER)}${thought("th1", T.asIs, Math.max(...T.asIs.map(sw)))}${thought("thN", [T.notMe], sw(T.notMe))}${thought("thM", [T.meToo], sw(T.meToo))}
+        <g class="ff-sp q" data-k="thF"><path d="${callout(YX - fw / 2, 46, fw, 24, 10, YX, 11)}"/><text x="${YX}" y="62.2">${T.fair}<\/text><\/g>
+        ${T.names.map((s, i) => pill("n" + i, s, tw(T, s, 12) + 30)).join("")}`;
+    },
+    S0: { win: 0, ppl: 0, outL: 0, mir: 0, inner: 0, inL: 0, n0: 0, n1: 0, n2: 0, th1: 0, thN: 0, thM: 0, thF: 0,
+      bA: 0, bB: 0, t0: 0, t1: 0, t2: 0, fogUp: 0, clear: 0, mine: 0, flip: 0, dim: 0, smile: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = f2(cl(v)); };
+      const pop = (key, v, cx, cy) => {     // scale in around (cx, cy)
+        const s = f2(.7 + .3 * v);
+        k(key).setAttribute("transform", `translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})`);
+        op(key, v * 1.6);
+      };
+      // a sticker lands: big and tilted, then flat on the chest; sy squashes it for a flip
+      const slap = (key, x, y, r, v, sy) => {
+        const s = 1 + .6 * (1 - cl(v));
+        k(key).setAttribute("transform", `translate(${x} ${y}) rotate(${f2(r + 10 * (1 - cl(v)))}) scale(${f2(s)} ${f2(s * (sy || 1))})`);
+      };
+      // the window and the people behind it
+      op("win", S.win);
+      k("win").setAttribute("transform", `translate(0 ${f2(6 * (1 - S.win))})`);
+      PX.forEach((x, i) => {
+        const v = cl((S.ppl - i * .3) / .4);
+        k("p" + i).setAttribute("transform", `translate(0 ${f2(10 * (1 - v))})`);
+        op("p" + i, v);
+        op("p" + i + "s", S.smile);
+      });
+      op("outL", S.outL);
+      // the mirror, you, and the fog that hides your own stickers
+      op("mir", S.mir);
+      k("mir").setAttribute("transform", `translate(0 ${f2(6 * (1 - S.mir))})`);
+      op("mes", S.smile);
+      op("inL", S.inL);
+      op("fog", (.6 + .4 * S.fogUp) * (1 - S.clear));
+      k("fog").setAttribute("transform", `translate(0 ${f2(-6 * S.clear)})`);
+      k("mist").setAttribute("transform", `translate(${f2(8 * S.clear)} 0)`);
+      op("eye", S.fogUp);
+      // speech and thoughts
+      pop("bA", S.bA, PX[0], 75); pop("bB", S.bB, PX[1], 75);
+      for (const key of ["inner", "th1", "thN", "thM"]) pop(key, S[key], YX, 80);
+      pop("thF", S.thF, YX, 81);
+      for (const key of ["n0", "n1", "n2"]) pop(key, S[key], 200, 243);
+      // their stickers; at the end theirs come off and the first one flips over to "has a point"
+      const fl = Math.max(.01, Math.abs(Math.cos(Math.PI * S.flip))), after = S.flip >= .5;
+      PX.forEach((x, i) => slap("t" + i, x, TY, ROT[i], S["t" + i], i ? 1 : fl));
+      op("t0", after ? 0 : S.t0 * 2.5); op("t1", S.t1 * 2.5 * (1 - S.dim)); op("t2", S.t2 * 2.5 * (1 - S.dim));
+      const gx = Math.max(PX[0], WX0 + 10 + tagW(T, T.point) / 2);   // a longer label shifts right to stay on the glass
+      slap("t0g", gx, TY, ROT[0], 1, fl);
+      op("good", after ? 1 : 0);
+      // yours appear once the fog is gone, and turn grey at the end: known, not hidden
+      YT.forEach(([dx, y, r], i) => {
+        const v = cl((S.mine - i * .3) / .4);
+        slap("y" + i, YX + dx, y, r, v); slap("ym" + i, YX + dx, y, r, v);
+        op("y" + i, v * 2.5 * (1 - S.dim)); op("ym" + i, v * 2.5 * S.dim);
+      });
+    },
+    beats: [
+      { steps: [{ to: { win: 1 }, ms: 500, sfx: "pluck" }, { to: { ppl: 1 }, ms: 900, ease: "lin" }, { to: { outL: 1 }, ms: 400 }] },
+      { steps: [{ to: { mir: 1 }, ms: 500 }, { to: { inner: 1 }, ms: 450, ease: "back", sfx: "pop" }, { to: { inL: 1 }, ms: 400 }], hold: 3000 },
+      { steps: [{ to: { inner: 0, outL: 0, inL: 0 }, ms: 300 }, { to: { n0: 1 }, ms: 400, ease: "back", sfx: "tick" }, { to: { th1: 1 }, ms: 450, ease: "back" }] },
+      { steps: [{ to: { bA: 1 }, ms: 400, ease: "back" }, { wait: 500 }, { to: { t0: 1 }, ms: 380, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { th1: 0, bA: 0, n0: 0 }, ms: 300 }, { to: { n1: 1 }, ms: 400, ease: "back" }, { to: { bB: 1 }, ms: 400, ease: "back" }, { wait: 500 },
+        { to: { t1: 1 }, ms: 380, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { bB: 0, n1: 0 }, ms: 300 }, { to: { n2: 1 }, ms: 400, ease: "back" }, { to: { t2: 1 }, ms: 380, ease: "back", sfx: "pop" }, { wait: 300 },
+        { to: { thN: 1, fogUp: 1 }, ms: 450, ease: "back" }], hold: 2800 },
+      { steps: [{ to: { n2: 0, thN: 0 }, ms: 300 }, { to: { clear: 1 }, ms: 900, ease: "inOut", sfx: "whoosh" }, { to: { mine: 1 }, ms: 900, ease: "lin", sfx: "tick" },
+        { to: { thM: 1 }, ms: 400, ease: "back" }], hold: 2800 },
+      { steps: [{ to: { thM: 0 }, ms: 250 }, { to: { thF: 1 }, ms: 400, ease: "back" }, { to: { flip: 1 }, ms: 700, ease: "inOut", sfx: "chime", sfxAt: 350 },
+        { to: { dim: 1, smile: 1 }, ms: 600 }], hold: 4200 }
+    ]
+  };
+})();
+</script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "el", "shareUrl": "https://papangelis.com/biases/el/watch/family-flaws/", "embedUrl": "https://papangelis.com/biases/el/watch/family-flaws/?embed", "sfxBase": "/biases/sfx/"};
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "family-flaws", opts); window.__bp = p; }
+    else {
+      opts.capture = mode === "video";
+      if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
+      BiasAnim.mount(document.getElementById("player"), "family-flaws", opts);
+    }
+  })();
+</script>
+</body>
+</html>

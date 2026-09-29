@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Authority bias, explained in 30 seconds · Downstream</title>
+<meta name="description" content="Authority bias is giving more weight to the opinion of an authority figure than the evidence justifies, and being more easily swayed or directed by them. It can extend to topics far outside the person's real expertise.">
+<meta name="author" content="Thanos Papangelis">
+<link rel="canonical" href="https://papangelis.com/biases/watch/authority-bias/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/watch/authority-bias/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/watch/authority-bias/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/watch/authority-bias/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Authority bias, explained in 30 seconds">
+<meta property="og:description" content="Authority bias is giving more weight to the opinion of an authority figure than the evidence justifies, and being more easily swayed or directed by them. It can extend to topics far outside the person's real expertise.">
+<meta property="og:url" content="https://papangelis.com/biases/watch/authority-bias/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Authority bias, explained in 30 seconds">
+<meta name="twitter:description" content="Authority bias is giving more weight to the opinion of an authority figure than the evidence justifies, and being more easily swayed or directed by them. It can extend to topics far outside the person's real expertise.">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-authority-bias-en.png?v=ac8b0f19">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-authority-bias-en.png?v=ac8b0f19">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), h = document.documentElement;
+    try { h.setAttribute("data-theme", localStorage.getItem("theme") || "dark"); } catch (e) {}
+    if (q.has("embed")) h.classList.add("embed");
+    if (q.get("capture") === "video") h.classList.add("cap-video");
+    if (q.get("capture") === "og") { h.classList.add("cap-og"); h.setAttribute("data-theme", "dark"); }
+  })();
+</script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+:root{--q:var(--nem)}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
+.og{display:none}
+/* embed: just the player */
+html.embed body{padding:0;background:transparent}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
+/* capture: square video frame */
+html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
+/* capture: 1200x630 social card, drawn at 600x315 and 2x */
+html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
+html.cap-og .wp{display:none}
+html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
+.og-l{display:flex;flex-direction:column;gap:10px}
+.og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
+.og-b svg{width:18px;height:18px}
+.og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+.og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
+
+
+</style>
+</head>
+<body>
+<div class="wp">
+  <main class="wp-main">
+    <h1>Authority bias</h1>
+    <p class="wp-def">Authority bias is giving more weight to the opinion of an authority figure than the evidence justifies, and being more easily swayed or directed by them. It can extend to topics far outside the person's real expertise.</p>
+    <div id="player"></div>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/#b-authority-bias">Read the full card</a></nav>
+  </main>
+</div>
+<div class="og">
+  <div class="og-l">
+    <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Cognitive Bias Explorer</div>
+    <p class="og-t" style="font-size:40px">Authority bias</p>
+    <p class="og-s">Explained in 30 seconds</p>
+  </div>
+  <div id="og-player"></div>
+</div>
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink);text-wrap:balance;max-width:22ch}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch;text-wrap:balance}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* thumbnail: the finished drawing, framed by whatever holds it */\n.bp.still .bp-stage{border:0;border-radius:0;background:transparent}\n.bp.still .bp-svg{padding:0}\n";
+/* Cognitive Bias Explorer: animated explainers.
+   A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
+   so looping, stepping between beats, and frame-by-frame video capture all agree.
+   Share icons: Lucide (lucide.dev), ISC licence. The brain icon is our own (icon.py). */
+(function () {
+  "use strict";
+
+  const EASE = {
+    lin: t => t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+    bounce: t => {
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+      return n * (t -= 2.625 / d) * t + .984375;
+    }
+  };
+
+  const ICON = {
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
+  };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
+  // the friendly four-colour brain; same drawing as icon.py, keep the two in step
+  const BRAIN_LOBES = [[8.2, 7.6, 3.9], [5.4, 11.2, 3.7], [9.6, 11.8, 4.2], [6.4, 15.6, 3.6], [10.2, 17.4, 3.3]];
+  const BRAIN = (() => {
+    const all = [...BRAIN_LOBES.map(([x, y, r]) => [x, y, r, "l"]), ...BRAIN_LOBES.map(([x, y, r]) => [24 - x, y, r, "r"])];
+    const lobe = (y, s) => s === "l" ? (y > 14 ? "fast" : "tmi") : (y > 14 ? "mem" : "nem");
+    const F = "#2a2320";
+    return all.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${+(r + 1.1).toFixed(2)}" style="fill:var(--ink)"/>`).join("") +
+      all.map(([x, y, r, s]) => `<circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--${lobe(y, s)})"/>`).join("") +
+      `<g fill="none" stroke="${F}" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/>` +
+      `<path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/><\/g><circle cx="9.7" cy="12.4" r="1.1" fill="${F}"/><circle cx="14.3" cy="12.4" r="1.1" fill="${F}"/>`;
+  })();
+  const brainMark = cls => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${BRAIN}<\/svg>`;
+
+  const UI = {
+    en: {
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
+      ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
+      copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
+      open: "Open on its own page", site: "papangelis.com/biases"
+    },
+    el: {
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
+      ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
+      copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
+      open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
+    }
+  };
+
+  /* ------------------------------------------------------------------ scenes */
+  const SCENES = {};
+
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
+
+  /* ------------------------------------------------------------------ timeline */
+  const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
+    let t = 0;
+    const push = (to, ms, ease) => {
+      const from = {}; for (const key in to) from[key] = S[key];
+      segs.push({ t0: t, t1: t + (ms || 0), from, to, ease: EASE[ease || "out"] });
+      Object.assign(S, to); t += ms || 0;
+    };
+    scene.beats.forEach(b => {
+      starts.push(t);
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
+      ends.push(t);
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
+    });
+    const cardAt = t;
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
+  }
+  function stateAt(tl, t) {
+    const S = { ...tl.S0 };
+    for (const g of tl.segs) {
+      if (t < g.t0) break;
+      const p = g.t1 > g.t0 ? Math.min(1, (t - g.t0) / (g.t1 - g.t0)) : 1, e = g.ease(p);
+      for (const key in g.to) S[key] = g.from[key] + (g.to[key] - g.from[key]) * e;
+    }
+    return S;
+  }
+
+  /* ------------------------------------------------------------------ player */
+  let uid = 0;
+  function mount(host, key, opts = {}) {
+    const scene = SCENES[key]; if (!scene || !host) return null;
+    const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const still = !!opts.still;   // a thumbnail: the finished drawing only, no controls, never plays
+    const capture = !!opts.capture || still;
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og || still ? " og" : ""}${still ? " still" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+        <div class="bp-stage">
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
+          <div class="bp-card" aria-hidden="true">
+            ${brainMark("bp-mark")}
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
+          <div class="bp-ctl">
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
+    const $ = sel => root.querySelector(sel);
+    const cache = {};
+    const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
+    const all = $(".bp-all"), card = $(".bp-card"), text = $(".bp-text"), no = $(".bp-no"), menu = $(".bp-menu");
+    const dots = [...root.querySelectorAll(".bp-dot i")];
+
+    let t = 0, playing = false, userPaused = false, visible = false, raf = 0, last = 0, capShown = -1, started = false;
+    function beatAt(time) { let i = 0; while (i + 1 < n && time >= tl.starts[i + 1]) i++; return i; }
+    function draw() {
+      const S = stateAt(tl, t);
+      scene.render(S, k, T);
+      all.style.opacity = S.all;
+      card.style.opacity = S.card;
+      card.classList.toggle("on", S.card > .5);
+      card.setAttribute("aria-hidden", S.card > .5 ? "false" : "true");
+      const i = beatAt(t);
+      if (i !== capShown) { text.innerHTML = T.caps[i]; no.textContent = `${i + 1}/${n}`; capShown = i; }
+      // captions fade in at the start of each beat and out just before the next
+      const next = i + 1 < n ? tl.starts[i + 1] : tl.total;
+      text.style.opacity = Math.max(0, Math.min(1, (t - tl.starts[i]) / 220, (next - t) / 160, i === n - 1 ? 1 - S.card : 1));
+      dots.forEach((d, j) => {
+        const end = j + 1 < n ? tl.starts[j + 1] : tl.cardAt;
+        d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
+      });
+    }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
+    function frame(now) {
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
+      draw();
+      raf = playing ? requestAnimationFrame(frame) : 0;
+    }
+    function setIcon() {
+      const b = $('[data-a="play"]');
+      b.innerHTML = playing ? ICON.pause : ICON.play;
+      b.setAttribute("aria-label", playing ? U.pause : U.play);
+    }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
+
+    function closeMenu() { menu.hidden = true; }
+    function openMenu() {
+      const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
+      menu.hidden = false;
+      const copy = async (btn, value) => {
+        try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
+        catch (e) { btn.querySelector("small").textContent = value.length > 60 ? "✕" : value; }
+      };
+      menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
+      const em = menu.querySelector('[data-m="embed"]');
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
+      menu.querySelector('[role="menuitem"]').focus();
+    }
+    async function share() {
+      if (playing) { userPaused = true; pause(); }
+      const url = opts.shareUrl || location.href;
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ title: T.shareTitle, url }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      menu.hidden ? openMenu() : closeMenu();
+    }
+
+    root.addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), d = e.target.closest(".bp-dot");
+      if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
+      if (!a) return;
+      const act = a.dataset.a;
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
+      else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
+      else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
+    });
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    const esc = e => { if (e.key === "Escape") closeMenu(); };
+    if (!still) {
+      document.addEventListener("bp-sound", soundBtn);
+      if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+      document.addEventListener("click", outside);
+      document.addEventListener("keydown", esc);
+    }
+
+    let io = null;
+    if (!capture && !reduced && opts.autoplay !== false) {
+      io = new IntersectionObserver(es => {
+        visible = es[0].isIntersecting;
+        if (visible && !userPaused) play(); else if (!visible) pause();
+      }, { threshold: .35 });
+      io.observe(root);
+    }
+    // at rest (before playing, or with reduced motion) show the finished story
+    seek(capture && !still ? 0 : tl.ends[n - 1]);
+    setIcon();
+
+    const api = {
+      total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      seek, play, pause,
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
+    };
+    if (capture && !still) window.__bp = api;
+    return api;
+  }
+
+  // Scenes can also be fetched on demand: SRC maps a key to its script, and load(key) resolves once it has registered.
+  const SRC = {}, LOADING = {};
+  function load(key) {
+    if (SCENES[key]) return Promise.resolve(true);
+    if (!SRC[key] || typeof document === "undefined") return Promise.resolve(false);
+    return LOADING[key] || (LOADING[key] = new Promise(res => {
+      const el = document.createElement("script");
+      el.src = SRC[key]; el.async = true;
+      el.onload = () => res(!!SCENES[key]);
+      el.onerror = () => { delete LOADING[key]; res(false); };
+      document.head.appendChild(el);
+    }));
+  }
+  window.BiasAnim = { SCENES, SRC, mount, load, has: key => !!(SCENES[key] || SRC[key]) };
+})();
+
+/* Authority bias: a sleep-supplement ad, the same words in a white coat and in a T-shirt, and a trust slider
+   that follows the costume until you check the evidence. Scene for anim.js. */
+(function () {
+  const KEY = "authority-bias", P = `.bp[data-scene="${KEY}"]`;
+  const TX = 14, TY = 12, TW = 190, TH = 156, TB = TY + TH;   // the TV screen
+  const PX = 68, BX = 160;                                   // presenter and bottle centres (inside the TV)
+  const YX = 340;                                            // you (right)
+  const SY = 216, S0X = 36, S1X = 364;                        // trust slider: line y, left and right ends
+  const SX = v => S0X + (S1X - S0X) * v / 100;               // trust 0..100 -> x
+  const MID = 50, HIGH = 88, LOW = 20, EVID = 55;             // where the pins sit
+  const QY = [37, 61, 85];                                   // checklist rows
+  const cl = v => Math.max(0, Math.min(1, v));
+  const f1 = n => +n.toFixed(1);
+
+  // a pin standing on the slider at x = 0: stem, head, label to the left
+  const pin = (key, cls, labels) => `<g class="ab-pin ${cls}" data-k="${key}"><line x1="0" x2="0" y1="${SY - 13}" y2="${SY}"/>
+    <circle cy="${SY - 20}" r="7"/>${labels}<\/g>`;
+  const lab = (key, text, cls) => `<text class="ab-pl${cls ? " " + cls : ""}" data-k="${key}" x="-12" y="${SY - 16.5}">${text}<\/text>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .ab-tv{fill:var(--surface);stroke:var(--ink);stroke-width:2.4}
+      ${P} .ab-ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-body{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-eye{fill:var(--ink)}
+      ${P} .ab-coat{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-coat circle{fill:var(--surface)}
+      ${P} .ab-tee{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-tee .ab-slv{fill:var(--surface);stroke:var(--ink);stroke-width:2.2}
+      ${P} .ab-bot{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+      ${P} .ab-lbl{fill:none;stroke:var(--muted);stroke-width:1.4}
+      ${P} .ab-moon{fill:var(--q);stroke:none}
+      ${P} .ab-bub rect,${P} .ab-bub path,${P} .ab-bub circle{fill:var(--ground);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .ab-bub text{font:600 12.5px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .ab-same path{fill:none;stroke:var(--q);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-same text{font:500 9.5px var(--mono);fill:var(--q)}
+      ${P} .ab-you{font:500 10px var(--mono);fill:var(--q)}
+      ${P} .ab-list rect.bx,${P} .ab-list circle{fill:var(--ground);stroke:var(--q);stroke-width:1.8}
+      ${P} .ab-list rect.ck{fill:var(--surface);stroke:var(--muted);stroke-width:1.6}
+      ${P} .ab-list text{font:600 10.5px var(--display);fill:var(--ink)}
+      ${P} .ab-tick{fill:none;stroke:var(--good);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .ab-ax{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .ab-end{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .ab-pin line{stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+      ${P} .ab-pin circle{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+      ${P} .ab-pin.a line{stroke:var(--q)}
+      ${P} .ab-pin.a circle{stroke:var(--q);fill:var(--q);fill-opacity:.25}
+      ${P} .ab-pin.g line{stroke:var(--good)}
+      ${P} .ab-pin.g circle{stroke:var(--good);fill:var(--good);fill-opacity:.25}
+      ${P} .ab-pl{font:500 9.5px var(--mono);fill:var(--ink);text-anchor:end}
+      ${P} .ab-pl.a{fill:var(--q)}
+      ${P} .ab-pl.g{fill:var(--good)}
+      ${P} .ab-gap path{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round}
+      ${P} .ab-gap text{font:600 10px var(--mono);fill:var(--bad);text-anchor:middle}
+      ${P} .ab-band rect{fill:var(--good);fill-opacity:.22;stroke:var(--good);stroke-width:1.6}
+      ${P} .ab-band text{font:500 9.5px var(--mono);fill:var(--good);text-anchor:middle}
+    `,
+    text: {
+      en: {
+        name: "Authority bias", shareTitle: "Authority bias, explained in 30 seconds",
+        ecline: "Trust real expertise, not the costume. Ask for the evidence.",
+        claim: "“Doctors recommend it!”", same: "same words", you: "you", proof: "Proof?",
+        coat: "white coat", tee: "T-shirt", anyone: "whoever says it", doubt: "doubt", trust: "trust",
+        gap: "the coat, not the evidence", evid: "the evidence",
+        qs: ["What's the evidence?", "If someone else said it?", "Is this their field?"],
+        caps: [
+          "An ad for a new sleep supplement comes on.",
+          "Someone in a <b>white coat<\/b> says: “Doctors recommend it!”",
+          "You believe it <b>instantly<\/b>. No questions asked.",
+          "Same ad, <b>same words<\/b>, but this time in a T-shirt.",
+          "Suddenly you're not so sure. Where's the <b>proof<\/b>?",
+          "Same claim, same evidence. <b>Only the costume changed.<\/b>",
+          "<b>The fix:<\/b> ask for the evidence, and if it's their field.",
+          "Look it up, then decide <b>on the evidence<\/b>, whoever says it."
+        ],
+        say: [
+          "An ad for a new sleep supplement comes on.",
+          "Someone in a white coat says: doctors recommend it!",
+          "You believe it instantly. No questions asked.",
+          "Same ad, same words. But this time, in a T-shirt.",
+          "Suddenly you're not so sure. Where's the proof?",
+          "Same claim, same evidence. Only the costume changed.",
+          "The fix: ask for the evidence, and whether this is their field.",
+          "Look it up, then decide on the evidence, whoever says it.",
+          "Authority bias. Trust real expertise, not the costume. Ask for the evidence."
+        ]
+      },
+      el: {
+        name: "Μεροληψία υπέρ της αυθεντίας", shareTitle: "Η μεροληψία υπέρ της αυθεντίας σε 30 δευτερόλεπτα",
+        ecline: "Να εμπιστεύεσαι την πραγματική γνώση, όχι τη\u00a0στολή. Ζήτα τα στοιχεία.",
+        claim: "«Το συστήνουν οι γιατροί!»", same: "ίδια λόγια", you: "εσύ", proof: "Αποδείξεις;",
+        coat: "λευκή ποδιά", tee: "μπλουζάκι", anyone: "όποιος κι αν το λέει", doubt: "αμφιβολία", trust: "εμπιστοσύνη",
+        gap: "η ποδιά, όχι τα στοιχεία", evid: "τα στοιχεία",
+        qs: ["Ποια είναι τα στοιχεία;", "Αν το άκουγα από αλλού;", "Είναι ειδικός σε αυτό;"],
+        caps: [
+          "Στην τηλεόραση παίζει μια διαφήμιση για ένα νέο συμπλήρωμα ύπνου.",
+          "<b>Λευκή ποδιά<\/b>, στηθοσκόπιο και η\u00a0ατάκα: «Το συστήνουν οι γιατροί!»",
+          "Το πιστεύεις <b>αμέσως<\/b>, χωρίς δεύτερη σκέψη.",
+          "Ίδια διαφήμιση, <b>ίδια λόγια<\/b>, αλλά τώρα με μπλουζάκι.",
+          "Ξαφνικά έχεις αμφιβολίες. Πού είναι οι <b>αποδείξεις<\/b>;",
+          "Ίδιος ισχυρισμός, ίδια στοιχεία. <b>Άλλαξαν μόνο τα ρούχα.<\/b>",
+          "<b>Η λύση:<\/b> ζήτα στοιχεία και δες αν μιλάει ειδικός στο θέμα.",
+          "Ψάξε λίγο και αποφάσισε <b>με βάση τα στοιχεία<\/b>, όποιος κι αν το λέει."
+        ],
+        say: [
+          "Στην τηλεόραση παίζει μια διαφήμιση για ένα νέο συμπλήρωμα ύπνου.",
+          "Λευκή ποδιά, στηθοσκόπιο και η ατάκα: Το συστήνουν οι γιατροί!",
+          "Το πιστεύεις αμέσως, χωρίς δεύτερη σκέψη.",
+          "Ίδια διαφήμιση, ίδια λόγια. Αλλά τώρα με μπλουζάκι.",
+          "Ξαφνικά έχεις αμφιβολίες. Πού είναι οι αποδείξεις;",
+          "Ίδιος ισχυρισμός, ίδια στοιχεία. Άλλαξαν μόνο τα ρούχα.",
+          "Η λύση: ζήτα στοιχεία, και δες αν μιλάει ειδικός στο θέμα.",
+          "Ψάξε λίγο, και αποφάσισε με βάση τα στοιχεία, όποιος κι αν το λέει.",
+          "Μεροληψία υπέρ της αυθεντίας. Να εμπιστεύεσαι την πραγματική γνώση, όχι τη στολή. Ζήτα τα στοιχεία."
+        ]
+      }
+    },
+    svg(T) {
+      const tail = `M${PX - 6} ${TY + 37} L${PX} ${TY + 50} L${PX + 8} ${TY + 37}`;
+      const list = QY.map((y, i) => `<g data-k="q${i}"><rect class="ck" x="226" y="${y - 9}" width="11" height="11" rx="2.5"/>
+          <text x="245" y="${y}">${T.qs[i]}<\/text><\/g>
+        <path class="ab-tick" data-k="t${i}" d="M228.5 ${y - 3.5} L231.2 ${y - 0.8} L235.4 ${y - 6.2}"/>`).join("");
+      const moonY = 139;
+      return `
+        <g data-k="tv"><rect class="ab-tv" x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="10"/>
+          <path class="ab-ln" d="M${TX + TW / 2} ${TB} V${TB + 7} M${TX + TW / 2 - 18} ${TB + 8} H${TX + TW / 2 + 18}"/><\/g>
+        <g data-k="bottle"><rect class="ab-bot" x="${BX - 11}" y="104" width="22" height="11" rx="2.5"/>
+          <rect class="ab-bot" x="${BX - 16}" y="115" width="32" height="49" rx="6"/>
+          <rect class="ab-lbl" x="${BX - 12}" y="126" width="24" height="26" rx="3"/>
+          <path class="ab-moon" d="M${BX + 3} ${moonY - 6.3} A7 7 0 1 0 ${BX + 3} ${moonY + 6.3} A6.4 6.4 0 0 1 ${BX + 3} ${moonY - 6.3} Z"/><\/g>
+        <g data-k="pres">
+          <path class="ab-body" d="M${PX - 36} ${TB - 1} V150 C${PX - 36} 128 ${PX - 20} 112 ${PX} 112 C${PX + 20} 112 ${PX + 36} 128 ${PX + 36} 150 V${TB - 1}"/>
+          <circle class="ab-body" cx="${PX}" cy="90" r="13"/>
+          <circle class="ab-eye" cx="${PX - 4.5}" cy="88" r="1.5"/><circle class="ab-eye" cx="${PX + 4.5}" cy="88" r="1.5"/>
+          <path class="ab-ln" d="M${PX - 5} 94 Q${PX} 98.5 ${PX + 5} 94"/>
+          <g class="ab-coat" data-k="coat">
+            <path d="M${PX - 9} 113 L${PX - 17} 129 L${PX - 10} 132 L${PX} 146 L${PX + 10} 132 L${PX + 17} 129 L${PX + 9} 113 M${PX} 146 V${TB - 1}"/>
+            <path d="M${PX + 18} 148 H${PX + 30} V158 H${PX + 18} Z M${PX + 22} 143 V148"/>
+            <path d="M${PX - 12} 113 C${PX - 25} 122 ${PX - 27} 138 ${PX - 22} 147"/>
+            <path d="M${PX + 12} 113 C${PX + 21} 118 ${PX + 24} 125 ${PX + 23} 131 M${PX + 23} 131 L${PX + 19.5} 134 M${PX + 23} 131 L${PX + 26.5} 134"/>
+            <circle cx="${PX - 21}" cy="151.5" r="4.5"/><\/g>
+          <g class="ab-tee" data-k="tee">
+            <path class="ab-slv" d="M${PX - 25.5} 122.8 L${PX - 46} 140 L${PX - 39} 148 L${PX - 35.6} 144.5 M${PX + 25.5} 122.8 L${PX + 46} 140 L${PX + 39} 148 L${PX + 35.6} 144.5"/>
+            <path d="M${PX - 11} 112.8 Q${PX} 123 ${PX + 11} 112.8"/>
+            <path d="M${PX} 131 L${PX + 2.6} 137.4 L${PX + 9.4} 137.6 L${PX + 4} 141.8 L${PX + 5.9} 148.3 L${PX} 144.5 L${PX - 5.9} 148.3 L${PX - 4} 141.8 L${PX - 9.4} 137.6 L${PX - 2.6} 137.4 Z"/><\/g>
+        <\/g>
+        <g class="ab-bub" data-k="bub"><rect x="${TX + 7}" y="${TY + 10}" width="${TW - 14}" height="28" rx="12"/><path d="${tail}"/>
+          <text x="${TX + TW / 2}" y="${TY + 28.5}">${T.claim}<\/text><\/g>
+        <g class="ab-same" data-k="same"><path d="M236 36 H212 M217 31 L212 36 L217 41"/><text x="241" y="39.5">${T.same}<\/text><\/g>
+        <g data-k="you"><path class="ab-body" d="M${YX - 24} 178 V174 C${YX - 24} 162 ${YX - 14} 154 ${YX} 154 C${YX + 14} 154 ${YX + 24} 162 ${YX + 24} 174 V178"/>
+          <circle class="ab-body" cx="${YX}" cy="136" r="12"/>
+          <circle class="ab-eye" cx="${YX - 4}" cy="134" r="1.4"/><circle class="ab-eye" cx="${YX + 4}" cy="134" r="1.4"/>
+          <path class="ab-ln" data-k="mouth" d=""/><path class="ab-ln" data-k="brow" d="M${YX + 2} 127.5 L${YX + 7.5} 125.5"/>
+          <text class="ab-you" x="${YX + 18}" y="130">${T.you}<\/text><\/g>
+        <g class="ab-bub" data-k="proof"><rect x="${YX - 70}" y="74" width="96" height="26" rx="12"/>
+          <circle cx="${YX - 12}" cy="108" r="3"/><circle cx="${YX - 7}" cy="116" r="2"/>
+          <text x="${YX - 22}" y="91.5">${T.proof}<\/text><\/g>
+        <g class="ab-list" data-k="list"><rect class="bx" x="214" y="12" width="174" height="90" rx="12"/>
+          <circle cx="${YX - 14}" cy="109" r="3.4"/><circle cx="${YX - 8}" cy="117" r="2.2"/>
+          ${list}<\/g>
+        <line class="ab-ax" x1="${S0X}" y1="${SY}" x2="${S1X}" y2="${SY}"/>
+        <path class="ab-ax" d="M${S0X} ${SY - 5} V${SY + 5} M${S1X} ${SY - 5} V${SY + 5}"/>
+        <text class="ab-end" x="${S0X}" y="${SY + 16}">${T.doubt}<\/text>
+        <text class="ab-end" x="${S1X}" y="${SY + 16}" text-anchor="end">${T.trust}<\/text>
+        <g class="ab-band" data-k="band"><rect x="${SX(EVID - 5)}" y="${SY - 6}" width="${SX(EVID + 5) - SX(EVID - 5)}" height="12" rx="3"/>
+          <text x="${SX(EVID)}" y="${SY + 16}">${T.evid}<\/text><\/g>
+        <g class="ab-gap" data-k="gap"><path d="M${SX(LOW)} ${SY + 26} H${SX(HIGH)} M${SX(LOW)} ${SY + 21} V${SY + 31} M${SX(HIGH)} ${SY + 21} V${SY + 31}"/>
+          <text x="${(SX(LOW) + SX(HIGH)) / 2}" y="${SY + 42}">${T.gap}<\/text><\/g>
+        ${pin("pinA", "a", lab("labA", T.coat, "a"))}
+        ${pin("pinB", "", lab("labB", T.tee))}
+        ${pin("pinG", "g", lab("labG", T.anyone, "g"))}`;
+    },
+    S0: { tv: 0, bottle: 0, you: 0, pres: 0, coat: 1, bub: 0, pulse: 0, same: 0, mood: 0,
+      pinA: 0, pinAX: MID, pinAFade: 1, pinB: 0, pinBX: MID, win: 0, proof: 0, gap: 0, list: 0, qs: 0, ticks: 0, band: 0 },
+    render(S, k) {
+      const op = (key, v) => { k(key).style.opacity = cl(v); };
+      const tr = (key, x, y, extra) => k(key).setAttribute("transform", `translate(${f1(x)} ${f1(y)})${extra || ""}`);
+      const pop = (key, v, cx, cy) => { const s = Math.max(.001, .6 + .4 * v); k(key).setAttribute("transform", `translate(${cx} ${cy}) scale(${s.toFixed(3)}) translate(${-cx} ${-cy})`); op(key, v * 1.5); };
+      // the ad: TV, bottle, presenter, speech bubble
+      op("tv", S.tv); tr("tv", 0, 8 * (1 - S.tv));
+      pop("bottle", S.bottle, BX, 164);
+      op("pres", S.pres); tr("pres", 0, 10 * (1 - S.pres));
+      op("coat", S.coat); op("tee", 1 - S.coat);
+      const bs = Math.max(.001, (.6 + .4 * S.bub) * (1 + .07 * S.pulse));
+      k("bub").setAttribute("transform", `translate(${PX} ${TY + 50}) scale(${bs.toFixed(3)}) translate(${-PX} ${-(TY + 50)})`);
+      op("bub", S.bub * 1.5);
+      op("same", S.same); tr("same", 6 * (1 - S.same), 0);
+      // you: face follows your trust
+      op("you", S.you);
+      const m = S.mood, y0 = 141;
+      k("mouth").setAttribute("d", `M${YX - 5} ${f1(y0 - m)} Q${YX} ${f1(y0 + 4 * m)} ${YX + 5} ${f1(y0 - m)}`);
+      op("brow", -m);
+      pop("proof", S.proof, YX - 7, 116);
+      // what you ask yourself
+      pop("list", S.list, YX - 8, 117);
+      for (let i = 0; i < 3; i++) { op("q" + i, S.qs - i); op("t" + i, (S.ticks - i) * 2); }
+      // the trust slider
+      tr("pinA", SX(S.pinAX), 0); op("pinA", S.pinA * S.pinAFade);
+      tr("pinB", SX(S.pinBX), 0); op("pinB", S.pinB * (1 - S.win)); op("labB", 1 - 2 * S.win);
+      tr("pinG", SX(S.pinBX), 0); op("pinG", S.pinB * S.win); op("labG", 2 * S.win - 1);
+      op("gap", S.gap);
+      op("band", S.band);
+    },
+    beats: [
+      { steps: [{ to: { tv: 1 }, ms: 600, sfx: "pluck" }, { to: { bottle: 1 }, ms: 450, ease: "back" }, { wait: 150 }, { to: { you: 1 }, ms: 500 }] },
+      { steps: [{ to: { pres: 1 }, ms: 650 }, { wait: 200 }, { to: { bub: 1 }, ms: 450, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { pinA: 1 }, ms: 300 }, { to: { pinAX: HIGH, mood: 1 }, ms: 800, ease: "back", sfx: "spring" }] },
+      { steps: [{ to: { pinAFade: .4, mood: 0 }, ms: 400 }, { to: { coat: 0 }, ms: 800, ease: "inOut", sfx: "whoosh" },
+        { to: { pulse: 1 }, ms: 200 }, { to: { pulse: 0 }, ms: 300, ease: "inOut" }, { to: { same: 1 }, ms: 400 }] },
+      { steps: [{ to: { pinB: 1 }, ms: 300 }, { to: { pinBX: LOW, mood: -1 }, ms: 900, ease: "inOut", sfx: "thud", sfxAt: 750 },
+        { to: { proof: 1 }, ms: 450, ease: "back" }] },
+      { steps: [{ to: { pinAFade: 1 }, ms: 300 }, { to: { gap: 1 }, ms: 500, sfx: "tick" }], hold: 2800 },
+      { steps: [{ to: { gap: 0, proof: 0, same: 0, pinA: 0, mood: 0 }, ms: 500 }, { to: { list: 1 }, ms: 450, ease: "back" },
+        { to: { qs: 3 }, ms: 1500, ease: "lin", sfx: "scribble" }], hold: 2800 },
+      { steps: [{ to: { ticks: 3 }, ms: 1000, ease: "lin", sfx: "tick" }, { to: { band: 1 }, ms: 400 },
+        { to: { pinBX: EVID }, ms: 900, ease: "inOut" }, { to: { win: 1, mood: .6 }, ms: 500, sfx: "chime" },
+        { to: { coat: 1 }, ms: 400 }, { wait: 350 }, { to: { coat: 0 }, ms: 400 }, { wait: 350 }, { to: { coat: 1 }, ms: 400 }], hold: 3800 }
+    ]
+  };
+})();
+</script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "en", "shareUrl": "https://papangelis.com/biases/watch/authority-bias/", "embedUrl": "https://papangelis.com/biases/watch/authority-bias/?embed", "sfxBase": "/biases/sfx/"};
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "authority-bias", opts); window.__bp = p; }
+    else {
+      opts.capture = mode === "video";
+      if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
+      BiasAnim.mount(document.getElementById("player"), "authority-bias", opts);
+    }
+  })();
+</script>
+</body>
+</html>

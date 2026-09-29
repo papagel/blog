@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Start from the base rate: a habit in 30 seconds · Downstream</title>
+<meta name="description" content="Ask how things like this usually turn out before you look at what makes this case special.">
+<meta name="author" content="Thanos Papangelis">
+<link rel="canonical" href="https://papangelis.com/biases/watch/habit-base-rate/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/watch/habit-base-rate/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/watch/habit-base-rate/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/watch/habit-base-rate/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Start from the base rate: a habit in 30 seconds">
+<meta property="og:description" content="Ask how things like this usually turn out before you look at what makes this case special.">
+<meta property="og:url" content="https://papangelis.com/biases/watch/habit-base-rate/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start from the base rate: a habit in 30 seconds">
+<meta name="twitter:description" content="Ask how things like this usually turn out before you look at what makes this case special.">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-habit-base-rate-en.png?v=036917a0">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-habit-base-rate-en.png?v=036917a0">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), h = document.documentElement;
+    try { h.setAttribute("data-theme", localStorage.getItem("theme") || "dark"); } catch (e) {}
+    if (q.has("embed")) h.classList.add("embed");
+    if (q.get("capture") === "video") h.classList.add("cap-video");
+    if (q.get("capture") === "og") { h.classList.add("cap-og"); h.setAttribute("data-theme", "dark"); }
+  })();
+</script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+:root{--q:var(--nem)}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
+.og{display:none}
+/* embed: just the player */
+html.embed body{padding:0;background:transparent}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
+/* capture: square video frame */
+html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
+/* capture: 1200x630 social card, drawn at 600x315 and 2x */
+html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
+html.cap-og .wp{display:none}
+html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
+.og-l{display:flex;flex-direction:column;gap:10px}
+.og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
+.og-b svg{width:18px;height:18px}
+.og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+.og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
+
+
+</style>
+</head>
+<body>
+<div class="wp">
+  <main class="wp-main">
+    <h1>Start from the base rate</h1>
+    <p class="wp-def">Ask how things like this usually turn out before you look at what makes this case special.</p>
+    <div id="player"></div>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/habits/">Open the habits checklist</a></nav>
+  </main>
+</div>
+<div class="og">
+  <div class="og-l">
+    <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Cognitive Bias Explorer</div>
+    <p class="og-t" style="font-size:40px">Start from the base rate</p>
+    <p class="og-s">Explained in 30 seconds</p>
+  </div>
+  <div id="og-player"></div>
+</div>
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink);text-wrap:balance;max-width:22ch}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch;text-wrap:balance}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* thumbnail: the finished drawing, framed by whatever holds it */\n.bp.still .bp-stage{border:0;border-radius:0;background:transparent}\n.bp.still .bp-svg{padding:0}\n";
+/* Cognitive Bias Explorer: animated explainers.
+   A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
+   so looping, stepping between beats, and frame-by-frame video capture all agree.
+   Share icons: Lucide (lucide.dev), ISC licence. The brain icon is our own (icon.py). */
+(function () {
+  "use strict";
+
+  const EASE = {
+    lin: t => t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+    bounce: t => {
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+      return n * (t -= 2.625 / d) * t + .984375;
+    }
+  };
+
+  const ICON = {
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
+  };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
+  // the friendly four-colour brain; same drawing as icon.py, keep the two in step
+  const BRAIN_LOBES = [[8.2, 7.6, 3.9], [5.4, 11.2, 3.7], [9.6, 11.8, 4.2], [6.4, 15.6, 3.6], [10.2, 17.4, 3.3]];
+  const BRAIN = (() => {
+    const all = [...BRAIN_LOBES.map(([x, y, r]) => [x, y, r, "l"]), ...BRAIN_LOBES.map(([x, y, r]) => [24 - x, y, r, "r"])];
+    const lobe = (y, s) => s === "l" ? (y > 14 ? "fast" : "tmi") : (y > 14 ? "mem" : "nem");
+    const F = "#2a2320";
+    return all.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${+(r + 1.1).toFixed(2)}" style="fill:var(--ink)"/>`).join("") +
+      all.map(([x, y, r, s]) => `<circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--${lobe(y, s)})"/>`).join("") +
+      `<g fill="none" stroke="${F}" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/>` +
+      `<path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/><\/g><circle cx="9.7" cy="12.4" r="1.1" fill="${F}"/><circle cx="14.3" cy="12.4" r="1.1" fill="${F}"/>`;
+  })();
+  const brainMark = cls => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${BRAIN}<\/svg>`;
+
+  const UI = {
+    en: {
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
+      ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
+      copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
+      open: "Open on its own page", site: "papangelis.com/biases"
+    },
+    el: {
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
+      ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
+      copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
+      open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
+    }
+  };
+
+  /* ------------------------------------------------------------------ scenes */
+  const SCENES = {};
+
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
+
+  /* ------------------------------------------------------------------ timeline */
+  const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
+    let t = 0;
+    const push = (to, ms, ease) => {
+      const from = {}; for (const key in to) from[key] = S[key];
+      segs.push({ t0: t, t1: t + (ms || 0), from, to, ease: EASE[ease || "out"] });
+      Object.assign(S, to); t += ms || 0;
+    };
+    scene.beats.forEach(b => {
+      starts.push(t);
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
+      ends.push(t);
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
+    });
+    const cardAt = t;
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
+  }
+  function stateAt(tl, t) {
+    const S = { ...tl.S0 };
+    for (const g of tl.segs) {
+      if (t < g.t0) break;
+      const p = g.t1 > g.t0 ? Math.min(1, (t - g.t0) / (g.t1 - g.t0)) : 1, e = g.ease(p);
+      for (const key in g.to) S[key] = g.from[key] + (g.to[key] - g.from[key]) * e;
+    }
+    return S;
+  }
+
+  /* ------------------------------------------------------------------ player */
+  let uid = 0;
+  function mount(host, key, opts = {}) {
+    const scene = SCENES[key]; if (!scene || !host) return null;
+    const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const still = !!opts.still;   // a thumbnail: the finished drawing only, no controls, never plays
+    const capture = !!opts.capture || still;
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og || still ? " og" : ""}${still ? " still" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+        <div class="bp-stage">
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
+          <div class="bp-card" aria-hidden="true">
+            ${brainMark("bp-mark")}
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
+          <div class="bp-ctl">
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
+    const $ = sel => root.querySelector(sel);
+    const cache = {};
+    const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
+    const all = $(".bp-all"), card = $(".bp-card"), text = $(".bp-text"), no = $(".bp-no"), menu = $(".bp-menu");
+    const dots = [...root.querySelectorAll(".bp-dot i")];
+
+    let t = 0, playing = false, userPaused = false, visible = false, raf = 0, last = 0, capShown = -1, started = false;
+    function beatAt(time) { let i = 0; while (i + 1 < n && time >= tl.starts[i + 1]) i++; return i; }
+    function draw() {
+      const S = stateAt(tl, t);
+      scene.render(S, k, T);
+      all.style.opacity = S.all;
+      card.style.opacity = S.card;
+      card.classList.toggle("on", S.card > .5);
+      card.setAttribute("aria-hidden", S.card > .5 ? "false" : "true");
+      const i = beatAt(t);
+      if (i !== capShown) { text.innerHTML = T.caps[i]; no.textContent = `${i + 1}/${n}`; capShown = i; }
+      // captions fade in at the start of each beat and out just before the next
+      const next = i + 1 < n ? tl.starts[i + 1] : tl.total;
+      text.style.opacity = Math.max(0, Math.min(1, (t - tl.starts[i]) / 220, (next - t) / 160, i === n - 1 ? 1 - S.card : 1));
+      dots.forEach((d, j) => {
+        const end = j + 1 < n ? tl.starts[j + 1] : tl.cardAt;
+        d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
+      });
+    }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
+    function frame(now) {
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
+      draw();
+      raf = playing ? requestAnimationFrame(frame) : 0;
+    }
+    function setIcon() {
+      const b = $('[data-a="play"]');
+      b.innerHTML = playing ? ICON.pause : ICON.play;
+      b.setAttribute("aria-label", playing ? U.pause : U.play);
+    }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
+
+    function closeMenu() { menu.hidden = true; }
+    function openMenu() {
+      const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
+      menu.hidden = false;
+      const copy = async (btn, value) => {
+        try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
+        catch (e) { btn.querySelector("small").textContent = value.length > 60 ? "✕" : value; }
+      };
+      menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
+      const em = menu.querySelector('[data-m="embed"]');
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
+      menu.querySelector('[role="menuitem"]').focus();
+    }
+    async function share() {
+      if (playing) { userPaused = true; pause(); }
+      const url = opts.shareUrl || location.href;
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ title: T.shareTitle, url }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      menu.hidden ? openMenu() : closeMenu();
+    }
+
+    root.addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), d = e.target.closest(".bp-dot");
+      if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
+      if (!a) return;
+      const act = a.dataset.a;
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
+      else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
+      else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
+    });
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    const esc = e => { if (e.key === "Escape") closeMenu(); };
+    if (!still) {
+      document.addEventListener("bp-sound", soundBtn);
+      if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+      document.addEventListener("click", outside);
+      document.addEventListener("keydown", esc);
+    }
+
+    let io = null;
+    if (!capture && !reduced && opts.autoplay !== false) {
+      io = new IntersectionObserver(es => {
+        visible = es[0].isIntersecting;
+        if (visible && !userPaused) play(); else if (!visible) pause();
+      }, { threshold: .35 });
+      io.observe(root);
+    }
+    // at rest (before playing, or with reduced motion) show the finished story
+    seek(capture && !still ? 0 : tl.ends[n - 1]);
+    setIcon();
+
+    const api = {
+      total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      seek, play, pause,
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
+    };
+    if (capture && !still) window.__bp = api;
+    return api;
+  }
+
+  // Scenes can also be fetched on demand: SRC maps a key to its script, and load(key) resolves once it has registered.
+  const SRC = {}, LOADING = {};
+  function load(key) {
+    if (SCENES[key]) return Promise.resolve(true);
+    if (!SRC[key] || typeof document === "undefined") return Promise.resolve(false);
+    return LOADING[key] || (LOADING[key] = new Promise(res => {
+      const el = document.createElement("script");
+      el.src = SRC[key]; el.async = true;
+      el.onload = () => res(!!SCENES[key]);
+      el.onerror = () => { delete LOADING[key]; res(false); };
+      document.head.appendChild(el);
+    }));
+  }
+  window.BiasAnim = { SCENES, SRC, mount, load, has: key => !!(SCENES[key] || SRC[key]) };
+})();
+
+/* Habit: start from the base rate. A friend wants to put all their savings into a restaurant and
+   feels certain ("the food is amazing"). First ask how places like it usually do: a street of ten
+   new restaurants, three years on, most closed. Start from that, nudge up a little for the food,
+   then plan for a range and keep a cushion. Counts are illustrative, not a statistic.
+   The street (many cases) and the magnifier (this case) echo the habit's tile. Scene for anim.js. */
+(function () {
+  const KEY = "habit-base-rate", P = `.bp[data-scene="${KEY}"]`;
+  const cl = v => Math.max(0, Math.min(1, v));
+  const f1 = n => +n.toFixed(1);
+  const back = p => 1 + 2.7 * Math.pow(p - 1, 3) + 1.7 * Math.pow(p - 1, 2);
+
+  // the friend, their restaurant, their savings
+  const FX = 34, FY = 100;                             // friend: centre, shoulders' base
+  const BUB = [12, 8, 24];                             // speech bubble: x, y, height
+  const COIN = i => 202 + i * 21, CY = 86, CR = 8.5;   // eight coins
+  const CUSH = [5, 6, 7], CSH = 14;                    // the coins kept back, and how far they move
+  const LENS = [99, 82];                               // magnifier centre, over the dish in the window
+
+  // the street: ten new restaurants like it
+  const SX = i => 16 + i * 37, SW = 32;
+  const CLOSED = [1, 2, 4, 6, 7, 9];
+  const H1 = 118;                                       // street header baseline
+  const ST = 128, SG = 156;                             // awning top, ground line
+
+  // the scale: chance it's still open in 3 years, in tenths
+  const X = p => 40 + p * 32;                          // p in tenths (0..10)
+  const AY = 236, PY = 206;                            // axis, pin heads
+  const TITLE = 186;
+  const GY = 248;                                      // overconfidence bracket
+
+  const bust = `<path d="M-16 0 V-9 Q-16 -27 0 -27 Q16 -27 16 -9 V0"/><circle cy="-42" r="11"/>`;
+  const bowl = `<path class="hb-bowl" d="M-10 -1 H10 Q9 7 0 7 Q-9 7 -10 -1 Z"/><path class="hb-steam" d="M-4.5 -4 q-2 -3 0 -6 M0 -4 q-2 -3 0 -6 M4.5 -4 q-2 -3 0 -6"/>`;
+  const scallops = (x, y, w, n, d) => { let s = ""; for (let i = 0; i < n; i++) s += ` q${-w / n / 2} ${d} ${-w / n} 0`; return `M${x} ${y} H${x + w} V${y + 6}${s} Z`; };
+  const shop = i => {
+    const x = SX(i);
+    return `<g data-k="sh${i}"><g data-k="shb${i}">
+      <rect class="hb-fac" x="${x + 2}" y="${ST + 7}" width="${SW - 4}" height="${SG - ST - 7}"/>
+      <rect class="hb-win" x="${x + 6}" y="${ST + 12}" width="11" height="10" rx="1.5"/>
+      <rect class="hb-win" x="${x + 20}" y="${ST + 12}" width="7" height="${SG - ST - 12}"/>
+      <path class="hb-awn" data-k="aw${i}" d="${scallops(x, ST, SW, 4, 4)}"/>
+      <path class="hb-awn off" data-k="ax${i}" d="${scallops(x, ST, SW, 4, 4)}"/><\/g>
+      ${CLOSED.includes(i) ? `<path class="hb-board" data-k="bd${i}" d="M${x + 5} ${ST + 11} L${x + 18} ${ST + 23} M${x + 18} ${ST + 11} L${x + 5} ${ST + 23}"/>` : ""}<\/g>`;
+  };
+  const badge = (key, y, n, text) => `<g class="hb-hd" data-k="${key}"><circle cx="21" cy="${y - 4}" r="7"/>` +
+    `<text class="n" x="21" y="${y - 0.6}">${n}<\/text><text class="t" x="32" y="${y}">${text}<\/text><\/g>`;
+  const pin = (key, cls, dir, l1, l2) => {
+    const a = dir < 0 ? "end" : "start", tx = dir * 10;
+    return `<g class="hb-pin ${cls}" data-k="${key}"><line y1="${PY + 6}" y2="${AY}"/><circle cy="${PY}" r="6"/>` +
+      `<text class="l1" x="${tx}" y="${PY - 1}" text-anchor="${a}">${l1}<\/text>` +
+      `<text class="l2" x="${tx}" y="${PY + 11}" text-anchor="${a}">${l2}<\/text><\/g>`;
+  };
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .hb-ground{stroke:var(--rule);stroke-width:1.6;stroke-linecap:round}
+      ${P} .hb-you path,${P} .hb-you circle{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .hb-you .e{fill:var(--ink);stroke:none}
+      ${P} .hb-you .m{fill:none}
+      ${P} .hb-line{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .hb-ink{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .hb-stripe{fill:var(--q)}
+      ${P} .hb-stripe.w{fill:var(--surface)}
+      ${P} .hb-awnb{fill:none;stroke:var(--q);stroke-width:2;stroke-linejoin:round}
+      ${P} .hb-bowl{fill:var(--surface);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+      ${P} .hb-steam{fill:none;stroke:var(--q);stroke-width:1.5;stroke-linecap:round}
+      ${P} .hb-bub rect,${P} .hb-bub path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .hb-bub text{font:600 12px var(--display);fill:var(--ink)}
+      ${P} .hb-beam{fill:var(--q);fill-opacity:.1}
+      ${P} .hb-beam-e{fill:none;stroke:var(--q);stroke-width:1.6;stroke-dasharray:2 4;stroke-linecap:round}
+      ${P} .hb-coin circle{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .hb-coin text{font:700 10px var(--display);fill:var(--q);text-anchor:middle}
+      ${P} .hb-coin.g circle{stroke:var(--good)}
+      ${P} .hb-coin.g text{fill:var(--good)}
+      ${P} .hb-arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .hb-lab{font:500 10px var(--mono);fill:var(--muted)}
+      ${P} .hb-lab.q{fill:var(--q)}
+      ${P} .hb-lab.g{fill:var(--good)}
+      ${P} .hb-lab.r{text-anchor:end}
+      ${P} .hb-lab.c{text-anchor:middle}
+      ${P} .hb-cbox{fill:none;stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}
+      ${P} .hb-lens{fill:var(--surface);stroke:var(--ink);stroke-width:2.4}
+      ${P} .hb-handle{fill:var(--ink);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+      ${P} .hb-hd circle{fill:none;stroke:var(--q);stroke-width:1.6}
+      ${P} .hb-hd .n{font:700 9.5px var(--mono);fill:var(--q);text-anchor:middle}
+      ${P} .hb-hd .t{font:500 10px var(--mono);fill:var(--q)}
+      ${P} .hb-fac{fill:var(--surface);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+      ${P} .hb-win{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round}
+      ${P} .hb-awn{fill:var(--q);fill-opacity:.3;stroke:var(--q);stroke-width:1.6;stroke-linejoin:round}
+      ${P} .hb-awn.off{fill:none;stroke:var(--faint);stroke-dasharray:2.5 2.5}
+      ${P} .hb-board{fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round}
+      ${P} .hb-ax{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .hb-tick{stroke:var(--rule);stroke-width:1.5}
+      ${P} .hb-pin line{stroke:var(--pc);stroke-width:2.2}
+      ${P} .hb-pin circle{fill:var(--pc)}
+      ${P} .hb-pin .l1{font:600 10.5px var(--display);fill:var(--pc)}
+      ${P} .hb-pin .l2{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .hb-pin.i{--pc:var(--ink)} ${P} .hb-pin.b{--pc:var(--bad)} ${P} .hb-pin.q{--pc:var(--q)} ${P} .hb-pin.g{--pc:var(--good)}
+      ${P} .hb-gap line{stroke:var(--bad);stroke-width:1.8;stroke-linecap:round}
+      ${P} .hb-gap text{font:600 11.5px var(--display);fill:var(--bad);text-anchor:middle}
+      ${P} .hb-band{fill:var(--good);fill-opacity:.22}
+    `,
+    text: {
+      en: {
+        name: "Start from the base rate", shareTitle: "Start from the base rate: a habit in 30 seconds",
+        ecline: "Ask how things like this usually turn out, then adjust a little for what's special.",
+        bubble: "“The food is amazing!”", savings: "all their savings", invest: "invest", cushion: "safety cushion",
+        h1: "10 new restaurants like it", later: "3 years later", open: "4 of 10 still open",
+        h2: "what's special here?", chance: "chance it's still open in 3 years",
+        sure: "certain", base: "base rate", adj: "+ great food", n: v => `${v} in 10`,
+        gap: "Overconfidence effect", range: "realistic range",
+        caps: [
+          "Your friend wants to open a restaurant with <b>all their savings<\/b>.",
+          "“The food is amazing,” they say. “It <b>can't fail<\/b>.”",
+          "They see only <b>this one place<\/b>, so they feel <b>certain<\/b>.",
+          "<b>The habit:<\/b> first ask how places like this usually turn out.",
+          "Three years on, <b>6 of 10<\/b> have closed. Start from <b>4 in 10<\/b>.",
+          "Then adjust for what's special. Great food? A <b>small nudge up<\/b>.",
+          "That gap is the <b>overconfidence effect<\/b>. This habit catches it.",
+          "They plan for a <b>realistic range<\/b> and keep a <b>safety cushion<\/b>."
+        ],
+        say: [
+          "Your friend wants to open a restaurant with all their savings.",
+          "The food is amazing, they say. It can't fail.",
+          "They see only this one place, so they feel certain.",
+          "The habit: first ask how places like this usually turn out.",
+          "Picture ten new restaurants like it. Three years on, six have closed. So start from four in ten.",
+          "Then adjust for what's special. Great food? That's a small nudge up, not a jump to certain.",
+          "That gap is the overconfidence effect. This habit catches it.",
+          "So they plan for a realistic range, and keep a safety cushion.",
+          "Start from the base rate. Ask how things like this usually turn out, then adjust a little for what's special."
+        ]
+      },
+      el: {
+        name: "Ξεκίνα από το βασικό ποσοστό", shareTitle: "Ξεκίνα από το βασικό ποσοστό: μια συνήθεια σε 30 δευτερόλεπτα",
+        ecline: "Αναρωτήσου πώς καταλήγουν συνήθως τέτοιες περιπτώσεις και μετά διόρθωσε λίγο την εκτίμηση, ανάλογα με ό,τι κάνει αυτήν εδώ ξεχωριστή.",
+        bubble: "«Το φαγητό είναι φανταστικό!»", savings: "όλες οι οικονομίες", invest: "επένδυση", cushion: "μαξιλάρι ασφαλείας",
+        h1: "10 νέα εστιατόρια σαν αυτό", later: "3 χρόνια μετά", open: "4 στα 10 ακόμα ανοιχτά",
+        h2: "τι το κάνει ξεχωριστό;", chance: "πιθανότητα να είναι ανοιχτό σε 3 χρόνια",
+        sure: "σίγουρο", base: "βασικό ποσοστό", adj: "+ καλό φαγητό", n: v => `${v} στα 10`,
+        gap: "Υπερβολική αυτοπεποίθηση", range: "ρεαλιστικό εύρος",
+        caps: [
+          "Ένα φιλαράκι σου θέλει να ανοίξει εστιατόριο με <b>όλες του τις οικονομίες<\/b>.",
+          "«Το φαγητό είναι φανταστικό», σου\u00a0λέει. «<b>Αποκλείεται να αποτύχει<\/b>».",
+          "Κοιτάζει μόνο <b>αυτό το ένα μαγαζί<\/b>, γι’ αυτό δεν έχει <b>καμία αμφιβολία<\/b>.",
+          "<b>Η συνήθεια:<\/b> αναρωτήσου πρώτα πώς τα πάνε συνήθως τέτοια μαγαζιά.",
+          "Τρία χρόνια μετά, τα <b>6 στα 10<\/b> έχουν κλείσει. Ξεκίνα από <b>4 στα 10<\/b>.",
+          "Μετά δες τι το κάνει ξεχωριστό. Το καλό φαγητό ανεβάζει <b>λίγο<\/b> τις πιθανότητες.",
+          "Αυτή η διαφορά είναι η <b>υπερβολική\u00a0αυτοπεποίθηση<\/b>. Έτσι την πιάνεις.",
+          "Σχεδιάζει με βάση ένα <b>ρεαλιστικό εύρος<\/b> και κρατά <b>μαξιλάρι ασφαλείας<\/b>."
+        ],
+        say: [
+          "Ένα φιλαράκι σου θέλει να ανοίξει εστιατόριο με όλες του τις οικονομίες.",
+          "Το φαγητό είναι φανταστικό, σου λέει. Αποκλείεται να αποτύχει.",
+          "Κοιτάζει μόνο αυτό το ένα μαγαζί, γι’ αυτό δεν έχει καμία αμφιβολία.",
+          "Η συνήθεια: αναρωτήσου πρώτα πώς τα πάνε συνήθως τέτοια μαγαζιά.",
+          "Φαντάσου δέκα καινούργια εστιατόρια σαν αυτό. Τρία χρόνια μετά, τα έξι έχουν κλείσει. Ξεκίνα λοιπόν από τέσσερα στα δέκα.",
+          "Μετά δες τι το κάνει ξεχωριστό. Το καλό φαγητό ανεβάζει λίγο τις πιθανότητες, αλλά δεν τις φτάνει ως το σίγουρο.",
+          "Αυτή η διαφορά είναι η υπερβολική αυτοπεποίθηση. Έτσι την πιάνεις.",
+          "Οπότε σχεδιάζει με βάση ένα ρεαλιστικό εύρος και κρατά μαξιλάρι ασφαλείας.",
+          "Ξεκίνα από το βασικό ποσοστό. Αναρωτήσου πώς καταλήγουν συνήθως τέτοιες περιπτώσεις και μετά διόρθωσε λίγο την εκτίμηση, ανάλογα με ό,τι κάνει αυτήν εδώ ξεχωριστή."
+        ]
+      }
+    },
+    svg(T) {
+      // the restaurant's striped awning
+      let stripes = "";
+      for (let j = 0; j < 6; j++) stripes += `<path class="hb-stripe${j % 2 ? " w" : ""}" d="M${62 + j * 18} 54 H${80 + j * 18} V62 q-9 8 -18 0 Z"/>`;
+      let ticks = "";
+      for (let v = 0; v <= 10; v++) ticks += `<line class="hb-tick" x1="${X(v)}" x2="${X(v)}" y1="${AY - (v % 5 ? 3 : 5)}" y2="${AY + (v % 5 ? 3 : 5)}"/>`;
+      const coins = Array.from({ length: 8 }, (_, i) =>
+        `<g data-k="co${i}"><g class="hb-coin"><circle cx="${COIN(i)}" cy="${CY}" r="${CR}"/><text x="${COIN(i)}" y="${CY + 3.6}">€<\/text><\/g>` +
+        (CUSH.includes(i) ? `<g class="hb-coin g" data-k="cg${i}"><circle cx="${COIN(i)}" cy="${CY}" r="${CR}"/><text x="${COIN(i)}" y="${CY + 3.6}">€<\/text><\/g>` : "") + `<\/g>`).join("");
+      const cx0 = COIN(CUSH[0]) + CSH - CR - 5, cx1 = COIN(CUSH[CUSH.length - 1]) + CSH + CR + 5;
+      return `
+        <g data-k="top"><line class="hb-ground" data-k="gr" x1="14" y1="100" x2="176" y2="100"/>
+        <g data-k="rest">
+          <path class="hb-ink" d="M98 50 V54 M134 50 V54"/>
+          <rect class="hb-line" x="88" y="36" width="56" height="14" rx="3"/>
+          <circle class="hb-ink" cx="116" cy="43" r="4.6"/><circle class="hb-ink" cx="116" cy="43" r="2" style="stroke-width:1.2"/>
+          <path class="hb-ink" d="M104 39 V41.6 M106 39 V47 M108 39 V41.6 M104 41.6 Q104 43.4 106 43.4 Q108 43.4 108 41.6 M126 47 V39 Q129.2 40.6 128.6 44.2 H126"/>
+          <rect class="hb-line" x="66" y="60" width="100" height="40"/>
+          ${stripes}<path class="hb-awnb" d="${scallops(62, 54, 108, 6, 8)}"/>
+          <rect class="hb-line" x="74" y="72" width="50" height="20" rx="3"/>
+          <g transform="translate(${LENS[0]} 84)">${bowl}<\/g>
+          <rect class="hb-line" x="134" y="72" width="22" height="28"/><circle cx="151" cy="87" r="1.5" style="fill:var(--ink)"/>
+        <\/g>
+        <g class="hb-you" data-k="you" transform="translate(${FX} ${FY})">${bust}
+          <circle class="e" cx="-1.8" cy="-43" r="1.3"/><circle class="e" cx="5.2" cy="-43" r="1.3"/>
+          <path class="m" data-k="mouth" d=""/><\/g>
+        <g data-k="beam"><path class="hb-beam" d="M44 57 L64 34 H173 V103 H64 Z"/><path class="hb-beam-e" d="M45 55 L63 35 M45 59 L63 101"/><\/g>
+        <g class="hb-bub" data-k="bub"><rect data-k="bubR" x="${BUB[0]}" y="${BUB[1]}" height="${BUB[2]}" rx="12"/>
+          <path d="M26 ${BUB[1] + BUB[2] - 0.6} L31 41 L36 ${BUB[1] + BUB[2] - 0.6}"/>
+          <text data-k="bubT" x="${BUB[0] + 12}" y="${BUB[1] + 16.3}">${T.bubble}<\/text><\/g>
+        <g data-k="mag"><g transform="translate(${LENS[0]} ${LENS[1]})">
+          <g transform="rotate(45)"><rect class="hb-handle" x="17" y="-2" width="14" height="4" rx="2"/><\/g>
+          <circle class="hb-lens" r="16"/>
+          <g transform="translate(0 4) scale(1.3)">${bowl}<\/g><\/g><\/g>
+        ${badge("h2", 26, 2, T.h2)}
+        <text class="hb-lab" data-k="sav" x="193" y="70">${T.savings}<\/text>
+        <text class="hb-lab q" data-k="inv" x="193" y="70">${T.invest}<\/text>
+        <text class="hb-lab g r" data-k="cus" x="${cx1}" y="70">${T.cushion}<\/text>
+        <path class="hb-arrow" data-k="arr" d="M189 ${CY} H174 M179 ${CY - 5} L174 ${CY} L179 ${CY + 5}"/>
+        <rect class="hb-cbox" data-k="cbox" x="${cx0}" y="${CY - CR - 4}" width="${cx1 - cx0}" height="${2 * CR + 8}" rx="${CR + 4}"/>
+        ${coins}<\/g>
+        ${badge("h1", H1, 1, T.h1)}
+        <text class="hb-lab r" data-k="later" x="386" y="${H1}">${T.later}<\/text>
+        <line class="hb-ground" data-k="sg" x1="14" y1="${SG}" x2="386" y2="${SG}"/>
+        ${Array.from({ length: 10 }, (_, i) => shop(i)).join("")}
+        <text class="hb-lab q r" data-k="open" x="386" y="${SG + 14}">${T.open}<\/text>
+        <g data-k="scale"><text class="hb-lab" x="14" y="${TITLE}">${T.chance}<\/text>
+          <line class="hb-ax" x1="${X(0)}" x2="${X(10)}" y1="${AY}" y2="${AY}"/>${ticks}<\/g>
+        <rect class="hb-band" data-k="band" x="${X(3.5)}" y="${AY - 7}" width="${X(6.5) - X(3.5)}" height="14" rx="3"/>
+        <text class="hb-lab g c" data-k="rangeT" x="${X(5)}" y="${AY + 21}">${T.range}<\/text>
+        <g class="hb-gap" data-k="gap"><line x1="${X(5)}" x2="${X(10)}" y1="${GY}" y2="${GY}"/>
+          <line x1="${X(5)}" x2="${X(5)}" y1="${GY - 5}" y2="${GY + 5}"/><line x1="${X(10)}" x2="${X(10)}" y1="${GY - 5}" y2="${GY + 5}"/>
+          <text x="${(X(5) + X(10)) / 2}" y="${GY + 14}">${T.gap}<\/text><\/g>
+        ${pin("pS", "i", -1, T.sure, T.n(10))}${pin("pSb", "b", -1, T.sure, T.n(10))}
+        ${pin("pB", "q", -1, T.base, T.n(4))}
+        <path class="hb-arrow" data-k="nudge" style="stroke:var(--good)" d="M${X(4) + 9} ${PY} H${X(5) - 9} M${X(5) - 13} ${PY - 4} L${X(5) - 9} ${PY} L${X(5) - 13} ${PY + 4}"/>
+        ${pin("pA", "g", 1, T.adj, T.n(5))}`;
+    },
+    S0: { home: 0, rest: 0, you: 0, coins: 0, arr: 0, grin: 0, bub: 0, beam: 0, scale: 0, sure: 0, bad: 0, sureFade: 0,
+      h1: 0, st: 0, later: 0, shut: 0, open: 0, base: 0, h2: 0, mag: 0, adj: 0, adjX: 4, nudge: 0, gap: 0,
+      band: 0, split: 0, cush: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = cl(v); };
+      const tr = (key, x, y) => k(key).setAttribute("transform", `translate(${f1(x)} ${f1(y)})`);
+      const around = (key, x, y, s) => k(key).setAttribute("transform",
+        `translate(${f1(x)} ${f1(y)}) scale(${Math.max(0, s).toFixed(3)}) translate(${f1(-x)} ${f1(-y)})`);
+      const pop = p => (p > 0 ? back(cl(p)) : 0);
+
+      // the friend, the restaurant, the savings
+      tr("top", 0, 70 * (1 - S.home));
+      op("gr", S.rest);
+      tr("rest", 0, 8 * (1 - S.rest)); op("rest", S.rest);
+      op("you", S.you);
+      const g = S.grin;
+      k("mouth").setAttribute("d", `M${f1(-3.5 - 1.2 * g)} -37.5 Q1.7 ${f1(-33.5 + 3 * g)} ${f1(6.9 + 1.2 * g)} -37.5`);
+      for (let i = 0; i < 8; i++) {
+        const p = cl(S.coins * 8 - i), kept = CUSH.includes(i);
+        around("co" + i, COIN(i), CY, pop(p));
+        k("co" + i).style.opacity = p > 0 ? 1 : 0;
+        if (kept) {
+          k("co" + i).setAttribute("transform", `translate(${f1(CSH * S.split)} 0) ` + k("co" + i).getAttribute("transform"));
+          op("cg" + i, S.split);
+        }
+      }
+      op("arr", S.arr);
+      op("sav", S.coins * (1 - cl(S.split * 2))); op("inv", cl(S.split * 2 - 1)); op("cus", S.cush); op("cbox", S.cush);
+
+      // what they say, and where they look
+      const tw = k("bubT").getComputedTextLength ? k("bubT").getComputedTextLength() : 150;
+      k("bubR").setAttribute("width", f1(tw + 24));
+      around("bub", 31, 41, .85 + .15 * S.bub); op("bub", S.bub);
+      op("beam", S.beam);
+
+      // the scale, and the friend's certainty
+      tr("scale", 0, 6 * (1 - S.scale)); op("scale", S.scale);
+      const sy = -40 * (1 - S.sure);
+      tr("pS", X(10), sy); tr("pSb", X(10), sy);
+      op("pS", (S.sure > 0 ? 1 : 0) * (1 - S.bad) * (1 - .75 * S.sureFade));
+      op("pSb", (S.sure > 0 ? 1 : 0) * S.bad * (1 - .75 * S.sureFade));
+
+      // step 1: ten places like it, three years on
+      tr("h1", 8 * (1 - S.h1), 0); op("h1", S.h1);
+      op("sg", S.st > 0 ? cl(S.st * 3) : 0);
+      for (let i = 0; i < 10; i++) {
+        const p = cl((S.st - i / 10 * .75) / .25);
+        around("sh" + i, SX(i) + SW / 2, SG, pop(p));
+        k("sh" + i).style.opacity = p > 0 ? 1 : 0;
+        const j = CLOSED.indexOf(i);
+        const c = j < 0 ? 0 : cl((S.shut - j / CLOSED.length * .7) / .3);
+        op("aw" + i, 1 - c); op("ax" + i, c);
+        op("shb" + i, 1 - .45 * c);
+        if (j >= 0) op("bd" + i, c);
+      }
+      op("later", S.later); op("open", S.open);
+      tr("pB", X(4), -40 * (1 - S.base)); op("pB", S.base > 0 ? 1 : 0);
+
+      // step 2: what's special here
+      tr("h2", 8 * (1 - S.h2), 0); op("h2", S.h2);
+      around("mag", LENS[0], LENS[1], pop(S.mag)); op("mag", S.mag > 0 ? 1 : 0);
+      tr("pA", X(S.adjX), 0); op("pA", S.adj);
+      op("nudge", S.nudge);
+
+      // the gap is the bias; the fix is a range and a cushion
+      op("gap", S.gap);
+      op("band", S.band); op("rangeT", S.band);
+    },
+    beats: [
+      { steps: [{ to: { rest: 1 }, ms: 600, sfx: "pluck" }, { to: { you: 1 }, ms: 400 },
+        { to: { coins: 1 }, ms: 900, ease: "lin" }, { to: { arr: 1 }, ms: 400 }] },
+      { steps: [{ to: { bub: 1, grin: 1 }, ms: 450, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { home: 1 }, ms: 700, ease: "inOut" }, { to: { beam: 1 }, ms: 500 }, { wait: 200 }, { to: { scale: 1 }, ms: 400 },
+        { to: { sure: 1 }, ms: 900, ease: "bounce", sfx: "thud", sfxAt: 320 }] },
+      { steps: [{ to: { bub: 0, beam: 0 }, ms: 400 }, { to: { h1: 1 }, ms: 400 },
+        { to: { st: 1 }, ms: 1300, ease: "lin", sfx: "whoosh" }] },
+      { steps: [{ to: { later: 1 }, ms: 400 }, { to: { shut: 1 }, ms: 1500, ease: "lin", sfx: "thud" }, { to: { open: 1 }, ms: 400 },
+        { wait: 200 }, { to: { base: 1 }, ms: 700, ease: "bounce", sfx: "pop", sfxAt: 250 }], hold: 3000 },
+      { steps: [{ to: { h2: 1 }, ms: 400 }, { to: { mag: 1 }, ms: 500 }, { wait: 300 },
+        { to: { adj: 1 } }, { to: { adjX: 5, nudge: 1 }, ms: 900, ease: "inOut", sfx: "spring" }], hold: 3000 },
+      { steps: [{ to: { bad: 1 }, ms: 400 }, { to: { gap: 1 }, ms: 500, sfx: "tick" }], hold: 3000 },
+      { steps: [{ to: { gap: 0, sureFade: 1, grin: .35 }, ms: 500 }, { to: { band: 1 }, ms: 600 },
+        { wait: 200 }, { to: { split: 1 }, ms: 700, ease: "inOut" }, { to: { cush: 1 }, ms: 450, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+</script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "en", "shareUrl": "https://papangelis.com/biases/watch/habit-base-rate/", "embedUrl": "https://papangelis.com/biases/watch/habit-base-rate/?embed", "sfxBase": "/biases/sfx/"};
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "habit-base-rate", opts); window.__bp = p; }
+    else {
+      opts.capture = mode === "video";
+      if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
+      BiasAnim.mount(document.getElementById("player"), "habit-base-rate", opts);
+    }
+  })();
+</script>
+</body>
+</html>
