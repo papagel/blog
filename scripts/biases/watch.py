@@ -48,35 +48,25 @@ PAGE_CSS = """
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.w{max-width:560px;margin-inline:auto;padding-block:20px 40px;display:flex;flex-direction:column;gap:28px}
-.w-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.w-brand{display:flex;align-items:center;gap:10px;font:700 16px/1.2 var(--display);text-decoration:none}
-.w-brand svg{width:24px;height:24px;flex:none}
-.w-lang{font:500 12px/1 var(--mono);color:var(--muted);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:8px 12px;letter-spacing:.06em}
-.w-lang:hover{color:var(--ink);border-color:var(--ink)}
+.w{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
 .w-main{display:flex;flex-direction:column;gap:12px}
-.w-eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);margin:0}
 .w-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
 .w-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
 .w-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
 .w-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
 .w-btn:hover{border-color:var(--ink)}
 .w-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.w-quiet{font:500 14px/1 var(--mono);color:var(--muted);text-underline-offset:4px}
-.w-quiet:hover{color:var(--ink)}
-.w-foot{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--rule);padding-top:18px;font-size:13.5px;line-height:1.55;color:var(--muted)}
-.w-foot .cc{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:5px 7px;margin-top:1px;white-space:nowrap}
 :focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
 .og{display:none}
 /* embed: just the player */
 html.embed body{padding:0;background:transparent}
 html.embed .w{padding:0;max-width:none;gap:0}
-html.embed .w-top,html.embed .w-foot,html.embed .w-main>:not(#player){display:none}
+html.embed .w-main>:not(#player){display:none}
 /* capture: square video frame */
 html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
 html.cap-video .w{display:block;max-width:none;padding:0;height:100%}
 html.cap-video .w-main,html.cap-video #player{height:100%}
-html.cap-video .w-top,html.cap-video .w-foot,html.cap-video .w-main>:not(#player){display:none}
+html.cap-video .w-main>:not(#player){display:none}
 /* capture: 1200x630 social card, drawn at 600x315 and 2x */
 html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
 html.cap-og .w{display:none}
@@ -152,22 +142,12 @@ def page(lang, key, data, tokens, fonts, anim_js, anim_css, tags=""):
 </head>
 <body>
 <div class="w">
-  <header class="w-top">
-    <a class="w-brand" href="{base}">{mark("wb")}{t['explorer']}</a>
-    <a class="w-lang" href="{other}watch/{key}/" hreflang="{'en' if lang == 'el' else 'el'}" title="{t['switch_title']}">{t['switch']}</a>
-  </header>
   <main class="w-main">
-    <p class="w-eyebrow">{QUAD[sc['q']][lang]} · {t['seconds']}</p>
     <h1>{name}</h1>
     <p class="w-def">{d}</p>
     <div id="player"></div>
-    <nav class="w-links">
-      <a class="w-btn primary" href="{base}#{slug}">{t['card']}</a>
-      <a class="w-btn" href="{base}#lab-{sc['lab']}">{t['lab']}</a>
-      <a class="w-quiet" href="{base}">{t['all']}</a>
-    </nav>
+    <nav class="w-links"><a class="w-btn primary" href="{base}#{slug}">{t['card']}</a></nav>
   </main>
-  <footer class="w-foot"><a class="cc" rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a><p style="margin:0">{t['credit']}</p></footer>
 </div>
 <div class="og">
   <div class="og-l">
@@ -220,7 +200,8 @@ def build_all(root, here, datasets, tokens, fonts, anim_js, anim_css, recapture=
             html = page(lang, key, data, tokens[lang], fonts[lang], anim_js, anim_css)
             open(os.path.join(out, "index.html"), "w").write(html)
             paths[(key, lang)] = os.path.join(out, "index.html")
-            fingerprints[f"{key}-{lang}"] = hashlib.md5(html.encode()).hexdigest()
+            shown = html[html.index("<style>"):html.index("</style>")] + html[html.index('<div class="og">'):]
+            fingerprints[f"{key}-{lang}"] = hashlib.md5(shown.encode()).hexdigest()
 
     manifest_path = os.path.join(here, ".captures.json")
     manifest = json.load(open(manifest_path)) if os.path.exists(manifest_path) else {}

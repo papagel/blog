@@ -79,35 +79,25 @@
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.w{max-width:560px;margin-inline:auto;padding-block:20px 40px;display:flex;flex-direction:column;gap:28px}
-.w-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.w-brand{display:flex;align-items:center;gap:10px;font:700 16px/1.2 var(--display);text-decoration:none}
-.w-brand svg{width:24px;height:24px;flex:none}
-.w-lang{font:500 12px/1 var(--mono);color:var(--muted);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:8px 12px;letter-spacing:.06em}
-.w-lang:hover{color:var(--ink);border-color:var(--ink)}
+.w{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
 .w-main{display:flex;flex-direction:column;gap:12px}
-.w-eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);margin:0}
 .w-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
 .w-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
 .w-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
 .w-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
 .w-btn:hover{border-color:var(--ink)}
 .w-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.w-quiet{font:500 14px/1 var(--mono);color:var(--muted);text-underline-offset:4px}
-.w-quiet:hover{color:var(--ink)}
-.w-foot{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--rule);padding-top:18px;font-size:13.5px;line-height:1.55;color:var(--muted)}
-.w-foot .cc{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:5px 7px;margin-top:1px;white-space:nowrap}
 :focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
 .og{display:none}
 /* embed: just the player */
 html.embed body{padding:0;background:transparent}
 html.embed .w{padding:0;max-width:none;gap:0}
-html.embed .w-top,html.embed .w-foot,html.embed .w-main>:not(#player){display:none}
+html.embed .w-main>:not(#player){display:none}
 /* capture: square video frame */
 html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
 html.cap-video .w{display:block;max-width:none;padding:0;height:100%}
 html.cap-video .w-main,html.cap-video #player{height:100%}
-html.cap-video .w-top,html.cap-video .w-foot,html.cap-video .w-main>:not(#player){display:none}
+html.cap-video .w-main>:not(#player){display:none}
 /* capture: 1200x630 social card, drawn at 600x315 and 2x */
 html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
 html.cap-og .w{display:none}
@@ -211,22 +201,12 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 </head>
 <body>
 <div class="w">
-  <header class="w-top">
-    <a class="w-brand" href="/biases/"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="wb" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#wb)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></g></svg>Cognitive Bias Explorer</a>
-    <a class="w-lang" href="/biases/el/watch/anchoring/" hreflang="el" title="Ελληνικά">ΕΛ</a>
-  </header>
   <main class="w-main">
-    <p class="w-eyebrow">Too Much Information · Explained in 30 seconds</p>
     <h1>Anchoring</h1>
     <p class="w-def">The tendency to rely too heavily on the first number or piece of information we see when making a judgment. Later estimates stay too close to that starting point, even when it is arbitrary.</p>
     <div id="player"></div>
-    <nav class="w-links">
-      <a class="w-btn primary" href="/biases/#b-anchoring">Read the full card</a>
-      <a class="w-btn" href="/biases/#lab-spin">Try the experiment</a>
-      <a class="w-quiet" href="/biases/">Explore all 188 biases</a>
-    </nav>
+    <nav class="w-links"><a class="w-btn primary" href="/biases/#b-anchoring">Read the full card</a></nav>
   </main>
-  <footer class="w-foot"><a class="cc" rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a><p style="margin:0">Adapted from <a href="https://commons.wikimedia.org/wiki/File:Cognitive_bias_codex_en.svg" target="_blank" rel="noopener"><cite>The Cognitive Bias Codex</cite></a> by John Manoogian III, Buster Benson and TilmannR. A Downstream project by Thanos Papangelis.</p></footer>
 </div>
 <div class="og">
   <div class="og-l">
