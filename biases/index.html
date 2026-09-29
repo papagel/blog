@@ -233,6 +233,7 @@ footer cite{font-style:italic}
 .scrim{position:fixed;inset:0;background:rgba(10,14,18,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 .panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--surface);box-shadow:var(--shadow);z-index:50;transform:translateX(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;border-left:5px solid var(--q,var(--rule))}
 .panel.open{transform:none}
+.panel.video{width:min(680px,100%)}
 .panel:focus,.panel:focus-visible{outline:none}
 .panel-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 12px 22px;border-bottom:1px solid var(--rule)}
 .panel-bar .nav{display:flex;gap:6px}
@@ -6267,18 +6268,23 @@ function markOn(b, g) {
 function listBlock(title, arr) {
   return `<div class="pblock"><h3>${title}</h3><ul>${arr.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>`;
 }
-function openBias(b, playlist = false) {   // playlist: opened from the videos, so next/previous step through them
+// video: opened to watch, so the player comes first and the panel widens on desktop.
+// playlist: opened from the videos, so next and previous step through them.
+function openBias(b, { video = false, playlist = false } = {}) {
   if (!panel.classList.contains("open")) lastFocus = document.activeElement;
+  const key = vidKey(b);
   const vi = playlist ? REEL.findIndex(r => r.b === b) : -1;
   if (vi < 0) playlist = false;
+  video = !!key && (video || playlist);
   current = { type:"b", b, playlist };
   const g = b.g;
   document.getElementById("p-pos").textContent = playlist ? `▶ ${vi + 1} / ${REEL.length}` : `${b.i + 1} / ${BIASES.length}`;
   pBody.innerHTML = `
     <div class="crumb">${playlist ? `<button type="button" data-open-videos>‹ All videos</button><span aria-hidden="true">·</span>` : ""}<span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">In English: ${esc(b.en)}</p>` : ""}</div>
-    <p class="def">${esc(b.d)}</p>
-    ${ANIM_FOR[b.en || b.n] && window.BiasAnim && BiasAnim.has(ANIM_FOR[b.en || b.n]) ? `<div class="player-host" data-anim="${ANIM_FOR[b.en || b.n]}"></div>` : ""}
+    ${video ? "" : `<p class="def">${esc(b.d)}</p>`}
+    ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
+    ${video ? `<p class="def">${esc(b.d)}</p>` : ""}
     <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p></div>
@@ -6286,6 +6292,7 @@ function openBias(b, playlist = false) {   // playlist: opened from the videos, 
     <div class="pblock"><h3>How to counter it</h3><p class="lead-tip">${esc(b.fix)}</p></div>
     <div class="pblock"><h3>Same family</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>`;
   showPanel(b.q);
+  panel.classList.toggle("video", video);
   dropPlayer();
   const host = pBody.querySelector(".player-host");
   if (host) {
@@ -6336,17 +6343,17 @@ function openGroup(g) {
   panel.focus({ preventScroll:true });
 }
 pBody.addEventListener("click", e => {
-  const v = e.target.closest("[data-vi]"); if (v) return openBias(REEL[+v.dataset.vi].b, true);
+  const v = e.target.closest("[data-vi]"); if (v) return openBias(REEL[+v.dataset.vi].b, { playlist:true });
   if (e.target.closest("[data-open-videos]")) return openVideos();
   const s = e.target.closest("[data-i]"); if (s) return openBias(BIASES[+s.dataset.i]);
   if (e.target.closest("[data-open-g]") && current?.b) openGroup(current.b.g);
 });
 function step(d) {
   if (!current) return;
-  if (current.type === "v") return openBias(REEL[d > 0 ? 0 : REEL.length - 1].b, true);
+  if (current.type === "v") return openBias(REEL[d > 0 ? 0 : REEL.length - 1].b, { playlist:true });
   if (current.type === "b" && current.playlist) {
     const vi = REEL.findIndex(r => r.b === current.b);
-    return openBias(REEL[(vi + d + REEL.length) % REEL.length].b, true);
+    return openBias(REEL[(vi + d + REEL.length) % REEL.length].b, { playlist:true });
   }
   if (current.type === "b") openBias(BIASES[(current.b.i + d + BIASES.length) % BIASES.length]);
   else openGroup(GROUPS[(GROUPS.indexOf(current.g) + d + GROUPS.length) % GROUPS.length]);
@@ -6361,7 +6368,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = "[data-vi], [data-open-videos], [data-scroll], .dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+const OPENERS = "[data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
@@ -6858,7 +6865,7 @@ reelEl.innerHTML = REEL.map(({ key, b }) => `<button type="button" class="reel-i
   <span class="reel-name">${esc(b.n)}</span><span class="reel-q">${esc(b.q.name)}</span></button>`).join("") +
   `<button type="button" class="reel-more" data-open-videos>See all ${REEL.length} ▶<span>in a list, one after another</span></button>`;
 reelEl.addEventListener("click", e => {
-  const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i], true);
+  const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i], { playlist:true });
   if (e.target.closest("[data-open-videos]")) openVideos();
 });
 document.querySelector(".reel-bar").addEventListener("click", e => {
@@ -6904,7 +6911,7 @@ function dialReadout() {
   dialRead.className = "dial-read q-" + b.q.key;
   dialSvg.setAttribute("aria-valuetext", b.n);
   dialRead.innerHTML = `<span class="dq">${esc(b.q.name)} · ${esc(SHORT[b.g.id] || b.g.title)}</span><b>${esc(b.n)}</b>
-    <div class="row"><button class="btn primary" type="button" data-i="${b.i}">${v ? "▶ Watch the video" : "Open the card"}</button><button class="btn" type="button" data-dial-rand>Surprise me</button></div>
+    <div class="row">${v ? `<button class="btn primary" type="button" data-watch="${b.i}">▶ Watch the video</button>` : `<button class="btn primary" type="button" data-i="${b.i}">Open the card</button>`}<button class="btn" type="button" data-dial-rand>Surprise me</button></div>
     ${dTouched ? "" : `<span class="dial-hint">Drag the wheel up or down to turn it</span>`}`;
 }
 function dialTo(target, ms = 320) {
@@ -6968,6 +6975,7 @@ dialSvg.addEventListener("keydown", e => {
   else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openBias(BIASES[dSel]); }
 });
 dialRead.addEventListener("click", e => {
+  const w = e.target.closest("[data-watch]"); if (w) return openBias(BIASES[+w.dataset.watch], { video:true });
   const b = e.target.closest("[data-i]"); if (b) return openBias(BIASES[+b.dataset.i]);
   if (e.target.closest("[data-dial-rand]")) { touch(); let i; do { i = Math.floor(Math.random() * DN); } while (i === dSel); dialGo(i, 1100, 1); }
 });
