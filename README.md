@@ -47,6 +47,19 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
 5. Save, commit, and push. It's live in a minute.
 
+## Cognitive Bias Explorer (/biases)
+
+`biases/index.html` is generated. Edit `scripts/biases/page.src.html` or the
+content in `scripts/biases/data/*.json`, then rebuild the page and its social
+card (`assets/og/biases.png`):
+
+```bash
+python3 scripts/biases/build.py
+```
+
+The content is adapted from the Cognitive Bias Codex (CC BY-SA 4.0), so the
+page keeps that licence and its credits in the footer.
+
 ## Preview locally
 
 ```bash
