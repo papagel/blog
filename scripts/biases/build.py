@@ -46,6 +46,28 @@ LANGS = {
 }
 
 
+BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/>'
+
+
+def write_icons():
+    """Brain favicon in the wheel's four colours (brain glyph: Lucide, lucide.dev, ISC licence)."""
+    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\n'
+           '<!-- Cognitive Bias Explorer icon. Brain glyph from Lucide (lucide.dev), ISC licence. -->\n'
+           '<defs><linearGradient id="g" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse">'
+           '<stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/>'
+           '<stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs>\n'
+           '<rect width="24" height="24" rx="5.5" fill="#17171b"/>\n'
+           '<g transform="translate(2.6 2.6) scale(0.783)" fill="none" stroke="url(#g)" stroke-width="2.4" '
+           'stroke-linecap="round" stroke-linejoin="round">' + BRAIN + '</g>\n</svg>\n')
+    out = os.path.join(ROOT, "biases")
+    os.makedirs(out, exist_ok=True)
+    svg_path = os.path.join(out, "favicon.svg")
+    open(svg_path, "w").write(svg)
+    if shutil.which("rsvg-convert"):
+        for name, size in (("favicon-32.png", 32), ("apple-touch-icon.png", 180)):
+            subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size), svg_path, "-o", os.path.join(out, name)], check=True)
+
+
 def load(folder):
     data = []
     for i in range(1, 5):
@@ -208,9 +230,9 @@ def site_html(lang, page, data):
 {tags}<meta name="twitter:title" content="{L['name']}">
 <meta name="twitter:description" content="{L['short']}">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
 <script>
   (function () {{
     try {{
@@ -225,6 +247,7 @@ def site_html(lang, page, data):
     return head + site[:split] + "\n</head>\n<body>\n" + site[split:] + "\n</body>\n</html>\n"
 
 
+write_icons()
 en_data = load([])
 built = {"en": en_data, "el": load(["el"])}
 for lang, data in built.items():

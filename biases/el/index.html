@@ -24,9 +24,9 @@
 <meta name="twitter:title" content="Εξερευνητής γνωστικών μεροληψιών">
 <meta name="twitter:description" content="188 γνωστικές μεροληψίες σε έναν διαδραστικό χάρτη, με πειράματα που σε αφήνουν να τις νιώσεις να δουλεύουν πάνω σου.">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
 <script>
   (function () {
     try {
@@ -86,7 +86,7 @@ button{font:inherit;color:inherit}
 /* top bar */
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;flex-wrap:wrap}
 .brand{font:700 17px/1 var(--display);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand-mark{width:22px;height:22px;border-radius:50%;background:conic-gradient(var(--tmi) 0 22%,var(--nem) 0 55%,var(--fast) 0 84%,var(--mem) 0)}
+.brand-mark{width:26px;height:26px;flex:none}
 .top nav{display:flex;gap:4px;flex-wrap:wrap}
 .top nav a{font:500 13px/1 var(--mono);text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:999px}
 .top nav a:hover{color:var(--ink);background:var(--surface-2)}
@@ -431,7 +431,7 @@ footer cite{font-style:italic}
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="#top" id="top"><span class="brand-mark" aria-hidden="true"></span>Εξερευνητής γνωστικών μεροληψιών</a><a class="home-link" href="/">&larr; Downstream</a><a class="home-link lang-link" href="../" hreflang="en" lang="en" title="English" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">EN</a>
+    <a class="brand" href="#top" id="top"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><!-- brain icon: Lucide (lucide.dev), ISC licence --><defs><linearGradient id="bm-g" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:var(--mem)"/><stop offset=".35" style="stop-color:var(--tmi)"/><stop offset=".68" style="stop-color:var(--nem)"/><stop offset="1" style="stop-color:var(--fast)"/></linearGradient></defs><g fill="none" stroke="url(#bm-g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></g></svg>Εξερευνητής γνωστικών μεροληψιών</a><a class="home-link" href="/">&larr; Downstream</a><a class="home-link lang-link" href="../" hreflang="en" lang="en" title="English" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">EN</a>
     <nav aria-label="Ενότητες">
       <a href="#lab">Πειράματα</a><a href="#browse">Όλες οι μεροληψίες</a><a href="#quiz">Κουίζ</a>
     </nav>
@@ -520,6 +520,7 @@ footer cite{font-style:italic}
     <div class="nav">
       <button class="icon-btn" type="button" id="p-prev" aria-label="Προηγούμενη μεροληψία"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button>
       <button class="icon-btn" type="button" id="p-next" aria-label="Επόμενη μεροληψία"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button class="icon-btn" type="button" id="p-rand" aria-label="Τυχαία μεροληψία" title="Τυχαία μεροληψία (R)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"/></svg></button>
       <button class="icon-btn" type="button" id="p-close" aria-label="Κλείσιμο"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
@@ -872,6 +873,12 @@ function step(d) {
 }
 document.getElementById("p-prev").onclick = () => step(-1);
 document.getElementById("p-next").onclick = () => step(1);
+function randomBias() {
+  let b;
+  do { b = BIASES[Math.floor(Math.random() * BIASES.length)]; } while (BIASES.length > 1 && current?.b === b);
+  openBias(b);
+}
+document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
 const OPENERS = ".leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
@@ -882,6 +889,7 @@ document.addEventListener("click", e => {
 document.addEventListener("keydown", e => {
   if (!panel.classList.contains("open")) return;
   if (e.key === "Escape") closePanel();
+  else if ((e.key === "r" || e.key === "R") && !e.metaKey && !e.ctrlKey && !e.altKey && !e.target.closest("input, textarea")) randomBias();
   else if (e.key === "ArrowRight" && !e.target.closest("input")) step(1);
   else if (e.key === "ArrowLeft" && !e.target.closest("input")) step(-1);
 });
