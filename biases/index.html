@@ -434,7 +434,9 @@ footer cite{font-style:italic}
 .map-legend{max-width:1060px;margin:4px auto 0;display:flex;justify-content:center;gap:8px;align-items:center;font:12px/1.3 var(--mono);color:var(--muted)}
 .map-legend i{width:11px;height:11px;border-radius:50%;border:2.4px solid var(--muted);box-sizing:border-box;flex:none}
 .vb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
-.reel{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:4px;scrollbar-width:none}
+.reel::-webkit-scrollbar{display:none}
+.reel .reel-item,.reel .reel-more{flex:none;width:236px;scroll-snap-align:start}
 .reel-item{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;background:var(--surface);border-radius:14px;padding:10px 10px 14px;border:1px solid transparent;transition:border-color .15s}
 .reel-item:hover{border-color:var(--q)}
 .reel-item:focus-visible{outline:2px solid var(--q);outline-offset:2px}
@@ -444,6 +446,21 @@ footer cite{font-style:italic}
 .reel-play svg{width:12px;height:12px;fill:var(--surface);margin-left:2px}
 .reel-name{font:600 16px/1.25 var(--display);padding-inline:4px}
 .reel-q{font:500 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--q);padding-inline:4px}
+.reel-more{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:10px;border:1.5px dashed var(--rule);border-radius:14px;padding:20px;font:700 20px/1.2 var(--display)}
+.reel-more:hover{border-color:var(--ink)}
+.reel-more span{font:500 13px/1.3 var(--mono);color:var(--muted)}
+.reel-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}
+.reel-nav{display:flex;gap:6px}
+@media (pointer:coarse){.reel-nav{display:none}}
+.vlist{display:flex;flex-direction:column;gap:4px;margin-inline:-8px}
+.vrow{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:center;padding:6px 8px;border-radius:12px}
+.vrow:hover{background:var(--surface-2)}
+.vrow:focus-visible{outline:2px solid var(--q)}
+.vthumb{position:relative;display:block;aspect-ratio:400/272;border-radius:8px;background:var(--ground);overflow:hidden}
+.vthumb>[data-thumb]{position:absolute;inset:0;display:block}
+.vrow b{display:block;font:600 16px/1.25 var(--display)}
+.vrow small{display:block;font:500 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--q);margin-top:3px}
+.vno{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums}
 
 /* dial: the wheel on phones, turned sideways */
 .dial{display:none}
@@ -471,8 +488,9 @@ footer cite{font-style:italic}
   /* phones: things to do first, the map after them */
   .wrap{display:flex;flex-direction:column}
   .top{order:0} .hero{order:1} #watch{order:2} #lab{order:3} #quiz{order:4} .map{order:5} #habits{order:6} #why{order:7} #browse{order:8} footer{order:9}
-  .reel,.habits{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px);scrollbar-width:none}
-  .reel-item{flex:none;width:72vw;max-width:300px;scroll-snap-align:start}
+  .reel{margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px)}
+  .habits{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px);scrollbar-width:none}
+  .reel .reel-item,.reel .reel-more{width:72vw;max-width:300px}
   .habit{flex:none;width:80vw;max-width:330px;scroll-snap-align:start}
 }
 @media (max-width:700px){
@@ -526,6 +544,7 @@ footer cite{font-style:italic}
       <p><span class="reel-n"></span> short animated videos, about 30 seconds each. Pick one to play it.</p>
     </div>
     <div class="reel" id="reel"></div>
+    <div class="reel-bar"><button class="btn" type="button" data-open-videos>See all <span class="reel-n"></span> in a list</button><span class="reel-nav"><button class="icon-btn" type="button" data-scroll="-1" aria-label="Scroll back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="icon-btn" type="button" data-scroll="1" aria-label="Scroll on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></span></div>
   </section>
 
   <section class="block" id="lab" aria-labelledby="lab-h">
@@ -6238,7 +6257,7 @@ function closePanel() {
   BIASES.forEach(b => b.leaf.classList.remove("on"));
   GROUPS.forEach(g => g.node.classList.remove("on"));
   current = null;
-  if (location.hash.startsWith("#b-") || location.hash.startsWith("#g-")) history.replaceState(null, "", location.pathname + location.search);
+  if (location.hash.startsWith("#b-") || location.hash.startsWith("#g-") || location.hash === "#videos") history.replaceState(null, "", location.pathname + location.search);
   if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll:true });
 }
 function markOn(b, g) {
@@ -6248,13 +6267,15 @@ function markOn(b, g) {
 function listBlock(title, arr) {
   return `<div class="pblock"><h3>${title}</h3><ul>${arr.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>`;
 }
-function openBias(b) {
+function openBias(b, playlist = false) {   // playlist: opened from the videos, so next/previous step through them
   if (!panel.classList.contains("open")) lastFocus = document.activeElement;
-  current = { type:"b", b };
+  const vi = playlist ? REEL.findIndex(r => r.b === b) : -1;
+  if (vi < 0) playlist = false;
+  current = { type:"b", b, playlist };
   const g = b.g;
-  document.getElementById("p-pos").textContent = `${b.i + 1} / ${BIASES.length}`;
+  document.getElementById("p-pos").textContent = playlist ? `▶ ${vi + 1} / ${REEL.length}` : `${b.i + 1} / ${BIASES.length}`;
   pBody.innerHTML = `
-    <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
+    <div class="crumb">${playlist ? `<button type="button" data-open-videos>‹ All videos</button><span aria-hidden="true">·</span>` : ""}<span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">In English: ${esc(b.en)}</p>` : ""}</div>
     <p class="def">${esc(b.d)}</p>
     ${ANIM_FOR[b.en || b.n] && window.BiasAnim && BiasAnim.has(ANIM_FOR[b.en || b.n]) ? `<div class="player-host" data-anim="${ANIM_FOR[b.en || b.n]}"></div>` : ""}
@@ -6276,6 +6297,26 @@ function openBias(b) {
   history.replaceState(null, "", "#" + b.slug);
   panel.focus({ preventScroll:true });
 }
+function openVideos() {
+  if (!panel.classList.contains("open")) lastFocus = document.activeElement;
+  dropPlayer();
+  current = { type:"v" };
+  document.getElementById("p-pos").textContent = `${REEL.length} videos`;
+  pBody.innerHTML = `
+    <div><h2 id="p-title">Watch them in action</h2><p class="alias">About 30 seconds each. Next and previous take you through them in order.</p></div>
+    <div class="vlist">${REEL.map(({ key, b }, vi) => `<button type="button" class="vrow q-${b.q.key}" data-vi="${vi}"><span class="vthumb"><span data-thumb="${key}"></span></span><span><span class="vno">${String(vi + 1).padStart(2, "0")}</span><b>${esc(b.n)}</b><small>${esc(b.q.name)}</small></span></button>`).join("")}</div>`;
+  panel.className = "panel open";
+  panel.setAttribute("aria-hidden", "false");
+  scrim.classList.add("open");
+  pBody.scrollTop = 0;
+  markOn(null, null);
+  history.replaceState(null, "", "#videos");
+  panel.focus({ preventScroll:true });
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { io.unobserve(e.target); still(e.target); }
+  }), { root: pBody, rootMargin: "200px 0px" }) : null;
+  pBody.querySelectorAll("[data-thumb]").forEach(el => io ? io.observe(el) : still(el));
+}
 function openGroup(g) {
   if (!panel.classList.contains("open")) lastFocus = document.activeElement;
   dropPlayer();
@@ -6295,11 +6336,18 @@ function openGroup(g) {
   panel.focus({ preventScroll:true });
 }
 pBody.addEventListener("click", e => {
+  const v = e.target.closest("[data-vi]"); if (v) return openBias(REEL[+v.dataset.vi].b, true);
+  if (e.target.closest("[data-open-videos]")) return openVideos();
   const s = e.target.closest("[data-i]"); if (s) return openBias(BIASES[+s.dataset.i]);
   if (e.target.closest("[data-open-g]") && current?.b) openGroup(current.b.g);
 });
 function step(d) {
   if (!current) return;
+  if (current.type === "v") return openBias(REEL[d > 0 ? 0 : REEL.length - 1].b, true);
+  if (current.type === "b" && current.playlist) {
+    const vi = REEL.findIndex(r => r.b === current.b);
+    return openBias(REEL[(vi + d + REEL.length) % REEL.length].b, true);
+  }
   if (current.type === "b") openBias(BIASES[(current.b.i + d + BIASES.length) % BIASES.length]);
   else openGroup(GROUPS[(GROUPS.indexOf(current.g) + d + GROUPS.length) % GROUPS.length]);
 }
@@ -6313,7 +6361,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = ".dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+const OPENERS = "[data-vi], [data-open-videos], [data-scroll], .dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
@@ -6327,6 +6375,7 @@ document.addEventListener("keydown", e => {
 });
 function fromHash() {
   const h = location.hash.slice(1);
+  if (h === "videos") return openVideos();
   const b = BIASES.find(x => x.slug === h); if (b) return openBias(b);
   const g = GROUPS.find(x => "g-" + x.id === h); if (g) return openGroup(g);
   const x = LAB.find(x => "lab-" + x.id === h); if (x) openExp(x, true);
@@ -6806,13 +6855,21 @@ document.querySelectorAll(".reel-n").forEach(el => { el.textContent = REEL.lengt
 const reelEl = document.getElementById("reel");
 reelEl.innerHTML = REEL.map(({ key, b }) => `<button type="button" class="reel-item q-${b.q.key}" data-i="${b.i}">
   <span class="reel-thumb"><span data-thumb="${key}"></span><span class="reel-play">${PLAY_SVG}</span></span>
-  <span class="reel-name">${esc(b.n)}</span><span class="reel-q">${esc(b.q.name)}</span></button>`).join("");
-reelEl.addEventListener("click", e => { const it = e.target.closest("[data-i]"); if (it) openBias(BIASES[+it.dataset.i]); });
+  <span class="reel-name">${esc(b.n)}</span><span class="reel-q">${esc(b.q.name)}</span></button>`).join("") +
+  `<button type="button" class="reel-more" data-open-videos>See all ${REEL.length} ▶<span>in a list, one after another</span></button>`;
+reelEl.addEventListener("click", e => {
+  const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i], true);
+  if (e.target.closest("[data-open-videos]")) openVideos();
+});
+document.querySelector(".reel-bar").addEventListener("click", e => {
+  if (e.target.closest("[data-open-videos]")) return openVideos();
+  const sc = e.target.closest("[data-scroll]"); if (sc) reelEl.scrollBy({ left: +sc.dataset.scroll * reelEl.clientWidth * 0.85, behavior: "smooth" });
+});
 // thumbnails are the finished drawings, mounted as they scroll into view
 const still = el => BiasAnim.mount(el, el.dataset.thumb, { lang: LANG, still: true });
 const thumbIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { thumbIO.unobserve(e.target); still(e.target); }
-}), { rootMargin: "300px" }) : null;
+}), { root: reelEl, rootMargin: "0px 400px" }) : null;
 reelEl.querySelectorAll("[data-thumb]").forEach(el => thumbIO ? thumbIO.observe(el) : still(el));
 
 /* ---------- dial: the wheel on phones, turned sideways ---------- */
