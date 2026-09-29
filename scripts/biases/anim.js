@@ -68,6 +68,17 @@
             "…but you stop too early, <b>€180k too high</b>.",
             "<b>The fix:</b> write down your own estimate first.",
             "Start from your own range. You land near <b>fair value</b>."
+          ],
+          say: [
+            "You want to buy this house. What's it worth?",
+            "Its fair value is about six hundred thousand euros. But you don't know that yet.",
+            "The seller speaks first. I'm asking nine hundred thousand.",
+            "Your mind grabs that number as its starting point.",
+            "It feels too high, so you adjust down...",
+            "...but you stop too early. You end up a hundred and eighty thousand too high.",
+            "The fix: write down your own estimate first.",
+            "Start from your own range, and you land close to the fair value.",
+            "Anchoring. The first number you hear sets your starting point. Know your own first."
           ]
         },
         el: {
@@ -85,6 +96,17 @@
             "…αλλά σταματάς νωρίς, <b>180 χιλ. € πιο ψηλά</b>.",
             "<b>Η λύση:</b> γράψε πρώτα τη δική σου εκτίμηση.",
             "Ξεκίνα από το δικό σου εύρος. Καταλήγεις κοντά στην <b>πραγματική αξία</b>."
+          ],
+          say: [
+            "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
+            "Η πραγματική του αξία είναι περίπου εξακόσιες χιλιάδες ευρώ. Εσύ όμως δεν το ξέρεις ακόμα.",
+            "Ο πωλητής μιλάει πρώτος. Ζητάω εννιακόσιες χιλιάδες.",
+            "Το μυαλό σου κρατά αυτόν τον αριθμό ως αφετηρία.",
+            "Σου φαίνεται ακριβό, οπότε κατεβαίνεις...",
+            "...αλλά σταματάς νωρίς. Καταλήγεις εκατόν ογδόντα χιλιάδες πιο ψηλά.",
+            "Η λύση: γράψε πρώτα τη δική σου εκτίμηση.",
+            "Ξεκίνα από το δικό σου εύρος, και καταλήγεις κοντά στην πραγματική αξία.",
+            "Αγκύρωση. Ο πρώτος αριθμός που ακούς γίνεται η αφετηρία σου. Να ξέρεις τον δικό σου πρώτα."
           ]
         }
       },
@@ -141,22 +163,22 @@
         op("pin2", S.pin2);
       },
       beats: [
-        { steps: [{ to: { house: 1 }, ms: 600 }, { to: { tagSwing: 12 }, ms: 260 }, { to: { tagSwing: -8 }, ms: 300, ease: "inOut" }, { to: { tagSwing: 0 }, ms: 300, ease: "inOut" }] },
-        { steps: [{ to: { ghost: 1 }, ms: 600 }, { wait: 1400 }, { to: { ghost: .35 }, ms: 600 }] },
-        { steps: [{ to: { bubble: 1 }, ms: 450 }, { wait: 500 }, { to: { anchorOp: 1 } }, { to: { anchorY: 200 }, ms: 1000, ease: "bounce" }] },
-        { steps: [{ to: { start: 1 }, ms: 400 }, { to: { pin: 1 }, ms: 400 }, { to: { rope: 1 }, ms: 400 }] },
-        { steps: [{ to: { adj: 1, pinX: 700 }, ms: 1500, ease: "inOut" }] },
-        { steps: [{ to: { pull: 1 }, ms: 300 }, { to: { pinX: SHORT, adj: 0 }, ms: 800, ease: "back" }, { to: { ghost: 1, hidden: 0 }, ms: 400 }, { to: { gap: 1 }, ms: 400 }] },
-        { steps: [{ to: { pull: 0, gap: 0, pinFade: .4, start: 0, ghost: 0 }, ms: 500 }, { to: { pad: 1 }, ms: 500 }, { wait: 300 }, { to: { band: 1 }, ms: 500 }] },
-        { steps: [{ to: { final: 1, pin2X: 600 } }, { to: { pin2: 1 }, ms: 400 }, { to: { pin2X: OWN }, ms: 700 }, { to: { rope: 0, anchorOp: .3, bubble: .35 }, ms: 600 }], hold: 4200 }
+        { steps: [{ to: { house: 1 }, ms: 600, sfx: "pluck" }, { to: { tagSwing: 12 }, ms: 260, sfx: "tick" }, { to: { tagSwing: -8 }, ms: 300, ease: "inOut" }, { to: { tagSwing: 0 }, ms: 300, ease: "inOut" }] },
+        { steps: [{ to: { ghost: 1 }, ms: 600, sfx: "tick" }, { wait: 1400 }, { to: { ghost: .35 }, ms: 600 }] },
+        { steps: [{ to: { bubble: 1 }, ms: 450, sfx: "pop" }, { wait: 500 }, { to: { anchorOp: 1 } }, { to: { anchorY: 200 }, ms: 1000, ease: "bounce", sfx: "thud", sfxAt: 360 }] },
+        { steps: [{ to: { start: 1 }, ms: 400 }, { to: { pin: 1 }, ms: 400, sfx: "pop" }, { to: { rope: 1 }, ms: 400 }] },
+        { steps: [{ to: { adj: 1, pinX: 700 }, ms: 1500, ease: "inOut", sfx: "whoosh" }] },
+        { steps: [{ to: { pull: 1 }, ms: 300 }, { to: { pinX: SHORT, adj: 0 }, ms: 800, ease: "back", sfx: "spring" }, { to: { ghost: 1, hidden: 0 }, ms: 400 }, { to: { gap: 1 }, ms: 400, sfx: "tick" }] },
+        { steps: [{ to: { pull: 0, gap: 0, pinFade: .4, start: 0, ghost: 0 }, ms: 500 }, { to: { pad: 1 }, ms: 500, sfx: "scribble" }, { wait: 300 }, { to: { band: 1 }, ms: 500, sfx: "tick" }] },
+        { steps: [{ to: { final: 1, pin2X: 600 } }, { to: { pin2: 1 }, ms: 400, sfx: "pop" }, { to: { pin2X: OWN }, ms: 700 }, { to: { rope: 0, anchorOp: .3, bubble: .35 }, ms: 600, sfx: "chime" }], hold: 4200 }
       ]
     };
   })();
 
   /* ------------------------------------------------------------------ timeline */
   const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
-  function compile(scene) {
-    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [];
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
     let t = 0;
     const push = (to, ms, ease) => {
       const from = {}; for (const key in to) from[key] = S[key];
@@ -165,13 +187,18 @@
     };
     scene.beats.forEach(b => {
       starts.push(t);
-      b.steps.forEach(st => { if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease); });
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
       ends.push(t);
-      t += b.hold || HOLD;
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
     });
     const cardAt = t;
-    push({ card: 1 }, CARD_IN); t += CARD_HOLD; push({ card: 0, all: 0 }, FADE);
-    return { segs, starts, ends, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 } };
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
   }
   function stateAt(tl, t) {
     const S = { ...tl.S0 };
@@ -188,7 +215,7 @@
   function mount(host, key, opts = {}) {
     const scene = SCENES[key]; if (!scene || !host) return null;
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
-    const tl = compile(scene), n = scene.beats.length, id = "bp" + (++uid);
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capture = !!opts.capture;
     host.innerHTML = `
@@ -314,6 +341,7 @@
 
     const api = {
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
       destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); host.innerHTML = ""; }
     };

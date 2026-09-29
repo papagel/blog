@@ -163,7 +163,11 @@ def page(lang, key, data, tokens, fonts, anim_js, anim_css, tags=""):
   (function () {{
     var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {opts};
     if (mode === "og") {{ opts.capture = true; var p = BiasAnim.mount(document.getElementById("og-player"), "{key}", opts); window.__bp = p; }}
-    else {{ opts.capture = mode === "video"; BiasAnim.mount(document.getElementById("player"), "{key}", opts); }}
+    else {{
+      opts.capture = mode === "video";
+      if (opts.capture) {{ var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }}
+      BiasAnim.mount(document.getElementById("player"), "{key}", opts);
+    }}
   }})();
 </script>
 </body>
@@ -188,7 +192,7 @@ def og_tags(lang, key, root):
     return tags
 
 
-def build_all(root, here, datasets, tokens, fonts, anim_js, anim_css, recapture=False):
+def build_all(root, here, datasets, tokens, fonts, anim_js, anim_css, recapture=False, no_narration=False):
     """Write every watch page, record cards and videos when their content changed, then rewrite pages with og tags."""
     paths, fingerprints = {}, {}
     for key in SCENES:
@@ -203,6 +207,18 @@ def build_all(root, here, datasets, tokens, fonts, anim_js, anim_css, recapture=
             shown = html[html.index("<style>"):html.index("</style>")] + html[html.index('<div class="og">'):]
             fingerprints[f"{key}-{lang}"] = hashlib.md5(shown.encode()).hexdigest()
 
+    # narration clips (drafted with macOS voices until a TTS key is in .env)
+    if shutil.which("node") and not no_narration:
+        subprocess.run(["node", os.path.join(here, "narrate.mjs"), *SCENES.keys()], check=True)
+    recorder = hashlib.md5(open(os.path.join(here, "capture.mjs"), "rb").read()).hexdigest()
+    narration = {}
+    for (key, lang) in paths:
+        mf = os.path.join(here, "narration", key, lang, "manifest.json")
+        files = [os.path.join(os.path.dirname(mf), f) for f in json.load(open(mf))["files"]] if os.path.exists(mf) and not no_narration else []
+        narration[(key, lang)] = files
+        audio = b"".join(open(f, "rb").read() for f in files)
+        fingerprints[f"{key}-{lang}"] = hashlib.md5((fingerprints[f"{key}-{lang}"] + recorder).encode() + audio).hexdigest()
+
     manifest_path = os.path.join(here, ".captures.json")
     manifest = json.load(open(manifest_path)) if os.path.exists(manifest_path) else {}
     chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -216,7 +232,8 @@ def build_all(root, here, datasets, tokens, fonts, anim_js, anim_css, recapture=
         if stale and can:
             os.makedirs(os.path.dirname(mp4), exist_ok=True)
             jobs.append({"type": "png", "url": f"file://{path}?capture=og", "out": png, "width": 600, "height": 315})
-            jobs.append({"type": "mp4", "url": f"file://{path}?capture=video", "out": mp4, "width": 540, "height": 540, "fps": 30})
+            jobs.append({"type": "mp4", "url": f"file://{path}?capture=video", "out": mp4, "width": 540, "height": 540, "fps": 30,
+                         "sfx": os.path.join(here, "sfx"), "narration": narration[(key, lang)]})
             manifest[name] = fingerprints[name]
         elif stale:
             print(f"cannot record {name}: needs Google Chrome, ffmpeg and node")

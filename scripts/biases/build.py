@@ -7,6 +7,7 @@ card to assets/og/ with rsvg-convert (brew install librsvg).
 Usage:  python3 scripts/biases/build.py
         python3 scripts/biases/build.py --fragment out.html   # also write a body-only English copy
         python3 scripts/biases/build.py --recapture           # re-record animation cards and videos
+        python3 scripts/biases/build.py --no-narration        # videos with sound effects only
 """
 import hashlib, json, math, os, re, shutil, subprocess, sys
 
@@ -274,4 +275,5 @@ for lang in built:
     raw = resolve(open(os.path.join(HERE, "page.src.html")).read(), lang)
     tokens[lang] = raw[raw.index(":root{"):raw.index("*{box-sizing")]
     fonts[lang] = re.search(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^>]*>', raw).group(0)
-watch.build_all(ROOT, HERE, built, tokens, fonts, ANIM_JS, ANIM_CSS, recapture="--recapture" in sys.argv)
+watch.build_all(ROOT, HERE, built, tokens, fonts, ANIM_JS, ANIM_CSS, recapture="--recapture" in sys.argv,
+                no_narration="--no-narration" in sys.argv)
