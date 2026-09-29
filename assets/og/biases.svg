@@ -20,7 +20,6 @@
     <text x="90" y="252" font-size="78" font-weight="700" letter-spacing="-2" fill="#f4f4f6">Cognitive Bias</text><text x="90" y="338" font-size="78" font-weight="700" letter-spacing="-2" fill="#f4f4f6">Explorer</text>
     <text x="90" y="392" font-size="28" fill="#9a9aa3">188 biases, why your brain uses them,</text><text x="90" y="432" font-size="28" fill="#9a9aa3">how to spot them, and ten experiments</text><text x="90" y="472" font-size="28" fill="#9a9aa3">that let you feel them work on you.</text>
     <line x1="90" y1="560" x2="1120" y2="560" stroke="#2a2a2e" stroke-width="1"/>
-    <text x="90" y="598" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com/biases</text>
-    <text x="1120" y="598" font-size="20" text-anchor="end" fill="#9a9aa3">Adapted from the Cognitive Bias Codex · CC BY-SA 4.0</text>
+    <text x="90" y="598" font-size="20" fill="#9a9aa3">Adapted from the Cognitive Bias Codex · CC BY-SA 4.0</text>
   </g>
 </svg>
