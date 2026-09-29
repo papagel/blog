@@ -424,88 +424,6 @@ footer cite{font-style:italic}
 }
 
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */
-.bp{--bp-ctl:54px}
-.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}
-.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}
-.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}
-.bp-text b{color:var(--q);font-weight:600}
-.bp-svg{display:block;width:100%;height:auto}
-.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}
-.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
-.bp-btn:hover{border-color:var(--ink)}
-.bp-btn[aria-pressed="true"]{color:var(--q);border-color:var(--q)}
-.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}
-.bp-dots{display:flex;gap:5px;flex:1;min-width:0}
-.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}
-.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}
-.bp-brand{display:none}
-
-/* end screen */
-.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}
-.bp-card.on{pointer-events:auto}
-.bp-mark{width:40px;height:40px}
-.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}
-.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}
-.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}
-.bp-pill:hover{border-color:var(--ink)}
-.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-
-/* share menu */
-.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}
-.bp-menu[hidden]{display:none}
-.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}
-.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}
-.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}
-.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}
-.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}
-.bp-menu small.ok{color:var(--good)}
-
-/* scene */
-.bp .ax{stroke:var(--rule);stroke-width:2}
-.bp .tick{stroke:var(--rule);stroke-width:1.5}
-.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}
-.bp .axt{font:500 10px var(--mono);fill:var(--faint)}
-.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-.bp .tag line{stroke:var(--ink);stroke-width:1.4}
-.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
-.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
-.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
-.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}
-.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}
-.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}
-.bp .pin circle{fill:var(--pin)}
-.bp .pin line{stroke:var(--pin);stroke-width:2.2}
-.bp .pin text{font:600 11px var(--display);fill:var(--pin)}
-.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}
-.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}
-.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}
-.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}
-.bp .gap line{stroke:var(--bad);stroke-width:1.8}
-.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}
-.bp .band rect{fill:var(--good);opacity:.22}
-.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}
-.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}
-.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}
-
-/* capture layout: a square frame for video export, with a brand bar instead of controls */
-.bp.capture{--bp-ctl:46px;height:100%}
-.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}
-.bp.capture .bp-cap{padding:22px 24px 0}
-.bp.capture .bp-text{font-size:21px}
-.bp.capture .bp-no{font-size:12px}
-.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}
-.bp.capture .bp-ctl{display:none}
-.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}
-.bp.capture .bp-bm{width:22px;height:22px}
-.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}
-.bp.capture .bp-row{display:none}
 
 </style>
 </head>
@@ -610,7 +528,8 @@ footer cite{font-style:italic}
   <div class="panel-body" id="p-body"></div>
 </aside>
 
-<script>/* Cognitive Bias Explorer: animated explainers.
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* share-card frame: just the drawing, boxed */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n";
+/* Cognitive Bias Explorer: animated explainers.
    A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
    so looping, stepping between beats, and frame-by-frame video capture all agree.
    Brain and share icons: Lucide (lucide.dev), ISC licence. */
@@ -632,12 +551,12 @@ footer cite{font-style:italic}
   };
 
   const ICON = {
-    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg>',
-    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>',
-    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
-    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>',
-    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
-    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>'
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
   };
 
   /* ------------------------------------------------------------------ sound
@@ -673,7 +592,7 @@ footer cite{font-style:italic}
   if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
     document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
   const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
-  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}</g></svg>`;
+  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/><\/linearGradient><\/defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}<\/g><\/svg>`;
 
   const UI = {
     en: {
@@ -734,36 +653,36 @@ footer cite{font-style:italic}
   let uid = 0;
   function mount(host, key, opts = {}) {
     const scene = SCENES[key]; if (!scene || !host) return null;
-    if (scene.css && !document.getElementById("bp-css-" + key)) {
-      const st = document.createElement("style"); st.id = "bp-css-" + key; st.textContent = scene.css; document.head.appendChild(st);
-    }
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
     const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capture = !!opts.capture;
-    host.innerHTML = `
-      <div class="bp${capture ? " capture" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
         <div class="bp-stage">
-          <div class="bp-cap"><span class="bp-no"></span><p class="bp-text" aria-live="polite"></p></div>
-          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}</g></svg>
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
           <div class="bp-card" aria-hidden="true">
             ${brainMark("bp-mark", id + "g")}
-            <p class="bp-name">${T.name}</p>
-            <p class="bp-line">${T.ecline}</p>
-            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}</span></button><button class="bp-pill" type="button" data-a="again">${U.ecagain}</button></div>
-          </div>
-          <div class="bp-menu" role="menu" hidden></div>
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
           <div class="bp-ctl">
-            <button class="bp-btn" type="button" data-a="play"></button>
-            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i></i></button>`).join("")}</div>
-            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}</button>` : ""}
-            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}</button>
-            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}</button>
-          </div>
-          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}</span><span class="bp-site">${U.site}</span></div>
-        </div>
-      </div>`;
-    const root = host.firstElementChild;
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
     const $ = sel => root.querySelector(sel);
     const cache = {};
     const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
@@ -815,15 +734,15 @@ footer cite{font-style:italic}
     function closeMenu() { menu.hidden = true; }
     function openMenu() {
       const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
-      menu.innerHTML = `<div class="bp-mh">${U.smHead}</div>
-        <button type="button" role="menuitem" data-m="copy">${U.copy}<small></small></button>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook</a>
-        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4</small></a>` : ""}
-        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small></small></button>` : ""}
-        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}</a>` : ""}`;
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
       menu.hidden = false;
       const copy = async (btn, value) => {
         try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
@@ -831,7 +750,7 @@ footer cite{font-style:italic}
       };
       menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
       const em = menu.querySelector('[data-m="embed"]');
-      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen></iframe>`);
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
       menu.querySelector('[role="menuitem"]').focus();
     }
     async function share() {
@@ -859,7 +778,7 @@ footer cite{font-style:italic}
         document.dispatchEvent(new CustomEvent("bp-sound"));
       }
     });
-    const outside = e => { if (!menu.hidden && !root.contains(e.target)) closeMenu(); };
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
     const soundBtn = () => {
       const b = $('[data-a="sound"]'); if (!b) return;
       b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
@@ -886,7 +805,7 @@ footer cite{font-style:italic}
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
       starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
-      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); host.innerHTML = ""; }
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
     };
     if (capture) window.__bp = api;
     return api;
@@ -910,13 +829,13 @@ footer cite{font-style:italic}
         withAnchor: "With the anchor", withRange: "Your range first", gap: v => `€${v}k too high`, axis: "Price, € thousands",
         caps: [
           "You want to buy this house. What's it worth?",
-          "Its fair value is about <b>€600k</b>. You don't know that yet.",
-          "The seller speaks first: “I'm asking <b>€900k</b>.”",
-          "Your mind grabs €900k as its <b>starting point</b>.",
+          "Its fair value is about <b>€600k<\/b>. You don't know that yet.",
+          "The seller speaks first: “I'm asking <b>€900k<\/b>.”",
+          "Your mind grabs €900k as its <b>starting point<\/b>.",
           "It feels too high, so you adjust down…",
-          "…but you stop too early, <b>€180k too high</b>.",
-          "<b>The fix:</b> write down your own estimate first.",
-          "Start from your own range. You land near <b>fair value</b>."
+          "…but you stop too early, <b>€180k too high<\/b>.",
+          "<b>The fix:<\/b> write down your own estimate first.",
+          "Start from your own range. You land near <b>fair value<\/b>."
         ],
         say: [
           "You want to buy this house. What's it worth?",
@@ -938,13 +857,13 @@ footer cite{font-style:italic}
         withAnchor: "Με την άγκυρα", withRange: "Με το δικό σου εύρος", gap: v => `${v} χιλ. € παραπάνω`, axis: "Τιμή, χιλ. €",
         caps: [
           "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
-          "Η πραγματική του αξία είναι περίπου <b>600 χιλ. €</b>. Εσύ δεν το ξέρεις ακόμα.",
-          "Ο πωλητής μιλάει πρώτος: “Ζητάω <b>900 χιλ. €</b>”.",
-          "Το μυαλό σου κρατά τα 900 χιλ. ως <b>αφετηρία</b>.",
+          "Η πραγματική του αξία είναι περίπου <b>600 χιλ. €<\/b>. Εσύ δεν το ξέρεις ακόμα.",
+          "Ο πωλητής μιλάει πρώτος: “Ζητάω <b>900 χιλ. €<\/b>”.",
+          "Το μυαλό σου κρατά τα 900 χιλ. ως <b>αφετηρία<\/b>.",
           "Σου φαίνεται ακριβό, οπότε κατεβαίνεις…",
-          "…αλλά σταματάς νωρίς, <b>180 χιλ. € πιο ψηλά</b>.",
-          "<b>Η λύση:</b> γράψε πρώτα τη δική σου εκτίμηση.",
-          "Ξεκίνα από το δικό σου εύρος. Καταλήγεις κοντά στην <b>πραγματική αξία</b>."
+          "…αλλά σταματάς νωρίς, <b>180 χιλ. € πιο ψηλά<\/b>.",
+          "<b>Η λύση:<\/b> γράψε πρώτα τη δική σου εκτίμηση.",
+          "Ξεκίνα από το δικό σου εύρος. Καταλήγεις κοντά στην <b>πραγματική αξία<\/b>."
         ],
         say: [
           "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
@@ -961,23 +880,23 @@ footer cite{font-style:italic}
     },
     svg(T) {
       let axis = `<line class="ax" x1="30" y1="200" x2="370" y2="200"/>`;
-      for (let v = 300; v <= 1000; v += 100) axis += `<line class="tick" x1="${X(v)}" y1="196" x2="${X(v)}" y2="204"/><text class="tl" x="${X(v)}" y="217">${v}</text>`;
-      axis += `<text class="axt" x="30" y="270">${T.axis}</text>`;
+      for (let v = 300; v <= 1000; v += 100) axis += `<line class="tick" x1="${X(v)}" y1="196" x2="${X(v)}" y2="204"/><text class="tl" x="${X(v)}" y="217">${v}<\/text>`;
+      axis += `<text class="axt" x="30" y="270">${T.axis}<\/text>`;
       return `${axis}
         <g data-k="house"><path class="house" d="M34 70 L66 42 L98 70 M42 64 V100 H90 V64 M60 100 V82 H72 V100"/>
-          <g class="tag" data-k="tag"><line x1="98" y1="66" x2="114" y2="58"/><rect x="112" y="44" width="30" height="26" rx="6"/><text x="127" y="63">?</text></g></g>
-        <g class="pad" data-k="pad"><rect x="30" y="112" width="92" height="40" rx="7"/><text class="h" x="76" y="126">${T.padh}</text><text class="v" x="76" y="144">${T.padv}</text></g>
-        <g class="bubble" data-k="bubble"><rect x="226" y="12" width="160" height="34" rx="10"/><path d="M314 45 L321 56 L328 45"/><text x="306" y="34">${T.bubble}</text></g>
-        <g data-k="anchor"><g class="anchor"><circle cx="0" cy="-26" r="5"/><path d="M0 -21 V0 M-10 -15 H10 M-14 -8 C-12 2 -5 4 0 4 C5 4 12 2 14 -8"/></g></g>
-        <text class="note" data-k="start" x="${AX}" y="236">${T.start}</text>
-        <g class="band" data-k="band"><rect x="${X(550)}" y="193" width="${X(650) - X(550)}" height="14" rx="3"/></g>
+          <g class="tag" data-k="tag"><line x1="98" y1="66" x2="114" y2="58"/><rect x="112" y="44" width="30" height="26" rx="6"/><text x="127" y="63">?<\/text><\/g><\/g>
+        <g class="pad" data-k="pad"><rect x="30" y="112" width="92" height="40" rx="7"/><text class="h" x="76" y="126">${T.padh}<\/text><text class="v" x="76" y="144">${T.padv}<\/text><\/g>
+        <g class="bubble" data-k="bubble"><rect x="226" y="12" width="160" height="34" rx="10"/><path d="M314 45 L321 56 L328 45"/><text x="306" y="34">${T.bubble}<\/text><\/g>
+        <g data-k="anchor"><g class="anchor"><circle cx="0" cy="-26" r="5"/><path d="M0 -21 V0 M-10 -15 H10 M-14 -8 C-12 2 -5 4 0 4 C5 4 12 2 14 -8"/><\/g><\/g>
+        <text class="note" data-k="start" x="${AX}" y="236">${T.start}<\/text>
+        <g class="band" data-k="band"><rect x="${X(550)}" y="193" width="${X(650) - X(550)}" height="14" rx="3"/><\/g>
         <path class="rope" data-k="rope" d=""/>
-        <g data-k="adj"><path class="arrow" data-k="adjp" d=""/><text class="note" x="${(AX + X(700)) / 2}" y="110">${T.adj}</text></g>
-        <g data-k="pull"><path class="arrow" data-k="pullp" d=""/><text class="note" data-k="pullt" y="164">${T.pull}</text></g>
-        <g class="ghost" data-k="ghost" transform="translate(${X(TRUTH)} 0)"><line y1="168" y2="200"/><circle r="8" cy="160"/><text x="-13" y="158">${T.truth}</text><text class="sub" data-k="hidden" x="-13" y="170">${T.hidden}</text></g>
-        <g class="pin p1" data-k="pin"><line y1="168" y2="200"/><circle r="8" cy="160"/><text data-k="guess"></text></g>
-        <g class="pin p2" data-k="pin2"><line y1="168" y2="200"/><circle r="8" cy="160"/><text text-anchor="end" x="-13" y="164">${T.withRange}</text></g>
-        <g class="gap" data-k="gap"><line x1="${X(TRUTH)}" x2="${X(SHORT)}" y1="244" y2="244"/><line x1="${X(TRUTH)}" x2="${X(TRUTH)}" y1="238" y2="250"/><line x1="${X(SHORT)}" x2="${X(SHORT)}" y1="238" y2="250"/><text x="${(X(TRUTH) + X(SHORT)) / 2}" y="262">${T.gap(SHORT - TRUTH)}</text></g>`;
+        <g data-k="adj"><path class="arrow" data-k="adjp" d=""/><text class="note" x="${(AX + X(700)) / 2}" y="110">${T.adj}<\/text><\/g>
+        <g data-k="pull"><path class="arrow" data-k="pullp" d=""/><text class="note" data-k="pullt" y="164">${T.pull}<\/text><\/g>
+        <g class="ghost" data-k="ghost" transform="translate(${X(TRUTH)} 0)"><line y1="168" y2="200"/><circle r="8" cy="160"/><text x="-13" y="158">${T.truth}<\/text><text class="sub" data-k="hidden" x="-13" y="170">${T.hidden}<\/text><\/g>
+        <g class="pin p1" data-k="pin"><line y1="168" y2="200"/><circle r="8" cy="160"/><text data-k="guess"><\/text><\/g>
+        <g class="pin p2" data-k="pin2"><line y1="168" y2="200"/><circle r="8" cy="160"/><text text-anchor="end" x="-13" y="164">${T.withRange}<\/text><\/g>
+        <g class="gap" data-k="gap"><line x1="${X(TRUTH)}" x2="${X(SHORT)}" y1="244" y2="244"/><line x1="${X(TRUTH)}" x2="${X(TRUTH)}" y1="238" y2="250"/><line x1="${X(SHORT)}" x2="${X(SHORT)}" y1="238" y2="250"/><text x="${(X(TRUTH) + X(SHORT)) / 2}" y="262">${T.gap(SHORT - TRUTH)}<\/text><\/g>`;
     },
     S0: { house: 0, tagSwing: 0, ghost: 0, hidden: 1, bubble: 0, anchorY: 60, anchorOp: 0, start: 0,
       pin: 0, pinX: 900, pinFade: 1, rope: 0, adj: 0, pull: 0, gap: 0, pad: 0, band: 0, pin2: 0, pin2X: 600, final: 0 },
@@ -1020,6 +939,522 @@ footer cite{font-style:italic}
       { steps: [{ to: { pull: 1 }, ms: 300 }, { to: { pinX: SHORT, adj: 0 }, ms: 800, ease: "back", sfx: "spring" }, { to: { ghost: 1, hidden: 0 }, ms: 400 }, { to: { gap: 1 }, ms: 400, sfx: "tick" }] },
       { steps: [{ to: { pull: 0, gap: 0, pinFade: .4, start: 0, ghost: 0 }, ms: 500 }, { to: { pad: 1 }, ms: 500, sfx: "scribble" }, { wait: 300 }, { to: { band: 1 }, ms: 500, sfx: "tick" }] },
       { steps: [{ to: { final: 1, pin2X: 600 } }, { to: { pin2: 1 }, ms: 400, sfx: "pop" }, { to: { pin2X: OWN }, ms: 700 }, { to: { rope: 0, anchorOp: .3, bubble: .35 }, ms: 600, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Availability heuristic: a week of plane-crash headlines fills your memory, everyday car crashes
+   barely register, so flying feels riskier than driving, though per mile it's the other way round.
+   Scene for anim.js. */
+(function () {
+  const KEY = "availability-heuristic", P = `.bp[data-scene="${KEY}"]`;
+  const MCX = 105;                                   // centre line of the memory bubble
+  const CH = 30, slotY = i => 44 + i * 36;           // headline cards: height, top of each slot
+  const NW = 58, NH = 16;                            // small car-crash notes
+  const NSLOT = [MCX - NW / 2, 156];                 // where the one remembered note lands
+  const NOTES = [[222, 58], [314, 66], [226, 96], [310, 104], [220, 134], [316, 142], [228, 172], [306, 180]];
+  const LAND = 2;                                    // the note that makes it into memory
+  const IX = 225, BX = 246, BL = 134, BH = 16;       // chart: icon centre, bar start, max bar length, bar height
+  const TA = 48, TB = 144;                           // chart titles: feels, actual
+  const ROW = { fp: 70, fc: 98, ap: 166, ac: 194 };  // bar centre lines: feels plane/car, actual plane/car
+  const TX = 66, TY = 202, TW = 132, TH = 44;        // question tag next to your head
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const f1 = n => +n.toFixed(1);
+  const outC = p => 1 - Math.pow(1 - p, 3);
+
+  // side-view icons drawn around (0, 0), about 44 px wide
+  const plane = `<path d="M-20 -1 C-20 -5 -17 -6 -13 -6 H12 C17 -6 21 -3 23 0 C22 2 19 3 15 3 H-15 C-18 3 -20 2 -20 -1 Z"/>
+    <path d="M-16 -6 L-20 -15 H-15 L-9 -6"/><path d="M-4 0 L-10 10 H-5 L6 0"/><path class="w" d="M-9 -2 H9"/>`;
+  const car = `<path d="M-21 4 V-1 Q-21 -5 -17 -5 H-11 L-5 -12 H7 L13 -5 H18 Q22 -5 22 -1 V4 Z"/><path class="w" d="M1 -11 V-5"/>
+    <circle cx="-11" cy="5" r="4.5"/><circle cx="12" cy="5" r="4.5"/>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "tmi", viewBox: "0 0 400 272",
+    css: `
+      ${P} .av-ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .av-bub{fill:none;stroke:var(--muted);stroke-width:1.8}
+      ${P} .av-dot{fill:none;stroke:var(--muted);stroke-width:1.6}
+      ${P} .av-qm{font:700 44px var(--display);fill:var(--faint);text-anchor:middle}
+      ${P} .av-lb{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .av-lb.c{text-anchor:middle}
+      ${P} .av-ic path,${P} .av-ic circle{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .av-ic .w{fill:none;stroke-width:1.4;stroke-dasharray:1.5 3}
+      ${P} .av-card .bg{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+      ${P} .av-card .lit{fill:var(--q);fill-opacity:.16;stroke:var(--q);stroke-width:2.2}
+      ${P} .av-card .hl{font:700 11.5px var(--display);fill:var(--ink)}
+      ${P} .av-card .tx{stroke:var(--faint);stroke-width:1.6;stroke-linecap:round}
+      ${P} .av-card .gl path{fill:var(--bad);stroke:none}
+      ${P} .av-note rect{fill:var(--surface);stroke:var(--faint);stroke-width:1.2}
+      ${P} .av-note text{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .av-beam{fill:var(--q);fill-opacity:.09}
+      ${P} .av-spot{fill:var(--q);fill-opacity:.1;stroke:var(--q);stroke-width:1.6;stroke-opacity:.7}
+      ${P} .av-tag rect,${P} .av-tag path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .av-tag text{font:600 11px var(--display);fill:var(--q);text-anchor:middle}
+      ${P} .av-tag.ok rect,${P} .av-tag.ok path{stroke:var(--good)}
+      ${P} .av-tag.ok text{fill:var(--good)}
+      ${P} .av-ttl{font:600 11px var(--display);fill:var(--ink)}
+      ${P} .av-base{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .av-bar{stroke-width:1.8;stroke-linejoin:round}
+      ${P} .av-bar.f{fill:var(--q);fill-opacity:.45;stroke:var(--q)}
+      ${P} .av-bar.g{fill:var(--good);fill-opacity:.45;stroke:var(--good)}
+      ${P} .av-bar.a{fill:var(--ink);fill-opacity:.4;stroke:var(--ink)}
+      ${P} .av-hi{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:4 3}
+      ${P} .av-bdg circle{fill:var(--surface);stroke-width:2}
+      ${P} .av-bdg path{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .av-bdg .x circle,${P} .av-bdg .x path{stroke:var(--bad)}
+      ${P} .av-bdg .v circle,${P} .av-bdg .v path{stroke:var(--good)}
+    `,
+    text: {
+      en: {
+        name: "Availability heuristic", shareTitle: "Availability heuristic, explained in 30 seconds",
+        ecline: "Easy to recall isn't the same as likely. Check how often it really happens.",
+        memory: "Your memory", or: "or", head: "Plane crash", cw: 112, note: "car crash", daily: "every day",
+        q1: ["What comes to mind?"], q2: ["How often does it", "really happen?"],
+        feels: "How risky it feels", actual: "Actual risk per mile",
+        caps: [
+          "Flying or driving to the coast: which is <b>riskier<\/b>?",
+          "This week, a plane crash is <b>all over the news<\/b>.",
+          "Car crashes happen <b>every day<\/b> but rarely make headlines.",
+          "Your mind asks: which examples <b>come to mind fastest<\/b>?",
+          "So flying suddenly <b>feels<\/b> more dangerous.",
+          "But per mile travelled, <b>driving is far riskier<\/b>.",
+          "<b>The fix:<\/b> ask how often it happens, not how memorable it is.",
+          "Check the <b>real numbers<\/b>, then decide how to travel."
+        ],
+        say: [
+          "Flying or driving to the coast. Which is riskier?",
+          "This week, a plane crash is all over the news.",
+          "Car crashes happen every day, but they rarely make headlines.",
+          "Your mind asks: which examples come to mind fastest?",
+          "So flying suddenly feels more dangerous.",
+          "But per mile travelled, driving is far riskier.",
+          "The fix: ask how often it happens, not how memorable it is.",
+          "Check the real numbers, then decide how to travel.",
+          "The availability heuristic. Easy to recall isn't the same as likely. Check how often it really happens."
+        ]
+      },
+      el: {
+        name: "Ευρετική της διαθεσιμότητας", shareTitle: "Η ευρετική της διαθεσιμότητας σε 30 δευτερόλεπτα",
+        ecline: "Ό,τι θυμάσαι εύκολα δεν είναι απαραίτητα και πιθανό. Δες πόσο συχνά συμβαίνει στ’\u00a0αλήθεια.",
+        memory: "Η μνήμη σου", or: "ή", head: "Αεροπορική τραγωδία", cw: 158, note: "τροχαίο", daily: "κάθε μέρα",
+        q1: ["Τι θυμάμαι πρώτα;"], q2: ["Πόσο συχνά συμβαίνει", "στην πραγματικότητα;"],
+        feels: "Πόσο επικίνδυνο μοιάζει", actual: "Πραγματικός κίνδυνος ανά χλμ.",
+        caps: [
+          "Θα πας διακοπές με αεροπλάνο ή με αυτοκίνητο; Ποιο είναι πιο <b>επικίνδυνο<\/b>;",
+          "Αυτή την εβδομάδα, μια αεροπορική τραγωδία <b>μονοπωλεί τις ειδήσεις<\/b>.",
+          "Τροχαία συμβαίνουν <b>κάθε μέρα<\/b>, αλλά σπάνια γίνονται πρώτο θέμα.",
+          "Το μυαλό σου αναρωτιέται: ποια παραδείγματα <b>θυμάμαι πιο γρήγορα<\/b>;",
+          "Κι έτσι, το αεροπλάνο ξαφνικά <b>σου φαίνεται<\/b> πιο επικίνδυνο.",
+          "Όμως, ανά χιλιόμετρο, <b>το αυτοκίνητο είναι πολύ πιο επικίνδυνο<\/b>.",
+          "<b>Η λύση:<\/b> αναρωτήσου πόσο συχνά συμβαίνει, όχι πόσο εύκολα το θυμάσαι.",
+          "Δες τα <b>πραγματικά νούμερα<\/b> και μετά αποφάσισε πώς θα ταξιδέψεις."
+        ],
+        say: [
+          "Θα πας διακοπές με αεροπλάνο ή με αυτοκίνητο; Ποιο είναι πιο επικίνδυνο;",
+          "Αυτή την εβδομάδα, μια αεροπορική τραγωδία μονοπωλεί τις ειδήσεις.",
+          "Τροχαία συμβαίνουν κάθε μέρα, αλλά σπάνια γίνονται πρώτο θέμα.",
+          "Το μυαλό σου αναρωτιέται: ποια παραδείγματα θυμάμαι πιο γρήγορα;",
+          "Κι έτσι, το αεροπλάνο ξαφνικά σου φαίνεται πιο επικίνδυνο.",
+          "Όμως, ανά χιλιόμετρο, το αυτοκίνητο είναι πολύ πιο επικίνδυνο.",
+          "Η λύση: αναρωτήσου πόσο συχνά συμβαίνει, όχι πόσο εύκολα το θυμάσαι.",
+          "Δες τα πραγματικά νούμερα και μετά αποφάσισε πώς θα ταξιδέψεις.",
+          "Ευρετική της διαθεσιμότητας. Ό,τι θυμάσαι εύκολα δεν είναι απαραίτητα και πιθανό. Δες πόσο συχνά συμβαίνει στ’ αλήθεια."
+        ]
+      }
+    },
+    svg(T) {
+      const card = i => `<g class="av-card" data-k="card${i}"><rect class="bg" x="0" y="0" width="${T.cw}" height="${CH}" rx="4"/>
+        <rect class="lit" data-k="lit${i}" x="0" y="0" width="${T.cw}" height="${CH}" rx="4"/>
+        <g class="gl" transform="translate(13 14) scale(.36)">${plane.replace(/<path class="w"[^>]*\/>/, "")}<\/g>
+        <text class="hl" x="25" y="14">${T.head}<\/text>
+        <line class="tx" x1="25" y1="21" x2="${T.cw - 10}" y2="21"/><line class="tx" x1="25" y1="25.5" x2="${T.cw - 34}" y2="25.5"/><\/g>`;
+      const note = i => `<g class="av-note" data-k="n${i}"><rect x="0" y="0" width="${NW}" height="${NH}" rx="3"/><text x="${NW / 2}" y="11">${T.note}<\/text><\/g>`;
+      const tag = (key, cls, lines) => {
+        const y0 = TY + TH / 2 + 4 - (lines.length - 1) * 7;
+        return `<g class="av-tag ${cls}" data-k="${key}"><rect x="${TX}" y="${TY}" width="${TW}" height="${TH}" rx="9"/>
+          <path d="M${TX + 1} ${TY + 16} L${TX - 7} ${TY + 21} L${TX + 1} ${TY + 26}"/>
+          ${lines.map((l, j) => `<text x="${TX + TW / 2}" y="${y0 + j * 14}">${l}<\/text>`).join("")}<\/g>`;
+      };
+      const bar = (key, cls, y) => `<rect class="av-bar ${cls}" data-k="${key}" x="${BX}" y="${y - BH / 2}" height="${BH}" rx="2"/>`;
+      const icon = (shape, y) => `<g class="av-ic" transform="translate(${IX} ${y}) scale(.68)">${shape}<\/g>`;
+      return `
+        <g data-k="you">
+          <rect class="av-bub" x="14" y="14" width="182" height="166" rx="16"/>
+          <circle class="av-dot" cx="52" cy="193" r="4"/><circle class="av-dot" cx="44" cy="205" r="2.5"/>
+          <circle class="av-ln" cx="36" cy="224" r="11"/><path class="av-ln" d="M12 262 C12 248 22 241 36 241 C50 241 60 248 60 262"/>
+        <\/g>
+        <text class="av-qm" data-k="qm" x="${MCX}" y="112">?<\/text>
+        <text class="av-lb" data-k="mlab" x="28" y="33">${T.memory}<\/text>
+        <g data-k="pc">
+          <g class="av-ic" transform="translate(300 92) scale(1.7)">${plane}<\/g>
+          <text class="av-lb c" x="300" y="141">${T.or}<\/text>
+          <g class="av-ic" transform="translate(300 186) scale(1.7)">${car}<\/g>
+        <\/g>
+        <text class="av-lb c" data-k="daily" x="296" y="40">${T.daily}<\/text>
+        ${NOTES.map((_, i) => note(i)).join("")}
+        <path class="av-beam" data-k="cone" d=""/>
+        ${[0, 1, 2].map(card).join("")}
+        <rect class="av-spot" data-k="spot"/>
+        ${tag("tag1", "", T.q1)}${tag("tag2", "ok", T.q2)}
+        <g data-k="chartA">
+          <text class="av-ttl" data-k="ttlA" x="210" y="${TA}">${T.feels}<\/text>
+          ${icon(plane, ROW.fp)}${icon(car, ROW.fc)}
+          <line class="av-base" x1="${BX}" y1="${ROW.fp - 16}" x2="${BX}" y2="${ROW.fc + 16}"/>
+          ${bar("fpq", "f", ROW.fp)}${bar("fcq", "f", ROW.fc)}${bar("fpg", "g", ROW.fp)}${bar("fcg", "g", ROW.fc)}
+        <\/g>
+        <g data-k="chartB">
+          <text class="av-ttl" x="210" y="${TB}">${T.actual}<\/text>
+          ${icon(plane, ROW.ap)}${icon(car, ROW.ac)}
+          <line class="av-base" x1="${BX}" y1="${ROW.ap - 16}" x2="${BX}" y2="${ROW.ac + 16}"/>
+          ${bar("apb", "a", ROW.ap)}${bar("acb", "a", ROW.ac)}
+        <\/g>
+        <rect class="av-hi" data-k="hl" x="203" y="${TB - 16}" width="187" height="${ROW.ac + 18 - TB + 16}" rx="10"/>
+        <g class="av-bdg" data-k="bdg"><g class="x" data-k="bx"><circle r="8"/><path d="M-3 -3 L3 3 M3 -3 L-3 3"/><\/g><g class="v" data-k="bv"><circle r="8"/><path d="M-3.6 0.4 L-1 3 L3.8 -2.6"/><\/g><\/g>`;
+    },
+    S0: { you: 0, qm: 0, pc: 0, mlab: 0, news: 0, notes: 0, drift: 0, nout: 0, tag: 0, beam: 0, sweep: 0, settle: 0,
+      fa: 0, fp: 0, fc: 0, ab: 0, ap: 0, ac: 0, bdg: 0, mdim: 0, q2: 0, hl: 0, fix: 0, chk: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = clamp(v); };
+      const cx0 = MCX - T.cw / 2, dim = 1 - .55 * S.mdim;
+      op("you", S.you); op("qm", S.qm); op("mlab", S.mlab);
+      k("pc").setAttribute("transform", `translate(${f1((1 - S.pc) * 16)} 0)`); op("pc", S.pc);
+      // headline cards fly in from the right and stack in memory
+      const tilt = [-1.5, 1.2, -.8];
+      for (let i = 0; i < 3; i++) {
+        const p = clamp((S.news - i * .25) / .5), e = outC(p);
+        const x = cx0 + (1 - e) * 250, y = slotY(i) - (1 - e) * 8, r = tilt[i] + (1 - e) * 7;
+        k("card" + i).setAttribute("transform", `translate(${f1(x)} ${f1(y)}) rotate(${f1(r)} ${T.cw / 2} ${CH / 2})`);
+        op("card" + i, (p > 0 ? p * 4 : 0) * dim);
+        const sw = (168 - (slotY(i) + CH / 2)) / 128;
+        op("lit" + i, clamp((S.sweep - sw) / .08) * (1 - S.mdim));
+      }
+      // car-crash notes: many and faint; only one makes it into memory, the rest fade from view
+      op("daily", S.notes * (1 - S.nout));
+      NOTES.forEach(([nx, ny], i) => {
+        const a = clamp((S.notes - i * .08) / .44), e = outC(S.drift);
+        if (i === LAND) {
+          k("n" + i).setAttribute("transform", `translate(${f1(nx + (NSLOT[0] - nx) * e)} ${f1(ny + (NSLOT[1] - ny) * e + 34 * Math.sin(Math.PI * e))})`);
+          op("n" + i, (.65 * a + .25 * e) * dim);
+        } else {
+          k("n" + i).setAttribute("transform", `translate(${nx} ${ny})`);
+          op("n" + i, a * (.65 - .2 * S.drift) * (1 - S.nout));
+        }
+      });
+      // the search beam sweeps up through memory from your head, then rests on what it found
+      // (a round spot while it searches, a frame around the plane cards once it has found them)
+      const st = S.settle, hw = 22 + (T.cw / 2 + 7 - 22) * st, hh = 22 + (57 - 22) * st;
+      let sy = 168 - 128 * S.sweep, sx = MCX + 46 * Math.sin(S.sweep * Math.PI * 3);
+      sx += (MCX - sx) * st; sy += (95 - sy) * st;
+      const sp = k("spot");
+      sp.setAttribute("x", f1(sx - hw)); sp.setAttribute("y", f1(sy - hh)); sp.setAttribute("width", f1(2 * hw)); sp.setAttribute("height", f1(2 * hh));
+      sp.setAttribute("rx", f1(22 - 12 * st));
+      k("cone").setAttribute("d", `M40 213 L${f1(sx - hw)} ${f1(sy)} L${f1(sx + hw)} ${f1(sy)} Z`);
+      op("cone", S.beam); op("spot", S.beam);
+      // the question your mind asks, then the better one
+      op("tag1", S.tag * (1 - S.q2 * 2)); op("tag2", S.q2 * 2 - 1);   // one out, then the other in
+      // bars
+      op("chartA", S.fa); op("chartB", S.ab);
+      const w = (key, v) => k(key).setAttribute("width", f1(Math.max(0, v) * BL));
+      w("fpq", S.fp); w("fcq", S.fc); w("fpg", S.fp); w("fcg", S.fc); w("apb", S.ap); w("acb", S.ac);
+      op("fpq", 1 - S.fix); op("fcq", 1 - S.fix); op("fpg", S.fix); op("fcg", S.fix);
+      op("hl", S.hl);
+      // a badge after the "feels" title: wrong, then right
+      const tw = k("ttlA").getComputedTextLength ? k("ttlA").getComputedTextLength() : 110;
+      k("bdg").setAttribute("transform", `translate(${f1(210 + tw + 13)} ${TA - 4}) scale(${Math.max(0, S.bdg).toFixed(3)})`);
+      op("bdg", S.bdg * 2); op("bx", 1 - S.chk); op("bv", S.chk);
+    },
+    beats: [
+      { steps: [{ to: { you: 1, qm: 1 }, ms: 500, sfx: "pluck" }, { wait: 200 }, { to: { pc: 1 }, ms: 600 }] },
+      { steps: [{ to: { pc: 0, qm: 0 }, ms: 400 }, { to: { mlab: 1 }, ms: 300 },
+        { to: { news: .5 }, ms: 800, ease: "lin", sfx: "whoosh" }, { to: { news: 1 }, ms: 800, ease: "lin", sfx: "pop" }] },
+      { steps: [{ to: { notes: 1 }, ms: 1000, ease: "lin", sfx: "tick" }, { wait: 600 }, { to: { drift: 1 }, ms: 1700, ease: "lin" }] },
+      { steps: [{ to: { tag: 1 }, ms: 400 }, { to: { beam: 1 }, ms: 300 }, { to: { sweep: 1 }, ms: 1500, ease: "inOut", sfx: "whoosh" },
+        { to: { settle: 1, beam: .8 }, ms: 500, ease: "inOut" }] },
+      { steps: [{ to: { beam: 0, nout: 1 }, ms: 400 }, { to: { fa: 1 }, ms: 400 }, { to: { fp: .86, fc: .3 }, ms: 900, ease: "back", sfx: "spring" }] },
+      { steps: [{ to: { ab: 1 }, ms: 400 }, { to: { ac: .9, ap: .04 }, ms: 800, sfx: "thud", sfxAt: 250 }, { to: { bdg: 1 }, ms: 400, ease: "back" }] },
+      { steps: [{ to: { mdim: 1 }, ms: 500 }, { to: { q2: 1 }, ms: 800, sfx: "scribble", sfxAt: 300 }, { to: { hl: 1 }, ms: 500 }] },
+      { steps: [{ to: { fp: .04, fc: .9, fix: 1 }, ms: 1200, ease: "inOut" }, { to: { chk: 1 }, ms: 400, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Bandwagon effect: two new restaurants, a coin flip, and a queue that grows because it is a queue.
+   Everyone walks a fixed path at a fixed time, so every recording is identical. Scene for anim.js. */
+(function () {
+  const KEY = "bandwagon-effect", P = `.bp[data-scene="${KEY}"]`;
+  const G = 192, LANE = 246;                  // pavement (the crowd's feet) and the front lane where you walk
+  const SA = 150, SB = 270, SW = 106;         // left edges of restaurants A and B, and their width
+  const TOP = G - 132;                        // roof line of both restaurants
+  const DOOR = SA + 24;                       // A's door: people go in here
+  const START = 16;                           // everyone walks in from the left, fading in here
+  const NQ = 6, QX = j => SA - 8 - 20 * j;    // queue slots outside A, front to back
+  const QGAP = 360, QV = .13, QT = 2000;      // queue: start gap (ms), walking speed (px/ms), total time (ms)
+  const FGAP = 380, FT = 2000;                // the three followers: start gap and total time (ms), same speed
+  const SEAT = i => SA + 52 + 9.5 * i;        // diners' seats in A's window
+  const PAUSE = [116, 96];                    // where the couple stops to toss the coin
+  const COIN = [106, G - 68];
+  const YOU0 = 34, YOU1 = SB + SW / 2;        // you: first stop, then in front of B
+  const CA = SA + SW / 2, CB = SB + SW / 2;   // centres of the two restaurants (and their review cards)
+  const CY = 10, CH = 44;                              // top of the review cards
+  const cl = v => Math.max(0, Math.min(1, v));
+  const f1 = n => +n.toFixed(1);
+  const walkE = p => (3 * p - p * p * p) / 2;          // walk in briskly, slow to a stop
+  const bump = p => cl(Math.min(p, 1 - p) * 14);        // 1 while walking, 0 when standing
+
+  // a person standing on (0, 0): legs (redrawn every frame), body, head
+  const person = (key, cls) => `<g class="bw-p${cls ? " " + cls : ""}" data-k="${key}"><path data-k="${key}l"/>` +
+    `<path d="M-7 -12 V-23 Q-7 -29.5 0 -29.5 Q7 -29.5 7 -23 V-12 Z"/><circle cy="-36" r="5.5"/><\/g>`;
+  // a diner seen through the window, above the table
+  const diner = (i, x) => `<g class="bw-d" data-k="d${i}"><path d="M${x - 5.5} ${G - 30} C${x - 5.5} ${G - 37} ${x - 3} ${G - 40} ${x} ${G - 40} C${x + 3} ${G - 40} ${x + 5.5} ${G - 37} ${x + 5.5} ${G - 30}"/><circle cx="${x}" cy="${G - 47}" r="4.2"/><\/g>`;
+  // striped awning with a scalloped edge
+  const awning = (x0, x1, y) => {
+    const n = 9, w = f1((x1 - x0) / n), r = f1(w / 2);
+    let edge = "", stripes = "";
+    for (let i = 0; i < n; i++) edge += ` a${r} ${r} 0 0 1 ${-w} 0`;
+    for (let i = 0; i < n; i += 2) stripes += `<path class="bw-aws" d="M${f1(x0 + i * w)} ${y} h${w} v8 a${r} ${r} 0 0 1 ${-w} 0 Z"/>`;
+    const d = `M${x0} ${y} H${f1(x0 + n * w)} V${y + 8}${edge} Z`;
+    return `<path class="bw-aw" d="${d}"/>${stripes}<path class="bw-awl" d="${d}"/>`;
+  };
+  const store = (key, x, letter, diners) => `
+    <g data-k="${key}">
+      <rect class="bw-fa" x="${x}" y="${TOP}" width="${SW}" height="${G - TOP}"/>
+      <line class="bw-cor" x1="${x - 3}" y1="${TOP}" x2="${x + SW + 3}" y2="${TOP}"/>
+      <rect class="bw-sg" x="${x + 37}" y="${TOP + 6}" width="32" height="24" rx="5"/>
+      <text class="bw-sl" data-k="${key}t" x="${x + 53}" y="${TOP + 24}">${letter}<\/text>
+      ${awning(x - 4, x + SW + 4, TOP + 38)}
+      <rect class="bw-dr" x="${x + 12}" y="${G - 58}" width="24" height="58" rx="2"/>
+      <circle class="bw-kn" cx="${x + 31}" cy="${G - 28}" r="1.5"/>
+      <rect class="bw-wn" x="${x + 46}" y="${G - 66}" width="50" height="46" rx="2"/>
+      ${diners}
+      ${key === "stA" ? `<rect class="bw-hi" data-k="winHi" x="${x + 42}" y="${G - 70}" width="58" height="54" rx="5"/>` : ""}
+      <line class="bw-tb" x1="${x + 48}" y1="${G - 30}" x2="${x + 94}" y2="${G - 30}"/>
+    <\/g>`;
+  // "copy the one ahead": an arc from each head to the head in front
+  const arrow = j => {
+    const xa = QX(j) + 2, xb = QX(j - 1) - 2, mx = (xa + xb) / 2, y = G - 47, cy = G - 60;
+    const dx = xb - mx, dy = y - cy, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+    const bx = xb - 5 * ux, by = y - 5 * uy;
+    return `<path class="bw-ar" data-k="ar${j}" pathLength="1" d="M${xa} ${y} Q${mx} ${cy} ${xb} ${y}"/>` +
+      `<path class="bw-ah" data-k="ah${j}" d="M${f1(bx - 3.6 * uy)} ${f1(by + 3.6 * ux)} L${xb} ${y} L${f1(bx + 3.6 * uy)} ${f1(by - 3.6 * ux)}"/>`;
+  };
+  // a menu with its rating: dishes on the left, stars on the right
+  const card = (key, cx, T, rating, extra) => `<g class="bw-cd" data-k="${key}"><rect class="bx" x="${cx - 44}" y="${CY}" width="88" height="${CH}" rx="7"/>
+    <text class="h" x="${cx - 21}" y="${CY + 19}">${T.menu}<\/text><path class="dl" d="M${cx - 32} ${CY + 27} H${cx - 10} M${cx - 32} ${CY + 33.5} H${cx - 17}"/>
+    <line class="sep" x1="${cx + 1}" y1="${CY + 8}" x2="${cx + 1}" y2="${CY + CH - 8}"/>
+    <text class="r" x="${cx + 23}" y="${CY + 26.5}">★ ${rating}<\/text>${extra || ""}<\/g>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .bw-gr{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .bw-fa{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+      ${P} .bw-cor{stroke:var(--ink);stroke-width:2.6;stroke-linecap:round}
+      ${P} .bw-sg{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+      ${P} .bw-sl{font:700 16px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .bw-sl.g{fill:var(--good)}
+      ${P} .bw-aw{fill:var(--surface);stroke:none}
+      ${P} .bw-aws{fill:var(--muted);fill-opacity:.35;stroke:none}
+      ${P} .bw-awl{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+      ${P} .bw-dr{fill:var(--ground);stroke:var(--ink);stroke-width:2}
+      ${P} .bw-kn{fill:var(--ink)}
+      ${P} .bw-wn{fill:var(--ground);stroke:var(--ink);stroke-width:2}
+      ${P} .bw-hi{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:4 3.5;stroke-linecap:round}
+      ${P} .bw-tb{stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+      ${P} .bw-d path,${P} .bw-d circle{fill:var(--surface);stroke:var(--muted);stroke-width:1.6}
+      ${P} .bw-p path,${P} .bw-p circle{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .bw-p.you path,${P} .bw-p.you circle{stroke:var(--q)}
+      ${P} .bw-p.win path,${P} .bw-p.win circle{stroke:var(--good)}
+      ${P} .bw-coin circle{fill:var(--surface);stroke:var(--q);stroke-width:2.2}
+      ${P} .bw-coin text{font:700 13px var(--display);fill:var(--q);text-anchor:middle}
+      ${P} .bw-bub rect,${P} .bw-bub circle{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .bw-bub text{font:600 12.5px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .bw-ar{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-dasharray:1 1}
+      ${P} .bw-ah{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .bw-lb{font:500 10px var(--mono);fill:var(--q);text-anchor:middle}
+      ${P} .bw-lb.m{fill:var(--muted)}
+      ${P} .bw-lb.s{text-anchor:start}
+      ${P} .bw-lb.g{fill:var(--good)}
+      ${P} .bw-qm rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .bw-qm text{font:700 13px var(--display);fill:var(--q);text-anchor:middle}
+      ${P} .bw-cd .bx{fill:var(--surface);stroke:var(--muted);stroke-width:1.6}
+      ${P} .bw-cd .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.02em}
+      ${P} .bw-cd .dl{fill:none;stroke:var(--faint);stroke-width:2;stroke-linecap:round}
+      ${P} .bw-cd .sep{stroke:var(--rule);stroke-width:1.4}
+      ${P} .bw-cd .r{font:700 13px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .bw-cd .gx{fill:none;stroke:var(--good);stroke-width:2}
+      ${P} .bw-cd .gr{font:700 13px var(--display);fill:var(--good);text-anchor:middle}
+      ${P} .bw-ck circle{fill:var(--surface);stroke:var(--good);stroke-width:1.8}
+      ${P} .bw-ck path{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .bw-lens circle{fill:var(--q);fill-opacity:.08;stroke:var(--q);stroke-width:2.4}
+      ${P} .bw-lens line{stroke:var(--q);stroke-width:4.5;stroke-linecap:round}
+    `,
+    text: {
+      en: {
+        name: "Bandwagon effect", shareTitle: "Bandwagon effect, explained in 30 seconds",
+        ecline: "A crowd is a signal, not proof. Check for yourself.",
+        a: "A", b: "B", bubble: "Must be good!", follow: "following the crowd", empty: "empty", you: "you",
+        menu: "MENU", rA: "3.6", rB: "4.7",
+        caps: [
+          "Two new restaurants open side by side.",
+          "The first couple picks one <b>at random<\/b>.",
+          "The next people see diners in A, and <b>follow<\/b>.",
+          "A queue forms. It <b>must be good<\/b>… right?",
+          "Everyone is <b>copying everyone else<\/b>, not tasting the food.",
+          "B stays empty, though it might be <b>better<\/b>.",
+          "<b>The fix:<\/b> judge on your own evidence. Menu, reviews, a taste.",
+          "Choose for your own reasons, <b>not the queue<\/b>."
+        ],
+        say: [
+          "Two new restaurants open, side by side.",
+          "The first couple picks one at random.",
+          "The next people see diners in restaurant A, and follow them in.",
+          "A queue forms. It must be good... right?",
+          "Everyone is copying everyone else. Nobody in the queue has tasted the food.",
+          "Restaurant B stays empty, even though it might be better.",
+          "The fix: judge on your own evidence. The menu, the reviews, a taste.",
+          "Choose for your own reasons, not because of the queue.",
+          "The bandwagon effect. A crowd is a signal, not proof. Check for yourself."
+        ]
+      },
+      el: {
+        name: "Φαινόμενο της αγέλης", shareTitle: "Το φαινόμενο της αγέλης σε 30 δευτερόλεπτα",
+        ecline: "Ο πολύς κόσμος είναι ένδειξη, όχι απόδειξη. Δες το με τα μάτια σου.",
+        a: "Α", b: "Β", bubble: "Κάτι θα ’χει!", follow: "ακολουθούν την αγέλη", empty: "άδειο", you: "εσύ",
+        menu: "ΜΕΝΟΥ", rA: "3,6", rB: "4,7",
+        caps: [
+          "Δύο καινούργια εστιατόρια ανοίγουν δίπλα δίπλα.",
+          "Το πρώτο ζευγάρι διαλέγει ένα <b>στην τύχη<\/b>.",
+          "Οι επόμενοι βλέπουν κόσμο στο Α και <b>ακολουθούν<\/b>.",
+          "Μαζεύεται ουρά. <b>Κάτι θα ’χει<\/b>… έτσι;",
+          "Ο ένας <b>αντιγράφει τον άλλον<\/b> χωρίς να έχει δοκιμάσει το φαγητό.",
+          "Το Β μένει άδειο, αν και μπορεί να είναι <b>καλύτερο<\/b>.",
+          "<b>Η λύση:<\/b> κρίνε με δικά σου στοιχεία. Μενού, κριτικές, μια μπουκιά.",
+          "Διάλεξε με δικά σου κριτήρια, <b>όχι επειδή έχει ουρά<\/b>."
+        ],
+        say: [
+          "Δύο καινούργια εστιατόρια ανοίγουν δίπλα δίπλα.",
+          "Το πρώτο ζευγάρι διαλέγει ένα στην τύχη.",
+          "Οι επόμενοι βλέπουν κόσμο στο Άλφα και μπαίνουν κι αυτοί.",
+          "Μαζεύεται ουρά. Κάτι θα έχει... έτσι;",
+          "Ο ένας αντιγράφει τον άλλον. Κανείς στην ουρά δεν έχει δοκιμάσει το φαγητό.",
+          "Το Βήτα μένει άδειο, αν και μπορεί να είναι καλύτερο.",
+          "Η λύση: κρίνε με δικά σου στοιχεία. Το μενού, οι κριτικές, μια μπουκιά.",
+          "Διάλεξε με δικά σου κριτήρια, όχι επειδή έχει ουρά.",
+          "Φαινόμενο της αγέλης. Ο πολύς κόσμος είναι ένδειξη, όχι απόδειξη. Δες το με τα μάτια σου."
+        ]
+      }
+    },
+    svg(T) {
+      let diners = "";
+      for (let i = 0; i < 5; i++) diners += diner(i, SEAT(i));
+      let queue = "", arrows = "";
+      for (let j = 0; j < NQ; j++) queue += person("q" + j);
+      for (let j = 1; j < NQ; j++) arrows += arrow(j);
+      const qm = (QX(0) + QX(NQ - 1)) / 2;
+      return `
+        <line class="bw-gr" x1="12" y1="${G}" x2="388" y2="${G}"/>
+        ${store("stA", SA, T.a, diners)}
+        ${store("stB", SB, T.b, "")}
+        <text class="bw-sl g" data-k="stBg" x="${SB + 53}" y="${TOP + 24}">${T.b}<\/text>
+        ${person("c1")}${person("c0")}
+        ${person("f2")}${person("f1")}${person("f0")}
+        <g data-k="queue">${queue}<\/g>
+        <g class="bw-coin" data-k="coin"><g data-k="coinf"><circle r="12"/><text data-k="coinA" y="4.6">${T.a}<\/text><text data-k="coinB" y="4.6">${T.b}<\/text><\/g><\/g>
+        <g class="bw-bub" data-k="bub"><rect x="16" y="${G - 106}" width="120" height="28" rx="12"/><circle cx="48" cy="${G - 68}" r="3.8"/><circle cx="45" cy="${G - 57}" r="2.6"/><text x="76" y="${G - 87.5}">${T.bubble}<\/text><\/g>
+        <g data-k="arrs">${arrows}<\/g>
+        <text class="bw-lb" data-k="fl" x="${qm}" y="${G + 20}">${T.follow}<\/text>
+        <g class="bw-qm" data-k="qm"><rect x="-21" y="-12" width="42" height="24" rx="8"/><text y="4.6">★ ?<\/text><\/g>
+        <text class="bw-lb m" data-k="empty" x="${CB}" y="${G + 20}">${T.empty}<\/text>
+        ${card("cardA", CA, T, T.rA)}
+        ${card("cardB", CB, T, T.rB, `<g data-k="cardBg"><rect class="gx" x="${CB - 44}" y="${CY}" width="88" height="${CH}" rx="7"/><text class="gr" x="${CB + 23}" y="${CY + 26.5}">★ ${T.rB}<\/text><\/g>`)}
+        <g transform="translate(${SB + 87} ${TOP + 18})"><g class="bw-ck" data-k="ck"><circle r="7.5"/><path d="M-3.4 0.3 L-0.9 2.9 L3.6 -2.5"/><\/g><\/g>
+        <g class="bw-lens" data-k="lens"><circle r="20.5"/><line x1="14.8" y1="14.8" x2="19.8" y2="19.8"/><\/g>
+        <g data-k="you">${person("youQ", "you")}${person("youG", "win")}<\/g>
+        <g data-k="youL"><text class="bw-lb s" data-k="youLq" y="0">${T.you}<\/text><text class="bw-lb s g" data-k="youLg" y="0">${T.you}<\/text><\/g>`;
+    },
+    S0: { stA: 0, stB: 0, c: 0, coin: 0, flip: 0, cGo: 0, cIn: 0, fol: 0, que: 0, bub: 0, arr: 0, fl: 0, arrOff: 0,
+      hi: 0, qm: 0, sw: 0, empty: 0, dim: 0, you: 0, cards: 0, lens: 0, lensX: 0, walk: 0, win: 0 },
+    render(S, k) {
+      const op = (key, v) => { k(key).style.opacity = cl(v); };
+      const tr = (key, x, y, extra) => k(key).setAttribute("transform", `translate(${f1(x)} ${f1(y)})${extra || ""}`);
+      const sc = v => f1(Math.max(.001, v) * 100) / 100;
+      // place a person: position, opacity, and legs that swing with the distance walked while moving
+      const put = (key, x, y, o, m, dist) => {
+        const s = 3.6 * Math.sin(dist * .15) * m;
+        tr(key, x, y);
+        k(key + "l").setAttribute("d", `M-3 -12 L${f1(-3.5 + s)} 0 M3 -12 L${f1(3.5 - s)} 0`);
+        op(key, o);
+      };
+      // the two restaurants
+      tr("stA", 0, (1 - S.stA) * 10); op("stA", S.stA);
+      tr("stB", 0, (1 - S.stB) * 10); op("stB", S.stB);
+      op("stBt", 1 - S.win); op("stBg", S.win);
+      op("winHi", S.hi);
+      // the couple: walk in, stop for the coin, walk to A's door, go in
+      const cx = i => { const s0 = START + (i ? 0 : 20), x = s0 + (PAUSE[i] - s0) * walkE(S.c); return x + (DOOR - 20 * i - x) * walkE(S.cGo); };
+      const x0 = cx(0), x1 = cx(1) + 20 * cl(S.cIn / .6), mc = Math.max(bump(S.c), bump(S.cGo));
+      put("c0", x0, G, cl(S.c * 6) * (1 - cl(S.cIn * 2.5)), mc, x0 - START);
+      put("c1", x1, G, cl(S.c * 6) * (1 - cl((S.cIn - .6) / .3)), Math.max(mc, S.cIn > 0 && S.cIn < .6 ? 1 : 0), x1 - START);
+      const dinerOp = [cl((S.cIn - .3) / .25), cl((S.cIn - .88) / .12)];
+      // the coin: pops up over the couple, flips, lands on A, fades as they walk
+      const fp = cl(S.flip / 6), turn = Math.abs(Math.cos(S.flip * Math.PI));
+      tr("coin", COIN[0], COIN[1] - Math.sin(Math.PI * fp) * 16);
+      k("coinf").setAttribute("transform", `scale(${sc(turn * S.coin)} ${sc(S.coin)})`);
+      const faceA = Math.round(S.flip) % 2 === 0;
+      op("coinA", faceA ? 1 : 0); op("coinB", faceA ? 0 : 1);
+      op("coin", S.coin * 3 * (1 - S.cGo));
+      // three followers: walk in one after another and go into A
+      for (let j = 0; j < 3; j++) {
+        const p = cl((S.fol * FT - FGAP * j) / ((DOOR - START) / QV)), x = START + (DOOR - START) * p;
+        put("f" + j, x, G, cl(p * 8) * (1 - cl((p - .93) / .07)), bump(p), x - START);
+        dinerOp.push(cl((p - .93) / .07));
+      }
+      dinerOp.forEach((v, i) => op("d" + i, v * (1 - .45 * S.dim)));
+      // the queue: each walks in and stops behind the one ahead
+      for (let j = 0; j < NQ; j++) {
+        const D = QX(j) - START, p = cl((S.que * QT - QGAP * j) / (D / QV)), x = START + D * walkE(p);
+        put("q" + j, x, G, cl(p * 8), bump(p), x - START);
+      }
+      op("queue", 1 - .6 * S.dim);
+      // "must be good" thought bubble over the newest in line
+      k("bub").setAttribute("transform", `translate(45 ${G - 54}) scale(${sc(.6 + .4 * S.bub)}) translate(-45 ${54 - G})`);
+      op("bub", S.bub * 1.5);
+      // each one copies the one ahead
+      for (let j = 1; j < NQ; j++) {
+        const p = cl((S.arr - (j - 1) * .16) / .2);
+        k("ar" + j).style.strokeDashoffset = 1 - p;
+        op("ar" + j, p > 0 ? 1 : 0); op("ah" + j, (p - .8) / .2);
+      }
+      op("arrs", 1 - S.arrOff); op("fl", S.fl * (1 - S.arrOff));
+      // B: unknown quality, empty
+      tr("qm", CB, TOP - 20, ` rotate(${f1(S.sw)}) scale(${sc(.6 + .4 * S.qm)})`);
+      op("qm", S.qm * 1.5); op("empty", S.empty);
+      // the fix: look at the evidence for both
+      tr("cardA", 0, (1 - S.cards) * 6); op("cardA", S.cards * (1 - .5 * S.win));
+      tr("cardB", 0, (1 - S.cards) * 6); op("cardB", S.cards);
+      op("cardBg", S.win);
+      op("ck", S.win); k("ck").setAttribute("transform", `scale(${sc(S.win)})`);
+      tr("lens", CA - 21 + (CB - CA) * S.lensX, CY + CH / 2); op("lens", S.lens);
+      // you: step in, then walk past the queue to B
+      const yx0 = START + (YOU0 - START) * walkE(S.you), yx = yx0 + (YOU1 - yx0) * walkE(S.walk), ym = Math.max(bump(S.you), bump(S.walk));
+      put("youQ", yx, LANE, 1 - S.win, ym, yx - START);
+      put("youG", yx, LANE, S.win, ym, yx - START);
+      op("you", S.you * 4);
+      tr("youL", yx + 10, LANE - 32); op("youL", S.you);
+      op("youLq", 1 - S.win); op("youLg", S.win);
+    },
+    beats: [
+      { steps: [{ to: { stA: 1 }, ms: 600, sfx: "pluck" }, { to: { stB: 1 }, ms: 600 }] },
+      { steps: [{ to: { c: 1 }, ms: 950, ease: "lin" }, { to: { coin: 1 }, ms: 300, ease: "back", sfx: "pop" },
+        { to: { flip: 6 }, ms: 1000, ease: "inOut" }, { wait: 300 }, { to: { cGo: 1 }, ms: 750, ease: "lin" }], hold: 2000 },
+      { steps: [{ to: { cIn: 1 }, ms: 650, ease: "lin" }, { to: { hi: 1 }, ms: 250 }, { to: { fol: 1 }, ms: FT, ease: "lin", sfx: "whoosh" }], hold: 2000 },
+      { steps: [{ to: { hi: 0 }, ms: 300 }, { to: { que: 1 }, ms: QT, ease: "lin" }, { to: { bub: 1 }, ms: 450, ease: "back", sfx: "pop" }], hold: 2200 },
+      { steps: [{ to: { bub: 0 }, ms: 300 }, { to: { arr: 1 }, ms: 1300, ease: "lin", sfx: "tick" }, { to: { fl: 1 }, ms: 400 }] },
+      { steps: [{ to: { arrOff: 1 }, ms: 400 }, { to: { qm: 1 }, ms: 450, ease: "back", sfx: "tick" }, { to: { sw: 12 }, ms: 260 },
+        { to: { sw: -8 }, ms: 300, ease: "inOut" }, { to: { sw: 0 }, ms: 300, ease: "inOut" }, { to: { empty: 1 }, ms: 400 }] },
+      { steps: [{ to: { qm: 0, empty: 0, dim: 1 }, ms: 500 }, { to: { you: 1 }, ms: 500, ease: "lin" },
+        { to: { cards: 1 }, ms: 500, sfx: "scribble" }, { to: { lens: 1 }, ms: 350 }, { to: { lensX: 1 }, ms: 950, ease: "inOut" }] },
+      { steps: [{ to: { lens: 0 }, ms: 300 }, { to: { walk: 1 }, ms: 1900, ease: "lin" }, { to: { win: 1 }, ms: 500, sfx: "chime" }], hold: 4200 }
     ]
   };
 })();
@@ -1080,14 +1515,14 @@ footer cite{font-style:italic}
         fits: "Fits", nofit: "Doesn't fit", pro: "3 for", con: "3 against",
         meter: ["How sure you feel"], gap: ["too sure"],
         caps: [
-          "You've decided your new coworker is <b>lazy</b>.",
-          "All week, evidence comes in, <b>both ways</b>.",
-          "You notice the pieces that <b>fit</b> your view…",
-          "…and barely register the ones that <b>don't</b>.",
-          "Every fit feels like proof. You grow <b>more and more sure</b>.",
-          "But the evidence was split: <b>3 for, 3 against</b>.",
-          "<b>The fix:</b> look for what would prove you wrong.",
-          "Weigh both piles. Your certainty <b>matches the evidence</b>."
+          "You've decided your new coworker is <b>lazy<\/b>.",
+          "All week, evidence comes in, <b>both ways<\/b>.",
+          "You notice the pieces that <b>fit<\/b> your view…",
+          "…and barely register the ones that <b>don't<\/b>.",
+          "Every fit feels like proof. You grow <b>more and more sure<\/b>.",
+          "But the evidence was split: <b>3 for, 3 against<\/b>.",
+          "<b>The fix:<\/b> look for what would prove you wrong.",
+          "Weigh both piles. Your certainty <b>matches the evidence<\/b>."
         ],
         say: [
           "You've decided your new coworker is lazy.",
@@ -1110,14 +1545,14 @@ footer cite{font-style:italic}
         fits: "Ταιριάζει", nofit: "Δεν ταιριάζει", pro: "3 υπέρ", con: "3 κατά",
         meter: ["Η σιγουριά σου"], gap: ["υπερβολική", "σιγουριά"],
         caps: [
-          "Έχεις καταλήξει ότι ο νέος συνάδελφος είναι <b>τεμπέλης</b>.",
-          "Όλη την εβδομάδα βλέπεις στοιχεία <b>υπέρ και κατά</b>.",
-          "Προσέχεις ό,τι <b>ταιριάζει</b> με αυτό που πιστεύεις…",
-          "…και ό,τι <b>δεν ταιριάζει</b> περνάει σχεδόν απαρατήρητο.",
-          "Ό,τι ταιριάζει μοιάζει με απόδειξη. Η σιγουριά σου <b>όλο και μεγαλώνει</b>.",
-          "Όμως τα στοιχεία ήταν μοιρασμένα: <b>3 υπέρ, 3 κατά</b>.",
-          "<b>Η λύση:</b> ψάξε ό,τι θα μπορούσε να σε διαψεύσει.",
-          "Ζύγισε και τις δύο πλευρές. Τώρα η σιγουριά σου <b>συμβαδίζει με τα στοιχεία</b>."
+          "Έχεις καταλήξει ότι ο νέος συνάδελφος είναι <b>τεμπέλης<\/b>.",
+          "Όλη την εβδομάδα βλέπεις στοιχεία <b>υπέρ και κατά<\/b>.",
+          "Προσέχεις ό,τι <b>ταιριάζει<\/b> με αυτό που πιστεύεις…",
+          "…και ό,τι <b>δεν ταιριάζει<\/b> περνάει σχεδόν απαρατήρητο.",
+          "Ό,τι ταιριάζει μοιάζει με απόδειξη. Η σιγουριά σου <b>όλο και μεγαλώνει<\/b>.",
+          "Όμως τα στοιχεία ήταν μοιρασμένα: <b>3 υπέρ, 3 κατά<\/b>.",
+          "<b>Η λύση:<\/b> ψάξε ό,τι θα μπορούσε να σε διαψεύσει.",
+          "Ζύγισε και τις δύο πλευρές. Τώρα η σιγουριά σου <b>συμβαδίζει με τα στοιχεία<\/b>."
         ],
         say: [
           "Έχεις καταλήξει ότι ο νέος συνάδελφος είναι τεμπέλης.",
@@ -1136,34 +1571,34 @@ footer cite{font-style:italic}
       const card = (row) => {
         const plus = PLUS.includes(row), [l1, l2] = T.cards[row];
         const c = CH / 2, sign = plus ? `M7 ${c} H13 M10 ${c - 3} V${c + 3}` : `M7 ${c} H13`;
-        const lines = l2 ? `<text x="21" y="12.3">${l1}</text><text x="21" y="24.3">${l2}</text>` : `<text x="21" y="${c + 4}">${l1}</text>`;
+        const lines = l2 ? `<text x="21" y="12.3">${l1}<\/text><text x="21" y="24.3">${l2}<\/text>` : `<text x="21" y="${c + 4}">${l1}<\/text>`;
         return `<g class="cb-card" data-k="c${row}">
           <rect class="bg" width="${CW}" height="${CH}" rx="5"/>
           ${plus ? `<rect class="lit" data-k="l${row}" width="${CW}" height="${CH}" rx="5"/>` : ""}
           <circle class="bd" cx="10" cy="${c}" r="5.5"/><path class="sg" d="${sign}"/>${lines}
-          ${plus ? `<path class="ck" data-k="k${row}" d="M${CW - 14} ${c} L${CW - 11} ${c + 3} L${CW - 6} ${c - 3}"/>` : ""}</g>`;
+          ${plus ? `<path class="ck" data-k="k${row}" d="M${CW - 14} ${c} L${CW - 11} ${c + 3} L${CW - 6} ${c - 3}"/>` : ""}<\/g>`;
       };
-      const mt = T.meter.map((s, i) => `<text class="cb-mt" x="${BX + BW / 2}" y="${(T.meter.length > 1 ? 44 : 56) + i * 12}">${s}</text>`).join("");
-      const ticks = [[1, "100%"], [.5, "50%"], [0, "0%"]].map(([p, s]) => `<line class="cb-bar" x1="${BX + BW}" x2="${BX + BW + 4}" y1="${my(p)}" y2="${my(p)}"/><text class="cb-tk" x="${BX + BW + 7}" y="${my(p) + 3}">${s}</text>`).join("");
+      const mt = T.meter.map((s, i) => `<text class="cb-mt" x="${BX + BW / 2}" y="${(T.meter.length > 1 ? 44 : 56) + i * 12}">${s}<\/text>`).join("");
+      const ticks = [[1, "100%"], [.5, "50%"], [0, "0%"]].map(([p, s]) => `<line class="cb-bar" x1="${BX + BW}" x2="${BX + BW + 4}" y1="${my(p)}" y2="${my(p)}"/><text class="cb-tk" x="${BX + BW + 7}" y="${my(p) + 3}">${s}<\/text>`).join("");
       return `
         <polygon class="cb-beam" data-k="beam" points=""/>
         <g data-k="person"><circle class="cb-line" cx="40" cy="28" r="11"/><path class="cb-line" d="M18 72 V66 C18 54 28 46 40 46 C52 46 62 54 62 66 V72"/>
           <g class="cb-tag" data-k="tag"><line x1="56" y1="52" x2="${TAGX + 6}" y2="40"/><rect x="${TAGX}" y="24" width="${T.tagW}" height="26" rx="6"/>
-            <circle cx="${TAGX + 7}" cy="37" r="2"/><text data-k="tagt" x="${TAGX + 6 + T.tagW / 2}" y="42"></text></g></g>
-        <text class="cb-lbl cb-fit" data-k="fitsL" x="${FIT_X}" y="${pileY(0) - 8}">${T.fits}</text>
-        <text class="cb-lbl cb-no" data-k="noL" x="${NO_X}" y="${pileY(0) - 8}">${T.nofit}</text>
+            <circle cx="${TAGX + 7}" cy="37" r="2"/><text data-k="tagt" x="${TAGX + 6 + T.tagW / 2}" y="42"><\/text><\/g><\/g>
+        <text class="cb-lbl cb-fit" data-k="fitsL" x="${FIT_X}" y="${pileY(0) - 8}">${T.fits}<\/text>
+        <text class="cb-lbl cb-no" data-k="noL" x="${NO_X}" y="${pileY(0) - 8}">${T.nofit}<\/text>
         ${[0, 1, 2, 3, 4, 5].map(card).join("")}
         <g class="cb-tally" data-k="tally">
-          <line x1="${FIT_X}" x2="${FIT_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${FIT_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.pro}</text>
-          <line x1="${NO_X}" x2="${NO_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${NO_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.con}</text></g>
-        <g class="cb-mag" data-k="mag"><circle r="8.5"/><path d="M6.3 6.3 L13 13"/></g>
+          <line x1="${FIT_X}" x2="${FIT_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${FIT_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.pro}<\/text>
+          <line x1="${NO_X}" x2="${NO_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${NO_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.con}<\/text><\/g>
+        <g class="cb-mag" data-k="mag"><circle r="8.5"/><path d="M6.3 6.3 L13 13"/><\/g>
         <g data-k="meter">${mt}
           <rect class="cb-fill" data-k="fill" x="${BX}" width="${BW}" rx="2"/>
           <rect class="cb-fillok" data-k="fillok" x="${BX}" width="${BW}" rx="2"/>
           <rect class="cb-bar" x="${BX}" y="${TOP}" width="${BW}" height="${BOT - TOP}" rx="4"/>${ticks}
-          <text class="cb-val" data-k="val" x="${BX + BW / 2}"></text>
-          <g data-k="split"><line class="cb-halo" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/><line class="cb-split" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/></g></g>
-        <g class="cb-gap" data-k="gap"><path data-k="gapp" d=""/>${T.gap.map((s, i) => `<text data-k="gapt${i}" x="${GX - 7}">${s}</text>`).join("")}</g>`;
+          <text class="cb-val" data-k="val" x="${BX + BW / 2}"><\/text>
+          <g data-k="split"><line class="cb-halo" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/><line class="cb-split" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/><\/g><\/g>
+        <g class="cb-gap" data-k="gap"><path data-k="gapp" d=""/>${T.gap.map((s, i) => `<text data-k="gapt${i}" x="${GX - 7}">${s}<\/text>`).join("")}<\/g>`;
     },
     S0: { person: 0, swing: 0, meter: 0, m: 0, a0: 0, a1: 0, a2: 0, a3: 0, a4: 0, a5: 0, beam: -.4, beamOp: 0, lift: 0,
       fitsL: 0, sink: 0, noL: 0, ck: 0, tally: 0, split: 0, gap: 0, mag: 0, magP: 0, seen: -.35, calm: 0, q: 0, ok: 0 },
@@ -1239,12 +1674,12 @@ footer cite{font-style:italic}
   const clamp = v => Math.max(0, Math.min(1, v));
   const ease = t => 1 - Math.pow(1 - t, 3);
   const stag = (p, i) => ease(clamp((p - i * .12) / .64));      // staggered growth per group
-  const lines = (arr, x, y, dy) => arr.map((s, j) => `<tspan x="${x}" y="${y + j * dy}">${s}</tspan>`).join("");
+  const lines = (arr, x, y, dy) => arr.map((s, j) => `<tspan x="${x}" y="${y + j * dy}">${s}<\/tspan>`).join("");
 
   // a small test page; marks: circled mistakes in red
   const doc = (x, y, marks) => `<g class="doc" transform="translate(${x} ${y})"><rect width="26" height="34" rx="3"/>
       <line x1="5" y1="8" x2="21" y2="8"/><line x1="5" y1="14" x2="18" y2="14"/><line x1="5" y1="20" x2="21" y2="20"/><line x1="5" y1="26" x2="15" y2="26"/>
-      ${marks ? `<ellipse class="mk" cx="15" cy="14" rx="7.5" ry="3.8"/><ellipse class="mk" cx="11" cy="26" rx="7.5" ry="3.8"/>` : ""}</g>`;
+      ${marks ? `<ellipse class="mk" cx="15" cy="14" rx="7.5" ry="3.8"/><ellipse class="mk" cx="11" cy="26" rx="7.5" ry="3.8"/>` : ""}<\/g>`;
 
   window.BiasAnim.SCENES[KEY] = {
     q: "fast", viewBox: "0 0 400 272",
@@ -1290,14 +1725,14 @@ footer cite{font-style:italic}
         noSee: "sees no mistakes", see: "spots mistakes",
         fbT: "Feedback", fbS: "scored practice test", score: "6/20",
         caps: [
-          "People take a test, then guess how they <b>rank</b> against the others.",
-          "Here's where each group <b>actually</b> ranked.",
-          "And where they <b>thought</b> they ranked: all above average.",
-          "The lowest scorers overrate themselves <b>the most</b>.",
-          "Spotting mistakes takes the <b>same skill</b> as avoiding them.",
-          "Top scorers slightly <b>underrate</b> themselves. They think it was easy for everyone.",
-          "<b>The fix:</b> check yourself against outside feedback.",
-          "Compare the score with your guess. Adjust <b>toward reality</b>."
+          "People take a test, then guess how they <b>rank<\/b> against the others.",
+          "Here's where each group <b>actually<\/b> ranked.",
+          "And where they <b>thought<\/b> they ranked: all above average.",
+          "The lowest scorers overrate themselves <b>the most<\/b>.",
+          "Spotting mistakes takes the <b>same skill<\/b> as avoiding them.",
+          "Top scorers slightly <b>underrate<\/b> themselves. They think it was easy for everyone.",
+          "<b>The fix:<\/b> check yourself against outside feedback.",
+          "Compare the score with your guess. Adjust <b>toward reality<\/b>."
         ],
         say: [
           "People take a test, then guess how they rank against the others.",
@@ -1321,14 +1756,14 @@ footer cite{font-style:italic}
         noSee: "δεν βλέπει λάθη", see: "βλέπει τα λάθη",
         fbT: "Αξιολόγηση", fbS: "διαγώνισμα με βαθμό", score: "6/20",
         caps: [
-          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια <b>θέση</b> βγήκαν.",
-          "Να πού βγήκε <b>στην πραγματικότητα</b> κάθε ομάδα.",
-          "Και πού <b>νόμιζαν</b> ότι βγήκαν: όλοι πάνω από τον μέσο όρο.",
-          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους <b>πιο πολύ απ’ όλους</b>.",
-          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, <b>ούτε καν τα βλέπει</b>.",
-          "Οι πιο δυνατοί <b>υποτιμούν</b> λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
-          "<b>Η λύση:</b> μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
-          "Σύγκρινε τον βαθμό με την εκτίμησή σου. Φέρ’ την <b>πιο κοντά στην αλήθεια</b>."
+          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια <b>θέση<\/b> βγήκαν.",
+          "Να πού βγήκε <b>στην πραγματικότητα<\/b> κάθε ομάδα.",
+          "Και πού <b>νόμιζαν<\/b> ότι βγήκαν: όλοι πάνω από τον μέσο όρο.",
+          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους <b>πιο πολύ απ’ όλους<\/b>.",
+          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, <b>ούτε καν τα βλέπει<\/b>.",
+          "Οι πιο δυνατοί <b>υποτιμούν<\/b> λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
+          "<b>Η λύση:<\/b> μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
+          "Σύγκρινε τον βαθμό με την εκτίμησή σου. Φέρ’ την <b>πιο κοντά στην αλήθεια<\/b>."
         ],
         say: [
           "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια θέση βγήκαν.",
@@ -1346,20 +1781,20 @@ footer cite{font-style:italic}
     svg(T) {
       // axes, average line and group labels
       let ax = `<line class="ax" x1="${AX}" y1="${TOP - 4}" x2="${AX}" y2="${B}"/><line class="ax" x1="${AX}" y1="${B}" x2="${RX}" y2="${B}"/>`;
-      for (const p of [0, 50, 100]) ax += `<line class="tick" x1="${AX - 4}" y1="${Y(p)}" x2="${AX}" y2="${Y(p)}"/><text class="dk-yl" x="${AX - 8}" y="${Y(p) + 3.5}">${p}</text>`;
-      ax += `<text class="dk-yt" transform="translate(19 ${(Y(100) + Y(50)) / 2}) rotate(-90)">${T.yTitle}</text>`;
-      ax += `<line class="dk-avg" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text>`;
-      const avgHi = `<g data-k="avgHi"><line class="dk-avg hi" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt hi" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text></g>`;
-      T.groups.forEach((g, i) => { ax += `<text class="dk-gl">${lines(g, C(i), B + 15, 11)}</text>`; });
-      ax += `<text class="dk-xt" x="${(AX + RX) / 2}" y="${B + 45}">${T.xTitle}</text>`;
+      for (const p of [0, 50, 100]) ax += `<line class="tick" x1="${AX - 4}" y1="${Y(p)}" x2="${AX}" y2="${Y(p)}"/><text class="dk-yl" x="${AX - 8}" y="${Y(p) + 3.5}">${p}<\/text>`;
+      ax += `<text class="dk-yt" transform="translate(19 ${(Y(100) + Y(50)) / 2}) rotate(-90)">${T.yTitle}<\/text>`;
+      ax += `<line class="dk-avg" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}<\/text>`;
+      const avgHi = `<g data-k="avgHi"><line class="dk-avg hi" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt hi" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}<\/text><\/g>`;
+      T.groups.forEach((g, i) => { ax += `<text class="dk-gl">${lines(g, C(i), B + 15, 11)}<\/text>`; });
+      ax += `<text class="dk-xt" x="${(AX + RX) / 2}" y="${B + 45}">${T.xTitle}<\/text>`;
       // people waiting for their result
       let people = "";
       for (let i = 0; i < 4; i++) {
         for (const dx of [-15, 0, 15]) {
           const x = C(i) + dx;
-          people += `<g class="dk-man"><circle cx="${x}" cy="${B - 20}" r="4.2"/><path d="M${x - 6.5} ${B - 1} V${B - 7} a6.5 6 0 0 1 13 0 V${B - 1}"/></g>`;
+          people += `<g class="dk-man"><circle cx="${x}" cy="${B - 20}" r="4.2"/><path d="M${x - 6.5} ${B - 1} V${B - 7} a6.5 6 0 0 1 13 0 V${B - 1}"/><\/g>`;
         }
-        people += `<text class="dk-qm" data-k="qm${i}" x="${C(i)}" y="${B - 31}">?</text>`;
+        people += `<text class="dk-qm" data-k="qm${i}" x="${C(i)}" y="${B - 31}">?<\/text>`;
       }
       // bars
       let bars = "";
@@ -1368,23 +1803,23 @@ footer cite{font-style:italic}
       for (let i = 0; i < 4; i++) bars += `<rect class="dk-gs" data-k="g${i}" x="${GXl(i)}" width="${W}" rx="2"/>`;
       bars += `<rect class="dk-ok" data-k="ok0" x="${GXl(0)}" width="${W}" rx="2"/>`;
       // legend, top left of the plot, one row each so long Greek labels fit
-      const legend = `<g data-k="legA"><rect class="dk-act" x="${AX + 8}" y="10" width="10" height="10" rx="2"/><text class="dk-leg" x="${AX + 24}" y="19">${T.legA}</text></g>
-        <g data-k="legG"><rect class="dk-gs" x="${AX + 9}" y="25" width="8" height="8" rx="1.5"/><text class="dk-leg" x="${AX + 24}" y="33">${T.legG}</text></g>`;
+      const legend = `<g data-k="legA"><rect class="dk-act" x="${AX + 8}" y="10" width="10" height="10" rx="2"/><text class="dk-leg" x="${AX + 24}" y="19">${T.legA}<\/text><\/g>
+        <g data-k="legG"><rect class="dk-gs" x="${AX + 9}" y="25" width="8" height="8" rx="1.5"/><text class="dk-leg" x="${AX + 24}" y="33">${T.legG}<\/text><\/g>`;
       // gap brackets
-      const br = `<g data-k="br0"><path class="dk-guide" data-k="br0g"/><path class="dk-br" data-k="br0p"/></g>
-        <text class="dk-brt" data-k="br0t">${lines(T.tooSure, C(0), Y(GUESS[0]) - 8 - (T.tooSure.length - 1) * 11, 11)}</text>
-        <g data-k="br3"><path class="dk-guide" d="M${AXl(3) + W} ${Y(ACT[3])} H${C(3) + 13}"/><path class="dk-br" d="M${C(3) + 13} ${Y(ACT[3]) + 1} V${Y(GUESS[3]) - 1} M${C(3) + 9} ${Y(ACT[3]) + 1} H${C(3) + 17}"/></g>
-        <text class="dk-brt" data-k="br3t">${lines(T.modest, C(3) - 5, Y(ACT[3]) - 8 - (T.modest.length - 1) * 11, 11)}</text>`;
+      const br = `<g data-k="br0"><path class="dk-guide" data-k="br0g"/><path class="dk-br" data-k="br0p"/><\/g>
+        <text class="dk-brt" data-k="br0t">${lines(T.tooSure, C(0), Y(GUESS[0]) - 8 - (T.tooSure.length - 1) * 11, 11)}<\/text>
+        <g data-k="br3"><path class="dk-guide" d="M${AXl(3) + W} ${Y(ACT[3])} H${C(3) + 13}"/><path class="dk-br" d="M${C(3) + 13} ${Y(ACT[3]) + 1} V${Y(GUESS[3]) - 1} M${C(3) + 9} ${Y(ACT[3]) + 1} H${C(3) + 17}"/><\/g>
+        <text class="dk-brt" data-k="br3t">${lines(T.modest, C(3) - 5, Y(ACT[3]) - 8 - (T.modest.length - 1) * 11, 11)}<\/text>`;
       // step 5: the same test, seen by each group
       const d0x = C(0) - 13, d0y = 44, d3x = C(3) - 13, d3y = 22;
-      const docs = `<g data-k="doc0">${doc(d0x, d0y, false)}<path class="dk-tick" d="M${d0x + 30} ${d0y + 18} l4 4 l8 -9"/><text class="dk-note" x="${d0x + 48}" y="${d0y + 21}">${T.noSee}</text></g>
-        <g data-k="doc3">${doc(d3x, d3y, true)}<text class="dk-note" x="${d3x - 6}" y="${d3y + 20}" text-anchor="end">${T.see}</text></g>`;
+      const docs = `<g data-k="doc0">${doc(d0x, d0y, false)}<path class="dk-tick" d="M${d0x + 30} ${d0y + 18} l4 4 l8 -9"/><text class="dk-note" x="${d0x + 48}" y="${d0y + 21}">${T.noSee}<\/text><\/g>
+        <g data-k="doc3">${doc(d3x, d3y, true)}<text class="dk-note" x="${d3x - 6}" y="${d3y + 20}" text-anchor="end">${T.see}<\/text><\/g>`;
       // step 7: outside feedback card
       const card = `<g class="dk-card" data-k="fb"><rect class="c" x="0" y="0" width="${FBW}" height="48" rx="8"/>
-          ${doc(10, 7, true)}<text class="t" x="46" y="21">${T.fbT}</text><text class="s" x="46" y="35">${T.fbS}</text>
-          <text class="sc" x="${FBW - 10}" y="30">${T.score}</text></g>`;
+          ${doc(10, 7, true)}<text class="t" x="46" y="21">${T.fbT}<\/text><text class="s" x="46" y="35">${T.fbS}<\/text>
+          <text class="sc" x="${FBW - 10}" y="30">${T.score}<\/text><\/g>`;
       const fix = `<path class="dk-arrow" data-k="down" d=""/><path class="dk-check" data-k="check" d=""/>`;
-      return `<g data-k="axes">${ax}</g>${avgHi}<g data-k="people">${people}</g>${bars}${legend}${br}${docs}${card}${fix}`;
+      return `<g data-k="axes">${ax}<\/g>${avgHi}<g data-k="people">${people}<\/g>${bars}${legend}${br}${docs}${card}${fix}`;
     },
     S0: { axes: 0, people: 0, qm: 0, act: 0, legA: 0, gs: 0, legG: 0, avgHi: 0, br0: 0, br0t: 0,
       doc0: 0, doc3: 0, br3: 0, fb: 0, fbX: 16, g0: GUESS[0], old: 0, fix: 0, down: 0, check: 0 },
@@ -1429,6 +1864,653 @@ footer cite{font-style:italic}
       { steps: [{ to: { doc0: 0, doc3: 0 }, ms: 400 }, { to: { br3: 1 }, ms: 450, sfx: "tick" }], hold: 3000 },
       { steps: [{ to: { br3: 0, br0t: 0 }, ms: 400 }, { to: { fb: 1, fbX: 0 }, ms: 600, sfx: "scribble" }] },
       { steps: [{ to: { old: .7 } }, { to: { g0: FIXED, fix: 1, down: 1 }, ms: 1100, ease: "inOut" }, { to: { br0: 0 }, ms: 300 }, { to: { check: 1 }, ms: 300, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Framing effect: two identical packs of mince, one labelled "75% lean", the other "25% fat",
+   the same split inside both, and the label flipped the other way round. Scene for anim.js. */
+(function () {
+  const KEY = "framing-effect", P = `.bp[data-scene="${KEY}"]`;
+  const PX = { L: 104, R: 296 };                 // pack centres
+  const TW = 74, TT = 44, TB = 168;              // tray half-width, top, bottom
+  const SY = 46;                                 // sticker centre y
+  const BW = 120, BY = 106, BH = 24;             // split bar: width, top, height (pack-local x from -BW/2)
+  const BL = -BW / 2, BR = BW / 2, CUT = BL + BW * .75;   // bar ends and the lean/fat split
+  const LC = (BL + CUT) / 2, FC = (CUT + BR) / 2;          // centres of the lean and fat parts
+  const SHELF = 178, MY = 212, MW = 100, MX = -42;         // shelf top, meter row centre, meter width, meter left
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const rr = (x0, x1, y0, y1, l, r) => {         // rect with rounded corners on the left and/or right only
+    const a = l ? 4 : 0, b = r ? 4 : 0;
+    return `M${x0 + a} ${y0} H${x1 - b} Q${x1} ${y0} ${x1} ${y0 + b} V${y1 - b} Q${x1} ${y1} ${x1 - b} ${y1} H${x0 + a} Q${x0} ${y1} ${x0} ${y1 - a} V${y0 + a} Q${x0} ${y0} ${x0 + a} ${y0} Z`;
+  };
+  const LEAN = rr(BL, CUT, BY, BY + BH, 1, 0), FAT = rr(CUT, BR, BY, BY + BH, 0, 1);
+  // minced beef: short curly strands at mixed angles, filling the tray window
+  let MINCE = "";
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 11; c++) {
+    const x = -57 + c * 11.4 + (r % 2 ? 5 : 0) + ((r * 7 + c * 5) % 5) - 2, y = 73 + r * 10.6 + ((r * 3 + c * 7) % 4) - 1.5;
+    if (x > 56 || x < -58) continue;
+    const a = [-.6, .2, -.2, .9, .5, -1.1, 1.3][(r * 4 + c * 3) % 7], co = Math.cos(a), si = Math.sin(a);
+    const R = (u, v) => `${(u * co - v * si).toFixed(1)} ${(u * si + v * co).toFixed(1)}`;
+    const [sx, sy] = R(-4, 0).split(" ").map(Number);
+    MINCE += `M${(x + sx).toFixed(1)} ${(y + sy).toFixed(1)} q${R(2, -2.6)} ${R(4, 0)} t${R(4, 0)}`;
+  }
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "tmi", viewBox: "0 0 400 272",
+    css: `
+      ${P} .fe-shelf{fill:var(--surface);stroke:var(--rule);stroke-width:2;stroke-linejoin:round}
+      ${P} .fe-tray{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+      ${P} .fe-lip{fill:none;stroke:var(--muted);stroke-width:1.4}
+      ${P} .fe-mince{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-linecap:round}
+      ${P} .fe-st rect{fill:var(--surface);stroke-width:2}
+      ${P} .fe-st.blank rect{stroke:var(--muted)}
+      ${P} .fe-st.blank line{stroke:var(--faint);stroke-width:2;stroke-linecap:round}
+      ${P} .fe-st text{font:700 16px var(--display);text-anchor:middle}
+      ${P} .fe-st.g rect{stroke:var(--good)} ${P} .fe-st.g text{fill:var(--good)}
+      ${P} .fe-st.b rect{stroke:var(--bad)} ${P} .fe-st.b text{fill:var(--bad)}
+      ${P} .fe-tag rect{fill:var(--surface);stroke-width:1.6}
+      ${P} .fe-tag text{font:600 11.5px var(--display);text-anchor:middle}
+      ${P} .fe-tag.g rect{stroke:var(--good)} ${P} .fe-tag.g text{fill:var(--good)}
+      ${P} .fe-tag.b rect{stroke:var(--bad)} ${P} .fe-tag.b text{fill:var(--bad)}
+      ${P} .fe-base{fill:var(--surface)}
+      ${P} .fe-seg{fill:var(--muted);fill-opacity:.16;stroke:var(--muted);stroke-width:1.6;stroke-linejoin:round}
+      ${P} .fe-hi{stroke-width:2.2;stroke-linejoin:round}
+      ${P} .fe-hi.g{fill:var(--good);fill-opacity:.24;stroke:var(--good)}
+      ${P} .fe-hi.b{fill:var(--bad);fill-opacity:.24;stroke:var(--bad)}
+      ${P} .fe-pct{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .fe-part{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .fe-part.e{text-anchor:end}
+      ${P} .fe-part.g{fill:var(--good)} ${P} .fe-part.b{fill:var(--bad)}
+      ${P} .fe-arr{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .fe-arr.g{stroke:var(--good)} ${P} .fe-arr.b{stroke:var(--bad)}
+      ${P} .fe-eq line{stroke:var(--q);stroke-width:3;stroke-linecap:round}
+      ${P} .fe-eq.ok line{stroke:var(--good)}
+      ${P} .fe-note{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .fe-track{fill:none;stroke:var(--muted);stroke-width:1.6}
+      ${P} .fe-fill{fill:var(--q)}
+      ${P} .fe-fillok{fill:var(--good)}
+      ${P} .fe-face circle.o{fill:var(--surface);stroke-width:2}
+      ${P} .fe-face path{fill:none;stroke-width:2;stroke-linecap:round}
+      ${P} .fe-face .e{stroke:none}
+      ${P} .fe-face.ink circle.o,${P} .fe-face.ink path{stroke:var(--ink)} ${P} .fe-face.ink .e{fill:var(--ink)}
+      ${P} .fe-face.ok circle.o,${P} .fe-face.ok path{stroke:var(--good)} ${P} .fe-face.ok .e{fill:var(--good)}
+    `,
+    text: {
+      en: {
+        name: "Framing effect", shareTitle: "Framing effect, explained in 30 seconds",
+        ecline: "The same fact sounds different depending on how it's put. Flip it and see.",
+        lean: "75% lean", fat: "25% fat", flipL: "= 25% fat", flipR: "= 75% lean", tagW: 84,
+        pl: "lean", pf: "fat", same: ["same", "beef"], rate: "How good it seems",
+        caps: [
+          "Two packs of minced beef on the shelf.",
+          "One pack is labelled “<b>75% lean<\/b>”.",
+          "The other is labelled “<b>25% fat<\/b>”.",
+          "Which looks better? Most\u00a0people <b>prefer the “lean” one<\/b>.",
+          "But look inside: it's <b>the same beef<\/b>.",
+          "Each label pulls your eye to the <b>good<\/b> or the <b>bad part<\/b>.",
+          "<b>The fix:<\/b> flip the frame. Say it the other way round.",
+          "Same facts, both ways. Now you judge <b>the beef, not the label<\/b>."
+        ],
+        say: [
+          "Two packs of minced beef on the shelf.",
+          "One pack is labelled: seventy-five percent lean.",
+          "The other is labelled: twenty-five percent fat.",
+          "Which one looks better? Most people prefer the lean one.",
+          "But look inside. It's the same beef.",
+          "Each label pulls your eye to the good part, or the bad part.",
+          "The fix: flip the frame. Say it the other way round.",
+          "Same facts, both ways. Now you judge the beef, not the label.",
+          "The framing effect. The same fact sounds different depending on how it's put. Flip it and see."
+        ]
+      },
+      el: {
+        name: "Φαινόμενο πλαισίωσης", shareTitle: "Το φαινόμενο πλαισίωσης σε 30 δευτερόλεπτα",
+        ecline: "Το ίδιο γεγονός ακούγεται αλλιώς ανάλογα με το πώς θα το πεις. Γύρνα το ανάποδα και δες.",
+        lean: "75% άπαχο", fat: "25% λιπαρά", flipL: "= 25% λιπαρά", flipR: "= 75% άπαχο", tagW: 96,
+        pl: "άπαχο", pf: "λιπαρά", same: ["ίδιος", "κιμάς"], rate: "Πόσο καλός σου φαίνεται",
+        caps: [
+          "Δύο συσκευασίες κιμά στο ράφι του σούπερ μάρκετ.",
+          "Η μία ετικέτα γράφει «<b>75% άπαχο<\/b>».",
+          "Η άλλη ετικέτα γράφει «<b>25% λιπαρά<\/b>».",
+          "Ποιος κιμάς σου φαίνεται καλύτερος; Οι\u00a0περισσότεροι <b>προτιμούν τον «άπαχο»<\/b>.",
+          "Όμως κοίτα μέσα: είναι <b>ο ίδιος κιμάς<\/b>.",
+          "Κάθε ετικέτα τραβάει το βλέμμα σου στο <b>καλό<\/b> ή στο <b>κακό<\/b> κομμάτι.",
+          "<b>Η λύση:<\/b> γύρνα το ανάποδα. Πες το και με τον άλλο τρόπο.",
+          "Τα ίδια στοιχεία, και με τους δύο τρόπους. Τώρα κρίνεις <b>τον κιμά, όχι την ετικέτα<\/b>."
+        ],
+        say: [
+          "Δύο συσκευασίες κιμά στο ράφι του σούπερ μάρκετ.",
+          "Η μία ετικέτα γράφει: εβδομήντα πέντε τοις εκατό άπαχο.",
+          "Η άλλη ετικέτα γράφει: είκοσι πέντε τοις εκατό λιπαρά.",
+          "Ποιος κιμάς σου φαίνεται καλύτερος; Οι περισσότεροι προτιμούν τον άπαχο.",
+          "Όμως κοίτα μέσα. Είναι ο ίδιος κιμάς.",
+          "Κάθε ετικέτα τραβάει το βλέμμα σου στο καλό ή στο κακό κομμάτι.",
+          "Η λύση: γύρνα το ανάποδα. Πες το και με τον άλλο τρόπο.",
+          "Τα ίδια στοιχεία, και με τους δύο τρόπους. Τώρα κρίνεις τον κιμά, όχι την ετικέτα.",
+          "Φαινόμενο πλαισίωσης. Το ίδιο γεγονός ακούγεται αλλιώς ανάλογα με το πώς θα το πεις. Γύρνα το ανάποδα και δες."
+        ]
+      }
+    },
+    svg(T) {
+      const pack = s => {
+        const good = s === "L", tag = good ? T.flipL : T.flipR;
+        return `<g data-k="pack${s}"><g transform="translate(${PX[s]} 0)">
+          <rect class="fe-tray" x="${-TW}" y="${TT}" width="${2 * TW}" height="${TB - TT}" rx="12"/>
+          <rect class="fe-lip" x="${-TW + 7}" y="${TT + 7}" width="${2 * TW - 14}" height="${TB - TT - 14}" rx="7"/>
+          <path class="fe-mince" data-k="mince${s}" d="${MINCE}"/>
+          <g data-k="bar${s}" clip-path="url(#fe-clip-${s})">
+            <rect class="fe-base" x="${BL}" y="${BY}" width="${BW}" height="${BH}" rx="4"/>
+            <g data-k="lean${s}"><path class="fe-seg" d="${LEAN}"/><path class="fe-hi g" data-k="hl${s}" d="${LEAN}"/>
+              <text class="fe-pct" x="${LC}" y="${BY + 16}">75%<\/text><text class="fe-part" x="${LC}" y="${BY + BH + 14}">${T.pl}<\/text>
+              <text class="fe-part g" data-k="tl${s}" x="${LC}" y="${BY + BH + 14}">${T.pl}<\/text><\/g>
+            <g data-k="fat${s}"><path class="fe-seg" d="${FAT}"/><path class="fe-hi b" data-k="hf${s}" d="${FAT}"/>
+              <text class="fe-pct" x="${FC}" y="${BY + 16}">25%<\/text><text class="fe-part e" x="${BR}" y="${BY + BH + 14}">${T.pf}<\/text>
+              <text class="fe-part e b" data-k="tf${s}" x="${BR}" y="${BY + BH + 14}">${T.pf}<\/text><\/g>
+          <\/g>
+          <path class="fe-arr ${good ? "g" : "b"}" data-k="arr${s}" d=""/>
+          <g transform="rotate(${good ? -2 : 2} 0 ${SY})">
+            <g class="fe-st blank"><rect x="-56" y="${SY - 16}" width="112" height="32" rx="7"/><line x1="-30" y1="${SY - 3}" x2="30" y2="${SY - 3}"/><line x1="-18" y1="${SY + 5}" x2="18" y2="${SY + 5}"/><\/g>
+            <g class="fe-st ${good ? "g" : "b"}" data-k="st${s}"><rect x="-56" y="${SY - 16}" width="112" height="32" rx="7"/><text y="${SY + 6}">${good ? T.lean : T.fat}<\/text><\/g>
+          <\/g>
+          <g class="fe-tag ${good ? "b" : "g"}" data-k="tag${s}"><rect x="${-T.tagW / 2}" y="70" width="${T.tagW}" height="20" rx="5"/><text y="84">${tag}<\/text><\/g>
+        <\/g><\/g>`;
+      };
+      const meter = s => `<g transform="translate(${PX[s]} 0)">
+          <g class="fe-face ink" data-k="fi${s}"><circle class="o" r="10"/><circle class="e" cx="-3.4" cy="-2.6" r="1.4"/><circle class="e" cx="3.4" cy="-2.6" r="1.4"/><path data-k="mi${s}" d=""/><\/g>
+          <g class="fe-face ok" data-k="fo${s}"><circle class="o" r="10"/><circle class="e" cx="-3.4" cy="-2.6" r="1.4"/><circle class="e" cx="3.4" cy="-2.6" r="1.4"/><path data-k="mo${s}" d=""/><\/g>
+          <rect class="fe-fill" data-k="fill${s}" x="${MX}" y="${MY - 5}" height="10" rx="5"/>
+          <rect class="fe-fillok" data-k="fok${s}" x="${MX}" y="${MY - 5}" height="10" rx="5"/>
+          <rect class="fe-track" x="${MX}" y="${MY - 5}" width="${MW}" height="10" rx="5"/><\/g>`;
+      return `
+        <defs>${["L", "R"].map(s => `<clipPath id="fe-clip-${s}"><rect data-k="clip${s}" x="${BL - 3}" y="${BY - 3}" height="${BH + 24}" width="0"/><\/clipPath>`).join("")}<\/defs>
+        <g data-k="shelf"><rect class="fe-shelf" x="14" y="${SHELF}" width="372" height="9" rx="2"/><\/g>
+        ${pack("L")}${pack("R")}
+        <g class="fe-eq" data-k="eq"><line x1="191" x2="209" y1="${BY + 8}" y2="${BY + 8}"/><line x1="191" x2="209" y1="${BY + 16}" y2="${BY + 16}"/>
+          <text class="fe-note" x="200" y="${BY + 38}">${T.same[0]}<\/text><text class="fe-note" x="200" y="${BY + 50}">${T.same[1]}<\/text><\/g>
+        <g data-k="meters">${meter("L")}${meter("R")}<text class="fe-note" x="200" y="${MY + 28}">${T.rate}<\/text><\/g>
+        <g class="fe-eq ok" data-k="eq2"><line x1="191" x2="209" y1="${MY - 4}" y2="${MY - 4}"/><line x1="191" x2="209" y1="${MY + 4}" y2="${MY + 4}"/><\/g>`;
+    },
+    S0: { packs: 0, stL: 0, stR: 0, rate: 0, vL: .5, vR: .5, look: 0, eq: 0, ptL: 0, ptR: 0, arrOff: 0, flip: 0, both: 0, fair: 0, eq2: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      op("shelf", clamp(S.packs * 3));
+      const appear = { L: clamp(S.packs / .6), R: clamp((S.packs - .4) / .6) };
+      for (const s of ["L", "R"]) {
+        const a = appear[s], st = S["st" + s], pt = S["pt" + s];
+        k("pack" + s).setAttribute("transform", `translate(0 ${(-12 * (1 - a)).toFixed(2)})`);
+        op("pack" + s, a);
+        // sticker text pops in
+        const sc = .7 + .3 * st;
+        k("st" + s).setAttribute("transform", `translate(0 ${SY}) scale(${sc.toFixed(3)}) translate(0 ${-SY})`);
+        op("st" + s, clamp(st * 2));
+        // look inside: the mince gives way to the split
+        op("mince" + s, .85 - .77 * S.look);
+        k("clip" + s).setAttribute("width", (BW + 6) * S.look);
+        // each label lights up its own part; the flip lights up the other one
+        const good = s === "L";
+        const hl = good ? pt : S.both, hf = good ? S.both : pt;
+        op("hl" + s, hl); op("tl" + s, hl);
+        op("hf" + s, hf); op("tf" + s, hf);
+        const dim = 1 - .65 * pt * (1 - S.both);
+        op(good ? "fatL" : "leanR", dim);
+        // arrow from the sticker to the part it names
+        const x0 = good ? LC : 18, y0 = SY + 19, x1 = good ? LC : FC, y1 = BY - 4;
+        const p = clamp(pt * 1.4), xe = x0 + (x1 - x0) * p, ye = y0 + (y1 - y0) * p;
+        const ang = Math.atan2(y1 - y0, x1 - x0), h = 5.5;
+        const hx = a2 => (xe - h * Math.cos(ang + a2)).toFixed(2), hy = a2 => (ye - h * Math.sin(ang + a2)).toFixed(2);
+        k("arr" + s).setAttribute("d", `M${x0} ${y0} L${xe.toFixed(2)} ${ye.toFixed(2)}` + (p > .15 ? ` M${hx(.5)} ${hy(.5)} L${xe.toFixed(2)} ${ye.toFixed(2)} L${hx(-.5)} ${hy(-.5)}` : ""));
+        op("arr" + s, (pt > 0 ? 1 : 0) * (1 - S.arrOff));
+        // flipped wording drops down under the label
+        const f = S.flip;
+        k("tag" + s).setAttribute("transform", `translate(0 70) scale(1 ${Math.max(0, f).toFixed(3)}) translate(0 -70)`);
+        op("tag" + s, f > 0 ? clamp(f * 3) : 0);
+        // meters: fill and face follow the rating
+        const v = S["v" + s], w = MW * v;
+        for (const r of ["fill", "fok"]) k(r + s).setAttribute("width", w.toFixed(2));
+        op("fok" + s, S.fair);
+        const c = (v - .5) * 13, my = 3.2 - c * .25;
+        const mouth = `M-4.8 ${my.toFixed(2)} Q0 ${(my + c).toFixed(2)} 4.8 ${my.toFixed(2)}`;
+        k("mi" + s).setAttribute("d", mouth); k("mo" + s).setAttribute("d", mouth);
+        for (const f2 of ["fi", "fo"]) k(f2 + s).setAttribute("transform", `translate(${MX - 16} ${MY})`);
+        op("fi" + s, 1 - S.fair); op("fo" + s, S.fair);
+      }
+      op("meters", S.rate);
+      op("eq", S.eq);
+      op("eq2", S.eq2);
+    },
+    beats: [
+      { steps: [{ to: { packs: 1 }, ms: 900, ease: "inOut", sfx: "pluck" }] },
+      { steps: [{ to: { stL: 1 }, ms: 450, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { stR: 1 }, ms: 450, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { rate: 1 }, ms: 400 }, { wait: 200 }, { to: { vL: .88, vR: .3 }, ms: 1100, ease: "inOut", sfx: "tick" }] },
+      { steps: [{ to: { look: 1 }, ms: 1200, ease: "inOut", sfx: "whoosh" }, { to: { eq: 1 }, ms: 400 }] },
+      { steps: [{ to: { ptL: 1 }, ms: 650, sfx: "tick" }, { wait: 200 }, { to: { ptR: 1 }, ms: 650 }] },
+      { steps: [{ to: { arrOff: 1 }, ms: 300 }, { to: { flip: 1 }, ms: 650, ease: "back", sfx: "spring" }, { wait: 150 }, { to: { both: 1 }, ms: 600 }] },
+      { steps: [{ to: { vL: .64, vR: .64, fair: 1 }, ms: 1200, ease: "inOut", sfx: "chime" }, { to: { eq2: 1 }, ms: 400 }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Halo effect: two candidates with the same CV, one glowing first impression, and a score sheet it colours. Scene for anim.js. */
+(function () {
+  const KEY = "halo-effect", P = `.bp[data-scene="${KEY}"]`;
+  const AX = 86, BX = 314;                          // candidates A (left) and B (right)
+  const CA = 118, CB = 250, CW = 32, CT = 32, CH = 48; // CV cards: left edges, width, top, height
+  const LA = 154, LB = 246, U = 13;                 // score bars grow outwards from the centre column, 13 px per point
+  const ROW = [142, 185, 228], BH = 14;             // trait rows (centre y) and bar height
+  const HIGH = [9, 9, 9], FAIR = [6, 5, 6];         // A with the halo; what the facts support (B's scores)
+  const HY = 17, GB = 244;                          // halo centre y, bottom of its glow
+  const cl = v => Math.max(0, Math.min(1, v));
+
+  const person = x => `<circle class="he-ln" cx="${x}" cy="37" r="11"/>
+    <path class="he-ln" d="M${x - 22} 82 V76 C${x - 22} 64 ${x - 12} 56 ${x} 56 C${x + 12} 56 ${x + 22} 64 ${x + 22} 76 V82"/>
+    <circle class="he-eye" cx="${x - 4}" cy="35" r="1.4"/><circle class="he-eye" cx="${x + 4}" cy="35" r="1.4"/>`;
+  const cv = x => `<g class="he-cv"><rect x="${x}" y="${CT}" width="${CW}" height="${CH}" rx="4"/>
+    <line class="t" x1="${x + 7}" x2="${x + 21}" y1="${CT + 10}" y2="${CT + 10}"/>
+    ${[19, 26, 33, 40].map((d, i) => `<line x1="${x + 7}" x2="${x + [25, 22, 25, 17][i]}" y1="${CT + d}" y2="${CT + d}"/>`).join("")}<\/g>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .he-ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .he-eye{fill:var(--ink)}
+      ${P} .he-cv rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+      ${P} .he-cv line{stroke:var(--faint);stroke-width:1.6;stroke-linecap:round}
+      ${P} .he-cv line.t{stroke:var(--ink);stroke-width:2.2}
+      ${P} .he-eq{stroke:var(--q);stroke-width:2.4;stroke-linecap:round}
+      ${P} .he-same{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}
+      ${P} .he-halo{fill:none;stroke:var(--q);stroke-width:2.6}
+      ${P} .he-haloglow{fill:var(--q);fill-opacity:.22}
+      ${P} .he-glow{fill:var(--q);fill-opacity:.18}
+      ${P} .he-track{fill:none;stroke:var(--rule);stroke-width:1.4}
+      ${P} .he-barA{fill:var(--q)}
+      ${P} .he-barB{fill:var(--muted)}
+      ${P} .he-barG{fill:var(--good)}
+      ${P} .he-val{font:700 9.5px var(--mono);fill:var(--ground);text-anchor:middle}
+      ${P} .he-trait{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .he-ev{font:500 9px var(--mono);fill:var(--good);text-anchor:middle}
+      ${P} .he-cut{stroke:var(--ground);stroke-width:2.4}
+      ${P} .he-br{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .he-brt{font:600 10px var(--mono);fill:var(--bad);text-anchor:middle}
+      ${P} .he-cover rect{fill:var(--surface);stroke:var(--muted);stroke-width:1.8}
+      ${P} .he-cover text{font:700 22px var(--display);fill:var(--ink);text-anchor:middle}
+    `,
+    text: {
+      en: {
+        name: "Halo effect", shareTitle: "Halo effect, explained in 30 seconds",
+        ecline: "One good trait makes the others look good too. Judge each on its own evidence.",
+        same: ["same CV"], traits: ["Skills", "Honesty", "Reliability"],
+        evidence: ["work sample", "references", "track record"], halo: "halo",
+        caps: [
+          "Two candidates with <b>the same CV<\/b>.",
+          "One walks in confident, sharp and smiling.",
+          "That first impression <b>glows<\/b> over everything else.",
+          "Skills? <b>Strong.<\/b> Honest? <b>Surely.<\/b> Reliable? <b>Of course.<\/b>",
+          "The other gets average scores <b>on the same facts<\/b>.",
+          "That gap is the <b>halo<\/b>: one trait coloured the whole picture.",
+          "<b>The fix:<\/b> rate each quality on its own evidence.",
+          "Judged trait by trait, they come out <b>level<\/b>."
+        ],
+        say: [
+          "Two candidates with the same CV.",
+          "One walks in confident, sharp and smiling.",
+          "That first impression glows over everything else.",
+          "Skills? Strong. Honest? Surely. Reliable? Of course.",
+          "The other gets average scores, on the same facts.",
+          "That gap is the halo. One trait coloured the whole picture.",
+          "The fix: rate each quality on its own evidence.",
+          "Judged trait by trait, they come out level.",
+          "The halo effect. One good trait makes the others look good too. Judge each on its own evidence."
+        ]
+      },
+      el: {
+        name: "Φαινόμενο της άλω", shareTitle: "Το φαινόμενο της άλω σε 30 δευτερόλεπτα",
+        ecline: "Ένα καλό γνώρισμα κάνει και τα υπόλοιπα να φαίνονται καλά. Κρίνε το καθένα με τα δικά του στοιχεία.",
+        same: ["ίδιο", "βιογραφικό"], traits: ["Δεξιότητες", "Ειλικρίνεια", "Αξιοπιστία"],
+        evidence: ["δείγμα δουλειάς", "συστάσεις", "προϋπηρεσία"], halo: "φωτοστέφανο",
+        caps: [
+          "Δύο υποψήφιοι με <b>το ίδιο βιογραφικό<\/b>.",
+          "Ο ένας μπαίνει με αυτοπεποίθηση, στιλ και χαμόγελο.",
+          "Η λάμψη της πρώτης εντύπωσης <b>απλώνεται<\/b> σε όλα τα άλλα.",
+          "Δεξιότητες; <b>Άριστες.<\/b> Ειλικρινής; <b>Σίγουρα.<\/b> Αξιόπιστος; <b>Εννοείται.<\/b>",
+          "Ο άλλος παίρνει μέτριους βαθμούς <b>με τα ίδια στοιχεία<\/b>.",
+          "Η διαφορά είναι το <b>φωτοστέφανο<\/b>: ένα γνώρισμα χρωμάτισε όλη την εικόνα.",
+          "<b>Η λύση:<\/b> βαθμολόγησε κάθε προσόν χωριστά, με τα δικά του στοιχεία.",
+          "Αν κρίνεις ένα ένα τα προσόντα, οι δύο βγαίνουν <b>ισάξιοι<\/b>."
+        ],
+        say: [
+          "Δύο υποψήφιοι με το ίδιο βιογραφικό.",
+          "Ο ένας μπαίνει με αυτοπεποίθηση, στιλ και χαμόγελο.",
+          "Η λάμψη της πρώτης εντύπωσης απλώνεται σε όλα τα άλλα.",
+          "Δεξιότητες; Άριστες. Ειλικρινής; Σίγουρα. Αξιόπιστος; Εννοείται.",
+          "Ο άλλος παίρνει μέτριους βαθμούς, με τα ίδια στοιχεία.",
+          "Η διαφορά είναι το φωτοστέφανο. Ένα γνώρισμα χρωμάτισε όλη την εικόνα.",
+          "Η λύση: βαθμολόγησε κάθε προσόν χωριστά, με τα δικά του στοιχεία.",
+          "Αν κρίνεις ένα ένα τα προσόντα, οι δύο βγαίνουν ισάξιοι.",
+          "Φαινόμενο της άλω. Ένα καλό γνώρισμα κάνει και τα υπόλοιπα να φαίνονται καλά. Κρίνε το καθένα με τα δικά του στοιχεία."
+        ]
+      }
+    },
+    svg(T) {
+      const rows = ROW.map((y, i) => `
+        <g data-k="trk${i}"><rect class="he-track" x="${LA - 10 * U}" y="${y - BH / 2}" width="${10 * U}" height="${BH}" rx="3"/>
+          <rect class="he-track" x="${LB}" y="${y - BH / 2}" width="${10 * U}" height="${BH}" rx="3"/><\/g>
+        <rect class="he-barA" data-k="ba${i}" y="${y - BH / 2}" height="${BH}" rx="3"/>
+        <rect class="he-barB" data-k="bb${i}" y="${y - BH / 2}" height="${BH}" rx="3"/>
+        <rect class="he-barG" data-k="ga${i}" y="${y - BH / 2}" height="${BH}" rx="3"/>
+        <rect class="he-barG" data-k="gb${i}" y="${y - BH / 2}" height="${BH}" rx="3"/>
+        <line class="he-cut" data-k="cut${i}" x1="${LA - FAIR[i] * U}" x2="${LA - FAIR[i] * U}" y1="${y - BH / 2 - 1}" y2="${y + BH / 2 + 1}"/>
+        <text class="he-val" data-k="va${i}" y="${y + 3.4}"><\/text><text class="he-val" data-k="vb${i}" y="${y + 3.4}"><\/text>
+        <text class="he-trait" data-k="tr${i}" x="200">${T.traits[i]}<\/text>
+        <text class="he-ev" data-k="ev${i}" x="200" y="${y + 11}">${T.evidence[i]}<\/text>
+        <path class="he-br" data-k="br${i}" d="M${LA - HIGH[i] * U + 1} ${y - 10} V${y - 14} H${LA - FAIR[i] * U - 1} V${y - 10}"/>`).join("");
+      const brX = LA - (HIGH[0] + FAIR[0]) / 2 * U, eqY = T.same.length > 1 ? 40 : 45;
+      return `
+        <polygon class="he-glow" data-k="glow" points=""/>
+        <g data-k="pa"><g data-k="paIn">${person(AX)}
+          <path class="he-ln" data-k="mouthA" d=""/>
+          <path class="he-ln" data-k="collar" d="M${AX - 9} 57 L${AX} 68 L${AX + 9} 57"/><\/g><\/g>
+        <g data-k="pb">${person(BX)}<path class="he-ln" d="M${BX - 4} 41.5 H${BX + 4}"/><\/g>
+        <g data-k="halo"><ellipse class="he-haloglow" cx="${AX}" cy="${HY}" rx="21" ry="7"/><ellipse class="he-halo" cx="${AX}" cy="${HY}" rx="15" ry="4.5"/><\/g>
+        <g data-k="cva">${cv(CA)}<\/g><g data-k="cvb">${cv(CB)}<\/g>
+        <g data-k="eq"><line class="he-eq" x1="191" x2="209" y1="${eqY}" y2="${eqY}"/><line class="he-eq" x1="191" x2="209" y1="${eqY + 7}" y2="${eqY + 7}"/>
+          ${T.same.map((s, i) => `<text class="he-same" x="200" y="${eqY + 24 + i * 11}">${s}<\/text>`).join("")}<\/g>
+        <g class="he-cover" data-k="coverA"><rect x="${AX - 26}" y="23" width="52" height="60" rx="9"/><text x="${AX}" y="61">A<\/text><\/g>
+        <g class="he-cover" data-k="coverB"><rect x="${BX - 26}" y="23" width="52" height="60" rx="9"/><text x="${BX}" y="61">B<\/text><\/g>
+        ${rows}
+        <text class="he-brt" data-k="brt" x="${brX}" y="${ROW[0] - 19}">${T.halo}<\/text>`;
+    },
+    S0: { pa: 0, pb: 0, cva: 0, cvb: 0, eq: 0, sheet: 0, smile: 0, collar: 0, hop: 0, halo: 0, glow: 0, glowOp: 1,
+      a0: 0, a1: 0, a2: 0, b0: 0, b1: 0, b2: 0, cut: 0, br: 0, cover: 0, ev: 0, ok: 0 },
+    render(S, k) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      const tr = (key, x, y) => k(key).setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
+      // the candidates and their CVs
+      op("pa", S.pa); tr("pa", -8 * (1 - S.pa), 0); tr("paIn", 0, -5 * S.hop);
+      op("pb", S.pb); tr("pb", 8 * (1 - S.pb), 0);
+      const my = 41.5 + 4 * S.smile;
+      k("mouthA").setAttribute("d", `M${AX - 5} ${41.5 - S.smile} Q${AX} ${my} ${AX + 5} ${41.5 - S.smile}`);
+      op("collar", S.collar);
+      op("cva", S.cva); tr("cva", 0, 6 * (1 - S.cva));
+      op("cvb", S.cvb); tr("cvb", 0, 6 * (1 - S.cvb));
+      op("eq", S.eq);
+      // the halo pops in above A, then its glow washes down over A's scores
+      const hs = Math.max(0, S.halo);
+      k("halo").setAttribute("transform", `translate(${AX} ${HY}) scale(${hs.toFixed(3)}) translate(${-AX} ${-HY})`);
+      op("halo", cl(S.halo * 1.5) * S.glowOp);
+      const gy = HY + 3 + (GB - HY - 3) * S.glow, f = S.glow;
+      k("glow").setAttribute("points", `${AX - 15},${HY + 3} ${AX + 15},${HY + 3} ${AX + 15 + (LA + 4 - AX - 15) * f},${gy} ${AX - 15 - (AX - 15 - 14) * f},${gy}`);
+      op("glow", (S.glow > 0 ? 1 : 0) * S.glowOp);
+      // score sheet
+      for (let i = 0; i < 3; i++) {
+        const a = S["a" + i], b = S["b" + i];
+        op("trk" + i, S.sheet); op("tr" + i, S.sheet);
+        k("tr" + i).setAttribute("y", ROW[i] + 4 - 6 * S.ev);
+        op("ev" + i, cl(S.ev * 3 - i));
+        for (const [bar, g, v, len, x] of [["ba" + i, "ga" + i, "va" + i, a * U, LA - a * U], ["bb" + i, "gb" + i, "vb" + i, b * U, LB]]) {
+          for (const r of [bar, g]) { k(r).setAttribute("x", x); k(r).setAttribute("width", Math.max(0, len)); }
+          op(bar, len > .5 ? 1 : 0); op(g, len > .5 ? S.ok : 0);
+          const isA = bar === "ba" + i, val = k(v);
+          val.setAttribute("x", isA ? x + 8 : x + len - 8);
+          val.textContent = Math.min(isA ? HIGH[i] : FAIR[i], Math.round(len / U));   // no flash of "10" on the overshoot
+          op(v, cl((len / U - 1.2) * 2));
+        }
+        op("cut" + i, S.cut * (1 - S.ok));
+        op("br" + i, cl(S.br * 3 - i) * (1 - S.ok));
+      }
+      op("brt", S.br * (1 - S.ok));
+      // the fix: hide the impression, score on evidence
+      for (const c of ["coverA", "coverB"]) { op(c, S.cover); tr(c, 0, -10 * (1 - S.cover)); }
+    },
+    beats: [
+      { steps: [{ to: { pa: 1, pb: 1 }, ms: 600, sfx: "pluck" }, { to: { cva: 1 }, ms: 350 }, { to: { cvb: 1 }, ms: 350 },
+        { to: { eq: 1 }, ms: 400 }, { wait: 200 }, { to: { sheet: 1 }, ms: 500 }] },
+      { steps: [{ to: { smile: 1, collar: 1, hop: 1 }, ms: 450, ease: "inOut" }, { to: { hop: 0 }, ms: 350, ease: "bounce" },
+        { wait: 150 }, { to: { halo: 1 }, ms: 500, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { glow: 1 }, ms: 1300, ease: "inOut", sfx: "whoosh" }] },
+      { steps: [{ to: { a0: HIGH[0] }, ms: 550, ease: "back", sfx: "tick" }, { wait: 450 },
+        { to: { a1: HIGH[1] }, ms: 550, ease: "back" }, { wait: 450 }, { to: { a2: HIGH[2] }, ms: 550, ease: "back" }] },
+      { steps: [{ to: { b0: FAIR[0], b1: FAIR[1], b2: FAIR[2] }, ms: 900, ease: "out", sfx: "tick" }] },
+      { steps: [{ to: { cut: 1 }, ms: 400 }, { to: { br: 1 }, ms: 800, ease: "back", sfx: "spring" }] },
+      { steps: [{ to: { glowOp: 0 }, ms: 600 }, { to: { cover: 1 }, ms: 500, ease: "back" }, { wait: 200 },
+        { to: { ev: 1 }, ms: 1300, ease: "lin", sfx: "scribble" }] },
+      { steps: [{ to: { br: 0, cut: 0 }, ms: 300 }, { to: { a0: FAIR[0], a1: FAIR[1], a2: FAIR[2] }, ms: 1000, ease: "inOut", sfx: "whoosh" },
+        { to: { ok: 1 }, ms: 600, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Hindsight bias: a final that felt like a toss-up, a 3–1 win, and a memory that quietly
+   moves the needle. A note written before kick-off sets it straight. Scene for anim.js. */
+(function () {
+  const KEY = "hindsight-bias", P = `.bp[data-scene="${KEY}"]`;
+  const CX = 293, CY = 136, R = 66;                  // the dial inside the thought bubble
+  const NX = 99, NY = 160;                           // the note, written before kick-off
+  const f1 = n => +n.toFixed(1);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const pt = (v, r) => { const a = v / 100 * Math.PI; return [f1(CX - r * Math.cos(a)), f1(CY - r * Math.sin(a))]; };
+  const arc = (v0, v1, r) => { const [x0, y0] = pt(v0, r), [x1, y1] = pt(v1, r); return `M${x0} ${y0} A${r} ${r} 0 0 1 ${x1} ${y1}`; };
+  const radial = (v, r0, r1) => { const [x0, y0] = pt(v, r0), [x1, y1] = pt(v, r1); return `M${x0} ${y0} L${x1} ${y1}`; };
+  const CARD = [118, 146, 174];                      // reason cards, top edges
+  const UL = "M-70 31 q10 -3 20 0 t20 0 t8 -1";        // scribbled underline under the note's 50%
+  const MK0 = [NX - 50, NY + 18], MK1 = [CX, 52];     // the note's 50% flies to the top of the dial
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .hb-sb rect{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+      ${P} .hb-sb line{stroke:var(--rule);stroke-width:1.5}
+      ${P} .hb-hd{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.12em}
+      ${P} .hb-sc{font:700 26px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .hb-sc.w{fill:var(--q)}
+      ${P} .hb-dash{font:600 20px var(--display);fill:var(--faint);text-anchor:middle}
+      ${P} .hb-team{font:500 9.5px var(--display);fill:var(--muted);text-anchor:middle}
+      ${P} .hb-bub{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .hb-man circle,${P} .hb-man path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .hb-track{fill:none;stroke:var(--rule);stroke-width:7;stroke-linecap:round}
+      ${P} .hb-tk{stroke:var(--faint);stroke-width:1.4;stroke-linecap:round}
+      ${P} .hb-tk.b{stroke:var(--muted);stroke-width:2}
+      ${P} .hb-tl{font:500 9.5px var(--mono);fill:var(--faint);text-anchor:middle}
+      ${P} .hb-nd{stroke:var(--ink);stroke-width:2.6;stroke-linecap:round}
+      ${P} .hb-nd.ok{stroke:var(--good)}
+      ${P} .hb-ghost{stroke:var(--muted);stroke-width:2;stroke-dasharray:3 4;stroke-linecap:round}
+      ${P} .hb-hub{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+      ${P} .hb-ro{font:700 20px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .hb-ro.ok{fill:var(--good)}
+      ${P} .hb-lab{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .hb-wedge{fill:var(--bad);fill-opacity:.2;stroke:none}
+      ${P} .hb-br{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round}
+      ${P} .hb-brt{font:600 10px var(--mono);fill:var(--bad);text-anchor:middle}
+      ${P} .hb-why{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .hb-card rect{fill:var(--surface);stroke:var(--muted);stroke-width:1.4}
+      ${P} .hb-card text{font:600 11px var(--display);fill:var(--ink)}
+      ${P} .hb-card path{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .hb-note .pa{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+      ${P} .hb-note .tape{fill:var(--q);fill-opacity:.35}
+      ${P} .hb-note .h{font:500 9px var(--mono);fill:var(--muted)}
+      ${P} .hb-note .l{font:600 11.5px var(--display);fill:var(--ink)}
+      ${P} .hb-note .v{font:700 22px var(--display);fill:var(--q)}
+      ${P} .hb-note .v.ok{fill:var(--good)}
+      ${P} .hb-note .ul{fill:none;stroke:var(--q);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .hb-note .ul.ok{stroke:var(--good)}
+      ${P} .hb-mk rect{fill:var(--surface);stroke:var(--good);stroke-width:1.8}
+      ${P} .hb-mk path{fill:var(--good)}
+      ${P} .hb-mk text{font:700 11px var(--display);fill:var(--good);text-anchor:middle}
+      ${P} .hb-mkt{font:500 9.5px var(--mono);fill:var(--good);text-anchor:end}
+      ${P} .hb-check{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    `,
+    text: {
+      en: {
+        name: "Hindsight bias", shareTitle: "Hindsight bias, explained in 30 seconds",
+        ecline: "After the fact, everything looks obvious. Write your predictions down first.",
+        hd0: "FINAL · 21:00", hd1: "FINAL · FULL TIME", home: "Home", away: "Away",
+        why: "why it was obvious:", reasons: ["Striker in form", "Better defence", "Home crowd"],
+        dial: "chance of a home win", hind: "hindsight",
+        noteH: "20:45 · before kick-off", noteL: "Home win:", mark: "your note",
+        caps: [
+          "Before the final, you think it's a <b>toss-up<\/b>.",
+          "You'd give the home team about <b>50%<\/b>.",
+          "Full time: the home team wins <b>3–1<\/b>.",
+          "Now the win looks <b>obvious<\/b>. You list the reasons.",
+          "Your memory quietly edits your guess: “I was <b>80% sure<\/b>.”",
+          "In hindsight, the past looks <b>more predictable<\/b> than it was.",
+          "<b>The fix:<\/b> write predictions down, with how sure you are.",
+          "Check your note: <b>50%<\/b>. Learn from what you really thought."
+        ],
+        say: [
+          "Before the final, you think it's a toss-up.",
+          "You'd give the home team about fifty percent.",
+          "Full time. The home team wins, three one.",
+          "Now the win looks obvious. You list the reasons.",
+          "Your memory quietly edits your guess. I was eighty percent sure.",
+          "In hindsight, the past looks more predictable than it was.",
+          "The fix: write predictions down, with how sure you are.",
+          "Check your note: fifty percent. Learn from what you really thought.",
+          "Hindsight bias. After the fact, everything looks obvious. Write your predictions down first."
+        ]
+      },
+      el: {
+        name: "Μεροληψία εκ των υστέρων", shareTitle: "Η μεροληψία εκ των υστέρων σε 30 δευτερόλεπτα",
+        ecline: "Μόλις μάθεις το αποτέλεσμα, όλα μοιάζουν προφανή. Γράφε τις προβλέψεις σου από πριν.",
+        hd0: "ΤΕΛΙΚΟΣ · 21:00", hd1: "ΤΕΛΙΚΟΣ · ΛΗΞΗ", home: "Γηπεδούχοι", away: "Φιλοξενούμενοι",
+        why: "γιατί ήταν προφανές:", reasons: ["Επιθετικός σε φόρμα", "Καλύτερη άμυνα", "Ο κόσμος της έδρας"],
+        dial: "πιθανότητα νίκης γηπεδούχων", hind: "εκ των υστέρων",
+        noteH: "20:45 · πριν τη σέντρα", noteL: "Νίκη γηπεδούχων:", mark: "σημείωμα",
+        caps: [
+          "Πριν τον τελικό, θεωρείς το ματς <b>αμφίρροπο<\/b>.",
+          "Δίνεις στους γηπεδούχους περίπου <b>50%<\/b> να κερδίσουν.",
+          "Σφύριγμα λήξης: οι γηπεδούχοι κερδίζουν με <b>3–1<\/b>.",
+          "Τώρα η νίκη μοιάζει <b>προφανής<\/b>. Βρίσκεις αμέσως τους λόγους.",
+          "Η μνήμη σου ξαναγράφει στα κρυφά την πρόβλεψη: «Το έδινα <b>80%<\/b>».",
+          "Εκ των υστέρων, το παρελθόν μοιάζει <b>πιο προβλέψιμο<\/b> απ’ ό,τι ήταν.",
+          "<b>Η λύση:<\/b> γράφε τις προβλέψεις σου και πόσο πιθανές τις θεωρείς.",
+          "Κοίτα το σημείωμά σου: <b>50%<\/b>. Μάθε από αυτό που πραγματικά πίστευες."
+        ],
+        say: [
+          "Πριν τον τελικό, θεωρείς το ματς αμφίρροπο.",
+          "Δίνεις στους γηπεδούχους περίπου πενήντα τοις εκατό να κερδίσουν.",
+          "Σφύριγμα λήξης. Οι γηπεδούχοι κερδίζουν με τρία ένα.",
+          "Τώρα η νίκη μοιάζει προφανής. Βρίσκεις αμέσως τους λόγους.",
+          "Η μνήμη σου ξαναγράφει στα κρυφά την πρόβλεψη. Το έδινα ογδόντα τοις εκατό.",
+          "Εκ των υστέρων, το παρελθόν μοιάζει πιο προβλέψιμο απ’ ό,τι ήταν.",
+          "Η λύση: γράφε τις προβλέψεις σου και πόσο πιθανές τις θεωρείς.",
+          "Κοίτα το σημείωμά σου: πενήντα τοις εκατό. Μάθε από αυτό που πραγματικά πίστευες.",
+          "Μεροληψία εκ των υστέρων. Μόλις μάθεις το αποτέλεσμα, όλα μοιάζουν προφανή. Γράφε τις προβλέψεις σου από πριν."
+        ]
+      }
+    },
+    svg(T) {
+      // dial: track, ticks every 10, end labels
+      let ticks = "";
+      for (let v = 0; v <= 100; v += 10) {
+        const big = v % 50 === 0;
+        ticks += `<path class="hb-tk${big ? " b" : ""}" d="${radial(v, R - 8, R - (big ? 18 : 13))}"/>`;
+      }
+      const [l0x, l0y] = pt(0, R), [l1x] = pt(100, R);
+      const needle = cls => `<line class="hb-nd${cls}" x1="${CX}" y1="${CY}" x2="${CX - R + 14}" y2="${CY}"/>`;
+      const cards = T.reasons.map((r, i) => `<g class="hb-card" data-k="r${i}"><rect x="14" y="${CARD[i]}" width="170" height="22" rx="6"/>
+          <path d="M24 ${CARD[i] + 11.5} l3.5 3.5 l6.5 -7.5"/><text x="40" y="${CARD[i] + 15}">${r}<\/text><\/g>`).join("");
+      return `
+        <g data-k="sb" class="hb-sb"><rect x="12" y="12" width="176" height="72" rx="8"/><line x1="12" y1="35" x2="188" y2="35"/>
+          <text class="hb-hd" data-k="hd0" x="100" y="27">${T.hd0}<\/text><text class="hb-hd" data-k="hd1" x="100" y="27">${T.hd1}<\/text>
+          <text class="hb-sc" data-k="sh" x="56" y="64">0<\/text><text class="hb-sc w" data-k="shw" x="56" y="64">3<\/text>
+          <text class="hb-dash" x="100" y="61">–<\/text>
+          <text class="hb-sc" data-k="sa" x="144" y="64">0<\/text>
+          <text class="hb-team" x="56" y="77">${T.home}<\/text><text class="hb-team" x="144" y="77">${T.away}<\/text><\/g>
+        <g data-k="rs"><text class="hb-why" data-k="why" x="16" y="108">${T.why}<\/text>${cards}<\/g>
+        <g class="hb-note" data-k="note"><rect class="pa" x="-82" y="-36" width="164" height="72" rx="4"/>
+          <rect class="tape" x="-20" y="-42" width="40" height="12" rx="2" transform="rotate(4)"/>
+          <text class="h" x="-70" y="-16">${T.noteH}<\/text><text class="l" x="-70" y="2">${T.noteL}<\/text>
+          <g data-k="nv"><text class="v" x="-70" y="26">50%<\/text><path class="ul" data-k="ul" d="${UL}"/><\/g>
+          <g data-k="nvok"><text class="v ok" x="-70" y="26">50%<\/text><path class="ul ok" d="${UL}"/><\/g><\/g>
+        <g data-k="bub">
+          <rect class="hb-bub" x="200" y="12" width="186" height="184" rx="22"/>
+          <circle class="hb-bub" cx="350" cy="206" r="4"/><circle class="hb-bub" cx="357" cy="216" r="2.6"/>
+          <path class="hb-track" d="${arc(0, 100, R)}"/>${ticks}
+          <text class="hb-tl" x="${l0x}" y="${l0y + 17}">0%<\/text><text class="hb-tl" x="${l1x}" y="${l0y + 17}">100%<\/text>
+          <path class="hb-wedge" data-k="wedge"/>
+          <path class="hb-br" data-k="br"/><text class="hb-brt" data-k="brt" x="336" y="48">${T.hind}<\/text>
+          <path class="hb-ghost" data-k="ghost" d="${radial(50, 0, R - 14)}"/>
+          <g data-k="ndl">${needle("")}<g data-k="ndok">${needle(" ok")}<\/g><\/g>
+          <circle class="hb-hub" data-k="hub" cx="${CX}" cy="${CY}" r="5"/>
+          <text class="hb-ro" data-k="qm" x="${CX}" y="${CY + 34}">?<\/text>
+          <text class="hb-ro" data-k="ro" x="${CX}" y="${CY + 34}">50%<\/text><text class="hb-ro ok" data-k="rook" x="${CX}" y="${CY + 34}">50%<\/text>
+          <text class="hb-lab" data-k="lab" x="${CX}" y="${CY + 50}">${T.dial}<\/text>
+          <path class="hb-check" data-k="check" d=""/>
+        <\/g>
+        <g class="hb-mk" data-k="mk"><rect x="-21" y="-10" width="42" height="20" rx="10"/><path d="M-5 9.5 L0 15 L5 9.5 Z"/><text y="4">50%<\/text><\/g>
+        <text class="hb-mkt" data-k="mkt" x="${CX - 27}" y="${MK1[1] + 3.5}">${T.mark}<\/text>
+        <g class="hb-man" data-k="man"><circle cx="368" cy="233" r="8"/><path d="M352 262 V257 a16 13 0 0 1 32 0 V262"/><\/g>`;
+    },
+    S0: { sb: 0, ft: 0, home: 0, away: 0, win: 0, man: 0, bub: 0, nd: 0, v: 50, qm: 0, ro: 0,
+      why: 0, r0: 0, r1: 0, r2: 0, rOut: 0, ghost: 0, wedge: 0, br: 0, brt: 0, mk: 0, note: 0, nv: 0, okNote: 0, ok: 0, check: 0 },
+    render(S, k) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      // scoreboard
+      const s = .9 + .1 * S.sb;
+      k("sb").setAttribute("transform", `translate(100 48) scale(${f1(s * 100) / 100}) translate(-100 -48)`);
+      op("sb", clamp(S.sb * 1.5));
+      op("hd0", 1 - S.ft); op("hd1", S.ft);
+      k("sh").textContent = Math.floor(S.home + 1e-6); k("sa").textContent = Math.floor(S.away + 1e-6);
+      op("sh", 1 - S.win); op("shw", S.win);
+      // you, and the dial in your head
+      op("man", S.man);
+      k("bub").setAttribute("transform", `translate(${f1(8 * (1 - S.bub))} ${f1(8 * (1 - S.bub))})`);
+      op("bub", S.bub);
+      k("ndl").setAttribute("transform", `rotate(${f1(S.v * 1.8)} ${CX} ${CY})`);
+      op("ndl", S.nd); op("ndok", S.ok);
+      op("ghost", S.ghost);
+      op("qm", S.qm * (1 - S.ro));
+      const val = Math.round(S.v) + "%";
+      k("ro").textContent = val; k("rook").textContent = val;
+      op("ro", S.ro * (1 - S.ok)); op("rook", S.ro * S.ok); op("lab", S.ro);
+      // the hindsight gap: from the forgotten 50 to wherever the needle is now
+      const hi = Math.max(50.01, S.v);
+      const [ax, ay] = pt(50, R - 14), [bx, by] = pt(hi, R - 14);
+      k("wedge").setAttribute("d", `M${CX} ${CY} L${ax} ${ay} A${R - 14} ${R - 14} 0 0 1 ${bx} ${by} Z`);
+      op("wedge", S.wedge);
+      k("br").setAttribute("d", `${arc(50, hi, R + 9)} ${radial(50, R + 5, R + 13)} ${radial(hi, R + 5, R + 13)}`);
+      op("br", S.br); op("brt", S.brt);
+      // reasons found after the fact
+      op("why", S.why);
+      for (let i = 0; i < 3; i++) {
+        const p = S["r" + i];
+        k("r" + i).setAttribute("transform", `translate(${f1(-14 * (1 - p))} 0)`);
+        op("r" + i, p);
+      }
+      op("rs", 1 - S.rOut);
+      // the note, written before kick-off
+      const np = S.note;
+      k("note").setAttribute("transform", `translate(${NX} ${f1(NY + 18 * (1 - np))}) rotate(${f1(-2 - 5 * (1 - np))})`);
+      op("note", clamp(np * 1.6));
+      op("nv", clamp(S.nv * 2) * (1 - S.okNote));
+      const ul = k("ul"); ul.style.strokeDasharray = "60"; ul.style.strokeDashoffset = f1(60 * (1 - clamp(S.nv * 1.4 - .4)));
+      op("nvok", S.okNote);
+      // the written 50% travels from the note to the dial
+      const m = S.mk, e = m < .5 ? 2 * m * m : 1 - Math.pow(-2 * m + 2, 2) / 2;
+      const mx = MK0[0] + (MK1[0] - MK0[0]) * e, my = MK0[1] + (MK1[1] - MK0[1]) * e - 10 * Math.sin(Math.PI * e);
+      k("mk").setAttribute("transform", `translate(${f1(mx)} ${f1(my)})`);
+      op("mk", clamp(m * 4)); op("mkt", clamp(m * 3 - 2));
+      // the check, beside the readout
+      const cx = CX + 30, cy = CY + 27;
+      k("check").setAttribute("d", `M${cx} ${cy} l3.5 3.5 l7 -8`);
+      k("check").style.strokeDasharray = "18"; k("check").style.strokeDashoffset = f1(18 * (1 - S.check));
+      op("check", S.check > 0 ? 1 : 0);
+    },
+    beats: [
+      { steps: [{ to: { sb: 1 }, ms: 500, ease: "back", sfx: "pluck" }, { to: { man: 1 }, ms: 300 }, { to: { bub: 1, qm: 1 }, ms: 500 },
+        { to: { nd: 1 }, ms: 200 }, { to: { v: 30 }, ms: 450, ease: "inOut" }, { to: { v: 68 }, ms: 650, ease: "inOut" }, { to: { v: 40 }, ms: 550, ease: "inOut" }] },
+      { steps: [{ to: { v: 50 }, ms: 600, ease: "back" }, { to: { ro: 1 }, ms: 400, sfx: "tick" }] },
+      { steps: [{ to: { ft: 1 }, ms: 300 }, { wait: 200 }, { to: { home: 1 } }, { wait: 350 }, { to: { home: 2 } }, { wait: 350 },
+        { to: { away: 1 } }, { wait: 350 }, { to: { home: 3 } }, { to: { win: 1 }, ms: 400, sfx: "pop" }] },
+      { steps: [{ to: { why: 1 }, ms: 300 }, { to: { r0: 1 }, ms: 400, sfx: "scribble" }, { wait: 250 }, { to: { r1: 1 }, ms: 400 }, { wait: 250 }, { to: { r2: 1 }, ms: 400 }] },
+      { steps: [{ to: { ghost: 1 } }, { to: { v: 80 }, ms: 1300, ease: "inOut", sfx: "spring" }, { to: { ghost: .5 }, ms: 600 }], hold: 3000 },
+      { steps: [{ to: { wedge: 1 }, ms: 500, sfx: "tick" }, { to: { br: 1, brt: 1 }, ms: 400 }] },
+      { steps: [{ to: { rOut: 1 }, ms: 400 }, { to: { note: 1 }, ms: 600, ease: "back" }, { to: { nv: 1 }, ms: 800, ease: "lin", sfx: "scribble" }], hold: 3000 },
+      { steps: [{ to: { okNote: 1 }, ms: 400 }, { to: { mk: 1, brt: 0 }, ms: 800, ease: "lin" }, { wait: 150 },
+        { to: { v: 50, ghost: 0 }, ms: 700, ease: "out" }, { to: { wedge: 0, br: 0 }, ms: 300 },
+        { to: { ok: 1 }, ms: 400 }, { to: { check: 1 }, ms: 350, sfx: "chime" }], hold: 4200 }
     ]
   };
 })();
@@ -1508,14 +2590,14 @@ footer cite{font-style:italic}
         feels: "How it feels", win: "win", lose: "lose",
         gap1: "feels like", gap2: "a bad bet", after: n => `After ${n} flip${n === 1 ? "" : "s"}`,
         caps: [
-          "A coin flip: heads you <b>win €120</b>, tails you <b>lose €100</b>.",
-          "On average, you'd come out <b>€10 ahead</b> per flip.",
-          "Yet most people still <b>say no</b>.",
-          "Losing <b>hurts more</b> than winning feels good.",
-          "Losses feel <b>roughly twice as strong</b> as equal gains.",
-          "So a good bet <b>feels like a bad one</b>.",
-          "<b>The fix:</b> think of it as one of many flips.",
-          "Ten flips: expect <b>+€100</b>. Take good bets you can afford to lose."
+          "A coin flip: heads you <b>win €120<\/b>, tails you <b>lose €100<\/b>.",
+          "On average, you'd come out <b>€10 ahead<\/b> per flip.",
+          "Yet most people still <b>say no<\/b>.",
+          "Losing <b>hurts more<\/b> than winning feels good.",
+          "Losses feel <b>roughly twice as strong<\/b> as equal gains.",
+          "So a good bet <b>feels like a bad one<\/b>.",
+          "<b>The fix:<\/b> think of it as one of many flips.",
+          "Ten flips: expect <b>+€100<\/b>. Take good bets you can afford to lose."
         ],
         say: [
           "A coin flip. Heads, you win a hundred and twenty euros. Tails, you lose a hundred.",
@@ -1537,14 +2619,14 @@ footer cite{font-style:italic}
         feels: "Πώς το νιώθεις", win: "κέρδος", lose: "απώλεια",
         gap1: "μοιάζει", gap2: "κακό στοίχημα", after: n => `Μετά από ${n} ${n === 1 ? "γύρο" : "γύρους"}`,
         caps: [
-          "Κορόνα-γράμματα: κορόνα <b>κερδίζεις 120\u00a0€</b>, γράμματα <b>χάνεις 100\u00a0€</b>.",
-          "Κατά μέσο όρο, κάθε γύρος σού αφήνει <b>10\u00a0€ κέρδος</b>.",
-          "Κι όμως, οι περισσότεροι <b>λένε όχι</b>.",
-          "Η απώλεια <b>πονάει πιο πολύ</b> απ’\u00a0όσο σε ευχαριστεί το κέρδος.",
-          "Οι απώλειες βαραίνουν <b>περίπου διπλάσια</b> από ισόποσα κέρδη.",
-          "Έτσι, ένα καλό στοίχημα <b>σου φαίνεται κακό</b>.",
-          "<b>Η λύση:</b> δες το σαν έναν από πολλούς γύρους.",
-          "Σε δέκα γύρους περιμένεις <b>+100\u00a0€</b>. Παίζε τα καλά στοιχήματα, αν αντέχεις τη χασούρα."
+          "Κορόνα-γράμματα: κορόνα <b>κερδίζεις 120\u00a0€<\/b>, γράμματα <b>χάνεις 100\u00a0€<\/b>.",
+          "Κατά μέσο όρο, κάθε γύρος σού αφήνει <b>10\u00a0€ κέρδος<\/b>.",
+          "Κι όμως, οι περισσότεροι <b>λένε όχι<\/b>.",
+          "Η απώλεια <b>πονάει πιο πολύ<\/b> απ’\u00a0όσο σε ευχαριστεί το κέρδος.",
+          "Οι απώλειες βαραίνουν <b>περίπου διπλάσια<\/b> από ισόποσα κέρδη.",
+          "Έτσι, ένα καλό στοίχημα <b>σου φαίνεται κακό<\/b>.",
+          "<b>Η λύση:<\/b> δες το σαν έναν από πολλούς γύρους.",
+          "Σε δέκα γύρους περιμένεις <b>+100\u00a0€<\/b>. Παίζε τα καλά στοιχήματα, αν αντέχεις τη χασούρα."
         ],
         say: [
           "Κορόνα γράμματα. Κορόνα, κερδίζεις εκατόν είκοσι ευρώ. Γράμματα, χάνεις εκατό.",
@@ -1560,39 +2642,39 @@ footer cite{font-style:italic}
       }
     },
     svg(T) {
-      const bubble = (key, cls, txt) => `<g class="la-bub ${cls}" data-k="${key}"><rect x="16" y="134" width="124" height="28" rx="10"/><path d="M42 161 L48 172 L56 161"/><text x="78" y="152">${txt}</text></g>`;
+      const bubble = (key, cls, txt) => `<g class="la-bub ${cls}" data-k="${key}"><rect x="16" y="134" width="124" height="28" rx="10"/><path d="M42 161 L48 172 L56 161"/><text x="78" y="152">${txt}<\/text><\/g>`;
       let coins = "";
       SEQ.forEach((h, i) => {
-        coins += `<g data-k="c${i}"><g class="la-mc" data-k="cf${i}"><circle r="11"/><text y="4">${h ? T.hl : T.tl}</text></g></g>` +
-          `<text class="la-ml ${h ? "h" : "t"}" data-k="cl${i}" x="${CX(i)}" y="${CY + 27}">${h ? "+120" : "−100"}</text>`;
+        coins += `<g data-k="c${i}"><g class="la-mc" data-k="cf${i}"><circle r="11"/><text y="4">${h ? T.hl : T.tl}<\/text><\/g><\/g>` +
+          `<text class="la-ml ${h ? "h" : "t"}" data-k="cl${i}" x="${CX(i)}" y="${CY + 27}">${h ? "+120" : "−100"}<\/text>`;
       });
       return `
-        <g data-k="cardH"><g class="la-card win"><rect x="42" y="20" width="110" height="40" rx="8"/><text class="h" x="97" y="34">${T.heads}</text><text class="v" x="97" y="53">${T.eur(120)}</text></g></g>
-        <g data-k="cardT"><g class="la-card lose"><rect x="248" y="20" width="110" height="40" rx="8"/><text class="h" x="303" y="34">${T.tails}</text><text class="v" x="303" y="53">${T.eur(-100)}</text></g></g>
-        <g data-k="links"><line class="la-link" x1="157" y1="40" x2="173" y2="40"/><line class="la-link" x1="227" y1="40" x2="243" y2="40"/></g>
-        <g data-k="coin"><circle class="la-coin" r="22"/><circle class="la-coin-in" r="17"/><text class="la-coin-t" y="7">€</text></g>
-        <g data-k="ev"><text class="la-evf" x="236" y="90">½ × 120 − ½ × 100 =</text><text class="la-evr" data-k="evr" x="242" y="91">${T.eur(10)}</text><text class="la-evs" x="200" y="106">${T.evs}</text></g>
+        <g data-k="cardH"><g class="la-card win"><rect x="42" y="20" width="110" height="40" rx="8"/><text class="h" x="97" y="34">${T.heads}<\/text><text class="v" x="97" y="53">${T.eur(120)}<\/text><\/g><\/g>
+        <g data-k="cardT"><g class="la-card lose"><rect x="248" y="20" width="110" height="40" rx="8"/><text class="h" x="303" y="34">${T.tails}<\/text><text class="v" x="303" y="53">${T.eur(-100)}<\/text><\/g><\/g>
+        <g data-k="links"><line class="la-link" x1="157" y1="40" x2="173" y2="40"/><line class="la-link" x1="227" y1="40" x2="243" y2="40"/><\/g>
+        <g data-k="coin"><circle class="la-coin" r="22"/><circle class="la-coin-in" r="17"/><text class="la-coin-t" y="7">€<\/text><\/g>
+        <g data-k="ev"><text class="la-evf" x="236" y="90">½ × 120 − ½ × 100 =<\/text><text class="la-evr" data-k="evr" x="242" y="91">${T.eur(10)}<\/text><text class="la-evs" x="200" y="106">${T.evs}<\/text><\/g>
         <g data-k="you"><circle class="la-you" cx="52" cy="194" r="13"/><circle class="la-eye" cx="47.5" cy="191" r="1.6"/><circle class="la-eye" cx="56.5" cy="191" r="1.6"/>
-          <path class="la-you" data-k="mouth" d=""/><path class="la-you" d="M26 252 C26 230 38 216 52 216 C66 216 78 230 78 252"/></g>
+          <path class="la-you" data-k="mouth" d=""/><path class="la-you" d="M26 252 C26 230 38 216 52 216 C66 216 78 230 78 252"/><\/g>
         ${bubble("no", "no", T.no)}${bubble("yes", "yes", T.yes)}
         <g data-k="chart">
-          <text class="la-head" x="232" y="128">${T.feels}</text>
+          <text class="la-head" x="232" y="128">${T.feels}<\/text>
           <rect class="la-bar win" data-k="gbar" x="${GX}" width="${BW}"/>
           <rect class="la-bar lose" data-k="lbar" x="${LX}" width="${BW}"/>
           <line class="la-base" x1="172" y1="${BASE}" x2="292" y2="${BASE}"/>
-          <text class="la-amt win" x="${GX + BW / 2}" y="${BASE + 14}">${T.eur(120).replace("+", "")}</text><text class="la-wd" x="${GX + BW / 2}" y="${BASE + 26}">${T.win}</text>
-          <text class="la-amt lose" x="${LX + BW / 2}" y="${BASE + 14}">${T.eur(100).replace("+", "")}</text><text class="la-wd" x="${LX + BW / 2}" y="${BASE + 26}">${T.lose}</text>
-          <g class="la-ref" data-k="ref"><line x1="${GX - 4}" y1="${fy(100)}" x2="${LX + BW + 4}" y2="${fy(100)}"/><text x="${GX - 8}" y="${fy(100) + 3.5}">${T.eur(100).replace("+", "")}</text></g>
-          <g class="la-x2" data-k="x2"><path d="M${BR - 6} ${BASE} H${BR} V${fy(200)} H${BR - 6} M${BR} ${fy(100)} H${BR - 4}"/><text x="${BR + 7}" y="${fy(100) + 4.5}">≈ ×2</text></g>
+          <text class="la-amt win" x="${GX + BW / 2}" y="${BASE + 14}">${T.eur(120).replace("+", "")}<\/text><text class="la-wd" x="${GX + BW / 2}" y="${BASE + 26}">${T.win}<\/text>
+          <text class="la-amt lose" x="${LX + BW / 2}" y="${BASE + 14}">${T.eur(100).replace("+", "")}<\/text><text class="la-wd" x="${LX + BW / 2}" y="${BASE + 26}">${T.lose}<\/text>
+          <g class="la-ref" data-k="ref"><line x1="${GX - 4}" y1="${fy(100)}" x2="${LX + BW + 4}" y2="${fy(100)}"/><text x="${GX - 8}" y="${fy(100) + 3.5}">${T.eur(100).replace("+", "")}<\/text><\/g>
+          <g class="la-x2" data-k="x2"><path d="M${BR - 6} ${BASE} H${BR} V${fy(200)} H${BR - 6} M${BR} ${fy(100)} H${BR - 4}"/><text x="${BR + 7}" y="${fy(100) + 4.5}">≈ ×2<\/text><\/g>
           <g class="la-gap" data-k="gap"><rect x="${LX}" y="${fy(200)}" width="${BW}" height="${fy(120) - fy(200)}"/>
             <line x1="${GX + BW}" y1="${fy(120)}" x2="${LX}" y2="${fy(120)}"/>
             <path d="M${BR - 6} ${fy(120)} H${BR} V${fy(200)} H${BR - 6}"/>
-            <text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 - 2}">${T.gap1}</text><text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 + 11}">${T.gap2}</text></g>
-        </g>
+            <text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 - 2}">${T.gap1}<\/text><text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 + 11}">${T.gap2}<\/text><\/g>
+        <\/g>
         ${coins}
         <circle class="la-ring" data-k="ring" r="15" cy="${CY}"/>
-        <g class="la-tot" data-k="tot"><text class="lab" data-k="totl" x="270" y="194"></text><text class="num" data-k="totv" x="270" y="228"></text>
-          <text class="f" data-k="totf" x="270" y="248">5 × 120 − 5 × 100</text></g>`;
+        <g class="la-tot" data-k="tot"><text class="lab" data-k="totl" x="270" y="194"><\/text><text class="num" data-k="totv" x="270" y="228"><\/text>
+          <text class="f" data-k="totf" x="270" y="248">5 × 120 − 5 × 100<\/text><\/g>`;
     },
     S0: { coin: 0, spin: 0, cards: 0, you: 0, ev: 0, evr: 0, no: 0, mood: 0, chart: 0, g: 0, l: 0, ref: 0, x2: 0, gap: 0,
       evm: 0, flips: 0, ring: 0, sweep: 0.5, tot: 0, totf: 0, yes: 0 },
@@ -1673,8 +2755,8 @@ footer cite{font-style:italic}
     return n * (t -= 2.625 / d) * t + .984375;
   };
   // a weight: trapezoid block with its label, drawn from its top edge y0 (pan-local coordinates)
-  const block = (w, y0, label) => `<path d="M${-w / 2} ${y0 + 15} L${-w / 2 + 3} ${y0} H${w / 2 - 3} L${w / 2} ${y0 + 15} Z"/><text y="${y0 + 11}">${label}</text>`;
-  const coin = `<circle r="8"/><text y="3.6">€</text>`;
+  const block = (w, y0, label) => `<path d="M${-w / 2} ${y0 + 15} L${-w / 2 + 3} ${y0} H${w / 2 - 3} L${w / 2} ${y0 + 15} Z"/><text y="${y0 + 11}">${label}<\/text>`;
+  const coin = `<circle r="8"/><text y="3.6">€<\/text>`;
   const P = '.bp[data-scene="sunk-cost"]';
 
   window.BiasAnim.SCENES["sunk-cost"] = {
@@ -1722,14 +2804,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         concert: "CONCERT", price: "€60", noref: "no refunds", spent: "Spent", sunk: "sunk cost", sunkW: 66, tired: "exhausted",
         go: "Go", stay: "Stay home", music: "Music", rest: "Rest", dry: "Dry", minus: "−€60",
         caps: [
-          "You paid <b>€60</b> for a concert ticket. No refunds.",
+          "You paid <b>€60<\/b> for a concert ticket. No refunds.",
           "On the night, you're exhausted and it's pouring.",
           "Go or stay home? You weigh it up.",
-          "Tonight, staying home is what you'd <b>enjoy more</b>.",
-          "Then a thought: “I paid €60. I can't <b>waste it</b>.”",
-          "But the €60 is gone <b>either way</b>.",
-          "<b>The fix:</b> take spent money off the scale.",
-          "Decide on what's ahead. <b>Stay home</b> and rest."
+          "Tonight, staying home is what you'd <b>enjoy more<\/b>.",
+          "Then a thought: “I paid €60. I can't <b>waste it<\/b>.”",
+          "But the €60 is gone <b>either way<\/b>.",
+          "<b>The fix:<\/b> take spent money off the scale.",
+          "Decide on what's ahead. <b>Stay home<\/b> and rest."
         ],
         say: [
           "You paid sixty euros for a concert ticket. No refunds.",
@@ -1749,14 +2831,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         concert: "ΣΥΝΑΥΛΙΑ", price: "60 €", noref: "δεν επιστρέφεται", spent: "Ξοδεμένα", sunk: "βυθισμένο κόστος", sunkW: 100, tired: "εξάντληση",
         go: "Πάω", stay: "Μένω σπίτι", music: "Μουσική", rest: "Ξεκούραση", dry: "Χωρίς βροχή", minus: "−60 €",
         caps: [
-          "Πλήρωσες <b>60\u00a0€</b> για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
+          "Πλήρωσες <b>60\u00a0€<\/b> για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
           "Φτάνει η βραδιά. Είσαι πτώμα κι έξω ρίχνει καρεκλοπόδαρα.",
           "Να πας ή να μείνεις σπίτι; Το ζυγίζεις.",
-          "Απόψε θα περνούσες <b>πιο ωραία</b> στο σπίτι.",
-          "Και μετά σκέφτεσαι: «Έδωσα\u00a060\u00a0€. Κρίμα να πάνε <b>χαμένα</b>».",
-          "Όμως τα 60\u00a0€ έχουν φύγει <b>έτσι κι αλλιώς</b>.",
-          "<b>Η λύση:</b> βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
-          "Σκέψου μόνο το από δω και πέρα. <b>Μείνε σπίτι</b> και ξεκουράσου."
+          "Απόψε θα περνούσες <b>πιο ωραία<\/b> στο σπίτι.",
+          "Και μετά σκέφτεσαι: «Έδωσα\u00a060\u00a0€. Κρίμα να πάνε <b>χαμένα<\/b>».",
+          "Όμως τα 60\u00a0€ έχουν φύγει <b>έτσι κι αλλιώς<\/b>.",
+          "<b>Η λύση:<\/b> βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
+          "Σκέψου μόνο το από δω και πέρα. <b>Μείνε σπίτι<\/b> και ξεκουράσου."
         ],
         say: [
           "Πλήρωσες εξήντα ευρώ για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
@@ -1775,39 +2857,39 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
       const pan = (side, label) => `
         <path class="bowl" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
         <path class="bowl g" data-k="bowlg${side}" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
-        <text class="pl" data-k="pl${side}" y="${H + D + 17}">${label}</text>
-        <text class="pl g" data-k="plg${side}" y="${H + D + 17}">${label}</text>
-        <text class="minus" data-k="minus${side}" y="${H + D + 32}">${T.minus}</text>`;
+        <text class="pl" data-k="pl${side}" y="${H + D + 17}">${label}<\/text>
+        <text class="pl g" data-k="plg${side}" y="${H + D + 17}">${label}<\/text>
+        <text class="minus" data-k="minus${side}" y="${H + D + 32}">${T.minus}<\/text>`;
       return `
         <g class="tk" data-k="ticket"><path d="M18 12 H108 Q114 12 114 18 V35 A6 6 0 0 0 114 47 V64 Q114 70 108 70 H18 Q12 70 12 64 V47 A6 6 0 0 0 12 35 V18 Q12 12 18 12 Z"/>
-          <text class="t1" x="63" y="28">${T.concert}</text><text class="t2" x="63" y="49">${T.price}</text><text class="t3" data-k="noref" x="63" y="63">${T.noref}</text></g>
-        <g data-k="cloud"><path class="cloud" d="M149 40 a9 9 0 0 1 1 -17.9 a13 13 0 0 1 24 -6 a10 10 0 0 1 15 8 a8 8 0 0 1 -1 15.9 Z"/></g>
-        <g class="rain" data-k="rain"><line x1="155" y1="45" x2="152.5" y2="52"/><line x1="165" y1="48" x2="162.5" y2="55"/><line x1="175" y1="45" x2="172.5" y2="52"/><line x1="185" y1="48" x2="182.5" y2="55"/></g>
+          <text class="t1" x="63" y="28">${T.concert}<\/text><text class="t2" x="63" y="49">${T.price}<\/text><text class="t3" data-k="noref" x="63" y="63">${T.noref}<\/text><\/g>
+        <g data-k="cloud"><path class="cloud" d="M149 40 a9 9 0 0 1 1 -17.9 a13 13 0 0 1 24 -6 a10 10 0 0 1 15 8 a8 8 0 0 1 -1 15.9 Z"/><\/g>
+        <g class="rain" data-k="rain"><line x1="155" y1="45" x2="152.5" y2="52"/><line x1="165" y1="48" x2="162.5" y2="55"/><line x1="175" y1="45" x2="172.5" y2="52"/><line x1="185" y1="48" x2="182.5" y2="55"/><\/g>
         <g class="bat" data-k="bat"><rect x="318" y="13" width="30" height="14" rx="3"/><rect x="348.5" y="17" width="2.5" height="6" rx="1"/>
           <rect class="low" x="321" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b1" x="321" y="16" width="7" height="8" rx="1"/>
           <rect class="bar" data-k="b2" x="329.5" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b3" x="338" y="16" width="7" height="8" rx="1"/>
-          <text class="note" x="334" y="41">${T.tired}</text></g>
+          <text class="note" x="334" y="41">${T.tired}<\/text><\/g>
         <g data-k="scale">
           <path class="base" d="M${PX - 28} 246 H${PX + 28} L${PX + 36} 254 H${PX - 36} Z"/>
           <line class="beam" x1="${PX}" y1="${PY}" x2="${PX}" y2="246"/>
-          <g data-k="hangL"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
-          <g data-k="hangR"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
-          <g data-k="beam"><line class="beam" x1="${-L}" y1="0" x2="${L}" y2="0"/><line class="needle" x1="0" y1="0" x2="0" y2="-15"/></g>
+          <g data-k="hangL"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/><\/g>
+          <g data-k="hangR"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/><\/g>
+          <g data-k="beam"><line class="beam" x1="${-L}" y1="0" x2="${L}" y2="0"/><line class="needle" x1="0" y1="0" x2="0" y2="-15"/><\/g>
           <circle class="pin" cx="${PX}" cy="${PY}" r="4.5"/>
           <circle class="ring" data-k="ringL" r="3"/><circle class="ring" data-k="ringR" r="3"/>
-        </g>
-        <g data-k="ghost">${JAR.map(([x, y]) => `<circle class="gcoin" cx="${x}" cy="${y}" r="8"/>`).join("")}</g>
-        <g class="wt" data-k="music">${block(80, 79, T.music)}</g>
-        <g class="wt" data-k="dry">${block(80, 79, T.dry)}</g>
-        <g class="wt" data-k="rest">${block(66, 64, T.rest)}</g>
-        <g data-k="wing"><g class="wt g" data-k="dryg">${block(80, 79, "")}</g><g class="wt g" data-k="restg">${block(66, 64, "")}</g></g>
-        ${JAR.map((_, i) => `<g class="coin" data-k="c${i}">${coin}</g>`).join("")}
+        <\/g>
+        <g data-k="ghost">${JAR.map(([x, y]) => `<circle class="gcoin" cx="${x}" cy="${y}" r="8"/>`).join("")}<\/g>
+        <g class="wt" data-k="music">${block(80, 79, T.music)}<\/g>
+        <g class="wt" data-k="dry">${block(80, 79, T.dry)}<\/g>
+        <g class="wt" data-k="rest">${block(66, 64, T.rest)}<\/g>
+        <g data-k="wing"><g class="wt g" data-k="dryg">${block(80, 79, "")}<\/g><g class="wt g" data-k="restg">${block(66, 64, "")}<\/g><\/g>
+        ${JAR.map((_, i) => `<g class="coin" data-k="c${i}">${coin}<\/g>`).join("")}
         <g class="jar" data-k="jar"><path d="M33 104 H93 M37 104 V109 Q28 113 28 123 V180 Q28 190 38 190 H88 Q98 190 98 180 V123 Q98 113 89 109 V104"/>
-          <rect x="34" y="120" width="58" height="16" rx="3"/><text x="63" y="131.5">${T.spent}</text></g>
-        <g data-k="panL">${pan("L", T.go)}</g>
-        <g data-k="panR">${pan("R", T.stay)}</g>
-        <g class="sunk" data-k="sunk"><rect x="${63 - T.sunkW / 2}" y="199" width="${T.sunkW}" height="17" rx="8.5"/><text x="63" y="210.5">${T.sunk}</text></g>
-        <g class="check" data-k="check"><circle r="9"/><path d="M-4 0.5 L-1 3.5 L4.5 -3"/></g>`;
+          <rect x="34" y="120" width="58" height="16" rx="3"/><text x="63" y="131.5">${T.spent}<\/text><\/g>
+        <g data-k="panL">${pan("L", T.go)}<\/g>
+        <g data-k="panR">${pan("R", T.stay)}<\/g>
+        <g class="sunk" data-k="sunk"><rect x="${63 - T.sunkW / 2}" y="199" width="${T.sunkW}" height="17" rx="8.5"/><text x="63" y="210.5">${T.sunk}<\/text><\/g>
+        <g class="check" data-k="check"><circle r="9"/><path d="M-4 0.5 L-1 3.5 L4.5 -3"/><\/g>`;
     },
     S0: { ticket: 0, noref: 0, jar: 0, drop: 0, cloud: 0, rain: 0, bat: 0, drain: 0, scale: 0, tilt: 0,
       music: 0, dry: 0, rest: 0, fly: 0, back: 0, ghost: 0, minus: 0, sunk: 0, win: 0, check: 0 },
@@ -1943,14 +3025,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         legend: "hits on returning planes", armour: "armour", back: "Returned", lost: "Didn't return",
         noHoles: "no holes", missing: "missing data", armourHere: "armour here",
         caps: [
-          "In WWII, bombers come back from missions riddled with <b>bullet holes</b>.",
-          "Engineers map where the <b>returning planes</b> were hit.",
-          "The plan: add armour <b>where the holes are</b>.",
-          "But these are only the planes <b>that made it back</b>.",
-          "Planes hit in the engines <b>never came back</b> to be counted.",
-          "The spots with no holes are where a hit is <b>fatal</b>.",
-          "<b>The fix:</b> ask what's missing from your data.",
-          "Armour the engines. Study the failures, <b>not only the survivors</b>."
+          "In WWII, bombers come back from missions riddled with <b>bullet holes<\/b>.",
+          "Engineers map where the <b>returning planes<\/b> were hit.",
+          "The plan: add armour <b>where the holes are<\/b>.",
+          "But these are only the planes <b>that made it back<\/b>.",
+          "Planes hit in the engines <b>never came back<\/b> to be counted.",
+          "The spots with no holes are where a hit is <b>fatal<\/b>.",
+          "<b>The fix:<\/b> ask what's missing from your data.",
+          "Armour the engines. Study the failures, <b>not only the survivors<\/b>."
         ],
         say: [
           "In the Second World War, bombers come back from their missions riddled with bullet holes.",
@@ -1970,14 +3052,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         legend: "χτυπήματα σε όσα γύρισαν", armour: "θωράκιση", back: "Γύρισαν", lost: "Δεν γύρισαν",
         noHoles: "καμία τρύπα", missing: "δεδομένα που λείπουν", armourHere: "θωράκιση εδώ",
         caps: [
-          "Στον Δεύτερο Παγκόσμιο, τα βομβαρδιστικά γυρίζουν γεμάτα <b>τρύπες από σφαίρες</b>.",
-          "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα <b>που γύρισαν</b>.",
-          "Το σχέδιο: θωράκιση <b>εκεί που είναι οι τρύπες</b>.",
-          "Όμως αυτά είναι μόνο όσα <b>κατάφεραν να γυρίσουν</b>.",
-          "Όσα χτυπήθηκαν στις μηχανές <b>δεν γύρισαν ποτέ</b>, άρα δεν μετρήθηκαν.",
-          "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι <b>μοιραίο</b>.",
-          "<b>Η λύση:</b> αναρωτήσου τι λείπει από τα δεδομένα σου.",
-          "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, <b>όχι μόνο όσα επέζησαν</b>."
+          "Στον Δεύτερο Παγκόσμιο, τα βομβαρδιστικά γυρίζουν γεμάτα <b>τρύπες από σφαίρες<\/b>.",
+          "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα <b>που γύρισαν<\/b>.",
+          "Το σχέδιο: θωράκιση <b>εκεί που είναι οι τρύπες<\/b>.",
+          "Όμως αυτά είναι μόνο όσα <b>κατάφεραν να γυρίσουν<\/b>.",
+          "Όσα χτυπήθηκαν στις μηχανές <b>δεν γύρισαν ποτέ<\/b>, άρα δεν μετρήθηκαν.",
+          "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι <b>μοιραίο<\/b>.",
+          "<b>Η λύση:<\/b> αναρωτήσου τι λείπει από τα δεδομένα σου.",
+          "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, <b>όχι μόνο όσα επέζησαν<\/b>."
         ],
         say: [
           "Στον Δεύτερο Παγκόσμιο Πόλεμο, τα βομβαρδιστικά γυρίζουν από τις αποστολές γεμάτα τρύπες από σφαίρες.",
@@ -1999,28 +3081,28 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
       const [tx, ty] = V(87, -11);
       let slots = "", ghosts = "";
       GH.forEach(([x, y], i) => {
-        slots += `<g class="sv-slot">${plane(x, y, GS)}</g><g data-k="sh${i}">${ghostHits(i, x, y).replace(/r="0"/g, 'r="3.2"')}</g>`;
-        ghosts += `<g data-k="g${i}"><g class="sv-gh">${plane(x, y, GS)}</g><g data-k="gh${i}">${ghostHits(i, x, y)}</g></g>`;
+        slots += `<g class="sv-slot">${plane(x, y, GS)}<\/g><g data-k="sh${i}">${ghostHits(i, x, y).replace(/r="0"/g, 'r="3.2"')}<\/g>`;
+        ghosts += `<g data-k="g${i}"><g class="sv-gh">${plane(x, y, GS)}<\/g><g data-k="gh${i}">${ghostHits(i, x, y)}<\/g><\/g>`;
       });
       return `
-        <g data-k="slots">${slots}</g>
+        <g data-k="slots">${slots}<\/g>
         ${ghosts}
         <g data-k="main">
-          <g class="sv-pl">${plane(MX, MY, MS)}</g>
-          <g data-k="plates">${PLATE.map((_, i) => `<g class="sv-plate" data-k="pl${i}"><rect class="g" rx="3"/><rect class="ok" rx="3"/></g>`).join("")}</g>
-          <g data-k="rings">${ENG.map(e => { const [x, y] = V(e - 8, -30); return `<rect class="sv-ring" x="${x}" y="${y}" width="${f1(16 * MS)}" height="${f1(41 * MS)}" rx="6"/>`; }).join("")}</g>
-          <g data-k="hitsA">${dots(HA, 0)}</g>
-          <g data-k="hitsB">${dots(HB, 0)}</g>
-        </g>
-        <g class="sv-tag" data-k="tag"><line x1="${tx}" y1="${ty - 1}" x2="208" y2="90"/><rect x="196" y="66" width="24" height="24" rx="6"/><text class="qm" x="208" y="84">?</text></g>
-        <text class="sv-nt end" data-k="armour" x="190" y="82">${T.armour}</text>
-        <g data-k="legend"><circle class="sv-hit" cx="0" cy="246.5" r="3.2" data-k="legD"/><text class="sv-lb" data-k="legT" x="0" y="250">${T.legend}</text></g>
-        <text class="sv-hd" data-k="hdBack" x="${MX}" y="34">${T.back}</text>
-        <text class="sv-hd m" data-k="hdLost" x="305" y="34">${T.lost}</text>
-        <text class="sv-nt" data-k="noHoles" x="${LX}" y="88">${T.noHoles}</text>
-        <text class="sv-nt ok" data-k="armourHere" x="${LX}" y="88">${T.armourHere}</text>
-        <g class="sv-lens" data-k="lens"><circle cx="333" cy="134" r="32"/><line x1="356" y1="157" x2="368" y2="169"/></g>
-        <text class="sv-nt" data-k="missing" x="305" y="250">${T.missing}</text>`;
+          <g class="sv-pl">${plane(MX, MY, MS)}<\/g>
+          <g data-k="plates">${PLATE.map((_, i) => `<g class="sv-plate" data-k="pl${i}"><rect class="g" rx="3"/><rect class="ok" rx="3"/><\/g>`).join("")}<\/g>
+          <g data-k="rings">${ENG.map(e => { const [x, y] = V(e - 8, -30); return `<rect class="sv-ring" x="${x}" y="${y}" width="${f1(16 * MS)}" height="${f1(41 * MS)}" rx="6"/>`; }).join("")}<\/g>
+          <g data-k="hitsA">${dots(HA, 0)}<\/g>
+          <g data-k="hitsB">${dots(HB, 0)}<\/g>
+        <\/g>
+        <g class="sv-tag" data-k="tag"><line x1="${tx}" y1="${ty - 1}" x2="208" y2="90"/><rect x="196" y="66" width="24" height="24" rx="6"/><text class="qm" x="208" y="84">?<\/text><\/g>
+        <text class="sv-nt end" data-k="armour" x="190" y="82">${T.armour}<\/text>
+        <g data-k="legend"><circle class="sv-hit" cx="0" cy="246.5" r="3.2" data-k="legD"/><text class="sv-lb" data-k="legT" x="0" y="250">${T.legend}<\/text><\/g>
+        <text class="sv-hd" data-k="hdBack" x="${MX}" y="34">${T.back}<\/text>
+        <text class="sv-hd m" data-k="hdLost" x="305" y="34">${T.lost}<\/text>
+        <text class="sv-nt" data-k="noHoles" x="${LX}" y="88">${T.noHoles}<\/text>
+        <text class="sv-nt ok" data-k="armourHere" x="${LX}" y="88">${T.armourHere}<\/text>
+        <g class="sv-lens" data-k="lens"><circle cx="333" cy="134" r="32"/><line x1="356" y1="157" x2="368" y2="169"/><\/g>
+        <text class="sv-nt" data-k="missing" x="305" y="250">${T.missing}<\/text>`;
     },
     S0: { plane: 0, hitsA: 0, hitsB: 0, legend: 0, plates: 0, tag: 0, tagSwing: 0, hdBack: 0, hdLost: 0, ghosts: 0,
       gHits: 0, fall: 0, slot: 0, rings: 0, noHoles: 0, lens: 0, slotHi: 0, missing: 0, move: 0, green: 0, armourHere: 0, dim: 0 },
@@ -2131,7 +3213,9 @@ const LANG = "el", LOCALE = LANG === "el" ? "el-GR" : "en-US";
 // animated explainers: English bias name -> scene key (see anim.js)
 const ANIM_FOR = {
   "Anchoring": "anchoring", "Confirmation bias": "confirmation-bias", "Sunk cost fallacy": "sunk-cost",
-  "Dunning-Kruger effect": "dunning-kruger", "Survivorship bias": "survivorship-bias", "Loss aversion": "loss-aversion"
+  "Dunning-Kruger effect": "dunning-kruger", "Survivorship bias": "survivorship-bias", "Loss aversion": "loss-aversion",
+  "Availability heuristic": "availability-heuristic", "Hindsight bias": "hindsight-bias", "Framing effect": "framing-effect",
+  "Bandwagon effect": "bandwagon-effect", "Halo effect": "halo-effect"
 };
 const SITE = "https://papangelis.com", BASE = LANG === "el" ? "/biases/el/" : "/biases/";
 const watchUrl = key => `${SITE}${BASE}watch/${key}/`;

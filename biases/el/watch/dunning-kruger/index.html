@@ -19,10 +19,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Το φαινόμενο Dunning-Kruger σε 30 δευτερόλεπτα">
 <meta name="twitter:description" content="Όσοι έχουν λίγες ικανότητες σε έναν τομέα τείνουν να υπερεκτιμούν τις δυνατότητές τους, εν μέρει επειδή για να εντοπίσεις τα λάθη χρειάζεσαι τις ίδιες γνώσεις που χρειάζεσαι για να τα αποφύγεις, ενώ οι ειδικοί μερικές φορές υποτιμούν τον εαυτό τους. Οι ερευνητές συζητούν ακόμη πόσο μεγάλο είναι το φαινόμενο.">
-<meta property="og:image" content="https://papangelis.com/assets/og/watch-dunning-kruger-el.png?v=be781402">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-dunning-kruger-el.png?v=3ebc9e34">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-dunning-kruger-el.png?v=be781402">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-dunning-kruger-el.png?v=3ebc9e34">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
 <link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
@@ -74,28 +74,28 @@
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.w{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
-.w-main{display:flex;flex-direction:column;gap:12px}
-.w-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
-.w-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
-.w-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-.w-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
-.w-btn:hover{border-color:var(--ink)}
-.w-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 :focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
 .og{display:none}
 /* embed: just the player */
 html.embed body{padding:0;background:transparent}
-html.embed .w{padding:0;max-width:none;gap:0}
-html.embed .w-main>:not(#player){display:none}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
 /* capture: square video frame */
 html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
-html.cap-video .w{display:block;max-width:none;padding:0;height:100%}
-html.cap-video .w-main,html.cap-video #player{height:100%}
-html.cap-video .w-main>:not(#player){display:none}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
 /* capture: 1200x630 social card, drawn at 600x315 and 2x */
 html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
-html.cap-og .w{display:none}
+html.cap-og .wp{display:none}
 html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
 .og-l{display:flex;flex-direction:column;gap:10px}
 .og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
@@ -103,103 +103,17 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 .og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
 .og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
 .og-u{font:600 11px/1.4 var(--mono);color:#6ea8fe;margin-top:14px}
-.og .bp.capture .bp-cap,.og .bp.capture .bp-brand{display:none}
-.og .bp.capture,.og .bp.capture .bp-stage{height:auto}
-.og .bp.capture .bp-stage{border-radius:10px;border:1px solid var(--rule)}
-.og .bp.capture .bp-svg{flex:none;padding:4px}
 
-/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */
-.bp{--bp-ctl:54px}
-.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}
-.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}
-.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}
-.bp-text b{color:var(--q);font-weight:600}
-.bp-svg{display:block;width:100%;height:auto}
-.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}
-.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
-.bp-btn:hover{border-color:var(--ink)}
-.bp-btn[aria-pressed="true"]{color:var(--q);border-color:var(--q)}
-.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}
-.bp-dots{display:flex;gap:5px;flex:1;min-width:0}
-.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}
-.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}
-.bp-brand{display:none}
-
-/* end screen */
-.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}
-.bp-card.on{pointer-events:auto}
-.bp-mark{width:40px;height:40px}
-.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}
-.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}
-.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}
-.bp-pill:hover{border-color:var(--ink)}
-.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-
-/* share menu */
-.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}
-.bp-menu[hidden]{display:none}
-.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}
-.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}
-.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}
-.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}
-.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}
-.bp-menu small.ok{color:var(--good)}
-
-/* scene */
-.bp .ax{stroke:var(--rule);stroke-width:2}
-.bp .tick{stroke:var(--rule);stroke-width:1.5}
-.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}
-.bp .axt{font:500 10px var(--mono);fill:var(--faint)}
-.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-.bp .tag line{stroke:var(--ink);stroke-width:1.4}
-.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
-.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
-.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
-.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}
-.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}
-.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}
-.bp .pin circle{fill:var(--pin)}
-.bp .pin line{stroke:var(--pin);stroke-width:2.2}
-.bp .pin text{font:600 11px var(--display);fill:var(--pin)}
-.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}
-.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}
-.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}
-.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}
-.bp .gap line{stroke:var(--bad);stroke-width:1.8}
-.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}
-.bp .band rect{fill:var(--good);opacity:.22}
-.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}
-.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}
-.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}
-
-/* capture layout: a square frame for video export, with a brand bar instead of controls */
-.bp.capture{--bp-ctl:46px;height:100%}
-.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}
-.bp.capture .bp-cap{padding:22px 24px 0}
-.bp.capture .bp-text{font-size:21px}
-.bp.capture .bp-no{font-size:12px}
-.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}
-.bp.capture .bp-ctl{display:none}
-.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}
-.bp.capture .bp-bm{width:22px;height:22px}
-.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}
-.bp.capture .bp-row{display:none}
 
 </style>
 </head>
 <body>
-<div class="w">
-  <main class="w-main">
+<div class="wp">
+  <main class="wp-main">
     <h1>Φαινόμενο Dunning-Kruger</h1>
-    <p class="w-def">Όσοι έχουν λίγες ικανότητες σε έναν τομέα τείνουν να υπερεκτιμούν τις δυνατότητές τους, εν μέρει επειδή για να εντοπίσεις τα λάθη χρειάζεσαι τις ίδιες γνώσεις που χρειάζεσαι για να τα αποφύγεις, ενώ οι ειδικοί μερικές φορές υποτιμούν τον εαυτό τους. Οι ερευνητές συζητούν ακόμη πόσο μεγάλο είναι το φαινόμενο.</p>
+    <p class="wp-def">Όσοι έχουν λίγες ικανότητες σε έναν τομέα τείνουν να υπερεκτιμούν τις δυνατότητές τους, εν μέρει επειδή για να εντοπίσεις τα λάθη χρειάζεσαι τις ίδιες γνώσεις που χρειάζεσαι για να τα αποφύγεις, ενώ οι ειδικοί μερικές φορές υποτιμούν τον εαυτό τους. Οι ερευνητές συζητούν ακόμη πόσο μεγάλο είναι το φαινόμενο.</p>
     <div id="player"></div>
-    <nav class="w-links"><a class="w-btn primary" href="/biases/el/#b-dunning-kruger-effect">Διάβασε όλη την κάρτα</a></nav>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/el/#b-dunning-kruger-effect">Διάβασε όλη την κάρτα</a></nav>
   </main>
 </div>
 <div class="og">
@@ -211,7 +125,8 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   </div>
   <div id="og-player"></div>
 </div>
-<script>/* Cognitive Bias Explorer: animated explainers.
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* share-card frame: just the drawing, boxed */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n";
+/* Cognitive Bias Explorer: animated explainers.
    A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
    so looping, stepping between beats, and frame-by-frame video capture all agree.
    Brain and share icons: Lucide (lucide.dev), ISC licence. */
@@ -233,12 +148,12 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   };
 
   const ICON = {
-    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg>',
-    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>',
-    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
-    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>',
-    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
-    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>'
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
   };
 
   /* ------------------------------------------------------------------ sound
@@ -274,7 +189,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
     document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
   const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
-  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}</g></svg>`;
+  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/><\/linearGradient><\/defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}<\/g><\/svg>`;
 
   const UI = {
     en: {
@@ -335,36 +250,36 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   let uid = 0;
   function mount(host, key, opts = {}) {
     const scene = SCENES[key]; if (!scene || !host) return null;
-    if (scene.css && !document.getElementById("bp-css-" + key)) {
-      const st = document.createElement("style"); st.id = "bp-css-" + key; st.textContent = scene.css; document.head.appendChild(st);
-    }
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
     const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capture = !!opts.capture;
-    host.innerHTML = `
-      <div class="bp${capture ? " capture" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
         <div class="bp-stage">
-          <div class="bp-cap"><span class="bp-no"></span><p class="bp-text" aria-live="polite"></p></div>
-          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}</g></svg>
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
           <div class="bp-card" aria-hidden="true">
             ${brainMark("bp-mark", id + "g")}
-            <p class="bp-name">${T.name}</p>
-            <p class="bp-line">${T.ecline}</p>
-            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}</span></button><button class="bp-pill" type="button" data-a="again">${U.ecagain}</button></div>
-          </div>
-          <div class="bp-menu" role="menu" hidden></div>
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
           <div class="bp-ctl">
-            <button class="bp-btn" type="button" data-a="play"></button>
-            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i></i></button>`).join("")}</div>
-            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}</button>` : ""}
-            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}</button>
-            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}</button>
-          </div>
-          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}</span><span class="bp-site">${U.site}</span></div>
-        </div>
-      </div>`;
-    const root = host.firstElementChild;
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
     const $ = sel => root.querySelector(sel);
     const cache = {};
     const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
@@ -416,15 +331,15 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
     function closeMenu() { menu.hidden = true; }
     function openMenu() {
       const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
-      menu.innerHTML = `<div class="bp-mh">${U.smHead}</div>
-        <button type="button" role="menuitem" data-m="copy">${U.copy}<small></small></button>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook</a>
-        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4</small></a>` : ""}
-        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small></small></button>` : ""}
-        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}</a>` : ""}`;
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
       menu.hidden = false;
       const copy = async (btn, value) => {
         try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
@@ -432,7 +347,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       };
       menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
       const em = menu.querySelector('[data-m="embed"]');
-      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen></iframe>`);
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
       menu.querySelector('[role="menuitem"]').focus();
     }
     async function share() {
@@ -460,7 +375,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
         document.dispatchEvent(new CustomEvent("bp-sound"));
       }
     });
-    const outside = e => { if (!menu.hidden && !root.contains(e.target)) closeMenu(); };
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
     const soundBtn = () => {
       const b = $('[data-a="sound"]'); if (!b) return;
       b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
@@ -487,7 +402,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
       starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
-      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); host.innerHTML = ""; }
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
     };
     if (capture) window.__bp = api;
     return api;
@@ -510,12 +425,12 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   const clamp = v => Math.max(0, Math.min(1, v));
   const ease = t => 1 - Math.pow(1 - t, 3);
   const stag = (p, i) => ease(clamp((p - i * .12) / .64));      // staggered growth per group
-  const lines = (arr, x, y, dy) => arr.map((s, j) => `<tspan x="${x}" y="${y + j * dy}">${s}</tspan>`).join("");
+  const lines = (arr, x, y, dy) => arr.map((s, j) => `<tspan x="${x}" y="${y + j * dy}">${s}<\/tspan>`).join("");
 
   // a small test page; marks: circled mistakes in red
   const doc = (x, y, marks) => `<g class="doc" transform="translate(${x} ${y})"><rect width="26" height="34" rx="3"/>
       <line x1="5" y1="8" x2="21" y2="8"/><line x1="5" y1="14" x2="18" y2="14"/><line x1="5" y1="20" x2="21" y2="20"/><line x1="5" y1="26" x2="15" y2="26"/>
-      ${marks ? `<ellipse class="mk" cx="15" cy="14" rx="7.5" ry="3.8"/><ellipse class="mk" cx="11" cy="26" rx="7.5" ry="3.8"/>` : ""}</g>`;
+      ${marks ? `<ellipse class="mk" cx="15" cy="14" rx="7.5" ry="3.8"/><ellipse class="mk" cx="11" cy="26" rx="7.5" ry="3.8"/>` : ""}<\/g>`;
 
   window.BiasAnim.SCENES[KEY] = {
     q: "fast", viewBox: "0 0 400 272",
@@ -561,14 +476,14 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
         noSee: "sees no mistakes", see: "spots mistakes",
         fbT: "Feedback", fbS: "scored practice test", score: "6/20",
         caps: [
-          "People take a test, then guess how they <b>rank</b> against the others.",
-          "Here's where each group <b>actually</b> ranked.",
-          "And where they <b>thought</b> they ranked: all above average.",
-          "The lowest scorers overrate themselves <b>the most</b>.",
-          "Spotting mistakes takes the <b>same skill</b> as avoiding them.",
-          "Top scorers slightly <b>underrate</b> themselves. They think it was easy for everyone.",
-          "<b>The fix:</b> check yourself against outside feedback.",
-          "Compare the score with your guess. Adjust <b>toward reality</b>."
+          "People take a test, then guess how they <b>rank<\/b> against the others.",
+          "Here's where each group <b>actually<\/b> ranked.",
+          "And where they <b>thought<\/b> they ranked: all above average.",
+          "The lowest scorers overrate themselves <b>the most<\/b>.",
+          "Spotting mistakes takes the <b>same skill<\/b> as avoiding them.",
+          "Top scorers slightly <b>underrate<\/b> themselves. They think it was easy for everyone.",
+          "<b>The fix:<\/b> check yourself against outside feedback.",
+          "Compare the score with your guess. Adjust <b>toward reality<\/b>."
         ],
         say: [
           "People take a test, then guess how they rank against the others.",
@@ -592,14 +507,14 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
         noSee: "δεν βλέπει λάθη", see: "βλέπει τα λάθη",
         fbT: "Αξιολόγηση", fbS: "διαγώνισμα με βαθμό", score: "6/20",
         caps: [
-          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια <b>θέση</b> βγήκαν.",
-          "Να πού βγήκε <b>στην πραγματικότητα</b> κάθε ομάδα.",
-          "Και πού <b>νόμιζαν</b> ότι βγήκαν: όλοι πάνω από τον μέσο όρο.",
-          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους <b>πιο πολύ απ’ όλους</b>.",
-          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, <b>ούτε καν τα βλέπει</b>.",
-          "Οι πιο δυνατοί <b>υποτιμούν</b> λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
-          "<b>Η λύση:</b> μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
-          "Σύγκρινε τον βαθμό με την εκτίμησή σου. Φέρ’ την <b>πιο κοντά στην αλήθεια</b>."
+          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια <b>θέση<\/b> βγήκαν.",
+          "Να πού βγήκε <b>στην πραγματικότητα<\/b> κάθε ομάδα.",
+          "Και πού <b>νόμιζαν<\/b> ότι βγήκαν: όλοι πάνω από τον μέσο όρο.",
+          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους <b>πιο πολύ απ’ όλους<\/b>.",
+          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, <b>ούτε καν τα βλέπει<\/b>.",
+          "Οι πιο δυνατοί <b>υποτιμούν<\/b> λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
+          "<b>Η λύση:<\/b> μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
+          "Σύγκρινε τον βαθμό με την εκτίμησή σου. Φέρ’ την <b>πιο κοντά στην αλήθεια<\/b>."
         ],
         say: [
           "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια θέση βγήκαν.",
@@ -617,20 +532,20 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
     svg(T) {
       // axes, average line and group labels
       let ax = `<line class="ax" x1="${AX}" y1="${TOP - 4}" x2="${AX}" y2="${B}"/><line class="ax" x1="${AX}" y1="${B}" x2="${RX}" y2="${B}"/>`;
-      for (const p of [0, 50, 100]) ax += `<line class="tick" x1="${AX - 4}" y1="${Y(p)}" x2="${AX}" y2="${Y(p)}"/><text class="dk-yl" x="${AX - 8}" y="${Y(p) + 3.5}">${p}</text>`;
-      ax += `<text class="dk-yt" transform="translate(19 ${(Y(100) + Y(50)) / 2}) rotate(-90)">${T.yTitle}</text>`;
-      ax += `<line class="dk-avg" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text>`;
-      const avgHi = `<g data-k="avgHi"><line class="dk-avg hi" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt hi" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text></g>`;
-      T.groups.forEach((g, i) => { ax += `<text class="dk-gl">${lines(g, C(i), B + 15, 11)}</text>`; });
-      ax += `<text class="dk-xt" x="${(AX + RX) / 2}" y="${B + 45}">${T.xTitle}</text>`;
+      for (const p of [0, 50, 100]) ax += `<line class="tick" x1="${AX - 4}" y1="${Y(p)}" x2="${AX}" y2="${Y(p)}"/><text class="dk-yl" x="${AX - 8}" y="${Y(p) + 3.5}">${p}<\/text>`;
+      ax += `<text class="dk-yt" transform="translate(19 ${(Y(100) + Y(50)) / 2}) rotate(-90)">${T.yTitle}<\/text>`;
+      ax += `<line class="dk-avg" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}<\/text>`;
+      const avgHi = `<g data-k="avgHi"><line class="dk-avg hi" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt hi" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}<\/text><\/g>`;
+      T.groups.forEach((g, i) => { ax += `<text class="dk-gl">${lines(g, C(i), B + 15, 11)}<\/text>`; });
+      ax += `<text class="dk-xt" x="${(AX + RX) / 2}" y="${B + 45}">${T.xTitle}<\/text>`;
       // people waiting for their result
       let people = "";
       for (let i = 0; i < 4; i++) {
         for (const dx of [-15, 0, 15]) {
           const x = C(i) + dx;
-          people += `<g class="dk-man"><circle cx="${x}" cy="${B - 20}" r="4.2"/><path d="M${x - 6.5} ${B - 1} V${B - 7} a6.5 6 0 0 1 13 0 V${B - 1}"/></g>`;
+          people += `<g class="dk-man"><circle cx="${x}" cy="${B - 20}" r="4.2"/><path d="M${x - 6.5} ${B - 1} V${B - 7} a6.5 6 0 0 1 13 0 V${B - 1}"/><\/g>`;
         }
-        people += `<text class="dk-qm" data-k="qm${i}" x="${C(i)}" y="${B - 31}">?</text>`;
+        people += `<text class="dk-qm" data-k="qm${i}" x="${C(i)}" y="${B - 31}">?<\/text>`;
       }
       // bars
       let bars = "";
@@ -639,23 +554,23 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       for (let i = 0; i < 4; i++) bars += `<rect class="dk-gs" data-k="g${i}" x="${GXl(i)}" width="${W}" rx="2"/>`;
       bars += `<rect class="dk-ok" data-k="ok0" x="${GXl(0)}" width="${W}" rx="2"/>`;
       // legend, top left of the plot, one row each so long Greek labels fit
-      const legend = `<g data-k="legA"><rect class="dk-act" x="${AX + 8}" y="10" width="10" height="10" rx="2"/><text class="dk-leg" x="${AX + 24}" y="19">${T.legA}</text></g>
-        <g data-k="legG"><rect class="dk-gs" x="${AX + 9}" y="25" width="8" height="8" rx="1.5"/><text class="dk-leg" x="${AX + 24}" y="33">${T.legG}</text></g>`;
+      const legend = `<g data-k="legA"><rect class="dk-act" x="${AX + 8}" y="10" width="10" height="10" rx="2"/><text class="dk-leg" x="${AX + 24}" y="19">${T.legA}<\/text><\/g>
+        <g data-k="legG"><rect class="dk-gs" x="${AX + 9}" y="25" width="8" height="8" rx="1.5"/><text class="dk-leg" x="${AX + 24}" y="33">${T.legG}<\/text><\/g>`;
       // gap brackets
-      const br = `<g data-k="br0"><path class="dk-guide" data-k="br0g"/><path class="dk-br" data-k="br0p"/></g>
-        <text class="dk-brt" data-k="br0t">${lines(T.tooSure, C(0), Y(GUESS[0]) - 8 - (T.tooSure.length - 1) * 11, 11)}</text>
-        <g data-k="br3"><path class="dk-guide" d="M${AXl(3) + W} ${Y(ACT[3])} H${C(3) + 13}"/><path class="dk-br" d="M${C(3) + 13} ${Y(ACT[3]) + 1} V${Y(GUESS[3]) - 1} M${C(3) + 9} ${Y(ACT[3]) + 1} H${C(3) + 17}"/></g>
-        <text class="dk-brt" data-k="br3t">${lines(T.modest, C(3) - 5, Y(ACT[3]) - 8 - (T.modest.length - 1) * 11, 11)}</text>`;
+      const br = `<g data-k="br0"><path class="dk-guide" data-k="br0g"/><path class="dk-br" data-k="br0p"/><\/g>
+        <text class="dk-brt" data-k="br0t">${lines(T.tooSure, C(0), Y(GUESS[0]) - 8 - (T.tooSure.length - 1) * 11, 11)}<\/text>
+        <g data-k="br3"><path class="dk-guide" d="M${AXl(3) + W} ${Y(ACT[3])} H${C(3) + 13}"/><path class="dk-br" d="M${C(3) + 13} ${Y(ACT[3]) + 1} V${Y(GUESS[3]) - 1} M${C(3) + 9} ${Y(ACT[3]) + 1} H${C(3) + 17}"/><\/g>
+        <text class="dk-brt" data-k="br3t">${lines(T.modest, C(3) - 5, Y(ACT[3]) - 8 - (T.modest.length - 1) * 11, 11)}<\/text>`;
       // step 5: the same test, seen by each group
       const d0x = C(0) - 13, d0y = 44, d3x = C(3) - 13, d3y = 22;
-      const docs = `<g data-k="doc0">${doc(d0x, d0y, false)}<path class="dk-tick" d="M${d0x + 30} ${d0y + 18} l4 4 l8 -9"/><text class="dk-note" x="${d0x + 48}" y="${d0y + 21}">${T.noSee}</text></g>
-        <g data-k="doc3">${doc(d3x, d3y, true)}<text class="dk-note" x="${d3x - 6}" y="${d3y + 20}" text-anchor="end">${T.see}</text></g>`;
+      const docs = `<g data-k="doc0">${doc(d0x, d0y, false)}<path class="dk-tick" d="M${d0x + 30} ${d0y + 18} l4 4 l8 -9"/><text class="dk-note" x="${d0x + 48}" y="${d0y + 21}">${T.noSee}<\/text><\/g>
+        <g data-k="doc3">${doc(d3x, d3y, true)}<text class="dk-note" x="${d3x - 6}" y="${d3y + 20}" text-anchor="end">${T.see}<\/text><\/g>`;
       // step 7: outside feedback card
       const card = `<g class="dk-card" data-k="fb"><rect class="c" x="0" y="0" width="${FBW}" height="48" rx="8"/>
-          ${doc(10, 7, true)}<text class="t" x="46" y="21">${T.fbT}</text><text class="s" x="46" y="35">${T.fbS}</text>
-          <text class="sc" x="${FBW - 10}" y="30">${T.score}</text></g>`;
+          ${doc(10, 7, true)}<text class="t" x="46" y="21">${T.fbT}<\/text><text class="s" x="46" y="35">${T.fbS}<\/text>
+          <text class="sc" x="${FBW - 10}" y="30">${T.score}<\/text><\/g>`;
       const fix = `<path class="dk-arrow" data-k="down" d=""/><path class="dk-check" data-k="check" d=""/>`;
-      return `<g data-k="axes">${ax}</g>${avgHi}<g data-k="people">${people}</g>${bars}${legend}${br}${docs}${card}${fix}`;
+      return `<g data-k="axes">${ax}<\/g>${avgHi}<g data-k="people">${people}<\/g>${bars}${legend}${br}${docs}${card}${fix}`;
     },
     S0: { axes: 0, people: 0, qm: 0, act: 0, legA: 0, gs: 0, legG: 0, avgHi: 0, br0: 0, br0t: 0,
       doc0: 0, doc3: 0, br3: 0, fb: 0, fbX: 16, g0: GUESS[0], old: 0, fix: 0, down: 0, check: 0 },
@@ -707,7 +622,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 <script>
   (function () {
     var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "el", "shareUrl": "https://papangelis.com/biases/el/watch/dunning-kruger/", "embedUrl": "https://papangelis.com/biases/el/watch/dunning-kruger/?embed", "sfxBase": "/biases/sfx/"};
-    if (mode === "og") { opts.capture = true; var p = BiasAnim.mount(document.getElementById("og-player"), "dunning-kruger", opts); window.__bp = p; }
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "dunning-kruger", opts); window.__bp = p; }
     else {
       opts.capture = mode === "video";
       if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }

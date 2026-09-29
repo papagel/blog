@@ -19,10 +19,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Η πλάνη του βυθισμένου κόστους σε 30 δευτερόλεπτα">
 <meta name="twitter:description" content="Η τάση να συνεχίζουμε κάτι λόγω του χρόνου, των χρημάτων ή του κόπου που έχουμε ήδη ξοδέψει, ακόμη κι όταν η συνέχεια κοστίζει περισσότερο από όσα αποδίδει. Ό,τι ξοδεύτηκε δεν γυρίζει πίσω, οπότε δεν θα έπρεπε να καθορίζει τις επόμενες επιλογές μας.">
-<meta property="og:image" content="https://papangelis.com/assets/og/watch-sunk-cost-el.png?v=f1875611">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-sunk-cost-el.png?v=95ffb7ac">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-sunk-cost-el.png?v=f1875611">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-sunk-cost-el.png?v=95ffb7ac">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
 <link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
@@ -74,28 +74,28 @@
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.w{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
-.w-main{display:flex;flex-direction:column;gap:12px}
-.w-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
-.w-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
-.w-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-.w-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
-.w-btn:hover{border-color:var(--ink)}
-.w-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 :focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
 .og{display:none}
 /* embed: just the player */
 html.embed body{padding:0;background:transparent}
-html.embed .w{padding:0;max-width:none;gap:0}
-html.embed .w-main>:not(#player){display:none}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
 /* capture: square video frame */
 html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
-html.cap-video .w{display:block;max-width:none;padding:0;height:100%}
-html.cap-video .w-main,html.cap-video #player{height:100%}
-html.cap-video .w-main>:not(#player){display:none}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
 /* capture: 1200x630 social card, drawn at 600x315 and 2x */
 html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
-html.cap-og .w{display:none}
+html.cap-og .wp{display:none}
 html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
 .og-l{display:flex;flex-direction:column;gap:10px}
 .og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
@@ -103,103 +103,17 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 .og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
 .og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
 .og-u{font:600 11px/1.4 var(--mono);color:#6ea8fe;margin-top:14px}
-.og .bp.capture .bp-cap,.og .bp.capture .bp-brand{display:none}
-.og .bp.capture,.og .bp.capture .bp-stage{height:auto}
-.og .bp.capture .bp-stage{border-radius:10px;border:1px solid var(--rule)}
-.og .bp.capture .bp-svg{flex:none;padding:4px}
 
-/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */
-.bp{--bp-ctl:54px}
-.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}
-.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}
-.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}
-.bp-text b{color:var(--q);font-weight:600}
-.bp-svg{display:block;width:100%;height:auto}
-.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}
-.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
-.bp-btn:hover{border-color:var(--ink)}
-.bp-btn[aria-pressed="true"]{color:var(--q);border-color:var(--q)}
-.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}
-.bp-dots{display:flex;gap:5px;flex:1;min-width:0}
-.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}
-.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}
-.bp-brand{display:none}
-
-/* end screen */
-.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}
-.bp-card.on{pointer-events:auto}
-.bp-mark{width:40px;height:40px}
-.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}
-.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}
-.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}
-.bp-pill:hover{border-color:var(--ink)}
-.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-
-/* share menu */
-.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}
-.bp-menu[hidden]{display:none}
-.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}
-.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}
-.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}
-.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}
-.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}
-.bp-menu small.ok{color:var(--good)}
-
-/* scene */
-.bp .ax{stroke:var(--rule);stroke-width:2}
-.bp .tick{stroke:var(--rule);stroke-width:1.5}
-.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}
-.bp .axt{font:500 10px var(--mono);fill:var(--faint)}
-.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-.bp .tag line{stroke:var(--ink);stroke-width:1.4}
-.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
-.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
-.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
-.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}
-.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}
-.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}
-.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}
-.bp .pin circle{fill:var(--pin)}
-.bp .pin line{stroke:var(--pin);stroke-width:2.2}
-.bp .pin text{font:600 11px var(--display);fill:var(--pin)}
-.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}
-.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}
-.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}
-.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}
-.bp .gap line{stroke:var(--bad);stroke-width:1.8}
-.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}
-.bp .band rect{fill:var(--good);opacity:.22}
-.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}
-.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}
-.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}
-
-/* capture layout: a square frame for video export, with a brand bar instead of controls */
-.bp.capture{--bp-ctl:46px;height:100%}
-.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}
-.bp.capture .bp-cap{padding:22px 24px 0}
-.bp.capture .bp-text{font-size:21px}
-.bp.capture .bp-no{font-size:12px}
-.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}
-.bp.capture .bp-ctl{display:none}
-.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}
-.bp.capture .bp-bm{width:22px;height:22px}
-.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}
-.bp.capture .bp-row{display:none}
 
 </style>
 </head>
 <body>
-<div class="w">
-  <main class="w-main">
+<div class="wp">
+  <main class="wp-main">
     <h1>Πλάνη του βυθισμένου κόστους</h1>
-    <p class="w-def">Η τάση να συνεχίζουμε κάτι λόγω του χρόνου, των χρημάτων ή του κόπου που έχουμε ήδη ξοδέψει, ακόμη κι όταν η συνέχεια κοστίζει περισσότερο από όσα αποδίδει. Ό,τι ξοδεύτηκε δεν γυρίζει πίσω, οπότε δεν θα έπρεπε να καθορίζει τις επόμενες επιλογές μας.</p>
+    <p class="wp-def">Η τάση να συνεχίζουμε κάτι λόγω του χρόνου, των χρημάτων ή του κόπου που έχουμε ήδη ξοδέψει, ακόμη κι όταν η συνέχεια κοστίζει περισσότερο από όσα αποδίδει. Ό,τι ξοδεύτηκε δεν γυρίζει πίσω, οπότε δεν θα έπρεπε να καθορίζει τις επόμενες επιλογές μας.</p>
     <div id="player"></div>
-    <nav class="w-links"><a class="w-btn primary" href="/biases/el/#b-sunk-cost-fallacy">Διάβασε όλη την κάρτα</a></nav>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/el/#b-sunk-cost-fallacy">Διάβασε όλη την κάρτα</a></nav>
   </main>
 </div>
 <div class="og">
@@ -211,7 +125,8 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   </div>
   <div id="og-player"></div>
 </div>
-<script>/* Cognitive Bias Explorer: animated explainers.
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* share-card frame: just the drawing, boxed */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n";
+/* Cognitive Bias Explorer: animated explainers.
    A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
    so looping, stepping between beats, and frame-by-frame video capture all agree.
    Brain and share icons: Lucide (lucide.dev), ISC licence. */
@@ -233,12 +148,12 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   };
 
   const ICON = {
-    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg>',
-    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>',
-    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
-    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>',
-    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
-    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>'
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
   };
 
   /* ------------------------------------------------------------------ sound
@@ -274,7 +189,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
     document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
   const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
-  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}</g></svg>`;
+  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/><\/linearGradient><\/defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}<\/g><\/svg>`;
 
   const UI = {
     en: {
@@ -335,36 +250,36 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
   let uid = 0;
   function mount(host, key, opts = {}) {
     const scene = SCENES[key]; if (!scene || !host) return null;
-    if (scene.css && !document.getElementById("bp-css-" + key)) {
-      const st = document.createElement("style"); st.id = "bp-css-" + key; st.textContent = scene.css; document.head.appendChild(st);
-    }
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
     const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capture = !!opts.capture;
-    host.innerHTML = `
-      <div class="bp${capture ? " capture" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
         <div class="bp-stage">
-          <div class="bp-cap"><span class="bp-no"></span><p class="bp-text" aria-live="polite"></p></div>
-          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}</g></svg>
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
           <div class="bp-card" aria-hidden="true">
             ${brainMark("bp-mark", id + "g")}
-            <p class="bp-name">${T.name}</p>
-            <p class="bp-line">${T.ecline}</p>
-            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}</span></button><button class="bp-pill" type="button" data-a="again">${U.ecagain}</button></div>
-          </div>
-          <div class="bp-menu" role="menu" hidden></div>
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
           <div class="bp-ctl">
-            <button class="bp-btn" type="button" data-a="play"></button>
-            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i></i></button>`).join("")}</div>
-            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}</button>` : ""}
-            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}</button>
-            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}</button>
-          </div>
-          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}</span><span class="bp-site">${U.site}</span></div>
-        </div>
-      </div>`;
-    const root = host.firstElementChild;
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
     const $ = sel => root.querySelector(sel);
     const cache = {};
     const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
@@ -416,15 +331,15 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
     function closeMenu() { menu.hidden = true; }
     function openMenu() {
       const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
-      menu.innerHTML = `<div class="bp-mh">${U.smHead}</div>
-        <button type="button" role="menuitem" data-m="copy">${U.copy}<small></small></button>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn</a>
-        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook</a>
-        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4</small></a>` : ""}
-        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small></small></button>` : ""}
-        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}</a>` : ""}`;
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
       menu.hidden = false;
       const copy = async (btn, value) => {
         try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
@@ -432,7 +347,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       };
       menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
       const em = menu.querySelector('[data-m="embed"]');
-      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen></iframe>`);
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
       menu.querySelector('[role="menuitem"]').focus();
     }
     async function share() {
@@ -460,7 +375,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
         document.dispatchEvent(new CustomEvent("bp-sound"));
       }
     });
-    const outside = e => { if (!menu.hidden && !root.contains(e.target)) closeMenu(); };
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
     const soundBtn = () => {
       const b = $('[data-a="sound"]'); if (!b) return;
       b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
@@ -487,7 +402,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
       starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
-      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); host.innerHTML = ""; }
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
     };
     if (capture) window.__bp = api;
     return api;
@@ -513,8 +428,8 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
     return n * (t -= 2.625 / d) * t + .984375;
   };
   // a weight: trapezoid block with its label, drawn from its top edge y0 (pan-local coordinates)
-  const block = (w, y0, label) => `<path d="M${-w / 2} ${y0 + 15} L${-w / 2 + 3} ${y0} H${w / 2 - 3} L${w / 2} ${y0 + 15} Z"/><text y="${y0 + 11}">${label}</text>`;
-  const coin = `<circle r="8"/><text y="3.6">€</text>`;
+  const block = (w, y0, label) => `<path d="M${-w / 2} ${y0 + 15} L${-w / 2 + 3} ${y0} H${w / 2 - 3} L${w / 2} ${y0 + 15} Z"/><text y="${y0 + 11}">${label}<\/text>`;
+  const coin = `<circle r="8"/><text y="3.6">€<\/text>`;
   const P = '.bp[data-scene="sunk-cost"]';
 
   window.BiasAnim.SCENES["sunk-cost"] = {
@@ -562,14 +477,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         concert: "CONCERT", price: "€60", noref: "no refunds", spent: "Spent", sunk: "sunk cost", sunkW: 66, tired: "exhausted",
         go: "Go", stay: "Stay home", music: "Music", rest: "Rest", dry: "Dry", minus: "−€60",
         caps: [
-          "You paid <b>€60</b> for a concert ticket. No refunds.",
+          "You paid <b>€60<\/b> for a concert ticket. No refunds.",
           "On the night, you're exhausted and it's pouring.",
           "Go or stay home? You weigh it up.",
-          "Tonight, staying home is what you'd <b>enjoy more</b>.",
-          "Then a thought: “I paid €60. I can't <b>waste it</b>.”",
-          "But the €60 is gone <b>either way</b>.",
-          "<b>The fix:</b> take spent money off the scale.",
-          "Decide on what's ahead. <b>Stay home</b> and rest."
+          "Tonight, staying home is what you'd <b>enjoy more<\/b>.",
+          "Then a thought: “I paid €60. I can't <b>waste it<\/b>.”",
+          "But the €60 is gone <b>either way<\/b>.",
+          "<b>The fix:<\/b> take spent money off the scale.",
+          "Decide on what's ahead. <b>Stay home<\/b> and rest."
         ],
         say: [
           "You paid sixty euros for a concert ticket. No refunds.",
@@ -589,14 +504,14 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
         concert: "ΣΥΝΑΥΛΙΑ", price: "60 €", noref: "δεν επιστρέφεται", spent: "Ξοδεμένα", sunk: "βυθισμένο κόστος", sunkW: 100, tired: "εξάντληση",
         go: "Πάω", stay: "Μένω σπίτι", music: "Μουσική", rest: "Ξεκούραση", dry: "Χωρίς βροχή", minus: "−60 €",
         caps: [
-          "Πλήρωσες <b>60\u00a0€</b> για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
+          "Πλήρωσες <b>60\u00a0€<\/b> για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
           "Φτάνει η βραδιά. Είσαι πτώμα κι έξω ρίχνει καρεκλοπόδαρα.",
           "Να πας ή να μείνεις σπίτι; Το ζυγίζεις.",
-          "Απόψε θα περνούσες <b>πιο ωραία</b> στο σπίτι.",
-          "Και μετά σκέφτεσαι: «Έδωσα\u00a060\u00a0€. Κρίμα να πάνε <b>χαμένα</b>».",
-          "Όμως τα 60\u00a0€ έχουν φύγει <b>έτσι κι αλλιώς</b>.",
-          "<b>Η λύση:</b> βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
-          "Σκέψου μόνο το από δω και πέρα. <b>Μείνε σπίτι</b> και ξεκουράσου."
+          "Απόψε θα περνούσες <b>πιο ωραία<\/b> στο σπίτι.",
+          "Και μετά σκέφτεσαι: «Έδωσα\u00a060\u00a0€. Κρίμα να πάνε <b>χαμένα<\/b>».",
+          "Όμως τα 60\u00a0€ έχουν φύγει <b>έτσι κι αλλιώς<\/b>.",
+          "<b>Η λύση:<\/b> βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
+          "Σκέψου μόνο το από δω και πέρα. <b>Μείνε σπίτι<\/b> και ξεκουράσου."
         ],
         say: [
           "Πλήρωσες εξήντα ευρώ για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
@@ -615,39 +530,39 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
       const pan = (side, label) => `
         <path class="bowl" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
         <path class="bowl g" data-k="bowlg${side}" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
-        <text class="pl" data-k="pl${side}" y="${H + D + 17}">${label}</text>
-        <text class="pl g" data-k="plg${side}" y="${H + D + 17}">${label}</text>
-        <text class="minus" data-k="minus${side}" y="${H + D + 32}">${T.minus}</text>`;
+        <text class="pl" data-k="pl${side}" y="${H + D + 17}">${label}<\/text>
+        <text class="pl g" data-k="plg${side}" y="${H + D + 17}">${label}<\/text>
+        <text class="minus" data-k="minus${side}" y="${H + D + 32}">${T.minus}<\/text>`;
       return `
         <g class="tk" data-k="ticket"><path d="M18 12 H108 Q114 12 114 18 V35 A6 6 0 0 0 114 47 V64 Q114 70 108 70 H18 Q12 70 12 64 V47 A6 6 0 0 0 12 35 V18 Q12 12 18 12 Z"/>
-          <text class="t1" x="63" y="28">${T.concert}</text><text class="t2" x="63" y="49">${T.price}</text><text class="t3" data-k="noref" x="63" y="63">${T.noref}</text></g>
-        <g data-k="cloud"><path class="cloud" d="M149 40 a9 9 0 0 1 1 -17.9 a13 13 0 0 1 24 -6 a10 10 0 0 1 15 8 a8 8 0 0 1 -1 15.9 Z"/></g>
-        <g class="rain" data-k="rain"><line x1="155" y1="45" x2="152.5" y2="52"/><line x1="165" y1="48" x2="162.5" y2="55"/><line x1="175" y1="45" x2="172.5" y2="52"/><line x1="185" y1="48" x2="182.5" y2="55"/></g>
+          <text class="t1" x="63" y="28">${T.concert}<\/text><text class="t2" x="63" y="49">${T.price}<\/text><text class="t3" data-k="noref" x="63" y="63">${T.noref}<\/text><\/g>
+        <g data-k="cloud"><path class="cloud" d="M149 40 a9 9 0 0 1 1 -17.9 a13 13 0 0 1 24 -6 a10 10 0 0 1 15 8 a8 8 0 0 1 -1 15.9 Z"/><\/g>
+        <g class="rain" data-k="rain"><line x1="155" y1="45" x2="152.5" y2="52"/><line x1="165" y1="48" x2="162.5" y2="55"/><line x1="175" y1="45" x2="172.5" y2="52"/><line x1="185" y1="48" x2="182.5" y2="55"/><\/g>
         <g class="bat" data-k="bat"><rect x="318" y="13" width="30" height="14" rx="3"/><rect x="348.5" y="17" width="2.5" height="6" rx="1"/>
           <rect class="low" x="321" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b1" x="321" y="16" width="7" height="8" rx="1"/>
           <rect class="bar" data-k="b2" x="329.5" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b3" x="338" y="16" width="7" height="8" rx="1"/>
-          <text class="note" x="334" y="41">${T.tired}</text></g>
+          <text class="note" x="334" y="41">${T.tired}<\/text><\/g>
         <g data-k="scale">
           <path class="base" d="M${PX - 28} 246 H${PX + 28} L${PX + 36} 254 H${PX - 36} Z"/>
           <line class="beam" x1="${PX}" y1="${PY}" x2="${PX}" y2="246"/>
-          <g data-k="hangL"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
-          <g data-k="hangR"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
-          <g data-k="beam"><line class="beam" x1="${-L}" y1="0" x2="${L}" y2="0"/><line class="needle" x1="0" y1="0" x2="0" y2="-15"/></g>
+          <g data-k="hangL"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/><\/g>
+          <g data-k="hangR"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/><\/g>
+          <g data-k="beam"><line class="beam" x1="${-L}" y1="0" x2="${L}" y2="0"/><line class="needle" x1="0" y1="0" x2="0" y2="-15"/><\/g>
           <circle class="pin" cx="${PX}" cy="${PY}" r="4.5"/>
           <circle class="ring" data-k="ringL" r="3"/><circle class="ring" data-k="ringR" r="3"/>
-        </g>
-        <g data-k="ghost">${JAR.map(([x, y]) => `<circle class="gcoin" cx="${x}" cy="${y}" r="8"/>`).join("")}</g>
-        <g class="wt" data-k="music">${block(80, 79, T.music)}</g>
-        <g class="wt" data-k="dry">${block(80, 79, T.dry)}</g>
-        <g class="wt" data-k="rest">${block(66, 64, T.rest)}</g>
-        <g data-k="wing"><g class="wt g" data-k="dryg">${block(80, 79, "")}</g><g class="wt g" data-k="restg">${block(66, 64, "")}</g></g>
-        ${JAR.map((_, i) => `<g class="coin" data-k="c${i}">${coin}</g>`).join("")}
+        <\/g>
+        <g data-k="ghost">${JAR.map(([x, y]) => `<circle class="gcoin" cx="${x}" cy="${y}" r="8"/>`).join("")}<\/g>
+        <g class="wt" data-k="music">${block(80, 79, T.music)}<\/g>
+        <g class="wt" data-k="dry">${block(80, 79, T.dry)}<\/g>
+        <g class="wt" data-k="rest">${block(66, 64, T.rest)}<\/g>
+        <g data-k="wing"><g class="wt g" data-k="dryg">${block(80, 79, "")}<\/g><g class="wt g" data-k="restg">${block(66, 64, "")}<\/g><\/g>
+        ${JAR.map((_, i) => `<g class="coin" data-k="c${i}">${coin}<\/g>`).join("")}
         <g class="jar" data-k="jar"><path d="M33 104 H93 M37 104 V109 Q28 113 28 123 V180 Q28 190 38 190 H88 Q98 190 98 180 V123 Q98 113 89 109 V104"/>
-          <rect x="34" y="120" width="58" height="16" rx="3"/><text x="63" y="131.5">${T.spent}</text></g>
-        <g data-k="panL">${pan("L", T.go)}</g>
-        <g data-k="panR">${pan("R", T.stay)}</g>
-        <g class="sunk" data-k="sunk"><rect x="${63 - T.sunkW / 2}" y="199" width="${T.sunkW}" height="17" rx="8.5"/><text x="63" y="210.5">${T.sunk}</text></g>
-        <g class="check" data-k="check"><circle r="9"/><path d="M-4 0.5 L-1 3.5 L4.5 -3"/></g>`;
+          <rect x="34" y="120" width="58" height="16" rx="3"/><text x="63" y="131.5">${T.spent}<\/text><\/g>
+        <g data-k="panL">${pan("L", T.go)}<\/g>
+        <g data-k="panR">${pan("R", T.stay)}<\/g>
+        <g class="sunk" data-k="sunk"><rect x="${63 - T.sunkW / 2}" y="199" width="${T.sunkW}" height="17" rx="8.5"/><text x="63" y="210.5">${T.sunk}<\/text><\/g>
+        <g class="check" data-k="check"><circle r="9"/><path d="M-4 0.5 L-1 3.5 L4.5 -3"/><\/g>`;
     },
     S0: { ticket: 0, noref: 0, jar: 0, drop: 0, cloud: 0, rain: 0, bat: 0, drain: 0, scale: 0, tilt: 0,
       music: 0, dry: 0, rest: 0, fly: 0, back: 0, ghost: 0, minus: 0, sunk: 0, win: 0, check: 0 },
@@ -713,7 +628,7 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
 <script>
   (function () {
     var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "el", "shareUrl": "https://papangelis.com/biases/el/watch/sunk-cost/", "embedUrl": "https://papangelis.com/biases/el/watch/sunk-cost/?embed", "sfxBase": "/biases/sfx/"};
-    if (mode === "og") { opts.capture = true; var p = BiasAnim.mount(document.getElementById("og-player"), "sunk-cost", opts); window.__bp = p; }
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "sunk-cost", opts); window.__bp = p; }
     else {
       opts.capture = mode === "video";
       if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
