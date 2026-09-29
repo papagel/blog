@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Planning fallacy, explained in 30 seconds · Downstream</title>
+<meta name="description" content="The planning fallacy is underestimating how long a task will take, and often how much it will cost, even when similar past tasks ran over. We picture the smooth, best-case path and forget the delays.">
+<meta name="author" content="Thanos Papangelis">
+<link rel="canonical" href="https://papangelis.com/biases/watch/planning-fallacy/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/watch/planning-fallacy/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/watch/planning-fallacy/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/watch/planning-fallacy/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Planning fallacy, explained in 30 seconds">
+<meta property="og:description" content="The planning fallacy is underestimating how long a task will take, and often how much it will cost, even when similar past tasks ran over. We picture the smooth, best-case path and forget the delays.">
+<meta property="og:url" content="https://papangelis.com/biases/watch/planning-fallacy/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Planning fallacy, explained in 30 seconds">
+<meta name="twitter:description" content="The planning fallacy is underestimating how long a task will take, and often how much it will cost, even when similar past tasks ran over. We picture the smooth, best-case path and forget the delays.">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-planning-fallacy-en.png?v=7158bce1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-planning-fallacy-en.png?v=7158bce1">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), h = document.documentElement;
+    try { h.setAttribute("data-theme", localStorage.getItem("theme") || "dark"); } catch (e) {}
+    if (q.has("embed")) h.classList.add("embed");
+    if (q.get("capture") === "video") h.classList.add("cap-video");
+    if (q.get("capture") === "og") { h.classList.add("cap-og"); h.setAttribute("data-theme", "dark"); }
+  })();
+</script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+:root{--q:var(--nem)}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
+.og{display:none}
+/* embed: just the player */
+html.embed body{padding:0;background:transparent}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
+/* capture: square video frame */
+html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
+/* capture: 1200x630 social card, drawn at 600x315 and 2x */
+html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
+html.cap-og .wp{display:none}
+html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
+.og-l{display:flex;flex-direction:column;gap:10px}
+.og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
+.og-b svg{width:18px;height:18px}
+.og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+.og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
+.og-u{font:600 11px/1.4 var(--mono);color:#6ea8fe;margin-top:14px}
+
+
+</style>
+</head>
+<body>
+<div class="wp">
+  <main class="wp-main">
+    <h1>Planning fallacy</h1>
+    <p class="wp-def">The planning fallacy is underestimating how long a task will take, and often how much it will cost, even when similar past tasks ran over. We picture the smooth, best-case path and forget the delays.</p>
+    <div id="player"></div>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/#b-planning-fallacy">Read the full card</a></nav>
+  </main>
+</div>
+<div class="og">
+  <div class="og-l">
+    <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ob" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#ob)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></g></svg>Cognitive Bias Explorer</div>
+    <p class="og-t" style="font-size:40px">Planning fallacy</p>
+    <p class="og-s">Explained in 30 seconds</p>
+    <span class="og-u">papangelis.com/<wbr>biases/<wbr>watch/<wbr>planning-fallacy</span>
+  </div>
+  <div id="og-player"></div>
+</div>
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n";
+/* Cognitive Bias Explorer: animated explainers.
+   A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
+   so looping, stepping between beats, and frame-by-frame video capture all agree.
+   Brain and share icons: Lucide (lucide.dev), ISC licence. */
+(function () {
+  "use strict";
+
+  const EASE = {
+    lin: t => t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+    bounce: t => {
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+      return n * (t -= 2.625 / d) * t + .984375;
+    }
+  };
+
+  const ICON = {
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
+  };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
+  const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
+  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/><\/linearGradient><\/defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}<\/g><\/svg>`;
+
+  const UI = {
+    en: {
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
+      ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
+      copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
+      open: "Open on its own page", site: "papangelis.com/biases"
+    },
+    el: {
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
+      ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
+      copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
+      open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
+    }
+  };
+
+  /* ------------------------------------------------------------------ scenes */
+  const SCENES = {};
+
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
+
+  /* ------------------------------------------------------------------ timeline */
+  const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
+    let t = 0;
+    const push = (to, ms, ease) => {
+      const from = {}; for (const key in to) from[key] = S[key];
+      segs.push({ t0: t, t1: t + (ms || 0), from, to, ease: EASE[ease || "out"] });
+      Object.assign(S, to); t += ms || 0;
+    };
+    scene.beats.forEach(b => {
+      starts.push(t);
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
+      ends.push(t);
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
+    });
+    const cardAt = t;
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
+  }
+  function stateAt(tl, t) {
+    const S = { ...tl.S0 };
+    for (const g of tl.segs) {
+      if (t < g.t0) break;
+      const p = g.t1 > g.t0 ? Math.min(1, (t - g.t0) / (g.t1 - g.t0)) : 1, e = g.ease(p);
+      for (const key in g.to) S[key] = g.from[key] + (g.to[key] - g.from[key]) * e;
+    }
+    return S;
+  }
+
+  /* ------------------------------------------------------------------ player */
+  let uid = 0;
+  function mount(host, key, opts = {}) {
+    const scene = SCENES[key]; if (!scene || !host) return null;
+    const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const capture = !!opts.capture;
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+        <div class="bp-stage">
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
+          <div class="bp-card" aria-hidden="true">
+            ${brainMark("bp-mark", id + "g")}
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
+          <div class="bp-ctl">
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
+    const $ = sel => root.querySelector(sel);
+    const cache = {};
+    const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
+    const all = $(".bp-all"), card = $(".bp-card"), text = $(".bp-text"), no = $(".bp-no"), menu = $(".bp-menu");
+    const dots = [...root.querySelectorAll(".bp-dot i")];
+
+    let t = 0, playing = false, userPaused = false, visible = false, raf = 0, last = 0, capShown = -1, started = false;
+    function beatAt(time) { let i = 0; while (i + 1 < n && time >= tl.starts[i + 1]) i++; return i; }
+    function draw() {
+      const S = stateAt(tl, t);
+      scene.render(S, k, T);
+      all.style.opacity = S.all;
+      card.style.opacity = S.card;
+      card.classList.toggle("on", S.card > .5);
+      card.setAttribute("aria-hidden", S.card > .5 ? "false" : "true");
+      const i = beatAt(t);
+      if (i !== capShown) { text.innerHTML = T.caps[i]; no.textContent = `${i + 1}/${n}`; capShown = i; }
+      // captions fade in at the start of each beat and out just before the next
+      const next = i + 1 < n ? tl.starts[i + 1] : tl.total;
+      text.style.opacity = Math.max(0, Math.min(1, (t - tl.starts[i]) / 220, (next - t) / 160, i === n - 1 ? 1 - S.card : 1));
+      dots.forEach((d, j) => {
+        const end = j + 1 < n ? tl.starts[j + 1] : tl.cardAt;
+        d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
+      });
+    }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
+    function frame(now) {
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
+      draw();
+      raf = playing ? requestAnimationFrame(frame) : 0;
+    }
+    function setIcon() {
+      const b = $('[data-a="play"]');
+      b.innerHTML = playing ? ICON.pause : ICON.play;
+      b.setAttribute("aria-label", playing ? U.pause : U.play);
+    }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
+
+    function closeMenu() { menu.hidden = true; }
+    function openMenu() {
+      const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
+      menu.hidden = false;
+      const copy = async (btn, value) => {
+        try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
+        catch (e) { btn.querySelector("small").textContent = value.length > 60 ? "✕" : value; }
+      };
+      menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
+      const em = menu.querySelector('[data-m="embed"]');
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
+      menu.querySelector('[role="menuitem"]').focus();
+    }
+    async function share() {
+      if (playing) { userPaused = true; pause(); }
+      const url = opts.shareUrl || location.href;
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ title: T.shareTitle, url }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      menu.hidden ? openMenu() : closeMenu();
+    }
+
+    root.addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), d = e.target.closest(".bp-dot");
+      if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
+      if (!a) return;
+      const act = a.dataset.a;
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
+      else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
+      else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
+    });
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    document.addEventListener("bp-sound", soundBtn);
+    if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+    const esc = e => { if (e.key === "Escape") closeMenu(); };
+    document.addEventListener("click", outside);
+    document.addEventListener("keydown", esc);
+
+    let io = null;
+    if (!capture && !reduced && opts.autoplay !== false) {
+      io = new IntersectionObserver(es => {
+        visible = es[0].isIntersecting;
+        if (visible && !userPaused) play(); else if (!visible) pause();
+      }, { threshold: .35 });
+      io.observe(root);
+    }
+    // at rest (before playing, or with reduced motion) show the finished story
+    seek(capture ? 0 : tl.ends[n - 1]);
+    setIcon();
+
+    const api = {
+      total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      seek, play, pause,
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
+    };
+    if (capture) window.__bp = api;
+    return api;
+  }
+
+  window.BiasAnim = { SCENES, mount, has: key => !!SCENES[key] };
+})();
+
+/* Planning fallacy: a report pictured as three smooth days, real life landing on the calendar,
+   seven days in the end, and a track record that said so all along. Scene for anim.js. */
+(function () {
+  const KEY = "planning-fallacy", P = `.bp[data-scene="${KEY}"]`;
+  const X0 = 24, CW = 34, GAP = 12;                    // calendar: Mon..Fri, weekend gap, Mon..Fri
+  const CT = 96, CB = 152;                             // day columns, top and bottom
+  const BY = 122, BH = 20;                             // the task bar
+  const TY = 100;                                      // snag tags, top
+  const DY = 158;                                      // deadline flag, top
+  const PLAN = 3, REAL = 7, NEW = 7, BUF = 1;          // days
+  const PAST = [[3, 7], [2, 6], [3, 8]];               // earlier reports: planned, took
+  const RY = [184, 198, 212], RH = 10, PT = 238;       // their rows, and the label under them
+  const f1 = n => +n.toFixed(1);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const xd = d => X0 + d * CW + (d > 5 ? GAP : 0);    // end of day d (d = 5 is Friday evening)
+  const col = i => X0 + i * CW + (i >= 5 ? GAP : 0);   // left edge of day column i
+  // a stretch of days [a, b] as up to two pieces, split at the weekend
+  const segs = (a, b) => {
+    const out = [];
+    if (b <= a) return out;
+    if (a < 5) out.push([X0 + a * CW, X0 + Math.min(b, 5) * CW]);
+    if (b > 5) out.push([X0 + Math.max(a, 5) * CW + GAP, X0 + b * CW + GAP]);
+    return out;
+  };
+  const DUE0 = xd(PLAN), DUE1 = xd(NEW + BUF), OVX = xd(REAL);
+  const SNAG = [1, 4, 6];                               // Tue, Fri, next Tue
+  const LX = col(1) + CW / 2;                           // the "ignored" link from your track record
+  const bar = (key, cls, y, h, r) => `<rect class="pf-bar ${cls}" data-k="${key}0" y="${y}" height="${h}" rx="${r}"/><rect class="pf-bar ${cls}" data-k="${key}1" y="${y}" height="${h}" rx="${r}"/>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .pf-col{fill:none;stroke:var(--rule);stroke-width:1.2}
+      ${P} .pf-day{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.06em}
+      ${P} .pf-bar.q{fill:var(--q)}
+      ${P} .pf-bar.b{fill:var(--bad)}
+      ${P} .pf-bar.g{fill:var(--good)}
+      ${P} .pf-in{font:600 10px var(--display);fill:var(--ground)}
+      ${P} .pf-in.c{text-anchor:middle}
+      ${P} .pf-dur{font:600 11px var(--display);fill:var(--bad)}
+      ${P} .pf-buf{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}
+      ${P} .pf-bufl{font:600 10px var(--mono);fill:var(--good)}
+      ${P} .pf-tag rect{fill:var(--surface);stroke:var(--bad);stroke-width:1.6}
+      ${P} .pf-tag text{font:600 10px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .pf-due line{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:3 3;stroke-linecap:round}
+      ${P} .pf-due rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.4}
+      ${P} .pf-due text{font:500 9.5px var(--mono);fill:var(--ink)}
+      ${P} .pf-due.m line{stroke:var(--bad)}
+      ${P} .pf-due.m rect{stroke:var(--bad)}
+      ${P} .pf-due.m text{fill:var(--bad)}
+      ${P} .pf-bub{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .pf-cell rect{fill:var(--q)}
+      ${P} .pf-cell path{fill:none;stroke:var(--ground);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .pf-qm{font:700 22px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .pf-three{font:700 15px var(--display);fill:var(--ink)}
+      ${P} .pf-best rect{fill:none;stroke:var(--q);stroke-width:1.4}
+      ${P} .pf-best text{font:600 10px var(--display);fill:var(--q);text-anchor:middle}
+      ${P} .pf-man circle,${P} .pf-man path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .pf-doc .pa{fill:var(--surface);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .pf-doc .ln{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round}
+      ${P} .pf-lab{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .pf-lab.c{text-anchor:middle}
+      ${P} .pf-beam{fill:var(--q);fill-opacity:.1}
+      ${P} .pf-beam-e{fill:none;stroke:var(--q);stroke-width:1.6;stroke-dasharray:2 4;stroke-linecap:round}
+      ${P} .pf-ign line{stroke:var(--muted);stroke-width:1.6;stroke-dasharray:3 3;stroke-linecap:round}
+      ${P} .pf-ign path{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .pf-ign .x{stroke:var(--bad);stroke-width:2.4}
+      ${P} .pf-ign text{font:600 9.5px var(--mono);fill:var(--bad)}
+      ${P} .pf-ov{stroke:var(--q);stroke-width:2;stroke-dasharray:4 3;stroke-linecap:round}
+      ${P} .pf-ovl{font:600 10px var(--mono);fill:var(--q);text-anchor:middle}
+      ${P} .pf-chk circle{fill:var(--surface);stroke:var(--good);stroke-width:2}
+      ${P} .pf-chk path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    `,
+    text: {
+      en: {
+        name: "Planning fallacy", shareTitle: "Planning fallacy, explained in 30 seconds",
+        ecline: "Your plans picture the best case. Plan from how long it really took before.",
+        days: ["MON", "TUE", "WED", "THU", "FRI"], report: "Report", three: "3 days",
+        plan: "Your plan", newPlan: "New plan", dur: n => `${n} days`, over: "+4 days",
+        due: "deadline", dueW: 58, snags: ["meeting", "feedback", "sick day"], snagW: [54, 58, 56],
+        past: "Your last reports", best: "best case", bestW: 60, ign: "ignored",
+        ov: "outside view", ovn: "usually 7 days", buffer: "+ buffer",
+        caps: [
+          "You have a report to write. How long will it take?",
+          "You picture it going smoothly: <b>3 days<\/b>.",
+          "Then <b>real life<\/b> shows up, one snag at a time.",
+          "It takes <b>7 days<\/b>, more than double.",
+          "Your last reports? <b>Every one<\/b> overran too.",
+          "But you planned from the <b>best case<\/b>, not from that history.",
+          "<b>The fix:<\/b> ask how long similar tasks really took.",
+          "Plan from that, then add a buffer. <b>You finish on time.<\/b>"
+        ],
+        say: [
+          "You have a report to write. How long will it take?",
+          "You picture it going smoothly. Three days.",
+          "Then real life shows up, one snag at a time.",
+          "It takes seven days. More than double.",
+          "Your last reports? Every one of them overran too.",
+          "But you planned from the best case, not from that history.",
+          "The fix: ask how long similar tasks really took.",
+          "Plan from that, then add a buffer. You finish on time.",
+          "The planning fallacy. Your plans picture the best case. Plan from how long it really took before."
+        ]
+      },
+      el: {
+        name: "Πλάνη του σχεδιασμού", shareTitle: "Η πλάνη του σχεδιασμού σε 30 δευτερόλεπτα",
+        ecline: "Όταν σχεδιάζεις, φαντάζεσαι το καλύτερο σενάριο. Υπολόγιζε με βάση το πόσο σου πήρε στ’\u00a0αλήθεια τις άλλες φορές.",
+        days: ["ΔΕΥ", "ΤΡΙ", "ΤΕΤ", "ΠΕΜ", "ΠΑΡ"], report: "Αναφορά", three: "3 μέρες",
+        plan: "Το πλάνο σου", newPlan: "Νέο πλάνο", dur: n => `${n} μέρες`, over: "+4 μέρες",
+        due: "προθεσμία", dueW: 64, snags: ["σύσκεψη", "διορθώσεις", "ίωση"], snagW: [54, 68, 40],
+        past: "Οι προηγούμενες αναφορές σου", best: "καλύτερο σενάριο", bestW: 96, ign: "το αγνόησες",
+        ov: "ματιά απ’ έξω", ovn: "συνήθως 7 μέρες", buffer: "+ περιθώριο",
+        caps: [
+          "Έχεις να γράψεις μια αναφορά. Πόσο θα σου πάρει;",
+          "Φαντάζεσαι ότι όλα θα πάνε ρολόι: <b>3 μέρες<\/b>.",
+          "Και τότε αρχίζουν τα <b>απρόοπτα<\/b>, το ένα μετά το άλλο.",
+          "Τελικά σου παίρνει <b>7 μέρες<\/b>, πάνω από το διπλάσιο.",
+          "Οι προηγούμενες αναφορές σου; <b>Όλες<\/b> καθυστέρησαν κι αυτές.",
+          "Όμως υπολόγισες με βάση το <b>καλύτερο σενάριο<\/b>, όχι το ιστορικό σου.",
+          "<b>Η λύση:<\/b> δες πόσο κράτησαν στην πράξη παρόμοιες δουλειές.",
+          "Υπολόγισε με βάση αυτό, βάλε κι ένα περιθώριο. <b>Τελειώνεις στην ώρα σου.<\/b>"
+        ],
+        say: [
+          "Έχεις να γράψεις μια αναφορά. Πόσο θα σου πάρει;",
+          "Φαντάζεσαι ότι όλα θα πάνε ρολόι. Τρεις μέρες.",
+          "Και τότε αρχίζουν τα απρόοπτα, το ένα μετά το άλλο.",
+          "Τελικά σου παίρνει επτά μέρες. Πάνω από το διπλάσιο.",
+          "Οι προηγούμενες αναφορές σου; Όλες καθυστέρησαν κι αυτές.",
+          "Όμως υπολόγισες με βάση το καλύτερο σενάριο, όχι το ιστορικό σου.",
+          "Η λύση: δες πόσο κράτησαν στην πράξη παρόμοιες δουλειές.",
+          "Υπολόγισε με βάση αυτό, βάλε κι ένα περιθώριο. Τελειώνεις στην ώρα σου.",
+          "Πλάνη του σχεδιασμού. Όταν σχεδιάζεις, φαντάζεσαι το καλύτερο σενάριο. Υπολόγιζε με βάση το πόσο σου πήρε στ’ αλήθεια τις άλλες φορές."
+        ]
+      }
+    },
+    svg(T) {
+      // calendar: two working weeks
+      let cal = "";
+      for (let i = 0; i < 10; i++) {
+        const x = col(i);
+        cal += `<rect class="pf-col" x="${x + 1}" y="${CT}" width="${CW - 2}" height="${CB - CT}" rx="4"/>` +
+          `<text class="pf-day" x="${x + CW / 2}" y="${CT - 6}">${T.days[i % 5]}<\/text>`;
+      }
+      // the picture in your head: three smooth days, drawn right above Mon..Wed
+      let cells = "";
+      for (let i = 0; i < PLAN; i++) {
+        const x = col(i) + 2, w = CW - 4;
+        cells += `<g class="pf-cell" data-k="c${i}"><rect x="${x}" y="22" width="${w}" height="22" rx="4"/><path d="M${x + 9} 33 l4 4 l8 -9"/><\/g>`;
+      }
+      const tags = T.snags.map((s, i) => {
+        const cx = col(SNAG[i]) + CW / 2, w = T.snagW[i];
+        return `<g class="pf-tag" data-k="s${i}"><rect x="${cx - w / 2}" y="${TY}" width="${w}" height="16" rx="8"/><text x="${cx}" y="${TY + 11.5}">${s}<\/text><\/g>`;
+      }).join("");
+      const rows = PAST.map((_, i) => bar(`rq${i}`, "q", RY[i], RH, 2.5) + bar(`rb${i}`, "b", RY[i], RH, 2.5)).join("");
+      // the deadline: a dashed line through the bar, with a flag hanging to its right
+      const due = cls => `<g class="pf-due${cls}"><line x1="0" y1="${BY - 4}" x2="0" y2="${DY + 2}"/>` +
+        `<rect x="-6" y="${DY}" width="${T.dueW}" height="15" rx="7.5"/><text x="${T.dueW / 2 - 6}" y="${DY + 11}" text-anchor="middle">${T.due}<\/text><\/g>`;
+      const x1 = col(0) + 2, x2 = col(PLAN - 1) + CW - 2, BX = 140;
+      return `
+        <g data-k="cal">${cal}<\/g>
+        <g data-k="bub"><rect class="pf-bub" x="12" y="12" width="230" height="54" rx="16"/>
+          <circle class="pf-bub" cx="249" cy="22" r="3"/><circle class="pf-bub" cx="256" cy="31" r="2"/>
+          ${cells}<text class="pf-qm" data-k="qm" x="127" y="47">?<\/text>
+          <text class="pf-three" data-k="three" x="${BX}" y="38">${T.three}<\/text>
+          <g class="pf-best" data-k="best"><rect x="${BX - 4}" y="44" width="${T.bestW}" height="15" rx="7.5"/><text x="${BX - 4 + T.bestW / 2}" y="55">${T.best}<\/text><\/g><\/g>
+        <g class="pf-man" data-k="man"><circle cx="274" cy="40" r="8"/><path d="M258 72 V67 a16 13 0 0 1 32 0 V72"/><\/g>
+        <g class="pf-doc" data-k="doc"><path class="pa" d="M306 20 H324 L332 28 V54 H306 Z M324 20 V28 H332"/>
+          <path class="ln" d="M311 34 H327 M311 40 H327 M311 46 H321"/><text class="pf-lab c" x="319" y="67">${T.report}<\/text><\/g>
+        <g data-k="beam"><path class="pf-beam" d="M${x1} 44 H${x2} V${BY} H${x1} Z"/><path class="pf-beam-e" d="M${x1} 46 V${BY - 3} M${x2} 46 V${BY - 3}"/><\/g>
+        <g data-k="old">${bar("pq", "q", BY, BH, 4)}${bar("pb", "b", BY, BH, 4)}
+          <text class="pf-in" x="${X0 + 6}" y="${BY + 13.5}">${T.plan}<\/text>
+          <text class="pf-in c" data-k="over" x="${(xd(PLAN) + xd(5)) / 2}" y="${BY + 13.5}">${T.over}<\/text>
+          <text class="pf-dur" data-k="dur" y="${BY + 14}"><\/text><\/g>
+        <g data-k="new">${bar("ng", "g", BY, BH, 4)}<text class="pf-in" x="${X0 + 6}" y="${BY + 13.5}">${T.newPlan}<\/text><\/g>
+        <g data-k="buf"><rect class="pf-buf" x="${xd(NEW + BUF - 1) + 1}" y="${BY + 1}" width="${CW - 2}" height="${BH - 2}" rx="4"/>
+          <text class="pf-bufl" x="${xd(NEW + BUF) + 6}" y="${BY + 13.5}">${T.buffer}<\/text><\/g>
+        ${tags}
+        <g data-k="due">${due("")}<g data-k="duem">${due(" m")}<\/g><\/g>
+        <g data-k="past">${rows}<text class="pf-lab" x="${X0}" y="${PT}">${T.past}<\/text><\/g>
+        <g class="pf-ign" data-k="ign"><line x1="${LX}" y1="${RY[0] - 5}" x2="${LX}" y2="${BY + BH + 5}"/>
+          <path d="M${LX - 5} ${BY + BH + 10} l5 -5 l5 5"/>
+          <path class="x" d="M${LX - 5} 158 l10 10 M${LX + 5} 158 l-10 10"/>
+          <text x="${LX + 12}" y="166.5">${T.ign}<\/text><\/g>
+        <line class="pf-ov" data-k="ov" x1="${OVX}" x2="${OVX}" y1="${RY[2] + RH + 6}" y2="${RY[2] + RH + 6}"/>
+        <g data-k="ovl"><text class="pf-ovl" x="${OVX}" y="${PT}">${T.ov}<\/text><text class="pf-lab c" x="${OVX}" y="${PT + 13}">${T.ovn}<\/text><\/g>
+        <g class="pf-chk" data-k="chk"><circle r="8"/><path d="M-3.8 0.4 L-1 3.2 L4.2 -2.8"/><\/g>`;
+    },
+    S0: { cal: 0, man: 0, doc: 0, bub: 0, qm: 0, c0: 0, c1: 0, c2: 0, three: 0, plan: 0, len: PLAN,
+      due: 0, dueM: 0, miss: 0, s0: 0, s1: 0, s2: 0, dur: 0, over: 0, past: 0, pdim: 0, r0: 0, r1: 0, r2: 0,
+      best: 0, beam: 0, ign: 0, dim: 0, ov: 0, ovl: 0, old: 1, grow: 0, buf: 0, chk: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      const tr = (key, x, y) => k(key).setAttribute("transform", `translate(${f1(x)} ${f1(y)})`);
+      // set a two-piece bar to the days [a, b], with a hairline gap where pieces meet
+      const put = (key, a, b) => {
+        const s = segs(a, b);
+        for (let i = 0; i < 2; i++) {
+          const r = k(key + i);
+          if (s[i] && s[i][1] - s[i][0] > 2) { r.setAttribute("x", f1(s[i][0] + 1)); r.setAttribute("width", f1(s[i][1] - s[i][0] - 2)); r.style.display = ""; }
+          else r.style.display = "none";
+        }
+      };
+      // calendar, you, the report
+      tr("cal", 0, 6 * (1 - S.cal)); op("cal", S.cal);
+      op("man", S.man);
+      tr("doc", 0, 6 * (1 - S.doc)); op("doc", S.doc);
+      // the picture in your head
+      k("bub").setAttribute("transform", `translate(${f1(6 * (1 - S.bub))} ${f1(6 * (1 - S.bub))})`);
+      op("bub", S.bub * (1 - .65 * S.dim));
+      op("qm", S.qm);
+      for (let i = 0; i < PLAN; i++) { const p = S["c" + i]; tr("c" + i, 0, 4 * (1 - p)); op("c" + i, p); }
+      op("three", S.three);
+      op("best", S.best); tr("best", 6 * (1 - S.best), 0);
+      // the plan, and what really happened
+      tr("old", 0, -14 * (1 - S.plan));
+      op("old", clamp(S.plan * 2) * S.old);
+      put("pq", 0, PLAN);
+      put("pb", PLAN, Math.max(PLAN, S.len));
+      op("over", S.over);
+      const d = k("dur");
+      d.textContent = T.dur(Math.round(S.len)); d.setAttribute("x", f1(xd(S.len) + 6)); op("dur", S.dur);
+      // real life, landing on the calendar
+      for (let i = 0; i < 3; i++) { const p = S["s" + i]; tr("s" + i, 0, -26 * (1 - p)); op("s" + i, clamp(p * 3)); }
+      // the deadline: missed, then moved out to cover the real length plus a buffer
+      tr("due", DUE0 + (DUE1 - DUE0) * S.dueM, 0);
+      op("due", S.due); op("duem", S.miss);
+      // your track record
+      op("past", S.past * (1 - .55 * S.pdim));
+      PAST.forEach(([pl, took], i) => {
+        const L = took * S["r" + i];
+        put("rq" + i, 0, Math.min(L, pl)); put("rb" + i, pl, L);
+      });
+      // where the plan came from, and what it left out
+      op("beam", S.beam); op("ign", S.ign);
+      // the outside view: how long it usually takes, carried up to the calendar
+      const y0 = RY[2] + RH + 6;
+      k("ov").setAttribute("y2", f1(y0 - (y0 - BY + 3) * S.ov)); op("ov", S.ov > 0 ? 1 : 0);
+      op("ovl", S.ovl);
+      // the new plan
+      put("ng", 0, S.grow); op("new", S.grow > 0 ? 1 : 0);
+      op("buf", S.buf);
+      k("chk").setAttribute("transform", `translate(${OVX} ${BY + BH / 2}) scale(${f1(Math.max(0, S.chk) * 100) / 100})`);
+      op("chk", clamp(S.chk * 2));
+    },
+    beats: [
+      { steps: [{ to: { cal: 1 }, ms: 600, sfx: "pluck" }, { to: { man: 1, doc: 1 }, ms: 400 }, { to: { bub: 1, qm: 1 }, ms: 500, ease: "back" }] },
+      { steps: [{ to: { qm: 0 }, ms: 250 }, { to: { c0: 1 }, ms: 300, sfx: "tick" }, { to: { c1: 1 }, ms: 300 }, { to: { c2: 1 }, ms: 300 },
+        { to: { three: 1 }, ms: 300 }, { wait: 300 }, { to: { plan: 1 }, ms: 500, ease: "back", sfx: "pop" }, { to: { due: 1 }, ms: 400 }] },
+      { steps: [{ to: { s0: 1 }, ms: 600, ease: "bounce", sfx: "thud", sfxAt: 220 }, { wait: 200 },
+        { to: { s1: 1 }, ms: 600, ease: "bounce" }, { wait: 200 }, { to: { s2: 1 }, ms: 600, ease: "bounce" }] },
+      { steps: [{ to: { dur: 1 }, ms: 250 }, { to: { len: REAL }, ms: 1600, ease: "inOut", sfx: "whoosh" },
+        { to: { miss: 1, over: 1 }, ms: 400 }] },
+      { steps: [{ to: { past: 1 }, ms: 300 }, { to: { r0: 1 }, ms: 600, sfx: "tick" }, { to: { r1: 1 }, ms: 600 }, { to: { r2: 1 }, ms: 600 }] },
+      { steps: [{ to: { due: 0 }, ms: 300 }, { to: { best: 1 }, ms: 500, ease: "back", sfx: "spring" }, { to: { beam: 1 }, ms: 500 }, { wait: 300 },
+        { to: { ign: 1, pdim: 1 }, ms: 500 }], hold: 3000 },
+      { steps: [{ to: { beam: 0, ign: 0, dim: 1, pdim: 0 }, ms: 500 }, { to: { ov: 1 }, ms: 900, ease: "inOut", sfx: "scribble" }, { to: { ovl: 1 }, ms: 400 }], hold: 3000 },
+      { steps: [{ to: { old: 0, miss: 0 }, ms: 500 }, { to: { dueM: 1 } }, { to: { grow: NEW }, ms: 1100, ease: "inOut" },
+        { to: { buf: 1, due: 1 }, ms: 500 }, { to: { chk: 1 }, ms: 450, ease: "back", sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+</script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "en", "shareUrl": "https://papangelis.com/biases/watch/planning-fallacy/", "embedUrl": "https://papangelis.com/biases/watch/planning-fallacy/?embed", "sfxBase": "/biases/sfx/"};
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "planning-fallacy", opts); window.__bp = p; }
+    else {
+      opts.capture = mode === "video";
+      if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
+      BiasAnim.mount(document.getElementById("player"), "planning-fallacy", opts);
+    }
+  })();
+</script>
+</body>
+</html>

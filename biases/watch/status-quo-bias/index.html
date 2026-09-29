@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Status quo bias, explained in 30 seconds · Downstream</title>
+<meta name="description" content="The preference for keeping things as they are, even when a change would be better. The current state becomes the reference point, and any change feels like a risk.">
+<meta name="author" content="Thanos Papangelis">
+<link rel="canonical" href="https://papangelis.com/biases/watch/status-quo-bias/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/watch/status-quo-bias/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/watch/status-quo-bias/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/watch/status-quo-bias/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Status quo bias, explained in 30 seconds">
+<meta property="og:description" content="The preference for keeping things as they are, even when a change would be better. The current state becomes the reference point, and any change feels like a risk.">
+<meta property="og:url" content="https://papangelis.com/biases/watch/status-quo-bias/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Status quo bias, explained in 30 seconds">
+<meta name="twitter:description" content="The preference for keeping things as they are, even when a change would be better. The current state becomes the reference point, and any change feels like a risk.">
+<meta property="og:image" content="https://papangelis.com/assets/og/watch-status-quo-bias-en.png?v=0daa355c">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/watch-status-quo-bias-en.png?v=0daa355c">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/biases/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), h = document.documentElement;
+    try { h.setAttribute("data-theme", localStorage.getItem("theme") || "dark"); } catch (e) {}
+    if (q.has("embed")) h.classList.add("embed");
+    if (q.get("capture") === "video") h.classList.add("cap-video");
+    if (q.get("capture") === "og") { h.classList.add("cap-og"); h.setAttribute("data-theme", "dark"); }
+  })();
+</script>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+:root{--q:var(--fast)}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wp{max-width:560px;margin-inline:auto;padding-block:clamp(24px,6vw,56px) 40px;display:flex;flex-direction:column;gap:28px}
+.wp-main{display:flex;flex-direction:column;gap:12px}
+.wp-main h1{font:750 clamp(38px,9vw,56px)/1.02 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.wp-def{font-size:18px;line-height:1.5;margin:0 0 8px;color:var(--muted)}
+.wp-links{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.wp-btn{display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:11px 16px;font:500 14px/1 var(--mono);text-decoration:none}
+.wp-btn:hover{border-color:var(--ink)}
+.wp-btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--q);outline-offset:3px;border-radius:4px}
+.og{display:none}
+/* embed: just the player */
+html.embed body{padding:0;background:transparent}
+html.embed .wp{padding:0;max-width:none;gap:0}
+html.embed .wp-main>:not(#player){display:none}
+/* capture: square video frame */
+html.cap-video,html.cap-video body{height:100%;margin:0;padding:0;overflow:hidden}
+html.cap-video .wp{display:block;max-width:none;padding:0;height:100%}
+html.cap-video .wp-main,html.cap-video #player{height:100%}
+html.cap-video .wp-main>:not(#player){display:none}
+/* capture: 1200x630 social card, drawn at 600x315 and 2x */
+html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}
+html.cap-og .wp{display:none}
+html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:center;gap:20px;height:100%;padding:0 22px 0 34px;border-left:5px solid #6ea8fe}
+.og-l{display:flex;flex-direction:column;gap:10px}
+.og-b{display:flex;align-items:center;gap:8px;font:700 13px/1.25 var(--display);color:var(--ink)}
+.og-b svg{width:18px;height:18px}
+.og-t{font:750 40px/1 var(--display);letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+.og-s{font:400 15px/1.35 var(--serif);color:var(--muted);margin:0}
+.og-u{font:600 11px/1.4 var(--mono);color:#6ea8fe;margin-top:14px}
+
+
+</style>
+</head>
+<body>
+<div class="wp">
+  <main class="wp-main">
+    <h1>Status quo bias</h1>
+    <p class="wp-def">The preference for keeping things as they are, even when a change would be better. The current state becomes the reference point, and any change feels like a risk.</p>
+    <div id="player"></div>
+    <nav class="wp-links"><a class="wp-btn primary" href="/biases/#b-status-quo-bias">Read the full card</a></nav>
+  </main>
+</div>
+<div class="og">
+  <div class="og-l">
+    <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ob" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#ob)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></g></svg>Cognitive Bias Explorer</div>
+    <p class="og-t" style="font-size:40px">Status quo bias</p>
+    <p class="og-s">Explained in 30 seconds</p>
+    <span class="og-u">papangelis.com/<wbr>biases/<wbr>watch/<wbr>status-quo-bias</span>
+  </div>
+  <div id="og-player"></div>
+</div>
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n";
+/* Cognitive Bias Explorer: animated explainers.
+   A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
+   so looping, stepping between beats, and frame-by-frame video capture all agree.
+   Brain and share icons: Lucide (lucide.dev), ISC licence. */
+(function () {
+  "use strict";
+
+  const EASE = {
+    lin: t => t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+    bounce: t => {
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+      return n * (t -= 2.625 / d) * t + .984375;
+    }
+  };
+
+  const ICON = {
+    play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/><\/svg>',
+    pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/><\/svg>',
+    replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><\/svg>',
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/><\/svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/><\/svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/><\/svg>'
+  };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
+  const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
+  const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/><\/linearGradient><\/defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}<\/g><\/svg>`;
+
+  const UI = {
+    en: {
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
+      ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
+      copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
+      open: "Open on its own page", site: "papangelis.com/biases"
+    },
+    el: {
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
+      ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
+      copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
+      open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
+    }
+  };
+
+  /* ------------------------------------------------------------------ scenes */
+  const SCENES = {};
+
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
+
+  /* ------------------------------------------------------------------ timeline */
+  const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
+  function compile(scene, holds, cardHold) {
+    const S = { ...scene.S0, card: 0, all: 1 }, segs = [], starts = [], ends = [], cues = [];
+    let t = 0;
+    const push = (to, ms, ease) => {
+      const from = {}; for (const key in to) from[key] = S[key];
+      segs.push({ t0: t, t1: t + (ms || 0), from, to, ease: EASE[ease || "out"] });
+      Object.assign(S, to); t += ms || 0;
+    };
+    scene.beats.forEach(b => {
+      starts.push(t);
+      b.steps.forEach(st => {
+        if (st.sfx) cues.push({ t: t + (st.sfxAt || 0), name: st.sfx });
+        if (st.wait) t += st.wait; else push(st.to, st.ms, st.ease);
+      });
+      ends.push(t);
+      t += (holds && holds[starts.length - 1]) || b.hold || HOLD;
+    });
+    const cardAt = t;
+    cues.push({ t: cardAt, name: "swell" });
+    push({ card: 1 }, CARD_IN); t += cardHold || CARD_HOLD; push({ card: 0, all: 0 }, FADE);
+    return { segs, starts, ends, cues, cardAt, total: t, S0: { ...scene.S0, card: 0, all: 1 },
+      motion: starts.map((s0, i) => ends[i] - s0), holdsDefault: scene.beats.map(b => b.hold || HOLD) };
+  }
+  function stateAt(tl, t) {
+    const S = { ...tl.S0 };
+    for (const g of tl.segs) {
+      if (t < g.t0) break;
+      const p = g.t1 > g.t0 ? Math.min(1, (t - g.t0) / (g.t1 - g.t0)) : 1, e = g.ease(p);
+      for (const key in g.to) S[key] = g.from[key] + (g.to[key] - g.from[key]) * e;
+    }
+    return S;
+  }
+
+  /* ------------------------------------------------------------------ player */
+  let uid = 0;
+  function mount(host, key, opts = {}) {
+    const scene = SCENES[key]; if (!scene || !host) return null;
+    const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
+    const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const capture = !!opts.capture;
+    // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
+    // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
+    const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
+    dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
+      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+        <div class="bp-stage">
+          <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
+          <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
+          <div class="bp-card" aria-hidden="true">
+            ${brainMark("bp-mark", id + "g")}
+            <p class="bp-name">${T.name}<\/p>
+            <p class="bp-line">${T.ecline}<\/p>
+            <div class="bp-row"><button class="bp-pill primary" type="button" data-a="share">${ICON.share}<span>${U.ecshare}<\/span><\/button><button class="bp-pill" type="button" data-a="again">${U.ecagain}<\/button><\/div>
+          <\/div>
+          <div class="bp-menu" role="menu" hidden><\/div>
+          <div class="bp-ctl">
+            <button class="bp-btn" type="button" data-a="play"><\/button>
+            <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i><\/i><\/button>`).join("")}<\/div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}<\/button>` : ""}
+            <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}<\/button>
+            <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}<\/button>
+          <\/div>
+          <div class="bp-brand">${brainMark("bp-bm", id + "b")}<span>${T.name}<\/span><span class="bp-site">${U.site}<\/span><\/div>
+        <\/div>
+      <\/div>`;
+    const root = dom.querySelector(".bp");
+    const $ = sel => root.querySelector(sel);
+    const cache = {};
+    const k = name => cache[name] || (cache[name] = root.querySelector(`[data-k="${name}"]`));
+    const all = $(".bp-all"), card = $(".bp-card"), text = $(".bp-text"), no = $(".bp-no"), menu = $(".bp-menu");
+    const dots = [...root.querySelectorAll(".bp-dot i")];
+
+    let t = 0, playing = false, userPaused = false, visible = false, raf = 0, last = 0, capShown = -1, started = false;
+    function beatAt(time) { let i = 0; while (i + 1 < n && time >= tl.starts[i + 1]) i++; return i; }
+    function draw() {
+      const S = stateAt(tl, t);
+      scene.render(S, k, T);
+      all.style.opacity = S.all;
+      card.style.opacity = S.card;
+      card.classList.toggle("on", S.card > .5);
+      card.setAttribute("aria-hidden", S.card > .5 ? "false" : "true");
+      const i = beatAt(t);
+      if (i !== capShown) { text.innerHTML = T.caps[i]; no.textContent = `${i + 1}/${n}`; capShown = i; }
+      // captions fade in at the start of each beat and out just before the next
+      const next = i + 1 < n ? tl.starts[i + 1] : tl.total;
+      text.style.opacity = Math.max(0, Math.min(1, (t - tl.starts[i]) / 220, (next - t) / 160, i === n - 1 ? 1 - S.card : 1));
+      dots.forEach((d, j) => {
+        const end = j + 1 < n ? tl.starts[j + 1] : tl.cardAt;
+        d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
+      });
+    }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
+    function frame(now) {
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
+      draw();
+      raf = playing ? requestAnimationFrame(frame) : 0;
+    }
+    function setIcon() {
+      const b = $('[data-a="play"]');
+      b.innerHTML = playing ? ICON.pause : ICON.play;
+      b.setAttribute("aria-label", playing ? U.pause : U.play);
+    }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
+
+    function closeMenu() { menu.hidden = true; }
+    function openMenu() {
+      const u = encodeURIComponent(opts.shareUrl || location.href), tt = encodeURIComponent(T.shareTitle);
+      menu.innerHTML = `<div class="bp-mh">${U.smHead}<\/div>
+        <button type="button" role="menuitem" data-m="copy">${U.copy}<small><\/small><\/button>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=${tt}%20${u}">WhatsApp<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${tt}&url=${u}">X<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${u}">LinkedIn<\/a>
+        <a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook<\/a>
+        ${opts.videoUrl ? `<a role="menuitem" href="${opts.videoUrl}" download>${U.video}<small>MP4<\/small><\/a>` : ""}
+        ${opts.embedUrl ? `<button type="button" role="menuitem" data-m="embed">${U.embed}<small><\/small><\/button>` : ""}
+        ${opts.openUrl ? `<a role="menuitem" href="${opts.openUrl}">${U.open}<\/a>` : ""}`;
+      menu.hidden = false;
+      const copy = async (btn, value) => {
+        try { await navigator.clipboard.writeText(value); btn.querySelector("small").textContent = U.copied; btn.querySelector("small").className = "ok"; }
+        catch (e) { btn.querySelector("small").textContent = value.length > 60 ? "✕" : value; }
+      };
+      menu.querySelector('[data-m="copy"]').onclick = e => copy(e.currentTarget, opts.shareUrl || location.href);
+      const em = menu.querySelector('[data-m="embed"]');
+      if (em) em.onclick = e => copy(e.currentTarget, `<iframe src="${opts.embedUrl}" title="${T.shareTitle}" width="480" height="450" style="border:0;border-radius:12px;max-width:100%" loading="lazy" allowfullscreen><\/iframe>`);
+      menu.querySelector('[role="menuitem"]').focus();
+    }
+    async function share() {
+      if (playing) { userPaused = true; pause(); }
+      const url = opts.shareUrl || location.href;
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        try { await navigator.share({ title: T.shareTitle, url }); return; }
+        catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      menu.hidden ? openMenu() : closeMenu();
+    }
+
+    root.addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), d = e.target.closest(".bp-dot");
+      if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
+      if (!a) return;
+      const act = a.dataset.a;
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
+      else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
+      else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
+    });
+    const outside = e => { if (!menu.hidden && !e.composedPath().includes(root)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    document.addEventListener("bp-sound", soundBtn);
+    if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+    const esc = e => { if (e.key === "Escape") closeMenu(); };
+    document.addEventListener("click", outside);
+    document.addEventListener("keydown", esc);
+
+    let io = null;
+    if (!capture && !reduced && opts.autoplay !== false) {
+      io = new IntersectionObserver(es => {
+        visible = es[0].isIntersecting;
+        if (visible && !userPaused) play(); else if (!visible) pause();
+      }, { threshold: .35 });
+      io.observe(root);
+    }
+    // at rest (before playing, or with reduced motion) show the finished story
+    seek(capture ? 0 : tl.ends[n - 1]);
+    setIcon();
+
+    const api = {
+      total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      seek, play, pause,
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
+    };
+    if (capture) window.__bp = api;
+    return api;
+  }
+
+  window.BiasAnim = { SCENES, mount, has: key => !!SCENES[key] };
+})();
+
+/* Status quo bias: a €30 phone plan you never question, the same plan for €18 behind a door
+   barricaded by worries, and €12 a month piling up while you stay in your armchair. Scene for anim.js. */
+(function () {
+  const KEY = "status-quo-bias", P = `.bp[data-scene="${KEY}"]`;
+  const AX = 16, BX = 234, CT = 12, CW = 150, CH = 82;      // plan cards: left edges, top, size
+  const CX = 80;                                            // armchair centre
+  const DX = 318, DL = 292, DW = 52, DT = 150;              // door: centre, left edge, width, top
+  const FLOOR = 244, PX = 190;                              // floor line, coin pile centre
+  const coinY = i => 234.5 - 5.5 * i;                         // resting y of the i-th coin's top face
+  const cl = v => Math.max(0, Math.min(1, v));
+  const bounce = t => {
+    const n = 7.5625, d = 2.75;
+    if (t < 1 / d) return n * t * t;
+    if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+    if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+    return n * (t -= 2.625 / d) * t + .984375;
+  };
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "fast", viewBox: "0 0 400 272",
+    css: `
+      ${P} .sq-card{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+      ${P} .sq-card.ok{fill:none;stroke:var(--good);stroke-width:2.6}
+      ${P} .sq-ti{font:600 11.5px var(--display);fill:var(--ink)}
+      ${P} .sq-pr{font:700 22px var(--display);fill:var(--ink)}
+      ${P} .sq-pr.new{fill:var(--q)} ${P} .sq-pr.ok{fill:var(--good)}
+      ${P} .sq-un{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .sq-ft{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${P} .sq-ft.hi{fill:var(--q)}
+      ${P} .sq-eq line{stroke:var(--q);stroke-width:2.4;stroke-linecap:round}
+      ${P} .sq-note{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .sq-note.q{fill:var(--q)}
+      ${P} .sq-scr{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .sq-ln{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .sq-st{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .sq-eye{fill:var(--ink)}
+      ${P} .sq-floor{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .sq-way{fill:var(--good);fill-opacity:.2}
+      ${P} .sq-leaf{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+      ${P} .sq-pan{fill:none;stroke:var(--faint);stroke-width:1.4}
+      ${P} .sq-knob{fill:var(--ink)}
+      ${P} .sq-frame{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .sq-frame.ok{stroke:var(--good)}
+      ${P} .sq-lab{font:600 11.5px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .sq-lab.ok{fill:var(--good)}
+      ${P} .sq-tm circle,${P} .sq-tm path{fill:none;stroke:var(--q);stroke-width:1.8;stroke-linecap:round}
+      ${P} .sq-tm text{font:600 11px var(--display);fill:var(--ink)}
+      ${P} .sq-w rect{fill:var(--surface);stroke:var(--bad);stroke-width:1.8}
+      ${P} .sq-w text{font:600 10.5px var(--display);fill:var(--bad);text-anchor:middle}
+      ${P} .sq-coin{fill:var(--surface);stroke:var(--q);stroke-width:1.6}
+      ${P} .sq-tot{font:700 15px var(--display);fill:var(--bad);text-anchor:middle}
+      ${P} .sq-ask rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}
+      ${P} .sq-ask text{font:600 11.5px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .sq-chk circle{fill:var(--surface);stroke:var(--good);stroke-width:2}
+      ${P} .sq-chk path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    `,
+    text: {
+      en: {
+        name: "Status quo bias", shareTitle: "Status quo bias, explained in 30 seconds",
+        ecline: "Sticking with things feels safe even when it costs you. Choose as if from scratch.",
+        yours: "Your plan", newp: "New plan", planA: "Plan A", planB: "Plan B", titleW: 58,
+        pA: "€30", pB: "€18", per: "/month", f1: "20 GB data", f2: "unlimited calls", same: "same",
+        years: n => `for ${n} year${n === 1 ? "" : "s"}`, mins: "10 min", stay: "Stay", sw: "Switch", safe: "feels safe",
+        w1: "what if it's worse?", w1W: 116, w2: "hassle", w2W: 58,
+        tot: n => (n === 1 ? "€12 a month" : n === 12 ? "€144 a year" : `€${12 * n}`), cost: "cost of not choosing",
+        ask: "Which would you pick today?", askW: 178,
+        caps: [
+          "You've had the same phone plan for years. <b>€30<\/b> a month.",
+          "A new plan with the same features costs <b>€18<\/b>.",
+          "Switching would take just <b>ten minutes<\/b>.",
+          "But staying feels <b>safe<\/b>, and changing feels <b>risky<\/b>.",
+          "So you <b>stay<\/b>. Again. That's <b>€12 extra<\/b> every month.",
+          "Over a year, that's <b>€144<\/b> for nothing.",
+          "<b>The fix:<\/b> imagine choosing from scratch, today.",
+          "Picked fresh, the answer is easy. <b>Switch.<\/b>"
+        ],
+        say: [
+          "You've had the same phone plan for years. Thirty euros a month.",
+          "A new plan with the same features costs eighteen euros.",
+          "Switching would take just ten minutes.",
+          "But staying feels safe, and changing feels risky.",
+          "So you stay. Again. That's twelve euros extra, every month.",
+          "Over a year, that's a hundred and forty-four euros, for nothing.",
+          "The fix: imagine you're choosing from scratch, today.",
+          "Picked fresh, the answer is easy. Switch.",
+          "Status quo bias. Sticking with things feels safe, even when it costs you. Choose as if from scratch."
+        ]
+      },
+      el: {
+        name: "Μεροληψία του status quo", shareTitle: "Η μεροληψία του status quo σε 30 δευτερόλεπτα",
+        ecline: "Το γνώριμο μοιάζει ασφαλές, ακόμα κι όταν σου κοστίζει. Διάλεγε σαν να ξεκινάς από το\u00a0μηδέν.",
+        yours: "Το πρόγραμμά σου", newp: "Νέο πρόγραμμα", planA: "Πρόγραμμα Α", planB: "Πρόγραμμα Β", titleW: 100,
+        pA: "30 €", pB: "18 €", per: "/μήνα", f1: "20 GB ίντερνετ", f2: "απεριόριστα λεπτά", same: "ίδια",
+        years: n => `εδώ και ${n} ${n === 1 ? "χρόνο" : "χρόνια"}`, mins: "10 λεπτά", stay: "Μένω", sw: "Αλλάζω", safe: "ασφαλές",
+        w1: "κι αν είναι χειρότερο;", w1W: 134, w2: "φασαρία", w2W: 64,
+        tot: n => (n === 1 ? "12 € τον μήνα" : n === 12 ? "144 € τον χρόνο" : `${12 * n} €`), cost: "κόστος της αδράνειας",
+        ask: "Ποιο θα διάλεγες σήμερα;", askW: 166,
+        caps: [
+          "Έχεις το ίδιο πρόγραμμα κινητού εδώ και χρόνια. <b>30 €<\/b> τον μήνα.",
+          "Ένα νέο πρόγραμμα με τις ίδιες παροχές κοστίζει <b>18 €<\/b>.",
+          "Για να αλλάξεις, αρκούν <b>δέκα λεπτά<\/b>.",
+          "Όμως το να μείνεις σου φαίνεται <b>ασφαλές<\/b> και η αλλαγή <b>ρίσκο<\/b>.",
+          "Έτσι <b>μένεις<\/b>. Ξανά. Και πληρώνεις <b>12 € παραπάνω<\/b> κάθε μήνα.",
+          "Σε έναν χρόνο, αυτά γίνονται <b>144 €<\/b> για το τίποτα.",
+          "<b>Η λύση:<\/b> φαντάσου ότι διαλέγεις σήμερα, από το μηδέν.",
+          "Αν διαλέξεις από την αρχή, η\u00a0απάντηση είναι απλή: <b>αλλάζεις<\/b>."
+        ],
+        say: [
+          "Έχεις το ίδιο πρόγραμμα κινητού εδώ και χρόνια. Τριάντα ευρώ τον μήνα.",
+          "Ένα νέο πρόγραμμα με τις ίδιες παροχές κοστίζει δεκαοχτώ ευρώ.",
+          "Για να αλλάξεις, αρκούν δέκα λεπτά.",
+          "Όμως το να μείνεις σου φαίνεται ασφαλές, και η αλλαγή ρίσκο.",
+          "Έτσι μένεις. Ξανά. Και πληρώνεις δώδεκα ευρώ παραπάνω κάθε μήνα.",
+          "Σε έναν χρόνο, αυτά γίνονται εκατόν σαράντα τέσσερα ευρώ, για το τίποτα.",
+          "Η λύση: φαντάσου ότι διαλέγεις σήμερα, από το μηδέν.",
+          "Αν διαλέξεις από την αρχή, η απάντηση είναι απλή: αλλάζεις.",
+          "Μεροληψία του status quo. Το γνώριμο μοιάζει ασφαλές, ακόμα κι όταν σου κοστίζει. Διάλεγε σαν να ξεκινάς από το μηδέν."
+        ]
+      }
+    },
+    svg(T) {
+      const card = s => {
+        const a = s === "A", x0 = a ? AX : BX, tw = T.titleW;
+        const price = (cls, key) => `<text data-k="${key}" x="12" y="47"><tspan class="sq-pr ${cls}">${a ? T.pA : T.pB}<\/tspan><tspan class="sq-un" dx="3">${T.per}<\/tspan><\/text>`;
+        return `<g data-k="card${s}"><g transform="translate(${x0} ${CT})">
+          <rect class="sq-card" width="${CW}" height="${CH}" rx="9"/>
+          ${a ? "" : `<rect class="sq-card ok" data-k="okB" width="${CW}" height="${CH}" rx="9"/>`}
+          <text class="sq-ti" data-k="ti${s}" x="12" y="19">${a ? T.yours : T.newp}<\/text>
+          <text class="sq-ti" data-k="tn${s}" x="12" y="19">${a ? T.planA : T.planB}<\/text>
+          ${a ? `<path class="sq-scr" data-k="scr" pathLength="1" stroke-dasharray="1 1" d="M9 15 L${14 + tw} 11 L11 19 L${16 + tw} 15"/>` : ""}
+          ${price(a ? "" : "new", "pr" + s)}${a ? "" : price("ok", "prOk")}
+          <text class="sq-ft" x="12" y="64">${T.f1}<\/text><text class="sq-ft" x="12" y="76">${T.f2}<\/text>
+          <g data-k="hi${s}"><text class="sq-ft hi" x="12" y="64">${T.f1}<\/text><text class="sq-ft hi" x="12" y="76">${T.f2}<\/text><\/g>
+        <\/g><\/g>`;
+      };
+      const coin = `<path class="sq-coin" d="M-17 0 V5 A17 4.5 0 0 0 17 5 V0"/><ellipse class="sq-coin" rx="17" ry="4.5"/>`;
+      let coins = "";
+      for (let i = 0; i < 12; i++) coins += `<g data-k="c${i}">${coin}<\/g>`;
+      const block = (w, y, txt) => `<g class="sq-w"><rect x="${DX - w / 2}" y="${y}" width="${w}" height="22" rx="4"/><text x="${DX}" y="${y + 15}">${txt}<\/text><\/g>`;
+      return `
+        ${card("A")}${card("B")}
+        <g class="sq-eq" data-k="eq"><line x1="191" x2="209" y1="74" y2="74"/><line x1="191" x2="209" y1="80" y2="80"/>
+          <text class="sq-note q" x="200" y="94">${T.same}<\/text><\/g>
+        <text class="sq-note" data-k="ten" x="${AX + CW / 2}" y="110"><\/text>
+        <g class="sq-ask" data-k="ask"><rect x="${200 - T.askW / 2}" y="106" width="${T.askW}" height="23" rx="11.5"/><text x="200" y="121.5">${T.ask}<\/text><\/g>
+        <g data-k="chkB"><g class="sq-chk"><circle r="10"/><path d="M-4.5 0.5 L-1.2 3.8 L4.8 -3"/><\/g><\/g>
+        <g data-k="bot">
+          <line class="sq-floor" x1="16" y1="${FLOOR}" x2="384" y2="${FLOOR}"/>
+          <g data-k="chair">
+            <path class="sq-ln" d="M${CX - 34} 212 V178 Q${CX - 34} 164 ${CX - 20} 164 H${CX + 20} Q${CX + 34} 164 ${CX + 34} 178 V212 Z"/>
+            <rect class="sq-ln" x="${CX - 30}" y="206" width="60" height="18" rx="4"/>
+            <rect class="sq-ln" x="${CX - 30}" y="224" width="60" height="12" rx="2"/>
+            <rect class="sq-ln" x="${CX - 46}" y="190" width="18" height="46" rx="8"/>
+            <rect class="sq-ln" x="${CX + 28}" y="190" width="18" height="46" rx="8"/>
+            <path class="sq-st" d="M${CX - 40} 236 V${FLOOR} M${CX + 40} 236 V${FLOOR}"/>
+          <\/g>
+          <g data-k="sit">
+            <path class="sq-ln" d="M${CX - 14} 220 V207 C${CX - 14} 199 ${CX - 8} 195 ${CX} 195 C${CX + 8} 195 ${CX + 14} 199 ${CX + 14} 207 V220 Z"/>
+            <path class="sq-st" d="M${CX - 7} 220 V242 H${CX - 12} M${CX + 7} 220 V242 H${CX + 12}"/>
+            <circle class="sq-ln" cx="${CX}" cy="183" r="9.5"/>
+            <circle class="sq-eye" cx="${CX - 3.5}" cy="181.5" r="1.4"/><circle class="sq-eye" cx="${CX + 3.5}" cy="181.5" r="1.4"/>
+            <path class="sq-st" data-k="mSit" d=""/>
+          <\/g>
+          <text class="sq-note q" data-k="safe" x="${CX}" y="155">${T.safe}<\/text>
+          <text class="sq-lab" data-k="stl" x="${CX}" y="261">${T.stay}<\/text>
+          <g data-k="door">
+            <rect class="sq-way" data-k="way" x="${DL}" y="${DT}" width="${DW}" height="${FLOOR - DT}"/>
+            <g data-k="leaf"><rect class="sq-leaf" x="${DL}" y="${DT}" width="${DW}" height="${FLOOR - DT}"/>
+              <rect class="sq-pan" x="${DL + 8}" y="${DT + 10}" width="${DW - 16}" height="30" rx="2"/><rect class="sq-pan" x="${DL + 8}" y="${DT + 50}" width="${DW - 16}" height="34" rx="2"/>
+              <circle class="sq-knob" cx="${DL + DW - 8}" cy="${DT + 46}" r="2.6"/><\/g>
+            <path class="sq-frame" d="M${DL - 4} ${FLOOR} V${DT - 4} H${DL + DW + 4} V${FLOOR}"/>
+            <path class="sq-frame ok" data-k="frOk" d="M${DL - 4} ${FLOOR} V${DT - 4} H${DL + DW + 4} V${FLOOR}"/>
+            <text class="sq-lab" data-k="swl" x="${DX}" y="261">${T.sw}<\/text>
+            <text class="sq-lab ok" data-k="swOk" x="${DX}" y="261">${T.sw}<\/text>
+          <\/g>
+          <g data-k="timer"><g class="sq-tm"><circle cx="${DX - 26}" cy="122" r="7"/><path d="M${DX - 26} 115 V112 M${DX - 29} 111.5 H${DX - 23} M${DX - 26} 122 V118 M${DX - 26} 122 L${DX - 23} 123.5"/>
+            <text x="${DX - 15}" y="126">${T.mins}<\/text><\/g><\/g>
+          ${coins}
+          <text class="sq-note" data-k="cost" x="${PX}" y="144">${T.cost}<\/text>
+          <text class="sq-tot" data-k="tot" x="${PX}" y="157"><\/text>
+          <g data-k="w1">${block(T.w1W, 222, T.w1)}<\/g>
+          <g data-k="w2"><g transform="rotate(-4 ${DX} 211)">${block(T.w2W, 200, T.w2)}<\/g><\/g>
+          <g data-k="walk">
+            <path class="sq-ln" d="M-14 211 V195 C-14 187 -8 183 0 183 C8 183 14 187 14 195 V211 Z"/>
+            <path class="sq-st" d="M-6 211 V243 H-10 M6 211 V243 H10"/>
+            <circle class="sq-ln" cx="0" cy="171" r="9.5"/>
+            <circle class="sq-eye" cx="-3.5" cy="169.5" r="1.4"/><circle class="sq-eye" cx="3.5" cy="169.5" r="1.4"/>
+            <path class="sq-st" data-k="mWalk" d=""/>
+          <\/g>
+        <\/g>`;
+    },
+    S0: { cardA: 0, chair: 0, ten: 0, years: 1, cardB: 0, same: 0, door: 0, timer: 0, safe: 0, smile: .4, w1: 0, w2: 0,
+      rise: 0, coins: 0, cost: 0, dim: 0, wipe: 0, relabel: 0, ask: 0, pick: 0, chk: 0, clear: 0, open: 0, stand: 0, walk: 0, win: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = cl(v); };
+      const tr = (key, x, y, extra) => k(key).setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)})${extra || ""}`);
+      // the two plan cards
+      op("cardA", S.cardA * (1 - .55 * S.pick)); tr("cardA", 0, -8 * (1 - S.cardA));
+      op("cardB", S.cardB); tr("cardB", 26 * (1 - S.cardB), 0);
+      op("hiA", S.same); op("hiB", S.same); op("eq", S.same);
+      // years on the same plan, counting up
+      k("ten").textContent = T.years(Math.max(1, Math.min(5, Math.round(S.years))));
+      op("ten", S.ten * (1 - S.wipe));
+      // the fix: cross out "your plan", both become plain options
+      k("scr").style.strokeDashoffset = (1 - S.wipe).toFixed(3);
+      op("scr", S.wipe > 0 ? 1 - S.relabel : 0);
+      op("tiA", 1 - S.relabel); op("tnA", S.relabel); op("tiB", 1 - S.relabel); op("tnB", S.relabel);
+      const as = .8 + .2 * S.ask;
+      k("ask").setAttribute("transform", `translate(200 117) scale(${as.toFixed(3)}) translate(-200 -117)`); op("ask", S.ask);
+      op("okB", S.pick); op("prOk", S.pick); op("prB", 1 - S.pick);
+      tr("chkB", BX + 128, CT + 42, ` scale(${Math.max(0, S.chk).toFixed(3)})`); op("chkB", S.chk * 2);
+      // everything below the cards dims while you choose afresh
+      op("bot", 1 - .82 * S.dim);
+      op("chair", S.chair);
+      // you, sitting: half get up, then sink back
+      tr("sit", 5 * S.rise, -9 * S.rise); op("sit", S.chair * (1 - S.stand));
+      k("mSit").setAttribute("d", `M${CX - 4} 187 Q${CX} ${(187 + 3.2 * S.smile).toFixed(2)} ${CX + 4} 187`);
+      op("safe", S.safe * (1 - S.relabel)); op("stl", S.safe * (1 - .5 * S.win));
+      // the door, its timer, and the worries piled in front of it
+      op("door", S.door);
+      k("leaf").setAttribute("transform", `translate(${DL} 0) scale(${(1 - .8 * S.open).toFixed(3)} 1) translate(${-DL} 0)`);
+      op("way", S.open); op("frOk", S.win); op("swOk", S.win); op("swl", 1 - S.win);
+      const ts = .7 + .3 * S.timer;
+      k("timer").setAttribute("transform", `translate(${DX - 26} 122) scale(${ts.toFixed(3)}) translate(${-(DX - 26)} -122)`); op("timer", S.timer * 1.5 * (1 - S.dim));
+      for (const w of ["w1", "w2"]) { tr(w, 0, -34 * (1 - S[w]) - 10 * S.clear); op(w, (S[w] > 0 ? cl(S[w] * 4) : 0) * (1 - S.clear)); }
+      // €12 a month, piling up
+      let n = 0;
+      for (let i = 0; i < 12; i++) {
+        const p = cl(S.coins - i);
+        if (S.coins - i >= .55) n = i + 1;
+        tr("c" + i, PX, coinY(i) - 22 * (1 - bounce(p)));
+        op("c" + i, (p > 0 ? cl(p * 5) : 0) * (1 - S.clear));
+      }
+      k("tot").textContent = n ? T.tot(n) : "";
+      k("tot").setAttribute("y", (221 - 5.5 * (Math.max(1, Math.min(12, S.coins)) - 1)).toFixed(2));   // rides just above the pile
+      op("tot", (n ? 1 : 0) * (1 - S.dim) * (1 - S.clear));
+      op("cost", S.cost * (1 - S.dim) * (1 - S.clear));
+      // you get up and walk through the open door
+      const wx = CX + (DX - CX) * S.walk, bob = -2.2 * Math.abs(Math.sin(S.walk * Math.PI * 5));
+      tr("walk", wx, bob); op("walk", S.stand);
+      k("mWalk").setAttribute("d", `M-4 175 Q0 ${(175 + 3.4 * (.4 + .6 * S.win)).toFixed(2)} 4 175`);
+    },
+    beats: [
+      { steps: [{ to: { cardA: 1 }, ms: 500, ease: "back", sfx: "pluck" }, { to: { chair: 1 }, ms: 500 },
+        { to: { ten: 1 }, ms: 250 }, { to: { years: 5 }, ms: 1200, ease: "lin" }] },
+      { steps: [{ to: { cardB: 1 }, ms: 550, ease: "back", sfx: "pop" }, { wait: 300 }, { to: { same: 1 }, ms: 500 }] },
+      { steps: [{ to: { door: 1 }, ms: 500 }, { to: { timer: 1 }, ms: 400, ease: "back", sfx: "tick" }] },
+      { steps: [{ to: { safe: 1, smile: 1 }, ms: 500 }, { wait: 300 },
+        { to: { w1: 1 }, ms: 700, ease: "bounce", sfx: "thud", sfxAt: 250 }, { to: { w2: 1 }, ms: 650, ease: "bounce" }] },
+      { steps: [{ to: { rise: 1 }, ms: 550, ease: "inOut" }, { wait: 200 }, { to: { rise: 0 }, ms: 650, ease: "back", sfx: "spring" },
+        { to: { coins: 1 }, ms: 600, ease: "lin" }] },
+      { steps: [{ to: { coins: 12 }, ms: 2400, ease: "lin", sfx: "tick" }, { to: { cost: 1 }, ms: 400 }] },
+      { steps: [{ to: { dim: 1 }, ms: 500 }, { to: { wipe: 1 }, ms: 700, sfx: "scribble" }, { to: { relabel: 1 }, ms: 450 },
+        { to: { ask: 1 }, ms: 450, ease: "back" }] },
+      { steps: [{ to: { ask: 0, pick: 1 }, ms: 450 }, { to: { chk: 1 }, ms: 400, ease: "back", sfx: "pop" }, { to: { clear: 1 } },
+        { to: { dim: 0, open: 1 }, ms: 550 }, { to: { stand: 1 }, ms: 300 }, { to: { walk: 1 }, ms: 1300, ease: "inOut" },
+        { to: { win: 1 }, ms: 450, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+</script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "en", "shareUrl": "https://papangelis.com/biases/watch/status-quo-bias/", "embedUrl": "https://papangelis.com/biases/watch/status-quo-bias/?embed", "sfxBase": "/biases/sfx/"};
+    if (mode === "og") { opts.capture = true; opts.og = true; var p = BiasAnim.mount(document.getElementById("og-player"), "status-quo-bias", opts); window.__bp = p; }
+    else {
+      opts.capture = mode === "video";
+      if (opts.capture) { var h = q.get("holds"), c = +q.get("cardhold"); if (h) opts.holds = h.split(",").map(Number); if (c) opts.cardHold = c; }
+      BiasAnim.mount(document.getElementById("player"), "status-quo-bias", opts);
+    }
+  })();
+</script>
+</body>
+</html>
