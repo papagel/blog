@@ -17,10 +17,10 @@
     <text x="900" y="307" text-anchor="middle" font-size="30" font-weight="700" letter-spacing="-1" fill="#f4f4f6">188</text>
     <rect x="90" y="66" width="40" height="40" rx="8.75" fill="url(#bar)"/><path d="M 105.00 96.42 V 77.67 h 6.88 a 6.25 6.25 0 0 1 0 12.50 H 105.00" fill="none" stroke="#ffffff" stroke-width="5.62" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="146" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#f4f4f6">Downstream</text>
-    <text x="90" y="252" font-size="78" font-weight="700" letter-spacing="-2" fill="#f4f4f6">Cognitive Bias</text><text x="90" y="338" font-size="78" font-weight="700" letter-spacing="-2" fill="#f4f4f6">Explorer</text>
-    <text x="90" y="392" font-size="28" fill="#9a9aa3">188 biases, why your brain uses them,</text><text x="90" y="432" font-size="28" fill="#9a9aa3">how to spot them, and ten experiments</text><text x="90" y="472" font-size="28" fill="#9a9aa3">that let you feel them work on you.</text>
+    <text x="90" y="222" font-size="70" font-weight="700" letter-spacing="-2" fill="#f4f4f6">Εξερευνητής</text><text x="90" y="299" font-size="70" font-weight="700" letter-spacing="-2" fill="#f4f4f6">γνωστικών</text><text x="90" y="376" font-size="70" font-weight="700" letter-spacing="-2" fill="#f4f4f6">μεροληψιών</text>
+    <text x="90" y="430" font-size="26" fill="#9a9aa3">188 μεροληψίες: γιατί τις χρησιμοποιεί</text><text x="90" y="467" font-size="26" fill="#9a9aa3">ο εγκέφαλός σου, πώς να τις εντοπίζεις,</text><text x="90" y="504" font-size="26" fill="#9a9aa3">και δέκα πειράματα για να τις νιώσεις.</text>
     <line x1="90" y1="560" x2="1120" y2="560" stroke="#2a2a2e" stroke-width="1"/>
-    <text x="90" y="598" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com/biases</text>
-    <text x="1120" y="598" font-size="20" text-anchor="end" fill="#9a9aa3">Adapted from the Cognitive Bias Codex · CC BY-SA 4.0</text>
+    <text x="90" y="598" font-size="26" font-weight="600" fill="#6ea8fe">papangelis.com/biases/el</text>
+    <text x="1120" y="598" font-size="20" text-anchor="end" fill="#9a9aa3">Προσαρμογή του Cognitive Bias Codex · CC BY-SA 4.0</text>
   </g>
 </svg>

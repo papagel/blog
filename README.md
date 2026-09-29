@@ -49,9 +49,11 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
 ## Cognitive Bias Explorer (/biases)
 
-`biases/index.html` is generated. Edit `scripts/biases/page.src.html` or the
-content in `scripts/biases/data/*.json`, then rebuild the page and its social
-card (`assets/og/biases.png`):
+`biases/index.html` (English) and `biases/el/index.html` (Greek) are generated.
+Edit `scripts/biases/page.src.html` (UI text is written as `⟪English¦Greek⟫`) or
+the content in `scripts/biases/data/*.json` and `scripts/biases/data/el/*.json`,
+then rebuild both pages and their social cards (`assets/og/biases*.png`).
+`scripts/biases/TRANSLATION-EL.md` is the Greek style guide and glossary:
 
 ```bash
 python3 scripts/biases/build.py

@@ -6,17 +6,21 @@
 <meta name="description" content="An interactive map of 188 cognitive biases: what each one is, why your brain uses it, how to spot it, and how to counter it. With ten try-it-yourself experiments, a personal bias map and a quiz.">
 <meta name="author" content="Thanos Papangelis">
 <link rel="canonical" href="https://papangelis.com/biases/">
+<link rel="alternate" hreflang="en" href="https://papangelis.com/biases/">
+<link rel="alternate" hreflang="el" href="https://papangelis.com/biases/el/">
+<link rel="alternate" hreflang="x-default" href="https://papangelis.com/biases/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Downstream">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Cognitive Bias Explorer">
 <meta property="og:description" content="188 cognitive biases on one interactive map, with experiments that let you feel each one work on you.">
 <meta property="og:url" content="https://papangelis.com/biases/">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://papangelis.com/assets/og/biases.png?v=6c9173fe">
+<meta property="og:image" content="https://papangelis.com/assets/og/biases.png?v=6edc8159">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Cognitive Bias Explorer">
-<meta name="twitter:image" content="https://papangelis.com/assets/og/biases.png?v=6c9173fe">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/biases.png?v=6edc8159">
 <meta name="twitter:title" content="Cognitive Bias Explorer">
 <meta name="twitter:description" content="188 cognitive biases on one interactive map, with experiments that let you feel each one work on you.">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
@@ -88,6 +92,7 @@ button{font:inherit;color:inherit}
 .top nav a:hover{color:var(--ink);background:var(--surface-2)}
 .home-link{font:500 13px/1 var(--mono);text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--rule);border-radius:999px;margin-left:auto}
 .home-link:hover{color:var(--ink);border-color:var(--ink)}
+.lang-link{margin-left:0;letter-spacing:.06em}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;padding-block:clamp(16px,4vw,40px) 8px}
@@ -217,10 +222,6 @@ footer{border-top:1px solid var(--rule);padding-block:22px 36px;display:flex;fle
 .cc{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:5px 7px;margin-top:1px;white-space:nowrap}
 .cc:hover{background:var(--ink);color:var(--ground)}
 footer cite{font-style:italic}
-footer details{padding-left:calc(14px + 7ch + 14px)}
-footer summary{cursor:pointer;font:500 12px/1.4 var(--mono);color:var(--faint);width:max-content}
-footer summary:hover{color:var(--ink)}
-footer details p{margin-top:8px;max-width:90ch}
 
 /* panel */
 .scrim{position:fixed;inset:0;background:rgba(10,14,18,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
@@ -255,7 +256,6 @@ footer details p{margin-top:8px;max-width:90ch}
 @media (max-width:760px){
   .hero,.block-head{grid-template-columns:minmax(0,1fr)}
   .foot-row{flex-direction:column;gap:8px}
-  footer details{padding-left:0}
   .gsec{grid-template-columns:minmax(0,1fr)}
   .habits{grid-template-columns:minmax(0,1fr)}
   .panel{top:auto;height:88%;width:100%;border-left:0;border-top:5px solid var(--q,var(--rule));border-radius:18px 18px 0 0;transform:translateY(105%)}
@@ -433,7 +433,7 @@ footer details p{margin-top:8px;max-width:90ch}
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="#top" id="top"><span class="brand-mark" aria-hidden="true"></span>Cognitive Bias Explorer</a><a class="home-link" href="/">&larr; Downstream</a>
+    <a class="brand" href="#top" id="top"><span class="brand-mark" aria-hidden="true"></span>Cognitive Bias Explorer</a><a class="home-link" href="/">&larr; Downstream</a><a class="home-link lang-link" href="el/" hreflang="el" lang="el" title="Ελληνικά" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">ΕΛ</a>
     <nav aria-label="Sections">
       <a href="#map">Map</a><a href="#lab">Experiments</a><a href="#why">Why they exist</a><a href="#browse">All biases</a><a href="#quiz">Quiz</a><a href="#habits">Habits</a>
     </nav>
@@ -521,11 +521,6 @@ footer details p{margin-top:8px;max-width:90ch}
       <a class="cc" rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" aria-label="Creative Commons Attribution-ShareAlike 4.0">CC BY-SA 4.0</a>
       <p>Adapted from <a href="https://commons.wikimedia.org/wiki/File:Cognitive_bias_codex_en.svg" target="_blank" rel="noopener"><cite>The Cognitive Bias Codex</cite></a> by John Manoogian III (design), Buster Benson (categories) and TilmannR (implementation), based on the <a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" rel="noopener">Wikipedia list of cognitive biases</a>. This page is shared under the same licence. A Downstream project by Thanos Papangelis.</p>
     </div>
-    <details>
-      <summary>Changes and notes</summary>
-      <p>Changes made: the codex is redrawn as an interactive wheel with shortened category names on the map. The definitions, examples, tips, quiz and habits are new writing. You may share and adapt this page with credit, under CC BY-SA 4.0.</p>
-      <p>Not affiliated with or endorsed by the original authors. Explanations are simplified, some entries are alternate names for each other, and a few are memory effects or reasoning errors more than biases in the strict sense.</p>
-    </details>
   </footer>
 </div>
 
@@ -586,13 +581,15 @@ const HABITS = [
 
 /* ---------- flatten ---------- */
 const GROUPS = [], BIASES = [];
+const LANG = "en", LOCALE = LANG === "el" ? "el-GR" : "en-US";
+const fold = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ς/g, "σ");
 const slugify = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[+]/g,"plus").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 DATA.forEach((groups, qi) => {
   groups.forEach(g => {
     const grp = { ...g, q: QUADS[qi], qi, items: [] };
     GROUPS.push(grp);
     g.biases.forEach(b => {
-      let slug = "b-" + slugify(b.n);
+      let slug = "b-" + slugify(b.en || b.n);
       if (BIASES.some(x => x.slug === slug)) slug += "-" + g.id;
       const bias = { ...b, scen: b.q, g: grp, q: QUADS[qi], slug, i: BIASES.length };
       grp.items.push(bias); BIASES.push(bias);
@@ -714,7 +711,7 @@ function draw() {
   BIASES.forEach(b => {
     const [a, dg] = warp(b.base);
     const scale = Math.min(1.75, Math.max(0.85, 0.72 + dg * 0.3));
-    const fs = 9.6 * (k < 0.01 ? 1 : scale);
+    const fs = 9.6 * Math.min(1, 30 / b.n.length) * (k < 0.01 ? 1 : scale);
     const [dx, dy] = pol(R_LEAF, a);
     b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
     const [tx, ty] = pol(R_TXT, a);
@@ -800,11 +797,11 @@ function setFilter(q) {
   renderList();
 }
 const qInput = document.getElementById("q-input");
-qInput.addEventListener("input", () => { query = qInput.value.trim().toLowerCase(); renderList(); });
+qInput.addEventListener("input", () => { query = fold(qInput.value.trim()); renderList(); });
 function matches(b) {
   if (filterQ !== "all" && b.q.key !== filterQ) return false;
   if (!query) return true;
-  return [b.n, b.alias, b.d, b.ex, b.g.title].join(" ").toLowerCase().includes(query);
+  return fold([b.n, b.en, b.alias, b.d, b.ex, b.g.title].join(" ")).includes(query);
 }
 function renderList() {
   let n = 0, html = "";
@@ -863,7 +860,7 @@ function openBias(b) {
   document.getElementById("p-pos").textContent = `${b.i + 1} / ${BIASES.length}`;
   pBody.innerHTML = `
     <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
-    <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}</div>
+    <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">In English: ${esc(b.en)}</p>` : ""}</div>
     <p class="def">${esc(b.d)}</p>
     <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
@@ -1162,7 +1159,7 @@ function xpCoin(x, alive) {
     $("#sim", stage).onclick = () => {
       let run = 0, h = 0, t = 0;
       for (let i = 0; i < 1e6; i++) { const f = Math.random() < 0.5; if (run >= 5) { if (f) h++; else t++; } run = f ? run + 1 : 0; }
-      $("#simout", stage).innerHTML = `After a streak of five or more heads, the next flip came up <b>heads ${h.toLocaleString("en-US")}</b> times and <b>tails ${t.toLocaleString("en-US")}</b> times. That's ${(100 * h / (h + t)).toFixed(1)}% heads.`;
+      $("#simout", stage).innerHTML = `After a streak of five or more heads, the next flip came up <b>heads ${h.toLocaleString(LOCALE)}</b> times and <b>tails ${t.toLocaleString(LOCALE)}</b> times. That's ${(100 * h / (h + t)).toLocaleString(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% heads.`;
     };
   }
 }
@@ -1232,6 +1229,7 @@ function xpRule(x) {
 function xpWords(x, alive) {
   const W = ["bed", "rest", "awake", "tired", "dream", "wake", "snooze", "blanket", "doze", "slumber", "snore", "nap"];
   const LURE = ["sleep", "sleeping", "sleepy", "asleep", "sleeps"];
+  const WF = W.map(fold), LUREF = LURE.map(fold);
   paint(head(x) + `<h3>Twelve words</h3><p class="prompt">Twelve words will appear one at a time, about a second each. Try to remember as many as you can. Afterwards you'll type the ones you remember.</p><div class="row"><button class="btn primary" type="button" id="go">Start</button></div>`);
   $("#go", stage).onclick = () => {
     paint(head(x, "Word 1 of 12") + `<div class="flash" id="fl" aria-live="assertive"></div>`);
@@ -1244,7 +1242,7 @@ function xpWords(x, alive) {
     };
     show();
   };
-  function norm(s) { s = s.toLowerCase().replace(/[^a-z]/g, ""); if (!W.includes(s) && s.endsWith("s") && W.includes(s.slice(0, -1))) s = s.slice(0, -1); return s; }
+  function norm(s) { s = fold(s).replace(/[^a-zα-ω]/g, ""); if (!WF.includes(s) && s.endsWith("s") && WF.includes(s.slice(0, -1))) s = s.slice(0, -1); return s; }
   function recall() {
     const got = [];
     paint(head(x, "Now recall") + `<p class="prompt">Type every word you remember, one at a time. Order doesn't matter.</p>
@@ -1255,13 +1253,13 @@ function xpWords(x, alive) {
     $("#rf", stage).onsubmit = e => { e.preventDefault(); add(); input.focus(); };
     $("#rd", stage).onclick = () => {
       add();
-      if (got.some(g => LURE.includes(g))) return reveal(got, "typed");
+      if (got.some(g => LUREF.includes(g))) return reveal(got, "typed");
       paint(head(x, "One more question") + `<p class="prompt">Was the word <b>sleep</b> on the list?</p>` + choices([["y", "Yes, I saw it"], ["n", "No, it wasn't there"]]));
       onChoice(c => reveal(got, c === "y" ? "yes" : "no"));
     };
   }
   function reveal(got, lure) {
-    const hit = W.map(w => got.includes(w)), n = hit.filter(Boolean).length;
+    const hit = WF.map(w => got.includes(w)), n = hit.filter(Boolean).length;
     const part = (a, b) => hit.slice(a, b).filter(Boolean).length;
     finish(x, `<p class="big-answer">${n} of 12</p>
       <div class="positions">${W.map((w, i) => `<div class="pos${hit[i] ? " hit" : ""}"><b>${i + 1}</b><span>${w}</span></div>`).join("")}</div>
