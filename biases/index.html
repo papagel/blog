@@ -659,134 +659,7 @@ footer cite{font-style:italic}
   /* ------------------------------------------------------------------ scenes */
   const SCENES = {};
 
-  // Anchoring: a house, a seller's number, and a guess tied to it by a rope.
-  (function () {
-    const X = v => 30 + (v - 300) / 700 * 340;           // € thousands -> x
-    const AX = X(900), TRUTH = 600, SHORT = 780, OWN = 620;
-    SCENES.anchoring = {
-      q: "tmi", viewBox: "0 0 400 272",
-      text: {
-        en: {
-          name: "Anchoring", shareTitle: "Anchoring, explained in 30 seconds",
-          ecline: "The first number you hear sets your starting point. Know your own first.",
-          bubble: "“I'm asking €900k”", truth: "Fair value", hidden: "hidden from you", start: "starting point",
-          adj: "adjusting", pull: "pull", padh: "Your estimate", padv: "€550–650k", guess: "Your guess",
-          withAnchor: "With the anchor", withRange: "Your range first", gap: v => `€${v}k too high`, axis: "Price, € thousands",
-          caps: [
-            "You want to buy this house. What's it worth?",
-            "Its fair value is about <b>€600k</b>. You don't know that yet.",
-            "The seller speaks first: “I'm asking <b>€900k</b>.”",
-            "Your mind grabs €900k as its <b>starting point</b>.",
-            "It feels too high, so you adjust down…",
-            "…but you stop too early, <b>€180k too high</b>.",
-            "<b>The fix:</b> write down your own estimate first.",
-            "Start from your own range. You land near <b>fair value</b>."
-          ],
-          say: [
-            "You want to buy this house. What's it worth?",
-            "Its fair value is about six hundred thousand euros. But you don't know that yet.",
-            "The seller speaks first. I'm asking nine hundred thousand.",
-            "Your mind grabs that number as its starting point.",
-            "It feels too high, so you adjust down...",
-            "...but you stop too early. You end up a hundred and eighty thousand too high.",
-            "The fix: write down your own estimate first.",
-            "Start from your own range, and you land close to the fair value.",
-            "Anchoring. The first number you hear sets your starting point. Know your own first."
-          ]
-        },
-        el: {
-          name: "Αγκύρωση", shareTitle: "Η αγκύρωση σε 30 δευτερόλεπτα",
-          ecline: "Ο πρώτος αριθμός που ακούς γίνεται η αφετηρία σου. Να ξέρεις τον δικό σου πρώτα.",
-          bubble: "«Ζητάω 900 χιλ. €»", truth: "Πραγματική αξία", hidden: "δεν τη γνωρίζεις", start: "αφετηρία",
-          adj: "προσαρμογή", pull: "τράβηγμα", padh: "Η εκτίμησή σου", padv: "550–650 χιλ.", guess: "Η εκτίμησή σου",
-          withAnchor: "Με την άγκυρα", withRange: "Με το δικό σου εύρος", gap: v => `${v} χιλ. € παραπάνω`, axis: "Τιμή, χιλ. €",
-          caps: [
-            "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
-            "Η πραγματική του αξία είναι περίπου <b>600 χιλ. €</b>. Εσύ δεν το ξέρεις ακόμα.",
-            "Ο πωλητής μιλάει πρώτος: “Ζητάω <b>900 χιλ. €</b>”.",
-            "Το μυαλό σου κρατά τα 900 χιλ. ως <b>αφετηρία</b>.",
-            "Σου φαίνεται ακριβό, οπότε κατεβαίνεις…",
-            "…αλλά σταματάς νωρίς, <b>180 χιλ. € πιο ψηλά</b>.",
-            "<b>Η λύση:</b> γράψε πρώτα τη δική σου εκτίμηση.",
-            "Ξεκίνα από το δικό σου εύρος. Καταλήγεις κοντά στην <b>πραγματική αξία</b>."
-          ],
-          say: [
-            "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
-            "Η πραγματική του αξία είναι περίπου εξακόσιες χιλιάδες ευρώ. Εσύ όμως δεν το ξέρεις ακόμα.",
-            "Ο πωλητής μιλάει πρώτος. Ζητάω εννιακόσιες χιλιάδες.",
-            "Το μυαλό σου κρατά αυτόν τον αριθμό ως αφετηρία.",
-            "Σου φαίνεται ακριβό, οπότε κατεβαίνεις...",
-            "...αλλά σταματάς νωρίς. Καταλήγεις εκατόν ογδόντα χιλιάδες πιο ψηλά.",
-            "Η λύση: γράψε πρώτα τη δική σου εκτίμηση.",
-            "Ξεκίνα από το δικό σου εύρος, και καταλήγεις κοντά στην πραγματική αξία.",
-            "Αγκύρωση. Ο πρώτος αριθμός που ακούς γίνεται η αφετηρία σου. Να ξέρεις τον δικό σου πρώτα."
-          ]
-        }
-      },
-      svg(T) {
-        let axis = `<line class="ax" x1="30" y1="200" x2="370" y2="200"/>`;
-        for (let v = 300; v <= 1000; v += 100) axis += `<line class="tick" x1="${X(v)}" y1="196" x2="${X(v)}" y2="204"/><text class="tl" x="${X(v)}" y="217">${v}</text>`;
-        axis += `<text class="axt" x="30" y="270">${T.axis}</text>`;
-        return `${axis}
-          <g data-k="house"><path class="house" d="M34 70 L66 42 L98 70 M42 64 V100 H90 V64 M60 100 V82 H72 V100"/>
-            <g class="tag" data-k="tag"><line x1="98" y1="66" x2="114" y2="58"/><rect x="112" y="44" width="30" height="26" rx="6"/><text x="127" y="63">?</text></g></g>
-          <g class="pad" data-k="pad"><rect x="30" y="112" width="92" height="40" rx="7"/><text class="h" x="76" y="126">${T.padh}</text><text class="v" x="76" y="144">${T.padv}</text></g>
-          <g class="bubble" data-k="bubble"><rect x="226" y="12" width="160" height="34" rx="10"/><path d="M314 45 L321 56 L328 45"/><text x="306" y="34">${T.bubble}</text></g>
-          <g data-k="anchor"><g class="anchor"><circle cx="0" cy="-26" r="5"/><path d="M0 -21 V0 M-10 -15 H10 M-14 -8 C-12 2 -5 4 0 4 C5 4 12 2 14 -8"/></g></g>
-          <text class="note" data-k="start" x="${AX}" y="236">${T.start}</text>
-          <g class="band" data-k="band"><rect x="${X(550)}" y="193" width="${X(650) - X(550)}" height="14" rx="3"/></g>
-          <path class="rope" data-k="rope" d=""/>
-          <g data-k="adj"><path class="arrow" data-k="adjp" d=""/><text class="note" x="${(AX + X(700)) / 2}" y="110">${T.adj}</text></g>
-          <g data-k="pull"><path class="arrow" data-k="pullp" d=""/><text class="note" data-k="pullt" y="164">${T.pull}</text></g>
-          <g class="ghost" data-k="ghost" transform="translate(${X(TRUTH)} 0)"><line y1="168" y2="200"/><circle r="8" cy="160"/><text x="-13" y="158">${T.truth}</text><text class="sub" data-k="hidden" x="-13" y="170">${T.hidden}</text></g>
-          <g class="pin p1" data-k="pin"><line y1="168" y2="200"/><circle r="8" cy="160"/><text data-k="guess"></text></g>
-          <g class="pin p2" data-k="pin2"><line y1="168" y2="200"/><circle r="8" cy="160"/><text text-anchor="end" x="-13" y="164">${T.withRange}</text></g>
-          <g class="gap" data-k="gap"><line x1="${X(TRUTH)}" x2="${X(SHORT)}" y1="244" y2="244"/><line x1="${X(TRUTH)}" x2="${X(TRUTH)}" y1="238" y2="250"/><line x1="${X(SHORT)}" x2="${X(SHORT)}" y1="238" y2="250"/><text x="${(X(TRUTH) + X(SHORT)) / 2}" y="262">${T.gap(SHORT - TRUTH)}</text></g>`;
-      },
-      S0: { house: 0, tagSwing: 0, ghost: 0, hidden: 1, bubble: 0, anchorY: 60, anchorOp: 0, start: 0,
-        pin: 0, pinX: 900, pinFade: 1, rope: 0, adj: 0, pull: 0, gap: 0, pad: 0, band: 0, pin2: 0, pin2X: 600, final: 0 },
-      render(S, k, T) {
-        const op = (key, v) => { k(key).style.opacity = v; };
-        op("house", S.house);
-        k("tag").setAttribute("transform", `rotate(${S.tagSwing} 98 66)`);
-        op("bubble", S.bubble);
-        k("anchor").setAttribute("transform", `translate(${AX} ${S.anchorY})`);
-        op("anchor", S.anchorOp);
-        op("start", S.start);
-        op("ghost", S.ghost); op("hidden", S.hidden);
-        const px = X(S.pinX);
-        k("pin").setAttribute("transform", `translate(${px} 0)`);
-        op("pin", S.pin * S.pinFade);
-        const g = k("guess"), fin = S.final > .5;
-        g.textContent = fin ? T.withAnchor : T.guess;
-        g.setAttribute("text-anchor", fin ? "start" : "middle");
-        g.setAttribute("x", fin ? 13 : 0); g.setAttribute("y", fin ? 164 : 142);
-        const sag = Math.max(2, 22 - Math.abs(AX - px) / 6);
-        k("rope").setAttribute("d", `M${AX} ${S.anchorY - 8} Q${(AX + px) / 2} ${184 + sag} ${px} 178`);
-        op("rope", S.rope);
-        const ax2 = AX - (AX - X(700)) * S.adj;
-        k("adjp").setAttribute("d", `M${AX} 118 H${ax2} M${ax2 + 6} 113 L${ax2} 118 L${ax2 + 6} 123`);
-        op("adj", S.adj > .02 ? Math.min(1, S.adj * 2) : 0);
-        const mx = (AX + px) / 2;
-        k("pullp").setAttribute("d", `M${mx - 10} 172 H${mx + 10} M${mx + 4} 167 L${mx + 10} 172 L${mx + 4} 177`);
-        k("pullt").setAttribute("x", mx);
-        op("pull", S.pull);
-        op("gap", S.gap); op("pad", S.pad); op("band", S.band);
-        k("pin2").setAttribute("transform", `translate(${X(S.pin2X)} 0)`);
-        op("pin2", S.pin2);
-      },
-      beats: [
-        { steps: [{ to: { house: 1 }, ms: 600, sfx: "pluck" }, { to: { tagSwing: 12 }, ms: 260, sfx: "tick" }, { to: { tagSwing: -8 }, ms: 300, ease: "inOut" }, { to: { tagSwing: 0 }, ms: 300, ease: "inOut" }] },
-        { steps: [{ to: { ghost: 1 }, ms: 600, sfx: "tick" }, { wait: 1400 }, { to: { ghost: .35 }, ms: 600 }] },
-        { steps: [{ to: { bubble: 1 }, ms: 450, sfx: "pop" }, { wait: 500 }, { to: { anchorOp: 1 } }, { to: { anchorY: 200 }, ms: 1000, ease: "bounce", sfx: "thud", sfxAt: 360 }] },
-        { steps: [{ to: { start: 1 }, ms: 400 }, { to: { pin: 1 }, ms: 400, sfx: "pop" }, { to: { rope: 1 }, ms: 400 }] },
-        { steps: [{ to: { adj: 1, pinX: 700 }, ms: 1500, ease: "inOut", sfx: "whoosh" }] },
-        { steps: [{ to: { pull: 1 }, ms: 300 }, { to: { pinX: SHORT, adj: 0 }, ms: 800, ease: "back", sfx: "spring" }, { to: { ghost: 1, hidden: 0 }, ms: 400 }, { to: { gap: 1 }, ms: 400, sfx: "tick" }] },
-        { steps: [{ to: { pull: 0, gap: 0, pinFade: .4, start: 0, ghost: 0 }, ms: 500 }, { to: { pad: 1 }, ms: 500, sfx: "scribble" }, { wait: 300 }, { to: { band: 1 }, ms: 500, sfx: "tick" }] },
-        { steps: [{ to: { final: 1, pin2X: 600 } }, { to: { pin2: 1 }, ms: 400, sfx: "pop" }, { to: { pin2X: OWN }, ms: 700 }, { to: { rope: 0, anchorOp: .3, bubble: .35 }, ms: 600, sfx: "chime" }], hold: 4200 }
-      ]
-    };
-  })();
+  // Scenes live in scenes/<key>.js and register themselves on BiasAnim.SCENES.
 
   /* ------------------------------------------------------------------ timeline */
   const HOLD = 2600, CARD_IN = 450, CARD_HOLD = 6000, FADE = 500;
@@ -827,12 +700,15 @@ footer cite{font-style:italic}
   let uid = 0;
   function mount(host, key, opts = {}) {
     const scene = SCENES[key]; if (!scene || !host) return null;
+    if (scene.css && !document.getElementById("bp-css-" + key)) {
+      const st = document.createElement("style"); st.id = "bp-css-" + key; st.textContent = scene.css; document.head.appendChild(st);
+    }
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
     const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const capture = !!opts.capture;
     host.innerHTML = `
-      <div class="bp${capture ? " capture" : ""}" style="--q:var(--${scene.q})">
+      <div class="bp${capture ? " capture" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
         <div class="bp-stage">
           <div class="bp-cap"><span class="bp-no"></span><p class="bp-text" aria-live="polite"></p></div>
           <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}</g></svg>
@@ -954,7 +830,7 @@ footer cite{font-style:italic}
 
     const api = {
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
-      starts: tl.starts, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
+      starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
       destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); host.innerHTML = ""; }
     };
@@ -963,6 +839,1194 @@ footer cite{font-style:italic}
   }
 
   window.BiasAnim = { SCENES, mount, has: key => !!SCENES[key] };
+})();
+
+/* Anchoring: a house, a seller's number, and a guess tied to it by a rope. Scene for anim.js. */
+(function () {
+  const X = v => 30 + (v - 300) / 700 * 340;           // € thousands -> x
+  const AX = X(900), TRUTH = 600, SHORT = 780, OWN = 620;
+  window.BiasAnim.SCENES.anchoring = {
+    q: "tmi", viewBox: "0 0 400 272",
+    text: {
+      en: {
+        name: "Anchoring", shareTitle: "Anchoring, explained in 30 seconds",
+        ecline: "The first number you hear sets your starting point. Know your own first.",
+        bubble: "“I'm asking €900k”", truth: "Fair value", hidden: "hidden from you", start: "starting point",
+        adj: "adjusting", pull: "pull", padh: "Your estimate", padv: "€550–650k", guess: "Your guess",
+        withAnchor: "With the anchor", withRange: "Your range first", gap: v => `€${v}k too high`, axis: "Price, € thousands",
+        caps: [
+          "You want to buy this house. What's it worth?",
+          "Its fair value is about <b>€600k</b>. You don't know that yet.",
+          "The seller speaks first: “I'm asking <b>€900k</b>.”",
+          "Your mind grabs €900k as its <b>starting point</b>.",
+          "It feels too high, so you adjust down…",
+          "…but you stop too early, <b>€180k too high</b>.",
+          "<b>The fix:</b> write down your own estimate first.",
+          "Start from your own range. You land near <b>fair value</b>."
+        ],
+        say: [
+          "You want to buy this house. What's it worth?",
+          "Its fair value is about six hundred thousand euros. But you don't know that yet.",
+          "The seller speaks first. I'm asking nine hundred thousand.",
+          "Your mind grabs that number as its starting point.",
+          "It feels too high, so you adjust down...",
+          "...but you stop too early. You end up a hundred and eighty thousand too high.",
+          "The fix: write down your own estimate first.",
+          "Start from your own range, and you land close to the fair value.",
+          "Anchoring. The first number you hear sets your starting point. Know your own first."
+        ]
+      },
+      el: {
+        name: "Αγκύρωση", shareTitle: "Η αγκύρωση σε 30 δευτερόλεπτα",
+        ecline: "Ο πρώτος αριθμός που ακούς γίνεται η αφετηρία σου. Να ξέρεις τον δικό σου πρώτα.",
+        bubble: "«Ζητάω 900 χιλ. €»", truth: "Πραγματική αξία", hidden: "δεν τη γνωρίζεις", start: "αφετηρία",
+        adj: "προσαρμογή", pull: "τράβηγμα", padh: "Η εκτίμησή σου", padv: "550–650 χιλ.", guess: "Η εκτίμησή σου",
+        withAnchor: "Με την άγκυρα", withRange: "Με το δικό σου εύρος", gap: v => `${v} χιλ. € παραπάνω`, axis: "Τιμή, χιλ. €",
+        caps: [
+          "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
+          "Η πραγματική του αξία είναι περίπου <b>600 χιλ. €</b>. Εσύ δεν το ξέρεις ακόμα.",
+          "Ο πωλητής μιλάει πρώτος: “Ζητάω <b>900 χιλ. €</b>”.",
+          "Το μυαλό σου κρατά τα 900 χιλ. ως <b>αφετηρία</b>.",
+          "Σου φαίνεται ακριβό, οπότε κατεβαίνεις…",
+          "…αλλά σταματάς νωρίς, <b>180 χιλ. € πιο ψηλά</b>.",
+          "<b>Η λύση:</b> γράψε πρώτα τη δική σου εκτίμηση.",
+          "Ξεκίνα από το δικό σου εύρος. Καταλήγεις κοντά στην <b>πραγματική αξία</b>."
+        ],
+        say: [
+          "Θέλεις να αγοράσεις αυτό το σπίτι. Πόσο αξίζει;",
+          "Η πραγματική του αξία είναι περίπου εξακόσιες χιλιάδες ευρώ. Εσύ όμως δεν το ξέρεις ακόμα.",
+          "Ο πωλητής μιλάει πρώτος. Ζητάω εννιακόσιες χιλιάδες.",
+          "Το μυαλό σου κρατά αυτόν τον αριθμό ως αφετηρία.",
+          "Σου φαίνεται ακριβό, οπότε κατεβαίνεις...",
+          "...αλλά σταματάς νωρίς. Καταλήγεις εκατόν ογδόντα χιλιάδες πιο ψηλά.",
+          "Η λύση: γράψε πρώτα τη δική σου εκτίμηση.",
+          "Ξεκίνα από το δικό σου εύρος, και καταλήγεις κοντά στην πραγματική αξία.",
+          "Αγκύρωση. Ο πρώτος αριθμός που ακούς γίνεται η αφετηρία σου. Να ξέρεις τον δικό σου πρώτα."
+        ]
+      }
+    },
+    svg(T) {
+      let axis = `<line class="ax" x1="30" y1="200" x2="370" y2="200"/>`;
+      for (let v = 300; v <= 1000; v += 100) axis += `<line class="tick" x1="${X(v)}" y1="196" x2="${X(v)}" y2="204"/><text class="tl" x="${X(v)}" y="217">${v}</text>`;
+      axis += `<text class="axt" x="30" y="270">${T.axis}</text>`;
+      return `${axis}
+        <g data-k="house"><path class="house" d="M34 70 L66 42 L98 70 M42 64 V100 H90 V64 M60 100 V82 H72 V100"/>
+          <g class="tag" data-k="tag"><line x1="98" y1="66" x2="114" y2="58"/><rect x="112" y="44" width="30" height="26" rx="6"/><text x="127" y="63">?</text></g></g>
+        <g class="pad" data-k="pad"><rect x="30" y="112" width="92" height="40" rx="7"/><text class="h" x="76" y="126">${T.padh}</text><text class="v" x="76" y="144">${T.padv}</text></g>
+        <g class="bubble" data-k="bubble"><rect x="226" y="12" width="160" height="34" rx="10"/><path d="M314 45 L321 56 L328 45"/><text x="306" y="34">${T.bubble}</text></g>
+        <g data-k="anchor"><g class="anchor"><circle cx="0" cy="-26" r="5"/><path d="M0 -21 V0 M-10 -15 H10 M-14 -8 C-12 2 -5 4 0 4 C5 4 12 2 14 -8"/></g></g>
+        <text class="note" data-k="start" x="${AX}" y="236">${T.start}</text>
+        <g class="band" data-k="band"><rect x="${X(550)}" y="193" width="${X(650) - X(550)}" height="14" rx="3"/></g>
+        <path class="rope" data-k="rope" d=""/>
+        <g data-k="adj"><path class="arrow" data-k="adjp" d=""/><text class="note" x="${(AX + X(700)) / 2}" y="110">${T.adj}</text></g>
+        <g data-k="pull"><path class="arrow" data-k="pullp" d=""/><text class="note" data-k="pullt" y="164">${T.pull}</text></g>
+        <g class="ghost" data-k="ghost" transform="translate(${X(TRUTH)} 0)"><line y1="168" y2="200"/><circle r="8" cy="160"/><text x="-13" y="158">${T.truth}</text><text class="sub" data-k="hidden" x="-13" y="170">${T.hidden}</text></g>
+        <g class="pin p1" data-k="pin"><line y1="168" y2="200"/><circle r="8" cy="160"/><text data-k="guess"></text></g>
+        <g class="pin p2" data-k="pin2"><line y1="168" y2="200"/><circle r="8" cy="160"/><text text-anchor="end" x="-13" y="164">${T.withRange}</text></g>
+        <g class="gap" data-k="gap"><line x1="${X(TRUTH)}" x2="${X(SHORT)}" y1="244" y2="244"/><line x1="${X(TRUTH)}" x2="${X(TRUTH)}" y1="238" y2="250"/><line x1="${X(SHORT)}" x2="${X(SHORT)}" y1="238" y2="250"/><text x="${(X(TRUTH) + X(SHORT)) / 2}" y="262">${T.gap(SHORT - TRUTH)}</text></g>`;
+    },
+    S0: { house: 0, tagSwing: 0, ghost: 0, hidden: 1, bubble: 0, anchorY: 60, anchorOp: 0, start: 0,
+      pin: 0, pinX: 900, pinFade: 1, rope: 0, adj: 0, pull: 0, gap: 0, pad: 0, band: 0, pin2: 0, pin2X: 600, final: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      op("house", S.house);
+      k("tag").setAttribute("transform", `rotate(${S.tagSwing} 98 66)`);
+      op("bubble", S.bubble);
+      k("anchor").setAttribute("transform", `translate(${AX} ${S.anchorY})`);
+      op("anchor", S.anchorOp);
+      op("start", S.start);
+      op("ghost", S.ghost); op("hidden", S.hidden);
+      const px = X(S.pinX);
+      k("pin").setAttribute("transform", `translate(${px} 0)`);
+      op("pin", S.pin * S.pinFade);
+      const g = k("guess"), fin = S.final > .5;
+      g.textContent = fin ? T.withAnchor : T.guess;
+      g.setAttribute("text-anchor", fin ? "start" : "middle");
+      g.setAttribute("x", fin ? 13 : 0); g.setAttribute("y", fin ? 164 : 142);
+      const sag = Math.max(2, 22 - Math.abs(AX - px) / 6);
+      k("rope").setAttribute("d", `M${AX} ${S.anchorY - 8} Q${(AX + px) / 2} ${184 + sag} ${px} 178`);
+      op("rope", S.rope);
+      const ax2 = AX - (AX - X(700)) * S.adj;
+      k("adjp").setAttribute("d", `M${AX} 118 H${ax2} M${ax2 + 6} 113 L${ax2} 118 L${ax2 + 6} 123`);
+      op("adj", S.adj > .02 ? Math.min(1, S.adj * 2) : 0);
+      const mx = (AX + px) / 2;
+      k("pullp").setAttribute("d", `M${mx - 10} 172 H${mx + 10} M${mx + 4} 167 L${mx + 10} 172 L${mx + 4} 177`);
+      k("pullt").setAttribute("x", mx);
+      op("pull", S.pull);
+      op("gap", S.gap); op("pad", S.pad); op("band", S.band);
+      k("pin2").setAttribute("transform", `translate(${X(S.pin2X)} 0)`);
+      op("pin2", S.pin2);
+    },
+    beats: [
+      { steps: [{ to: { house: 1 }, ms: 600, sfx: "pluck" }, { to: { tagSwing: 12 }, ms: 260, sfx: "tick" }, { to: { tagSwing: -8 }, ms: 300, ease: "inOut" }, { to: { tagSwing: 0 }, ms: 300, ease: "inOut" }] },
+      { steps: [{ to: { ghost: 1 }, ms: 600, sfx: "tick" }, { wait: 1400 }, { to: { ghost: .35 }, ms: 600 }] },
+      { steps: [{ to: { bubble: 1 }, ms: 450, sfx: "pop" }, { wait: 500 }, { to: { anchorOp: 1 } }, { to: { anchorY: 200 }, ms: 1000, ease: "bounce", sfx: "thud", sfxAt: 360 }] },
+      { steps: [{ to: { start: 1 }, ms: 400 }, { to: { pin: 1 }, ms: 400, sfx: "pop" }, { to: { rope: 1 }, ms: 400 }] },
+      { steps: [{ to: { adj: 1, pinX: 700 }, ms: 1500, ease: "inOut", sfx: "whoosh" }] },
+      { steps: [{ to: { pull: 1 }, ms: 300 }, { to: { pinX: SHORT, adj: 0 }, ms: 800, ease: "back", sfx: "spring" }, { to: { ghost: 1, hidden: 0 }, ms: 400 }, { to: { gap: 1 }, ms: 400, sfx: "tick" }] },
+      { steps: [{ to: { pull: 0, gap: 0, pinFade: .4, start: 0, ghost: 0 }, ms: 500 }, { to: { pad: 1 }, ms: 500, sfx: "scribble" }, { wait: 300 }, { to: { band: 1 }, ms: 500, sfx: "tick" }] },
+      { steps: [{ to: { final: 1, pin2X: 600 } }, { to: { pin2: 1 }, ms: 400, sfx: "pop" }, { to: { pin2X: OWN }, ms: 700 }, { to: { rope: 0, anchorOp: .3, bubble: .35 }, ms: 600, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Confirmation bias: a hunch about a coworker, a week of evidence, two piles and a certainty meter. Scene for anim.js. */
+(function () {
+  const KEY = "confirmation-bias", P = `.bp[data-scene="${KEY}"]`;
+  const CW = 106, CH = 28;                                  // evidence card
+  const FEED_X = 136, FIT_X = 14, NO_X = 136;               // incoming column, "Fits" pile, "Doesn't fit" pile
+  const feedY = r => 76 + r * 31;                           // six rows as the week comes in: 76..259
+  const pileY = j => 130 + j * 31;                          // three slots per pile: 130..220
+  const PLUS = [0, 2, 4], MINUS = [1, 3, 5];                // rows of the cards that fit / don't
+  const TAGX = 76;                                          // left edge of the "lazy" tag
+  const BX = 324, BW = 26, TOP = 70, BOT = 230;             // certainty meter
+  const my = p => BOT - (BOT - TOP) * p;
+  const GX = BX - 8;                                        // "too sure" bracket
+  const clamp = v => Math.max(0, Math.min(1, v));
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "tmi", viewBox: "0 0 400 272",
+    css: `
+      ${P} .cb-line{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .cb-tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+      ${P} .cb-tag line{stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}
+      ${P} .cb-tag circle{fill:none;stroke:var(--ink);stroke-width:1.4}
+      ${P} .cb-tag text{font:700 14px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .cb-beam{fill:var(--q);fill-opacity:.26;stroke:none}
+      ${P} .cb-card .bg{fill:var(--surface);stroke:var(--muted);stroke-width:1.4}
+      ${P} .cb-card .lit{fill:var(--q);fill-opacity:.12;stroke:var(--q);stroke-width:1.8}
+      ${P} .cb-card .bd{fill:none;stroke:var(--ink);stroke-width:1.5}
+      ${P} .cb-card .sg{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}
+      ${P} .cb-card text{font:600 11px var(--display);fill:var(--ink)}
+      ${P} .cb-card .ck{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .cb-lbl{font:600 11px var(--display)}
+      ${P} .cb-fit{fill:var(--q)}
+      ${P} .cb-no{fill:var(--ink)}
+      ${P} .cb-tally line{stroke:var(--rule);stroke-width:1.5;stroke-linecap:round}
+      ${P} .cb-tally text{font:600 11.5px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .cb-bar{fill:none;stroke:var(--muted);stroke-width:1.6}
+      ${P} .cb-fill{fill:var(--q)}
+      ${P} .cb-fillok{fill:var(--good)}
+      ${P} .cb-val{font:700 9.5px var(--mono);fill:var(--ground);text-anchor:middle}
+      ${P} .cb-mt{font:600 11px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .cb-tk{font:500 9px var(--mono);fill:var(--faint)}
+      ${P} .cb-split{stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3;stroke-linecap:round}
+      ${P} .cb-halo{stroke:var(--ground);stroke-width:5;stroke-linecap:round}
+      ${P} .cb-gap path{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round}
+      ${P} .cb-gap text{font:600 10px var(--mono);fill:var(--bad);text-anchor:end}
+      ${P} .cb-mag{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round}
+    `,
+    text: {
+      en: {
+        name: "Confirmation bias", shareTitle: "Confirmation bias, explained in 30 seconds",
+        ecline: "You find what you look for. Look for what would prove you wrong.",
+        tag: "lazy", tag2: "lazy?", tagW: 58,
+        cards: [["Came in late", "on Monday"], ["Stayed late", "on Tuesday"], ["Missed", "a reply"],
+          ["Report done", "early"], ["Took a", "long lunch"], ["Helped", "a client"]],
+        fits: "Fits", nofit: "Doesn't fit", pro: "3 for", con: "3 against",
+        meter: ["How sure you feel"], gap: ["too sure"],
+        caps: [
+          "You've decided your new coworker is <b>lazy</b>.",
+          "All week, evidence comes in, <b>both ways</b>.",
+          "You notice the pieces that <b>fit</b> your view…",
+          "…and barely register the ones that <b>don't</b>.",
+          "Every fit feels like proof. You grow <b>more and more sure</b>.",
+          "But the evidence was split: <b>3 for, 3 against</b>.",
+          "<b>The fix:</b> look for what would prove you wrong.",
+          "Weigh both piles. Your certainty <b>matches the evidence</b>."
+        ],
+        say: [
+          "You've decided your new coworker is lazy.",
+          "All week, evidence comes in, both ways.",
+          "You notice the pieces that fit your view...",
+          "...and barely register the ones that don't.",
+          "Every fit feels like proof. You grow more and more sure.",
+          "But the evidence was split. Three for, three against.",
+          "The fix: look for what would prove you wrong.",
+          "Weigh both piles, and your certainty matches the evidence.",
+          "Confirmation bias. You find what you look for. Look for what would prove you wrong."
+        ]
+      },
+      el: {
+        name: "Μεροληψία επιβεβαίωσης", shareTitle: "Η μεροληψία επιβεβαίωσης σε 30 δευτερόλεπτα",
+        ecline: "Βρίσκεις αυτό που ψάχνεις. Ψάξε και ό,τι θα μπορούσε να σε διαψεύσει.",
+        tag: "τεμπέλης", tag2: "τεμπέλης;", tagW: 90,
+        cards: [["Άργησε", "τη Δευτέρα"], ["Έφυγε αργά", "την Τρίτη"], ["Άφησε μέιλ", "αναπάντητο"],
+          ["Τελείωσε νωρίς", "την αναφορά"], ["Έκανε μακρύ", "διάλειμμα"], ["Βοήθησε", "έναν πελάτη"]],
+        fits: "Ταιριάζει", nofit: "Δεν ταιριάζει", pro: "3 υπέρ", con: "3 κατά",
+        meter: ["Η σιγουριά σου"], gap: ["υπερβολική", "σιγουριά"],
+        caps: [
+          "Έχεις καταλήξει ότι ο νέος συνάδελφος είναι <b>τεμπέλης</b>.",
+          "Όλη την εβδομάδα βλέπεις στοιχεία <b>υπέρ και κατά</b>.",
+          "Προσέχεις ό,τι <b>ταιριάζει</b> με αυτό που πιστεύεις…",
+          "…και ό,τι <b>δεν ταιριάζει</b> περνάει σχεδόν απαρατήρητο.",
+          "Ό,τι ταιριάζει μοιάζει με απόδειξη. Η σιγουριά σου <b>όλο και μεγαλώνει</b>.",
+          "Όμως τα στοιχεία ήταν μοιρασμένα: <b>3 υπέρ, 3 κατά</b>.",
+          "<b>Η λύση:</b> ψάξε ό,τι θα μπορούσε να σε διαψεύσει.",
+          "Ζύγισε και τις δύο πλευρές. Τώρα η σιγουριά σου <b>συμβαδίζει με τα στοιχεία</b>."
+        ],
+        say: [
+          "Έχεις καταλήξει ότι ο νέος συνάδελφος είναι τεμπέλης.",
+          "Όλη την εβδομάδα βλέπεις στοιχεία υπέρ και κατά.",
+          "Προσέχεις ό,τι ταιριάζει με αυτό που πιστεύεις...",
+          "...και ό,τι δεν ταιριάζει περνάει σχεδόν απαρατήρητο.",
+          "Ό,τι ταιριάζει μοιάζει με απόδειξη. Η σιγουριά σου όλο και μεγαλώνει.",
+          "Όμως τα στοιχεία ήταν μοιρασμένα. Τρία υπέρ, τρία κατά.",
+          "Η λύση: ψάξε ό,τι θα μπορούσε να σε διαψεύσει.",
+          "Ζύγισε και τις δύο πλευρές, και η σιγουριά σου θα συμβαδίζει με τα στοιχεία.",
+          "Μεροληψία επιβεβαίωσης. Βρίσκεις αυτό που ψάχνεις. Ψάξε και ό,τι θα μπορούσε να σε διαψεύσει."
+        ]
+      }
+    },
+    svg(T) {
+      const card = (row) => {
+        const plus = PLUS.includes(row), [l1, l2] = T.cards[row];
+        const c = CH / 2, sign = plus ? `M7 ${c} H13 M10 ${c - 3} V${c + 3}` : `M7 ${c} H13`;
+        const lines = l2 ? `<text x="21" y="12.3">${l1}</text><text x="21" y="24.3">${l2}</text>` : `<text x="21" y="${c + 4}">${l1}</text>`;
+        return `<g class="cb-card" data-k="c${row}">
+          <rect class="bg" width="${CW}" height="${CH}" rx="5"/>
+          ${plus ? `<rect class="lit" data-k="l${row}" width="${CW}" height="${CH}" rx="5"/>` : ""}
+          <circle class="bd" cx="10" cy="${c}" r="5.5"/><path class="sg" d="${sign}"/>${lines}
+          ${plus ? `<path class="ck" data-k="k${row}" d="M${CW - 14} ${c} L${CW - 11} ${c + 3} L${CW - 6} ${c - 3}"/>` : ""}</g>`;
+      };
+      const mt = T.meter.map((s, i) => `<text class="cb-mt" x="${BX + BW / 2}" y="${(T.meter.length > 1 ? 44 : 56) + i * 12}">${s}</text>`).join("");
+      const ticks = [[1, "100%"], [.5, "50%"], [0, "0%"]].map(([p, s]) => `<line class="cb-bar" x1="${BX + BW}" x2="${BX + BW + 4}" y1="${my(p)}" y2="${my(p)}"/><text class="cb-tk" x="${BX + BW + 7}" y="${my(p) + 3}">${s}</text>`).join("");
+      return `
+        <polygon class="cb-beam" data-k="beam" points=""/>
+        <g data-k="person"><circle class="cb-line" cx="40" cy="28" r="11"/><path class="cb-line" d="M18 72 V66 C18 54 28 46 40 46 C52 46 62 54 62 66 V72"/>
+          <g class="cb-tag" data-k="tag"><line x1="56" y1="52" x2="${TAGX + 6}" y2="40"/><rect x="${TAGX}" y="24" width="${T.tagW}" height="26" rx="6"/>
+            <circle cx="${TAGX + 7}" cy="37" r="2"/><text data-k="tagt" x="${TAGX + 6 + T.tagW / 2}" y="42"></text></g></g>
+        <text class="cb-lbl cb-fit" data-k="fitsL" x="${FIT_X}" y="${pileY(0) - 8}">${T.fits}</text>
+        <text class="cb-lbl cb-no" data-k="noL" x="${NO_X}" y="${pileY(0) - 8}">${T.nofit}</text>
+        ${[0, 1, 2, 3, 4, 5].map(card).join("")}
+        <g class="cb-tally" data-k="tally">
+          <line x1="${FIT_X}" x2="${FIT_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${FIT_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.pro}</text>
+          <line x1="${NO_X}" x2="${NO_X + CW}" y1="${pileY(2) + CH + 8}" y2="${pileY(2) + CH + 8}"/><text x="${NO_X + CW / 2}" y="${pileY(2) + CH + 24}">${T.con}</text></g>
+        <g class="cb-mag" data-k="mag"><circle r="8.5"/><path d="M6.3 6.3 L13 13"/></g>
+        <g data-k="meter">${mt}
+          <rect class="cb-fill" data-k="fill" x="${BX}" width="${BW}" rx="2"/>
+          <rect class="cb-fillok" data-k="fillok" x="${BX}" width="${BW}" rx="2"/>
+          <rect class="cb-bar" x="${BX}" y="${TOP}" width="${BW}" height="${BOT - TOP}" rx="4"/>${ticks}
+          <text class="cb-val" data-k="val" x="${BX + BW / 2}"></text>
+          <g data-k="split"><line class="cb-halo" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/><line class="cb-split" x1="${BX + 2}" x2="${BX + BW - 2}" y1="${my(.5)}" y2="${my(.5)}"/></g></g>
+        <g class="cb-gap" data-k="gap"><path data-k="gapp" d=""/>${T.gap.map((s, i) => `<text data-k="gapt${i}" x="${GX - 7}">${s}</text>`).join("")}</g>`;
+    },
+    S0: { person: 0, swing: 0, meter: 0, m: 0, a0: 0, a1: 0, a2: 0, a3: 0, a4: 0, a5: 0, beam: -.4, beamOp: 0, lift: 0,
+      fitsL: 0, sink: 0, noL: 0, ck: 0, tally: 0, split: 0, gap: 0, mag: 0, magP: 0, seen: -.35, calm: 0, q: 0, ok: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      op("person", S.person);
+      k("tag").setAttribute("transform", `rotate(${S.swing} 56 52)`);
+      k("tagt").textContent = S.q > .5 ? T.tag2 : T.tag;
+      // the spotlight comes from the label you've already stuck on him
+      const by = feedY(Math.max(0, Math.min(5, S.beam))), ax = TAGX + T.tagW / 2, L = FEED_X - 5, R = FEED_X + CW + 5;
+      k("beam").setAttribute("points", `${ax},50 ${R},${by - 5} ${R},${by + CH + 5} ${L},${by + CH + 5}`);
+      op("beam", S.beamOp);
+      for (let row = 0; row < 6; row++) {
+        const a = S["a" + row], j = PLUS.indexOf(row), m = MINUS.indexOf(row);
+        let x = FEED_X, y = feedY(row) - 14 * (1 - a), s = 1, o = a;
+        if (j >= 0) {
+          const p = clamp(S.lift * 1.5 - j * .25);
+          x += (FIT_X - FEED_X) * p; y += (pileY(j) - feedY(row)) * p - 12 * Math.sin(Math.PI * p);
+          op("l" + row, clamp((S.beam - row + .2) * 3) * (1 - S.calm));
+          op("k" + row, clamp(S.ck - j) * (1 - S.calm));
+        } else {
+          const b = clamp((S.seen - m) * 1.6 + .5), f = S.sink * (1 - b);
+          y += (pileY(m) - feedY(row)) * S.sink; s = 1 - .22 * f; o = a * (1 - .76 * f);
+        }
+        const g = k("c" + row);
+        g.setAttribute("transform", `translate(${x + CW / 2 * (1 - s)} ${y + CH / 2 * (1 - s)}) scale(${s})`);
+        g.style.opacity = o;
+      }
+      op("fitsL", S.fitsL); op("noL", S.noL * (.45 + .55 * clamp(S.seen)));
+      op("tally", S.tally);
+      k("mag").setAttribute("transform", `translate(${NO_X + CW + 14} ${pileY(0) + CH / 2 + 31 * S.magP})`);
+      op("mag", S.mag);
+      // meter
+      op("meter", S.meter);
+      const ly = my(S.m);
+      for (const f of ["fill", "fillok"]) { k(f).setAttribute("y", ly); k(f).setAttribute("height", Math.max(0, BOT - ly)); }
+      op("fillok", S.ok);
+      const v = k("val"); v.setAttribute("y", ly + 12); v.textContent = Math.round(S.m * 100) + "%"; v.style.opacity = clamp((S.m - .12) * 8);
+      op("split", S.split);
+      const top = my(Math.max(S.m, .5)), bot = my(.5), mid = (top + bot) / 2 - (T.gap.length - 1) * 6 + 3;
+      k("gapp").setAttribute("d", `M${GX - 4} ${top} H${GX + 4} M${GX} ${top} V${bot} M${GX - 4} ${bot} H${GX + 4}`);
+      T.gap.forEach((_, i) => k("gapt" + i).setAttribute("y", mid + i * 12));
+      op("gap", S.gap);
+    },
+    beats: [
+      { steps: [{ to: { person: 1 }, ms: 600, sfx: "pluck" }, { to: { swing: 12 }, ms: 260 }, { to: { swing: -8 }, ms: 300, ease: "inOut" }, { to: { swing: 0 }, ms: 300, ease: "inOut" },
+        { to: { meter: 1 }, ms: 300 }, { to: { m: .6 }, ms: 700, ease: "inOut" }] },
+      { steps: [0, 1, 2, 3, 4, 5].flatMap(i => [{ to: { ["a" + i]: 1 }, ms: 240, ease: "back", sfx: i % 3 ? undefined : "pop" }, { wait: 100 }]) },
+      { steps: [{ to: { beamOp: 1 }, ms: 300 }, { to: { beam: 5.3 }, ms: 1500, ease: "inOut" }, { to: { beamOp: 0 }, ms: 300 },
+        { to: { lift: 1, fitsL: 1 }, ms: 900, ease: "inOut", sfx: "whoosh" }] },
+      { steps: [{ to: { sink: 1, noL: 1 }, ms: 1000, ease: "inOut", sfx: "tick" }] },
+      { steps: [{ to: { ck: 1, m: .7 }, ms: 450, ease: "back", sfx: "spring" }, { wait: 150 }, { to: { ck: 2, m: .8 }, ms: 450, ease: "back" }, { wait: 150 },
+        { to: { ck: 3, m: .9 }, ms: 450, ease: "back" }] },
+      { steps: [{ to: { tally: 1 }, ms: 500, sfx: "tick" }, { wait: 400 }, { to: { split: 1 }, ms: 400 }, { to: { gap: 1 }, ms: 500 }] },
+      { steps: [{ to: { mag: 1 }, ms: 400, sfx: "pop" }, { to: { magP: 2.35, seen: 2.35 }, ms: 1400, ease: "inOut" }, { to: { magP: 1 }, ms: 500, ease: "inOut" }] },
+      { steps: [{ to: { calm: 1, q: 1, swing: 10 }, ms: 400 }, { to: { swing: 0 }, ms: 400, ease: "inOut" },
+        { to: { m: .5, ok: 1, gap: 0, split: 0 }, ms: 1100, ease: "inOut", sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Dunning-Kruger effect: actual rank vs guessed rank by quartile (Kruger & Dunning, 1999).
+   Illustrative heights, not the paper's exact numbers. Scene for anim.js. */
+(function () {
+  const KEY = "dunning-kruger", SC = `.bp[data-scene="${KEY}"]`;
+  const B = 210, TOP = 50, AX = 74, RX = 390;                  // baseline, 100th percentile, y axis, right edge
+  const Y = p => B - (B - TOP) * p / 100;                        // percentile -> y
+  const SLOT = (RX - AX) / 4, C = i => AX + SLOT * (i + .5);     // group centre
+  const W = 22;                                                  // bar width
+  const AXl = i => C(i) - 2 - W, GXl = i => C(i) + 2;            // left edge of actual / guess bar
+  const ACT = [12, 37, 62, 87], GUESS = [60, 62, 68, 74], FIXED = 20;
+  const FBX = 110, FBY = 44, FBW = 200;                           // feedback card
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const stag = (p, i) => ease(clamp((p - i * .12) / .64));      // staggered growth per group
+  const lines = (arr, x, y, dy) => arr.map((s, j) => `<tspan x="${x}" y="${y + j * dy}">${s}</tspan>`).join("");
+
+  // a small test page; marks: circled mistakes in red
+  const doc = (x, y, marks) => `<g class="doc" transform="translate(${x} ${y})"><rect width="26" height="34" rx="3"/>
+      <line x1="5" y1="8" x2="21" y2="8"/><line x1="5" y1="14" x2="18" y2="14"/><line x1="5" y1="20" x2="21" y2="20"/><line x1="5" y1="26" x2="15" y2="26"/>
+      ${marks ? `<ellipse class="mk" cx="15" cy="14" rx="7.5" ry="3.8"/><ellipse class="mk" cx="11" cy="26" rx="7.5" ry="3.8"/>` : ""}</g>`;
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "fast", viewBox: "0 0 400 272",
+    css: `
+      ${SC} .dk-yl{font:500 9.5px var(--mono);fill:var(--faint);text-anchor:end}
+      ${SC} .dk-avg{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:4 4}
+      ${SC} .dk-avgt{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:end}
+      ${SC} .dk-avg.hi{stroke:var(--q);stroke-width:1.6}
+      ${SC} .dk-avgt.hi{fill:var(--q);stroke:var(--ground);stroke-width:3;paint-order:stroke}
+      ${SC} .dk-gl{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${SC} .dk-xt{font:500 9.5px var(--mono);fill:var(--faint);text-anchor:middle}
+      ${SC} .dk-yt{font:500 9.5px var(--mono);fill:var(--faint);text-anchor:middle}
+      ${SC} .dk-leg{font:600 10.5px var(--display);fill:var(--ink)}
+      ${SC} .dk-act{fill:var(--ink)}
+      ${SC} .dk-gs{fill:color-mix(in srgb,var(--q) 20%,transparent);stroke:var(--q);stroke-width:2;stroke-linejoin:round}
+      ${SC} .dk-ok{fill:color-mix(in srgb,var(--good) 22%,transparent);stroke:var(--good);stroke-width:2;stroke-linejoin:round}
+      ${SC} .dk-old{fill:none;stroke:var(--q);stroke-width:1.4;stroke-dasharray:3 3}
+      ${SC} .dk-man circle,${SC} .dk-man path{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${SC} .dk-qm{font:700 14px var(--display);fill:var(--q);text-anchor:middle}
+      ${SC} .dk-br{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round}
+      ${SC} .dk-guide{fill:none;stroke:var(--bad);stroke-width:1.3;stroke-dasharray:1 3.5;stroke-linecap:round}
+      ${SC} .dk-brt{font:600 10px var(--mono);fill:var(--bad);text-anchor:middle}
+      ${SC} .doc rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+      ${SC} .doc line{stroke:var(--muted);stroke-width:1.5;stroke-linecap:round}
+      ${SC} .doc .mk{fill:none;stroke:var(--bad);stroke-width:1.5}
+      ${SC} .dk-tick{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${SC} .dk-note{font:500 9.5px var(--mono);fill:var(--muted)}
+      ${SC} .dk-card rect.c{fill:var(--surface);stroke:var(--good);stroke-width:1.6}
+      ${SC} .dk-card .t{font:600 12px var(--display);fill:var(--good)}
+      ${SC} .dk-card .s{font:500 9px var(--mono);fill:var(--muted)}
+      ${SC} .dk-card .sc{font:700 15px var(--display);fill:var(--bad);text-anchor:end}
+      ${SC} .dk-arrow{fill:none;stroke:var(--good);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      ${SC} .dk-check{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    `,
+    text: {
+      en: {
+        name: "Dunning-Kruger effect", shareTitle: "The Dunning-Kruger effect, explained in 30 seconds",
+        ecline: "The less you know, the harder it is to see it. Get outside feedback.",
+        yTitle: "Percentile", avg: "average", xTitle: "Groups by actual test score",
+        groups: [["Bottom", "25%"], ["Lower", "middle"], ["Upper", "middle"], ["Top", "25%"]],
+        legA: "Actual rank", legG: "Their guess",
+        tooSure: ["far too sure"], modest: ["a bit modest"],
+        noSee: "sees no mistakes", see: "spots mistakes",
+        fbT: "Feedback", fbS: "scored practice test", score: "6/20",
+        caps: [
+          "People take a test, then guess how they <b>rank</b> against the others.",
+          "Here's where each group <b>actually</b> ranked.",
+          "And where they <b>thought</b> they ranked: all above average.",
+          "The lowest scorers overrate themselves <b>the most</b>.",
+          "Spotting mistakes takes the <b>same skill</b> as avoiding them.",
+          "Top scorers slightly <b>underrate</b> themselves. They think it was easy for everyone.",
+          "<b>The fix:</b> check yourself against outside feedback.",
+          "Compare the score with your guess. Adjust <b>toward reality</b>."
+        ],
+        say: [
+          "People take a test, then guess how they rank against the others.",
+          "Here's where each group actually ranked.",
+          "And here's where they thought they ranked. All above average.",
+          "The lowest scorers overrate themselves the most.",
+          "Spotting mistakes takes the same skill as avoiding them.",
+          "Top scorers slightly underrate themselves. They think it was easy for everyone.",
+          "The fix: check yourself against outside feedback.",
+          "Compare the score with your guess, and adjust toward reality.",
+          "The Dunning-Kruger effect. The less you know, the harder it is to see it. Get outside feedback."
+        ]
+      },
+      el: {
+        name: "Φαινόμενο Dunning-Kruger", shareTitle: "Το φαινόμενο Dunning-Kruger σε 30 δευτερόλεπτα",
+        ecline: "Όσο λιγότερα ξέρεις, τόσο πιο δύσκολα βλέπεις τι σου λείπει. Ζήτα αξιολόγηση από άλλους.",
+        yTitle: "Εκατοστημόριο", avg: "μέσος όρος", xTitle: "Ομάδες με βάση την πραγματική βαθμολογία",
+        groups: [["Χαμηλότερο", "25%"], ["Κάτω από", "τη μέση"], ["Πάνω από", "τη μέση"], ["Υψηλότερο", "25%"]],
+        legA: "Πραγματική θέση", legG: "Η εκτίμησή τους",
+        tooSure: ["υπερβολικά", "σίγουροι"], modest: ["λίγο σεμνοί"],
+        noSee: "δεν βλέπει λάθη", see: "βλέπει τα λάθη",
+        fbT: "Αξιολόγηση", fbS: "διαγώνισμα με βαθμό", score: "6/20",
+        caps: [
+          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια <b>θέση</b> βγήκαν.",
+          "Να πού βγήκε <b>στην πραγματικότητα</b> κάθε ομάδα.",
+          "Και πού <b>νόμιζαν</b> ότι βγήκαν: όλοι πάνω από τον μέσο όρο.",
+          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους <b>πιο πολύ απ’ όλους</b>.",
+          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, <b>ούτε καν τα βλέπει</b>.",
+          "Οι πιο δυνατοί <b>υποτιμούν</b> λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
+          "<b>Η λύση:</b> μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
+          "Σύγκρινε τον βαθμό με την εκτίμησή σου. Φέρ’ την <b>πιο κοντά στην αλήθεια</b>."
+        ],
+        say: [
+          "Κάποιοι γράφουν ένα τεστ και μαντεύουν σε ποια θέση βγήκαν.",
+          "Να πού βγήκε στην πραγματικότητα κάθε ομάδα.",
+          "Και να πού νόμιζαν ότι βγήκαν. Όλοι πάνω από τον μέσο όρο.",
+          "Οι πιο αδύναμοι υπερεκτιμούν τον εαυτό τους πιο πολύ απ’ όλους.",
+          "Όποιος δεν ξέρει να αποφεύγει τα λάθη, ούτε καν τα βλέπει.",
+          "Οι πιο δυνατοί υποτιμούν λίγο τον εαυτό τους. Νομίζουν ότι ήταν εύκολο για όλους.",
+          "Η λύση: μην αρκείσαι στη δική σου κρίση. Ζήτα αξιολόγηση από άλλους.",
+          "Σύγκρινε τον βαθμό με την εκτίμησή σου, και φέρ' την πιο κοντά στην αλήθεια.",
+          "Φαινόμενο Dunning-Kruger. Όσο λιγότερα ξέρεις, τόσο πιο δύσκολα βλέπεις τι σου λείπει. Ζήτα αξιολόγηση από άλλους."
+        ]
+      }
+    },
+    svg(T) {
+      // axes, average line and group labels
+      let ax = `<line class="ax" x1="${AX}" y1="${TOP - 4}" x2="${AX}" y2="${B}"/><line class="ax" x1="${AX}" y1="${B}" x2="${RX}" y2="${B}"/>`;
+      for (const p of [0, 50, 100]) ax += `<line class="tick" x1="${AX - 4}" y1="${Y(p)}" x2="${AX}" y2="${Y(p)}"/><text class="dk-yl" x="${AX - 8}" y="${Y(p) + 3.5}">${p}</text>`;
+      ax += `<text class="dk-yt" transform="translate(19 ${(Y(100) + Y(50)) / 2}) rotate(-90)">${T.yTitle}</text>`;
+      ax += `<line class="dk-avg" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text>`;
+      const avgHi = `<g data-k="avgHi"><line class="dk-avg hi" x1="${AX}" y1="${Y(50)}" x2="${RX}" y2="${Y(50)}"/><text class="dk-avgt hi" x="${AX - 8}" y="${Y(50) + 14}">${T.avg}</text></g>`;
+      T.groups.forEach((g, i) => { ax += `<text class="dk-gl">${lines(g, C(i), B + 15, 11)}</text>`; });
+      ax += `<text class="dk-xt" x="${(AX + RX) / 2}" y="${B + 45}">${T.xTitle}</text>`;
+      // people waiting for their result
+      let people = "";
+      for (let i = 0; i < 4; i++) {
+        for (const dx of [-15, 0, 15]) {
+          const x = C(i) + dx;
+          people += `<g class="dk-man"><circle cx="${x}" cy="${B - 20}" r="4.2"/><path d="M${x - 6.5} ${B - 1} V${B - 7} a6.5 6 0 0 1 13 0 V${B - 1}"/></g>`;
+        }
+        people += `<text class="dk-qm" data-k="qm${i}" x="${C(i)}" y="${B - 31}">?</text>`;
+      }
+      // bars
+      let bars = "";
+      for (let i = 0; i < 4; i++) bars += `<rect class="dk-act" data-k="a${i}" x="${AXl(i)}" width="${W}" rx="2"/>`;
+      bars += `<rect class="dk-old" data-k="old0" x="${GXl(0)}" y="${Y(GUESS[0])}" width="${W}" height="${B - Y(GUESS[0])}" rx="2"/>`;
+      for (let i = 0; i < 4; i++) bars += `<rect class="dk-gs" data-k="g${i}" x="${GXl(i)}" width="${W}" rx="2"/>`;
+      bars += `<rect class="dk-ok" data-k="ok0" x="${GXl(0)}" width="${W}" rx="2"/>`;
+      // legend, top left of the plot, one row each so long Greek labels fit
+      const legend = `<g data-k="legA"><rect class="dk-act" x="${AX + 8}" y="10" width="10" height="10" rx="2"/><text class="dk-leg" x="${AX + 24}" y="19">${T.legA}</text></g>
+        <g data-k="legG"><rect class="dk-gs" x="${AX + 9}" y="25" width="8" height="8" rx="1.5"/><text class="dk-leg" x="${AX + 24}" y="33">${T.legG}</text></g>`;
+      // gap brackets
+      const br = `<g data-k="br0"><path class="dk-guide" data-k="br0g"/><path class="dk-br" data-k="br0p"/></g>
+        <text class="dk-brt" data-k="br0t">${lines(T.tooSure, C(0), Y(GUESS[0]) - 8 - (T.tooSure.length - 1) * 11, 11)}</text>
+        <g data-k="br3"><path class="dk-guide" d="M${AXl(3) + W} ${Y(ACT[3])} H${C(3) + 13}"/><path class="dk-br" d="M${C(3) + 13} ${Y(ACT[3]) + 1} V${Y(GUESS[3]) - 1} M${C(3) + 9} ${Y(ACT[3]) + 1} H${C(3) + 17}"/></g>
+        <text class="dk-brt" data-k="br3t">${lines(T.modest, C(3) - 5, Y(ACT[3]) - 8 - (T.modest.length - 1) * 11, 11)}</text>`;
+      // step 5: the same test, seen by each group
+      const d0x = C(0) - 13, d0y = 44, d3x = C(3) - 13, d3y = 22;
+      const docs = `<g data-k="doc0">${doc(d0x, d0y, false)}<path class="dk-tick" d="M${d0x + 30} ${d0y + 18} l4 4 l8 -9"/><text class="dk-note" x="${d0x + 48}" y="${d0y + 21}">${T.noSee}</text></g>
+        <g data-k="doc3">${doc(d3x, d3y, true)}<text class="dk-note" x="${d3x - 6}" y="${d3y + 20}" text-anchor="end">${T.see}</text></g>`;
+      // step 7: outside feedback card
+      const card = `<g class="dk-card" data-k="fb"><rect class="c" x="0" y="0" width="${FBW}" height="48" rx="8"/>
+          ${doc(10, 7, true)}<text class="t" x="46" y="21">${T.fbT}</text><text class="s" x="46" y="35">${T.fbS}</text>
+          <text class="sc" x="${FBW - 10}" y="30">${T.score}</text></g>`;
+      const fix = `<path class="dk-arrow" data-k="down" d=""/><path class="dk-check" data-k="check" d=""/>`;
+      return `<g data-k="axes">${ax}</g>${avgHi}<g data-k="people">${people}</g>${bars}${legend}${br}${docs}${card}${fix}`;
+    },
+    S0: { axes: 0, people: 0, qm: 0, act: 0, legA: 0, gs: 0, legG: 0, avgHi: 0, br0: 0, br0t: 0,
+      doc0: 0, doc3: 0, br3: 0, fb: 0, fbX: 16, g0: GUESS[0], old: 0, fix: 0, down: 0, check: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      op("axes", S.axes); op("people", S.people);
+      for (let i = 0; i < 4; i++) op("qm" + i, S.qm);
+      const bar = (el, v) => { const h = Math.max(0, B - Y(v)); el.setAttribute("y", B - h); el.setAttribute("height", h); el.style.opacity = h > .5 ? 1 : 0; };
+      for (let i = 0; i < 4; i++) {
+        bar(k("a" + i), ACT[i] * stag(S.act, i));
+        const gv = (i === 0 ? S.g0 : GUESS[i]) * stag(S.gs, i);
+        bar(k("g" + i), gv);
+      }
+      bar(k("ok0"), S.g0 * stag(S.gs, 0));
+      k("ok0").style.opacity = S.fix;
+      k("g0").style.opacity = 1 - S.fix;
+      op("old0", S.old);
+      op("legA", S.legA); op("legG", S.legG); op("avgHi", S.avgHi);
+      // bracket on the bottom group: from the actual bar's top up to the guess level
+      const ya = Y(ACT[0]), yg = Y(S.g0), bx = C(0) - 13;
+      k("br0g").setAttribute("d", `M${GXl(0)} ${yg} H${bx}`);
+      k("br0p").setAttribute("d", `M${bx} ${ya - 1} V${yg + 1} M${bx - 4} ${ya - 1} H${bx + 4} M${bx - 4} ${yg + 1} H${bx + 4}`);
+      op("br0", S.br0); op("br0t", S.br0t);
+      op("doc0", S.doc0); op("doc3", S.doc3);
+      op("br3", S.br3); op("br3t", S.br3);
+      k("fb").setAttribute("transform", `translate(${FBX + S.fbX} ${FBY})`);
+      op("fb", S.fb);
+      // step 8: the feedback pushes the guess down (arrow from the card), a check beside the new bar
+      const x0 = GXl(0) + W / 2, top = FBY + 52, bot = Y(S.g0) - 5;
+      k("down").setAttribute("d", `M${x0} ${top} V${bot} M${x0 - 4} ${bot - 4} L${x0} ${bot} L${x0 + 4} ${bot - 4}`);
+      op("down", S.down);
+      const cx = GXl(0) + W + 6, cy = Y(FIXED) - 2;
+      k("check").setAttribute("d", `M${cx} ${cy} l3.5 3.5 l7 -8`);
+      op("check", S.check);
+    },
+    beats: [
+      { steps: [{ to: { axes: 1 }, ms: 500 }, { to: { people: 1 }, ms: 500, sfx: "pluck" }, { wait: 250 }, { to: { qm: 1 }, ms: 350 }] },
+      { steps: [{ to: { people: 0, qm: 0 }, ms: 300 }, { to: { act: 1, legA: 1 }, ms: 1300, ease: "lin", sfx: "whoosh" }] },
+      { steps: [{ to: { gs: 1, legG: 1 }, ms: 1300, ease: "lin", sfx: "whoosh" }, { to: { avgHi: 1 }, ms: 400 }] },
+      { steps: [{ to: { avgHi: 0 }, ms: 300 }, { to: { br0: 1 }, ms: 450, sfx: "tick" }, { to: { br0t: 1 }, ms: 350 }] },
+      { steps: [{ to: { doc0: 1 }, ms: 450, sfx: "pop" }, { wait: 500 }, { to: { doc3: 1 }, ms: 450, sfx: "pop" }], hold: 3000 },
+      { steps: [{ to: { doc0: 0, doc3: 0 }, ms: 400 }, { to: { br3: 1 }, ms: 450, sfx: "tick" }], hold: 3000 },
+      { steps: [{ to: { br3: 0, br0t: 0 }, ms: 400 }, { to: { fb: 1, fbX: 0 }, ms: 600, sfx: "scribble" }] },
+      { steps: [{ to: { old: .7 } }, { to: { g0: FIXED, fix: 1, down: 1 }, ms: 1100, ease: "inOut" }, { to: { br0: 0 }, ms: 300 }, { to: { check: 1 }, ms: 300, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Loss aversion: a fair coin bet that pays on average, how its two outcomes feel, and the
+   same bet seen as ten flips. Scene for anim.js. */
+(function () {
+  const P = '.bp[data-scene="loss-aversion"]';
+  // Ten flips, fixed so every recording is identical: 5 heads (1), 5 tails (0).
+  // Ordered so the running total never drops below zero: 120, 20, 140, 260, 160, 280, 180, 80, 200, 100.
+  const SEQ = [1, 0, 1, 1, 0, 1, 0, 0, 1, 0];
+  const RUN = SEQ.reduce((a, h) => (a.push((a.length ? a[a.length - 1] : 0) + (h ? 120 : -100)), a), []);
+  const CX = i => 38 + i * 36;                 // x of the i-th small coin
+  const CY = 90;                               // y of the row of small coins
+  const BASE = 232, FEEL = 0.45;               // baseline of the feeling bars, px per felt euro
+  const fy = v => BASE - v * FEEL;             // felt euros -> y
+  const GX = 184, LX = 244, BW = 36;           // left edge of the gain and loss bars, bar width
+  const BR = 292;                              // x of the brackets right of the loss bar
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const eurEn = v => (v > 0 ? "+" : v < 0 ? "−" : "") + "€" + Math.abs(v);
+  const eurEl = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + " €";
+
+  window.BiasAnim.SCENES["loss-aversion"] = {
+    q: "fast", viewBox: "0 0 400 272",
+    css: `
+      ${P} .la-coin{fill:var(--surface);stroke:var(--ink);stroke-width:2.4}
+      ${P} .la-coin-in{fill:none;stroke:var(--faint);stroke-width:1.2}
+      ${P} .la-coin-t{font:700 19px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .la-link{stroke:var(--rule);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:1 4}
+      ${P} .la-card rect{fill:var(--surface);stroke-width:1.8}
+      ${P} .la-card .h{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .la-card .v{font:700 15px var(--display);text-anchor:middle}
+      ${P} .la-card.win rect{stroke:var(--good)} ${P} .la-card.win .v{fill:var(--good)}
+      ${P} .la-card.lose rect{stroke:var(--bad)} ${P} .la-card.lose .v{fill:var(--bad)}
+      ${P} .la-evf{font:500 10.5px var(--mono);fill:var(--ink);text-anchor:end}
+      ${P} .la-evr{font:700 14px var(--display);fill:var(--good)}
+      ${P} .la-evs{font:500 9px var(--mono);fill:var(--faint);text-anchor:middle}
+      ${P} .la-you{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .la-eye{fill:var(--ink)}
+      ${P} .la-bub rect,${P} .la-bub path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}
+      ${P} .la-bub text{font:600 12px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .la-bub.yes rect,${P} .la-bub.yes path{stroke:var(--good)}
+      ${P} .la-bub.yes text{fill:var(--good)}
+      ${P} .la-head{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .la-base{stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+      ${P} .la-bar{stroke-width:2;stroke-linejoin:round}
+      ${P} .la-bar.win{fill:var(--good);fill-opacity:.22;stroke:var(--good)}
+      ${P} .la-bar.lose{fill:var(--bad);fill-opacity:.22;stroke:var(--bad)}
+      ${P} .la-amt{font:600 11px var(--display);text-anchor:middle}
+      ${P} .la-amt.win{fill:var(--good)} ${P} .la-amt.lose{fill:var(--bad)}
+      ${P} .la-wd{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .la-ref line{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:3 3}
+      ${P} .la-ref text{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:end}
+      ${P} .la-x2 path{fill:none;stroke:var(--q);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .la-x2 text{font:700 13px var(--display);fill:var(--q)}
+      ${P} .la-gap rect{fill:var(--bad);fill-opacity:.45}
+      ${P} .la-gap line{stroke:var(--bad);stroke-width:1.4;stroke-dasharray:3 3}
+      ${P} .la-gap path{fill:none;stroke:var(--bad);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      ${P} .la-gap text{font:600 11px var(--display);fill:var(--bad)}
+      ${P} .la-mc circle{fill:var(--surface);stroke:var(--faint);stroke-width:2}
+      ${P} .la-mc text{font:700 11px var(--display);text-anchor:middle;fill-opacity:0}
+      ${P} .la-mc.h circle{stroke:var(--good)} ${P} .la-mc.h text{fill:var(--good);fill-opacity:1}
+      ${P} .la-mc.t circle{stroke:var(--bad)} ${P} .la-mc.t text{fill:var(--bad);fill-opacity:1}
+      ${P} .la-ml{font:500 9.5px var(--mono);text-anchor:middle}
+      ${P} .la-ml.h{fill:var(--good)} ${P} .la-ml.t{fill:var(--bad)}
+      ${P} .la-ring{fill:none;stroke:var(--q);stroke-width:2}
+      ${P} .la-tot .lab{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+      ${P} .la-tot .num{font:700 28px var(--display);fill:var(--good);text-anchor:middle}
+      ${P} .la-tot .f{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+    `,
+    text: {
+      en: {
+        name: "Loss aversion", shareTitle: "Loss aversion, explained in 30 seconds",
+        ecline: "Losses loom larger than gains. Judge a bet by its odds, not the sting.",
+        eur: eurEn, heads: "Heads", tails: "Tails", hl: "H", tl: "T",
+        evs: "average per flip", no: "No thanks", yes: "I'm in!",
+        feels: "How it feels", win: "win", lose: "lose",
+        gap1: "feels like", gap2: "a bad bet", after: n => `After ${n} flip${n === 1 ? "" : "s"}`,
+        caps: [
+          "A coin flip: heads you <b>win €120</b>, tails you <b>lose €100</b>.",
+          "On average, you'd come out <b>€10 ahead</b> per flip.",
+          "Yet most people still <b>say no</b>.",
+          "Losing <b>hurts more</b> than winning feels good.",
+          "Losses feel <b>roughly twice as strong</b> as equal gains.",
+          "So a good bet <b>feels like a bad one</b>.",
+          "<b>The fix:</b> think of it as one of many flips.",
+          "Ten flips: expect <b>+€100</b>. Take good bets you can afford to lose."
+        ],
+        say: [
+          "A coin flip. Heads, you win a hundred and twenty euros. Tails, you lose a hundred.",
+          "On average, you'd come out ten euros ahead on every flip.",
+          "Yet most people still say no.",
+          "Losing hurts more than winning feels good.",
+          "Losses feel roughly twice as strong as equal gains.",
+          "So a good bet feels like a bad one.",
+          "The fix: think of it as one of many flips.",
+          "Over ten flips, you'd expect to be a hundred euros up. Take good bets you can afford to lose.",
+          "Loss aversion. Losses loom larger than gains. Judge a bet by its odds, not the sting."
+        ]
+      },
+      el: {
+        name: "Αποστροφή στην απώλεια", shareTitle: "Η αποστροφή στην απώλεια σε 30 δευτερόλεπτα",
+        ecline: "Οι απώλειες φαντάζουν μεγαλύτερες από τα κέρδη. Κρίνε ένα στοίχημα από τα νούμερα, όχι από το πόσο τσούζει.",
+        eur: eurEl, heads: "Κορόνα", tails: "Γράμματα", hl: "Κ", tl: "Γ",
+        evs: "μέσο κέρδος ανά γύρο", no: "Όχι, ευχαριστώ", yes: "Παίζω!",
+        feels: "Πώς το νιώθεις", win: "κέρδος", lose: "απώλεια",
+        gap1: "μοιάζει", gap2: "κακό στοίχημα", after: n => `Μετά από ${n} ${n === 1 ? "γύρο" : "γύρους"}`,
+        caps: [
+          "Κορόνα-γράμματα: κορόνα <b>κερδίζεις 120\u00a0€</b>, γράμματα <b>χάνεις 100\u00a0€</b>.",
+          "Κατά μέσο όρο, κάθε γύρος σού αφήνει <b>10\u00a0€ κέρδος</b>.",
+          "Κι όμως, οι περισσότεροι <b>λένε όχι</b>.",
+          "Η απώλεια <b>πονάει πιο πολύ</b> απ’\u00a0όσο σε ευχαριστεί το κέρδος.",
+          "Οι απώλειες βαραίνουν <b>περίπου διπλάσια</b> από ισόποσα κέρδη.",
+          "Έτσι, ένα καλό στοίχημα <b>σου φαίνεται κακό</b>.",
+          "<b>Η λύση:</b> δες το σαν έναν από πολλούς γύρους.",
+          "Σε δέκα γύρους περιμένεις <b>+100\u00a0€</b>. Παίζε τα καλά στοιχήματα, αν αντέχεις τη χασούρα."
+        ],
+        say: [
+          "Κορόνα γράμματα. Κορόνα, κερδίζεις εκατόν είκοσι ευρώ. Γράμματα, χάνεις εκατό.",
+          "Κατά μέσο όρο, κάθε γύρος σού αφήνει δέκα ευρώ κέρδος.",
+          "Κι όμως, οι περισσότεροι λένε όχι.",
+          "Η απώλεια πονάει πιο πολύ απ’ όσο σε ευχαριστεί το κέρδος.",
+          "Οι απώλειες βαραίνουν περίπου διπλάσια από ισόποσα κέρδη.",
+          "Έτσι, ένα καλό στοίχημα σου φαίνεται κακό.",
+          "Η λύση: δες το σαν έναν από πολλούς γύρους.",
+          "Σε δέκα γύρους, περιμένεις να βγεις εκατό ευρώ μπροστά. Παίζε τα καλά στοιχήματα, αν αντέχεις τη χασούρα.",
+          "Αποστροφή στην απώλεια. Οι απώλειες φαντάζουν μεγαλύτερες από τα κέρδη. Κρίνε ένα στοίχημα από τα νούμερα, όχι από το πόσο τσούζει."
+        ]
+      }
+    },
+    svg(T) {
+      const bubble = (key, cls, txt) => `<g class="la-bub ${cls}" data-k="${key}"><rect x="16" y="134" width="124" height="28" rx="10"/><path d="M42 161 L48 172 L56 161"/><text x="78" y="152">${txt}</text></g>`;
+      let coins = "";
+      SEQ.forEach((h, i) => {
+        coins += `<g data-k="c${i}"><g class="la-mc" data-k="cf${i}"><circle r="11"/><text y="4">${h ? T.hl : T.tl}</text></g></g>` +
+          `<text class="la-ml ${h ? "h" : "t"}" data-k="cl${i}" x="${CX(i)}" y="${CY + 27}">${h ? "+120" : "−100"}</text>`;
+      });
+      return `
+        <g data-k="cardH"><g class="la-card win"><rect x="42" y="20" width="110" height="40" rx="8"/><text class="h" x="97" y="34">${T.heads}</text><text class="v" x="97" y="53">${T.eur(120)}</text></g></g>
+        <g data-k="cardT"><g class="la-card lose"><rect x="248" y="20" width="110" height="40" rx="8"/><text class="h" x="303" y="34">${T.tails}</text><text class="v" x="303" y="53">${T.eur(-100)}</text></g></g>
+        <g data-k="links"><line class="la-link" x1="157" y1="40" x2="173" y2="40"/><line class="la-link" x1="227" y1="40" x2="243" y2="40"/></g>
+        <g data-k="coin"><circle class="la-coin" r="22"/><circle class="la-coin-in" r="17"/><text class="la-coin-t" y="7">€</text></g>
+        <g data-k="ev"><text class="la-evf" x="236" y="90">½ × 120 − ½ × 100 =</text><text class="la-evr" data-k="evr" x="242" y="91">${T.eur(10)}</text><text class="la-evs" x="200" y="106">${T.evs}</text></g>
+        <g data-k="you"><circle class="la-you" cx="52" cy="194" r="13"/><circle class="la-eye" cx="47.5" cy="191" r="1.6"/><circle class="la-eye" cx="56.5" cy="191" r="1.6"/>
+          <path class="la-you" data-k="mouth" d=""/><path class="la-you" d="M26 252 C26 230 38 216 52 216 C66 216 78 230 78 252"/></g>
+        ${bubble("no", "no", T.no)}${bubble("yes", "yes", T.yes)}
+        <g data-k="chart">
+          <text class="la-head" x="232" y="128">${T.feels}</text>
+          <rect class="la-bar win" data-k="gbar" x="${GX}" width="${BW}"/>
+          <rect class="la-bar lose" data-k="lbar" x="${LX}" width="${BW}"/>
+          <line class="la-base" x1="172" y1="${BASE}" x2="292" y2="${BASE}"/>
+          <text class="la-amt win" x="${GX + BW / 2}" y="${BASE + 14}">${T.eur(120).replace("+", "")}</text><text class="la-wd" x="${GX + BW / 2}" y="${BASE + 26}">${T.win}</text>
+          <text class="la-amt lose" x="${LX + BW / 2}" y="${BASE + 14}">${T.eur(100).replace("+", "")}</text><text class="la-wd" x="${LX + BW / 2}" y="${BASE + 26}">${T.lose}</text>
+          <g class="la-ref" data-k="ref"><line x1="${GX - 4}" y1="${fy(100)}" x2="${LX + BW + 4}" y2="${fy(100)}"/><text x="${GX - 8}" y="${fy(100) + 3.5}">${T.eur(100).replace("+", "")}</text></g>
+          <g class="la-x2" data-k="x2"><path d="M${BR - 6} ${BASE} H${BR} V${fy(200)} H${BR - 6} M${BR} ${fy(100)} H${BR - 4}"/><text x="${BR + 7}" y="${fy(100) + 4.5}">≈ ×2</text></g>
+          <g class="la-gap" data-k="gap"><rect x="${LX}" y="${fy(200)}" width="${BW}" height="${fy(120) - fy(200)}"/>
+            <line x1="${GX + BW}" y1="${fy(120)}" x2="${LX}" y2="${fy(120)}"/>
+            <path d="M${BR - 6} ${fy(120)} H${BR} V${fy(200)} H${BR - 6}"/>
+            <text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 - 2}">${T.gap1}</text><text x="${BR + 7}" y="${(fy(120) + fy(200)) / 2 + 11}">${T.gap2}</text></g>
+        </g>
+        ${coins}
+        <circle class="la-ring" data-k="ring" r="15" cy="${CY}"/>
+        <g class="la-tot" data-k="tot"><text class="lab" data-k="totl" x="270" y="194"></text><text class="num" data-k="totv" x="270" y="228"></text>
+          <text class="f" data-k="totf" x="270" y="248">5 × 120 − 5 × 100</text></g>`;
+    },
+    S0: { coin: 0, spin: 0, cards: 0, you: 0, ev: 0, evr: 0, no: 0, mood: 0, chart: 0, g: 0, l: 0, ref: 0, x2: 0, gap: 0,
+      evm: 0, flips: 0, ring: 0, sweep: 0.5, tot: 0, totf: 0, yes: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = clamp(v); };
+      // the big coin pops in and spins (scaleX follows the turn)
+      const sc = Math.max(0.001, S.coin), sx = Math.max(0.001, sc * Math.abs(Math.cos(S.spin * Math.PI)));
+      k("coin").setAttribute("transform", `translate(200 40) scale(${sx} ${sc})`);
+      op("coin", S.coin * 3);
+      k("cardH").setAttribute("transform", `translate(${(1 - S.cards) * 40} 0)`);
+      k("cardT").setAttribute("transform", `translate(${(S.cards - 1) * 40} 0)`);
+      op("cardH", S.cards); op("cardT", S.cards); op("links", S.cards);
+      op("ev", S.ev); op("evr", S.evr);
+      k("ev").setAttribute("transform", `translate(${S.evm * 70} ${S.evm * 58})`);
+      op("you", S.you);
+      k("mouth").setAttribute("d", `M46.5 200 Q52 ${200 + 4.5 * S.mood} 57.5 200`);
+      const pop = (key, v) => {
+        const s = 0.7 + 0.3 * v;
+        k(key).setAttribute("transform", `translate(48 172) scale(${s}) translate(-48 -172)`);
+        op(key, v * 1.6);
+      };
+      pop("no", S.no); pop("yes", S.yes);
+      // feeling bars
+      op("chart", S.chart);
+      const bar = (key, x, v) => { const h = Math.max(0, v * FEEL); const r = k(key); r.setAttribute("y", BASE - h); r.setAttribute("height", h); r.style.opacity = v > 0.5 ? 1 : 0; };
+      bar("gbar", GX, S.g); bar("lbar", LX, S.l);
+      op("ref", S.ref); op("x2", S.x2); op("gap", S.gap);
+      // ten fixed flips: each coin fades in, hops and turns, then lands on its face
+      SEQ.forEach((h, i) => {
+        const p = clamp((S.flips - i * 0.085) / 0.235);
+        const landed = p > 5 / 6;
+        const sx2 = p >= 1 ? 1 : Math.max(0.001, Math.abs(Math.cos(p * 3 * Math.PI)));
+        const hop = Math.sin(p * Math.PI) * 10;
+        k("c" + i).setAttribute("transform", `translate(${CX(i)} ${CY - hop}) scale(${sx2} 1)`);
+        op("c" + i, p * 4);
+        k("cf" + i).setAttribute("class", "la-mc" + (landed ? (h ? " h" : " t") : ""));
+        op("cl" + i, (p - 0.85) / 0.15);
+      });
+      // running total: a ring walks along the coins; each coin counts once the ring reaches it
+      const counted = Math.min(10, Math.floor(S.sweep + 0.5));
+      const pos = Math.max(0, Math.min(9, S.sweep - 0.5));
+      k("ring").setAttribute("cx", 38 + pos * 36);
+      op("ring", S.ring);
+      op("tot", S.tot);
+      k("totv").textContent = T.eur(counted ? RUN[counted - 1] : 0);
+      k("totl").textContent = T.after(counted);
+      op("totf", S.totf);
+    },
+    beats: [
+      { steps: [{ to: { coin: 1 }, ms: 420, ease: "back", sfx: "pop" }, { to: { spin: 4 }, ms: 900, ease: "inOut" },
+        { to: { cards: 1 }, ms: 500 }, { to: { you: 1 }, ms: 400 }] },
+      { steps: [{ to: { ev: 1 }, ms: 500 }, { wait: 250 }, { to: { evr: 1 }, ms: 350, sfx: "tick" }] },
+      { steps: [{ to: { no: 1, mood: -0.3 }, ms: 450, ease: "back", sfx: "pop" }] },
+      { steps: [{ to: { chart: 1 }, ms: 350 }, { to: { g: 120 }, ms: 700, sfx: "whoosh" }, { to: { l: 165 }, ms: 900, ease: "inOut" }] },
+      { steps: [{ to: { ref: 1 }, ms: 400 }, { to: { l: 200 }, ms: 800, ease: "back", sfx: "spring" }, { to: { x2: 1 }, ms: 400 }] },
+      { steps: [{ to: { x2: 0, ref: 0 }, ms: 300 }, { to: { gap: 1, mood: -1 }, ms: 500, sfx: "thud" }] },
+      { steps: [{ to: { chart: 0, no: 0, mood: 0 }, ms: 400 }, { to: { evm: 1 }, ms: 600, ease: "inOut" }, { to: { flips: 1 }, ms: 2600, ease: "lin", sfx: "whoosh" }] },
+      { steps: [{ to: { tot: 1, ring: 1 }, ms: 400, sfx: "tick" }, { to: { sweep: 9.5 }, ms: 2200, ease: "lin" },
+        { to: { ring: 0, totf: 1, yes: 1, mood: 1 }, ms: 500, sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Sunk cost fallacy: a €60 ticket, a jar of spent money, and a balance that should ignore it. Scene for anim.js. */
+(function () {
+  const PX = 252, PY = 76, L = 86, H = 94, R = 48, D = 10;   // pivot, beam half-length, string drop, pan half-width, bowl depth
+  const JAR = [[53, 179], [73, 179], [63, 162]];             // coin centres resting in the jar
+  const PAN = [[-18, 71], [0, 71], [18, 71]];                 // coin centres on the "Go" pan, from its hook
+  const DROP0 = 84;                                           // coins fall into the jar from here
+  const hook = (side, deg) => { const a = deg * Math.PI / 180; return [PX + side * L * Math.cos(a), PY + side * L * Math.sin(a)]; };
+  const cl = v => Math.max(0, Math.min(1, v));
+  const inOut = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const bounce = t => {
+    const n = 7.5625, d = 2.75;
+    if (t < 1 / d) return n * t * t;
+    if (t < 2 / d) return n * (t -= 1.5 / d) * t + .75;
+    if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + .9375;
+    return n * (t -= 2.625 / d) * t + .984375;
+  };
+  // a weight: trapezoid block with its label, drawn from its top edge y0 (pan-local coordinates)
+  const block = (w, y0, label) => `<path d="M${-w / 2} ${y0 + 15} L${-w / 2 + 3} ${y0} H${w / 2 - 3} L${w / 2} ${y0 + 15} Z"/><text y="${y0 + 11}">${label}</text>`;
+  const coin = `<circle r="8"/><text y="3.6">€</text>`;
+  const P = '.bp[data-scene="sunk-cost"]';
+
+  window.BiasAnim.SCENES["sunk-cost"] = {
+    q: "fast", viewBox: "0 0 400 272",
+    css: `
+${P} .ln{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+${P} .tk path{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+${P} .tk .t1{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.14em}
+${P} .tk .t2{font:700 17px var(--display);fill:var(--ink);text-anchor:middle}
+${P} .tk .t3{font:600 9.5px var(--display);fill:var(--bad);text-anchor:middle}
+${P} .jar path{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+${P} .jar rect{fill:var(--surface);stroke:var(--muted);stroke-width:1.4}
+${P} .jar text{font:600 10.5px var(--display);fill:var(--ink);text-anchor:middle}
+${P} .coin circle{fill:var(--surface);stroke:var(--q);stroke-width:2.2}
+${P} .coin text{font:700 10px var(--display);fill:var(--q);text-anchor:middle}
+${P} .gcoin{fill:none;stroke:var(--faint);stroke-width:1.4;stroke-dasharray:2.5 3}
+${P} .cloud{fill:var(--surface);stroke:var(--muted);stroke-width:2;stroke-linejoin:round}
+${P} .rain line{stroke:var(--muted);stroke-width:1.8;stroke-linecap:round}
+${P} .bat rect{fill:none;stroke:var(--ink);stroke-width:1.8}
+${P} .bat .bar{fill:var(--ink);stroke:none}
+${P} .bat .low{fill:var(--bad);stroke:none}
+${P} .note{font:500 9.5px var(--mono);fill:var(--muted);text-anchor:middle}
+${P} .beam{stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+${P} .needle{stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+${P} .pin{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+${P} .base{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+${P} .str{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-linejoin:round}
+${P} .ring{fill:var(--surface);stroke:var(--ink);stroke-width:1.8}
+${P} .bowl{fill:var(--surface);stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+${P} .bowl.g{stroke:var(--good);fill:none}
+${P} .wt path{fill:var(--surface);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round}
+${P} .wt text{font:600 10px var(--display);fill:var(--ink);text-anchor:middle}
+${P} .wt.g path{stroke:var(--good);fill:none}
+${P} .pl{font:600 12px var(--display);fill:var(--ink);text-anchor:middle}
+${P} .pl.g{fill:var(--good)}
+${P} .minus{font:600 10.5px var(--mono);fill:var(--bad);text-anchor:middle}
+${P} .sunk{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}
+${P} .sunk rect{fill:var(--surface);stroke:var(--q);stroke-width:1.6}
+${P} .check circle{fill:var(--surface);stroke:var(--good);stroke-width:2}
+${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}`,
+    text: {
+      en: {
+        name: "Sunk cost fallacy", shareTitle: "Sunk cost fallacy, explained in 30 seconds",
+        ecline: "Money already spent is gone either way. Decide on what's ahead.",
+        concert: "CONCERT", price: "€60", noref: "no refunds", spent: "Spent", sunk: "sunk cost", sunkW: 66, tired: "exhausted",
+        go: "Go", stay: "Stay home", music: "Music", rest: "Rest", dry: "Dry", minus: "−€60",
+        caps: [
+          "You paid <b>€60</b> for a concert ticket. No refunds.",
+          "On the night, you're exhausted and it's pouring.",
+          "Go or stay home? You weigh it up.",
+          "Tonight, staying home is what you'd <b>enjoy more</b>.",
+          "Then a thought: “I paid €60. I can't <b>waste it</b>.”",
+          "But the €60 is gone <b>either way</b>.",
+          "<b>The fix:</b> take spent money off the scale.",
+          "Decide on what's ahead. <b>Stay home</b> and rest."
+        ],
+        say: [
+          "You paid sixty euros for a concert ticket. No refunds.",
+          "On the night, you're exhausted, and it's pouring.",
+          "Go, or stay home? You weigh it up.",
+          "Tonight, staying home is what you'd enjoy more.",
+          "Then a thought: I paid sixty euros. I can't waste it.",
+          "But that sixty euros is gone either way.",
+          "The fix: take money you've already spent off the scale.",
+          "Decide on what's ahead. Stay home, and rest.",
+          "The sunk cost fallacy. Money already spent is gone either way. Decide on what's ahead."
+        ]
+      },
+      el: {
+        name: "Πλάνη του βυθισμένου κόστους", shareTitle: "Η πλάνη του βυθισμένου κόστους σε 30 δευτερόλεπτα",
+        ecline: "Ό,τι ξόδεψες χάθηκε έτσι κι αλλιώς. Αποφάσισε με βάση όσα έρχονται.",
+        concert: "ΣΥΝΑΥΛΙΑ", price: "60 €", noref: "δεν επιστρέφεται", spent: "Ξοδεμένα", sunk: "βυθισμένο κόστος", sunkW: 100, tired: "εξάντληση",
+        go: "Πάω", stay: "Μένω σπίτι", music: "Μουσική", rest: "Ξεκούραση", dry: "Χωρίς βροχή", minus: "−60 €",
+        caps: [
+          "Πλήρωσες <b>60\u00a0€</b> για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
+          "Φτάνει η βραδιά. Είσαι πτώμα κι έξω ρίχνει καρεκλοπόδαρα.",
+          "Να πας ή να μείνεις σπίτι; Το ζυγίζεις.",
+          "Απόψε θα περνούσες <b>πιο ωραία</b> στο σπίτι.",
+          "Και μετά σκέφτεσαι: «Έδωσα\u00a060\u00a0€. Κρίμα να πάνε <b>χαμένα</b>».",
+          "Όμως τα 60\u00a0€ έχουν φύγει <b>έτσι κι αλλιώς</b>.",
+          "<b>Η λύση:</b> βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
+          "Σκέψου μόνο το από δω και πέρα. <b>Μείνε σπίτι</b> και ξεκουράσου."
+        ],
+        say: [
+          "Πλήρωσες εξήντα ευρώ για ένα εισιτήριο συναυλίας. Δεν επιστρέφεται.",
+          "Φτάνει η βραδιά. Είσαι πτώμα κι έξω ρίχνει καρεκλοπόδαρα.",
+          "Να πας ή να μείνεις σπίτι; Το ζυγίζεις.",
+          "Απόψε θα περνούσες πιο ωραία στο σπίτι.",
+          "Και μετά σκέφτεσαι: Έδωσα εξήντα ευρώ. Κρίμα να πάνε χαμένα.",
+          "Όμως τα εξήντα ευρώ έχουν φύγει έτσι κι αλλιώς.",
+          "Η λύση: βγάλε από τη ζυγαριά ό,τι έχεις ήδη ξοδέψει.",
+          "Σκέψου μόνο το από δω και πέρα. Μείνε σπίτι και ξεκουράσου.",
+          "Πλάνη του βυθισμένου κόστους. Ό,τι ξόδεψες χάθηκε έτσι κι αλλιώς. Αποφάσισε με βάση όσα έρχονται."
+        ]
+      }
+    },
+    svg(T) {
+      const pan = (side, label) => `
+        <path class="bowl" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
+        <path class="bowl g" data-k="bowlg${side}" d="M${-R} ${H} Q0 ${H + 2 * D} ${R} ${H} Z"/>
+        <text class="pl" data-k="pl${side}" y="${H + D + 17}">${label}</text>
+        <text class="pl g" data-k="plg${side}" y="${H + D + 17}">${label}</text>
+        <text class="minus" data-k="minus${side}" y="${H + D + 32}">${T.minus}</text>`;
+      return `
+        <g class="tk" data-k="ticket"><path d="M18 12 H108 Q114 12 114 18 V35 A6 6 0 0 0 114 47 V64 Q114 70 108 70 H18 Q12 70 12 64 V47 A6 6 0 0 0 12 35 V18 Q12 12 18 12 Z"/>
+          <text class="t1" x="63" y="28">${T.concert}</text><text class="t2" x="63" y="49">${T.price}</text><text class="t3" data-k="noref" x="63" y="63">${T.noref}</text></g>
+        <g data-k="cloud"><path class="cloud" d="M149 40 a9 9 0 0 1 1 -17.9 a13 13 0 0 1 24 -6 a10 10 0 0 1 15 8 a8 8 0 0 1 -1 15.9 Z"/></g>
+        <g class="rain" data-k="rain"><line x1="155" y1="45" x2="152.5" y2="52"/><line x1="165" y1="48" x2="162.5" y2="55"/><line x1="175" y1="45" x2="172.5" y2="52"/><line x1="185" y1="48" x2="182.5" y2="55"/></g>
+        <g class="bat" data-k="bat"><rect x="318" y="13" width="30" height="14" rx="3"/><rect x="348.5" y="17" width="2.5" height="6" rx="1"/>
+          <rect class="low" x="321" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b1" x="321" y="16" width="7" height="8" rx="1"/>
+          <rect class="bar" data-k="b2" x="329.5" y="16" width="7" height="8" rx="1"/><rect class="bar" data-k="b3" x="338" y="16" width="7" height="8" rx="1"/>
+          <text class="note" x="334" y="41">${T.tired}</text></g>
+        <g data-k="scale">
+          <path class="base" d="M${PX - 28} 246 H${PX + 28} L${PX + 36} 254 H${PX - 36} Z"/>
+          <line class="beam" x1="${PX}" y1="${PY}" x2="${PX}" y2="246"/>
+          <g data-k="hangL"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
+          <g data-k="hangR"><path class="str" d="M${-R} ${H} L0 0 L${R} ${H}"/></g>
+          <g data-k="beam"><line class="beam" x1="${-L}" y1="0" x2="${L}" y2="0"/><line class="needle" x1="0" y1="0" x2="0" y2="-15"/></g>
+          <circle class="pin" cx="${PX}" cy="${PY}" r="4.5"/>
+          <circle class="ring" data-k="ringL" r="3"/><circle class="ring" data-k="ringR" r="3"/>
+        </g>
+        <g data-k="ghost">${JAR.map(([x, y]) => `<circle class="gcoin" cx="${x}" cy="${y}" r="8"/>`).join("")}</g>
+        <g class="wt" data-k="music">${block(80, 79, T.music)}</g>
+        <g class="wt" data-k="dry">${block(80, 79, T.dry)}</g>
+        <g class="wt" data-k="rest">${block(66, 64, T.rest)}</g>
+        <g data-k="wing"><g class="wt g" data-k="dryg">${block(80, 79, "")}</g><g class="wt g" data-k="restg">${block(66, 64, "")}</g></g>
+        ${JAR.map((_, i) => `<g class="coin" data-k="c${i}">${coin}</g>`).join("")}
+        <g class="jar" data-k="jar"><path d="M33 104 H93 M37 104 V109 Q28 113 28 123 V180 Q28 190 38 190 H88 Q98 190 98 180 V123 Q98 113 89 109 V104"/>
+          <rect x="34" y="120" width="58" height="16" rx="3"/><text x="63" y="131.5">${T.spent}</text></g>
+        <g data-k="panL">${pan("L", T.go)}</g>
+        <g data-k="panR">${pan("R", T.stay)}</g>
+        <g class="sunk" data-k="sunk"><rect x="${63 - T.sunkW / 2}" y="199" width="${T.sunkW}" height="17" rx="8.5"/><text x="63" y="210.5">${T.sunk}</text></g>
+        <g class="check" data-k="check"><circle r="9"/><path d="M-4 0.5 L-1 3.5 L4.5 -3"/></g>`;
+    },
+    S0: { ticket: 0, noref: 0, jar: 0, drop: 0, cloud: 0, rain: 0, bat: 0, drain: 0, scale: 0, tilt: 0,
+      music: 0, dry: 0, rest: 0, fly: 0, back: 0, ghost: 0, minus: 0, sunk: 0, win: 0, check: 0 },
+    render(S, k) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      const tr = (key, x, y, extra) => k(key).setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)})${extra || ""}`);
+      // ticket pops in with a slight tilt
+      const ts = .86 + .14 * S.ticket;
+      k("ticket").setAttribute("transform", `translate(63 41) rotate(-3) scale(${ts}) translate(-63 -41)`);
+      op("ticket", cl(S.ticket * 1.4)); op("noref", S.noref);
+      op("jar", S.jar);
+      // weather and tiredness
+      tr("cloud", -34 * (1 - S.cloud), 0); op("cloud", S.cloud);
+      tr("rain", 0, -6 * (1 - S.rain)); op("rain", S.rain);
+      op("bat", S.bat);
+      op("b3", cl(1 - S.drain * 2)); op("b2", cl(2 - S.drain * 2)); op("b1", 1 - S.drain);
+      // the balance: the beam turns on its pin, each pan hangs level from its hook
+      const [lx, ly] = hook(-1, S.tilt), [rx, ry] = hook(1, S.tilt);
+      op("scale", S.scale); op("panL", S.scale); op("panR", S.scale);
+      k("beam").setAttribute("transform", `translate(${PX} ${PY}) rotate(${S.tilt.toFixed(3)})`);
+      tr("hangL", lx, ly); tr("hangR", rx, ry); tr("ringL", lx, ly); tr("ringR", rx, ry);
+      tr("panL", lx, ly); tr("panR", rx, ry);
+      // weights drop into the pans
+      const drop = (key, x, y, p) => { tr(key, x, y - 22 * (1 - p)); op(key, p > 0 ? cl(p * 3) : 0); };
+      drop("music", lx, ly, S.music); drop("dry", rx, ry, S.dry); drop("rest", rx, ry, S.rest);
+      tr("dryg", rx, ry); tr("restg", rx, ry); op("wing", S.win);
+      // coins: fall into the jar, then fly to the "Go" pan and back
+      for (let i = 0; i < 3; i++) {
+        const [jx, jy0] = JAR[i], pd = cl(S.drop - i);
+        const jy = DROP0 + (jy0 - DROP0) * bounce(pd);
+        const pf = cl((S.fly - (2 - i) * .15) / .7) * (1 - cl((S.back - i * .15) / .7));   // top coin leaves first, bottom coins return first
+        const e = inOut(pf), tx = lx + PAN[i][0], ty = ly + PAN[i][1];
+        const x = jx + (tx - jx) * e * e, y = jy + (ty - jy) * e - 70 * Math.sin(Math.PI * e);   // rise out of the jar mouth, then arc over
+        tr("c" + i, x, y); op("c" + i, pd > 0 ? cl(pd * 6) : 0);
+      }
+      op("ghost", S.ghost);
+      op("minusL", S.minus); op("minusR", S.minus);
+      op("sunk", S.sunk);
+      // the fix: "Stay home" wins
+      op("plR", 1 - S.win); op("plgR", S.win); op("bowlgR", S.win);
+      op("plgL", 0); op("bowlgL", 0);
+      tr("check", rx, ry + H + D + 35, ` scale(${Math.max(0, S.check).toFixed(3)})`); op("check", cl(S.check * 2));
+    },
+    beats: [
+      { steps: [{ to: { ticket: 1 }, ms: 500, ease: "back", sfx: "pop" }, { to: { jar: 1 }, ms: 350 },
+        { to: { drop: 3 }, ms: 1300, ease: "lin", sfx: "thud", sfxAt: 160 }, { to: { noref: 1 }, ms: 400 }] },
+      { steps: [{ to: { cloud: 1 }, ms: 800, sfx: "whoosh" }, { to: { rain: 1 }, ms: 500 },
+        { to: { bat: 1 }, ms: 400 }, { to: { drain: 1 }, ms: 900, ease: "inOut" }] },
+      { steps: [{ to: { scale: 1 }, ms: 600, sfx: "pluck" }, { wait: 500 },
+        { to: { music: 1 }, ms: 420, ease: "inOut" }, { to: { tilt: -9 }, ms: 900, ease: "back" }] },
+      { steps: [{ to: { dry: 1 }, ms: 420, ease: "inOut" }, { to: { tilt: -2 }, ms: 500 },
+        { to: { rest: 1 }, ms: 420, ease: "inOut", sfx: "thud", sfxAt: 380 }, { to: { tilt: 10 }, ms: 1000, ease: "back" }] },
+      { steps: [{ to: { ghost: 1 } }, { to: { fly: 1 }, ms: 1300, ease: "lin", sfx: "spring" },
+        { to: { tilt: -11 }, ms: 1000, ease: "back" }] },
+      { steps: [{ to: { minus: 1 }, ms: 500, sfx: "tick" }, { wait: 600 }, { to: { sunk: 1 }, ms: 500 }] },
+      { steps: [{ to: { back: 1, minus: 0 }, ms: 1300, ease: "lin", sfx: "whoosh" }, { to: { ghost: 0 } },
+        { to: { tilt: 10 }, ms: 1000, ease: "back" }] },
+      { steps: [{ to: { win: 1 }, ms: 500 }, { to: { check: 1 }, ms: 450, ease: "back", sfx: "chime" }], hold: 4200 }
+    ]
+  };
+})();
+
+/* Survivorship bias: Wald's bombers. Holes on the planes that came back, none on the engines,
+   because the planes hit there never came back. Scene for anim.js. */
+(function () {
+  const KEY = "survivorship-bias", P = `.bp[data-scene="${KEY}"]`;
+  const MX = 114, MY = 130, MS = .92;                     // the returned bomber: centre and scale
+  const GS = .44, GH = [[272, 82], [338, 136], [272, 190]]; // the planes that didn't return
+  const ENG = [-66, -34, 34, 66];                          // engine positions along the wing
+  const f1 = n => +n.toFixed(1);
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const back = p => 1 + 2.7 * Math.pow(p - 1, 3) + 1.7 * Math.pow(p - 1, 2);
+
+  // A bomber seen from above, nose up, drawn around (cx, cy) at scale s.
+  function plane(cx, cy, s) {
+    const p = (x, y) => `${f1(cx + x * s)} ${f1(cy + y * s)}`;
+    const wing = m => `M${p(6 * m, -21)} L${p(98 * m, -12)} C${p(104 * m, -11.5)} ${p(108 * m, -9)} ${p(108 * m, -5)} L${p(108 * m, -1)} C${p(108 * m, 2)} ${p(105 * m, 3)} ${p(100 * m, 3)} L${p(6 * m, 10)} Z`;
+    const stab = m => `M${p(5 * m, 60)} L${p(38 * m, 69)} C${p(41 * m, 70)} ${p(42 * m, 72)} ${p(42 * m, 75)} L${p(42 * m, 78)} C${p(42 * m, 80)} ${p(41 * m, 81)} ${p(38 * m, 81)} L${p(4 * m, 83)} Z`;
+    const body = `M${p(0, -66)} C${p(6, -66)} ${p(9, -58)} ${p(9, -48)} L${p(9, 48)} C${p(9, 64)} ${p(5, 82)} ${p(2, 92)} L${p(-2, 92)} C${p(-5, 82)} ${p(-9, 64)} ${p(-9, 48)} L${p(-9, -48)} C${p(-9, -58)} ${p(-6, -66)} ${p(0, -66)} Z`;
+    const nac = e => `M${p(e - 5, 5)} L${p(e - 5, -23)} C${p(e - 5, -27)} ${p(e - 3, -29)} ${p(e, -29)} C${p(e + 3, -29)} ${p(e + 5, -27)} ${p(e + 5, -23)} L${p(e + 5, 5)} C${p(e + 5, 8.5)} ${p(e - 5, 8.5)} ${p(e - 5, 5)} Z`;
+    const prop = e => `M${p(e - 9, -32)} L${p(e + 9, -32)} M${p(e, -29)} L${p(e, -32)}`;
+    return `<path d="${wing(1)}"/><path d="${wing(-1)}"/><path d="${stab(1)}"/><path d="${stab(-1)}"/><path d="${body}"/>` +
+      ENG.map(e => `<path d="${nac(e)}"/>`).join("") +
+      `<path class="ln" d="${ENG.map(prop).join(" ")}"/><path class="ln thin" d="M${p(-5, -50)} Q${p(0, -55)} ${p(5, -50)} M${p(0, 64)} L${p(0, 89)}"/>`;
+  }
+  const V = (x, y) => [f1(MX + x * MS), f1(MY + y * MS)];
+
+  // bullet holes on the returned plane: wings, body and tail, never the engines
+  const HA = [[-50, -6], [51, -7], [-84, -4], [82, -6], [-3, 22], [4, 40], [-24, 74], [28, 75], [18, -3], [-18, 3]];
+  const HB = [[49, 3], [-51, 4], [96, -3], [-97, -4], [0, -26], [-2, 54], [3, 8], [-34, 77], [36, 78], [15, 5], [-15, -6], [86, 2]];
+  // engine hits on the planes that didn't return: [ghost, engine x, y]
+  const GHIT = [[0, -34, -14], [0, 66, -9], [1, 34, -15], [1, -66, -10], [2, -66, -14], [2, 34, -9]];
+  // armour plates: where the holes are -> the engines
+  const PLATE = [
+    [[73, -11, 28, 13], [61, -29, 10, 37.5]],
+    [[-101, -11, 28, 13], [-71, -29, 10, 37.5]],
+    [[-7, 14, 14, 34], [29, -29, 10, 37.5]],
+    [[-38, 71, 76, 9], [-39, -29, 10, 37.5]]
+  ];
+
+  window.BiasAnim.SCENES[KEY] = {
+    q: "nem", viewBox: "0 0 400 272",
+    css: `
+      ${P} .sv-pl path{fill:var(--surface);stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .sv-pl .ln{fill:none;stroke-width:2.2}
+      ${P} .sv-pl .thin{stroke-width:1.4}
+      ${P} .sv-gh{opacity:.8}
+      ${P} .sv-gh path{fill:var(--ground);stroke:var(--muted);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .sv-gh .ln{fill:none;stroke-width:1.5}
+      ${P} .sv-gh .thin{stroke-width:1}
+      ${P} .sv-slot path{fill:var(--ground);stroke:var(--faint);stroke-width:1.2;stroke-dasharray:4 2.5;stroke-linejoin:round;stroke-linecap:round}
+      ${P} .sv-slot .ln{fill:none}
+      ${P} .sv-hit{fill:var(--bad)}
+      ${P} .sv-plate .g{fill:var(--muted);fill-opacity:.35;stroke:var(--muted);stroke-width:1.4}
+      ${P} .sv-plate .ok{fill:var(--good);fill-opacity:.35;stroke:var(--good);stroke-width:2.2}
+      ${P} .sv-ring{fill:var(--q);fill-opacity:.28}
+      ${P} .sv-tag line{stroke:var(--ink);stroke-width:1.4}
+      ${P} .sv-tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+      ${P} .sv-tag .qm{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .sv-hd{font:600 12px var(--display);fill:var(--ink);text-anchor:middle}
+      ${P} .sv-hd.m{fill:var(--muted)}
+      ${P} .sv-lb{font:500 10px var(--mono);fill:var(--muted)}
+      ${P} .sv-nt{font:500 10px var(--mono);fill:var(--q);text-anchor:middle}
+      ${P} .sv-nt.ok{fill:var(--good)}
+      ${P} .sv-nt.end{text-anchor:end;fill:var(--muted)}
+      ${P} .sv-lens circle{fill:var(--q);fill-opacity:.07;stroke:var(--q);stroke-width:2.4}
+      ${P} .sv-lens line{stroke:var(--q);stroke-width:5;stroke-linecap:round}
+    `,
+    text: {
+      en: {
+        name: "Survivorship bias", shareTitle: "Survivorship bias, explained in 30 seconds",
+        ecline: "You only see what survived. Ask what's missing before you draw conclusions.",
+        legend: "hits on returning planes", armour: "armour", back: "Returned", lost: "Didn't return",
+        noHoles: "no holes", missing: "missing data", armourHere: "armour here",
+        caps: [
+          "In WWII, bombers come back from missions riddled with <b>bullet holes</b>.",
+          "Engineers map where the <b>returning planes</b> were hit.",
+          "The plan: add armour <b>where the holes are</b>.",
+          "But these are only the planes <b>that made it back</b>.",
+          "Planes hit in the engines <b>never came back</b> to be counted.",
+          "The spots with no holes are where a hit is <b>fatal</b>.",
+          "<b>The fix:</b> ask what's missing from your data.",
+          "Armour the engines. Study the failures, <b>not only the survivors</b>."
+        ],
+        say: [
+          "In the Second World War, bombers come back from their missions riddled with bullet holes.",
+          "Engineers map where the returning planes were hit.",
+          "The plan: add armour where the holes are.",
+          "But these are only the planes that made it back.",
+          "Planes hit in the engines never came back to be counted.",
+          "The spots with no holes are where a hit is fatal.",
+          "The fix: ask what's missing from your data.",
+          "Armour the engines. Study the failures, not only the survivors.",
+          "Survivorship bias. You only see what survived. Ask what's missing before you draw conclusions."
+        ]
+      },
+      el: {
+        name: "Μεροληψία επιβίωσης", shareTitle: "Η μεροληψία επιβίωσης σε 30 δευτερόλεπτα",
+        ecline: "Βλέπεις μόνο ό,τι επέζησε. Πριν βγάλεις συμπεράσματα, αναρωτήσου τι λείπει.",
+        legend: "χτυπήματα σε όσα γύρισαν", armour: "θωράκιση", back: "Γύρισαν", lost: "Δεν γύρισαν",
+        noHoles: "καμία τρύπα", missing: "δεδομένα που λείπουν", armourHere: "θωράκιση εδώ",
+        caps: [
+          "Στον Δεύτερο Παγκόσμιο, τα βομβαρδιστικά γυρίζουν γεμάτα <b>τρύπες από σφαίρες</b>.",
+          "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα <b>που γύρισαν</b>.",
+          "Το σχέδιο: θωράκιση <b>εκεί που είναι οι τρύπες</b>.",
+          "Όμως αυτά είναι μόνο όσα <b>κατάφεραν να γυρίσουν</b>.",
+          "Όσα χτυπήθηκαν στις μηχανές <b>δεν γύρισαν ποτέ</b>, άρα δεν μετρήθηκαν.",
+          "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι <b>μοιραίο</b>.",
+          "<b>Η λύση:</b> αναρωτήσου τι λείπει από τα δεδομένα σου.",
+          "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, <b>όχι μόνο όσα επέζησαν</b>."
+        ],
+        say: [
+          "Στον Δεύτερο Παγκόσμιο Πόλεμο, τα βομβαρδιστικά γυρίζουν από τις αποστολές γεμάτα τρύπες από σφαίρες.",
+          "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα που γύρισαν.",
+          "Το σχέδιο: θωράκιση εκεί που είναι οι τρύπες.",
+          "Όμως αυτά είναι μόνο όσα κατάφεραν να γυρίσουν.",
+          "Όσα χτυπήθηκαν στις μηχανές δεν γύρισαν ποτέ, άρα δεν μετρήθηκαν.",
+          "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι μοιραίο.",
+          "Η λύση: αναρωτήσου τι λείπει από τα δεδομένα σου.",
+          "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, όχι μόνο όσα επέζησαν.",
+          "Μεροληψία επιβίωσης. Βλέπεις μόνο ό,τι επέζησε. Πριν βγάλεις συμπεράσματα, αναρωτήσου τι λείπει."
+        ]
+      }
+    },
+    svg(T) {
+      const dots = (list, r) => list.map(([x, y]) => { const [cx, cy] = V(x, y); return `<circle class="sv-hit" cx="${cx}" cy="${cy}" r="${r}"/>`; }).join("");
+      const ghostHits = (g, cx, cy) => GHIT.filter(h => h[0] === g).map(h => `<circle class="sv-hit" cx="${f1(cx + h[1] * GS)}" cy="${f1(cy + h[2] * GS)}" r="0"/>`).join("");
+      const LX = 62;                                           // engine labels: over the left engines, clear of the nose
+      const [tx, ty] = V(87, -11);
+      let slots = "", ghosts = "";
+      GH.forEach(([x, y], i) => {
+        slots += `<g class="sv-slot">${plane(x, y, GS)}</g><g data-k="sh${i}">${ghostHits(i, x, y).replace(/r="0"/g, 'r="3.2"')}</g>`;
+        ghosts += `<g data-k="g${i}"><g class="sv-gh">${plane(x, y, GS)}</g><g data-k="gh${i}">${ghostHits(i, x, y)}</g></g>`;
+      });
+      return `
+        <g data-k="slots">${slots}</g>
+        ${ghosts}
+        <g data-k="main">
+          <g class="sv-pl">${plane(MX, MY, MS)}</g>
+          <g data-k="plates">${PLATE.map((_, i) => `<g class="sv-plate" data-k="pl${i}"><rect class="g" rx="3"/><rect class="ok" rx="3"/></g>`).join("")}</g>
+          <g data-k="rings">${ENG.map(e => { const [x, y] = V(e - 8, -30); return `<rect class="sv-ring" x="${x}" y="${y}" width="${f1(16 * MS)}" height="${f1(41 * MS)}" rx="6"/>`; }).join("")}</g>
+          <g data-k="hitsA">${dots(HA, 0)}</g>
+          <g data-k="hitsB">${dots(HB, 0)}</g>
+        </g>
+        <g class="sv-tag" data-k="tag"><line x1="${tx}" y1="${ty - 1}" x2="208" y2="90"/><rect x="196" y="66" width="24" height="24" rx="6"/><text class="qm" x="208" y="84">?</text></g>
+        <text class="sv-nt end" data-k="armour" x="190" y="82">${T.armour}</text>
+        <g data-k="legend"><circle class="sv-hit" cx="0" cy="246.5" r="3.2" data-k="legD"/><text class="sv-lb" data-k="legT" x="0" y="250">${T.legend}</text></g>
+        <text class="sv-hd" data-k="hdBack" x="${MX}" y="34">${T.back}</text>
+        <text class="sv-hd m" data-k="hdLost" x="305" y="34">${T.lost}</text>
+        <text class="sv-nt" data-k="noHoles" x="${LX}" y="88">${T.noHoles}</text>
+        <text class="sv-nt ok" data-k="armourHere" x="${LX}" y="88">${T.armourHere}</text>
+        <g class="sv-lens" data-k="lens"><circle cx="333" cy="134" r="32"/><line x1="356" y1="157" x2="368" y2="169"/></g>
+        <text class="sv-nt" data-k="missing" x="305" y="250">${T.missing}</text>`;
+    },
+    S0: { plane: 0, hitsA: 0, hitsB: 0, legend: 0, plates: 0, tag: 0, tagSwing: 0, hdBack: 0, hdLost: 0, ghosts: 0,
+      gHits: 0, fall: 0, slot: 0, rings: 0, noHoles: 0, lens: 0, slotHi: 0, missing: 0, move: 0, green: 0, armourHere: 0, dim: 0 },
+    render(S, k, T) {
+      const op = (key, v) => { k(key).style.opacity = v; };
+      const pop = (g, v) => {                       // children pop in one after another as v goes 0 -> 1
+        const kids = g.children, n = kids.length;
+        for (let i = 0; i < n; i++) {
+          const p = clamp((v - i / n * .75) / .25);
+          kids[i].setAttribute("r", f1(3.2 * (p > 0 ? back(p) : 0)));
+        }
+      };
+      k("main").setAttribute("transform", `translate(0 ${f1((1 - S.plane) * 16)})`);
+      op("main", S.plane);
+      pop(k("hitsA"), S.hitsA); pop(k("hitsB"), S.hitsB);
+      op("hitsA", 1 - .5 * S.dim); op("hitsB", 1 - .5 * S.dim);
+      PLATE.forEach(([a, b], i) => {
+        const m = S.move, x = a[0] + (b[0] - a[0]) * m, y = a[1] + (b[1] - a[1]) * m, w = a[2] + (b[2] - a[2]) * m, h = a[3] + (b[3] - a[3]) * m;
+        const [vx, vy] = V(x, y), g = k("pl" + i), [r1, r2] = g.children;
+        for (const r of [r1, r2]) { r.setAttribute("x", vx); r.setAttribute("y", vy); r.setAttribute("width", f1(w * MS)); r.setAttribute("height", f1(h * MS)); r.setAttribute("rx", f1(3 + 1.6 * m)); }
+        r1.style.opacity = 1 - S.green; r2.style.opacity = S.green;
+      });
+      op("plates", S.plates);
+      op("rings", S.rings);
+      const [tx, ty] = V(87, -11);
+      k("tag").setAttribute("transform", `rotate(${S.tagSwing} ${tx} ${ty})`);
+      op("tag", S.tag); op("armour", S.tag);
+      // legend: red dot + text, centred under the plane
+      const lt = k("legT"), lw = lt.getComputedTextLength ? lt.getComputedTextLength() : 130;
+      lt.setAttribute("x", f1(MX - lw / 2 + 6)); k("legD").setAttribute("cx", f1(MX - lw / 2 - 3));
+      op("legend", S.legend);
+      op("hdBack", S.hdBack); op("hdLost", S.hdLost);
+      // the planes that didn't return: slide in, take engine hits, fall away
+      GH.forEach(([x, y], i) => {
+        const f = S.fall * S.fall, dir = i === 1 ? 1 : -1;
+        k("g" + i).setAttribute("transform", `translate(${f1((1 - S.ghosts) * 40 - f * 10)} ${f1(f * 150)}) rotate(${f1(S.fall * 26 * dir)} ${x} ${y})`);
+        op("g" + i, S.ghosts * (1 - clamp(S.fall * 1.25)));
+        const hs = k("gh" + i).children;
+        GHIT.filter(h => h[0] === i).forEach((h, j) => {
+          const idx = GHIT.indexOf(h), p = clamp((S.gHits - idx / GHIT.length * .75) / .25);
+          hs[j].setAttribute("r", f1(3.2 * (p > 0 ? back(p) : 0)));
+        });
+        op("sh" + i, S.slotHi);
+      });
+      op("slots", S.slot * (.45 + .5 * S.slotHi));
+      k("lens").setAttribute("transform", `translate(${f1((1 - S.lens) * 30)} ${f1((1 - S.lens) * 10)})`);
+      op("lens", S.lens);
+      op("noHoles", S.noHoles); op("armourHere", S.armourHere); op("missing", S.missing);
+    },
+    beats: [
+      { steps: [{ to: { plane: 1 }, ms: 700, sfx: "pluck" }, { wait: 200 }, { to: { hitsA: 1 }, ms: 1400, ease: "lin", sfx: "pop" }] },
+      { steps: [{ to: { legend: 1 }, ms: 400 }, { to: { hitsB: 1 }, ms: 1500, ease: "lin", sfx: "tick" }] },
+      { steps: [{ to: { plates: 1 }, ms: 700, sfx: "pluck" }, { wait: 200 }, { to: { tag: 1 }, ms: 300 }, { to: { tagSwing: 12 }, ms: 260 }, { to: { tagSwing: -8 }, ms: 300, ease: "inOut" }, { to: { tagSwing: 0 }, ms: 300, ease: "inOut" }] },
+      { steps: [{ to: { tag: 0 }, ms: 300 }, { to: { hdBack: 1 }, ms: 400 }, { to: { ghosts: 1, hdLost: 1 }, ms: 900, sfx: "whoosh" }] },
+      { steps: [{ to: { gHits: 1 }, ms: 1000, ease: "lin" }, { wait: 500 }, { to: { fall: 1 }, ms: 1100, ease: "lin", sfx: "thud", sfxAt: 650 }, { to: { slot: 1 }, ms: 500 }] },
+      { steps: [{ to: { rings: 1 }, ms: 600, sfx: "tick" }, { to: { noHoles: 1 }, ms: 400 }] },
+      { steps: [{ to: { lens: 1 }, ms: 700 }, { to: { slotHi: 1 }, ms: 600 }, { to: { missing: 1 }, ms: 400, sfx: "scribble" }] },
+      { steps: [{ to: { rings: 0, noHoles: 0, lens: 0 }, ms: 400 }, { to: { move: 1, dim: 1 }, ms: 1300, ease: "inOut" }, { to: { green: 1, armourHere: 1 }, ms: 500, sfx: "chime" }], hold: 4200 }
+    ]
+  };
 })();
 </script>
 <script>
@@ -1011,7 +2075,10 @@ const HABITS = [
 const GROUPS = [], BIASES = [];
 const LANG = "en", LOCALE = LANG === "el" ? "el-GR" : "en-US";
 // animated explainers: English bias name -> scene key (see anim.js)
-const ANIM_FOR = { "Anchoring": "anchoring" };
+const ANIM_FOR = {
+  "Anchoring": "anchoring", "Confirmation bias": "confirmation-bias", "Sunk cost fallacy": "sunk-cost",
+  "Dunning-Kruger effect": "dunning-kruger", "Survivorship bias": "survivorship-bias", "Loss aversion": "loss-aversion"
+};
 const SITE = "https://papangelis.com", BASE = LANG === "el" ? "/biases/el/" : "/biases/";
 const watchUrl = key => `${SITE}${BASE}watch/${key}/`;
 let player = null;
@@ -1279,7 +2346,7 @@ function openBias(b) {
     <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">In English: ${esc(b.en)}</p>` : ""}</div>
     <p class="def">${esc(b.d)}</p>
-    ${ANIM_FOR[b.en || b.n] && window.BiasAnim ? `<div class="player-host" data-anim="${ANIM_FOR[b.en || b.n]}"></div>` : ""}
+    ${ANIM_FOR[b.en || b.n] && window.BiasAnim && BiasAnim.has(ANIM_FOR[b.en || b.n]) ? `<div class="player-host" data-anim="${ANIM_FOR[b.en || b.n]}"></div>` : ""}
     <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p></div>
