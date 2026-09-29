@@ -1,0 +1,627 @@
+[
+  {
+    "id": "patterns",
+    "title": "We tend to find stories and patterns even when looking at sparse data",
+    "why": "Our ancestors survived by spotting patterns fast: rustling grass might mean a predator, and dark clouds meant rain. Filling gaps with a plausible story lets us act on thin information instead of freezing. A brain that sometimes sees a pattern that isn't there loses less than one that misses a real threat.",
+    "cost": "We see causes, trends and intentions in random noise. We then act with confidence on stories the data never supported.",
+    "spot": [
+      "You feel sure about a trend after seeing only a handful of cases.",
+      "A vivid story about one person is doing more to convince you than any numbers.",
+      "You are explaining why something happened before checking whether it happened more often than chance would predict."
+    ],
+    "fix": [
+      "Ask how many cases you have seen and how many you would need before trusting a pattern.",
+      "Before you explain a streak or a bunch of similar events, check what pure chance would produce.",
+      "Write down the overall numbers or base rate before judging a single case."
+    ],
+    "biases": [
+      {
+        "n": "Confabulation",
+        "d": "Confabulation is when the mind fills a gap in memory or knowledge with an invented story, and the person honestly believes it. It is a memory error more than a bias, and it happens without any intent to lie.",
+        "ex": "You can't recall how a dent got on your car, so you settle on a story about a runaway shopping cart, and a month later you remember it as fact.",
+        "q": "Offered four identical scarves, you pick the one on the right and then explain with confidence that its weave feels softer, fully believing your reason.",
+        "spot": "Ask yourself whether you truly remember this detail or are filling in what probably happened.",
+        "fix": "Check your account against a record, such as a receipt, message or photo, before repeating it as fact."
+      },
+      {
+        "n": "Clustering illusion",
+        "d": "The clustering illusion is the tendency to see meaningful clumps or streaks in data that are actually random. True randomness often contains runs and bunches, so we mistake them for signs of a hidden cause.",
+        "ex": "A shuffled playlist plays three songs by the same artist in a row, and the listener decides the shuffle feature must be broken.",
+        "q": "Looking at a map of house fires in your town, you notice four on one street last year and decide something about that street must be causing them, though the rest were scattered all over.",
+        "spot": "Ask whether a purely random process could easily produce the bunching you are seeing.",
+        "fix": "Compare the pattern with a random version, such as a row of coin flips or shuffled data, to see if it really looks different."
+      },
+      {
+        "n": "Insensitivity to sample size",
+        "d": "Insensitivity to sample size is judging a result without considering how many cases it is based on. Small groups swing to extremes far more often than large ones, yet we treat their results as equally reliable.",
+        "ex": "People are equally impressed when a tiny school and a huge school both post unusually high test scores, though the tiny school's result is far more likely to be a fluke.",
+        "q": "You pick a restaurant because it has a perfect five-star average, without noticing it has only three reviews, while a nearby place rated 4.6 has two thousand.",
+        "spot": "Ask how many cases a result is based on before deciding how impressed to be.",
+        "fix": "Look for the count behind every average or percentage, and give results from small counts much less weight."
+      },
+      {
+        "n": "Neglect of probability",
+        "d": "Neglect of probability is ignoring how likely something is when making a decision under uncertainty. We react to how bad or good an outcome would feel and treat tiny and moderate chances as if they were the same.",
+        "ex": "After news of a plane crash, someone drives a long distance instead of flying, even though the drive carries more risk than the flight.",
+        "q": "You refuse to swim in the ocean all summer after watching a shark movie, yet you check your phone while driving to the beach every day.",
+        "spot": "Ask whether you know the actual odds, or are only reacting to how scary or exciting the outcome feels.",
+        "fix": "Write a rough estimate of the odds next to each option and compare them before deciding."
+      },
+      {
+        "n": "Anecdotal fallacy",
+        "alias": "Anecdotal evidence",
+        "d": "The anecdotal fallacy is using a personal story or a few examples as proof of a general claim while ignoring broader evidence. A single vivid case feels more convincing than statistics, even when it is unusual.",
+        "ex": "Someone insists smoking is harmless because their grandfather smoked every day and lived to 95.",
+        "q": "Your cousin says a certain car brand is junk because hers broke down twice, so you cross it off your list despite its top reliability ratings in large owner surveys.",
+        "spot": "Notice when your evidence starts with 'I know someone who' or 'This happened to me'.",
+        "fix": "Ask what the larger data says, and treat one story as a reason to look closer, never as proof."
+      },
+      {
+        "n": "Illusion of validity",
+        "d": "The illusion of validity is overconfidence in a judgment when the available information tells a neat, consistent story, even if that information predicts poorly. The feeling of certainty comes from how well the story hangs together and says little about accuracy.",
+        "ex": "A hiring manager feels certain about a candidate after one smooth, friendly interview, though casual interviews are a weak guide to how someone will do on the job.",
+        "q": "After reading a company's glossy annual report, you feel completely sure its share price will rise, even though you know that experts reading the same reports rarely beat the market.",
+        "spot": "Ask whether your confidence comes from a good track record or just from the story feeling tidy.",
+        "fix": "Check how often predictions of this type have actually come true before trusting your gut."
+      },
+      {
+        "n": "Masked man fallacy",
+        "alias": "Intensional fallacy",
+        "d": "The masked man fallacy is a reasoning error where two things are judged to be different only because you believe different things about them. It is named after the argument: I know who my father is, I don't know who the masked man is, so the masked man is not my father.",
+        "ex": "Someone reasons, 'I trust my bank, and I've never heard of the company behind this app, so the app can't belong to my bank', when in fact it does.",
+        "q": "You insist your favorite author could never have written a mystery novel you disliked, because you have never heard of the name on its cover, and then learn it is the author's pen name.",
+        "spot": "Watch for the step where 'I think one thing about this and another about that' turns into 'so they must be different things'.",
+        "fix": "Separate what you know about something from what it actually is, and check whether two descriptions might point to the same thing."
+      },
+      {
+        "n": "Recency illusion",
+        "d": "The recency illusion is believing that a word, habit or trend is new when it has been around a long time, simply because you only recently started noticing it. It is closely related to the frequency illusion, where something seems to show up everywhere once you notice it.",
+        "ex": "Someone complains that using 'literally' to mean 'very' is a modern sign of declining language, though well-known writers used it that way in the 1800s.",
+        "q": "You notice lots of people wearing a certain style of sneaker and assume it is a brand-new fad, though it has been popular for over a decade and you only just started paying attention.",
+        "spot": "Ask whether the thing is truly new or whether you have only just started to notice it.",
+        "fix": "Look up when the word or trend first appeared before claiming it is a recent development."
+      },
+      {
+        "n": "Gambler's fallacy",
+        "alias": "Monte Carlo fallacy",
+        "d": "The gambler's fallacy is believing a random event is less likely because it has happened a lot recently, or more likely because it hasn't happened in a while. Independent events like coin flips have no memory, so past results don't change the next one.",
+        "ex": "After a roulette wheel lands on black five times in a row, a player bets heavily on red, sure it is 'due'.",
+        "q": "You and your partner have four daughters, and you both feel the next baby is almost certain to be a boy.",
+        "spot": "Listen for the word 'due', or the feeling that luck has to even out soon.",
+        "fix": "Remind yourself that each independent event starts fresh, and judge the odds of the next one on its own."
+      },
+      {
+        "n": "Hot-hand fallacy",
+        "d": "The hot-hand fallacy is believing that someone on a winning streak is more likely to keep succeeding, even when each attempt is largely independent. It is the mirror image of the gambler's fallacy, and while researchers still debate how much real streakiness exists in sports, people tend to see far more of it than the data supports.",
+        "ex": "A basketball crowd yells for the ball to go to a player who has made three shots in a row, even though a teammate is usually the better shooter.",
+        "q": "A friend has picked the winner of the last four office football pools, so you copy all her picks this week, sure she can't miss right now.",
+        "spot": "Ask whether a recent run of success reflects real skill or a lucky stretch that will likely fade.",
+        "fix": "Judge a person or strategy by the long-term average, and treat short streaks as mostly noise."
+      },
+      {
+        "n": "Illusory correlation",
+        "d": "Illusory correlation is perceiving a link between two things that are not actually related, or seeing a stronger link than really exists. It often happens because the times the two things occur together stick in memory while the other times are forgotten.",
+        "ex": "A nurse believes the emergency room gets busier during a full moon, because busy full-moon nights stand out while busy nights under other moons are forgotten.",
+        "q": "You are certain your knee aches more before it rains, because you remember the sore days that were followed by storms and forget all the rest.",
+        "spot": "Ask whether you have also counted the times the two things did not happen together.",
+        "fix": "Make a simple four-box tally (both, only the first, only the second, neither) before believing two things go together."
+      },
+      {
+        "n": "Pareidolia",
+        "d": "Pareidolia is seeing meaningful images or hearing meaningful sounds, especially faces and voices, in random or vague input. It comes from a brain tuned to detect faces quickly, even at the cost of false alarms.",
+        "ex": "People see a face in the front of a car, in an electrical outlet, or on the surface of the moon.",
+        "q": "Staring at a water stain on your ceiling, you clearly see the outline of a smiling old man, and once you have seen him you can't stop seeing him.",
+        "spot": "Ask whether the shape or message you perceive would still be there if your brain were not searching for it.",
+        "fix": "Show the image or play the sound to someone else without saying what you noticed, and see if they find it on their own."
+      },
+      {
+        "n": "Anthropomorphism",
+        "d": "Anthropomorphism is giving human traits, feelings or intentions to animals, objects or forces of nature. It helps us relate to and predict things, but it can mislead us about how they really work.",
+        "ex": "A dog owner is sure the dog looks guilty because it knows it did wrong, when the dog may simply be reacting to the owner's angry tone.",
+        "q": "You apologize to your robot vacuum after bumping it with your foot, and when it rolls away you feel it is sulking.",
+        "spot": "Notice when you describe a machine, animal or storm as wanting, feeling or planning something.",
+        "fix": "Restate the situation in plain mechanical terms, like 'the software crashed because memory ran out', and see if it still feels personal."
+      }
+    ]
+  },
+  {
+    "id": "stereotypes",
+    "title": "We fill in characteristics from stereotypes, generalities, and prior histories",
+    "why": "We rarely have full information about a person or situation, so the brain fills gaps with what usually holds true for similar cases. Relying on categories, rules of thumb and trusted sources saves a huge amount of time and effort. For most of history, following the group and trusting experienced elders was a safe bet.",
+    "cost": "We judge individuals by their group, trust labels and titles over evidence, and follow the crowd into mistakes. These quick guesses can harden into unfair assumptions that are hard to see from the inside.",
+    "spot": [
+      "You feel you know what someone is like before they have said much.",
+      "Your main reason for believing something is who said it or how many people agree.",
+      "You explain someone's behavior by pointing to their group, job or background."
+    ],
+    "fix": [
+      "Collect at least one specific fact about the individual before forming a view.",
+      "Evaluate a claim as if it came from an unknown source, then add the source back in and see what changes.",
+      "Ask what you would expect if the person belonged to a different group, and compare the two answers."
+    ],
+    "biases": [
+      {
+        "n": "Group attribution error",
+        "d": "The group attribution error is assuming that one member's traits reflect the whole group, or that a group's decision reflects what every member wants. It treats a group as if it thinks with one mind.",
+        "ex": "After meeting one loud, pushy fan of a football club, someone decides the club's whole fan base is obnoxious.",
+        "q": "A school board narrowly votes to cut the music program, and you assume every board member dislikes the arts, even though you heard several of them argue hard against the cut.",
+        "spot": "Ask whether you are treating one member, or one group decision, as a picture of everyone involved.",
+        "fix": "Look for the range of views or behaviors inside the group before summing it up."
+      },
+      {
+        "n": "Ultimate attribution error",
+        "d": "The ultimate attribution error is explaining an outside group's bad acts by their character while writing off their good acts as luck or special circumstances. For our own group, we tend to do the reverse.",
+        "ex": "Staff in one department say a rival department's mistake shows those people are careless, while their own department's mistake was caused by an impossible deadline.",
+        "q": "When a player on the rival team helps an injured opponent, you say he only did it for the cameras, but when a player on your team does the same, you say it shows what a good person he is.",
+        "spot": "Ask whether you would explain the same act the same way if someone from your own side had done it.",
+        "fix": "Swap the group labels in your head and check whether your explanation still holds."
+      },
+      {
+        "n": "Stereotyping",
+        "d": "Stereotyping is expecting a person to have certain traits because they belong to a group, without knowing anything else about them. Stereotypes can be positive or negative, and they often stick even when a person clearly doesn't fit.",
+        "ex": "A shop clerk assumes an older customer won't understand a new phone and explains every step slowly, though the customer works in tech.",
+        "q": "At a party you meet a very tall man and immediately ask which basketball team he plays for, knowing nothing else about him.",
+        "spot": "Notice when you predict someone's skills, tastes or habits from their age, gender, job or background alone.",
+        "fix": "Ask the person a genuine question about themselves before acting on any assumption."
+      },
+      {
+        "n": "Essentialism",
+        "d": "Essentialism is the belief that categories of people or things have a hidden, unchanging core that makes them what they are. It leads us to treat group differences as fixed and natural and to overlook how much circumstances shape them.",
+        "ex": "A hiring manager says someone who grew up poor will 'always have that mindset', as if it were built into them at birth.",
+        "q": "You refuse to wear a sweater that once belonged to a person you despise, feeling that something of them is still in it even after it has been washed.",
+        "spot": "Listen for phrases like 'it's in their nature', 'born that way' or 'they'll never change'.",
+        "fix": "Look for members of the category who changed or who differ, and ask what circumstances explain the difference."
+      },
+      {
+        "n": "Functional fixedness",
+        "d": "Functional fixedness is only being able to see an object as useful for its usual purpose. It blocks creative solutions that use familiar things in new ways.",
+        "ex": "Without a hammer, someone gives up on hanging a picture and never thinks to tap the nail in with the heel of a sturdy shoe.",
+        "q": "Your phone slips behind the couch, and you strain to reach it by hand for ten minutes until a friend fishes it out with a wooden spoon from the kitchen drawer.",
+        "spot": "Ask what else the objects or tools around you could do if you ignored their labels.",
+        "fix": "Describe each item by its physical features, such as 'flat, stiff, long', instead of its name, to reveal new uses."
+      },
+      {
+        "n": "Moral credential effect",
+        "alias": "Moral licensing",
+        "d": "The moral credential effect, also called moral licensing, is feeling freer to behave badly after doing something good or proving you are a good person. Past good deeds become a kind of credit that seems to excuse a later lapse.",
+        "ex": "After volunteering at a food bank on Saturday, a man feels he has earned the right to skip his share of the housework all weekend.",
+        "q": "Because you biked to work every day this week, you feel entitled to take a long, fuel-hungry drive just for fun on Sunday.",
+        "spot": "Notice when you think 'I've been good, so I deserve this' right before a choice you would normally avoid.",
+        "fix": "Judge each choice on its own merits, as if your earlier good deed had never happened."
+      },
+      {
+        "n": "Just-world hypothesis",
+        "alias": "Just-world fallacy",
+        "d": "The just-world hypothesis is the belief that the world is fair, so people generally get what they deserve. It leads us to blame victims for their misfortune and to assume successful people earned everything they have.",
+        "ex": "Hearing that someone was robbed on the way home, a listener's first thought is that the victim must have been careless.",
+        "q": "When a neighbor loses her job in a large round of layoffs, you quietly assume she must have been a weak performer, since good workers don't get let go.",
+        "spot": "Notice when your first reaction to someone's bad luck is to look for what they did wrong.",
+        "fix": "List the factors outside the person's control before judging whether they earned their outcome."
+      },
+      {
+        "n": "Argument from fallacy",
+        "alias": "Fallacy fallacy",
+        "d": "The argument from fallacy is concluding that a claim must be false because the argument for it was flawed. A bad argument can still lead to a true conclusion.",
+        "ex": "A student defends recycling with a weak, confused argument, and a classmate concludes that recycling must be pointless.",
+        "q": "Your uncle says the earth is round because 'everyone knows it', and you decide that since his reasoning is lazy, the shape of the earth must be up for debate.",
+        "spot": "Ask whether you are rejecting the claim itself or only the way someone argued for it.",
+        "fix": "When you find a flaw in an argument, look for better evidence on the same question before deciding the claim is false."
+      },
+      {
+        "n": "Authority bias",
+        "d": "Authority bias is giving more weight to the opinion of an authority figure than the evidence justifies, and being more easily swayed or directed by them. It can extend to topics far outside the person's real expertise.",
+        "ex": "In Stanley Milgram's famous experiments, many volunteers kept giving what they believed were painful electric shocks because a man in a lab coat told them to continue.",
+        "q": "A Nobel-winning physicist says in an interview that a certain vitamin prevents colds, and you start taking it daily, reasoning that someone that brilliant must know.",
+        "spot": "Ask whether this person is an expert on this exact topic, and whether they have shown any evidence.",
+        "fix": "Separate the claim from the person's title and look for independent evidence before acting on it."
+      },
+      {
+        "n": "Automation bias",
+        "d": "Automation bias is trusting suggestions from automated systems, such as GPS, spell checkers or software alerts, too much, even when they are wrong. People may ignore contrary information or stop checking the machine's work.",
+        "ex": "A driver follows GPS directions down a closed road into a flooded dip, despite warning signs that something is wrong.",
+        "q": "You approve a colleague's expense report because the accounting software shows no warnings, without noticing a hotel charge that is obviously ten times too high.",
+        "spot": "Notice when you accept a result mainly because a computer or app produced it.",
+        "fix": "Do a quick sanity check on any automated output, such as estimating the answer yourself first."
+      },
+      {
+        "n": "Bandwagon effect",
+        "d": "The bandwagon effect is adopting a belief or behavior because many other people are doing it. Popularity starts to feel like proof that something is right or good.",
+        "ex": "Someone buys shares in a company only because everyone at work is talking about it, right as the price peaks.",
+        "q": "You had no opinion about a new TV series, but once most of your friends rave about it online, you start calling it the best show of the year after seeing only one episode.",
+        "spot": "Ask whether you would still hold this view if you were the only person who held it.",
+        "fix": "Write down your own reasons for a choice before looking at what others have picked."
+      },
+      {
+        "n": "Placebo effect",
+        "d": "The placebo effect is a real improvement in how someone feels after an inactive treatment, because they expect it to help. It is an expectation effect more than a bias, and it shows how strongly beliefs shape our experience of symptoms.",
+        "ex": "A person with a headache takes a sugar pill they believe is a painkiller and reports feeling better within minutes.",
+        "q": "You pay extra for a fancy energy drink and feel sharper right away, then read the label and learn it contains no caffeine or other active ingredient.",
+        "spot": "Ask whether you felt better because of what the treatment does or because you expected it to work.",
+        "fix": "When judging whether a remedy works, compare it against a lookalike with no active ingredient, the way good medical trials do."
+      }
+    ]
+  },
+  {
+    "id": "familiar",
+    "title": "We imagine things and people we're familiar with or fond of as better",
+    "why": "Trusting people and things we know is usually safe, because familiarity means we have dealt with them before without harm. Favoring our own group helped our ancestors cooperate with the people they depended on. Liking what is close and known also saves the effort of judging everything from scratch.",
+    "cost": "We overrate our own side, our own ideas and attractive people, and we dismiss outsiders and their ideas unfairly. Good options get rejected just because of where they came from.",
+    "spot": [
+      "You feel warmer toward an idea or person mostly because they are like you or connected to you.",
+      "You find it hard to tell members of another group apart or to name how they differ.",
+      "You rate something higher after noticing one appealing feature, such as looks or a familiar name."
+    ],
+    "fix": [
+      "Judge ideas with their source hidden whenever you can, as in blind reviews or blind taste tests.",
+      "Spend regular time with people outside your usual circle so you see them as individuals.",
+      "Rate specific qualities separately, on a written checklist, before forming an overall impression."
+    ],
+    "biases": [
+      {
+        "n": "Out-group homogeneity bias",
+        "d": "Out-group homogeneity bias is seeing members of other groups as all alike while seeing members of your own group as varied individuals.",
+        "ex": "An older adult says 'teenagers all act the same', while describing each of their own friends as very different from one another.",
+        "q": "You describe the people at a rival company as 'corporate robots who all think the same way', while you describe your own coworkers as a colorful mix of personalities.",
+        "spot": "Notice when you describe another group with 'they're all' and your own group with 'we're all different'.",
+        "fix": "Try to name three ways members of the other group differ from each other."
+      },
+      {
+        "n": "Cross-race effect",
+        "alias": "Own-race bias",
+        "d": "The cross-race effect is the tendency to recognize faces of your own race more easily than faces of other races. It mostly reflects how much everyday exposure a person has had to different kinds of faces, and it can shrink with more contact.",
+        "ex": "An eyewitness confidently picks the wrong person from a lineup because the suspects are of a race the witness has rarely spent time around.",
+        "q": "At a new job, you keep mixing up two coworkers whose ethnic background differs from yours, though people who grew up around faces like theirs find them easy to tell apart.",
+        "spot": "Notice whether you find it harder to remember or distinguish faces from a group you rarely spend time with.",
+        "fix": "Focus on specific features, such as face shape or hairline, and increase your everyday contact with people from different backgrounds."
+      },
+      {
+        "n": "In-group bias",
+        "alias": "In-group favoritism",
+        "d": "In-group bias is favoring members of your own group over outsiders in trust, help, rewards and judgment. Even groups formed on a trivial basis, such as a random assignment, can trigger it.",
+        "ex": "A manager keeps giving the best assignments to people who went to the same university, without noticing the pattern.",
+        "q": "At summer camp, kids randomly split into Blue and Green teams start sharing snacks only with their own color and complaining that the other side cheats.",
+        "spot": "Ask whether you would offer the same help or trust to someone outside your circle who did the same thing.",
+        "fix": "Use the same written criteria for everyone when handing out rewards, jobs or favors."
+      },
+      {
+        "n": "Halo effect",
+        "d": "The halo effect is letting one positive trait, such as good looks or charm, shape your opinion of a person's other, unrelated traits. The reverse, where one bad trait colors everything, is sometimes called the horn effect.",
+        "ex": "Jurors may see an attractive defendant as more trustworthy, even though looks say nothing about honesty.",
+        "q": "Because a new coworker is funny and well dressed, you assume he must also be good with budgets and hand him the finance project without checking his experience.",
+        "spot": "Ask whether the trait you admire has anything to do with the quality you are judging.",
+        "fix": "Rate each quality you care about separately, using concrete evidence for each one."
+      },
+      {
+        "n": "Cheerleader effect",
+        "alias": "Group attractiveness effect",
+        "d": "The cheerleader effect is the tendency for people to look more attractive in a group than when seen alone. One explanation is that the brain averages the faces in a group, and averaged faces tend to look more appealing.",
+        "ex": "The members of a five-piece band seem strikingly good-looking on stage together, yet each looks fairly ordinary in a solo interview.",
+        "q": "On a dating app, someone seems very attractive in a photo with four friends, but when you open their solo pictures they seem much more ordinary.",
+        "spot": "Ask whether you would find this person as striking if you saw them on their own.",
+        "fix": "Look at individual photos, or meet people one on one, before forming an impression of their looks."
+      },
+      {
+        "n": "Positivity effect",
+        "d": "The positivity effect is the tendency, which grows stronger with age, to pay more attention to positive information than negative information and to remember it better. It can support well-being, but it can also lead us to overlook warnings.",
+        "ex": "When shown a mix of happy and sad pictures, older adults tend to remember more of the happy ones than younger adults do.",
+        "q": "After his yearly checkup, your 70-year-old father tells you only about his good cholesterol numbers and has already forgotten the doctor's warning about his blood pressure.",
+        "spot": "Ask whether you have given the warning signs as much attention as the good news.",
+        "fix": "Write down the risks and negatives explicitly, so they stay in view next to the positives."
+      },
+      {
+        "n": "Not invented here",
+        "alias": "NIH syndrome",
+        "d": "Not invented here is rejecting or undervaluing ideas, products or knowledge because they came from outside your own team, company or group. It is common in organizations that take pride in their own work.",
+        "ex": "A software team spends months building its own tool instead of using a proven free one made by another company.",
+        "q": "A chef refuses to try a prep technique a rival restaurant developed, insisting her kitchen will come up with something better, even though the rival's method is clearly faster.",
+        "spot": "Notice when your first objection to a solution is where it came from.",
+        "fix": "Evaluate outside solutions against the same criteria you use for your own, ideally with the source hidden."
+      },
+      {
+        "n": "Reactive devaluation",
+        "d": "Reactive devaluation is valuing a proposal less because it came from an opponent or someone you see as on the other side. The same offer seems more appealing when it comes from a neutral or friendly source.",
+        "ex": "In a labor dispute, a union rejects a pay offer from management, though it would likely have welcomed the identical terms if a mediator had suggested them.",
+        "q": "Your ex suggests a way of splitting holiday time with the kids that is actually quite fair, and you immediately feel it must be some kind of trick.",
+        "spot": "Ask how you would rate this offer if a friend or a neutral party had proposed it.",
+        "fix": "Restate the proposal in your own words with the source removed, and judge it on its terms."
+      },
+      {
+        "n": "Well-traveled road effect",
+        "d": "The well-traveled road effect is underestimating how long familiar routes take and overestimating how long unfamiliar ones take. Familiar trips tend to feel shorter, partly because they take less attention.",
+        "ex": "Someone always leaves 15 minutes for the drive to work, which regularly takes 25, yet sets out far too early for a new store the same distance away.",
+        "q": "You are always a few minutes late to your weekly class because you think the usual walk is quicker than it is, yet you leave absurdly early for a party across town at a place you have never been.",
+        "spot": "Ask whether you have ever actually timed this familiar trip or task.",
+        "fix": "Time your regular routes once and plan with the measured number instead of your gut sense."
+      }
+    ]
+  },
+  {
+    "id": "numbers",
+    "title": "We simplify probabilities and numbers to make them easier to think about",
+    "why": "Our brains handle small, concrete quantities well but struggle with large numbers, fractions and odds. Rounding, grouping and labeling let us make fast decisions without doing the math. For most daily choices, a rough answer is good enough.",
+    "cost": "We misjudge risks, treat money differently depending on its label, and learn the wrong lessons from incomplete data. The simplified version can hide exactly the information that matters.",
+    "spot": [
+      "You are making a decision with numbers you have not actually written down or worked out.",
+      "You feel an outcome is 'basically certain' or 'basically impossible' without knowing the real odds.",
+      "You are only looking at the winners, the successes or the visible results."
+    ],
+    "fix": [
+      "Turn percentages and odds into counts, such as '3 out of 100 people', to make them concrete.",
+      "Ask what data is missing, such as the failures or the cases that never made the news.",
+      "Break big numbers into smaller parts and check whether the parts add up to the whole."
+    ],
+    "biases": [
+      {
+        "n": "Mental accounting",
+        "d": "Mental accounting is treating money differently depending on where it came from or which mental 'budget' it belongs to, even though every dollar is worth the same. It can help with budgeting, but it also leads to poor overall choices.",
+        "ex": "Someone carries credit card debt at a high interest rate while keeping savings in a low-interest 'vacation fund' they refuse to touch.",
+        "q": "You win 200 dollars in an office raffle and spend it all on one fancy dinner, though you would never spend that much of your paycheck on a single meal.",
+        "spot": "Ask whether you would make the same choice if this money had come from your regular paycheck.",
+        "fix": "Look at your total finances as one pool when deciding on large purchases or debt payments."
+      },
+      {
+        "n": "Appeal to probability fallacy",
+        "d": "The appeal to probability is a logical fallacy that treats something as certain just because it is possible or likely. It jumps from 'this could happen' to 'this will happen'.",
+        "ex": "An investor reasons that since some startups become huge successes, the one they just put money into certainly will too.",
+        "q": "Because millions of people use weak passwords, you tell a friend that her email account will definitely be hacked this year.",
+        "spot": "Listen for the leap from 'could' or 'might' to 'will' or 'definitely'.",
+        "fix": "Estimate the actual chance and say it out loud as a number before treating an outcome as certain."
+      },
+      {
+        "n": "Normalcy bias",
+        "d": "Normalcy bias is assuming that because a disaster has never happened to you, it won't happen, and underestimating how bad it could be if it does. It can make people slow to respond to clear warnings.",
+        "ex": "Residents ignore an evacuation order for a hurricane because past storms in their area turned out mild.",
+        "q": "When the fire alarm sounds during a movie and staff tell everyone to leave, you stay in your seat, sure nothing serious could happen on an ordinary Friday night out.",
+        "spot": "Notice when your main reason for ignoring a warning is 'it's never happened before'.",
+        "fix": "Make a simple emergency plan in advance, so that acting on a warning becomes automatic."
+      },
+      {
+        "n": "Murphy's Law",
+        "d": "Murphy's Law is the saying 'anything that can go wrong will go wrong'. It is a humorous adage more than a bias, and it reflects how failures stick in memory while the many times things go fine are overlooked.",
+        "ex": "A driver swears the traffic lights always turn red when they are running late, forgetting all the times they sailed through on green.",
+        "q": "You are convinced the supermarket line you choose is always the slowest one, and every time it stalls you mutter 'of course'.",
+        "spot": "Ask whether you are counting the times things went smoothly, or only the times they went badly.",
+        "fix": "Use the idea as a planning tool: list what could fail and prepare a backup for the most likely problems."
+      },
+      {
+        "n": "Zero sum bias",
+        "d": "Zero sum bias is assuming that one person's gain must be another person's loss, even when both could benefit. Many situations, such as trade, friendship and learning, can create value for everyone involved.",
+        "ex": "A student refuses to share study notes, believing that classmates doing well will hurt their own grade, even though the class is not graded on a curve.",
+        "q": "When a coworker is praised in a meeting, you feel as if some of your own standing just shrank, even though there is no limit on how many people can be recognized.",
+        "spot": "Ask whether there is truly a fixed amount to share here, or whether both sides could come out ahead.",
+        "fix": "Look for a deal or plan where both sides gain, and check whether the 'pie' is really fixed."
+      },
+      {
+        "n": "Survivorship bias",
+        "d": "Survivorship bias is drawing conclusions only from the people or things that made it through some filter, while ignoring those that did not. The missing failures often hold the most important information.",
+        "ex": "In World War II, analysts studying bullet holes on returning planes realized armor should go where the holes were not, because planes hit in those spots never made it back.",
+        "q": "You decide college is a waste of money because several famous billionaires dropped out, without thinking about the many dropouts who never became rich.",
+        "spot": "Ask who or what is missing from the group you are looking at, and why they dropped out of view.",
+        "fix": "Actively seek out the failures, closed businesses and people who quit before deciding what leads to success."
+      },
+      {
+        "n": "Subadditivity effect",
+        "d": "The subadditivity effect is judging the chance of a whole event to be less than the sum of the chances of its parts. Breaking an event into detailed pieces makes each piece feel more likely, so the pieces add up to more than the whole.",
+        "ex": "People rate the chance of dying from 'natural causes' as lower than the total they get when they separately rate heart disease, cancer and other specific natural causes.",
+        "q": "You rate the chance that your trip gets delayed as low, but when asked separately about a late train, a missed connection and a strike, your three estimates together come to far more than your first answer.",
+        "spot": "Ask whether your estimate for the overall event matches the total of your estimates for each way it could happen.",
+        "fix": "List the specific ways an event could happen, estimate each, and use the total to check your overall guess."
+      },
+      {
+        "n": "Denomination effect",
+        "d": "The denomination effect is being less likely to spend money when it is held in large bills than when the same amount is in small bills or coins. Breaking a large bill makes the money feel easier to spend.",
+        "ex": "Shoppers holding four quarters are more likely to spend them on candy than shoppers holding a single one-dollar bill.",
+        "q": "You carry a 50-dollar note all week without touching it, but the day you get change back as a stack of fives, you buy snacks and coffees you would normally skip.",
+        "spot": "Notice when coins, small bills or gift cards seem easier to part with than the same amount in one large bill.",
+        "fix": "Use the effect to your advantage: if you want to save, keep your cash in large bills that you will be slow to break."
+      },
+      {
+        "n": "Magic number 7+-2",
+        "alias": "Miller's law",
+        "d": "The 'magical number seven, plus or minus two' is a classic idea from psychologist George Miller that people can hold about seven items in short-term memory at once. Later research suggests the real limit is closer to four chunks, and it describes a limit of memory more than a bias.",
+        "ex": "A ten-digit phone number is hard to remember as a string of single digits but much easier when grouped into three short blocks.",
+        "q": "On your first day at a new job, your manager rattles off twelve login steps once, and by the time you sit down at your desk you can recall only the first few.",
+        "spot": "Notice when you are trying to juggle more than a handful of separate items in your head at once.",
+        "fix": "Use the limit to your advantage by grouping information into a few meaningful chunks, or simply write it down."
+      }
+    ]
+  },
+  {
+    "id": "minds",
+    "title": "We think we know what other people are thinking",
+    "why": "Social life depends on guessing what others think and feel. Using our own mind as a model for other minds is fast and often roughly right, because people share a lot. It let our ancestors predict friends and rivals without needing to ask.",
+    "cost": "We assume others see what we see, know what we know, and care about what we care about. This leads to poor communication, needless worry and wrong guesses about motives.",
+    "spot": [
+      "You are sure you know why someone did something, though they never told you.",
+      "You feel that others can plainly see your mood or intentions.",
+      "You are frustrated that people 'don't get it' after you explained something you know well."
+    ],
+    "fix": [
+      "Ask people directly what they think, and listen before filling in the answer yourself.",
+      "Test your explanations on a beginner and watch where they get lost.",
+      "Assume others are paying less attention to you, and know less of what you know, than it feels like."
+    ],
+    "biases": [
+      {
+        "n": "Illusion of transparency",
+        "d": "The illusion of transparency is overestimating how clearly others can read your thoughts and feelings. Your inner state feels obvious to you, so you assume it shows on the outside.",
+        "ex": "A nervous speaker is sure the audience can see their anxiety, while listeners later say the speaker looked calm.",
+        "q": "You are quietly annoyed at a friend all through dinner and assume she noticed, so you are surprised when she texts later to say what a lovely evening it was.",
+        "spot": "Ask whether you have actually said what you feel, or only assumed it was obvious.",
+        "fix": "State your feelings or intentions in plain words instead of expecting others to pick them up."
+      },
+      {
+        "n": "Curse of knowledge",
+        "d": "The curse of knowledge is finding it hard to imagine not knowing something once you know it. Experts often explain things poorly because they forget what beginners don't yet know.",
+        "ex": "A tech-savvy son tells his mother to 'just clear the cache', then gets frustrated when she has no idea what he means.",
+        "q": "You tap out the rhythm of a well-known song on the table, confident your friend will name it in seconds, and are amazed when she has no clue.",
+        "spot": "Ask whether a newcomer would understand the terms and steps you are skipping.",
+        "fix": "Have someone new to the topic explain your message back to you, and fix the gaps they reveal."
+      },
+      {
+        "n": "Spotlight effect",
+        "d": "The spotlight effect is overestimating how much other people notice your appearance, mistakes and behavior. Because you are at the center of your own world, you assume you are at the center of everyone else's.",
+        "ex": "Someone spends a whole party worried about a small stain on their shirt that nobody else noticed.",
+        "q": "You stumble slightly on the stairs at the train station and spend the whole ride home cringing, sure that everyone on the platform is still thinking about it.",
+        "spot": "Ask how much attention you would give the same small slip if someone else made it.",
+        "fix": "Remind yourself that most people are busy thinking about themselves, and test it by asking a friend what they actually noticed."
+      },
+      {
+        "n": "Extrinsic incentive error",
+        "d": "The extrinsic incentive error is assuming other people are driven mainly by outside rewards like money and perks, while seeing yourself as driven by inner rewards like learning and meaning.",
+        "ex": "A manager offers cash bonuses to motivate staff, assuming pay is all they care about, while the team mostly wants more interesting projects and recognition.",
+        "q": "You say you took your job because the work matters to you, but you assume your coworkers are only there for the paycheck and the health plan.",
+        "spot": "Ask whether you are giving others the same deeper motives you claim for yourself.",
+        "fix": "Ask people what they value most in their work before designing rewards or judging their motives."
+      },
+      {
+        "n": "Illusion of external agency",
+        "d": "The illusion of external agency is believing that a preference or good feeling you created yourself was caused by some wise outside force, such as fate, an expert or a guide. People underestimate how much their own minds adjust to make the best of a situation.",
+        "ex": "After an assigned roommate becomes a close friend, a student credits the housing office with a brilliant match, when she has simply grown to like the person she lives with.",
+        "q": "You grow to love the car a salesperson steered you toward and credit his amazing insight into your needs, though you would probably have grown just as fond of the other model.",
+        "spot": "Ask whether the outside source really knew what was best, or whether you adapted and came to like the result.",
+        "fix": "Remember that you tend to grow content with most reasonable outcomes, and give yourself some of the credit."
+      },
+      {
+        "n": "Illusion of asymmetric insight",
+        "d": "The illusion of asymmetric insight is believing you understand other people better than they understand you. It also applies to groups, where each side thinks it sees through the other while being misunderstood itself.",
+        "ex": "Two coworkers in a dispute each believe they have figured out what really drives the other, while insisting the other has them all wrong.",
+        "q": "After a few chats over the fence, you feel you have your new neighbor fully figured out, yet you are sure she has no real idea who you are.",
+        "spot": "Notice when you feel sure about someone's true nature while feeling that they have misjudged you.",
+        "fix": "Ask the other person how they see you and how they see themselves, and compare their answers with your assumptions."
+      }
+    ]
+  },
+  {
+    "id": "project",
+    "title": "We project our current mindset and assumptions onto the past and future",
+    "why": "Imagining the past and the future is hard, so the brain uses the present as a template. Assuming things will stay roughly as they are now is a quick and usually workable guide. Making sense of events after the fact also helps us learn lessons and feel in control.",
+    "cost": "We misjudge how we will feel, how long things will take and what we used to think. We also judge past decisions by how they turned out instead of by what was known at the time.",
+    "spot": [
+      "You feel confident about how you will feel or behave months from now.",
+      "A past event now seems like it was obvious all along.",
+      "Your plan assumes nothing will go wrong or change along the way."
+    ],
+    "fix": [
+      "Keep a written record of your predictions and reasons, then compare it with what actually happened.",
+      "Look at how similar past projects or feelings actually played out before planning the next one.",
+      "Picture your future self as a slightly different person with different needs, and plan for that person."
+    ],
+    "biases": [
+      {
+        "n": "Self-consistency bias",
+        "alias": "Consistency bias",
+        "d": "Self-consistency bias is remembering your past attitudes and behavior as more similar to your current ones than they really were. We quietly rewrite our own history so that we seem to have always been the same.",
+        "ex": "Someone who now supports a policy remembers always having supported it, though they argued against it a few years ago.",
+        "q": "Now that you love spicy food, you tell friends you always did, until your sister reminds you that as a teenager you refused anything hotter than ketchup.",
+        "spot": "Ask whether you have evidence of what you actually thought back then, or only your present view cast backward.",
+        "fix": "Reread old journals, emails or messages to see how your views have really changed over time."
+      },
+      {
+        "n": "Restraint bias",
+        "d": "Restraint bias is overestimating how well you can resist temptation. People who believe they have strong self-control put themselves in tempting situations more often and then give in.",
+        "ex": "A person trying to quit smoking keeps a pack in the drawer 'just to prove' they can resist, and soon starts again.",
+        "q": "You are on a diet but buy a big tub of ice cream 'for guests', confident you won't touch it, and it is gone by Wednesday.",
+        "spot": "Ask whether you are keeping a temptation close because you believe you are immune to it.",
+        "fix": "Remove temptations from your surroundings in advance instead of counting on willpower in the moment."
+      },
+      {
+        "n": "Projection bias",
+        "d": "Projection bias is assuming your future self will have the same tastes, feelings and needs as your present self. It can also mean assuming other people share your current mindset.",
+        "ex": "Shopping for groceries while hungry, someone buys far more food than they will want to eat later in the week.",
+        "q": "On a freezing winter day, you book a summer vacation in a scorching desert, sure the heat will feel wonderful, and by July you regret it.",
+        "spot": "Ask whether your current mood, hunger or energy is shaping a choice meant for a different moment.",
+        "fix": "Make choices about the future when you are in a neutral state, and picture the specific conditions you will be in then."
+      },
+      {
+        "n": "Pro-innovation bias",
+        "d": "Pro-innovation bias is the belief that a new technology or idea should be adopted widely, without its limits or downsides being examined. Supporters overvalue its usefulness and undervalue its problems.",
+        "ex": "A school buys tablets for every student before checking whether they improve learning or mainly create distractions.",
+        "q": "You are so excited about a new smart lock that you install it on every door of your house, never considering what happens if the battery dies or the app goes down.",
+        "spot": "Ask what the downsides, costs and failure points of this new thing are, and who has tested them.",
+        "fix": "Try the new idea on a small scale and measure the results before rolling it out everywhere."
+      },
+      {
+        "n": "Time-saving bias",
+        "d": "Time-saving bias is misjudging how much time you save by going faster. People overestimate the time saved when speeding up from an already high speed and underestimate it when speeding up from a low speed.",
+        "ex": "A commuter shrugs off a route change that would raise their average speed from 20 to 40 km/h through town, though doubling the speed would cut the trip time in half.",
+        "q": "Running late, you weave through highway traffic well above the limit on a short stretch, sure you are gaining a lot, and arrive barely a minute or two sooner than if you had driven calmly.",
+        "spot": "Ask how many minutes you would really gain, using the simple math of distance divided by speed.",
+        "fix": "Work out the actual trip time at each speed before taking risks to go faster."
+      },
+      {
+        "n": "Planning fallacy",
+        "d": "The planning fallacy is underestimating how long a task will take, and often how much it will cost, even when similar past tasks ran over. We picture the smooth, best-case path and forget the delays.",
+        "ex": "A couple budgets three months for a kitchen remodel, and it ends up taking most of a year and costing far more.",
+        "q": "You tell your boss the report will be ready by Friday, just as you did for the last five reports, each of which took until the following Wednesday.",
+        "spot": "Ask how long similar tasks actually took you in the past, and compare that with your current estimate.",
+        "fix": "Base your estimate on the track record of similar past projects, then add a buffer."
+      },
+      {
+        "n": "Pessimism bias",
+        "d": "Pessimism bias is overestimating the chance that bad things will happen to you. It is the opposite of optimism bias and is more common in people who are depressed or anxious.",
+        "ex": "Someone with a minor cough becomes convinced it is a serious illness and expects the worst from every test.",
+        "q": "Before every job interview, you are certain you will be turned down, even though most companies you have interviewed with made you an offer.",
+        "spot": "Ask what your actual track record says, and whether your forecast is darker than the evidence.",
+        "fix": "Write down your worst-case prediction and check later how often predictions like it came true."
+      },
+      {
+        "n": "Impact bias",
+        "d": "Impact bias is overestimating how strongly and how long future events will affect your feelings. People adapt to both good and bad news faster than they expect.",
+        "ex": "A student believes being rejected by their first-choice college will make them miserable for years, yet feels fine within a few months.",
+        "q": "You are sure that moving into a house with a pool will make you happy every single day for years, yet by the second summer it feels like just another part of the house.",
+        "spot": "Ask how you actually felt a few months after a similar big event in your past.",
+        "fix": "Remember that feelings usually drift back toward your normal level, and think about the everyday parts of life that will stay the same."
+      },
+      {
+        "n": "Declinism",
+        "d": "Declinism is the belief that a society or institution is steadily getting worse. It often comes from comparing a fond memory of the past with the problems of the present.",
+        "ex": "An older neighbor insists kids today have no manners and things were better in his day, a complaint that people have made about the young for centuries.",
+        "q": "Scrolling the news, you tell a friend the world is falling apart and everything was safer and saner when you were a kid, though you have never looked at any long-term data.",
+        "spot": "Ask whether you are comparing the present with the real past or with a fond memory of it.",
+        "fix": "Look up long-term data on the issue, such as crime or health figures across several decades, before concluding things are worse."
+      },
+      {
+        "n": "Moral luck",
+        "d": "Moral luck is judging people as more or less blameworthy based on outcomes they did not control. Two people can make the same choice, yet we blame the one whose choice happened to turn out badly far more harshly.",
+        "ex": "Two friends drive home after a few drinks; one arrives safely and the other hits a pedestrian, and people see only the second as a bad person.",
+        "q": "Two coworkers each forget to lock the office one night, but only one of the nights ends in a break-in, and you think only that coworker is irresponsible.",
+        "spot": "Ask whether you would judge the person the same way if the outcome had been different.",
+        "fix": "Judge people by what they chose and knew at the time, and keep that separate from how things happened to turn out."
+      },
+      {
+        "n": "Outcome bias",
+        "d": "Outcome bias is judging a decision by how it turned out instead of by how sound it was when it was made. A bad decision can get lucky, and a good decision can fail.",
+        "ex": "A manager praises an employee who skipped safety checks because nothing went wrong, and criticizes one who followed every rule but was hit by bad weather.",
+        "q": "Your friend put all her savings on one risky bet and it paid off, so you now call her a brilliant investor and think about copying her approach.",
+        "spot": "Ask whether the decision was sensible given what was known then, whatever the result.",
+        "fix": "Write down your reasons before making a decision, and review those reasons later alongside the result."
+      },
+      {
+        "n": "Hindsight bias",
+        "alias": "I-knew-it-all-along effect",
+        "d": "Hindsight bias is the feeling, after something happens, that you knew it would happen all along. Once we know the result, it seems far more predictable than it really was.",
+        "ex": "After a stock market crash, commentators say the warning signs were obvious, though few of them acted on those signs beforehand.",
+        "q": "After your friends' marriage ends, you tell everyone you saw it coming from the wedding day, though at the time you gave a heartfelt toast about their perfect match.",
+        "spot": "Ask whether you actually predicted this, in writing or out loud, before it happened.",
+        "fix": "Write down your predictions before events happen, so you can check later what you really expected."
+      },
+      {
+        "n": "Rosy retrospection",
+        "d": "Rosy retrospection is remembering past events as more pleasant than they felt while you were living through them. Small annoyances fade from memory while the good moments remain.",
+        "ex": "Someone remembers a camping trip as magical, forgetting the rain, mosquitoes and arguments that made them miserable at the time.",
+        "q": "You tell your kids your college years were the best of your life, though your old diary is full of complaints about stress, money and loneliness.",
+        "spot": "Ask whether your memory includes the boring and unpleasant parts of the experience.",
+        "fix": "Before repeating a past experience, list what was hard or annoying about it the first time."
+      },
+      {
+        "n": "Telescoping effect",
+        "d": "The telescoping effect is misplacing events in time, so that distant events seem more recent than they were and recent events seem further back. It is a memory error that can distort surveys and personal timelines.",
+        "ex": "Asked when they last saw a dentist, someone says 'about a year ago', though their records show it was nearly three years.",
+        "q": "You tell a friend that a famous celebrity wedding happened 'a couple of years ago', and she shows you it was actually eight years back.",
+        "spot": "Ask whether you have a dated record, or are just going by how vivid the memory feels.",
+        "fix": "Tie dates to known landmarks, such as a move, a birthday or a job change, or check your calendar and photos."
+      }
+    ]
+  }
+]

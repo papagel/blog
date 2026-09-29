@@ -1,0 +1,442 @@
+[
+  {
+    "id": "primed",
+    "title": "We notice things already primed in memory or repeated often",
+    "why": "We take in far more than we can handle, so the brain uses what is already active in memory as a filter. Things we met recently, often, or with strong feeling are likely to matter again, so pushing them forward saves time and effort.",
+    "cost": "What comes to mind easily is often a poor guide to what is common, true, or important. We end up judging risks, people, and facts by how loud they are in our heads.",
+    "spot": [
+      "Your sense of a risk jumped right after a news story, a conversation, or a scare, with no new facts behind it.",
+      "A claim, brand, or face feels right mainly because it is all around you.",
+      "Your current mood, hunger, or surroundings are quietly deciding which memories and facts you reach for."
+    ],
+    "fix": [
+      "Keep a simple log of decisions, predictions, and outcomes so your memory is not the only record you rely on.",
+      "Revisit important choices in a different mood, place, or time of day to see if your view holds.",
+      "Seek out sources and people you don't usually hear from, so the same few voices don't fill your head."
+    ],
+    "biases": [
+      {
+        "n": "Availability heuristic",
+        "d": "A mental shortcut where we judge how common or likely something is by how easily examples come to mind. Recent, vivid, or emotional events feel more frequent than they really are.",
+        "ex": "After seeing news coverage of a plane crash, a traveler decides to drive a long distance instead of flying, even though driving is more dangerous per mile.",
+        "q": "A neighbor tells you a dramatic story about their house being broken into, and you now believe break-ins on your street are common, though you've never looked at any numbers.",
+        "spot": "Ask yourself: am I judging how often this happens by a real count, or by how quickly a story comes to mind?",
+        "fix": "Look up the actual rate or frequency before acting on a feeling that something is common or rare."
+      },
+      {
+        "n": "Attentional bias",
+        "d": "The tendency for our attention to be pulled toward things tied to our current worries, desires, or habits, while other information goes unnoticed. What we attend to then shapes what we believe and decide.",
+        "ex": "A person anxious about their health focuses on every small ache and overlooks the many signs that they feel fine.",
+        "q": "Worried about layoffs, you sit through an hour-long company meeting and walk out remembering only one passing mention of 'cutting costs', having missed the news about new hires.",
+        "spot": "Notice when your mind keeps snapping to one kind of detail, such as threats, food, or money, that matches what you are already preoccupied with.",
+        "fix": "Write down all the relevant information in front of you, including the parts unrelated to your worry, before drawing a conclusion."
+      },
+      {
+        "n": "Illusory truth effect",
+        "d": "The tendency to believe a statement is true after hearing it several times. Repetition makes a claim feel familiar and easy to process, and that ease gets mistaken for accuracy.",
+        "ex": "A false health tip shared again and again on social media starts to feel like common knowledge, even to people who once doubted it.",
+        "q": "You've heard in ads, from coworkers, and on podcasts that people only use a small part of their brains, and by now it simply feels like a fact, though you've never checked.",
+        "spot": "Ask yourself whether you believe this because you have seen evidence or because you have heard it so often.",
+        "fix": "When a claim feels obviously true, trace it back to its original source before you repeat it."
+      },
+      {
+        "n": "Mere exposure effect",
+        "alias": "Familiarity principle",
+        "d": "The tendency to like things more simply because we have encountered them before. Repeated contact makes something feel safe and pleasant, even without any new information about it.",
+        "ex": "A song you found annoying the first time grows on you after hearing it on the radio every morning.",
+        "q": "Picking a partner for a project, you choose a coworker you've never really spoken to but pass in the hallway every day over an equally skilled stranger from another office.",
+        "spot": "Notice when your preference for a brand, person, or idea rests mainly on having seen it a lot.",
+        "fix": "Compare options on specific criteria you write down in advance, so recognition alone can't tip the choice."
+      },
+      {
+        "n": "Context effect",
+        "d": "Our surroundings shape how we perceive and remember things. The same item can look, taste, or feel different in a different setting, and memories formed in one place are harder to recall in another.",
+        "ex": "The same bottle of wine tastes better at a candlelit restaurant than it does at home on a busy weeknight.",
+        "q": "A friendly woman greets you by name at the beach and you can't place her at all, until she mentions prescriptions and you realize she's the pharmacist you see every month.",
+        "spot": "Ask yourself how much the setting, lighting, music, or company is shaping your judgment of the thing itself.",
+        "fix": "Try important judgments in more than one setting, and when studying, practice in conditions close to where you will need the knowledge."
+      },
+      {
+        "n": "Cue-dependent forgetting",
+        "alias": "Retrieval failure",
+        "d": "A type of forgetting where a memory is still stored but can't be reached because the cues present when it was formed are missing. The right hint, smell, place, or word can bring it back suddenly. It is a feature of memory more than a bias, but it makes us think we have lost things we still know.",
+        "ex": "A student blanks on an answer during an exam, then remembers it instantly when a classmate mentions the example the teacher used in class.",
+        "q": "You're sure you remember nothing about a weekend trip from years ago, until a friend mentions the flat tire, and the whole day comes flooding back.",
+        "spot": "When something seems completely forgotten, ask what you were seeing, hearing, or doing when you first learned it.",
+        "fix": "Rebuild the original situation in your mind, including the place, time, and people, to give your memory the cues it needs."
+      },
+      {
+        "n": "Mood-congruent memory bias",
+        "d": "The tendency to recall memories that match how we feel right now. When we feel happy we more easily remember happy events, and when we feel low we more easily remember sad or painful ones.",
+        "ex": "On a bad day at work, an employee remembers mostly past failures and starts to believe they have never been good at their job.",
+        "q": "Feeling on top of the world after a promotion, you describe your childhood as full of happy summers, though during a rough week last month you described the same years as lonely.",
+        "spot": "Ask yourself whether your overall verdict on a person, job, or period of life has shifted along with your feelings today.",
+        "fix": "Keep a record of good and bad events as they happen, and read it before making big judgments while upset or elated."
+      },
+      {
+        "n": "Frequency illusion",
+        "alias": "Baader-Meinhof Phenomenon",
+        "d": "After noticing something for the first time, we start seeing it everywhere and assume it has become more common. Usually our attention has simply become tuned to it. It is another name for the Baader-Meinhof Phenomenon.",
+        "ex": "After buying a red car, a driver suddenly sees red cars in every parking lot and thinks they have become popular.",
+        "q": "Soon after your sister announces she's pregnant, you seem to see pregnant women and strollers on every street and wonder whether there's a baby boom in your town.",
+        "spot": "When something suddenly seems to be everywhere, ask whether it has become more common or whether you just started noticing it.",
+        "fix": "Check a real count or trend before concluding that something has become more frequent."
+      },
+      {
+        "n": "Baader-Meinhof Phenomenon",
+        "alias": "Frequency illusion",
+        "d": "Another name for the frequency illusion: the experience of running into something again and again right after you first learn about it. The odd name comes from a newspaper reader who heard of the Baader-Meinhof Group, a West German militant group, twice in one day.",
+        "ex": "The day after learning the word 'ubiquitous' at school, a student hears it on a podcast and sees it in a magazine and feels it is following them.",
+        "q": "The day after a friend introduces you to an obscure band, you hear one of their songs in a shop and see their name on a poster, and it feels like more than coincidence.",
+        "spot": "Watch for the eerie feeling that a newly learned word, name, or idea is following you around.",
+        "fix": "Remind yourself the thing was probably there all along, and track how often it shows up over a few weeks before reading meaning into it."
+      },
+      {
+        "n": "Empathy gap",
+        "alias": "Hot-cold empathy gap",
+        "d": "The tendency to underestimate how much strong states like hunger, tiredness, anger, pain, or desire affect behavior. When we are calm we misjudge how we, or others, will act when those feelings run high, and the same happens in reverse.",
+        "ex": "A manager who has never worked an exhausting night shift judges a nurse's late-night mistake as pure carelessness.",
+        "q": "Well rested on a Sunday afternoon, you sign up for 6 a.m. workout classes every day of the week, certain that getting up early will be no problem.",
+        "spot": "Ask yourself whether you are planning or judging from a calm state about a situation that will involve hunger, fatigue, stress, or temptation.",
+        "fix": "Make plans that assume your future self will be tired or tempted, such as not keeping snacks at home or setting a realistic wake-up time."
+      },
+      {
+        "n": "Omission bias",
+        "d": "The tendency to judge harmful actions as worse than equally harmful failures to act. Harm that follows from doing nothing feels less like our fault, even when the outcome is the same or worse.",
+        "ex": "Some parents skip a vaccine for their child because a rare side effect would feel like their doing, even when the disease itself poses the greater risk.",
+        "q": "You'd feel awful if you urged a friend to leave their job and it went badly, yet you feel fine saying nothing while they stay in a job that is clearly wearing them down.",
+        "spot": "Ask yourself whether doing nothing is actually safer here, or whether it just feels less blameworthy.",
+        "fix": "Write out the likely outcomes of acting and of not acting side by side, and judge them by results alone."
+      },
+      {
+        "n": "Base rate fallacy",
+        "alias": "Base rate neglect",
+        "d": "The error of ignoring how common something is in general and focusing on specific details about a single case. It is a reasoning fallacy that leads us to overrate vivid details and underrate plain statistics.",
+        "ex": "A person who tests positive on a fairly accurate test for a very rare disease assumes they almost certainly have it, overlooking that when a disease is very rare, a large share of positive results can be false alarms.",
+        "q": "Told only that a stranger is quiet, bookish, and loves poetry, you bet he's a classics professor instead of a salesman, though salesmen vastly outnumber classics professors.",
+        "spot": "Ask yourself how common this outcome or type of person is overall before weighing the details of this one case.",
+        "fix": "Start every estimate from the general rate, then adjust it up or down based on the specific evidence."
+      }
+    ]
+  },
+  {
+    "id": "bizarre",
+    "title": "Bizarre, funny, visually-striking, or anthropomorphic things stick out more than non-bizarre/unfunny things",
+    "why": "Unusual, funny, emotional, or personal things often signal something that matters, such as a threat, an opportunity, or information about ourselves. Giving them extra attention and a stronger place in memory helps us learn fast from rare or important events.",
+    "cost": "Ordinary but important information fades, while vivid but minor details take up space in memory. We can end up judging by what is striking when we should be judging by what is typical.",
+    "spot": [
+      "When you retell an event, most of your story is about the strange, embarrassing, or dramatic parts.",
+      "A single vivid story is outweighing a pile of plain facts in your decision.",
+      "You feel strongly about something mainly because it was shocking, painful, or about you."
+    ],
+    "fix": [
+      "After a meeting or trip, write down the three most important points before the most memorable ones.",
+      "Ask for the plain summary, such as totals, averages, or trends, before reacting to a striking example.",
+      "When sharing important information, make the key point vivid with a story, image, or personal link so trivia doesn't drown it out."
+    ],
+    "biases": [
+      {
+        "n": "Bizarreness effect",
+        "d": "The tendency to remember strange or absurd material better than ordinary material. The effect is strongest when odd items are mixed in among normal ones.",
+        "ex": "People who train their memory often picture weird scenes, like a giant lobster driving a bus, because ordinary images slip away much faster.",
+        "q": "Days after reading a news roundup, the only item you can recall is the man who tried to pay a parking fine entirely in jelly beans.",
+        "spot": "Ask yourself whether an odd detail is crowding out the ordinary facts you actually need.",
+        "fix": "Use it on purpose: to remember a name or a list, link each item to an absurd mental image."
+      },
+      {
+        "n": "Humor effect",
+        "d": "The tendency to remember funny material better than material that isn't funny. Humor grabs attention and makes us process the information more, so it sticks.",
+        "ex": "People recall the punchline of a clever commercial for years, even when they have forgotten which product it was selling.",
+        "q": "Months after a history lecture, the only fact you still remember is the one the teacher explained with a pun that made the whole class laugh.",
+        "spot": "Ask yourself whether you are giving an idea extra weight just because it was presented in an entertaining way.",
+        "fix": "Use it on purpose: add a light, relevant joke or silly example to material you want yourself or others to remember."
+      },
+      {
+        "n": "Von Restorff effect",
+        "alias": "Isolation effect",
+        "d": "The tendency to remember the one item that stands out from a group of similar items. Something that differs in color, size, shape, or type is noticed and recalled better than the rest.",
+        "ex": "On a page of notes all written in black, the one line highlighted in yellow is the line a student remembers.",
+        "q": "After interviewing ten job candidates who all wore dark suits, the panel can only describe the one who showed up in a bright green jacket.",
+        "spot": "Notice when the item you recall from a list or lineup is simply the one that looked different from the others.",
+        "fix": "Use it on purpose: make the one key point in a document or slide visually different, and keep everything else plain."
+      },
+      {
+        "n": "Picture superiority effect",
+        "d": "The tendency to remember pictures better than words. One explanation is that an image gets stored both as a picture and as a label, which gives memory two ways to find it.",
+        "ex": "Shoppers remember a brand's logo long after they have forgotten its slogan.",
+        "q": "A week after reading a safety leaflet, you've forgotten all its written tips but can still see in your mind the drawing of a person lifting a box with bent knees.",
+        "spot": "Ask yourself whether you are recalling the facts that mattered or just the ones that came with a strong image.",
+        "fix": "Use it on purpose: sketch a simple drawing or diagram of whatever you want to remember."
+      },
+      {
+        "n": "Self-relevance effect",
+        "alias": "Self-reference effect",
+        "d": "The tendency to remember information better when it relates to ourselves. Linking a fact to our own life gives it more meaning and more hooks in memory.",
+        "ex": "A reader forgets most of a news story about new tax rules but remembers the one line about people in their age group.",
+        "q": "At a noisy party you can't recall most of the chatter, yet you remember word for word what a stranger said about the small town where you grew up.",
+        "spot": "Notice when information feels more important simply because it touches your own life, job, or hometown.",
+        "fix": "Use it on purpose: when learning something new, ask yourself how it connects to your own experience."
+      },
+      {
+        "n": "Negativity bias",
+        "d": "The tendency for bad things, such as criticism, losses, or danger, to affect us more than good things of equal size. Unpleasant events grab more attention and linger longer in memory.",
+        "ex": "An employee gets a review with ten compliments and one criticism and spends the whole evening thinking about the criticism.",
+        "q": "After a lovely weekend trip, the story you keep telling everyone is about the rude hotel clerk at check-in.",
+        "spot": "Ask yourself whether one bad moment is shaping your view of a whole day, person, or project.",
+        "fix": "When judging something, list the good points and the bad points on paper and look at both before deciding."
+      }
+    ]
+  },
+  {
+    "id": "change",
+    "title": "We notice when something has changed",
+    "why": "Our senses and judgment work by comparison. Noticing differences from a starting point, or from what came just before, is faster and cheaper than measuring things in absolute terms, and changes are often what signal danger or opportunity.",
+    "cost": "The starting point or the comparison can be arbitrary, so the same thing gets judged very differently depending on what we saw first or how it was presented.",
+    "spot": [
+      "You feel a deal is great or terrible, but you couldn't say what it is worth without the comparison in front of you.",
+      "Your opinion shifts when the same facts are described in different words or shown next to different options.",
+      "One eye-catching difference is doing all the work in your decision."
+    ],
+    "fix": [
+      "Sleep on big decisions and look again the next day, when the first number or the last option you saw has lost its pull.",
+      "Translate choices into a common, concrete unit, such as cost per use, to see their real size.",
+      "Ask someone who wasn't there for the pitch or the first offer to look at the choice fresh."
+    ],
+    "biases": [
+      {
+        "n": "Anchoring",
+        "alias": "Anchoring bias",
+        "d": "The tendency to rely too heavily on the first number or piece of information we see when making a judgment. Later estimates stay too close to that starting point, even when it is arbitrary.",
+        "ex": "A house listed at a high price makes offers far above its true value seem reasonable to buyers.",
+        "q": "In a salary negotiation the employer opens with a low figure, and although your research pointed much higher, your counteroffer ends up only a little above theirs.",
+        "spot": "Ask yourself where the first number in this discussion came from and whether it deserves to be your starting point.",
+        "fix": "Set your own estimate or price limit before you hear anyone else's number."
+      },
+      {
+        "n": "Conservatism",
+        "alias": "Conservatism bias",
+        "d": "The tendency to revise our beliefs too little when we get new evidence. We favor our earlier view and adjust it only slightly, even when the new information should change it a lot. The term has nothing to do with politics.",
+        "ex": "An investor who thought a company was strong reads several bad earnings reports but only slightly lowers their forecast.",
+        "q": "After several references describe serious problems with a job candidate you liked at first, you lower your rating of them by just one notch.",
+        "spot": "Ask yourself how much your view actually moved after the last surprising piece of evidence, and whether that matches how strong the evidence was.",
+        "fix": "Before new data arrives, decide how much a given result would change your mind, then follow through when it comes."
+      },
+      {
+        "n": "Contrast effect",
+        "d": "The tendency to judge something as better or worse than it is because we just compared it to something very different. The comparison shifts our sense of size, price, quality, or appeal.",
+        "ex": "After looking at a $500 coat, a $120 sweater in the same store seems cheap.",
+        "q": "After touring a cramped, dark apartment, the next ordinary one you see feels spacious and bright, and you sign the lease on the spot.",
+        "spot": "Ask yourself what you saw just before this, and whether it is making this option look better or worse than it is.",
+        "fix": "Rate each option against a fixed standard you set in advance, such as your budget or a checklist, before comparing them to each other."
+      },
+      {
+        "n": "Distinction bias",
+        "d": "The tendency to see two options as more different when we look at them side by side than when we experience them one at a time. Small differences that seem huge in comparison often don't matter in daily life.",
+        "ex": "In a store with TVs lined up next to each other, a shopper pays much more for a slightly sharper picture they would never notice at home.",
+        "q": "You agonize between two job offers because one has a commute five minutes shorter, a gap you would never notice once you actually worked there.",
+        "spot": "Ask yourself whether you would notice this difference if you only ever had one of the options.",
+        "fix": "Picture living with each option on its own for a month, and judge it by how satisfied you would be."
+      },
+      {
+        "n": "Focusing effect",
+        "alias": "Focusing illusion",
+        "d": "The tendency to give too much weight to one feature of an event or choice when predicting how it will turn out or how happy it will make us. Everything else that matters fades from view.",
+        "ex": "People picture moving somewhere sunnier as life-changing, thinking about the weather and forgetting that their job, commute, and relationships will stay much the same.",
+        "q": "You're sure that getting a dog will make you far happier, imagining the cuddles and giving no thought to early walks in the rain, vet bills, or chewed shoes.",
+        "spot": "Ask yourself which single feature is driving your excitement or dread, and what else about daily life will stay the same.",
+        "fix": "List every part of an ordinary day that the decision will touch, and estimate how each one will change."
+      },
+      {
+        "n": "Framing effect",
+        "d": "The tendency to make different choices based on how the same information is presented, for example as a gain or as a loss. The facts stay the same, only the wording changes.",
+        "ex": "Shoppers prefer beef labeled '80% lean' over beef labeled '20% fat', though the two are identical.",
+        "q": "A surgeon says nine out of ten patients survive an operation and you agree to it; a second doctor says one in ten die from it, and you hesitate.",
+        "spot": "Ask yourself how you would feel if the same facts were described the opposite way.",
+        "fix": "Rewrite the key fact both ways, such as success rate and failure rate, before you decide."
+      },
+      {
+        "n": "Money illusion",
+        "d": "The tendency to think about money in terms of the number on it while forgetting what it can actually buy. We overlook inflation and feel richer when we get more dollars, even if prices have risen faster.",
+        "ex": "A worker is pleased with a 2% raise in a year when prices rose 4%, though they can now afford less than before.",
+        "q": "You're delighted to sell your house for twice what you paid thirty years ago, without considering how much everything else has gone up in price since then.",
+        "spot": "Ask yourself what this amount of money will actually buy compared to what the old amount bought.",
+        "fix": "Adjust past and future sums for inflation, for example with an online inflation calculator, before comparing them."
+      },
+      {
+        "n": "Weber-Fechner law",
+        "d": "A law of perception stating that we notice changes in proportion to the starting amount. A small change stands out against a small amount but disappears against a large one, and this shapes how we judge money and numbers too.",
+        "ex": "In a quiet library you notice a whisper, but in a loud restaurant someone has to raise their voice a lot before you notice any change.",
+        "q": "You would drive ten minutes to save $15 on a $30 pair of headphones, but not to save the same $15 on a $900 sofa.",
+        "spot": "Ask yourself whether you are reacting to the actual size of a change or only to its size compared to the total.",
+        "fix": "When money is involved, look at the savings or cost as a plain amount and ask whether that sum would matter to you on its own."
+      }
+    ]
+  },
+  {
+    "id": "confirm",
+    "title": "We are drawn to details that confirm our own existing beliefs",
+    "why": "Holding steady beliefs lets us act without rethinking everything each time. Favoring information that fits what we already know is fast, protects our sense of being right, and keeps our picture of the world stable and coherent.",
+    "cost": "We collect support for what we already think and filter out warnings, so mistakes last longer and new evidence has a hard time getting through.",
+    "spot": [
+      "You feel relief when you find an article that agrees with you and irritation when you find one that does not.",
+      "You can list many reasons your view is right but struggle to state the best case against it.",
+      "Arguments on your side sound strong and clear to you, while the other side's sound weak and confusing."
+    ],
+    "fix": [
+      "Before deciding, write down what evidence would change your mind, then go look for it.",
+      "Ask someone who disagrees with you to explain their strongest argument, and restate it until they agree you got it right.",
+      "Write your predictions down with a date and check them later, so your real track record keeps your confidence honest."
+    ],
+    "biases": [
+      {
+        "n": "Confirmation bias",
+        "d": "The tendency to search for, interpret, and remember information in a way that supports what we already believe. Evidence against our view gets ignored, explained away, or forgotten.",
+        "ex": "Someone convinced a diet works remembers the success stories and skims past the reviews saying it didn't help.",
+        "q": "Sure your new coworker is lazy, you take note of every long coffee break they take and never register the evenings they stay late.",
+        "spot": "Ask yourself when you last looked for, or took seriously, evidence that you might be wrong about this.",
+        "fix": "Search on purpose for the strongest evidence against your view, and give it the same attention you give evidence for it."
+      },
+      {
+        "n": "Congruence bias",
+        "d": "The tendency to test an idea only by checking whether its predicted result happens, without testing other explanations that could produce the same result. It is a close cousin of confirmation bias that shows up in how we test things.",
+        "ex": "A manager thinks a sales dip was caused by a weak ad, so she keeps trying new ads and never checks whether a recent price increase is to blame.",
+        "q": "Believing your houseplant is drooping from thirst, you water it more and more to see if it perks up, and never try moving it out of the hot, sunny window.",
+        "spot": "Ask yourself which other explanations could produce the same result, and whether your test could tell them apart.",
+        "fix": "For every idea you test, name at least one rival explanation and design a check that could rule it in or out."
+      },
+      {
+        "n": "Post-purchase rationalization",
+        "alias": "Buyer's Stockholm syndrome",
+        "d": "The tendency to convince ourselves that something we bought was worth the money, especially when it was expensive or flawed. We play up its good points and brush off its faults to avoid feeling we made a mistake.",
+        "ex": "After buying a pricey new phone, a shopper tells friends the camera alone makes it worth it and avoids reading reviews that criticize it.",
+        "q": "You paid a lot for a timeshare you rarely use, and when a friend asks about it, you insist the peace of mind of owning a vacation spot is worth every cent.",
+        "spot": "Notice when you feel defensive about a purchase and start listing its virtues to others without being asked.",
+        "fix": "Judge a purchase by asking whether you would buy it again today at the same price, knowing what you know now."
+      },
+      {
+        "n": "Choice-supportive bias",
+        "d": "The tendency to remember our past choices as better than they were. We recall more good things about the option we picked and more bad things about the ones we turned down.",
+        "ex": "Years after choosing one college over another, a graduate remembers her school's strengths vividly and recalls mostly the drawbacks of the one she rejected.",
+        "q": "Explaining why you chose your current car over another model, you describe the other one as cramped and noisy, though your notes from the test drives say it felt roomy and quiet.",
+        "spot": "Ask yourself whether your memory of the options you rejected has become harsher over time.",
+        "fix": "Write down the pros and cons of each option when you decide, and reread them before judging how well the choice worked out."
+      },
+      {
+        "n": "Selective perception",
+        "d": "The tendency for our expectations and beliefs to shape what we actually see and hear. We notice what fits our view and filter out what doesn't, often without realizing it.",
+        "ex": "Fans of two rival teams watch the same game and each see far more fouls committed by the other side.",
+        "q": "You and a friend who support opposite candidates watch the same debate, and each of you comes away certain your candidate clearly won.",
+        "spot": "Ask yourself whether someone with the opposite view, watching the same thing, would describe it the way you do.",
+        "fix": "Before discussing an event you both witnessed, have each person write down only what literally happened, then compare notes."
+      },
+      {
+        "n": "Observer-expectancy effect",
+        "d": "When a researcher or observer expects a certain result, they can unknowingly give off cues, like tone, pauses, or facial expressions, that push the people or animals being studied toward that result. The study then seems to show what the observer hoped for.",
+        "ex": "A horse known as Clever Hans seemed to solve math problems by tapping his hoof, but he was actually reacting to tiny, unintended cues from the people asking the questions.",
+        "q": "Interviewing customers about a new snack, you nod and smile whenever they mention the flavor you invented, and they end up praising it more and more.",
+        "spot": "Ask yourself whether the people you are testing or interviewing could tell what answer you are hoping for.",
+        "fix": "Use a fixed script and, where possible, have someone who doesn't know the expected result run the test."
+      },
+      {
+        "n": "Experimenter's bias",
+        "alias": "Experimenter bias",
+        "d": "The tendency for researchers to let their expectations shape how they design a study, collect data, and interpret or report results. It overlaps with the observer-expectancy effect, and it also covers the researcher's own private decisions, such as which data to keep and when to stop.",
+        "ex": "A researcher who expects a new drug to work labels some disappointing results as 'measurement errors' and leaves them out.",
+        "q": "Running an online test of two sign-up pages, you stop the test the moment your favorite pulls ahead, though you'd have let it run longer if it had been behind.",
+        "spot": "Ask yourself whether you would have made the same call about the data if it had pointed the other way.",
+        "fix": "Write down your method, your stopping point, and your rules for excluding data before you see any results."
+      },
+      {
+        "n": "Observer effect",
+        "d": "The fact that observing something can change it. In everyday life, people often act differently when they know they are being watched, so what we observe may not reflect normal behavior. It is a measurement problem more than a bias, and it misleads us when we forget to account for it; a closely related idea is the Hawthorne effect.",
+        "ex": "Nurses wash their hands more often while an inspector is on the ward, so the audit shows better hygiene than on a normal day.",
+        "q": "The week new security cameras go up in the office, everyone arrives on time, and the manager concludes the team has always been punctual.",
+        "spot": "Ask yourself whether the people or system you are measuring know they are being measured.",
+        "fix": "Collect data over longer periods or in less noticeable ways, so people settle back into their usual habits."
+      },
+      {
+        "n": "Expectation bias",
+        "d": "The tendency to see, hear, or measure what we expect and to doubt information that doesn't match. It is closely related to experimenter's bias, and it affects anyone who goes into a situation expecting a certain outcome.",
+        "ex": "A pilot who expects to be cleared for takeoff hears the tower's instruction to hold as a clearance.",
+        "q": "A mechanic expects a car's rattle to come from the brakes, so on the test drive he hears it at every stop and replaces the pads, though the real problem is a loose heat shield.",
+        "spot": "Ask yourself whether you actually heard, read, or measured this, or filled it in from what you expected.",
+        "fix": "Repeat back or double-check key information, especially when it matches exactly what you were expecting."
+      },
+      {
+        "n": "Ostrich effect",
+        "d": "The tendency to avoid information we fear will be bad. It is named after the myth that ostriches bury their heads in the sand, and avoiding the news feels better in the moment while letting problems grow.",
+        "ex": "When the stock market drops, some investors stop logging in to check their retirement accounts.",
+        "q": "The check-engine light has been on for weeks, and you've put a piece of tape over it so you don't have to think about the repair bill.",
+        "spot": "Notice any bill, email, test result, or number you keep putting off opening.",
+        "fix": "Schedule a regular, short time to check the things you tend to avoid, such as finances or health, and stick to it."
+      },
+      {
+        "n": "Subjective validation",
+        "alias": "Personal validation effect",
+        "d": "The tendency to accept a statement as true or accurate because it feels personally meaningful to us. It is closely linked to the Barnum effect, where vague descriptions seem tailor-made for us.",
+        "ex": "A horoscope says 'you are sometimes unsure about a big decision,' and the reader feels it describes their week perfectly.",
+        "q": "A fortune cookie says a big change is coming, and since you're about to move cities, you take it as a real sign that the move is right.",
+        "spot": "Ask yourself whether this statement would fit almost anyone, and whether it feels true only because you connected it to your own life.",
+        "fix": "Test a vague claim by asking a few friends whether it fits them too."
+      },
+      {
+        "n": "Continued influence effect",
+        "d": "The tendency for false information to keep shaping our thinking even after it has been corrected. We may remember the correction, yet the original story still guides our judgments.",
+        "ex": "A job candidate is wrongly described as having been fired from their last role; even after the team is told it was a mix-up, they still rate the candidate lower.",
+        "q": "A rumor says a local cafe failed a hygiene inspection; the paper prints a retraction, but weeks later you still steer friends to a different cafe without quite knowing why.",
+        "spot": "Ask yourself whether any part of your opinion rests on a claim you later learned was false.",
+        "fix": "When correcting a false claim, replace it with a clear, true explanation so the gap in the story doesn't get filled by the old version."
+      },
+      {
+        "n": "Semmelweis reflex",
+        "d": "The reflex-like rejection of new evidence because it contradicts established beliefs or practices. It is named after Ignaz Semmelweis, a doctor in the 1800s whose finding that handwashing saved the lives of new mothers was dismissed by his colleagues.",
+        "ex": "Many doctors at first resisted evidence that most stomach ulcers are caused by bacteria, because stress and spicy food were the accepted explanations.",
+        "q": "A new analyst shows data proving the team's trusted sales forecast has been off for years, and senior managers wave it away at once because 'this method has always worked.'",
+        "spot": "Notice when your first reaction to new evidence is to dismiss it because it clashes with how things have always been done.",
+        "fix": "When evidence challenges a standard practice, run a small, fair trial before accepting or rejecting it."
+      }
+    ]
+  },
+  {
+    "id": "flaws",
+    "title": "We notice flaws in others more easily than we notice flaws in ourselves",
+    "why": "We see our own intentions, reasons, and circumstances from the inside, while we only see other people's actions from the outside. Trusting our own view helps us act with confidence and stay alert to people who might take advantage of us.",
+    "cost": "We become quick to spot bias and bad motives in others and slow to see them in ourselves, which fuels conflict and blocks learning.",
+    "spot": [
+      "You feel a flash of 'they only say that because...' when someone disagrees with you.",
+      "You explain your own mistakes by circumstances but explain other people's by their character or motives.",
+      "You feel that learning about biases mainly helps you understand other people."
+    ],
+    "fix": [
+      "When you catch a bias in someone else, ask how the same pressure might be affecting you.",
+      "Describe the other person's position in a way they would call fair before you argue against it.",
+      "In a disagreement, name one point where the other side could be right before making your case."
+    ],
+    "biases": [
+      {
+        "n": "Bias blind spot",
+        "d": "The tendency to see the effect of biases on other people's judgment while seeing ourselves as less biased than average. Learning about biases does not reliably remove it.",
+        "ex": "After a hiring decision, a manager believes her colleagues were swayed by the candidate's charm, while she judged only on skills.",
+        "q": "After reading about how ads manipulate shoppers, you agree completely, confident it happens to other people while your own purchases are purely rational.",
+        "spot": "Notice when you feel sure that others are biased on an issue while you see it clearly.",
+        "fix": "Ask a colleague to review your reasoning on an important decision and point out where your own interests might have steered it."
+      },
+      {
+        "n": "Naive cynicism",
+        "d": "The tendency to expect other people to be more selfish and biased than they really are, while seeing ourselves as fair. We read self-interest into others' actions even when there are other explanations.",
+        "ex": "In a group project, a student assumes teammates will exaggerate their share of the work, while believing his own tally is accurate.",
+        "q": "When your roommate offers to cook dinner for you, your first thought is that they must want a favor in return.",
+        "spot": "Ask yourself whether you are assuming a selfish motive without any evidence for it.",
+        "fix": "Before assuming the worst about someone's motives, list at least two generous or neutral explanations for what they did."
+      },
+      {
+        "n": "Naive realism",
+        "d": "The belief that we see the world objectively, as it really is, so people who disagree with us must be uninformed, irrational, or biased. We forget that our own view is also shaped by our experience and values.",
+        "ex": "In a political argument, a person assumes the other side just hasn't seen the facts, because the facts seem obvious to them.",
+        "q": "Your neighbor opposes the new park plan, and you conclude they simply haven't read about it, since anyone who had would surely agree with you.",
+        "spot": "Notice when you assume that anyone who had your information would reach your conclusion.",
+        "fix": "Ask the other person to explain how they see the issue and what experiences shape their view, before you explain yours."
+      }
+    ]
+  }
+]

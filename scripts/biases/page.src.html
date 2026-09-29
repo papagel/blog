@@ -1,0 +1,1360 @@
+<title>Cognitive Bias Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#f3f5f2; --surface:#ffffff; --surface-2:#e9ece7;
+  --ink:#191c21; --muted:#59606a; --faint:#8a9098; --rule:#d7dbd5;
+  --tmi:#16827d; --nem:#2f5fb3; --fast:#5a8a17; --mem:#7f766a;
+  --good:#1f7a3f; --bad:#b3372c;
+  --shadow:0 18px 50px -18px rgba(20,28,36,.35);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --serif:"Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+    --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+    --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+    --good:#5fcf86; --bad:#ff8a7a;
+    --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101317; --surface:#171b20; --surface-2:#20262d;
+  --ink:#e8ebe6; --muted:#a2a9b1; --faint:#737b84; --rule:#2a3139;
+  --tmi:#4cc3bb; --nem:#86a9f0; --fast:#a2d05a; --mem:#b9af9f;
+  --good:#5fcf86; --bad:#ff8a7a;
+  --shadow:0 18px 50px -12px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--serif);margin:0;padding-inline:clamp(16px,4vw,48px);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin-inline:auto}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--nem);outline-offset:3px;border-radius:4px}
+.label{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.q-tmi{--q:var(--tmi)} .q-nem{--q:var(--nem)} .q-fast{--q:var(--fast)} .q-mem{--q:var(--mem)}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;flex-wrap:wrap}
+.brand{font:700 17px/1 var(--display);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:22px;height:22px;border-radius:50%;background:conic-gradient(var(--tmi) 0 22%,var(--nem) 0 55%,var(--fast) 0 84%,var(--mem) 0)}
+.top nav{display:flex;gap:4px;flex-wrap:wrap}
+.top nav a{font:500 13px/1 var(--mono);text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:999px}
+.top nav a:hover{color:var(--ink);background:var(--surface-2)}
+.home-link{font:500 13px/1 var(--mono);text-decoration:none;color:var(--muted);padding:8px 12px;border:1px solid var(--rule);border-radius:999px;margin-left:auto}
+.home-link:hover{color:var(--ink);border-color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;padding-block:clamp(16px,4vw,40px) 8px}
+.hero h1{font-size:clamp(40px,6.4vw,78px);font-weight:760;letter-spacing:-.03em;font-variation-settings:"opsz" 96}
+.hero h1 em{font-style:normal;color:var(--muted);font-weight:500}
+.hero-side{display:flex;flex-direction:column;gap:18px;padding-bottom:8px}
+.lede{font-size:19px;color:var(--ink);max-width:36ch}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);padding:10px 16px;border-radius:999px;cursor:pointer;font:500 14px/1 var(--mono);text-decoration:none;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.btn.primary:hover{opacity:.88}
+.stats{display:flex;gap:22px;flex-wrap:wrap}
+.stats div{display:flex;flex-direction:column}
+.stats b{font:700 28px/1 var(--display);font-variant-numeric:tabular-nums}
+.stats span{font:12px/1.4 var(--mono);color:var(--muted);letter-spacing:.04em}
+
+/* wheel */
+.map{position:relative;margin-block:8px 24px}
+.map-hint{text-align:center;font:13px/1.4 var(--mono);color:var(--muted);margin-top:4px}
+.wheel{display:block;width:100%;max-width:1060px;height:auto;margin-inline:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.wheel .fan{fill:none;stroke:var(--q);stroke-width:1;opacity:.28;transition:opacity .15s}
+.wheel .dot{fill:var(--q)}
+.wheel .lt{font-family:var(--mono);fill:var(--q);dominant-baseline:central;cursor:pointer}
+.wheel .leaf{cursor:pointer}
+.wheel .leaf .hit{fill:transparent;stroke:none}
+.wheel .leaf:hover .lt,.wheel .leaf.on .lt{font-weight:600;fill:var(--ink)}
+.wheel .leaf.on .dot{fill:var(--ink)}
+.wheel .fan.hot{opacity:1;stroke-width:1.8}
+.wheel .hub{fill:var(--surface);stroke:var(--rule)}
+.wheel .hub-num{font:750 64px/1 var(--display);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.wheel .hub-sub{font:500 14px/1 var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.1em}
+.wheel .ring{fill:none;stroke:var(--rule);stroke-width:1.2}
+.wheel .gnode{cursor:pointer}
+.wheel .gnode circle{fill:var(--surface);stroke:var(--q);stroke-width:2.5;transition:r .15s}
+.wheel .gnode:hover circle,.wheel .gnode:focus-visible circle,.wheel .gnode.on circle{fill:var(--q)}
+.wheel .gnode text{font:600 15px/1.2 var(--display);fill:var(--q);transition:opacity .15s}
+.wheel .gnode:focus{outline:none}
+.wheel .gnode:focus-visible text{text-decoration:underline}
+.wheel .qname{font:760 30px/1 var(--display);fill:var(--q);cursor:pointer;letter-spacing:-.01em}
+.wheel .qname:hover{text-decoration:underline}
+.wheel[data-focus] .leaf,.wheel[data-focus] .fan,.wheel[data-focus] .gnode{opacity:.13;transition:opacity .2s}
+.wheel[data-focus="tmi"] .q-tmi,.wheel[data-focus="nem"] .q-nem,.wheel[data-focus="fast"] .q-fast,.wheel[data-focus="mem"] .q-mem{opacity:1}
+.wheel[data-focus="tmi"] .fan.q-tmi,.wheel[data-focus="nem"] .fan.q-nem,.wheel[data-focus="fast"] .fan.q-fast,.wheel[data-focus="mem"] .fan.q-mem{opacity:.45}
+@media (max-width:700px){
+  .wheel .lt{display:none}
+  .wheel .gnode text{font-size:26px}
+  .wheel .qname{font-size:40px}
+  .wheel .dot{r:4}
+}
+
+/* sections */
+section.block{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule)}
+.block-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(16px,4vw,56px);align-items:end;margin-bottom:clamp(24px,4vw,40px)}
+.block-head h2{font-size:clamp(30px,4.2vw,50px);letter-spacing:-.02em}
+.block-head p{color:var(--muted);max-width:52ch}
+
+/* why */
+.problems{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.problem{background:var(--surface);border-radius:14px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--q)}
+.problem h3{font-size:24px;color:var(--q)}
+.problem dl{margin:0;display:flex;flex-direction:column;gap:12px}
+.problem dt{font:500 11px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.problem dd{margin:0;font-size:16px;line-height:1.5}
+.problem .keep{margin-top:auto;padding-top:14px;border-top:1px dashed var(--rule);font:600 17px/1.35 var(--display)}
+.problem .more{align-self:flex-start;background:none;border:0;padding:0;cursor:pointer;font:500 13px/1 var(--mono);color:var(--q);text-decoration:underline;text-underline-offset:3px}
+
+/* browse */
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:28px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--ground);padding-block:12px;z-index:5}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:0 16px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;border:0;background:transparent;font:16px/1 var(--serif);color:var(--ink);padding:12px 0;outline:none;min-width:0}
+.search svg{flex:none;color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:8px 12px;cursor:pointer;font:500 12.5px/1 var(--mono);display:inline-flex;align-items:center;gap:7px}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--q,var(--ink))}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.count{font:13px/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.qsec{margin-bottom:40px}
+.qsec>h3{font-size:28px;color:var(--q);margin-bottom:6px}
+.gsec{padding-block:18px;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:12px 32px}
+.gsec h4{font:600 17px/1.3 var(--display);letter-spacing:0}
+.gsec h4 button{all:unset;cursor:pointer;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
+.gsec h4 button:hover{text-decoration-color:var(--q)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 20px}
+.item{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:8px 10px;margin-inline:-10px;border-radius:8px}
+.item:hover{background:var(--surface)}
+.item:focus-visible{outline:2px solid var(--q);outline-offset:0}
+.item b{display:block;font:600 15px/1.3 var(--display);color:var(--ink)}
+.item b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--q);margin-right:8px;vertical-align:2px}
+.item span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;line-height:1.45;color:var(--muted)}
+.empty{color:var(--muted);font-style:italic;padding:24px 0}
+
+/* quiz */
+.quiz{background:var(--surface);border-radius:18px;padding:clamp(22px,4vw,44px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px)}
+.quiz-meta{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}
+.pips{display:flex;gap:5px}
+.pips i{width:18px;height:6px;border-radius:3px;background:var(--surface-2)}
+.pips i.ok{background:var(--good)} .pips i.no{background:var(--bad)} .pips i.now{background:var(--ink)}
+.scenario{font:italic 400 clamp(21px,2.4vw,27px)/1.4 var(--serif);text-wrap:pretty}
+.scenario-q{margin-top:18px;font:600 16px/1.3 var(--display);color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--rule);border-radius:12px;padding:14px 16px;font:600 17px/1.3 var(--display);display:flex;justify-content:space-between;gap:12px;align-items:center;transition:border-color .12s,background .12s}
+.opt:hover:not([disabled]){border-color:var(--ink)}
+.opt:focus-visible{outline:2px solid var(--nem);outline-offset:2px}
+.opt[disabled]{cursor:default}
+.opt small{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.opt.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.opt.right small{color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.opt.wrong small{color:var(--bad)}
+.feedback{margin-top:14px;padding:16px;border-radius:12px;background:var(--surface-2);display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.5}
+.feedback b{font-family:var(--display)}
+.feedback .row{display:flex;gap:10px;flex-wrap:wrap}
+.final{grid-column:1/-1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding-block:20px}
+.final .big{font:760 clamp(56px,9vw,96px)/1 var(--display);font-variant-numeric:tabular-nums}
+
+/* habits */
+.habits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.habit{padding-block:20px;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+.habit h3{font-size:21px}
+.habit p{color:var(--muted);font-size:16px}
+.habit .beats{font:12px/1.5 var(--mono);color:var(--faint)}
+
+footer{border-top:1px solid var(--rule);padding-block:22px 36px;display:flex;flex-direction:column;gap:10px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.foot-row{display:flex;gap:14px;align-items:flex-start}
+.cc{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:5px 7px;margin-top:1px;white-space:nowrap}
+.cc:hover{background:var(--ink);color:var(--ground)}
+footer cite{font-style:italic}
+footer details{padding-left:calc(14px + 7ch + 14px)}
+footer summary{cursor:pointer;font:500 12px/1.4 var(--mono);color:var(--faint);width:max-content}
+footer summary:hover{color:var(--ink)}
+footer details p{margin-top:8px;max-width:90ch}
+
+/* panel */
+.scrim{position:fixed;inset:0;background:rgba(10,14,18,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--surface);box-shadow:var(--shadow);z-index:50;transform:translateX(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;border-left:5px solid var(--q,var(--rule))}
+.panel.open{transform:none}
+.panel-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 12px 22px;border-bottom:1px solid var(--rule)}
+.panel-bar .nav{display:flex;gap:6px}
+.icon-btn{border:1px solid var(--rule);background:var(--surface);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.icon-btn:hover{border-color:var(--ink)}
+.panel-body{overflow-y:auto;padding:24px 26px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:22px;overscroll-behavior:contain}
+.crumb{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font:500 12px/1.4 var(--mono);color:var(--muted)}
+.crumb .qtag{color:var(--q);text-transform:uppercase;letter-spacing:.08em}
+.crumb button{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.panel h2{font-size:clamp(30px,4vw,38px);letter-spacing:-.02em}
+.alias{font:500 13px/1.3 var(--mono);color:var(--muted);margin-top:8px}
+.def{font-size:19px;line-height:1.5}
+.pblock{display:flex;flex-direction:column;gap:8px}
+.pblock h3{font:500 11.5px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--q)}
+.pblock p,.pblock li{font-size:16px;line-height:1.55}
+.pblock ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.example{border-left:3px solid var(--q);padding:4px 0 4px 14px;font-style:italic}
+.lead-tip{font-weight:600}
+.sibs{display:flex;flex-wrap:wrap;gap:6px}
+.sibs button{border:1px solid var(--rule);background:transparent;border-radius:999px;padding:6px 10px;font:500 12.5px/1.2 var(--mono);cursor:pointer}
+.sibs button:hover{border-color:var(--q);color:var(--q)}
+.sibs button.cur{background:var(--q);border-color:var(--q);color:var(--surface)}
+
+@media (max-width:980px){
+  .problems{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quiz{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .hero,.block-head{grid-template-columns:minmax(0,1fr)}
+  .foot-row{flex-direction:column;gap:8px}
+  footer details{padding-left:0}
+  .gsec{grid-template-columns:minmax(0,1fr)}
+  .habits{grid-template-columns:minmax(0,1fr)}
+  .panel{top:auto;height:88%;width:100%;border-left:0;border-top:5px solid var(--q,var(--rule));border-radius:18px 18px 0 0;transform:translateY(105%)}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .top nav{display:none}
+}
+@media (max-width:520px){
+  .problems{grid-template-columns:minmax(0,1fr)}
+  body{font-size:16px}
+}
+
+/* my map */
+.map-bar{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;max-width:1060px;margin-inline:auto}
+.map-bar .map-hint{text-align:left;margin:0}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--surface)}
+.seg button{all:unset;cursor:pointer;padding:7px 13px;border-radius:999px;font:500 13px/1 var(--mono)}
+.seg button:focus-visible{outline:2px solid var(--nem)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.seg span{font-variant-numeric:tabular-nums;opacity:.75;margin-left:5px}
+.wheel .leaf.caught .dot{r:5.2;stroke:var(--ground);stroke-width:1.6}
+.wheel .leaf.caught .lt{fill:var(--ink);font-weight:600}
+.wheel .fan.caught{opacity:.75}
+.wheel[data-mine] .leaf:not(.caught){opacity:.12}
+.wheel[data-mine] .fan{opacity:.06}
+.wheel[data-mine] .fan.caught{opacity:.9;stroke-width:1.6}
+.mine{max-width:1060px;margin:18px auto 0;background:var(--surface);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+.mine-empty{font-size:15.5px;color:var(--muted)}
+.mine-empty b{color:var(--ink);font-family:var(--display)}
+.mine-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.mine-head h3{font-size:24px}
+.mine-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 32px}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 56px;gap:12px;align-items:center;font-size:14px}
+.bar span{color:var(--q);font:600 14px/1.2 var(--display)}
+.bar-track{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.bar-track i{display:block;height:100%;background:var(--q);border-radius:4px;transition:width .4s}
+.bar b{font:500 13px/1 var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.topfam{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.topfam p:last-child{color:var(--muted)}
+.linkish{all:unset;cursor:pointer;font:600 17px/1.3 var(--display);color:var(--q);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.linkish:focus-visible{outline:2px solid var(--q)}
+.catch{border:1.5px solid var(--q,var(--ink));background:transparent;color:var(--q,var(--ink));border-radius:999px;padding:9px 14px;font:500 13px/1 var(--mono);cursor:pointer;white-space:nowrap}
+.catch:hover{background:color-mix(in srgb,var(--q,var(--ink)) 12%,transparent)}
+.catch[aria-pressed="true"]{background:var(--q,var(--ink));color:var(--surface)}
+.item.caught b::after{content:"on your map";font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--surface);background:var(--q);border-radius:999px;padding:3px 6px;margin-left:8px;vertical-align:2px}
+.sibs button.on{border-color:var(--q);color:var(--q)}
+
+/* lab */
+.lab{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:20px;align-items:start}
+.lab-list{display:flex;flex-direction:column;gap:4px;position:sticky;top:calc(12px + env(safe-area-inset-top,0px))}
+.xp-tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:12px;border:1px solid transparent}
+.xp-tile:hover{background:var(--surface)}
+.xp-tile:focus-visible{outline:2px solid var(--q)}
+.xp-tile[aria-current="true"]{background:var(--surface);border-color:var(--rule)}
+.xp-tile .dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--q);flex:none}
+.xp-tile.done .dot{background:var(--q)}
+.xp-tile b{display:block;font:600 16px/1.25 var(--display)}
+.xp-tile small{display:block;font:12px/1.35 var(--mono);color:var(--muted);margin-top:2px}
+.xp-tile.done small{color:var(--q)}
+.stage{background:var(--surface);border-radius:18px;padding:clamp(20px,3.5vw,40px);min-height:480px;display:flex;flex-direction:column;gap:18px;border-top:5px solid var(--q);scroll-margin-top:16px}
+.stage-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stage h3{font-size:clamp(26px,3vw,34px)}
+.prompt{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:60ch}
+.hint{font:13px/1.4 var(--mono);color:var(--bad)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.stage .opts{max-width:560px}
+.result{display:flex;flex-direction:column;gap:14px}
+.result p{max-width:64ch}
+.big-answer{font:760 clamp(44px,6vw,64px)/1 var(--display);color:var(--q);letter-spacing:-.02em}
+.big-answer.long{font-size:clamp(28px,3.4vw,38px);line-height:1.1}
+.verdict{font-weight:600;border-left:3px solid var(--q);padding-left:14px}
+.spin-num{font:760 clamp(96px,14vw,150px)/1 var(--display);font-variant-numeric:tabular-nums;color:var(--q);letter-spacing:-.04em}
+.spin-num.small{font-size:64px}
+.slide{display:flex;flex-direction:column;gap:6px;max-width:560px}
+.slide output{font:760 52px/1 var(--display);font-variant-numeric:tabular-nums;color:var(--q)}
+.slide input{width:100%;accent-color:var(--q);height:28px}
+.track{position:relative;height:118px;margin-inline:10px;max-width:620px}
+.track-line{position:absolute;left:0;right:0;top:13px;height:2px;background:var(--rule)}
+.mk{position:absolute;top:5px;width:0}
+.mk i{position:absolute;left:-9px;width:18px;height:18px;border-radius:50%;border:3px solid var(--surface)}
+.mk.you i{background:var(--ink)} .mk.anchor i{background:var(--q)} .mk.truth i{background:var(--good)}
+.mk span{position:absolute;top:calc(26px + var(--row)*24px);left:0;transform:translateX(-50%);white-space:nowrap;font:12px/1.2 var(--mono);color:var(--muted)}
+.mk.el span{transform:none;left:-9px} .mk.er span{transform:translateX(-100%);left:9px}
+.mk span b{color:var(--ink);font-weight:500}
+.track-ends{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;font:11px/1 var(--mono);color:var(--faint)}
+.venn{width:100%;max-width:380px;height:auto}
+.venn .big{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.5}
+.venn .small{fill:var(--q)}
+.venn text{font:600 13px/1 var(--display);fill:var(--ink);text-anchor:middle}
+.venn .in{fill:var(--surface)}
+.coins{display:flex;gap:8px;flex-wrap:wrap}
+.coin{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 18px/1 var(--display);border:2.5px solid var(--q);color:var(--q)}
+.coin.h{background:var(--q);color:var(--surface)}
+.coin.next{border-style:dashed;color:var(--muted);border-color:var(--muted)}
+.coin.flipping{animation:coinflip .35s linear infinite}
+@keyframes coinflip{to{transform:rotateY(360deg)}}
+.sim-out{font-size:16px}
+.seq{display:flex;flex-wrap:wrap;gap:5px}
+.seq i{width:17px;height:17px;border-radius:50%;border:2px solid var(--ink);flex:none}
+.seq i.h{background:var(--ink)}
+.seq i.run{box-shadow:0 0 0 3px color-mix(in srgb,var(--q) 55%,transparent)}
+.seq-opt{flex-direction:column;align-items:flex-start!important}
+.seq-legend{display:flex;gap:16px;font:12px/1 var(--mono);color:var(--muted);align-items:center;flex-wrap:wrap}
+.seq-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:6px}
+.seq-legend i.h{background:var(--ink)}
+.seq-row{display:flex;flex-direction:column;gap:8px}
+.triple{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.num,.text-in{font:600 22px/1 var(--display);padding:10px 12px;border:1.5px solid var(--rule);border-radius:10px;background:var(--ground);color:var(--ink);outline:none}
+.num{width:78px;text-align:center}
+.text-in{width:min(280px,100%);font-size:19px}
+.num:focus,.text-in:focus{border-color:var(--ink)}
+.hist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-width:420px}
+.hist li{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:10px;background:var(--ground);font:600 17px/1.2 var(--display);font-variant-numeric:tabular-nums}
+.hist li span{flex:1}
+.hist small{font:11px/1 var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.pill{font:500 11px/1 var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.06em;padding:5px 8px;border-radius:999px}
+.pill.yes{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.pill.no{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+.flash{font:760 clamp(52px,9vw,96px)/1 var(--display);text-align:center;padding-block:clamp(40px,8vw,90px);color:var(--q);letter-spacing:-.02em}
+.recall{display:flex;gap:8px;flex-wrap:wrap}
+.positions{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
+.pos{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 2px;border-radius:8px;background:var(--surface-2);min-width:0}
+.pos b{font:500 11px/1 var(--mono);color:var(--muted)}
+.pos span{font:600 12px/1.1 var(--display);writing-mode:vertical-rl;transform:rotate(180deg);height:64px;text-align:left}
+.pos.hit{background:var(--q)} .pos.hit b,.pos.hit span{color:var(--surface)}
+.people{display:grid;grid-template-columns:repeat(50,minmax(0,1fr));gap:2px;max-width:640px}
+.people i{aspect-ratio:1;border-radius:1px;background:var(--surface-2);transition:background .5s,transform .5s}
+.people.lit i.sick{background:var(--bad);transform:scale(1.6)}
+.people.lit i.fp{background:var(--q);transform:scale(1.35)}
+.legend{display:flex;gap:8px 18px;flex-wrap:wrap;font:12px/1.3 var(--mono);color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--surface-2);margin-right:6px;vertical-align:-1px}
+.legend i.sick{background:var(--bad)} .legend i.fp{background:var(--q)}
+.menu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:560px}
+.cup{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--rule);border-radius:14px;padding:16px 10px 14px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.cup:hover{border-color:var(--ink)}
+.cup:focus-visible{outline:2px solid var(--q);outline-offset:2px}
+.cup svg{width:64px;height:100px}
+.cup svg path{fill:var(--q)}
+.cup svg .band{fill:var(--surface);opacity:.55}
+.cup b{font:600 17px/1.2 var(--display)}
+.cup span{font:500 20px/1 var(--mono);font-variant-numeric:tabular-nums}
+.menus{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:16px}
+.mini{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px;font:500 15px/1.3 var(--mono);font-variant-numeric:tabular-nums}
+.mini li{padding:6px 10px;border-radius:8px;background:var(--ground)}
+.mini li.decoy{text-decoration:line-through;color:var(--muted)}
+.table-wrap{overflow-x:auto}
+.cmp{border-collapse:collapse;font-size:15px;min-width:520px}
+.cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+.cmp th{font:500 11px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.cmp td.picked{background:color-mix(in srgb,var(--q) 16%,transparent);font-weight:600}
+.cmp td:first-child{font-family:var(--display);font-weight:600}
+.xp-foot{border-top:1px dashed var(--rule);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.xp-bias{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--ground);border-radius:12px;padding:12px 14px}
+.xp-read{all:unset;cursor:pointer;flex:1 1 260px;min-width:0}
+.xp-read b{display:block;font:600 17px/1.3 var(--display);color:var(--q);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.xp-read span{display:block;font-size:14.5px;line-height:1.45;color:var(--muted)}
+.xp-read:focus-visible{outline:2px solid var(--q)}
+@media (max-width:760px){
+  .lab{grid-template-columns:minmax(0,1fr)}
+  .lab-list{flex-direction:row;overflow-x:auto;position:static;padding-bottom:6px;scrollbar-width:thin}
+  .xp-tile{flex:none;width:210px;background:var(--surface)}
+  .mine-grid{grid-template-columns:minmax(0,1fr)}
+  .bar{grid-template-columns:minmax(0,1fr) 56px}
+  .bar span{grid-column:1/-1}
+  .positions{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .people{gap:1px}
+  .stage{min-height:0}
+}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" id="top"><span class="brand-mark" aria-hidden="true"></span>Cognitive Bias Explorer</a><!--__HOME__-->
+    <nav aria-label="Sections">
+      <a href="#map">Map</a><a href="#lab">Experiments</a><a href="#why">Why they exist</a><a href="#browse">All biases</a><a href="#quiz">Quiz</a><a href="#habits">Habits</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="h1">
+    <h1 id="h1">Your brain takes shortcuts. <em>Here is the map.</em></h1>
+    <div class="hero-side">
+      <p class="lede">Every bias below is a shortcut that usually helps and sometimes misleads. Learn what each one is, why your mind uses it, how to catch it, and what to do instead.</p>
+      <div class="stats" aria-label="What the map holds">
+        <div><b>4</b><span>problems</span></div>
+        <div><b>20</b><span>strategies</span></div>
+        <div><b id="stat-n">188</b><span>biases</span></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="#lab">Try it on yourself</a>
+        <a class="btn" href="#quiz">Take the quiz</a>
+        <button class="btn" type="button" id="random-btn">Random bias</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="map" id="map">
+    <div class="map-bar">
+      <p class="map-hint" id="map-hint">Hover to magnify, then click any name. Click a coloured node for its whole family.</p>
+      <div class="seg" id="view-seg" role="group" aria-label="Wheel view"><button type="button" data-view="all" aria-pressed="true">All biases</button><button type="button" data-view="mine" aria-pressed="false">My map<span id="mine-n">0</span></button></div>
+    </div>
+    <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access."></svg>
+    <div class="mine" id="mine" aria-live="polite"></div>
+  </div>
+
+  <section class="block" id="lab" aria-labelledby="lab-h">
+    <div class="block-head">
+      <h2 id="lab-h">Feel it happen</h2>
+      <p>Reading about a bias is one thing. Watching one work on you is another. Ten quick experiments, most under a minute. Answer honestly before you see the reveal. <span id="lab-progress"></span></p>
+    </div>
+    <div class="lab">
+      <div class="lab-list" id="lab-list" aria-label="Experiments"></div>
+      <div class="stage" id="lab-stage"></div>
+    </div>
+  </section>
+
+  <section class="block" id="why" aria-labelledby="why-h">
+    <div class="block-head">
+      <h2 id="why-h">Why biases exist at all</h2>
+      <p>Your mind has four hard problems to solve every second, with limited time and attention. Each bias is a side effect of a strategy that solves one of them. Seeing the problem makes the biases easier to predict.</p>
+    </div>
+    <div class="problems" id="problems"></div>
+  </section>
+
+  <section class="block" id="browse" aria-labelledby="browse-h">
+    <div class="block-head">
+      <h2 id="browse-h">Every bias, by family</h2>
+      <p>Search by name or by what happens ("money", "memory", "group", "risk"). Open any entry for how to spot it and how to counter it.</p>
+    </div>
+    <div class="tools">
+      <label class="search" for="q-input">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q-input" type="search" placeholder="Search biases" autocomplete="off" aria-label="Search biases">
+      </label>
+      <div class="chips" id="filter-chips" role="group" aria-label="Filter by problem"></div>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="block" id="quiz" aria-labelledby="quiz-h">
+    <div class="block-head">
+      <h2 id="quiz-h">Spot the bias</h2>
+      <p>Knowing a definition is easy. Recognising a bias inside an ordinary moment is the real skill. Eight short scenarios, four choices each.</p>
+    </div>
+    <div class="quiz" id="quiz-box"></div>
+  </section>
+
+  <section class="block" id="habits" aria-labelledby="habits-h">
+    <div class="block-head">
+      <h2 id="habits-h">Habits that catch most of them</h2>
+      <p>You can't switch biases off, and you don't need to for small, everyday calls. For decisions that are expensive or hard to undo, a few checks cover a large share of the map.</p>
+    </div>
+    <div class="habits" id="habit-list"></div>
+  </section>
+
+  <footer id="credits">
+    <div class="foot-row">
+      <a class="cc" rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" aria-label="Creative Commons Attribution-ShareAlike 4.0">CC BY-SA 4.0</a>
+      <p>Adapted from <a href="https://commons.wikimedia.org/wiki/File:Cognitive_bias_codex_en.svg" target="_blank" rel="noopener"><cite>The Cognitive Bias Codex</cite></a> by John Manoogian III (design), Buster Benson (categories) and TilmannR (implementation), based on the <a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" rel="noopener">Wikipedia list of cognitive biases</a>. This page is shared under the same licence.<!--__BYLINE__--></p>
+    </div>
+    <details>
+      <summary>Changes and notes</summary>
+      <p>Changes made: the codex is redrawn as an interactive wheel with shortened category names on the map. The definitions, examples, tips, quiz and habits are new writing. You may share and adapt this page with credit, under CC BY-SA 4.0.</p>
+      <p>Not affiliated with or endorsed by the original authors. Explanations are simplified, some entries are alternate names for each other, and a few are memory effects or reasoning errors more than biases in the strict sense.</p>
+    </details>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" aria-hidden="true" aria-labelledby="p-title" tabindex="-1">
+  <div class="panel-bar">
+    <span class="label" id="p-pos"></span>
+    <div class="nav">
+      <button class="icon-btn" type="button" id="p-prev" aria-label="Previous bias"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="icon-btn" type="button" id="p-next" aria-label="Next bias"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button class="icon-btn" type="button" id="p-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+  </div>
+  <div class="panel-body" id="p-body"></div>
+</aside>
+
+<script>
+/*__DATA__*/
+
+const QUADS = [
+  { key:"tmi",  name:"Too Much Information", lines:["Too Much","Information"],
+    problem:"Far more reaches your senses than you could ever process.",
+    strategy:"Your brain filters hard. It keeps what is repeated, surprising, changed, or already believed, and drops the rest.",
+    cost:"You miss things, and you mistake what you happened to notice for what matters.",
+    keep:"What you noticed is only a sample." },
+  { key:"nem",  name:"Not Enough Meaning", lines:["Not Enough","Meaning"],
+    problem:"The world is only partly visible, and you still have to make sense of it.",
+    strategy:"Your brain fills the gaps with patterns, stereotypes, familiar cases, and guesses about what others think.",
+    cost:"You see stories in noise, and your guesses start to feel like facts.",
+    keep:"Part of your picture of the world is filled in." },
+  { key:"fast", name:"Need To Act Fast", lines:["Need To","Act Fast"],
+    problem:"You rarely have the time or information to be certain, and waiting has costs too.",
+    strategy:"Your brain boosts your confidence, favours what is near and simple, and sticks with what you already started.",
+    cost:"Quick, sure decisions that are hard to walk back.",
+    keep:"Feeling sure is a mood. It proves nothing." },
+  { key:"mem",  name:"What Should We Remember?", lines:["What Should","We Remember?"],
+    problem:"You can't store everything, so memory keeps what seems useful later.",
+    strategy:"Your brain saves generalities, peaks, and endings, and quietly edits details after the fact.",
+    cost:"Memories feel vivid and exact even after they have shifted.",
+    keep:"Each time you remember, you rebuild." }
+];
+const SHORT = {
+  primed:"Primed & repeated", bizarre:"Stands out", change:"Change", confirm:"Confirms beliefs", flaws:"Others' flaws",
+  patterns:"Stories & patterns", stereotypes:"Stereotypes", familiar:"Familiar is better", numbers:"Simpler numbers", minds:"Mind reading", project:"Projecting ourselves",
+  confident:"Confidence to act", immediate:"The here & now", invested:"Finishing what we started", autonomy:"Autonomy & status", simple:"Simple & complete",
+  edit:"Edited memories", generalize:"Generalities", reduce:"Key elements", store:"How it was stored"
+};
+const HABITS = [
+  ["Argue the other side", "Before you commit, write the strongest case against your view. If you can't, you don't know the question well enough yet.", "Confirmation bias, belief perseverance, naive realism"],
+  ["Start from the base rate", "Ask how things like this usually turn out before you look at what makes this case special.", "Base rate fallacy, planning fallacy, overconfidence"],
+  ["Run a pre-mortem", "Imagine it is a year from now and the plan failed. List the likeliest reasons, then fix what you can today.", "Optimism bias, escalation of commitment, illusion of control"],
+  ["Decide what would change your mind", "Set the evidence you would need before you go looking. Moving the bar afterwards is a warning sign.", "Backfire effect, Semmelweis reflex, subjective validation"],
+  ["Grade decisions by what you knew", "Good choices can end badly and bad ones can get lucky. Judge the reasoning with the information available at the time.", "Outcome bias, hindsight bias, moral luck"],
+  ["Write predictions down", "A dated note beats memory, which edits itself to match what happened.", "Hindsight bias, choice-supportive bias, rosy retrospection"],
+  ["Borrow other eyes", "Ask someone with different incentives or a different background to find the hole. Your own blind spot is invisible to you by definition.", "Bias blind spot, in-group bias, curse of knowledge"],
+  ["Put distance between you and the choice", "Sleep on it, or ask what you would tell a friend in the same spot. Strong emotion and time pressure make nearly every bias stronger.", "Empathy gap, loss aversion, hyperbolic discounting"]
+];
+
+/* ---------- flatten ---------- */
+const GROUPS = [], BIASES = [];
+const slugify = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[+]/g,"plus").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+DATA.forEach((groups, qi) => {
+  groups.forEach(g => {
+    const grp = { ...g, q: QUADS[qi], qi, items: [] };
+    GROUPS.push(grp);
+    g.biases.forEach(b => {
+      let slug = "b-" + slugify(b.n);
+      if (BIASES.some(x => x.slug === slug)) slug += "-" + g.id;
+      const bias = { ...b, scen: b.q, g: grp, q: QUADS[qi], slug, i: BIASES.length };
+      grp.items.push(bias); BIASES.push(bias);
+    });
+  });
+});
+const UNIQUE = new Set(BIASES.map(b => b.n)).size;
+document.getElementById("stat-n").textContent = UNIQUE;
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const CAUGHT_KEY = "cbe.caught.v1", LAB_KEY = "cbe.lab.v1";
+const caught = new Set(store.get(CAUGHT_KEY, []));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+/* ---------- wheel ---------- */
+const svg = document.getElementById("wheel");
+const NS = "http://www.w3.org/2000/svg";
+const R_HUB = 96, R_FAN = 190, R_LEAF = 286, R_TXT = 293, R_RING = 488, R_GLAB = 506;
+const GAP_G = 1.7, GAP_Q = 4.5;
+const mk = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const pol = (r, deg) => { const a = deg * Math.PI / 180; return [r * Math.sin(a), -r * Math.cos(a)]; };
+const f1 = n => Math.round(n * 10) / 10;
+
+// base angles, proportional to member count
+(function layout() {
+  const avail = 360 - GROUPS.length * GAP_G - QUADS.length * GAP_Q;
+  const step = avail / BIASES.length;
+  let a = GAP_Q / 2;
+  let lastQ = 0;
+  GROUPS.forEach(g => {
+    if (g.qi !== lastQ) { a += GAP_Q; lastQ = g.qi; }
+    a += GAP_G / 2;
+    g.a0 = a;
+    g.items.forEach(b => { b.base = a + step / 2; a += step; });
+    g.a1 = a;
+    g.mid = (g.a0 + g.a1) / 2;
+    a += GAP_G / 2;
+  });
+  QUADS.forEach((q, qi) => {
+    const gs = GROUPS.filter(g => g.qi === qi);
+    q.mid = (gs[0].a0 + gs[gs.length - 1].a1) / 2;
+  });
+})();
+
+const gFans = mk("g", {}, svg), gLeaves = mk("g", {}, svg), gRing = mk("g", {}, svg);
+mk("circle", { class:"ring", r:R_RING }, gRing);
+const hub = mk("g", {}, svg);
+mk("circle", { class:"hub", r:R_HUB - 8 }, hub);
+const hubNum = mk("text", { class:"hub-num", y:-8 }, hub); hubNum.textContent = new Set(BIASES.map(b => b.n)).size;
+const hubSub = mk("text", { class:"hub-sub", y:40 }, hub); hubSub.textContent = "BIASES";
+
+BIASES.forEach(b => {
+  b.fan = mk("path", { class:"fan q-" + b.q.key }, gFans);
+  const leaf = mk("g", { class:"leaf q-" + b.q.key, "data-i":b.i }, gLeaves);
+  b.hit = mk("line", { class:"hit", "stroke-width":8 }, leaf);
+  b.dot = mk("circle", { class:"dot", r:2.6 }, leaf);
+  b.txt = mk("text", { class:"lt" }, leaf);
+  b.txt.textContent = b.n;
+  b.leaf = leaf;
+  leaf.addEventListener("click", () => openBias(b));
+  leaf.addEventListener("mouseenter", () => b.fan.classList.add("hot"));
+  leaf.addEventListener("mouseleave", () => b.fan.classList.remove("hot"));
+});
+// hit lines are drawn in the leaf group; make them usable
+gLeaves.querySelectorAll(".hit").forEach(l => l.setAttribute("stroke", "transparent"));
+
+GROUPS.forEach(g => {
+  const node = mk("g", { class:"gnode q-" + g.q.key, tabindex:0, role:"button", "aria-label":g.title }, gRing);
+  const [x, y] = pol(R_RING, g.mid);
+  mk("circle", { cx:f1(x), cy:f1(y), r:7 }, node);
+  const [tx, ty] = pol(R_GLAB, g.mid);
+  const sin = Math.sin(g.mid * Math.PI / 180), cos = -Math.cos(g.mid * Math.PI / 180);
+  const anchor = Math.abs(sin) < 0.2 ? "middle" : sin > 0 ? "start" : "end";
+  const words = SHORT[g.id].split(" ");
+  const lines = []; let cur = "";
+  words.forEach(w => { if ((cur + " " + w).trim().length > 13 && cur) { lines.push(cur); cur = w; } else cur = (cur + " " + w).trim(); });
+  lines.push(cur);
+  const lh = matchMedia("(max-width:700px)").matches ? 27 : 17;
+  const oy = cos > 0.2 ? 10 : cos < -0.2 ? -(lines.length - 1) * lh - 4 : -(lines.length - 1) * lh / 2 + 5;
+  const t = mk("text", { x:f1(tx), y:f1(ty + oy), "text-anchor":anchor }, node);
+  lines.forEach((ln, k) => { const s = mk("tspan", { x:f1(tx), dy:k ? lh : 0 }, t); s.textContent = ln; });
+  g.node = node; g.label = t;
+  node.addEventListener("click", () => openGroup(g));
+  node.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openGroup(g); } });
+});
+
+QUADS.forEach(q => {
+  const right = Math.sin(q.mid * Math.PI / 180) > 0, down = -Math.cos(q.mid * Math.PI / 180) > 0;
+  const x = right ? 640 : -640, y = down ? 600 : -612;
+  const t = mk("text", { class:"qname q-" + q.key, x, y, "text-anchor": right ? "end" : "start" }, svg);
+  q.lines.forEach((ln, k) => { const s = mk("tspan", { x, dy:k ? 34 : 0 }, t); s.textContent = ln; });
+  t.addEventListener("mouseenter", () => svg.dataset.focus = q.key);
+  t.addEventListener("mouseleave", () => delete svg.dataset.focus);
+  t.addEventListener("click", () => { location.hash = ""; document.getElementById("why").scrollIntoView(); });
+});
+
+// fisheye
+let focusAng = null, k = 0, kTarget = 0, raf = 0;
+const K_MAX = 3.2;
+function warp(a) {
+  if (focusAng === null || k < 0.01) return [a, 1];
+  let d = ((a - focusAng + 540) % 360) - 180;
+  const s = Math.sign(d), x = Math.abs(d) / 180;
+  const g = (k + 1) * x / (k * x + 1);
+  const dg = (k + 1) / Math.pow(k * x + 1, 2);
+  return [focusAng + s * g * 180, dg];
+}
+function draw() {
+  const fanAng = new Map();
+  GROUPS.forEach(g => {
+    const angs = g.items.map(b => warp(b.base)[0]);
+    // unwrap around focus for mean
+    const ref = angs[0];
+    const m = angs.reduce((s, a) => s + (((a - ref + 540) % 360) - 180), 0) / angs.length + ref;
+    fanAng.set(g, m);
+  });
+  BIASES.forEach(b => {
+    const [a, dg] = warp(b.base);
+    const scale = Math.min(1.75, Math.max(0.85, 0.72 + dg * 0.3));
+    const fs = 9.6 * (k < 0.01 ? 1 : scale);
+    const [dx, dy] = pol(R_LEAF, a);
+    b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
+    const [tx, ty] = pol(R_TXT, a);
+    const left = ((a % 360) + 360) % 360 > 180;
+    b.txt.setAttribute("transform", `translate(${f1(tx)} ${f1(ty)}) rotate(${f1(left ? a + 90 : a - 90)})`);
+    b.txt.setAttribute("text-anchor", left ? "end" : "start");
+    b.txt.setAttribute("font-size", f1(fs));
+    const [hx2, hy2] = pol(R_TXT + b.n.length * fs * 0.6, a);
+    b.hit.setAttribute("x1", f1(dx)); b.hit.setAttribute("y1", f1(dy));
+    b.hit.setAttribute("x2", f1(hx2)); b.hit.setAttribute("y2", f1(hy2));
+    b.hit.setAttribute("stroke-width", f1(Math.max(7, fs)));
+    const ga = fanAng.get(b.g);
+    const [x0, y0] = pol(R_HUB, ga);
+    const [c1x, c1y] = pol(R_HUB + 50, ga);
+    const [fx, fy] = pol(R_FAN, ga);
+    const [c2x, c2y] = pol(R_FAN + 40, ga);
+    const [c3x, c3y] = pol(R_LEAF - 40, a);
+    b.fan.setAttribute("d", `M${f1(x0)} ${f1(y0)}Q${f1(c1x)} ${f1(c1y)} ${f1(fx)} ${f1(fy)}C${f1(c2x)} ${f1(c2y)} ${f1(c3x)} ${f1(c3y)} ${f1(dx)} ${f1(dy)}`);
+  });
+  // fade ring labels near the magnified region so long names stay legible
+  GROUPS.forEach(g => {
+    let near = 1;
+    if (focusAng !== null && k > 0.3) {
+      const d = Math.abs(((g.mid - focusAng + 540) % 360) - 180);
+      near = d < 14 ? 0.12 : d < 24 ? 0.5 : 1;
+    }
+    g.label.style.opacity = near;
+  });
+}
+function tick() {
+  k += (kTarget - k) * 0.22;
+  draw();
+  if (Math.abs(kTarget - k) > 0.01) raf = requestAnimationFrame(tick); else { k = kTarget; draw(); raf = 0; }
+}
+const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+const narrow = matchMedia("(max-width:700px)");
+function svgPoint(e) {
+  const r = svg.getBoundingClientRect();
+  return [(e.clientX - r.left) / r.width * 1320 - 660, (e.clientY - r.top) / r.height * 1320 - 660];
+}
+svg.addEventListener("pointermove", e => {
+  if (e.pointerType !== "mouse" || narrow.matches) return;
+  const [x, y] = svgPoint(e);
+  const r = Math.hypot(x, y);
+  if (r < R_FAN - 20 || r > R_RING + 10) { kTarget = 0; kick(); return; }
+  focusAng = (Math.atan2(x, -y) * 180 / Math.PI + 360) % 360;
+  kTarget = K_MAX;
+  if (raf) return;
+  k = k < 0.01 ? 0.01 : k;
+  kick();
+});
+svg.addEventListener("pointerleave", () => { kTarget = 0; kick(); });
+draw();
+if (narrow.matches) document.getElementById("map-hint").textContent = "Tap a coloured node to open that family of biases.";
+
+/* ---------- why ---------- */
+document.getElementById("problems").innerHTML = QUADS.map(q => `
+  <article class="problem q-${q.key}">
+    <h3>${esc(q.name)}</h3>
+    <dl>
+      <div><dt>The problem</dt><dd>${esc(q.problem)}</dd></div>
+      <div><dt>What your brain does</dt><dd>${esc(q.strategy)}</dd></div>
+      <div><dt>The side effect</dt><dd>${esc(q.cost)}</dd></div>
+    </dl>
+    <p class="keep">${esc(q.keep)}</p>
+    <button class="more" type="button" data-q="${q.key}">See its ${BIASES.filter(b => b.q === q).length} biases</button>
+  </article>`).join("");
+document.getElementById("problems").addEventListener("click", e => {
+  const b = e.target.closest(".more"); if (!b) return;
+  setFilter(b.dataset.q);
+  document.getElementById("browse").scrollIntoView();
+});
+
+/* ---------- browse ---------- */
+let filterQ = "all", query = "";
+const chipsEl = document.getElementById("filter-chips");
+chipsEl.innerHTML = `<button class="chip" type="button" data-q="all" aria-pressed="true">All</button>` +
+  QUADS.map(q => `<button class="chip q-${q.key}" type="button" data-q="${q.key}" aria-pressed="false"><i></i>${esc(q.name.replace("?", ""))}</button>`).join("");
+chipsEl.addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) setFilter(c.dataset.q); });
+function setFilter(q) {
+  filterQ = q;
+  chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.q === q));
+  renderList();
+}
+const qInput = document.getElementById("q-input");
+qInput.addEventListener("input", () => { query = qInput.value.trim().toLowerCase(); renderList(); });
+function matches(b) {
+  if (filterQ !== "all" && b.q.key !== filterQ) return false;
+  if (!query) return true;
+  return [b.n, b.alias, b.d, b.ex, b.g.title].join(" ").toLowerCase().includes(query);
+}
+function renderList() {
+  let n = 0, html = "";
+  QUADS.forEach(q => {
+    let qh = "";
+    GROUPS.filter(g => g.q === q).forEach(g => {
+      const hits = g.items.filter(matches);
+      if (!hits.length) return;
+      n += hits.length;
+      qh += `<div class="gsec q-${q.key}">
+        <h4><button type="button" data-g="${GROUPS.indexOf(g)}">${esc(g.title)}</button></h4>
+        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}"><b>${esc(b.n)}</b><span>${esc(b.d)}</span></button>`).join("")}</div>
+      </div>`;
+    });
+    if (qh) html += `<div class="qsec q-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
+  });
+  document.getElementById("list").innerHTML = html || `<p class="empty">No bias matches "${esc(query)}". Try a broader word like "memory" or "risk".</p>`;
+  document.getElementById("count").textContent = n === BIASES.length ? `${UNIQUE} biases` : `${n} of ${BIASES.length}`;
+}
+document.getElementById("list").addEventListener("click", e => {
+  const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i]);
+  const g = e.target.closest("[data-g]"); if (g) openGroup(GROUPS[+g.dataset.g]);
+});
+renderList();
+
+/* ---------- panel ---------- */
+const panel = document.getElementById("panel"), pBody = document.getElementById("p-body"), scrim = document.getElementById("scrim");
+let current = null, lastFocus = null;
+function showPanel(q) {
+  panel.className = "panel open q-" + q.key;
+  panel.setAttribute("aria-hidden", "false");
+  scrim.classList.add("open");
+  pBody.scrollTop = 0;
+}
+function closePanel() {
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  scrim.classList.remove("open");
+  BIASES.forEach(b => b.leaf.classList.remove("on"));
+  GROUPS.forEach(g => g.node.classList.remove("on"));
+  current = null;
+  if (location.hash.startsWith("#b-") || location.hash.startsWith("#g-")) history.replaceState(null, "", location.pathname + location.search);
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll:true });
+}
+function markOn(b, g) {
+  BIASES.forEach(x => x.leaf.classList.toggle("on", x === b));
+  GROUPS.forEach(x => x.node.classList.toggle("on", x === g));
+}
+function listBlock(title, arr) {
+  return `<div class="pblock"><h3>${title}</h3><ul>${arr.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>`;
+}
+function openBias(b) {
+  if (!panel.classList.contains("open")) lastFocus = document.activeElement;
+  current = { type:"b", b };
+  const g = b.g;
+  document.getElementById("p-pos").textContent = `${b.i + 1} / ${BIASES.length}`;
+  pBody.innerHTML = `
+    <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
+    <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}</div>
+    <p class="def">${esc(b.d)}</p>
+    <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
+    <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
+    <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p><p style="color:var(--muted)">${esc(g.cost)}</p></div>
+    <div class="pblock"><h3>How to spot it</h3><p class="lead-tip">${esc(b.spot)}</p></div>
+    <div class="pblock"><h3>How to counter it</h3><p class="lead-tip">${esc(b.fix)}</p></div>
+    ${listBlock("Signs this whole family is at work", g.spot)}
+    ${listBlock("Habits that help with the family", g.fix)}
+    <div class="pblock"><h3>Same family</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>`;
+  showPanel(b.q);
+  markOn(b, null);
+  history.replaceState(null, "", "#" + b.slug);
+  panel.focus({ preventScroll:true });
+}
+function openGroup(g) {
+  if (!panel.classList.contains("open")) lastFocus = document.activeElement;
+  current = { type:"g", g };
+  document.getElementById("p-pos").textContent = `Family ${GROUPS.indexOf(g) + 1} / ${GROUPS.length}`;
+  pBody.innerHTML = `
+    <div class="crumb"><span class="qtag">${esc(g.q.name)}</span></div>
+    <h2 id="p-title">${esc(g.title)}</h2>
+    <div class="pblock"><h3>Why your mind does this</h3><p class="def">${esc(g.why)}</p></div>
+    <div class="pblock"><h3>Where it goes wrong</h3><p>${esc(g.cost)}</p></div>
+    ${listBlock("How to spot it", g.spot)}
+    ${listBlock("How to counter it", g.fix)}
+    <div class="pblock"><h3>${g.items.length} biases in this family</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}">${esc(x.n)}</button>`).join("")}</div></div>`;
+  showPanel(g.q);
+  markOn(null, g);
+  history.replaceState(null, "", "#g-" + g.id);
+  panel.focus({ preventScroll:true });
+}
+pBody.addEventListener("click", e => {
+  const s = e.target.closest("[data-i]"); if (s) return openBias(BIASES[+s.dataset.i]);
+  if (e.target.closest("[data-open-g]") && current?.b) openGroup(current.b.g);
+});
+function step(d) {
+  if (!current) return;
+  if (current.type === "b") openBias(BIASES[(current.b.i + d + BIASES.length) % BIASES.length]);
+  else openGroup(GROUPS[(GROUPS.indexOf(current.g) + d + GROUPS.length) % GROUPS.length]);
+}
+document.getElementById("p-prev").onclick = () => step(-1);
+document.getElementById("p-next").onclick = () => step(1);
+document.getElementById("p-close").onclick = closePanel;
+scrim.onclick = closePanel;
+document.addEventListener("keydown", e => {
+  if (!panel.classList.contains("open")) return;
+  if (e.key === "Escape") closePanel();
+  else if (e.key === "ArrowRight" && !e.target.closest("input")) step(1);
+  else if (e.key === "ArrowLeft" && !e.target.closest("input")) step(-1);
+});
+document.getElementById("random-btn").onclick = () => openBias(BIASES[Math.floor(Math.random() * BIASES.length)]);
+function fromHash() {
+  const h = location.hash.slice(1);
+  const b = BIASES.find(x => x.slug === h); if (b) return openBias(b);
+  const g = GROUPS.find(x => "g-" + x.id === h); if (g) return openGroup(g);
+  const x = LAB.find(x => "lab-" + x.id === h); if (x) openExp(x, true);
+}
+addEventListener("hashchange", fromHash);
+
+/* ---------- quiz ---------- */
+const ROUNDS = 8;
+const quizBox = document.getElementById("quiz-box");
+let qz;
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function newQuiz() {
+  const pool = shuffle(BIASES.filter(b => b.scen));
+  qz = { list: pool.slice(0, ROUNDS), at: 0, marks: [] };
+  renderRound();
+}
+function optionsFor(b) {
+  const names = new Set([b.n]);
+  const others = shuffle(BIASES.filter(x => x.g !== b.g && x.alias !== b.n && b.alias !== x.n));
+  const picks = [b];
+  for (const o of others) { if (picks.length === 4) break; if (!names.has(o.n)) { names.add(o.n); picks.push(o); } }
+  return shuffle(picks);
+}
+function pips() {
+  return `<div class="pips" aria-hidden="true">${Array.from({ length: ROUNDS }, (_, i) => `<i class="${qz.marks[i] === true ? "ok" : qz.marks[i] === false ? "no" : i === qz.at ? "now" : ""}"></i>`).join("")}</div>`;
+}
+function renderRound() {
+  if (qz.at >= ROUNDS) return renderFinal();
+  const b = qz.list[qz.at];
+  qz.opts = optionsFor(b);
+  quizBox.innerHTML = `
+    <div>
+      <div class="quiz-meta"><span class="label">Scenario ${qz.at + 1} of ${ROUNDS}</span>${pips()}</div>
+      <p class="scenario">${esc(b.scen)}</p>
+      <p class="scenario-q">Which bias is at work?</p>
+    </div>
+    <div>
+      <div class="opts" role="group" aria-label="Answers">${qz.opts.map((o, i) => `<button class="opt" type="button" data-k="${i}">${esc(o.n)}<small></small></button>`).join("")}</div>
+      <div id="fb"></div>
+    </div>`;
+}
+quizBox.addEventListener("click", e => {
+  const o = e.target.closest(".opt");
+  if (o && !o.disabled) {
+    const b = qz.list[qz.at], pick = qz.opts[+o.dataset.k], ok = pick === b;
+    qz.marks[qz.at] = ok;
+    quizBox.querySelectorAll(".opt").forEach((el, i) => {
+      el.disabled = true;
+      if (qz.opts[i] === b) { el.classList.add("right"); el.querySelector("small").textContent = "Answer"; }
+      else if (el === o) { el.classList.add("wrong"); el.querySelector("small").textContent = "Your pick"; }
+    });
+    quizBox.querySelector(".pips").outerHTML = pips();
+    document.getElementById("fb").innerHTML = `<div class="feedback" aria-live="polite">
+      <p><b>${ok ? "Right." : "Not quite."}</b> ${esc(b.n)}: ${esc(b.d)}</p>
+      ${ok ? "" : `<p>${esc(pick.n)} is different: ${esc(pick.d)}</p>`}
+      <div class="row"><button class="btn primary" type="button" data-next>${qz.at + 1 === ROUNDS ? "See your score" : "Next scenario"}</button><button class="btn" type="button" data-read="${b.i}">Read about it</button></div>
+    </div>`;
+    document.querySelector("[data-next]").focus({ preventScroll:true });
+    return;
+  }
+  if (e.target.closest("[data-next]")) { qz.at++; renderRound(); return; }
+  const r = e.target.closest("[data-read]"); if (r) return openBias(BIASES[+r.dataset.read]);
+  if (e.target.closest("[data-again]")) newQuiz();
+});
+function renderFinal() {
+  const s = qz.marks.filter(Boolean).length;
+  const msg = s === ROUNDS ? "A clean sweep. Now try catching them in your own week." :
+    s >= 6 ? "Sharp. The ones you missed are worth a closer read." :
+    s >= 3 ? "A solid start. Most people find this harder than it looks." :
+    "These are tricky in the wild. Browse the families above and try again.";
+  const missed = qz.list.filter((_, i) => !qz.marks[i]);
+  quizBox.innerHTML = `<div class="final">
+    <span class="label">Your score</span>
+    <div class="big">${s}/${ROUNDS}</div>
+    <p>${msg}</p>
+    ${missed.length ? `<div class="sibs" style="justify-content:center">${missed.map(b => `<button type="button" data-read="${b.i}">${esc(b.n)}</button>`).join("")}</div>` : ""}
+    <button class="btn primary" type="button" data-again>Play another round</button>
+  </div>`;
+}
+
+newQuiz();
+
+/* ---------- my map ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const mineEl = $("#mine"), seg = $("#view-seg");
+function catchBtn(b, off) {
+  const on = caught.has(b.slug);
+  return `<button class="catch q-${b.q.key}" type="button" data-catch="${b.i}" data-off="${esc(off)}" aria-pressed="${on}">${on ? "✓ On your map" : esc(off)}</button>`;
+}
+function toggleCaught(b) {
+  if (caught.has(b.slug)) caught.delete(b.slug); else caught.add(b.slug);
+  store.set(CAUGHT_KEY, [...caught]);
+  refreshCaught();
+}
+function refreshCaught() {
+  BIASES.forEach(b => { const on = caught.has(b.slug); b.leaf.classList.toggle("caught", on); b.fan.classList.toggle("caught", on); });
+  document.querySelectorAll("[data-catch]").forEach(el => {
+    const on = caught.has(BIASES[+el.dataset.catch].slug);
+    el.setAttribute("aria-pressed", on);
+    el.textContent = on ? "✓ On your map" : el.dataset.off;
+  });
+  renderMine();
+  renderList();
+}
+function renderMine() {
+  const list = BIASES.filter(b => caught.has(b.slug));
+  $("#mine-n").textContent = new Set(list.map(b => b.n)).size;
+  if (!list.length) {
+    mineEl.innerHTML = `<p class="mine-empty"><b>Build your own bias map.</b> Open any bias and tap "I've caught this in myself", or try an experiment below. Each one you catch lights up on the wheel. Your map is saved in this browser only.</p>`;
+    return;
+  }
+  const fam = GROUPS.map(g => ({ g, n: g.items.filter(b => caught.has(b.slug)).length }))
+    .filter(f => f.n).sort((a, b) => b.n - a.n || b.n / b.g.items.length - a.n / a.g.items.length)[0];
+  mineEl.innerHTML = `
+    <div class="mine-head"><h3>Your bias map</h3><span class="label">${new Set(list.map(b => b.n)).size} of ${UNIQUE} caught · saved in this browser</span></div>
+    <div class="mine-grid">
+      <div class="bars">${QUADS.map(q => {
+        const t = BIASES.filter(b => b.q === q), c = t.filter(b => caught.has(b.slug)).length;
+        return `<div class="bar q-${q.key}"><span>${esc(q.name)}</span><div class="bar-track"><i style="width:${(100 * c / t.length).toFixed(1)}%"></i></div><b>${c}/${t.length}</b></div>`;
+      }).join("")}</div>
+      <div class="topfam q-${fam.g.q.key}">
+        <p class="label">Where you catch yourself most</p>
+        <button type="button" class="linkish" data-open-group="${GROUPS.indexOf(fam.g)}">${esc(fam.g.title)}</button>
+        <p><b>Try this:</b> ${esc(fam.g.fix[0])}</p>
+      </div>
+    </div>
+    <div class="sibs">${list.map(b => `<button type="button" class="on q-${b.q.key}" data-open="${b.i}">${esc(b.n)}</button>`).join("")}</div>
+    <div class="row" id="clear-row"><button class="btn" type="button" data-clear>Clear my map</button></div>`;
+}
+mineEl.addEventListener("click", e => {
+  const g = e.target.closest("[data-open-group]"); if (g) return openGroup(GROUPS[+g.dataset.openGroup]);
+  if (e.target.closest("[data-clear]")) {
+    $("#clear-row").innerHTML = `<span>Remove all ${caught.size} from your map?</span><button class="btn primary" type="button" data-clear-yes>Yes, clear it</button><button class="btn" type="button" data-clear-no>Keep them</button>`;
+    return;
+  }
+  if (e.target.closest("[data-clear-yes]")) { caught.clear(); store.set(CAUGHT_KEY, []); setView("all"); refreshCaught(); return; }
+  if (e.target.closest("[data-clear-no]")) renderMine();
+});
+function setView(v) {
+  seg.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x.dataset.view === v));
+  if (v === "mine") svg.dataset.mine = "1"; else delete svg.dataset.mine;
+}
+seg.addEventListener("click", e => { const b = e.target.closest("[data-view]"); if (b) setView(b.dataset.view); });
+
+/* ---------- lab ---------- */
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const byName = n => BIASES.find(b => b.n === n);
+const labList = $("#lab-list"), stage = $("#lab-stage");
+const labDone = new Set(store.get(LAB_KEY, []));
+let curX = null, runId = 0;
+
+function head(x, step) {
+  return `<div class="stage-top"><span class="label">${esc(x.title)}</span><span class="label">${esc(step || x.time)}</span></div>`;
+}
+function paint(html, keep = true) {
+  stage.innerHTML = html;
+  if (keep && stage.dataset.live && stage.getBoundingClientRect().top < 0) stage.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
+}
+function slider(id, val) {
+  return `<div class="slide"><output id="${id}-out" for="${id}">${val}%</output><input type="range" id="${id}" min="0" max="100" step="1" value="${val}" aria-label="Your estimate in percent"></div>`;
+}
+function bindSlider(id) { const i = $("#" + id, stage), o = $("#" + id + "-out", stage); i.oninput = () => { o.textContent = i.value + "%"; }; }
+function choices(opts) { return `<div class="opts">${opts.map(([k, label, cls]) => `<button class="opt${cls ? " " + cls : ""}" type="button" data-c="${k}">${label}</button>`).join("")}</div>`; }
+function onChoice(fn) { stage.querySelectorAll("[data-c]").forEach(b => { b.onclick = () => fn(b.dataset.c); }); }
+function finish(x, html) {
+  labDone.add(x.id); store.set(LAB_KEY, [...labDone]); renderTiles();
+  const bs = x.biases.map(byName).filter(Boolean);
+  const nx = LAB[(LAB.indexOf(x) + 1) % LAB.length];
+  paint(head(x, "What just happened") + `<div class="result">${html}</div>
+    <div class="xp-foot">
+      <p class="label">The bias behind it</p>
+      ${bs.map(b => `<div class="xp-bias q-${b.q.key}"><button type="button" class="xp-read" data-open="${b.i}"><b>${esc(b.n)}</b><span>${esc(b.d)}</span></button>${catchBtn(b, "It got me")}</div>`).join("")}
+      <div class="row"><button class="btn" type="button" data-again>Try again</button><button class="btn primary" type="button" data-go="${nx.id}">Next: ${esc(nx.title)}</button></div>
+    </div>`);
+}
+function track(ms) {
+  return `<div class="track" role="img" aria-label="${esc(ms.map(m => `${m[1]} ${m[0]}%`).join(", "))}"><div class="track-line"></div>${ms.map(([v, l, c], i) =>
+    `<div class="mk ${c}${v < 14 ? " el" : v > 86 ? " er" : ""}" style="left:${v}%;--row:${i}"><i></i><span>${esc(l)} <b>${v}%</b></span></div>`).join("")}<div class="track-ends"><span>0%</span><span>100%</span></div></div>`;
+}
+
+function xpSpin(x, alive) {
+  const A = Math.random() < 0.5 ? 10 : 65;
+  paint(head(x, "Step 1 of 3") + `<h3>Spin the wheel</h3><p class="prompt">First you need a random number between 0 and 100. Spin for one.</p>
+    <div class="spin-num" id="sn" aria-live="polite">--</div><div class="row"><button class="btn primary" type="button" id="go">Spin</button></div>`);
+  $("#go", stage).onclick = e => {
+    e.currentTarget.disabled = true;
+    const el = $("#sn", stage), steps = reduced ? 1 : 22; let t = 0;
+    const iv = setInterval(() => {
+      if (!alive()) return clearInterval(iv);
+      t++; el.textContent = t >= steps ? A : String(Math.floor(Math.random() * 100)).padStart(2, "0");
+      if (t >= steps) { clearInterval(iv); setTimeout(() => alive() && q1(), reduced ? 300 : 800); }
+    }, 55);
+  };
+  function q1() {
+    paint(head(x, "Step 2 of 3") + `<div class="spin-num small">${A}</div><p class="prompt">Is the share of United Nations member countries that are in Africa higher or lower than <b>${A}%</b>?</p>` + choices([["hi", "Higher"], ["lo", "Lower"]]));
+    onChoice(q2);
+  }
+  function q2() {
+    paint(head(x, "Step 3 of 3") + `<p class="prompt">What is your best guess for the share of UN member countries that are in Africa?</p>${slider("g", 50)}<div class="row"><button class="btn primary" type="button" id="lock">Lock in my guess</button></div>`);
+    bindSlider("g"); $("#lock", stage).onclick = () => done(+$("#g", stage).value);
+  }
+  function done(g) {
+    const pulled = Math.abs(g - A) < Math.abs(g - 28);
+    finish(x, `<p class="big-answer">About 28%</p><p>54 of the 193 UN member countries are in Africa.</p>
+      ${track([[g, "Your guess", "you"], [A, "Your spin", "anchor"], [28, "Answer", "truth"]])}
+      <p class="verdict">${pulled ? `Your guess landed closer to your spin (${A}) than to the real answer.` : `Your guess landed closer to the answer than to your spin. The pull is often small in one person and clear across many.`}</p>
+      <p>The spin was random, and you knew it. In a classic 1974 study by Amos Tversky and Daniel Kahneman, people whose wheel stopped at 10 gave a median guess of 25%. People whose wheel stopped at 65 gave 45%. A number you know is meaningless still becomes the starting point you adjust from.</p>`);
+  }
+}
+
+function xpLinda(x) {
+  paint(head(x) + `<h3>Meet Linda</h3><p class="prompt">Linda is 31, single, outspoken and very bright. She studied philosophy. As a student she cared deeply about discrimination and social justice, and she joined anti-nuclear protests.</p><p class="scenario-q">Which is more likely?</p>` +
+    choices([["a", "Linda is a bank teller."], ["b", "Linda is a bank teller and is active in the feminist movement."]]));
+  onChoice(c => finish(x, `
+    <svg class="venn" viewBox="0 0 380 220" role="img" aria-label="A large circle of all bank tellers contains a smaller circle of bank tellers who are feminists.">
+      <circle class="big" cx="190" cy="112" r="100"/><text x="190" y="52">All bank tellers</text>
+      <circle class="small" cx="214" cy="140" r="46"/><text class="in" x="214" y="136">Feminist</text><text class="in" x="214" y="153">bank tellers</text>
+    </svg>
+    <p class="verdict">${c === "a" ? "You picked the answer that has to be at least as likely. The description is written to pull you the other way." : "You picked the option that feels right, and it is the one that can't be more likely."}</p>
+    <p>Every feminist bank teller is also a bank teller, so the second option can never beat the first. Extra details make a story more convincing and less likely at the same time. In Tversky and Kahneman's original studies, most people chose the second option.</p>`));
+}
+
+function xpCoin(x, alive) {
+  const heads = "<span class='coin h'>H</span>".repeat(5);
+  paint(head(x) + `<h3>Five heads in a row</h3><p class="prompt">A fair coin has just landed heads five times in a row.</p><div class="coins">${heads}<span class="coin next" id="nc">?</span></div><p class="scenario-q">What is more likely on the next flip?</p>` +
+    choices([["h", "Heads again. It's on a streak."], ["t", "Tails. It's due."], ["e", "Both are equally likely."]]));
+  onChoice(c => {
+    stage.querySelectorAll("[data-c]").forEach(b => { b.disabled = true; });
+    const flip = Math.random() < 0.5 ? "H" : "T", nc = $("#nc", stage);
+    nc.classList.add("flipping");
+    setTimeout(() => {
+      if (!alive()) return;
+      nc.className = "coin " + (flip === "H" ? "h" : "t"); nc.textContent = flip;
+      setTimeout(() => alive() && result(c, flip), reduced ? 200 : 900);
+    }, reduced ? 0 : 900);
+  });
+  function result(c, flip) {
+    finish(x, `<div class="coins">${heads}<span class="coin ${flip === "H" ? "h" : ""}">${flip}</span></div>
+      <p class="big-answer">50 / 50</p>
+      <p class="verdict">${c === "e" ? "Right. The coin has no memory of the last five flips." : c === "t" ? "Expecting tails because it feels due is the gambler's fallacy. Past flips don't change the next one." : "Expecting the streak to continue is the hot-hand fallacy. For a fair coin, the next flip is still 50/50."}</p>
+      <p>You don't have to take that on trust. Simulate a million flips and look only at what came right after five heads in a row.</p>
+      <div class="row"><button class="btn" type="button" id="sim">Flip a million coins</button></div><p class="sim-out" id="simout" aria-live="polite"></p>`);
+    $("#sim", stage).onclick = () => {
+      let run = 0, h = 0, t = 0;
+      for (let i = 0; i < 1e6; i++) { const f = Math.random() < 0.5; if (run >= 5) { if (f) h++; else t++; } run = f ? run + 1 : 0; }
+      $("#simout", stage).innerHTML = `After a streak of five or more heads, the next flip came up <b>heads ${h.toLocaleString("en-US")}</b> times and <b>tails ${t.toLocaleString("en-US")}</b> times. That's ${(100 * h / (h + t)).toFixed(1)}% heads.`;
+    };
+  }
+}
+
+function seqStats(s) { let max = 1, run = 1, sw = 0; for (let i = 1; i < s.length; i++) { if (s[i] === s[i - 1]) run++; else { sw++; run = 1; } max = Math.max(max, run); } return { max, sw }; }
+function seqReal(n) { for (;;) { const s = Array.from({ length: n }, () => (Math.random() < 0.5 ? 1 : 0)); const st = seqStats(s); if (st.max >= 4 && st.max <= 6) return s; } }
+function seqFake(n) {
+  for (;;) {
+    const s = [Math.random() < 0.5 ? 1 : 0];
+    while (s.length < n) { const last = s[s.length - 1], run = s.length > 1 && s[s.length - 2] === last ? 2 : 1; s.push(run >= 2 || Math.random() < 0.68 ? 1 - last : last); }
+    if (Math.abs(s.reduce((a, b) => a + b, 0) - n / 2) <= 2) return s;
+  }
+}
+function seqHtml(s, mark) {
+  const cls = s.map(() => "");
+  if (mark) { let i = 0; while (i < s.length) { let j = i; while (j + 1 < s.length && s[j + 1] === s[i]) j++; if (j - i + 1 >= 3) for (let k = i; k <= j; k++) cls[k] = " run"; i = j + 1; } }
+  return `<div class="seq" aria-hidden="true">${s.map((v, i) => `<i class="${v ? "h" : ""}${cls[i]}"></i>`).join("")}</div>`;
+}
+function xpFake(x) {
+  const real = seqReal(24), fake = seqFake(24), realIsA = Math.random() < 0.5;
+  const A = realIsA ? real : fake, B = realIsA ? fake : real;
+  const label = s => s.map(v => (v ? "H" : "T")).join(" ");
+  paint(head(x) + `<h3>Which coin is real?</h3><p class="prompt">One row is 24 flips of a real coin. The other was written by a person trying to make it look random. Which row came from the real coin?</p>
+    <div class="seq-legend"><span><i class="h"></i>Heads</span><span><i></i>Tails</span></div>` +
+    choices([["a", `<span class="seq-row"><small class="label">Row A</small>${seqHtml(A)}<span class="sr-only">${label(A)}</span></span>`, "seq-opt"], ["b", `<span class="seq-row"><small class="label">Row B</small>${seqHtml(B)}<span class="sr-only">${label(B)}</span></span>`, "seq-opt"]]));
+  onChoice(c => {
+    const ok = (c === "a") === realIsA, r = seqStats(real), f = seqStats(fake);
+    finish(x, `
+      <div class="seq-row"><span class="label">Real coin (Row ${realIsA ? "A" : "B"}): longest streak ${r.max}, switched sides ${r.sw} times</span>${seqHtml(real, true)}</div>
+      <div class="seq-row"><span class="label">Made by a person (Row ${realIsA ? "B" : "A"}): longest streak ${f.max}, switched sides ${f.sw} times</span>${seqHtml(fake, true)}</div>
+      <p class="verdict">${ok ? "You spotted it. The streaky row is the real one." : "You picked the row that looks random. The real coin is the one that looks rigged."}</p>
+      <p>Real randomness is streakier than it feels. In 24 fair flips, a run of four or more of the same side happens about five times out of six. People faking it switch sides too often, so genuine clusters look suspicious. The same instinct finds hot streaks, lucky numbers and "patterns" in events that are pure chance.</p>`);
+  });
+}
+
+function xpRule(x) {
+  const tests = [];
+  const draw = (msg, keep) => {
+    paint(head(x) + `<h3>Guess my rule</h3><p class="prompt">The numbers <b>2, 4, 6</b> follow a rule I have in mind. Type any three numbers and I'll tell you if they fit. Test as many as you like, then name the rule.</p>
+      <form class="triple" id="tf">${[1, 2, 3].map(i => `<input class="num" id="n${i}" inputmode="decimal" autocomplete="off" aria-label="Number ${i}">`).join("")}<button class="btn primary" type="submit">Test</button></form>
+      ${msg ? `<p class="hint">${esc(msg)}</p>` : ""}
+      <ul class="hist" aria-live="polite">${tests.map(t => `<li><span>${t.v.join(", ")}</span><em class="pill ${t.ok ? "yes" : "no"}">${t.ok ? "Fits" : "Doesn't fit"}</em></li>`).reverse().join("")}<li><span>2, 4, 6</span><small>Example</small><em class="pill yes">Fits</em></li></ul>
+      <div class="row"><button class="btn" type="button" id="know"${tests.length ? "" : " disabled"}>I know the rule</button>${tests.length ? "" : `<span class="label">Run at least one test first</span>`}</div>`, keep);
+    $("#tf", stage).onsubmit = e => {
+      e.preventDefault();
+      const raw = [1, 2, 3].map(i => $("#n" + i, stage).value.trim());
+      if (raw.some(s => s === "" || !isFinite(+s))) { draw("Enter three numbers, one in each box.", false); $("#n1", stage).focus(); return; }
+      const v = raw.map(Number); tests.push({ v, ok: v[0] < v[1] && v[1] < v[2] });
+      draw("", false); $("#n1", stage).focus();
+    };
+    $("#know", stage).onclick = guess;
+  };
+  draw("", true);
+  function guess() {
+    paint(head(x, "Name the rule") + `<p class="prompt">Which rule am I using?</p>` + choices([["a", "Even numbers, counting up by 2"], ["b", "Each number is 2 more than the one before"], ["c", "Any three numbers in increasing order"], ["d", "The third number is the first two added together"]]));
+    onChoice(c => {
+      const yes = tests.filter(t => t.ok).length, no = tests.length - yes, right = c === "c";
+      finish(x, `<p class="big-answer long">The rule: any three numbers that go up.</p>
+        <p>You ran ${tests.length} test${tests.length === 1 ? "" : "s"}. ${yes} fit and ${no} didn't.</p>
+        <p class="verdict">${right ? (no ? "You found it the hard way, by running tests that could fail." : "You got the rule, though every test you ran said yes. A test that can only say yes can't warn you when you're wrong.")
+          : (no ? "Some of your tests came back no, but the real rule is broader than your guess." : "Every test you ran came back yes, so none of them could show you that your idea was too narrow.")}</p>
+        <p>Most people form an idea like "counting up by 2" and then test examples that fit it, such as 10, 12, 14. Each yes feels like proof. The faster route is to test a case your idea says should fail, like 1, 2, 3. If it fits anyway, your idea is wrong. In Peter Wason's 1960 version of this task, many people announced a wrong rule with confidence after seeing only confirming results.</p>`);
+    });
+  }
+}
+
+function xpWords(x, alive) {
+  const W = ["bed", "rest", "awake", "tired", "dream", "wake", "snooze", "blanket", "doze", "slumber", "snore", "nap"];
+  const LURE = ["sleep", "sleeping", "sleepy", "asleep", "sleeps"];
+  paint(head(x) + `<h3>Twelve words</h3><p class="prompt">Twelve words will appear one at a time, about a second each. Try to remember as many as you can. Afterwards you'll type the ones you remember.</p><div class="row"><button class="btn primary" type="button" id="go">Start</button></div>`);
+  $("#go", stage).onclick = () => {
+    paint(head(x, "Word 1 of 12") + `<div class="flash" id="fl" aria-live="assertive"></div>`);
+    let i = 0;
+    const show = () => {
+      if (!alive()) return;
+      if (i === W.length) return recall();
+      $("#fl", stage).textContent = W[i]; $(".stage-top span:last-child", stage).textContent = `Word ${i + 1} of 12`;
+      i++; setTimeout(show, 1200);
+    };
+    show();
+  };
+  function norm(s) { s = s.toLowerCase().replace(/[^a-z]/g, ""); if (!W.includes(s) && s.endsWith("s") && W.includes(s.slice(0, -1))) s = s.slice(0, -1); return s; }
+  function recall() {
+    const got = [];
+    paint(head(x, "Now recall") + `<p class="prompt">Type every word you remember, one at a time. Order doesn't matter.</p>
+      <form class="recall" id="rf"><input class="text-in" id="rw" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="A word you remember"><button class="btn" type="submit">Add</button></form>
+      <div class="sibs" id="got" aria-live="polite"></div><div class="row"><button class="btn primary" type="button" id="rd">I'm done</button></div>`);
+    const input = $("#rw", stage); input.focus({ preventScroll: true });
+    const add = () => { const w = norm(input.value); if (w && !got.includes(w)) got.push(w); input.value = ""; $("#got", stage).innerHTML = got.map(g => `<button type="button" disabled>${esc(g)}</button>`).join(""); };
+    $("#rf", stage).onsubmit = e => { e.preventDefault(); add(); input.focus(); };
+    $("#rd", stage).onclick = () => {
+      add();
+      if (got.some(g => LURE.includes(g))) return reveal(got, "typed");
+      paint(head(x, "One more question") + `<p class="prompt">Was the word <b>sleep</b> on the list?</p>` + choices([["y", "Yes, I saw it"], ["n", "No, it wasn't there"]]));
+      onChoice(c => reveal(got, c === "y" ? "yes" : "no"));
+    };
+  }
+  function reveal(got, lure) {
+    const hit = W.map(w => got.includes(w)), n = hit.filter(Boolean).length;
+    const part = (a, b) => hit.slice(a, b).filter(Boolean).length;
+    finish(x, `<p class="big-answer">${n} of 12</p>
+      <div class="positions">${W.map((w, i) => `<div class="pos${hit[i] ? " hit" : ""}"><b>${i + 1}</b><span>${w}</span></div>`).join("")}</div>
+      <p>You recalled ${part(0, 3)} of the first 3 words, ${part(3, 9)} of the middle 6, and ${part(9, 12)} of the last 3. Across many people, the first and last few items on a list are remembered best and the middle sags. That U-shape is the serial position effect.</p>
+      <p class="verdict">${lure === "typed" ? `You wrote "sleep". It was never on the list.` : lure === "yes" ? `You remembered seeing "sleep". It was never on the list.` : `"Sleep" was never on the list, and you didn't fall for it. Many people are sure they saw it.`}</p>
+      <p>Every word on the list is linked to sleep, so memory fills in the missing piece and it feels like something you saw. Researchers call this the Deese-Roediger-McDermott effect. It shows how a memory can feel vivid without ever having happened.</p>`);
+  }
+}
+
+function xpTest(x) {
+  paint(head(x) + `<h3>A positive test</h3><p class="prompt">A disease affects <b>1 in 1,000</b> people. A test for it catches every real case. It also wrongly flags <b>1 in 100</b> healthy people. You take the test, and it comes back positive.</p>
+    <p class="scenario-q">How likely is it that you have the disease?</p>${slider("g", 50)}<div class="row"><button class="btn primary" type="button" id="lock">Lock in my answer</button></div>`);
+  bindSlider("g");
+  $("#lock", stage).onclick = () => {
+    const g = +$("#g", stage).value;
+    const cells = new Array(1000).fill(0), idx = shuffle([...Array(1000).keys()]);
+    cells[idx[0]] = 2; for (let k = 1; k <= 10; k++) cells[idx[k]] = 1;
+    finish(x, `<p class="big-answer">About 9%</p>
+      <div class="people" id="ppl" role="img" aria-label="1,000 people tested. 1 sick person tests positive. About 10 healthy people also test positive.">${cells.map(c => `<i${c === 2 ? ' class="sick"' : c === 1 ? ' class="fp"' : ""}></i>`).join("")}</div>
+      <div class="legend"><span><i class="sick"></i>Sick, tests positive (1)</span><span><i class="fp"></i>Healthy, tests positive (about 10)</span><span><i></i>Healthy, tests negative</span></div>
+      <p>Picture 1,000 people taking the test. One has the disease and tests positive. Of the 999 healthy people, about 10 are wrongly flagged. So about 11 people get a positive result and only 1 of them is sick. That's roughly 1 in 11, or 9%.</p>
+      <p class="verdict">${g <= 15 ? `You said ${g}%. You kept the rarity of the disease in view.` : `You said ${g}%. The test's accuracy felt like the answer, and the rarity of the disease dropped out of the picture.`}</p>
+      <p>Ignoring how common something is in the first place is the base rate fallacy. In published studies, many doctors given problems like this one also answered far too high.</p>`);
+    setTimeout(() => $("#ppl", stage)?.classList.add("lit"), reduced ? 0 : 350);
+  };
+}
+
+function xpPopcorn(x) {
+  const M = [["s", "Small", "$3.00", 44], ["m", "Medium", "$6.50", 70], ["l", "Large", "$7.00", 86]];
+  paint(head(x) + `<h3>Popcorn</h3><p class="prompt">You're at the cinema and you want popcorn. Which size do you buy?</p>
+    <div class="menu">${M.map(([k, n, p, h]) => `<button class="cup" type="button" data-c="${k}"><svg viewBox="0 0 64 100" aria-hidden="true"><path d="M17 97 L47 97 L${56 - h / 12} ${97 - h} L${8 + h / 12} ${97 - h} Z"/><path class="band" d="M${14 - h / 40} ${97 - h * 0.62} L${50 + h / 40} ${97 - h * 0.62} L${50 + h / 40 + 1} ${97 - h * 0.62 - 7} L${13 - h / 40} ${97 - h * 0.62 - 7} Z"/></svg><b>${n}</b><span>${p}</span></button>`).join("")}</div>`);
+  onChoice(c => finish(x, `
+    <div class="menus"><div><p class="label">The menu you saw</p><ul class="mini"><li>Small $3.00</li><li class="decoy">Medium $6.50</li><li>Large $7.00</li></ul></div>
+    <div><p class="label">The same menu without the decoy</p><ul class="mini"><li>Small $3.00</li><li>Large $7.00</li></ul></div></div>
+    <p class="verdict">${c === "l" ? "You chose the large. That's the choice the medium was put there to sell." : c === "m" ? "You chose the medium. Few people do, and that's fine for the seller: the medium's job is to make the large look cheap." : "You chose the small. The decoy had less pull on you, since you weren't weighing the bigger sizes against each other."}</p>
+    <p>The medium costs almost as much as the large and gives you much less, so next to it the large looks like a bargain at only 50 cents more. Take the medium away and the choice is $3 against $7, where the large looks expensive. Adding an option that almost nobody wants can change what people buy. This is the decoy effect.</p>`));
+}
+
+function xpJobs(x) {
+  let first;
+  paint(head(x, "Round 1 of 2") + `<h3>Save the jobs</h3><p class="prompt">A factory closure threatens <b>600 jobs</b> in a town. You can back one rescue plan.</p>` +
+    choices([["sure", "<span><b>Plan A.</b> 200 jobs will be saved.</span>"], ["gamble", "<span><b>Plan B.</b> A one-in-three chance that all 600 jobs are saved, and a two-in-three chance that none are.</span>"]]));
+  onChoice(c => {
+    first = c;
+    paint(head(x, "Round 2 of 2") + `<h3>Another town</h3><p class="prompt">Same size factory, same <b>600 jobs</b> at risk. Different plans on the table.</p>` +
+      choices([["sure", "<span><b>Plan C.</b> 400 jobs will be lost.</span>"], ["gamble", "<span><b>Plan D.</b> A one-in-three chance that nobody loses their job, and a two-in-three chance that all 600 do.</span>"]]));
+    onChoice(second => {
+      const pick = (r, k) => ((r === 1 ? first : second) === k ? ' class="picked"' : "");
+      const v = first === second ? "You chose the same way both times. Nicely done, because the two rounds offered the exact same plans in different words."
+        : first === "sure" ? "You played it safe when the plan was described as jobs saved, and took the gamble when it was described as jobs lost. The plans were identical. Only the wording changed."
+        : "You switched between rounds. The plans were identical, so the wording changed your choice.";
+      finish(x, `<div class="table-wrap"><table class="cmp"><thead><tr><th></th><th>Round 1 wording</th><th>Round 2 wording</th><th>What actually happens</th></tr></thead><tbody>
+        <tr><td>Sure plan</td><td${pick(1, "sure")}>200 jobs saved</td><td${pick(2, "sure")}>400 jobs lost</td><td>200 keep their jobs, 400 lose them</td></tr>
+        <tr><td>Gamble</td><td${pick(1, "gamble")}>1 in 3 chance all 600 saved</td><td${pick(2, "gamble")}>1 in 3 chance nobody loses a job</td><td>1 in 3 chance everyone keeps their job, 2 in 3 chance everyone loses it</td></tr>
+        </tbody></table></div>
+        <p class="verdict">${v}</p>
+        <p>Words like "saved" make a sure thing feel precious, and words like "lost" make a gamble feel worth taking. In Tversky and Kahneman's 1981 version, about a disease outbreak, 72% chose the sure option when it was framed as lives saved. When the same options were framed as deaths, 78% chose the gamble.</p>`);
+    });
+  });
+}
+
+function xpLater(x) {
+  let first;
+  paint(head(x, "Choice 1 of 2") + `<h3>Now or later</h3><p class="prompt">Someone offers you money. Which would you take?</p>` + choices([["early", "$100 today"], ["late", "$120 in one month"]]));
+  onChoice(c => {
+    first = c;
+    paint(head(x, "Choice 2 of 2") + `<h3>Now or later</h3><p class="prompt">A different offer. Which would you take?</p>` + choices([["early", "$100 in 12 months"], ["late", "$120 in 13 months"]]));
+    onChoice(second => {
+      const v = first === "early" && second === "late" ? "You took the money today, but you were happy to wait from month 12 to month 13. It's the same one-month wait for the same extra $20."
+        : first === "late" && second === "late" ? "You waited both times. Consistent, and $20 for a one-month wait is a return few savings accounts can match."
+        : first === "early" && second === "early" ? "You took the earlier money both times. Consistent, though an extra $20 for a one-month wait is a 20% return."
+        : "You waited when the wait started now, then took the earlier money a year out. That reversal is less common, and it still means the timing changed your choice.";
+      finish(x, `<p class="big-answer long">Same trade, twice: wait one month, get $20 more.</p>
+        <p class="verdict">${v}</p>
+        <p>We value rewards less the further away they are, and the drop is steepest right at the start. A month's wait that begins today feels long. The same month a year from now feels like nothing. This is why "I'll start saving next month" is easy to promise and hard to do when next month arrives.</p>`);
+    });
+  });
+}
+
+const LAB = [
+  { id: "spin", title: "Spin and guess", time: "1 min", biases: ["Anchoring"], run: xpSpin },
+  { id: "linda", title: "Meet Linda", time: "30 sec", biases: ["Conjunction fallacy"], run: xpLinda },
+  { id: "coin", title: "Five heads in a row", time: "30 sec", biases: ["Gambler's fallacy", "Hot-hand fallacy"], run: xpCoin },
+  { id: "fake", title: "Which coin is real?", time: "30 sec", biases: ["Clustering illusion"], run: xpFake },
+  { id: "rule", title: "Guess my rule", time: "2 min", biases: ["Congruence bias", "Confirmation bias"], run: xpRule },
+  { id: "words", title: "Twelve words", time: "1 min", biases: ["Serial position effect", "False memory"], run: xpWords },
+  { id: "test", title: "A positive test", time: "1 min", biases: ["Base rate fallacy"], run: xpTest },
+  { id: "popcorn", title: "Popcorn", time: "20 sec", biases: ["Decoy effect"], run: xpPopcorn },
+  { id: "jobs", title: "Save the jobs", time: "1 min", biases: ["Framing effect"], run: xpJobs },
+  { id: "later", title: "Now or later", time: "20 sec", biases: ["Hyperbolic discounting"], run: xpLater }
+];
+LAB.forEach(x => { x.q = byName(x.biases[0]).q.key; });
+const XP_FOR = {};
+LAB.forEach(x => x.biases.forEach(n => { XP_FOR[n] = x; }));
+
+function renderTiles() {
+  labList.innerHTML = LAB.map(x => {
+    const d = labDone.has(x.id);
+    return `<button class="xp-tile q-${x.q}${d ? " done" : ""}" type="button" data-x="${x.id}" aria-current="${x === curX}"><i class="dot" aria-hidden="true"></i><span><b>${esc(x.title)}</b><small>${esc(d ? x.biases.join(" · ") : x.time)}</small></span></button>`;
+  }).join("");
+  $("#lab-progress").textContent = labDone.size ? `You've tried ${labDone.size} of ${LAB.length}.` : "";
+}
+function openExp(x, scroll) {
+  curX = x;
+  const id = ++runId;
+  stage.className = "stage q-" + x.q;
+  renderTiles();
+  x.run(x, () => id === runId);
+  if (scroll) stage.scrollIntoView({ block: "start" });
+}
+labList.addEventListener("click", e => {
+  const t = e.target.closest("[data-x]"); if (!t) return;
+  openExp(LAB.find(x => x.id === t.dataset.x));
+  if (matchMedia("(max-width:760px)").matches || stage.getBoundingClientRect().top < 0) stage.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
+});
+stage.addEventListener("click", e => {
+  if (e.target.closest("[data-again]")) return openExp(curX);
+  const g = e.target.closest("[data-go]"); if (g) openExp(LAB.find(x => x.id === g.dataset.go), true);
+});
+document.addEventListener("click", e => {
+  const c = e.target.closest("[data-catch]"); if (c) return toggleCaught(BIASES[+c.dataset.catch]);
+  const o = e.target.closest("[data-open]"); if (o) return openBias(BIASES[+o.dataset.open]);
+  const xb = e.target.closest("[data-xp]"); if (xb) { closePanel(); openExp(LAB.find(x => x.id === xb.dataset.xp), true); }
+});
+openExp(LAB[0]);
+stage.dataset.live = "1";
+refreshCaught();
+
+/* ---------- habits ---------- */
+document.getElementById("habit-list").innerHTML = HABITS.map(([t, p, beats]) =>
+  `<div class="habit"><h3>${esc(t)}</h3><p>${esc(p)}</p><p class="beats">Helps with: ${esc(beats)}</p></div>`).join("");
+fromHash();
+</script>
