@@ -49,28 +49,11 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
 ## Cognitive Bias Explorer (/biases)
 
-`biases/index.html` (English) and `biases/el/index.html` (Greek) are generated.
-Edit `scripts/biases/page.src.html` (UI text is written as `⟪English¦Greek⟫`) or
-the content in `scripts/biases/data/*.json` and `scripts/biases/data/el/*.json`,
-then rebuild both pages and their social cards (`assets/og/biases*.png`).
-`scripts/biases/TRANSLATION-EL.md` is the Greek style guide and glossary:
-
-```bash
-python3 scripts/biases/build.py
-```
-
-The content is adapted from the Cognitive Bias Codex (CC BY-SA 4.0), so the
-page keeps that licence and its credits in the footer.
-
-### Animated explainers
-
-Some biases have a short looping animation (`scripts/biases/anim.js`, styles in
-`anim.css`). Each one also gets its own page, `/biases/watch/<key>/` and
-`/biases/el/watch/<key>/` (built by `scripts/biases/watch.py`). The build records a
-social card (`assets/og/watch-<key>-<lang>.png`) and a square MP4
-(`biases/video/<key>-<lang>.mp4`) for each page with headless Google Chrome and
-ffmpeg (`scripts/biases/capture.mjs`). It only re-records when an animation page
-changed. Force it with `python3 scripts/biases/build.py --recapture`.
+`biases/` (English, Greek, animation pages, icons, videos) and `assets/og/biases*.png`,
+`assets/og/watch-*.png` are built from a separate repository,
+[papagel/cognitive-bias](https://github.com/papagel/cognitive-bias), which lives next to
+this one (`~/Apps/cognitive-bias`). Don't edit them here. Change the source there, run
+`python3 build.py` (it writes into this repo), then commit and push this blog.
 
 ## Preview locally
 
