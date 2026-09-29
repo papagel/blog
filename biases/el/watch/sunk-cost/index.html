@@ -23,11 +23,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://papangelis.com/assets/og/watch-sunk-cost-el.png?v=f1875611">
-<meta property="og:video" content="https://papangelis.com/biases/video/sunk-cost-el.mp4">
-<meta property="og:video:secure_url" content="https://papangelis.com/biases/video/sunk-cost-el.mp4">
-<meta property="og:video:type" content="video/mp4">
-<meta property="og:video:width" content="1080">
-<meta property="og:video:height" content="1080">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
 <link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
@@ -124,6 +119,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
 .bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}
 .bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
 .bp-btn:hover{border-color:var(--ink)}
+.bp-btn[aria-pressed="true"]{color:var(--q);border-color:var(--q)}
 .bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}
 .bp-dots{display:flex;gap:5px;flex:1;min-width:0}
 .bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}
@@ -240,20 +236,55 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
     play: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></svg>',
     pause: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5"/><rect x="14" y="4" width="5" height="16" rx="1.5"/></svg>',
     replay: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
-    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>'
+    share: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>',
+    soundOn: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+    soundOff: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>'
   };
+
+  /* ------------------------------------------------------------------ sound
+     The site's players can play the scene's sound effects in step with the animation.
+     Off by default; a tap turns it on and it's remembered. (Videos have them mixed in.) */
+  const SOUND_KEY = "bp.sound", SOUNDS = ["pluck", "tick", "pop", "thud", "whoosh", "spring", "scribble", "chime", "swell"];
+  const SND = { on: false, ctx: null, out: null, buffers: {}, base: null, loading: null };
+  try { SND.on = localStorage.getItem(SOUND_KEY) === "on"; } catch (e) {}
+  function audio() {
+    if (!SND.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+      SND.ctx = new AC(); SND.out = SND.ctx.createGain(); SND.out.gain.value = 0.7; SND.out.connect(SND.ctx.destination);
+    }
+    if (SND.ctx.state === "suspended") SND.ctx.resume().catch(() => {});
+    return SND.ctx;
+  }
+  function loadSounds(base) {
+    if (!base) return;
+    if (SND.loading && SND.base === base) return;
+    const ctx = audio(); if (!ctx) return;
+    SND.base = base;
+    SND.loading = Promise.all(SOUNDS.map(n => fetch(base + n + ".mp3")
+      .then(r => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(b => new Promise((ok, no) => ctx.decodeAudioData(b, ok, no)))
+      .then(buf => { SND.buffers[n] = buf; }).catch(() => {})));
+  }
+  function playSound(name) {
+    const buf = SND.buffers[name];
+    if (!SND.on || !SND.ctx || !buf) return;
+    const src = SND.ctx.createBufferSource(); src.buffer = buf; src.connect(SND.out); src.start();
+  }
+  // browsers only let audio start after a tap: resume on the first one
+  if (typeof document !== "undefined")   // (also loaded outside a browser by the build)
+    document.addEventListener("pointerdown", () => { if (SND.on && SND.ctx && SND.ctx.state !== "running") SND.ctx.resume().catch(() => {}); }, true);
   const BRAIN = '<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>';
   const brainMark = (cls, id) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="${id}" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9af9f"/><stop offset=".35" stop-color="#4cc3bb"/><stop offset=".68" stop-color="#86a9f0"/><stop offset="1" stop-color="#a2d05a"/></linearGradient></defs><g fill="none" stroke="url(#${id})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${BRAIN}</g></svg>`;
 
   const UI = {
     en: {
-      play: "Play", pause: "Pause", replay: "Replay", share: "Share", step: n => `Step ${n}`,
+      play: "Play", pause: "Pause", replay: "Replay", share: "Share", sound: "Sound", step: n => `Step ${n}`,
       ecshare: "Share this", ecagain: "Watch again", smHead: "Share this explainer",
       copy: "Copy link", copied: "Copied", embed: "Copy embed code", video: "Download video",
       open: "Open on its own page", site: "papangelis.com/biases"
     },
     el: {
-      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", step: n => `Βήμα ${n}`,
+      play: "Αναπαραγωγή", pause: "Παύση", replay: "Από την αρχή", share: "Κοινοποίηση", sound: "Ήχος", step: n => `Βήμα ${n}`,
       ecshare: "Μοιράσου το", ecagain: "Ξανά από την αρχή", smHead: "Μοιράσου το",
       copy: "Αντιγραφή συνδέσμου", copied: "Αντιγράφηκε", embed: "Κώδικας ενσωμάτωσης", video: "Λήψη βίντεο",
       open: "Άνοιγμα σε δική του σελίδα", site: "papangelis.com/biases"
@@ -326,6 +357,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
           <div class="bp-ctl">
             <button class="bp-btn" type="button" data-a="play"></button>
             <div class="bp-dots">${scene.beats.map((_, i) => `<button class="bp-dot" type="button" data-i="${i}" aria-label="${U.step(i + 1)}"><i></i></button>`).join("")}</div>
+            ${opts.sfxBase && !capture ? `<button class="bp-btn" type="button" data-a="sound" aria-label="${U.sound}" aria-pressed="${SND.on}">${SND.on ? ICON.soundOn : ICON.soundOff}</button>` : ""}
             <button class="bp-btn" type="button" data-a="share" aria-label="${U.share}">${ICON.share}</button>
             <button class="bp-btn" type="button" data-a="replay" aria-label="${U.replay}">${ICON.replay}</button>
           </div>
@@ -358,9 +390,17 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
         d.style.width = (j < i ? 100 : j > i ? 0 : Math.min(100, (t - tl.starts[j]) / (end - tl.starts[j]) * 100)) + "%";
       });
     }
+    function cuesBetween(a, b) {   // sound cues passed while playing forward from a to b
+      for (const c of tl.cues) if (c.t > a && c.t <= b) playSound(c.name);
+    }
+    let cueFrom = -1;   // sounds fire for cues after this time (so a cue at 0 plays when starting over)
     function frame(now) {
-      const dt = Math.min(100, now - last); last = now;
-      t += dt; if (t >= tl.total) t = 0;
+      // a frame's timestamp can be a little earlier than the moment play() started: never step backwards
+      const dt = Math.max(0, Math.min(100, now - last)); last = Math.max(last, now);
+      t += dt;
+      if (t >= tl.total) { if (SND.on) cuesBetween(cueFrom, tl.total); t = 0; cueFrom = -1; }   // loop
+      if (SND.on) cuesBetween(cueFrom, t);
+      cueFrom = t;
       draw();
       raf = playing ? requestAnimationFrame(frame) : 0;
     }
@@ -369,9 +409,9 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       b.innerHTML = playing ? ICON.pause : ICON.play;
       b.setAttribute("aria-label", playing ? U.pause : U.play);
     }
-    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
+    function play() { if (playing || capture) return; if (!started) { started = true; t = 0; cueFrom = -1; } playing = true; last = performance.now(); raf = requestAnimationFrame(frame); setIcon(); }
     function pause() { playing = false; cancelAnimationFrame(raf); raf = 0; setIcon(); }
-    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); draw(); }
+    function seek(time) { t = Math.max(0, Math.min(tl.total, time)); cueFrom = t - 1e-3; draw(); }
 
     function closeMenu() { menu.hidden = true; }
     function openMenu() {
@@ -410,11 +450,23 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       if (d) { const i = +d.dataset.i; closeMenu(); started = true; if (playing) seek(tl.starts[i]); else seek(tl.ends[i]); return; }
       if (!a) return;
       const act = a.dataset.a;
-      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) t = 0; play(); } }
+      if (act === "play") { closeMenu(); if (playing) { userPaused = true; pause(); } else { userPaused = false; if (t >= tl.cardAt) seek(0); play(); } }
       else if (act === "replay" || act === "again") { closeMenu(); userPaused = false; seek(0); play(); }
       else if (act === "share") share();
+      else if (act === "sound") {
+        SND.on = !SND.on;
+        try { localStorage.setItem(SOUND_KEY, SND.on ? "on" : "off"); } catch (e) {}
+        if (SND.on) { audio(); loadSounds(opts.sfxBase); }
+        document.dispatchEvent(new CustomEvent("bp-sound"));
+      }
     });
     const outside = e => { if (!menu.hidden && !root.contains(e.target)) closeMenu(); };
+    const soundBtn = () => {
+      const b = $('[data-a="sound"]'); if (!b) return;
+      b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
+    };
+    document.addEventListener("bp-sound", soundBtn);
+    if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
     const esc = e => { if (e.key === "Escape") closeMenu(); };
     document.addEventListener("click", outside);
     document.addEventListener("keydown", esc);
@@ -435,7 +487,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-ite
       total: tl.total, cardAt: tl.cardAt, finalAt: tl.ends[n - 1],
       starts: tl.starts, ends: tl.ends, cues: tl.cues, motion: tl.motion, holdsDefault: tl.holdsDefault,
       seek, play, pause,
-      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); host.innerHTML = ""; }
+      destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); host.innerHTML = ""; }
     };
     if (capture) window.__bp = api;
     return api;
@@ -660,7 +712,7 @@ ${P} .check path{fill:none;stroke:var(--good);stroke-width:2.4;stroke-linecap:ro
 </script>
 <script>
   (function () {
-    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "el", "shareUrl": "https://papangelis.com/biases/el/watch/sunk-cost/", "embedUrl": "https://papangelis.com/biases/el/watch/sunk-cost/?embed", "videoUrl": "https://papangelis.com/biases/video/sunk-cost-el.mp4"};
+    var q = new URLSearchParams(location.search), mode = q.get("capture"), opts = {"lang": "el", "shareUrl": "https://papangelis.com/biases/el/watch/sunk-cost/", "embedUrl": "https://papangelis.com/biases/el/watch/sunk-cost/?embed", "sfxBase": "/biases/sfx/"};
     if (mode === "og") { opts.capture = true; var p = BiasAnim.mount(document.getElementById("og-player"), "sunk-cost", opts); window.__bp = p; }
     else {
       opts.capture = mode === "video";
