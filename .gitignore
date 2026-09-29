@@ -3,3 +3,6 @@ Thumbs.db
 
 # Local secrets / config (never commit)
 .env
+
+# Python bytecode
+__pycache__/
