@@ -96,10 +96,13 @@ button{font:inherit;color:inherit}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;padding-block:clamp(16px,4vw,40px) 8px}
-.hero h1{font-size:clamp(40px,6.4vw,78px);font-weight:760;letter-spacing:-.03em;font-variation-settings:"opsz" 96}
+.hero h1{font-size:clamp(34px,4.6vw,58px);font-weight:760;letter-spacing:-.03em;font-variation-settings:"opsz" 96}
 .hero h1 em{font-style:normal;color:var(--muted);font-weight:500}
 .hero-side{display:flex;flex-direction:column;gap:18px;padding-bottom:8px}
-.lede{font-size:19px;color:var(--ink);max-width:36ch}
+.lede{font-size:18px;color:var(--muted);max-width:40ch}
+.quiet-link{font:500 14px/1 var(--mono);color:var(--muted);text-underline-offset:4px}
+.quiet-link:hover{color:var(--ink)}
+.actions{align-items:center;gap:18px}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);padding:10px 16px;border-radius:999px;cursor:pointer;font:500 14px/1 var(--mono);text-decoration:none;transition:border-color .15s,background .15s}
 .btn:hover{border-color:var(--ink)}
@@ -154,7 +157,7 @@ section.block{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule
 .problems{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .problem{background:var(--surface);border-radius:14px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--q)}
 .problem h3{font-size:24px;color:var(--q)}
-.problem dl{margin:0;display:flex;flex-direction:column;gap:12px}
+.pdesc{font-size:16px;line-height:1.55;color:var(--muted)}
 .problem dt{font:500 11px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
 .problem dd{margin:0;font-size:16px;line-height:1.5}
 .problem .keep{margin-top:auto;padding-top:14px;border-top:1px dashed var(--rule);font:600 17px/1.35 var(--display)}
@@ -171,19 +174,17 @@ section.block{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule
 .chip i{width:9px;height:9px;border-radius:50%;background:var(--q,var(--ink))}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .count{font:13px/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.qsec{margin-bottom:40px}
+.qsec{margin-bottom:40px;scroll-margin-top:90px}
 .qsec>h3{font-size:28px;color:var(--q);margin-bottom:6px}
 .gsec{padding-block:18px;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:12px 32px}
 .gsec h4{font:600 17px/1.3 var(--display);letter-spacing:0}
 .gsec h4 button{all:unset;cursor:pointer;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
 .gsec h4 button:hover{text-decoration-color:var(--q)}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 20px}
-.item{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:8px 10px;margin-inline:-10px;border-radius:8px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px 20px}
+.item{all:unset;box-sizing:border-box;display:block;cursor:pointer;padding:6px 10px;margin-inline:-10px;border-radius:8px;font:500 15px/1.35 var(--display);color:var(--ink)}
 .item:hover{background:var(--surface)}
 .item:focus-visible{outline:2px solid var(--q);outline-offset:0}
-.item b{display:block;font:600 15px/1.3 var(--display);color:var(--ink)}
-.item b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--q);margin-right:8px;vertical-align:2px}
-.item span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;line-height:1.45;color:var(--muted)}
+.item::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--q);margin-right:8px;vertical-align:2px}
 .empty{color:var(--muted);font-style:italic;padding:24px 0}
 
 /* quiz */
@@ -282,8 +283,6 @@ footer cite{font-style:italic}
 .wheel[data-mine] .fan{opacity:.06}
 .wheel[data-mine] .fan.caught{opacity:.9;stroke-width:1.6}
 .mine{max-width:1060px;margin:18px auto 0;background:var(--surface);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
-.mine-empty{font-size:15.5px;color:var(--muted)}
-.mine-empty b{color:var(--ink);font-family:var(--display)}
 .mine-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
 .mine-head h3{font-size:24px}
 .mine-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 32px}
@@ -300,7 +299,7 @@ footer cite{font-style:italic}
 .catch{border:1.5px solid var(--q,var(--ink));background:transparent;color:var(--q,var(--ink));border-radius:999px;padding:9px 14px;font:500 13px/1 var(--mono);cursor:pointer;white-space:nowrap}
 .catch:hover{background:color-mix(in srgb,var(--q,var(--ink)) 12%,transparent)}
 .catch[aria-pressed="true"]{background:var(--q,var(--ink));color:var(--surface)}
-.item.caught b::after{content:"στον χάρτη σου";font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--surface);background:var(--q);border-radius:999px;padding:3px 6px;margin-left:8px;vertical-align:2px}
+.item.caught::after{content:"στον χάρτη σου";font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--surface);background:var(--q);border-radius:999px;padding:3px 6px;margin-left:8px;vertical-align:2px}
 .sibs button.on{border-color:var(--q);color:var(--q)}
 
 /* lab */
@@ -435,40 +434,34 @@ footer cite{font-style:italic}
   <header class="top">
     <a class="brand" href="#top" id="top"><span class="brand-mark" aria-hidden="true"></span>Εξερευνητής γνωστικών μεροληψιών</a><a class="home-link" href="/">&larr; Downstream</a><a class="home-link lang-link" href="../" hreflang="en" lang="en" title="English" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">EN</a>
     <nav aria-label="Ενότητες">
-      <a href="#map">Χάρτης</a><a href="#lab">Πειράματα</a><a href="#why">Γιατί υπάρχουν</a><a href="#browse">Όλες οι μεροληψίες</a><a href="#quiz">Κουίζ</a><a href="#habits">Συνήθειες</a>
+      <a href="#lab">Πειράματα</a><a href="#browse">Όλες οι μεροληψίες</a><a href="#quiz">Κουίζ</a>
     </nav>
   </header>
 
   <section class="hero" aria-labelledby="h1">
     <h1 id="h1">Ο εγκέφαλός σου παίρνει συντομεύσεις. <em>Ορίστε ο χάρτης.</em></h1>
     <div class="hero-side">
-      <p class="lede">Κάθε μεροληψία παρακάτω είναι μια συντόμευση που συνήθως βοηθά και μερικές φορές παραπλανά. Μάθε τι είναι η καθεμία, γιατί τη χρησιμοποιεί το μυαλό σου, πώς να την πιάνεις και τι να κάνεις αντί γι’ αυτό.</p>
-      <div class="stats" aria-label="Τι περιέχει ο χάρτης">
-        <div><b>4</b><span>προβλήματα</span></div>
-        <div><b>20</b><span>στρατηγικές</span></div>
-        <div><b id="stat-n">188</b><span>μεροληψίες</span></div>
-      </div>
+      <p class="lede">Νοητικές συντομεύσεις που συνήθως βοηθούν και μερικές φορές παραπλανούν. Διάλεξε όποια θέλεις στον χάρτη για να δεις γιατί συμβαίνει και πώς να την πιάνεις.</p>
       <div class="actions">
         <a class="btn primary" href="#lab">Δοκίμασέ το πάνω σου</a>
-        <a class="btn" href="#quiz">Κάνε το κουίζ</a>
-        <button class="btn" type="button" id="random-btn">Τυχαία μεροληψία</button>
+        <a class="quiet-link" href="#quiz">ή κάνε το κουίζ</a>
       </div>
     </div>
   </section>
 
   <div class="map" id="map">
     <div class="map-bar">
-      <p class="map-hint" id="map-hint">Πέρνα τον δείκτη από πάνω για μεγέθυνση και κάνε κλικ σε ένα όνομα. Κάνε κλικ σε έναν χρωματιστό κόμβο για όλη την οικογένειά του.</p>
-      <div class="seg" id="view-seg" role="group" aria-label="Προβολή τροχού"><button type="button" data-view="all" aria-pressed="true">Όλες οι μεροληψίες</button><button type="button" data-view="mine" aria-pressed="false">Ο χάρτης μου<span id="mine-n">0</span></button></div>
+      <p class="map-hint" id="map-hint">Πέρνα τον δείκτη για μεγέθυνση και κάνε κλικ σε ένα όνομα.</p>
+      <div class="seg" id="view-seg" hidden role="group" aria-label="Προβολή τροχού"><button type="button" data-view="all" aria-pressed="true">Όλες οι μεροληψίες</button><button type="button" data-view="mine" aria-pressed="false">Ο χάρτης μου<span id="mine-n">0</span></button></div>
     </div>
     <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="Ο τροχός των γνωστικών μεροληψιών. Τέσσερα προβλήματα, είκοσι στρατηγικές και όλες οι μεροληψίες. Για πρόσβαση με πληκτρολόγιο, χρησιμοποίησε την πλήρη λίστα παρακάτω."></svg>
-    <div class="mine" id="mine" aria-live="polite"></div>
+    <div class="mine" id="mine" hidden aria-live="polite"></div>
   </div>
 
   <section class="block" id="lab" aria-labelledby="lab-h">
     <div class="block-head">
       <h2 id="lab-h">Νιώσε το να συμβαίνει</h2>
-      <p>Άλλο να διαβάζεις για μια μεροληψία κι άλλο να τη βλέπεις να δουλεύει πάνω σου. Δέκα γρήγορα πειράματα, τα περισσότερα κάτω από ένα λεπτό. Απάντησε ειλικρινά πριν δεις τη λύση. <span id="lab-progress"></span></p>
+      <p>Δέκα γρήγορα πειράματα, τα περισσότερα κάτω από ένα λεπτό. Απάντησε ειλικρινά και μετά δες τι συνέβη. <span id="lab-progress"></span></p>
     </div>
     <div class="lab">
       <div class="lab-list" id="lab-list" aria-label="Πειράματα"></div>
@@ -479,7 +472,7 @@ footer cite{font-style:italic}
   <section class="block" id="why" aria-labelledby="why-h">
     <div class="block-head">
       <h2 id="why-h">Γιατί υπάρχουν οι μεροληψίες</h2>
-      <p>Το μυαλό σου έχει να λύσει τέσσερα δύσκολα προβλήματα κάθε δευτερόλεπτο, με περιορισμένο χρόνο και προσοχή. Κάθε μεροληψία είναι παρενέργεια μιας στρατηγικής που λύνει ένα από αυτά. Όταν βλέπεις το πρόβλημα, οι μεροληψίες γίνονται πιο εύκολα προβλέψιμες.</p>
+      <p>Κάθε μεροληψία είναι παρενέργεια της λύσης σε ένα από τέσσερα καθημερινά προβλήματα.</p>
     </div>
     <div class="problems" id="problems"></div>
   </section>
@@ -487,15 +480,13 @@ footer cite{font-style:italic}
   <section class="block" id="browse" aria-labelledby="browse-h">
     <div class="block-head">
       <h2 id="browse-h">Όλες οι μεροληψίες, ανά οικογένεια</h2>
-      <p>Αναζήτησε με το όνομα ή με αυτό που συμβαίνει («χρήματα», «μνήμη», «ομάδα», «ρίσκο»). Άνοιξε όποια θέλεις για να δεις πώς να την εντοπίζεις και πώς να την αντιμετωπίζεις.</p>
+      <p>Ψάξε με όνομα ή θέμα, όπως «χρήματα» ή «μνήμη».</p>
     </div>
     <div class="tools">
       <label class="search" for="q-input">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="q-input" type="search" placeholder="Αναζήτηση μεροληψιών" autocomplete="off" aria-label="Αναζήτηση μεροληψιών">
       </label>
-      <div class="chips" id="filter-chips" role="group" aria-label="Φίλτρο ανά πρόβλημα"></div>
-      <span class="count" id="count" aria-live="polite"></span>
     </div>
     <div id="list"></div>
   </section>
@@ -503,7 +494,7 @@ footer cite{font-style:italic}
   <section class="block" id="quiz" aria-labelledby="quiz-h">
     <div class="block-head">
       <h2 id="quiz-h">Βρες τη μεροληψία</h2>
-      <p>Το να ξέρεις έναν ορισμό είναι εύκολο. Η πραγματική δεξιότητα είναι να αναγνωρίζεις μια μεροληψία μέσα σε μια συνηθισμένη στιγμή. Οκτώ σύντομα σενάρια, με τέσσερις επιλογές το καθένα.</p>
+      <p>Οκτώ καθημερινά σενάρια. Διάλεξε τη μεροληψία πίσω από το καθένα.</p>
     </div>
     <div class="quiz" id="quiz-box"></div>
   </section>
@@ -511,7 +502,7 @@ footer cite{font-style:italic}
   <section class="block" id="habits" aria-labelledby="habits-h">
     <div class="block-head">
       <h2 id="habits-h">Συνήθειες που πιάνουν τις περισσότερες</h2>
-      <p>Τις μεροληψίες δεν μπορείς να τις απενεργοποιήσεις, και δεν χρειάζεται για μικρές, καθημερινές αποφάσεις. Για αποφάσεις που κοστίζουν ακριβά ή δύσκολα αναιρούνται, λίγοι έλεγχοι καλύπτουν μεγάλο μέρος του χάρτη.</p>
+      <p>Για αποφάσεις που κοστίζουν ή δύσκολα αναιρούνται, αυτοί οι έλεγχοι πιάνουν το μεγαλύτερο μέρος του χάρτη.</p>
     </div>
     <div class="habits" id="habit-list"></div>
   </section>
@@ -597,7 +588,6 @@ DATA.forEach((groups, qi) => {
   });
 });
 const UNIQUE = new Set(BIASES.map(b => b.n)).size;
-document.getElementById("stat-n").textContent = UNIQUE;
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -771,35 +761,20 @@ if (narrow.matches) document.getElementById("map-hint").textContent = "Πάτη�
 document.getElementById("problems").innerHTML = QUADS.map(q => `
   <article class="problem q-${q.key}">
     <h3>${esc(q.name)}</h3>
-    <dl>
-      <div><dt>Το πρόβλημα</dt><dd>${esc(q.problem)}</dd></div>
-      <div><dt>Τι κάνει ο εγκέφαλός σου</dt><dd>${esc(q.strategy)}</dd></div>
-      <div><dt>Η παρενέργεια</dt><dd>${esc(q.cost)}</dd></div>
-    </dl>
+    <p class="pdesc">${esc(q.problem)} ${esc(q.strategy)}</p>
     <p class="keep">${esc(q.keep)}</p>
     <button class="more" type="button" data-q="${q.key}">Δες τις ${BIASES.filter(b => b.q === q).length} μεροληψίες του</button>
   </article>`).join("");
 document.getElementById("problems").addEventListener("click", e => {
   const b = e.target.closest(".more"); if (!b) return;
-  setFilter(b.dataset.q);
-  document.getElementById("browse").scrollIntoView();
+  document.getElementById("list-" + b.dataset.q)?.scrollIntoView();
 });
 
 /* ---------- browse ---------- */
-let filterQ = "all", query = "";
-const chipsEl = document.getElementById("filter-chips");
-chipsEl.innerHTML = `<button class="chip" type="button" data-q="all" aria-pressed="true">Όλες</button>` +
-  QUADS.map(q => `<button class="chip q-${q.key}" type="button" data-q="${q.key}" aria-pressed="false"><i></i>${esc(q.name.replace(";", ""))}</button>`).join("");
-chipsEl.addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) setFilter(c.dataset.q); });
-function setFilter(q) {
-  filterQ = q;
-  chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.q === q));
-  renderList();
-}
+let query = "";
 const qInput = document.getElementById("q-input");
 qInput.addEventListener("input", () => { query = fold(qInput.value.trim()); renderList(); });
 function matches(b) {
-  if (filterQ !== "all" && b.q.key !== filterQ) return false;
   if (!query) return true;
   return fold([b.n, b.en, b.alias, b.d, b.ex, b.g.title].join(" ")).includes(query);
 }
@@ -813,13 +788,12 @@ function renderList() {
       n += hits.length;
       qh += `<div class="gsec q-${q.key}">
         <h4><button type="button" data-g="${GROUPS.indexOf(g)}">${esc(g.title)}</button></h4>
-        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}"><b>${esc(b.n)}</b><span>${esc(b.d)}</span></button>`).join("")}</div>
+        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}">${esc(b.n)}</button>`).join("")}</div>
       </div>`;
     });
-    if (qh) html += `<div class="qsec q-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
+    if (qh) html += `<div class="qsec q-${q.key}" id="list-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
   });
   document.getElementById("list").innerHTML = html || `<p class="empty">Καμία μεροληψία δεν ταιριάζει με «${esc(query)}». Δοκίμασε μια πιο γενική λέξη, όπως «μνήμη» ή «ρίσκο».</p>`;
-  document.getElementById("count").textContent = n === BIASES.length ? `${UNIQUE} μεροληψίες` : `${n} από ${BIASES.length}`;
 }
 document.getElementById("list").addEventListener("click", e => {
   const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i]);
@@ -864,11 +838,9 @@ function openBias(b) {
     <p class="def">${esc(b.d)}</p>
     <div class="row">${catchBtn(b, "Το έχω πιάσει στον εαυτό μου")}${XP_FOR[b.en] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.en].id}">Δοκίμασέ το πάνω σου</button>` : ""}</div>
     <div class="pblock"><h3>Στην καθημερινότητα</h3><p class="example">${esc(b.ex)}</p></div>
-    <div class="pblock"><h3>Γιατί το κάνει αυτό το μυαλό σου</h3><p>${esc(g.why)}</p><p style="color:var(--muted)">${esc(g.cost)}</p></div>
+    <div class="pblock"><h3>Γιατί το κάνει αυτό το μυαλό σου</h3><p>${esc(g.why)}</p></div>
     <div class="pblock"><h3>Πώς να την εντοπίσεις</h3><p class="lead-tip">${esc(b.spot)}</p></div>
     <div class="pblock"><h3>Πώς να την αντιμετωπίσεις</h3><p class="lead-tip">${esc(b.fix)}</p></div>
-    ${listBlock("Σημάδια ότι δουλεύει όλη αυτή η οικογένεια", g.spot)}
-    ${listBlock("Συνήθειες που βοηθούν με αυτή την οικογένεια", g.fix)}
     <div class="pblock"><h3>Στην ίδια οικογένεια</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>`;
   showPanel(b.q);
   markOn(b, null);
@@ -905,13 +877,17 @@ document.getElementById("p-prev").onclick = () => step(-1);
 document.getElementById("p-next").onclick = () => step(1);
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
+const OPENERS = ".leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+document.addEventListener("click", e => {
+  if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
+  closePanel();
+});
 document.addEventListener("keydown", e => {
   if (!panel.classList.contains("open")) return;
   if (e.key === "Escape") closePanel();
   else if (e.key === "ArrowRight" && !e.target.closest("input")) step(1);
   else if (e.key === "ArrowLeft" && !e.target.closest("input")) step(-1);
 });
-document.getElementById("random-btn").onclick = () => openBias(BIASES[Math.floor(Math.random() * BIASES.length)]);
 function fromHash() {
   const h = location.hash.slice(1);
   const b = BIASES.find(x => x.slug === h); if (b) return openBias(b);
@@ -1021,19 +997,13 @@ function refreshCaught() {
 function renderMine() {
   const list = BIASES.filter(b => caught.has(b.slug));
   $("#mine-n").textContent = new Set(list.map(b => b.n)).size;
-  if (!list.length) {
-    mineEl.innerHTML = `<p class="mine-empty"><b>Φτιάξε τον δικό σου χάρτη μεροληψιών.</b> Άνοιξε οποιαδήποτε μεροληψία και πάτησε «Το έχω πιάσει στον εαυτό μου», ή δοκίμασε ένα πείραμα παρακάτω. Κάθε μεροληψία που πιάνεις ανάβει στον τροχό. Ο χάρτης σου αποθηκεύεται μόνο σε αυτόν τον browser.</p>`;
-    return;
-  }
+  seg.hidden = mineEl.hidden = !list.length;
+  if (!list.length) { setView("all"); return; }
   const fam = GROUPS.map(g => ({ g, n: g.items.filter(b => caught.has(b.slug)).length }))
     .filter(f => f.n).sort((a, b) => b.n - a.n || b.n / b.g.items.length - a.n / a.g.items.length)[0];
   mineEl.innerHTML = `
     <div class="mine-head"><h3>Ο χάρτης σου</h3><span class="label">Έπιασες ${new Set(list.map(b => b.n)).size} από ${UNIQUE} · αποθηκεύεται σε αυτόν τον browser</span></div>
     <div class="mine-grid">
-      <div class="bars">${QUADS.map(q => {
-        const t = BIASES.filter(b => b.q === q), c = t.filter(b => caught.has(b.slug)).length;
-        return `<div class="bar q-${q.key}"><span>${esc(q.name)}</span><div class="bar-track"><i style="width:${(100 * c / t.length).toFixed(1)}%"></i></div><b>${c}/${t.length}</b></div>`;
-      }).join("")}</div>
       <div class="topfam q-${fam.g.q.key}">
         <p class="label">Πού πιάνεις τον εαυτό σου πιο συχνά</p>
         <button type="button" class="linkish" data-open-group="${GROUPS.indexOf(fam.g)}">${esc(fam.g.title)}</button>
@@ -1390,7 +1360,7 @@ refreshCaught();
 
 /* ---------- habits ---------- */
 document.getElementById("habit-list").innerHTML = HABITS.map(([t, p, beats]) =>
-  `<div class="habit"><h3>${esc(t)}</h3><p>${esc(p)}</p><p class="beats">Βοηθά με: ${esc(beats)}</p></div>`).join("");
+  `<div class="habit"><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join("");
 fromHash();
 </script>
 
