@@ -211,11 +211,17 @@ section.block{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--rule
 .final .big{font:760 clamp(56px,9vw,96px)/1 var(--display);font-variant-numeric:tabular-nums}
 
 /* habits */
-.habits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
-.habit{padding-block:20px;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
-.habit h3{font-size:21px}
-.habit p{color:var(--muted);font-size:16px}
-.habit .beats{font:12px/1.5 var(--mono);color:var(--faint)}
+.habits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.habit{background:var(--surface);border-radius:16px;padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--q)}
+.habit-art svg{display:block;width:100%;height:auto;aspect-ratio:160/110}
+.habit-no{font:500 12px/1 var(--mono);color:var(--q);letter-spacing:.08em}
+.habit h3{font-size:19px;line-height:1.15}
+.habit p{color:var(--muted);font-size:15px;line-height:1.5}
+.habit-catches{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.habit-catches .label{font-size:10.5px;width:100%}
+.hchip{border:1px solid var(--rule);background:transparent;border-radius:999px;padding:5px 9px;font:500 12px/1.2 var(--mono);cursor:pointer;color:var(--ink)}
+.hchip:hover{border-color:var(--q);color:var(--q)}
+.habits-foot{margin-top:22px}
 
 footer{border-top:1px solid var(--rule);padding-block:22px 36px;display:flex;flex-direction:column;gap:10px;font-size:13.5px;line-height:1.55;color:var(--muted)}
 .foot-row{display:flex;gap:14px;align-items:flex-start}
@@ -258,7 +264,6 @@ footer cite{font-style:italic}
   .hero,.block-head{grid-template-columns:minmax(0,1fr)}
   .foot-row{flex-direction:column;gap:8px}
   .gsec{grid-template-columns:minmax(0,1fr)}
-  .habits{grid-template-columns:minmax(0,1fr)}
   .panel{top:auto;height:88%;width:100%;border-left:0;border-top:5px solid var(--q,var(--rule));border-radius:18px 18px 0 0;transform:translateY(105%)}
   .scrim.open{opacity:1;pointer-events:auto}
   .top nav{display:none}
@@ -423,6 +428,58 @@ footer cite{font-style:italic}
   .stage{min-height:0}
 }
 
+/* videos: markers, the reel */
+.wheel .leaf.vid .dot{r:5.2;fill:var(--surface);stroke:var(--q);stroke-width:2.4}
+.wheel .leaf.vid .lt{font-weight:600}
+.map-legend{max-width:1060px;margin:4px auto 0;display:flex;justify-content:center;gap:8px;align-items:center;font:12px/1.3 var(--mono);color:var(--muted)}
+.map-legend i{width:11px;height:11px;border-radius:50%;border:2.4px solid var(--muted);box-sizing:border-box;flex:none}
+.vb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
+.reel{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.reel-item{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;background:var(--surface);border-radius:14px;padding:10px 10px 14px;border:1px solid transparent;transition:border-color .15s}
+.reel-item:hover{border-color:var(--q)}
+.reel-item:focus-visible{outline:2px solid var(--q);outline-offset:2px}
+.reel-thumb{position:relative;aspect-ratio:400/272;border-radius:10px;background:var(--ground);overflow:hidden}
+.reel-thumb>[data-thumb]{position:absolute;inset:0;display:block}
+.reel-play{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:var(--q);display:grid;place-items:center}
+.reel-play svg{width:12px;height:12px;fill:var(--surface);margin-left:2px}
+.reel-name{font:600 16px/1.25 var(--display);padding-inline:4px}
+.reel-q{font:500 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--q);padding-inline:4px}
+
+/* dial: the wheel on phones, turned sideways */
+.dial{display:none}
+.dial-chips{display:flex;gap:6px;padding:0 16px 4px;overflow-x:auto;scrollbar-width:none}
+.dial-chips .chip{flex:none}
+.dial-svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.dial-svg:focus{outline:none}
+.dial-svg:focus-visible{outline:2px solid var(--nem);outline-offset:-4px}
+.dial-svg .dl{font-family:var(--display);fill:var(--ink);dominant-baseline:central;cursor:pointer}
+.dial-svg .dd{fill:var(--q)}
+.dial-svg .dv{fill:var(--surface);stroke:var(--q);stroke-width:2.2}
+.dial-svg .dvp{fill:var(--q)}
+.dial-svg .band{fill:var(--surface)}
+.dial-svg .rim{fill:none;stroke:var(--rule);stroke-width:1}
+.dial-svg .ptr{fill:var(--ink)}
+.dial-read{padding:4px 16px 0;min-height:120px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.dial-read .dq{font:500 11px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--q)}
+.dial-read b{font:700 25px/1.1 var(--display);letter-spacing:-.01em}
+.dial-hint{font:12px/1.3 var(--mono);color:var(--faint)}
+
+@media (max-width:1060px){
+  .habits{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  /* phones: things to do first, the map after them */
+  .wrap{display:flex;flex-direction:column}
+  .top{order:0} .hero{order:1} #watch{order:2} #lab{order:3} #quiz{order:4} .map{order:5} #habits{order:6} #why{order:7} #browse{order:8} footer{order:9}
+  .reel,.habits{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px);scrollbar-width:none}
+  .reel-item{flex:none;width:72vw;max-width:300px;scroll-snap-align:start}
+  .habit{flex:none;width:80vw;max-width:330px;scroll-snap-align:start}
+}
+@media (max-width:700px){
+  .wheel,.map-legend,.map-bar{display:none}
+  .dial{display:block;margin-inline:calc(-1*clamp(16px,4vw,48px))}
+}
+
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 </style>
@@ -434,7 +491,7 @@ footer cite{font-style:italic}
   <header class="top">
     <a class="brand" href="#top" id="top"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Εξερευνητής γνωστικών μεροληψιών</a><a class="home-link lang-link" href="../" hreflang="en" lang="en" title="English" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">EN</a>
     <nav aria-label="Ενότητες">
-      <a href="#lab">Πειράματα</a><a href="#browse">Όλες οι μεροληψίες</a><a href="#quiz">Κουίζ</a>
+      <a href="#watch">Βίντεο</a><a href="#lab">Πειράματα</a><a href="#quiz">Κουίζ</a><a href="#habits">Συνήθειες</a><a href="#browse">Όλες οι μεροληψίες</a>
     </nav>
   </header>
 
@@ -454,8 +511,22 @@ footer cite{font-style:italic}
       <div class="seg" id="view-seg" hidden role="group" aria-label="Προβολή τροχού"><button type="button" data-view="all" aria-pressed="true">Όλες οι μεροληψίες</button><button type="button" data-view="mine" aria-pressed="false">Ο χάρτης μου<span id="mine-n">0</span></button></div>
     </div>
     <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="Ο τροχός των γνωστικών μεροληψιών: τέσσερα προβλήματα, είκοσι στρατηγικές και όλες οι μεροληψίες. Αν χρησιμοποιείς πληκτρολόγιο, δες την πλήρη λίστα πιο κάτω."></svg>
+    <p class="map-legend"><i aria-hidden="true"></i>Όσες έχουν δαχτυλίδι έχουν βίντεο 30″</p>
+    <div class="dial" id="dial">
+      <div class="dial-chips" id="dial-chips" role="group" aria-label="Πήγαινε σε ένα πρόβλημα"></div>
+      <svg class="dial-svg" id="dial-svg" viewBox="0 0 360 400" tabindex="0" role="slider" aria-label="Ο τροχός των μεροληψιών. Σύρε πάνω ή κάτω για να γυρίσει."></svg>
+      <div class="dial-read" id="dial-read" aria-live="polite"></div>
+    </div>
     <div class="mine" id="mine" hidden aria-live="polite"></div>
   </div>
+
+  <section class="block" id="watch" aria-labelledby="watch-h">
+    <div class="block-head">
+      <h2 id="watch-h">Δες τες στην πράξη</h2>
+      <p><span class="reel-n"></span> σύντομα κινούμενα βίντεο, περίπου 30 δευτερόλεπτα το καθένα. Διάλεξε ένα για να το δεις.</p>
+    </div>
+    <div class="reel" id="reel"></div>
+  </section>
 
   <section class="block" id="lab" aria-labelledby="lab-h">
     <div class="block-head">
@@ -486,6 +557,7 @@ footer cite{font-style:italic}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="q-input" type="search" placeholder="Αναζήτηση μεροληψιών" autocomplete="off" aria-label="Αναζήτηση μεροληψιών">
       </label>
+      <button class="chip" type="button" id="vid-only" aria-pressed="false">▶ Με βίντεο <span class="reel-n"></span></button>
     </div>
     <div id="list"></div>
   </section>
@@ -504,6 +576,7 @@ footer cite{font-style:italic}
       <p>Όταν μια απόφαση κοστίζει ή δύσκολα αναιρείται, αυτοί οι έλεγχοι καλύπτουν το μεγαλύτερο μέρος του χάρτη.</p>
     </div>
     <div class="habits" id="habit-list"></div>
+    <div class="row habits-foot"><a class="btn primary" href="habits/">Άνοιξε τη λίστα σε μία σελίδα</a></div>
   </section>
 
   <footer id="credits">
@@ -528,7 +601,7 @@ footer cite{font-style:italic}
   <div class="panel-body" id="p-body"></div>
 </aside>
 
-<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n";
+<script>window.BiasAnimCSS = "/* Animated explainer player (see anim.js). Uses the explorer's colour and font tokens. */\n.bp{--bp-ctl:54px}\n.bp-stage{position:relative;background:var(--ground);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}\n.bp-cap{display:flex;gap:10px;align-items:baseline;padding:14px 16px 0}\n.bp-no{font:500 11px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums;flex:none;min-width:2.4em}\n.bp-text{min-height:2.7em;font:600 16.5px/1.35 var(--display);margin:0;text-wrap:balance;color:var(--ink)}\n.bp-text b{color:var(--q);font-weight:600}\n.bp-svg{display:block;width:100%;height:auto}\n.bp-ctl{display:flex;align-items:center;gap:8px;padding:4px 12px 12px}\n.bp-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}\n.bp-btn:hover{border-color:var(--ink)}\n.bp-btn[aria-pressed=\"true\"]{color:var(--q);border-color:var(--q)}\n.bp-btn:focus-visible,.bp-dot:focus-visible,.bp-pill:focus-visible{outline:2px solid var(--q);outline-offset:2px}\n.bp-dots{display:flex;gap:5px;flex:1;min-width:0}\n.bp-dot{flex:1;height:6px;border-radius:3px;border:0;padding:0;background:var(--surface-2);cursor:pointer;position:relative;overflow:hidden}\n.bp-dot i{position:absolute;inset:0 auto 0 0;width:0;background:var(--q);border-radius:3px}\n.bp-brand{display:none}\n\n/* end screen */\n.bp-card{position:absolute;inset:0 0 var(--bp-ctl) 0;background:var(--ground);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;opacity:0;pointer-events:none}\n.bp-card.on{pointer-events:auto}\n.bp-mark{width:40px;height:40px}\n.bp-name{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;color:var(--ink)}\n.bp-line{font:400 16px/1.45 var(--serif);color:var(--muted);margin:0;max-width:30ch}\n.bp-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.bp-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 13.5px/1 var(--mono);cursor:pointer}\n.bp-pill:hover{border-color:var(--ink)}\n.bp-pill.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}\n\n/* share menu */\n.bp-menu{position:absolute;right:10px;bottom:calc(var(--bp-ctl) + 6px);width:min(270px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:0 18px 50px -18px rgba(20,28,36,.45);padding:8px;display:flex;flex-direction:column;z-index:3}\n.bp-menu[hidden]{display:none}\n.bp-mh{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}\n.bp-menu a,.bp-menu button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border-radius:9px;font:500 14px/1.2 var(--display);color:var(--ink);cursor:pointer}\n.bp-menu a:hover,.bp-menu button:hover{background:var(--surface-2)}\n.bp-menu a:focus-visible,.bp-menu button:focus-visible{outline:2px solid var(--q)}\n.bp-menu small{font:500 10.5px/1 var(--mono);color:var(--faint)}\n.bp-menu small.ok{color:var(--good)}\n\n/* scene */\n.bp .ax{stroke:var(--rule);stroke-width:2}\n.bp .tick{stroke:var(--rule);stroke-width:1.5}\n.bp .tl{font:500 10px var(--mono);fill:var(--faint);text-anchor:middle}\n.bp .axt{font:500 10px var(--mono);fill:var(--faint)}\n.bp .house{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}\n.bp .tag line{stroke:var(--ink);stroke-width:1.4}\n.bp .tag rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}\n.bp .tag text{font:700 15px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .bubble rect{fill:var(--surface);stroke:var(--q);stroke-width:1.8}\n.bp .bubble path{fill:var(--surface);stroke:var(--q);stroke-width:1.8;stroke-linejoin:round}\n.bp .bubble text{font:600 13px var(--display);fill:var(--ink);text-anchor:middle}\n.bp .anchor{fill:none;stroke:var(--q);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}\n.bp .note{font:500 9.5px var(--mono);fill:var(--q);text-anchor:middle}\n.bp .rope{fill:none;stroke:var(--q);stroke-width:2;stroke-dasharray:1 5;stroke-linecap:round}\n.bp .arrow{fill:none;stroke:var(--q);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}\n.bp .pin{--pin:var(--ink)} .bp .pin.p2{--pin:var(--good)}\n.bp .pin circle{fill:var(--pin)}\n.bp .pin line{stroke:var(--pin);stroke-width:2.2}\n.bp .pin text{font:600 11px var(--display);fill:var(--pin)}\n.bp .ghost circle{fill:none;stroke:var(--good);stroke-width:1.8;stroke-dasharray:3 3}\n.bp .ghost line{stroke:var(--good);stroke-width:1.6;stroke-dasharray:3 3}\n.bp .ghost text{font:600 11px var(--display);fill:var(--good);text-anchor:end}\n.bp .ghost .sub{font:500 9.5px var(--mono);fill:var(--muted)}\n.bp .gap line{stroke:var(--bad);stroke-width:1.8}\n.bp .gap text{font:600 11px var(--mono);fill:var(--bad);text-anchor:middle}\n.bp .band rect{fill:var(--good);opacity:.22}\n.bp .pad rect{fill:var(--surface);stroke:var(--good);stroke-width:1.6}\n.bp .pad .h{font:500 9px var(--mono);fill:var(--muted);text-anchor:middle}\n.bp .pad .v{font:700 13px var(--display);fill:var(--good);text-anchor:middle}\n\n/* capture layout: a square frame for video export, with a brand bar instead of controls */\n.bp.capture{--bp-ctl:46px;height:100%}\n.bp.capture .bp-stage{height:100%;border:0;border-radius:0;justify-content:space-between}\n.bp.capture .bp-cap{padding:22px 24px 0}\n.bp.capture .bp-text{font-size:21px}\n.bp.capture .bp-no{font-size:12px}\n.bp.capture .bp-svg{flex:1;min-height:0;padding-inline:8px}\n.bp.capture .bp-ctl{display:none}\n.bp.capture .bp-brand{display:flex;align-items:center;gap:10px;height:var(--bp-ctl);padding:0 20px;border-top:1px solid var(--rule);font:600 14px/1 var(--display);color:var(--ink)}\n.bp.capture .bp-bm{flex:none;width:22px;height:22px}\n.bp.capture .bp-site{margin-left:auto;font:500 12px/1 var(--mono);color:var(--q)}\n.bp.capture .bp-row{display:none}\n\n/* share-card frame: just the drawing, boxed (after the capture rules, which it overrides) */\n.bp.og,.bp.og .bp-stage{height:auto}\n.bp.og .bp-stage{border:1px solid var(--rule);border-radius:10px}\n.bp.og .bp-cap,.bp.og .bp-brand{display:none}\n.bp.og .bp-svg{flex:none;padding:4px}\n\n/* thumbnail: the finished drawing, framed by whatever holds it */\n.bp.still .bp-stage{border:0;border-radius:0;background:transparent}\n.bp.still .bp-svg{padding:0}\n";
 /* Cognitive Bias Explorer: animated explainers.
    A player shows a scene as a seekable timeline. seek(t) renders any moment exactly,
    so looping, stepping between beats, and frame-by-frame video capture all agree.
@@ -666,12 +739,13 @@ footer cite{font-style:italic}
     const lang = opts.lang === "el" ? "el" : "en", T = scene.text[lang], U = UI[lang];
     const tl = compile(scene, opts.holds, opts.cardHold), n = scene.beats.length, id = "bp" + (++uid);
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const capture = !!opts.capture;
+    const still = !!opts.still;   // a thumbnail: the finished drawing only, no controls, never plays
+    const capture = !!opts.capture || still;
     // each player lives in its own shadow root: page styles can't reach the scene, and scene styles can't leak out.
     // Colours and fonts still come through as inherited CSS variables (--ink, --q, --display, ...).
     const dom = host.shadowRoot || host.attachShadow({ mode: "open" });
     dom.innerHTML = `<style>:host{display:block}${window.BiasAnimCSS || ""}\n${scene.css || ""}<\/style>
-      <div class="bp${capture ? " capture" : ""}${opts.og ? " og" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
+      <div class="bp${capture ? " capture" : ""}${opts.og || still ? " og" : ""}${still ? " still" : ""}" data-scene="${key}" style="--q:var(--${scene.q})">
         <div class="bp-stage">
           <div class="bp-cap"><span class="bp-no"><\/span><p class="bp-text" aria-live="polite"><\/p><\/div>
           <svg class="bp-svg" viewBox="${scene.viewBox}" role="img" aria-label="${T.shareTitle}"><g class="bp-all">${scene.svg(T)}<\/g><\/svg>
@@ -793,11 +867,13 @@ footer cite{font-style:italic}
       const b = $('[data-a="sound"]'); if (!b) return;
       b.innerHTML = SND.on ? ICON.soundOn : ICON.soundOff; b.setAttribute("aria-pressed", SND.on);
     };
-    document.addEventListener("bp-sound", soundBtn);
-    if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
     const esc = e => { if (e.key === "Escape") closeMenu(); };
-    document.addEventListener("click", outside);
-    document.addEventListener("keydown", esc);
+    if (!still) {
+      document.addEventListener("bp-sound", soundBtn);
+      if (SND.on && opts.sfxBase && !capture) loadSounds(opts.sfxBase);
+      document.addEventListener("click", outside);
+      document.addEventListener("keydown", esc);
+    }
 
     let io = null;
     if (!capture && !reduced && opts.autoplay !== false) {
@@ -808,7 +884,7 @@ footer cite{font-style:italic}
       io.observe(root);
     }
     // at rest (before playing, or with reduced motion) show the finished story
-    seek(capture ? 0 : tl.ends[n - 1]);
+    seek(capture && !still ? 0 : tl.ends[n - 1]);
     setIcon();
 
     const api = {
@@ -817,7 +893,7 @@ footer cite{font-style:italic}
       seek, play, pause,
       destroy() { pause(); io && io.disconnect(); document.removeEventListener("click", outside); document.removeEventListener("keydown", esc); document.removeEventListener("bp-sound", soundBtn); dom.innerHTML = ""; }
     };
-    if (capture) window.__bp = api;
+    if (capture && !still) window.__bp = api;
     return api;
   }
 
@@ -5891,16 +5967,8 @@ const SHORT = {
   confident:"Σιγουριά για να δράσουμε", immediate:"Το εδώ & τώρα", invested:"Τελειώνουμε ό,τι αρχίσαμε", autonomy:"Αυτονομία & κύρος", simple:"Απλό και πλήρες",
   edit:"Ξαναγραμμένες μνήμες", generalize:"Γενικεύσεις", reduce:"Βασικά στοιχεία", store:"Πώς το αποθηκεύσαμε"
 };
-const HABITS = [
-  ["Υπερασπίσου την άλλη πλευρά", "Πριν δεσμευτείς, γράψε το πιο δυνατό επιχείρημα κατά της άποψής σου. Αν δεν μπορείς, δεν ξέρεις ακόμη το ζήτημα αρκετά καλά.", "Μεροληψία επιβεβαίωσης, εμμονή στις πεποιθήσεις, αφελής ρεαλισμός"],
-  ["Ξεκίνα από το βασικό ποσοστό", "Αναρωτήσου πώς καταλήγουν συνήθως τέτοιες περιπτώσεις πριν κοιτάξεις τι κάνει αυτήν εδώ ξεχωριστή.", "Πλάνη του βασικού ποσοστού, πλάνη του σχεδιασμού, υπερβολική αυτοπεποίθηση"],
-  ["Κάνε μια «νεκροψία» από πριν", "Φαντάσου ότι πέρασε ένας χρόνος και το σχέδιο απέτυχε. Γράψε τους πιο πιθανούς λόγους και διόρθωσε σήμερα ό,τι μπορείς.", "Μεροληψία αισιοδοξίας, κλιμάκωση της δέσμευσης, ψευδαίσθηση ελέγχου"],
-  ["Αποφάσισε τι θα σε έκανε να αλλάξεις γνώμη", "Πριν αρχίσεις να ψάχνεις, όρισε ποια στοιχεία θα σε έπειθαν. Αν μετά μετακινήσεις τον πήχη, χτυπάει καμπανάκι.", "Φαινόμενο μπούμερανγκ, αντανακλαστικό Semmelweis, υποκειμενική επικύρωση"],
-  ["Κρίνε τις αποφάσεις με βάση όσα ήξερες", "Οι καλές επιλογές μπορεί να καταλήξουν άσχημα και οι κακές να πετύχουν από τύχη. Κρίνε το σκεπτικό με βάση τις πληροφορίες που είχες τότε.", "Μεροληψία αποτελέσματος, μεροληψία εκ των υστέρων, ηθική τύχη"],
-  ["Γράψε τις προβλέψεις σου", "Ένα σημείωμα με ημερομηνία είναι καλύτερο από τη μνήμη, που ξαναγράφεται μόνη της για να ταιριάξει με ό,τι έγινε.", "Μεροληψία εκ των υστέρων, μεροληψία υπέρ της επιλογής, ρόδινη αναδρομή"],
-  ["Ζήτα μια δεύτερη γνώμη", "Βάλε κάποιον με άλλα κίνητρα ή άλλο υπόβαθρο να βρει τα κενά. Το δικό σου τυφλό σημείο, εξ ορισμού, δεν το βλέπεις.", "Τυφλό σημείο της μεροληψίας, μεροληψία της ενδοομάδας, κατάρα της γνώσης"],
-  ["Πάρε απόσταση από την επιλογή", "Άφησε να περάσει μια νύχτα ή σκέψου τι θα έλεγες σε έναν φίλο στη θέση σου. Το έντονο συναίσθημα και η πίεση του χρόνου ενισχύουν σχεδόν κάθε μεροληψία.", "Χάσμα ενσυναίσθησης, αποστροφή στην απώλεια, υπερβολική προεξόφληση"]
-];
+const HABITS = [{"key":"argue","title":"Υπερασπίσου την άλλη πλευρά","text":"Πριν δεσμευτείς, γράψε το πιο δυνατό επιχείρημα κατά της άποψής σου. Αν δεν μπορείς, δεν ξέρεις ακόμη το ζήτημα αρκετά καλά.","catches":["Confirmation bias","Naive realism","Congruence bias"]},{"key":"base-rate","title":"Ξεκίνα από το βασικό ποσοστό","text":"Αναρωτήσου πώς καταλήγουν συνήθως τέτοιες περιπτώσεις πριν κοιτάξεις τι κάνει αυτήν εδώ ξεχωριστή.","catches":["Base rate fallacy","Planning fallacy","Overconfidence effect"]},{"key":"pre-mortem","title":"Κάνε μια «νεκροψία» από πριν","text":"Φαντάσου ότι πέρασε ένας χρόνος και το σχέδιο απέτυχε. Γράψε τους πιο πιθανούς λόγους και διόρθωσε σήμερα ό,τι μπορείς.","catches":["Optimism bias","Escalation of commitment","Illusion of control"]},{"key":"change-mind","title":"Αποφάσισε τι θα σε έκανε να αλλάξεις γνώμη","text":"Πριν αρχίσεις να ψάχνεις, όρισε ποια στοιχεία θα σε έπειθαν. Αν μετά μετακινήσεις τον πήχη, χτυπάει καμπανάκι.","catches":["Backfire effect","Semmelweis reflex","Subjective validation"]},{"key":"grade","title":"Κρίνε τις αποφάσεις με βάση όσα ήξερες","text":"Οι καλές επιλογές μπορεί να καταλήξουν άσχημα και οι κακές να πετύχουν από τύχη. Κρίνε το σκεπτικό με βάση τις πληροφορίες που είχες τότε.","catches":["Outcome bias","Hindsight bias","Moral luck"]},{"key":"predictions","title":"Γράψε τις προβλέψεις σου","text":"Ένα σημείωμα με ημερομηνία είναι καλύτερο από τη μνήμη, που ξαναγράφεται μόνη της για να ταιριάξει με ό,τι έγινε.","catches":["Hindsight bias","Choice-supportive bias","Rosy retrospection"]},{"key":"other-eyes","title":"Ζήτα μια δεύτερη γνώμη","text":"Βάλε κάποιον με άλλα κίνητρα ή άλλο υπόβαθρο να βρει τα κενά. Το δικό σου τυφλό σημείο, εξ ορισμού, δεν το βλέπεις.","catches":["Bias blind spot","In-group bias","Curse of knowledge"]},{"key":"distance","title":"Πάρε απόσταση από την επιλογή","text":"Άφησε να περάσει μια νύχτα ή σκέψου τι θα έλεγες σε έναν φίλο στη θέση σου. Το έντονο συναίσθημα και η πίεση του χρόνου ενισχύουν σχεδόν κάθε μεροληψία.","catches":["Empathy gap","Loss aversion","Hyperbolic discounting"]}];
+const HABIT_ART = {"argue":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><path d=\"M21 16 H51 A9 9 0 0 1 60 25 V39 A9 9 0 0 1 51 48 H52 L63 58 L42 48 H21 A9 9 0 0 1 12 39 V25 A9 9 0 0 1 21 16 Z\" style=\"fill:var(--surface);stroke:var(--muted);stroke-width:2\"/><path d=\"M36 26 V38 M30 32 H42\" style=\"stroke:var(--muted);stroke-width:2.4\"/><path d=\"M100 14 H136 A10 10 0 0 1 146 24 V42 A10 10 0 0 1 136 52 H114 L95 62 L102 52 H100 A10 10 0 0 1 90 42 V24 A10 10 0 0 1 100 14 Z\" style=\"fill:var(--surface);stroke:var(--q);stroke-width:2.6\"/><path d=\"M107 33 H129\" style=\"stroke:var(--q);stroke-width:2.6\"/><path d=\"M145 11.5 L148 8.5 M149.5 18.5 H152.5 M138.5 10 L139 7\" style=\"stroke:var(--q);stroke-width:2\"/><g style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"><path d=\"M65.05 102.75 V98.15 C65.05 90.1 71.95 86.08 80 86.08 C88.05 86.08 94.95 90.1 94.95 98.15 V102.75\"/><circle cx=\"80\" cy=\"74\" r=\"7.47\"/><circle cx=\"78.73\" cy=\"73.42\" r=\"1.21\" style=\"fill:var(--ink);stroke:none\"/><circle cx=\"84.48\" cy=\"73.42\" r=\"1.21\" style=\"fill:var(--ink);stroke:none\"/><\/g><\/g>","base-rate":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><g style=\"fill:var(--surface);stroke:var(--q);stroke-width:2\"><path d=\"M11 38 V36 C11 32.5 14 30.8 18 30.8 C22 30.8 25 32.5 25 36 V38\"/><circle cx=\"18\" cy=\"25\" r=\"3.6\"/><path d=\"M29 38 V36 C29 32.5 32 30.8 36 30.8 C40 30.8 43 32.5 43 36 V38\"/><circle cx=\"36\" cy=\"25\" r=\"3.6\"/><path d=\"M47 38 V36 C47 32.5 50 30.8 54 30.8 C58 30.8 61 32.5 61 36 V38\"/><circle cx=\"54\" cy=\"25\" r=\"3.6\"/><path d=\"M65 38 V36 C65 32.5 68 30.8 72 30.8 C76 30.8 79 32.5 79 36 V38\"/><circle cx=\"72\" cy=\"25\" r=\"3.6\"/><path d=\"M11 63 V61 C11 57.5 14 55.8 18 55.8 C22 55.8 25 57.5 25 61 V63\"/><circle cx=\"18\" cy=\"50\" r=\"3.6\"/><path d=\"M29 63 V61 C29 57.5 32 55.8 36 55.8 C40 55.8 43 57.5 43 61 V63\"/><circle cx=\"36\" cy=\"50\" r=\"3.6\"/><path d=\"M47 63 V61 C47 57.5 50 55.8 54 55.8 C58 55.8 61 57.5 61 61 V63\"/><circle cx=\"54\" cy=\"50\" r=\"3.6\"/><path d=\"M65 63 V61 C65 57.5 68 55.8 72 55.8 C76 55.8 79 57.5 79 61 V63\"/><circle cx=\"72\" cy=\"50\" r=\"3.6\"/><path d=\"M11 88 V86 C11 82.5 14 80.8 18 80.8 C22 80.8 25 82.5 25 86 V88\"/><circle cx=\"18\" cy=\"75\" r=\"3.6\"/><path d=\"M29 88 V86 C29 82.5 32 80.8 36 80.8 C40 80.8 43 82.5 43 86 V88\"/><circle cx=\"36\" cy=\"75\" r=\"3.6\"/><path d=\"M47 88 V86 C47 82.5 50 80.8 54 80.8 C58 80.8 61 82.5 61 86 V88\"/><circle cx=\"54\" cy=\"75\" r=\"3.6\"/><path d=\"M65 88 V86 C65 82.5 68 80.8 72 80.8 C76 80.8 79 82.5 79 86 V88\"/><circle cx=\"72\" cy=\"75\" r=\"3.6\"/><\/g><path d=\"M86 58 H99 M94 53 L99 58 L94 63\" style=\"stroke:var(--muted);stroke-width:2.2\"/><g transform=\"translate(123 53) rotate(45)\"><rect x=\"20\" y=\"-1.3\" width=\"17\" height=\"2.6\" rx=\"1.3\" style=\"fill:var(--ink);stroke:var(--ink);stroke-width:2.2\"/><\/g><circle cx=\"123\" cy=\"53\" r=\"19\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.4\"/><g style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2\"><path d=\"M112.85 65.85 V62.95 C112.85 57.88 117.2 55.41 123 55.41 C128.8 55.41 133.15 57.88 133.15 62.95 V65.85\"/><circle cx=\"123\" cy=\"47\" r=\"5.22\"/><\/g><\/g>","pre-mortem":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><path d=\"M14 94 H150\" style=\"stroke:var(--rule);stroke-width:2.2\"/><path d=\"M60 90.5 V97.5 M86 90.5 V97.5\" style=\"stroke:var(--rule);stroke-width:2\"/><g style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"><path d=\"M12.35 90.25 V86.05 C12.35 78.7 18.65 75.03 26 75.03 C33.35 75.03 39.65 78.7 39.65 86.05 V90.25\"/><circle cx=\"26\" cy=\"64\" r=\"6.83\"/><circle cx=\"24.84\" cy=\"63.48\" r=\"1.1\" style=\"fill:var(--ink);stroke:none\"/><circle cx=\"30.09\" cy=\"63.48\" r=\"1.1\" style=\"fill:var(--ink);stroke:none\"/><\/g><path d=\"M117 94 V72 A13 13 0 0 1 143 72 V94 Z\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.4\"/><path d=\"M124 80 H136 M126 86 H134\" style=\"stroke:var(--muted);stroke-width:2\"/><path d=\"M131 59.5 L127.5 66 L132 70 L129 75\" style=\"stroke:var(--bad);stroke-width:2.2\"/><path d=\"M112 94 l-2 -5 M114 94 l1 -6 M146 94 l1 -5 M148.5 94 l3 -4\" style=\"stroke:var(--muted);stroke-width:2\"/><path d=\"M130 50 C127 36 108 25 94 25 M66 25 C54 25 44 32 38 44\" style=\"stroke:var(--q);stroke-width:2.2;stroke-dasharray:0.1 5.5\"/><path d=\"M32 39 L37 46.5 L44.5 42\" style=\"stroke:var(--q);stroke-width:2.2\"/><g transform=\"translate(80 25) rotate(-35)\"><path d=\"M11.5 -2.3 A2.3 2.3 0 0 1 11.5 2.3 H0.3 A5.8 5.8 0 0 1 -10.4 2.3 H-5.4 V-2.3 H-10.4 A5.8 5.8 0 0 1 0.3 -2.3 Z\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2\"/><\/g><\/g>","change-mind":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><path d=\"M14 98 H146\" style=\"stroke:var(--rule);stroke-width:2.2\"/><path d=\"M32 98 V24 M128 98 V24 M25 98 H39 M121 98 H135\" style=\"stroke:var(--ink);stroke-width:2.4\"/><rect x=\"32\" y=\"30.9\" width=\"96\" height=\"2.2\" rx=\"1.1\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2.2\"/><g style=\"fill:var(--surface);stroke:var(--q);stroke-width:2\"><path d=\"M28 35 V30 A4 4 0 0 1 36 30 V35\"/><rect x=\"25\" y=\"34\" width=\"14\" height=\"11\" rx=\"2.5\"/><\/g><circle cx=\"32\" cy=\"39.5\" r=\"1.4\" style=\"fill:var(--q);stroke:none\"/><g style=\"fill:var(--surface);stroke:var(--q);stroke-width:2\"><path d=\"M124 35 V30 A4 4 0 0 1 132 30 V35\"/><rect x=\"121\" y=\"34\" width=\"14\" height=\"11\" rx=\"2.5\"/><\/g><circle cx=\"128\" cy=\"39.5\" r=\"1.4\" style=\"fill:var(--q);stroke:none\"/><rect x=\"63\" y=\"84\" width=\"30\" height=\"12\" rx=\"2.5\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2\"/><path d=\"M69 90 H79 M83 90 H87\" style=\"stroke:var(--muted);stroke-width:2\"/><rect x=\"67\" y=\"70\" width=\"30\" height=\"12\" rx=\"2.5\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2\"/><path d=\"M73 76 H83 M87 76 H91\" style=\"stroke:var(--muted);stroke-width:2\"/><g transform=\"rotate(-7 80 62)\"><rect x=\"64\" y=\"56\" width=\"30\" height=\"12\" rx=\"2.5\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2\"/><path d=\"M70 62 H80 M84 62 H88\" style=\"stroke:var(--muted);stroke-width:2\"/><\/g><path d=\"M80 50 V40\" style=\"stroke:var(--faint);stroke-width:2;stroke-dasharray:0.1 5\"/><path d=\"M75.5 44.5 L80 40 L84.5 44.5\" style=\"stroke:var(--faint);stroke-width:2\"/><\/g>","grade":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><g transform=\"translate(-5 1)\"><path d=\"M80 100 V78 C80 62 60 56 44 44 L30 32\" style=\"stroke:var(--faint);stroke-width:2.4;stroke-dasharray:0.1 6\"/><path d=\"M80 100 V78 C80 64 100 58 112 50 L124 42\" style=\"stroke:var(--q);stroke-width:2.6\"/><circle cx=\"95\" cy=\"62\" r=\"8.5\" style=\"fill:var(--surface);stroke:var(--good);stroke-width:2.2\"/><path d=\"M91.01 62.19 L93.86 65.04 L99.18 58.96\" style=\"stroke:var(--good);stroke-width:2.4\"/><path d=\"M110 30 H144 A7.5 7.5 0 0 0 142 15.5 A10 10 0 0 0 124 11 A8 8 0 0 0 110 17 A6.5 6.5 0 0 0 110 30 Z\" style=\"fill:var(--surface);stroke:var(--muted);stroke-width:2.2\"/><path d=\"M130 32 L125 40 H131 L127 48\" style=\"stroke:var(--bad);stroke-width:2.2\"/><path d=\"M116 34 l-2 5 M142 34 l-2 5\" style=\"stroke:var(--muted);stroke-width:2\"/><\/g><\/g>","predictions":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><rect x=\"36\" y=\"14\" width=\"66\" height=\"88\" rx=\"7\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"/><path d=\"M48 19 V11\" style=\"stroke:var(--muted);stroke-width:2.4\"/><path d=\"M59 19 V11\" style=\"stroke:var(--muted);stroke-width:2.4\"/><path d=\"M70 19 V11\" style=\"stroke:var(--muted);stroke-width:2.4\"/><path d=\"M81 19 V11\" style=\"stroke:var(--muted);stroke-width:2.4\"/><path d=\"M92 19 V11\" style=\"stroke:var(--muted);stroke-width:2.4\"/><g style=\"fill:none;stroke:var(--q);stroke-width:2\"><rect x=\"46\" y=\"30\" width=\"20\" height=\"17\" rx=\"3\"/><path d=\"M46 36 H66 M51 27 V32 M61 27 V32\"/><\/g><circle cx=\"56\" cy=\"41.5\" r=\"2\" style=\"fill:var(--q);stroke:none\"/><path d=\"M46 58 H80 M46 70 H88 M46 82 H72\" style=\"stroke:var(--muted);stroke-width:2.2\"/><path d=\"M81.38 82.22 L84.68 85.52 L90.84 78.48\" style=\"stroke:var(--good);stroke-width:2.6\"/><g transform=\"translate(122 60) rotate(28)\"><path d=\"M-5 -34 H5 V16 L0 26 L-5 16 Z\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"/><path d=\"M-5 16 H5 M-5 -24 H5\" style=\"stroke:var(--ink);stroke-width:2\"/><\/g><\/g>","other-eyes":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><rect x=\"58\" y=\"24\" width=\"44\" height=\"62\" rx=\"4\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"/><path d=\"M67 36 H93 M67 46 H88 M67 56 H82\" style=\"stroke:var(--muted);stroke-width:2\"/><g transform=\"translate(88 64) rotate(18.5)\"><rect x=\"15\" y=\"-1.3\" width=\"16.5\" height=\"2.6\" rx=\"1.3\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2.2\"/><\/g><circle cx=\"88\" cy=\"64\" r=\"14\" style=\"fill:var(--surface);stroke:var(--q);stroke-width:2.4\"/><path d=\"M83.41 59.41 L92.59 68.59 M92.59 59.41 L83.41 68.59\" style=\"stroke:var(--bad);stroke-width:2.6\"/><g style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"><path d=\"M11.7 85.5 V81.1 C11.7 73.4 18.3 69.55 26 69.55 C33.7 69.55 40.3 73.4 40.3 81.1 V85.5\"/><circle cx=\"26\" cy=\"58\" r=\"7.15\"/><circle cx=\"25.01\" cy=\"57.45\" r=\"1.16\" style=\"fill:var(--ink);stroke:none\"/><circle cx=\"30.51\" cy=\"57.45\" r=\"1.16\" style=\"fill:var(--ink);stroke:none\"/><\/g><g style=\"fill:var(--surface);stroke:var(--q);stroke-width:2.2\"><path d=\"M119.7 71.5 V67.1 C119.7 59.4 126.3 55.55 134 55.55 C141.7 55.55 148.3 59.4 148.3 67.1 V71.5\"/><circle cx=\"134\" cy=\"44\" r=\"7.15\"/><circle cx=\"129.49\" cy=\"43.45\" r=\"1.16\" style=\"fill:var(--q);stroke:none\"/><circle cx=\"134.99\" cy=\"43.45\" r=\"1.16\" style=\"fill:var(--q);stroke:none\"/><\/g><\/g>","distance":"<g style=\"fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round\"><path d=\"M86 94 H150\" style=\"stroke:var(--rule);stroke-width:2.2\"/><path d=\"M94 94 V58 A11 11 0 0 1 116 58 V94 Z\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"/><circle cx=\"110\" cy=\"76\" r=\"1.6\" style=\"fill:var(--ink);stroke:none\"/><path d=\"M124 94 V58 A11 11 0 0 1 146 58 V94 Z\" style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"/><circle cx=\"140\" cy=\"76\" r=\"1.6\" style=\"fill:var(--ink);stroke:none\"/><path d=\"M40 99 H80 M43.5 95.5 L40 99 L43.5 102.5 M76.5 95.5 L80 99 L76.5 102.5\" style=\"stroke:var(--q);stroke-width:2\"/><g style=\"fill:var(--surface);stroke:var(--ink);stroke-width:2.2\"><path d=\"M9.7 88.5 V84.1 C9.7 76.4 16.3 72.55 24 72.55 C31.7 72.55 38.3 76.4 38.3 84.1 V88.5\"/><circle cx=\"24\" cy=\"61\" r=\"7.15\"/><path d=\"M19.82 60.45 Q21.25 61.88 22.68 60.45 M25.32 60.45 Q26.75 61.88 28.18 60.45\" style=\"fill:none;stroke-width:2\"/><\/g><path d=\"M66 12 A14 14 0 1 0 80 34 A11 11 0 0 1 66 12 Z\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2\"/><path d=\"M46 15.8 Q46 20 50.2 20 Q46 20 46 24.2 Q46 20 41.8 20 Q46 20 46 15.8 Z\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2\"/><path d=\"M96 26.6 Q96 30 99.4 30 Q96 30 96 33.4 Q96 30 92.6 30 Q96 30 96 26.6 Z\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2\"/><path d=\"M104 9.4 Q104 12 106.6 12 Q104 12 104 14.6 Q104 12 101.4 12 Q104 12 104 9.4 Z\" style=\"fill:var(--q);stroke:var(--q);stroke-width:2\"/><\/g>"};
 
 /* ---------- flatten ---------- */
 const GROUPS = [], BIASES = [];
@@ -5919,6 +5987,7 @@ const ANIM_FOR = {
 };
 const SITE = "https://papangelis.com", BASE = LANG === "el" ? "/biases/el/" : "/biases/";
 const watchUrl = key => `${SITE}${BASE}watch/${key}/`;
+const vidKey = b => { const k = ANIM_FOR[b.en || b.n]; return k && window.BiasAnim && BiasAnim.has(k) ? k : null; };
 let player = null;
 function dropPlayer() { if (player) { player.destroy(); player = null; } }
 const fold = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ς/g, "σ");
@@ -5989,6 +6058,7 @@ BIASES.forEach(b => {
   b.txt = mk("text", { class:"lt" }, leaf);
   b.txt.textContent = b.n;
   b.leaf = leaf;
+  if (vidKey(b)) leaf.classList.add("vid");
   leaf.addEventListener("click", () => openBias(b));
   leaf.addEventListener("mouseenter", () => b.fan.classList.add("hot"));
   leaf.addEventListener("mouseleave", () => b.fan.classList.remove("hot"));
@@ -6118,10 +6188,13 @@ document.getElementById("problems").addEventListener("click", e => {
 });
 
 /* ---------- browse ---------- */
-let query = "";
+let query = "", onlyVid = false;
 const qInput = document.getElementById("q-input");
 qInput.addEventListener("input", () => { query = fold(qInput.value.trim()); renderList(); });
+const vidOnly = document.getElementById("vid-only");
+vidOnly.addEventListener("click", () => { onlyVid = !onlyVid; vidOnly.setAttribute("aria-pressed", onlyVid); renderList(); });
 function matches(b) {
+  if (onlyVid && !vidKey(b)) return false;
   if (!query) return true;
   return fold([b.n, b.en, b.alias, b.d, b.ex, b.g.title].join(" ")).includes(query);
 }
@@ -6135,7 +6208,7 @@ function renderList() {
       n += hits.length;
       qh += `<div class="gsec q-${q.key}">
         <h4><button type="button" data-g="${GROUPS.indexOf(g)}">${esc(g.title)}</button></h4>
-        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}">${esc(b.n)}</button>`).join("")}</div>
+        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? `<span class="vb">▶ 30″</span>` : ""}</button>`).join("")}</div>
       </div>`;
     });
     if (qh) html += `<div class="qsec q-${q.key}" id="list-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
@@ -6240,7 +6313,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = ".leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+const OPENERS = ".dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
@@ -6722,9 +6795,147 @@ openExp(LAB[0]);
 stage.dataset.live = "1";
 refreshCaught();
 
+/* ---------- watch reel ---------- */
+const PLAY_SVG = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.2v9.6L10.4 6z"/></svg>';
+const REEL = [];
+Object.entries(ANIM_FOR).forEach(([en, key]) => {
+  const b = BIASES.find(x => (x.en || x.n) === en);
+  if (b && window.BiasAnim && BiasAnim.has(key) && !REEL.some(r => r.key === key)) REEL.push({ key, b });
+});
+document.querySelectorAll(".reel-n").forEach(el => { el.textContent = REEL.length; });
+const reelEl = document.getElementById("reel");
+reelEl.innerHTML = REEL.map(({ key, b }) => `<button type="button" class="reel-item q-${b.q.key}" data-i="${b.i}">
+  <span class="reel-thumb"><span data-thumb="${key}"></span><span class="reel-play">${PLAY_SVG}</span></span>
+  <span class="reel-name">${esc(b.n)}</span><span class="reel-q">${esc(b.q.name)}</span></button>`).join("");
+reelEl.addEventListener("click", e => { const it = e.target.closest("[data-i]"); if (it) openBias(BIASES[+it.dataset.i]); });
+// thumbnails are the finished drawings, mounted as they scroll into view
+const still = el => BiasAnim.mount(el, el.dataset.thumb, { lang: LANG, still: true });
+const thumbIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { thumbIO.unobserve(e.target); still(e.target); }
+}), { rootMargin: "300px" }) : null;
+reelEl.querySelectorAll("[data-thumb]").forEach(el => thumbIO ? thumbIO.observe(el) : still(el));
+
+/* ---------- dial: the wheel on phones, turned sideways ---------- */
+// The centre sits off-screen to the left, so the names at the pointer (3 o'clock) lie flat and read like a list.
+const dialSvg = document.getElementById("dial-svg"), dialRead = document.getElementById("dial-read");
+const DN = BIASES.length, DSTEP = 360 / DN, DCX = -262, DCY = 200, DR = 404, DRL = 417;
+const DPX = DR * DSTEP * Math.PI / 180;   // viewBox units between neighbours
+let dRot = 0, dSel = -1, dAnim = 0, dTouched = false;
+const dMod = i => ((i % DN) + DN) % DN;
+const f1d = n => n.toFixed(1);
+function dialDraw() {
+  const c = Math.round(dRot / DSTEP);
+  let h = `<circle class="rim" cx="${DCX}" cy="${DCY}" r="${DR}"/><rect class="band" x="150" y="${DCY - 17}" width="206" height="34" rx="10"/><path class="ptr" d="M131 ${DCY}l-9-6v12z"/>`;
+  for (let k = -17; k <= 17; k++) {
+    const i = dMod(c + k), b = BIASES[i], a = (c + k) * DSTEP - dRot, d = Math.abs(a / DSTEP), r = a * Math.PI / 180;
+    const dx = DCX + DR * Math.cos(r), dy = DCY + DR * Math.sin(r);
+    if (dy < -14 || dy > 414) continue;
+    const lx = DCX + DRL * Math.cos(r), ly = DCY + DRL * Math.sin(r);
+    const fs = Math.min(10.5 + 6.5 * Math.exp(-d * d / 4.5), 192 / (b.n.length * (LANG === "el" ? 0.62 : 0.55)));   // long names shrink to fit
+    const mark = vidKey(b)
+      ? `<circle class="dv" cx="${f1d(dx)}" cy="${f1d(dy)}" r="5"/><path class="dvp" d="M${f1d(dx - 1.5)} ${f1d(dy - 2.4)}l4 2.4-4 2.4z" transform="rotate(${f1d(a)} ${f1d(dx)} ${f1d(dy)})"/>`
+      : `<circle class="dd" cx="${f1d(dx)}" cy="${f1d(dy)}" r="2.8"/>`;
+    h += `<g class="q-${b.q.key}" data-di="${i}" style="opacity:${Math.max(0.25, 1 - d * 0.065).toFixed(2)}">${mark}` +
+      `<text class="dl" x="${f1d(lx)}" y="${f1d(ly)}" transform="rotate(${a.toFixed(2)} ${f1d(lx)} ${f1d(ly)})" style="font-size:${f1d(fs)}px;font-weight:${d < 0.5 ? 650 : 450}">${esc(b.n)}</text></g>`;
+  }
+  dialSvg.innerHTML = h;
+  const sel = dMod(c);
+  if (sel !== dSel) { dSel = sel; dialReadout(); }
+}
+function dialReadout() {
+  const b = BIASES[dSel], v = vidKey(b);
+  dialRead.className = "dial-read q-" + b.q.key;
+  dialSvg.setAttribute("aria-valuetext", b.n);
+  dialRead.innerHTML = `<span class="dq">${esc(b.q.name)} · ${esc(SHORT[b.g.id] || b.g.title)}</span><b>${esc(b.n)}</b>
+    <div class="row"><button class="btn primary" type="button" data-i="${b.i}">${v ? "▶ Δες το βίντεο" : "Άνοιξε την κάρτα"}</button><button class="btn" type="button" data-dial-rand>Στην τύχη</button></div>
+    ${dTouched ? "" : `<span class="dial-hint">Σύρε τον τροχό πάνω ή κάτω για να γυρίσει</span>`}`;
+}
+function dialTo(target, ms = 320) {
+  cancelAnimationFrame(dAnim);
+  const from = dRot, t0 = performance.now();
+  const f = now => {
+    const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+    dRot = from + (target - from) * e; dialDraw();
+    if (k < 1) dAnim = requestAnimationFrame(f);
+  };
+  dAnim = requestAnimationFrame(f);
+}
+const dialSnap = () => dialTo(Math.round(dRot / DSTEP) * DSTEP, 220);
+function dialGo(i, ms, extraTurns = 0) {   // turn to bias i the short way round
+  const cur = Math.round(dRot / DSTEP), t = i + Math.round((cur - i) / DN) * DN + extraTurns * DN;
+  dialTo(t * DSTEP, ms);
+}
+const touch = () => { if (!dTouched) { dTouched = true; dialReadout(); } };
+let dDrag = null;
+dialSvg.addEventListener("pointerdown", e => {
+  cancelAnimationFrame(dAnim);
+  dDrag = { y: e.clientY, r: dRot, moved: 0, samples: [[performance.now(), e.clientY]], hit: e.target.closest("[data-di]") };
+  dialSvg.setPointerCapture(e.pointerId);
+});
+dialSvg.addEventListener("pointermove", e => {
+  if (!dDrag) return;
+  const scale = 360 / dialSvg.getBoundingClientRect().width;
+  dDrag.moved = Math.max(dDrag.moved, Math.abs(e.clientY - dDrag.y));
+  dRot = dDrag.r - (e.clientY - dDrag.y) * scale / DPX * DSTEP;
+  dDrag.samples.push([performance.now(), e.clientY]); if (dDrag.samples.length > 8) dDrag.samples.shift();
+  dialDraw();
+});
+dialSvg.addEventListener("pointerup", () => {
+  if (!dDrag) return;
+  const d = dDrag; dDrag = null; touch();
+  if (d.moved < 6) {   // a tap: turn to that name; one already at the pointer opens on the click that follows
+    const i = d.hit ? +d.hit.dataset.di : -1;
+    dialSvg._open = i === dSel ? i : -1;
+    if (i >= 0 && i !== dSel) dialGo(i); else if (i < 0) dialSnap();
+    return;
+  }
+  dialSvg._open = -1;
+  const now = performance.now(), recent = d.samples.filter(([t]) => t > now - 120);
+  const [t0, y0] = recent[0] || d.samples[0], [t1, y1] = d.samples[d.samples.length - 1];
+  const v = t1 > t0 ? (y1 - y0) / (t1 - t0) : 0;   // px per ms: a flick coasts on a little
+  const scale = 360 / dialSvg.getBoundingClientRect().width;
+  const target = Math.round((dRot - v * 260 * scale / DPX * DSTEP) / DSTEP) * DSTEP;
+  dialTo(target, Math.min(900, 260 + Math.abs(v) * 240));
+});
+dialSvg.addEventListener("pointercancel", () => { dDrag = null; dialSnap(); });
+// open on click, not pointerup: on touch screens the click would otherwise land on the panel's backdrop and close it again
+dialSvg.addEventListener("click", () => { const i = dialSvg._open; dialSvg._open = -1; if (i >= 0) openBias(BIASES[i]); });
+dialSvg.addEventListener("wheel", e => {
+  e.preventDefault(); cancelAnimationFrame(dAnim); touch();
+  dRot += e.deltaY * 0.5 / DPX * DSTEP; dialDraw();
+  clearTimeout(dialSvg._snap); dialSvg._snap = setTimeout(dialSnap, 140);
+}, { passive: false });
+dialSvg.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); touch(); dialGo(dSel + 1, 180); }
+  else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); touch(); dialGo(dSel - 1, 180); }
+  else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openBias(BIASES[dSel]); }
+});
+dialRead.addEventListener("click", e => {
+  const b = e.target.closest("[data-i]"); if (b) return openBias(BIASES[+b.dataset.i]);
+  if (e.target.closest("[data-dial-rand]")) { touch(); let i; do { i = Math.floor(Math.random() * DN); } while (i === dSel); dialGo(i, 1100, 1); }
+});
+const DIAL_Q = ["Πληροφορία", "Νόημα", "Ταχύτητα", "Μνήμη"];
+const dialChips = document.getElementById("dial-chips");
+dialChips.innerHTML = QUADS.map((q, qi) => `<button class="chip q-${q.key}" type="button" data-dq="${qi}"><i></i>${DIAL_Q[qi]}</button>`).join("");
+dialChips.addEventListener("click", e => {
+  const c = e.target.closest("[data-dq]"); if (!c) return;
+  touch(); dialGo(BIASES.findIndex(b => b.q === QUADS[+c.dataset.dq]), 650);
+});
+dRot = Math.max(0, BIASES.findIndex(b => (b.en || b.n) === "Confirmation bias")) * DSTEP;
+dialDraw();
+
 /* ---------- habits ---------- */
-document.getElementById("habit-list").innerHTML = HABITS.map(([t, p, beats]) =>
-  `<div class="habit"><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join("");
+const HQ = ["tmi", "nem", "fast", "mem"];
+const byEn = new Map(BIASES.map(b => [b.en || b.n, b]));
+const habitList = document.getElementById("habit-list");
+habitList.innerHTML = HABITS.map((h, i) => `<article class="habit q-${HQ[i % 4]}">
+  <div class="habit-art">${HABIT_ART[h.key] ? `<svg viewBox="0 0 160 110" aria-hidden="true">${HABIT_ART[h.key]}</svg>` : ""}</div>
+  <span class="habit-no">${String(i + 1).padStart(2, "0")}</span>
+  <h3>${esc(h.title)}</h3><p>${esc(h.text)}</p>
+  <div class="habit-catches"><span class="label">Σε προστατεύει από</span>${h.catches.map(n => byEn.get(n)).filter(Boolean)
+    .map(b => `<button type="button" class="hchip" data-i="${b.i}">${vidKey(b) ? "▶ " : ""}${esc(b.n)}</button>`).join("")}</div>
+</article>`).join("");
+habitList.addEventListener("click", e => { const c = e.target.closest("[data-i]"); if (c) openBias(BIASES[+c.dataset.i]); });
 fromHash();
 </script>
 
