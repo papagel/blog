@@ -386,6 +386,7 @@ footer cite{font-style:italic}
 }
 
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/*__ANIM_CSS__*/
 </style>
 
 <div class="wrap">
@@ -486,6 +487,7 @@ footer cite{font-style:italic}
   <div class="panel-body" id="p-body"></div>
 </aside>
 
+<script>/*__ANIM_JS__*/</script>
 <script>
 /*__DATA__*/
 
@@ -531,6 +533,12 @@ const HABITS = [
 /* ---------- flatten ---------- */
 const GROUPS = [], BIASES = [];
 const LANG = "⟪en¦el⟫", LOCALE = LANG === "el" ? "el-GR" : "en-US";
+// animated explainers: English bias name -> scene key (see anim.js)
+const ANIM_FOR = { "Anchoring": "anchoring" };
+const SITE = "https://papangelis.com", BASE = LANG === "el" ? "/biases/el/" : "/biases/";
+const watchUrl = key => `${SITE}${BASE}watch/${key}/`;
+let player = null;
+function dropPlayer() { if (player) { player.destroy(); player = null; } }
 const fold = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ς/g, "σ");
 const slugify = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[+]/g,"plus").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 DATA.forEach((groups, qi) => {
@@ -768,6 +776,7 @@ function showPanel(q) {
   pBody.scrollTop = 0;
 }
 function closePanel() {
+  dropPlayer();
   panel.classList.remove("open");
   panel.setAttribute("aria-hidden", "true");
   scrim.classList.remove("open");
@@ -793,6 +802,7 @@ function openBias(b) {
     <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">⟪Also known as ${esc(b.alias)}¦Λέγεται και ${esc(b.alias)}⟫</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">⟪In English:¦Στα αγγλικά:⟫ ${esc(b.en)}</p>` : ""}</div>
     <p class="def">${esc(b.d)}</p>
+    ${ANIM_FOR[b.en || b.n] && window.BiasAnim ? `<div class="player-host" data-anim="${ANIM_FOR[b.en || b.n]}"></div>` : ""}
     <div class="row">${catchBtn(b, "⟪I've caught this in myself¦Το κάνω κι εγώ⟫")}${XP_FOR[⟪b.n¦b.en⟫] ? `<button class="btn" type="button" data-xp="${XP_FOR[⟪b.n¦b.en⟫].id}">⟪Try it on yourself¦Κάνε το πείραμα⟫</button>` : ""}</div>
     <div class="pblock"><h3>⟪In everyday life¦Στην καθημερινότητα⟫</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>⟪Why your mind does this¦Γιατί το κάνει το μυαλό σου⟫</h3><p>${esc(g.why)}</p></div>
@@ -800,12 +810,20 @@ function openBias(b) {
     <div class="pblock"><h3>⟪How to counter it¦Πώς να την αντιμετωπίσεις⟫</h3><p class="lead-tip">${esc(b.fix)}</p></div>
     <div class="pblock"><h3>⟪Same family¦Στην ίδια οικογένεια⟫</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>`;
   showPanel(b.q);
+  dropPlayer();
+  const host = pBody.querySelector(".player-host");
+  if (host) {
+    const key = host.dataset.anim;
+    player = BiasAnim.mount(host, key, { lang: LANG, shareUrl: watchUrl(key), openUrl: watchUrl(key),
+      embedUrl: watchUrl(key) + "?embed", videoUrl: `${SITE}/biases/video/${key}-${LANG}.mp4` });
+  }
   markOn(b, null);
   history.replaceState(null, "", "#" + b.slug);
   panel.focus({ preventScroll:true });
 }
 function openGroup(g) {
   if (!panel.classList.contains("open")) lastFocus = document.activeElement;
+  dropPlayer();
   current = { type:"g", g };
   document.getElementById("p-pos").textContent = `⟪Family¦Οικογένεια⟫ ${GROUPS.indexOf(g) + 1} / ${GROUPS.length}`;
   pBody.innerHTML = `

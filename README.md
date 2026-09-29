@@ -62,6 +62,16 @@ python3 scripts/biases/build.py
 The content is adapted from the Cognitive Bias Codex (CC BY-SA 4.0), so the
 page keeps that licence and its credits in the footer.
 
+### Animated explainers
+
+Some biases have a short looping animation (`scripts/biases/anim.js`, styles in
+`anim.css`). Each one also gets its own page, `/biases/watch/<key>/` and
+`/biases/el/watch/<key>/` (built by `scripts/biases/watch.py`). The build records a
+social card (`assets/og/watch-<key>-<lang>.png`) and a square MP4
+(`biases/video/<key>-<lang>.mp4`) for each page with headless Google Chrome and
+ffmpeg (`scripts/biases/capture.mjs`). It only re-records when an animation page
+changed. Force it with `python3 scripts/biases/build.py --recapture`.
+
 ## Preview locally
 
 ```bash

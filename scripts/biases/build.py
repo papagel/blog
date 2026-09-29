@@ -6,6 +6,7 @@ card to assets/og/ with rsvg-convert (brew install librsvg).
 
 Usage:  python3 scripts/biases/build.py
         python3 scripts/biases/build.py --fragment out.html   # also write a body-only English copy
+        python3 scripts/biases/build.py --recapture           # re-record animation cards and videos
 """
 import hashlib, json, math, os, re, shutil, subprocess, sys
 
@@ -13,6 +14,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SITE = "https://papangelis.com"
 MARK = re.compile(r"⟪(.*?)¦(.*?)⟫", re.S)
+ANIM_JS = open(os.path.join(HERE, "anim.js")).read()      # animated explainers (player + scenes)
+ANIM_CSS = open(os.path.join(HERE, "anim.css")).read()
 
 LANGS = {
     "en": dict(
@@ -195,6 +198,7 @@ def page_for(lang, data, en_data):
                 for b, be in zip(g["biases"], ge["biases"]):
                     b["en"] = be["n"]
     src = resolve(open(os.path.join(HERE, "page.src.html")).read(), lang)
+    src = src.replace("/*__ANIM_CSS__*/", ANIM_CSS).replace("<script>/*__ANIM_JS__*/</script>", "<script>" + ANIM_JS + "</script>")
     js = "const DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";"
     return src.replace("/*__DATA__*/", js)
 
@@ -261,3 +265,13 @@ for lang, data in built.items():
     os.makedirs(out_dir, exist_ok=True)
     open(os.path.join(out_dir, "index.html"), "w").write(site_html(lang, page, data))
     print(f"wrote {LANGS[lang]['out']}/index.html: {sum(len(g['biases']) for q in data for g in q)} entries")
+
+# standalone animation pages (/biases/watch/<key>/), their social cards and MP4s
+sys.path.insert(0, HERE)
+import watch
+tokens, fonts = {}, {}
+for lang in built:
+    raw = resolve(open(os.path.join(HERE, "page.src.html")).read(), lang)
+    tokens[lang] = raw[raw.index(":root{"):raw.index("*{box-sizing")]
+    fonts[lang] = re.search(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^>]*>', raw).group(0)
+watch.build_all(ROOT, HERE, built, tokens, fonts, ANIM_JS, ANIM_CSS, recapture="--recapture" in sys.argv)
