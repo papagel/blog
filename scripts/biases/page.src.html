@@ -76,8 +76,7 @@ button{font:inherit;color:inherit}
 .stats span{font:12px/1.4 var(--mono);color:var(--muted);letter-spacing:.04em}
 
 /* wheel */
-.map{position:relative;margin-block:8px 24px}
-.map-hint{text-align:center;font:13px/1.4 var(--mono);color:var(--muted);margin-top:4px}
+.map{position:relative;margin-top:clamp(28px,4vw,48px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--rule);margin-bottom:24px}
 .wheel{display:block;width:100%;max-width:1060px;height:auto;margin-inline:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .wheel .fan{fill:none;stroke:var(--q);stroke-width:1;opacity:.28;transition:opacity .15s}
 .wheel .dot{fill:var(--q)}
@@ -190,6 +189,7 @@ footer cite{font-style:italic}
 .scrim{position:fixed;inset:0;background:rgba(10,14,18,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 .panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--surface);box-shadow:var(--shadow);z-index:50;transform:translateX(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;border-left:5px solid var(--q,var(--rule))}
 .panel.open{transform:none}
+.panel:focus,.panel:focus-visible{outline:none}
 .panel-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 12px 22px;border-bottom:1px solid var(--rule)}
 .panel-bar .nav{display:flex;gap:6px}
 .icon-btn{border:1px solid var(--rule);background:var(--surface);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
@@ -231,8 +231,7 @@ footer cite{font-style:italic}
 }
 
 /* my map */
-.map-bar{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;max-width:1060px;margin-inline:auto}
-.map-bar .map-hint{text-align:left;margin:0}
+.map-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px 16px;flex-wrap:wrap;max-width:1060px;margin-inline:auto}
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--surface)}
 .seg button{all:unset;cursor:pointer;padding:7px 13px;border-radius:999px;font:500 13px/1 var(--mono)}
 .seg button:focus-visible{outline:2px solid var(--nem)}
@@ -400,26 +399,25 @@ footer cite{font-style:italic}
   <section class="hero" aria-labelledby="h1">
     <h1 id="h1">⟪Your brain takes shortcuts. <em>Here is the map.</em>¦Ο εγκέφαλός σου κάνει συντομεύσεις. <em>Ορίστε ο χάρτης.</em>⟫</h1>
     <div class="hero-side">
-      <p class="lede">⟪Mental shortcuts that usually help and sometimes mislead. Pick any one on the map to see why it happens and how to catch it.¦Νοητικές συντομεύσεις που συνήθως βοηθούν και μερικές φορές παραπλανούν. Διάλεξε όποια θέλεις στον χάρτη για να δεις γιατί συμβαίνει και πώς να την πιάνεις.⟫</p>
+      <p class="lede">⟪Mental shortcuts that usually help and sometimes mislead. Pick any one on the map to see why it happens and how to catch it.¦Νοητικές συντομεύσεις που συνήθως βοηθούν, αλλά καμιά φορά μας ξεγελούν. Διάλεξε όποια θέλεις στον χάρτη για να δεις γιατί συμβαίνει και πώς να την εντοπίζεις.⟫</p>
       <div class="actions">
-        <a class="btn primary" href="#lab">⟪Try it on yourself¦Δοκίμασέ το πάνω σου⟫</a>
-        <a class="quiet-link" href="#quiz">⟪or take the quiz¦ή κάνε το κουίζ⟫</a>
+        <a class="btn primary" href="#lab">⟪Try it on yourself¦Κάνε ένα πείραμα⟫</a>
+        <a class="quiet-link" href="#quiz">⟪or take the quiz¦ή λύσε το κουίζ⟫</a>
       </div>
     </div>
   </section>
 
   <div class="map" id="map">
     <div class="map-bar">
-      <p class="map-hint" id="map-hint">⟪Hover to zoom in, then click a name.¦Πέρνα τον δείκτη για μεγέθυνση και κάνε κλικ σε ένα όνομα.⟫</p>
       <div class="seg" id="view-seg" hidden role="group" aria-label="⟪Wheel view¦Προβολή τροχού⟫"><button type="button" data-view="all" aria-pressed="true">⟪All biases¦Όλες οι μεροληψίες⟫</button><button type="button" data-view="mine" aria-pressed="false">⟪My map¦Ο χάρτης μου⟫<span id="mine-n">0</span></button></div>
     </div>
-    <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="⟪The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access.¦Ο τροχός των γνωστικών μεροληψιών. Τέσσερα προβλήματα, είκοσι στρατηγικές και όλες οι μεροληψίες. Για πρόσβαση με πληκτρολόγιο, χρησιμοποίησε την πλήρη λίστα παρακάτω.⟫"></svg>
+    <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="⟪The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access.¦Ο τροχός των γνωστικών μεροληψιών: τέσσερα προβλήματα, είκοσι στρατηγικές και όλες οι μεροληψίες. Αν χρησιμοποιείς πληκτρολόγιο, δες την πλήρη λίστα πιο κάτω.⟫"></svg>
     <div class="mine" id="mine" hidden aria-live="polite"></div>
   </div>
 
   <section class="block" id="lab" aria-labelledby="lab-h">
     <div class="block-head">
-      <h2 id="lab-h">⟪Feel it happen¦Νιώσε το να συμβαίνει⟫</h2>
+      <h2 id="lab-h">⟪Feel it happen¦Νιώσ’ το στο πετσί σου⟫</h2>
       <p>⟪Ten quick experiments, most under a minute. Answer honestly, then see what happened.¦Δέκα γρήγορα πειράματα, τα περισσότερα κάτω από ένα λεπτό. Απάντησε ειλικρινά και μετά δες τι συνέβη.⟫ <span id="lab-progress"></span></p>
     </div>
     <div class="lab">
@@ -431,7 +429,7 @@ footer cite{font-style:italic}
   <section class="block" id="why" aria-labelledby="why-h">
     <div class="block-head">
       <h2 id="why-h">⟪Why biases exist at all¦Γιατί υπάρχουν οι μεροληψίες⟫</h2>
-      <p>⟪Every bias is a side effect of solving one of four everyday problems.¦Κάθε μεροληψία είναι παρενέργεια της λύσης σε ένα από τέσσερα καθημερινά προβλήματα.⟫</p>
+      <p>⟪Every bias is a side effect of solving one of four everyday problems.¦Κάθε μεροληψία είναι παρενέργεια του τρόπου που λύνουμε ένα από τέσσερα καθημερινά προβλήματα.⟫</p>
     </div>
     <div class="problems" id="problems"></div>
   </section>
@@ -453,15 +451,15 @@ footer cite{font-style:italic}
   <section class="block" id="quiz" aria-labelledby="quiz-h">
     <div class="block-head">
       <h2 id="quiz-h">⟪Spot the bias¦Βρες τη μεροληψία⟫</h2>
-      <p>⟪Eight everyday scenarios. Pick the bias behind each one.¦Οκτώ καθημερινά σενάρια. Διάλεξε τη μεροληψία πίσω από το καθένα.⟫</p>
+      <p>⟪Eight everyday scenarios. Pick the bias behind each one.¦Οκτώ καθημερινά σενάρια. Διάλεξε ποια μεροληψία κρύβεται πίσω από το καθένα.⟫</p>
     </div>
     <div class="quiz" id="quiz-box"></div>
   </section>
 
   <section class="block" id="habits" aria-labelledby="habits-h">
     <div class="block-head">
-      <h2 id="habits-h">⟪Habits that catch most of them¦Συνήθειες που πιάνουν τις περισσότερες⟫</h2>
-      <p>⟪For decisions that are expensive or hard to undo, these checks catch most of the map.¦Για αποφάσεις που κοστίζουν ή δύσκολα αναιρούνται, αυτοί οι έλεγχοι πιάνουν το μεγαλύτερο μέρος του χάρτη.⟫</p>
+      <h2 id="habits-h">⟪Habits that catch most of them¦Συνήθειες που σε γλιτώνουν από τις περισσότερες⟫</h2>
+      <p>⟪For decisions that are expensive or hard to undo, these checks catch most of the map.¦Όταν μια απόφαση κοστίζει ή δύσκολα αναιρείται, αυτοί οι έλεγχοι καλύπτουν το μεγαλύτερο μέρος του χάρτη.⟫</p>
     </div>
     <div class="habits" id="habit-list"></div>
   </section>
@@ -493,40 +491,40 @@ footer cite{font-style:italic}
 const QUADS = [
   { key:"tmi",  name:"⟪Too Much Information¦Πάρα πολλή πληροφορία⟫", lines:⟪["Too Much","Information"]¦["Πάρα πολλή","πληροφορία"]⟫,
     problem:"⟪Far more reaches your senses than you could ever process.¦Στις αισθήσεις σου φτάνουν πολύ περισσότερα απ’ όσα θα μπορούσες ποτέ να επεξεργαστείς.⟫",
-    strategy:"⟪Your brain filters hard. It keeps what is repeated, surprising, changed, or already believed, and drops the rest.¦Ο εγκέφαλός σου φιλτράρει αυστηρά. Κρατά ό,τι επαναλαμβάνεται, ό,τι εκπλήσσει, ό,τι αλλάζει ή ό,τι ήδη πιστεύεις, και πετά τα υπόλοιπα.⟫",
+    strategy:"⟪Your brain filters hard. It keeps what is repeated, surprising, changed, or already believed, and drops the rest.¦Ο εγκέφαλός σου φιλτράρει αυστηρά. Κρατά ό,τι επαναλαμβάνεται, ό,τι σε ξαφνιάζει, ό,τι αλλάζει ή ό,τι ήδη πιστεύεις, και πετά τα υπόλοιπα.⟫",
     cost:"⟪You miss things, and you mistake what you happened to notice for what matters.¦Σου ξεφεύγουν πράγματα, και μπερδεύεις αυτό που έτυχε να προσέξεις με αυτό που έχει σημασία.⟫",
     keep:"⟪What you noticed is only a sample.¦Ό,τι πρόσεξες είναι μόνο ένα δείγμα.⟫" },
   { key:"nem",  name:"⟪Not Enough Meaning¦Ανεπαρκές νόημα⟫", lines:⟪["Not Enough","Meaning"]¦["Ανεπαρκές","νόημα"]⟫,
-    problem:"⟪The world is only partly visible, and you still have to make sense of it.¦Βλέπεις τον κόσμο μόνο εν μέρει, κι όμως πρέπει να βγάλεις νόημα από αυτόν.⟫",
+    problem:"⟪The world is only partly visible, and you still have to make sense of it.¦Βλέπεις μόνο ένα κομμάτι του κόσμου, κι όμως πρέπει να βγάλεις άκρη.⟫",
     strategy:"⟪Your brain fills the gaps with patterns, stereotypes, familiar cases, and guesses about what others think.¦Ο εγκέφαλός σου γεμίζει τα κενά με μοτίβα, στερεότυπα, γνώριμες περιπτώσεις και εικασίες για το τι σκέφτονται οι άλλοι.⟫",
     cost:"⟪You see stories in noise, and your guesses start to feel like facts.¦Βλέπεις ιστορίες μέσα στον θόρυβο, και οι εικασίες σου αρχίζουν να μοιάζουν με γεγονότα.⟫",
     keep:"⟪Part of your picture of the world is filled in.¦Κομμάτια της εικόνας σου για τον κόσμο τα έχεις συμπληρώσει εσύ.⟫" },
   { key:"fast", name:"⟪Need To Act Fast¦Ανάγκη για γρήγορη δράση⟫", lines:⟪["Need To","Act Fast"]¦["Ανάγκη για","γρήγορη δράση"]⟫,
-    problem:"⟪You rarely have the time or information to be certain, and waiting has costs too.¦Σπάνια υπάρχει αρκετός χρόνος ή πληροφορία για βεβαιότητα, και η αναμονή κοστίζει κι αυτή.⟫",
-    strategy:"⟪Your brain boosts your confidence, favours what is near and simple, and sticks with what you already started.¦Ο εγκέφαλός σου ανεβάζει την αυτοπεποίθησή σου, προτιμά ό,τι είναι κοντινό και απλό, και μένει σε ό,τι έχεις ήδη ξεκινήσει.⟫",
+    problem:"⟪You rarely have the time or information to be certain, and waiting has costs too.¦Σπάνια έχεις αρκετό χρόνο ή αρκετές πληροφορίες για να ξέρεις σίγουρα, και η αναμονή έχει κι αυτή κόστος.⟫",
+    strategy:"⟪Your brain boosts your confidence, favours what is near and simple, and sticks with what you already started.¦Ο εγκέφαλός σου ανεβάζει την αυτοπεποίθησή σου, προτιμά ό,τι είναι κοντινό και απλό, και επιμένει σε ό,τι έχεις ήδη ξεκινήσει.⟫",
     cost:"⟪Quick, sure decisions that are hard to walk back.¦Γρήγορες, σίγουρες αποφάσεις που δύσκολα παίρνεις πίσω.⟫",
     keep:"⟪Feeling sure is a mood. It proves nothing.¦Η σιγουριά είναι διάθεση. Δεν αποδεικνύει τίποτα.⟫" },
   { key:"mem",  name:"⟪What Should We Remember?¦Τι να θυμόμαστε;⟫", lines:⟪["What Should","We Remember?"]¦["Τι να","θυμόμαστε;"]⟫,
-    problem:"⟪You can't store everything, so memory keeps what seems useful later.¦Δεν μπορείς να τα κρατήσεις όλα, οπότε η μνήμη κρατά ό,τι μοιάζει χρήσιμο για αργότερα.⟫",
-    strategy:"⟪Your brain saves generalities, peaks, and endings, and quietly edits details after the fact.¦Ο εγκέφαλός σου αποθηκεύει γενικεύσεις, κορυφώσεις και τελειώματα, και αλλάζει αθόρυβα τις λεπτομέρειες εκ των υστέρων.⟫",
+    problem:"⟪You can't store everything, so memory keeps what seems useful later.¦Δεν μπορείς να τα θυμάσαι όλα, οπότε η μνήμη κρατά ό,τι μοιάζει χρήσιμο για αργότερα.⟫",
+    strategy:"⟪Your brain saves generalities, peaks, and endings, and quietly edits details after the fact.¦Ο εγκέφαλός σου αποθηκεύει γενικεύσεις, κορυφώσεις και φινάλε, και εκ των υστέρων πειράζει αθόρυβα τις λεπτομέρειες.⟫",
     cost:"⟪Memories feel vivid and exact even after they have shifted.¦Οι αναμνήσεις μοιάζουν ζωντανές και ακριβείς ακόμη κι αφού έχουν αλλάξει.⟫",
     keep:"⟪Each time you remember, you rebuild.¦Κάθε φορά που θυμάσαι, ξαναχτίζεις.⟫" }
 ];
 const SHORT = {
-  primed:"⟪Primed & repeated¦Ό,τι έχουμε ξαναδεί⟫", bizarre:"⟪Stands out¦Ξεχωρίζει⟫", change:"⟪Change¦Η αλλαγή⟫", confirm:"⟪Confirms beliefs¦Επιβεβαίωση πεποιθήσεων⟫", flaws:"⟪Others' flaws¦Τα λάθη των άλλων⟫",
-  patterns:"⟪Stories & patterns¦Ιστορίες & μοτίβα⟫", stereotypes:"⟪Stereotypes¦Στερεότυπα⟫", familiar:"⟪Familiar is better¦Προτιμάμε το οικείο⟫", numbers:"⟪Simpler numbers¦Απλούστεροι αριθμοί⟫", minds:"⟪Mind reading¦Διάβασμα σκέψης⟫", project:"⟪Projecting ourselves¦Προβολή του εαυτού⟫",
-  confident:"⟪Confidence to act¦Σιγουριά για δράση⟫", immediate:"⟪The here & now¦Το εδώ & τώρα⟫", invested:"⟪Finishing what we started¦Τελειώνουμε ό,τι αρχίσαμε⟫", autonomy:"⟪Autonomy & status¦Αυτονομία & κύρος⟫", simple:"⟪Simple & complete¦Απλό και πλήρες⟫",
-  edit:"⟪Edited memories¦Επεξεργασμένες μνήμες⟫", generalize:"⟪Generalities¦Γενικεύσεις⟫", reduce:"⟪Key elements¦Βασικά στοιχεία⟫", store:"⟪How it was stored¦Ο τρόπος αποθήκευσης⟫"
+  primed:"⟪Primed & repeated¦Ό,τι έχουμε ξαναδεί⟫", bizarre:"⟪Stands out¦Ό,τι ξεχωρίζει⟫", change:"⟪Change¦Η αλλαγή⟫", confirm:"⟪Confirms beliefs¦Ό,τι μας επιβεβαιώνει⟫", flaws:"⟪Others' flaws¦Τα λάθη των άλλων⟫",
+  patterns:"⟪Stories & patterns¦Ιστορίες & μοτίβα⟫", stereotypes:"⟪Stereotypes¦Στερεότυπα⟫", familiar:"⟪Familiar is better¦Προτιμάμε το οικείο⟫", numbers:"⟪Simpler numbers¦Απλοποιούμε τους αριθμούς⟫", minds:"⟪Mind reading¦Διαβάζουμε σκέψεις⟫", project:"⟪Projecting ourselves¦Κρίνουμε με το σήμερα⟫",
+  confident:"⟪Confidence to act¦Σιγουριά για να δράσουμε⟫", immediate:"⟪The here & now¦Το εδώ & τώρα⟫", invested:"⟪Finishing what we started¦Τελειώνουμε ό,τι αρχίσαμε⟫", autonomy:"⟪Autonomy & status¦Αυτονομία & κύρος⟫", simple:"⟪Simple & complete¦Απλό και πλήρες⟫",
+  edit:"⟪Edited memories¦Ξαναγραμμένες μνήμες⟫", generalize:"⟪Generalities¦Γενικεύσεις⟫", reduce:"⟪Key elements¦Βασικά στοιχεία⟫", store:"⟪How it was stored¦Πώς το αποθηκεύσαμε⟫"
 };
 const HABITS = [
   ["⟪Argue the other side¦Υπερασπίσου την άλλη πλευρά⟫", "⟪Before you commit, write the strongest case against your view. If you can't, you don't know the question well enough yet.¦Πριν δεσμευτείς, γράψε το πιο δυνατό επιχείρημα κατά της άποψής σου. Αν δεν μπορείς, δεν ξέρεις ακόμη το ζήτημα αρκετά καλά.⟫", "⟪Confirmation bias, belief perseverance, naive realism¦Μεροληψία επιβεβαίωσης, εμμονή στις πεποιθήσεις, αφελής ρεαλισμός⟫"],
   ["⟪Start from the base rate¦Ξεκίνα από το βασικό ποσοστό⟫", "⟪Ask how things like this usually turn out before you look at what makes this case special.¦Αναρωτήσου πώς καταλήγουν συνήθως τέτοιες περιπτώσεις πριν κοιτάξεις τι κάνει αυτήν εδώ ξεχωριστή.⟫", "⟪Base rate fallacy, planning fallacy, overconfidence¦Πλάνη του βασικού ποσοστού, πλάνη του σχεδιασμού, υπερβολική αυτοπεποίθηση⟫"],
   ["⟪Run a pre-mortem¦Κάνε μια «νεκροψία» από πριν⟫", "⟪Imagine it is a year from now and the plan failed. List the likeliest reasons, then fix what you can today.¦Φαντάσου ότι πέρασε ένας χρόνος και το σχέδιο απέτυχε. Γράψε τους πιο πιθανούς λόγους και διόρθωσε σήμερα ό,τι μπορείς.⟫", "⟪Optimism bias, escalation of commitment, illusion of control¦Μεροληψία αισιοδοξίας, κλιμάκωση της δέσμευσης, ψευδαίσθηση ελέγχου⟫"],
-  ["⟪Decide what would change your mind¦Αποφάσισε τι θα σου άλλαζε γνώμη⟫", "⟪Set the evidence you would need before you go looking. Moving the bar afterwards is a warning sign.¦Όρισε τα στοιχεία που θα χρειαζόσουν πριν αρχίσεις να ψάχνεις. Αν μετακινείς τον πήχη μετά, είναι προειδοποιητικό σημάδι.⟫", "⟪Backfire effect, Semmelweis reflex, subjective validation¦Φαινόμενο μπούμερανγκ, αντανακλαστικό Semmelweis, υποκειμενική επικύρωση⟫"],
-  ["⟪Grade decisions by what you knew¦Κρίνε τις αποφάσεις με βάση όσα ήξερες⟫", "⟪Good choices can end badly and bad ones can get lucky. Judge the reasoning with the information available at the time.¦Οι καλές επιλογές μπορεί να καταλήξουν άσχημα και οι κακές να σταθούν τυχερές. Κρίνε το σκεπτικό με τις πληροφορίες που υπήρχαν εκείνη τη στιγμή.⟫", "⟪Outcome bias, hindsight bias, moral luck¦Μεροληψία αποτελέσματος, μεροληψία εκ των υστέρων, ηθική τύχη⟫"],
-  ["⟪Write predictions down¦Γράψε τις προβλέψεις σου⟫", "⟪A dated note beats memory, which edits itself to match what happened.¦Ένα σημείωμα με ημερομηνία είναι καλύτερο από τη μνήμη, που διορθώνει τον εαυτό της για να ταιριάζει με ό,τι συνέβη.⟫", "⟪Hindsight bias, choice-supportive bias, rosy retrospection¦Μεροληψία εκ των υστέρων, μεροληψία υπέρ της επιλογής, ρόδινη αναδρομή⟫"],
-  ["⟪Borrow other eyes¦Δανείσου άλλα μάτια⟫", "⟪Ask someone with different incentives or a different background to find the hole. Your own blind spot is invisible to you by definition.¦Ζήτα από κάποιον με άλλα κίνητρα ή άλλο υπόβαθρο να βρει το κενό. Το δικό σου τυφλό σημείο είναι, εξ ορισμού, αόρατο σε σένα.⟫", "⟪Bias blind spot, in-group bias, curse of knowledge¦Τυφλό σημείο της μεροληψίας, μεροληψία της ενδοομάδας, κατάρα της γνώσης⟫"],
-  ["⟪Put distance between you and the choice¦Βάλε απόσταση ανάμεσα σε σένα και την επιλογή⟫", "⟪Sleep on it, or ask what you would tell a friend in the same spot. Strong emotion and time pressure make nearly every bias stronger.¦Άφησε να περάσει μια νύχτα, ή σκέψου τι θα έλεγες σε έναν φίλο στην ίδια θέση. Το έντονο συναίσθημα και η πίεση χρόνου κάνουν σχεδόν κάθε μεροληψία πιο δυνατή.⟫", "⟪Empathy gap, loss aversion, hyperbolic discounting¦Χάσμα ενσυναίσθησης, αποστροφή στην απώλεια, υπερβολική προεξόφληση⟫"]
+  ["⟪Decide what would change your mind¦Αποφάσισε τι θα σε έκανε να αλλάξεις γνώμη⟫", "⟪Set the evidence you would need before you go looking. Moving the bar afterwards is a warning sign.¦Πριν αρχίσεις να ψάχνεις, όρισε ποια στοιχεία θα σε έπειθαν. Αν μετά μετακινήσεις τον πήχη, χτυπάει καμπανάκι.⟫", "⟪Backfire effect, Semmelweis reflex, subjective validation¦Φαινόμενο μπούμερανγκ, αντανακλαστικό Semmelweis, υποκειμενική επικύρωση⟫"],
+  ["⟪Grade decisions by what you knew¦Κρίνε τις αποφάσεις με βάση όσα ήξερες⟫", "⟪Good choices can end badly and bad ones can get lucky. Judge the reasoning with the information available at the time.¦Οι καλές επιλογές μπορεί να καταλήξουν άσχημα και οι κακές να πετύχουν από τύχη. Κρίνε το σκεπτικό με βάση τις πληροφορίες που είχες τότε.⟫", "⟪Outcome bias, hindsight bias, moral luck¦Μεροληψία αποτελέσματος, μεροληψία εκ των υστέρων, ηθική τύχη⟫"],
+  ["⟪Write predictions down¦Γράψε τις προβλέψεις σου⟫", "⟪A dated note beats memory, which edits itself to match what happened.¦Ένα σημείωμα με ημερομηνία είναι καλύτερο από τη μνήμη, που ξαναγράφεται μόνη της για να ταιριάξει με ό,τι έγινε.⟫", "⟪Hindsight bias, choice-supportive bias, rosy retrospection¦Μεροληψία εκ των υστέρων, μεροληψία υπέρ της επιλογής, ρόδινη αναδρομή⟫"],
+  ["⟪Borrow other eyes¦Ζήτα μια δεύτερη γνώμη⟫", "⟪Ask someone with different incentives or a different background to find the hole. Your own blind spot is invisible to you by definition.¦Βάλε κάποιον με άλλα κίνητρα ή άλλο υπόβαθρο να βρει τα κενά. Το δικό σου τυφλό σημείο, εξ ορισμού, δεν το βλέπεις.⟫", "⟪Bias blind spot, in-group bias, curse of knowledge¦Τυφλό σημείο της μεροληψίας, μεροληψία της ενδοομάδας, κατάρα της γνώσης⟫"],
+  ["⟪Put distance between you and the choice¦Πάρε απόσταση από την επιλογή⟫", "⟪Sleep on it, or ask what you would tell a friend in the same spot. Strong emotion and time pressure make nearly every bias stronger.¦Άφησε να περάσει μια νύχτα ή σκέψου τι θα έλεγες σε έναν φίλο στη θέση σου. Το έντονο συναίσθημα και η πίεση του χρόνου ενισχύουν σχεδόν κάθε μεροληψία.⟫", "⟪Empathy gap, loss aversion, hyperbolic discounting¦Χάσμα ενσυναίσθησης, αποστροφή στην απώλεια, υπερβολική προεξόφληση⟫"]
 ];
 
 /* ---------- flatten ---------- */
@@ -714,7 +712,6 @@ svg.addEventListener("pointermove", e => {
 });
 svg.addEventListener("pointerleave", () => { kTarget = 0; kick(); });
 draw();
-if (narrow.matches) document.getElementById("map-hint").textContent = "⟪Tap a coloured node to open that family of biases.¦Πάτησε έναν χρωματιστό κόμβο για να ανοίξεις την οικογένεια μεροληψιών του.⟫";
 
 /* ---------- why ---------- */
 document.getElementById("problems").innerHTML = QUADS.map(q => `
@@ -795,9 +792,9 @@ function openBias(b) {
     <div class="crumb"><span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g>${esc(g.title)}</button></div>
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias ? `<p class="alias">⟪Also known as ${esc(b.alias)}¦Λέγεται και ${esc(b.alias)}⟫</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">⟪In English:¦Στα αγγλικά:⟫ ${esc(b.en)}</p>` : ""}</div>
     <p class="def">${esc(b.d)}</p>
-    <div class="row">${catchBtn(b, "⟪I've caught this in myself¦Το έχω πιάσει στον εαυτό μου⟫")}${XP_FOR[⟪b.n¦b.en⟫] ? `<button class="btn" type="button" data-xp="${XP_FOR[⟪b.n¦b.en⟫].id}">⟪Try it on yourself¦Δοκίμασέ το πάνω σου⟫</button>` : ""}</div>
+    <div class="row">${catchBtn(b, "⟪I've caught this in myself¦Το κάνω κι εγώ⟫")}${XP_FOR[⟪b.n¦b.en⟫] ? `<button class="btn" type="button" data-xp="${XP_FOR[⟪b.n¦b.en⟫].id}">⟪Try it on yourself¦Κάνε το πείραμα⟫</button>` : ""}</div>
     <div class="pblock"><h3>⟪In everyday life¦Στην καθημερινότητα⟫</h3><p class="example">${esc(b.ex)}</p></div>
-    <div class="pblock"><h3>⟪Why your mind does this¦Γιατί το κάνει αυτό το μυαλό σου⟫</h3><p>${esc(g.why)}</p></div>
+    <div class="pblock"><h3>⟪Why your mind does this¦Γιατί το κάνει το μυαλό σου⟫</h3><p>${esc(g.why)}</p></div>
     <div class="pblock"><h3>⟪How to spot it¦Πώς να την εντοπίσεις⟫</h3><p class="lead-tip">${esc(b.spot)}</p></div>
     <div class="pblock"><h3>⟪How to counter it¦Πώς να την αντιμετωπίσεις⟫</h3><p class="lead-tip">${esc(b.fix)}</p></div>
     <div class="pblock"><h3>⟪Same family¦Στην ίδια οικογένεια⟫</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>`;
@@ -813,11 +810,11 @@ function openGroup(g) {
   pBody.innerHTML = `
     <div class="crumb"><span class="qtag">${esc(g.q.name)}</span></div>
     <h2 id="p-title">${esc(g.title)}</h2>
-    <div class="pblock"><h3>⟪Why your mind does this¦Γιατί το κάνει αυτό το μυαλό σου⟫</h3><p class="def">${esc(g.why)}</p></div>
+    <div class="pblock"><h3>⟪Why your mind does this¦Γιατί το κάνει το μυαλό σου⟫</h3><p class="def">${esc(g.why)}</p></div>
     <div class="pblock"><h3>⟪Where it goes wrong¦Πού στραβώνει⟫</h3><p>${esc(g.cost)}</p></div>
-    ${listBlock("⟪How to spot it¦Πώς να την εντοπίσεις⟫", g.spot)}
-    ${listBlock("⟪How to counter it¦Πώς να την αντιμετωπίσεις⟫", g.fix)}
-    <div class="pblock"><h3>⟪${g.items.length} biases in this family¦${g.items.length} μεροληψίες σε αυτή την οικογένεια⟫</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}">${esc(x.n)}</button>`).join("")}</div></div>`;
+    ${listBlock("⟪How to spot it¦Πώς να τις εντοπίσεις⟫", g.spot)}
+    ${listBlock("⟪How to counter it¦Πώς να τις αντιμετωπίσεις⟫", g.fix)}
+    <div class="pblock"><h3>⟪${g.items.length} biases in this family¦Οι ${g.items.length} μεροληψίες της οικογένειας⟫</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}">${esc(x.n)}</button>`).join("")}</div></div>`;
   showPanel(g.q);
   markOn(null, g);
   history.replaceState(null, "", "#g-" + g.id);
@@ -883,7 +880,7 @@ function renderRound() {
     <div>
       <div class="quiz-meta"><span class="label">⟪Scenario ${qz.at + 1} of ${ROUNDS}¦Σενάριο ${qz.at + 1} από ${ROUNDS}⟫</span>${pips()}</div>
       <p class="scenario">${esc(b.scen)}</p>
-      <p class="scenario-q">⟪Which bias is at work?¦Ποια μεροληψία παίζει ρόλο εδώ;⟫</p>
+      <p class="scenario-q">⟪Which bias is at work?¦Ποια μεροληψία κρύβεται εδώ;⟫</p>
     </div>
     <div>
       <div class="opts" role="group" aria-label="⟪Answers¦Απαντήσεις⟫">${qz.opts.map((o, i) => `<button class="opt" type="button" data-k="${i}">${esc(o.n)}<small></small></button>`).join("")}</div>
@@ -897,14 +894,14 @@ quizBox.addEventListener("click", e => {
     qz.marks[qz.at] = ok;
     quizBox.querySelectorAll(".opt").forEach((el, i) => {
       el.disabled = true;
-      if (qz.opts[i] === b) { el.classList.add("right"); el.querySelector("small").textContent = "⟪Answer¦Απάντηση⟫"; }
+      if (qz.opts[i] === b) { el.classList.add("right"); el.querySelector("small").textContent = "⟪Answer¦Σωστή απάντηση⟫"; }
       else if (el === o) { el.classList.add("wrong"); el.querySelector("small").textContent = "⟪Your pick¦Η επιλογή σου⟫"; }
     });
     quizBox.querySelector(".pips").outerHTML = pips();
     document.getElementById("fb").innerHTML = `<div class="feedback" aria-live="polite">
       <p><b>${ok ? "⟪Right.¦Σωστά.⟫" : "⟪Not quite.¦Όχι ακριβώς.⟫"}</b> ${esc(b.n)}: ${esc(b.d)}</p>
       ${ok ? "" : `<p>⟪${esc(pick.n)} is different: ${esc(pick.d)}¦Το «${esc(pick.n)}» είναι κάτι άλλο: ${esc(pick.d)}⟫</p>`}
-      <div class="row"><button class="btn primary" type="button" data-next>${qz.at + 1 === ROUNDS ? "⟪See your score¦Δες το σκορ σου⟫" : "⟪Next scenario¦Επόμενο σενάριο⟫"}</button><button class="btn" type="button" data-read="${b.i}">⟪Read about it¦Διάβασε περισσότερα⟫</button></div>
+      <div class="row"><button class="btn primary" type="button" data-next>${qz.at + 1 === ROUNDS ? "⟪See your score¦Δες πώς τα πήγες⟫" : "⟪Next scenario¦Επόμενο σενάριο⟫"}</button><button class="btn" type="button" data-read="${b.i}">⟪Read about it¦Διάβασε περισσότερα⟫</button></div>
     </div>`;
     document.querySelector("[data-next]").focus({ preventScroll:true });
     return;
@@ -915,7 +912,7 @@ quizBox.addEventListener("click", e => {
 });
 function renderFinal() {
   const s = qz.marks.filter(Boolean).length;
-  const msg = s === ROUNDS ? "⟪A clean sweep. Now try catching them in your own week.¦Όλα σωστά. Τώρα προσπάθησε να τις πιάσεις μέσα στη δική σου εβδομάδα.⟫" :
+  const msg = s === ROUNDS ? "⟪A clean sweep. Now try catching them in your own week.¦Όλα σωστά. Τώρα προσπάθησε να τις πιάσεις στα πράσα μέσα στην εβδομάδα σου.⟫" :
     s >= 6 ? "⟪Sharp. The ones you missed are worth a closer read.¦Πολύ καλά. Όσες σου ξέφυγαν αξίζουν μια πιο προσεκτική ματιά.⟫" :
     s >= 3 ? "⟪A solid start. Most people find this harder than it looks.¦Καλή αρχή. Οι περισσότεροι το βρίσκουν πιο δύσκολο απ’ ό,τι φαίνεται.⟫" :
     "⟪These are tricky in the wild. Browse the families above and try again.¦Στην πράξη δεν είναι εύκολο να τις εντοπίσεις. Ρίξε μια ματιά στις οικογένειες παραπάνω και ξαναδοκίμασε.⟫";
@@ -925,7 +922,7 @@ function renderFinal() {
     <div class="big">${s}/${ROUNDS}</div>
     <p>${msg}</p>
     ${missed.length ? `<div class="sibs" style="justify-content:center">${missed.map(b => `<button type="button" data-read="${b.i}">${esc(b.n)}</button>`).join("")}</div>` : ""}
-    <button class="btn primary" type="button" data-again>⟪Play another round¦Άλλος ένας γύρος⟫</button>
+    <button class="btn primary" type="button" data-again>⟪Play another round¦Παίξε ξανά⟫</button>
   </div>`;
 }
 
@@ -961,16 +958,16 @@ function renderMine() {
   const fam = GROUPS.map(g => ({ g, n: g.items.filter(b => caught.has(b.slug)).length }))
     .filter(f => f.n).sort((a, b) => b.n - a.n || b.n / b.g.items.length - a.n / a.g.items.length)[0];
   mineEl.innerHTML = `
-    <div class="mine-head"><h3>⟪Your bias map¦Ο χάρτης σου⟫</h3><span class="label">⟪${new Set(list.map(b => b.n)).size} of ${UNIQUE} caught · saved in this browser¦Έπιασες ${new Set(list.map(b => b.n)).size} από ${UNIQUE} · αποθηκεύεται σε αυτόν τον browser⟫</span></div>
+    <div class="mine-head"><h3>⟪Your bias map¦Ο χάρτης σου⟫</h3><span class="label">⟪${new Set(list.map(b => b.n)).size} of ${UNIQUE} caught · saved in this browser¦Έχεις εντοπίσει ${new Set(list.map(b => b.n)).size} από ${UNIQUE} · αποθηκεύεται σε αυτόν τον browser⟫</span></div>
     <div class="mine-grid">
       <div class="topfam q-${fam.g.q.key}">
-        <p class="label">⟪Where you catch yourself most¦Πού πιάνεις τον εαυτό σου πιο συχνά⟫</p>
+        <p class="label">⟪Where you catch yourself most¦Πού την πατάς πιο συχνά⟫</p>
         <button type="button" class="linkish" data-open-group="${GROUPS.indexOf(fam.g)}">${esc(fam.g.title)}</button>
-        <p><b>⟪Try this:¦Δοκίμασε αυτό:⟫</b> ${esc(fam.g.fix[0])}</p>
+        <p><b>⟪Try this:¦Δοκίμασε το εξής:⟫</b> ${esc(fam.g.fix[0])}</p>
       </div>
     </div>
     <div class="sibs">${list.map(b => `<button type="button" class="on q-${b.q.key}" data-open="${b.i}">${esc(b.n)}</button>`).join("")}</div>
-    <div class="row" id="clear-row"><button class="btn" type="button" data-clear>⟪Clear my map¦Σβήσε τον χάρτη μου⟫</button></div>`;
+    <div class="row" id="clear-row"><button class="btn" type="button" data-clear>⟪Clear my map¦Σβήσε τον χάρτη⟫</button></div>`;
 }
 mineEl.addEventListener("click", e => {
   const g = e.target.closest("[data-open-group]"); if (g) return openGroup(GROUPS[+g.dataset.openGroup]);
@@ -1011,10 +1008,10 @@ function finish(x, html) {
   labDone.add(x.id); store.set(LAB_KEY, [...labDone]); renderTiles();
   const bs = x.biases.map(byName).filter(Boolean);
   const nx = LAB[(LAB.indexOf(x) + 1) % LAB.length];
-  paint(head(x, "⟪What just happened¦Τι μόλις συνέβη⟫") + `<div class="result">${html}</div>
+  paint(head(x, "⟪What just happened¦Τι έγινε⟫") + `<div class="result">${html}</div>
     <div class="xp-foot">
-      <p class="label">⟪The bias behind it¦Η μεροληψία πίσω από αυτό⟫</p>
-      ${bs.map(b => `<div class="xp-bias q-${b.q.key}"><button type="button" class="xp-read" data-open="${b.i}"><b>${esc(b.n)}</b><span>${esc(b.d)}</span></button>${catchBtn(b, "⟪It got me¦Με έπιασε⟫")}</div>`).join("")}
+      <p class="label">⟪The bias behind it¦Η μεροληψία που έπαιξε ρόλο⟫</p>
+      ${bs.map(b => `<div class="xp-bias q-${b.q.key}"><button type="button" class="xp-read" data-open="${b.i}"><b>${esc(b.n)}</b><span>${esc(b.d)}</span></button>${catchBtn(b, "⟪It got me¦Την πάτησα⟫")}</div>`).join("")}
       <div class="row"><button class="btn" type="button" data-again>⟪Try again¦Ξαναδοκίμασε⟫</button><button class="btn primary" type="button" data-go="${nx.id}">⟪Next:¦Επόμενο:⟫ ${esc(nx.title)}</button></div>
     </div>`);
 }
@@ -1025,7 +1022,7 @@ function track(ms) {
 
 function xpSpin(x, alive) {
   const A = Math.random() < 0.5 ? 10 : 65;
-  paint(head(x, "⟪Step 1 of 3¦Βήμα 1 από 3⟫") + `<h3>⟪Spin the wheel¦Γύρνα τον τροχό⟫</h3><p class="prompt">⟪First you need a random number between 0 and 100. Spin for one.¦Πρώτα χρειάζεσαι έναν τυχαίο αριθμό από το 0 έως το 100. Γύρνα τον τροχό για να τον πάρεις.⟫</p>
+  paint(head(x, "⟪Step 1 of 3¦Βήμα 1 από 3⟫") + `<h3>⟪Spin the wheel¦Γύρνα τον τροχό⟫</h3><p class="prompt">⟪First you need a random number between 0 and 100. Spin for one.¦Πρώτα χρειάζεσαι έναν τυχαίο αριθμό από το 0 έως το 100. Γύρνα τον τροχό για να βγει ένας.⟫</p>
     <div class="spin-num" id="sn" aria-live="polite">--</div><div class="row"><button class="btn primary" type="button" id="go">⟪Spin¦Γύρνα⟫</button></div>`);
   $("#go", stage).onclick = e => {
     e.currentTarget.disabled = true;
@@ -1037,19 +1034,19 @@ function xpSpin(x, alive) {
     }, 55);
   };
   function q1() {
-    paint(head(x, "⟪Step 2 of 3¦Βήμα 2 από 3⟫") + `<div class="spin-num small">${A}</div><p class="prompt">⟪Is the share of United Nations member countries that are in Africa higher or lower than <b>${A}%</b>?¦Το ποσοστό των κρατών-μελών του ΟΗΕ που βρίσκονται στην Αφρική είναι μεγαλύτερο ή μικρότερο από <b>${A}%</b>;⟫</p>` + choices([["hi", "⟪Higher¦Μεγαλύτερο⟫"], ["lo", "⟪Lower¦Μικρότερο⟫"]]));
+    paint(head(x, "⟪Step 2 of 3¦Βήμα 2 από 3⟫") + `<div class="spin-num small">${A}</div><p class="prompt">⟪Is the share of United Nations member countries that are in Africa higher or lower than <b>${A}%</b>?¦Τα κράτη-μέλη του ΟΗΕ που βρίσκονται στην Αφρική είναι περισσότερα ή λιγότερα από το <b>${A}%</b> του συνόλου;⟫</p>` + choices([["hi", "⟪Higher¦Περισσότερα⟫"], ["lo", "⟪Lower¦Λιγότερα⟫"]]));
     onChoice(q2);
   }
   function q2() {
-    paint(head(x, "⟪Step 3 of 3¦Βήμα 3 από 3⟫") + `<p class="prompt">⟪What is your best guess for the share of UN member countries that are in Africa?¦Ποια είναι η καλύτερη εκτίμησή σου για το ποσοστό των κρατών-μελών του ΟΗΕ που βρίσκονται στην Αφρική;⟫</p>${slider("g", 50)}<div class="row"><button class="btn primary" type="button" id="lock">⟪Lock in my guess¦Κλείδωσε την εκτίμηση⟫</button></div>`);
+    paint(head(x, "⟪Step 3 of 3¦Βήμα 3 από 3⟫") + `<p class="prompt">⟪What is your best guess for the share of UN member countries that are in Africa?¦Κατά την εκτίμησή σου, τι ποσοστό των κρατών-μελών του ΟΗΕ βρίσκεται στην Αφρική;⟫</p>${slider("g", 50)}<div class="row"><button class="btn primary" type="button" id="lock">⟪Lock in my guess¦Κλείδωσε την εκτίμηση⟫</button></div>`);
     bindSlider("g"); $("#lock", stage).onclick = () => done(+$("#g", stage).value);
   }
   function done(g) {
     const pulled = Math.abs(g - A) < Math.abs(g - 28);
     finish(x, `<p class="big-answer">⟪About 28%¦Περίπου 28%⟫</p><p>⟪54 of the 193 UN member countries are in Africa.¦54 από τα 193 κράτη-μέλη του ΟΗΕ βρίσκονται στην Αφρική.⟫</p>
       ${track([[g, "⟪Your guess¦Η εκτίμησή σου⟫", "you"], [A, "⟪Your spin¦Ο τροχός⟫", "anchor"], [28, "⟪Answer¦Απάντηση⟫", "truth"]])}
-      <p class="verdict">${pulled ? `⟪Your guess landed closer to your spin (${A}) than to the real answer.¦Η εκτίμησή σου έπεσε πιο κοντά στον αριθμό του τροχού (${A}) παρά στη σωστή απάντηση.⟫` : `⟪Your guess landed closer to the answer than to your spin. The pull is often small in one person and clear across many.¦Η εκτίμησή σου έπεσε πιο κοντά στη σωστή απάντηση παρά στον αριθμό του τροχού. Σε έναν άνθρωπο η έλξη είναι συχνά μικρή, σε πολλούς μαζί φαίνεται καθαρά.⟫`}</p>
-      <p>⟪The spin was random, and you knew it. In a classic 1974 study by Amos Tversky and Daniel Kahneman, people whose wheel stopped at 10 gave a median guess of 25%. People whose wheel stopped at 65 gave 45%. A number you know is meaningless still becomes the starting point you adjust from.¦Ο αριθμός ήταν τυχαίος, και το ήξερες. Σε μια κλασική μελέτη του 1974 από τους Amos Tversky και Daniel Kahneman, όσοι είδαν τον τροχό να σταματά στο 10 έδωσαν διάμεση εκτίμηση 25%. Όσοι τον είδαν να σταματά στο 65 έδωσαν 45%. Ένας αριθμός που ξέρεις ότι δεν σημαίνει τίποτα γίνεται παρ’ όλα αυτά το σημείο από το οποίο ξεκινάς να προσαρμόζεις την εκτίμησή σου.⟫</p>`);
+      <p class="verdict">${pulled ? `⟪Your guess landed closer to your spin (${A}) than to the real answer.¦Η εκτίμησή σου έπεσε πιο κοντά στον αριθμό του τροχού (${A}) παρά στη σωστή απάντηση.⟫` : `⟪Your guess landed closer to the answer than to your spin. The pull is often small in one person and clear across many.¦Η εκτίμησή σου έπεσε πιο κοντά στη σωστή απάντηση παρά στον αριθμό του τροχού. Σε έναν άνθρωπο η επιρροή είναι συχνά μικρή, αλλά σε πολλούς μαζί φαίνεται καθαρά.⟫`}</p>
+      <p>⟪The spin was random, and you knew it. In a classic 1974 study by Amos Tversky and Daniel Kahneman, people whose wheel stopped at 10 gave a median guess of 25%. People whose wheel stopped at 65 gave 45%. A number you know is meaningless still becomes the starting point you adjust from.¦Ο αριθμός ήταν τυχαίος, και το ήξερες. Σε μια κλασική μελέτη που έκαναν οι Amos Tversky και Daniel Kahneman το 1974, όσοι είδαν τον τροχό να σταματά στο 10 έδωσαν διάμεση εκτίμηση 25%, ενώ όσοι τον είδαν να σταματά στο 65 έδωσαν 45%. Ακόμη κι ένας αριθμός που ξέρεις ότι δεν σημαίνει τίποτα γίνεται η αφετηρία από την οποία ξεκινάς να προσαρμόζεις την εκτίμησή σου.⟫</p>`);
   }
 }
 
@@ -1061,7 +1058,7 @@ function xpLinda(x) {
       <circle class="big" cx="190" cy="112" r="100"/><text x="190" y="52">⟪All bank tellers¦Όλοι οι ταμίες⟫</text>
       <circle class="small" cx="214" cy="140" r="46"/><text class="in" x="214" y="136">⟪Feminist¦Φεμινίστριες⟫</text><text class="in" x="214" y="153">⟪bank tellers¦ταμίες⟫</text>
     </svg>
-    <p class="verdict">${c === "a" ? "⟪You picked the answer that has to be at least as likely. The description is written to pull you the other way.¦Διάλεξες την απάντηση που είναι οπωσδήποτε τουλάχιστον εξίσου πιθανή. Η περιγραφή είναι γραμμένη για να σε τραβήξει προς την άλλη.⟫" : "⟪You picked the option that feels right, and it is the one that can't be more likely.¦Διάλεξες την επιλογή που σου φαίνεται σωστή, και είναι αυτή που δεν γίνεται να είναι πιο πιθανή.⟫"}</p>
+    <p class="verdict">${c === "a" ? "⟪You picked the answer that has to be at least as likely. The description is written to pull you the other way.¦Διάλεξες την απάντηση που δεν γίνεται να είναι λιγότερο πιθανή. Η περιγραφή είναι γραμμένη για να σε τραβήξει προς την άλλη.⟫" : "⟪You picked the option that feels right, and it is the one that can't be more likely.¦Διάλεξες την απάντηση που μοιάζει σωστή, και είναι ακριβώς αυτή που δεν γίνεται να είναι πιο πιθανή.⟫"}</p>
     <p>⟪Every feminist bank teller is also a bank teller, so the second option can never beat the first. Extra details make a story more convincing and less likely at the same time. In Tversky and Kahneman's original studies, most people chose the second option.¦Κάθε ταμίας που είναι φεμινίστρια είναι επίσης ταμίας, οπότε η δεύτερη επιλογή δεν μπορεί ποτέ να ξεπεράσει την πρώτη. Οι επιπλέον λεπτομέρειες κάνουν μια ιστορία ταυτόχρονα πιο πειστική και λιγότερο πιθανή. Στις αρχικές μελέτες των Tversky και Kahneman, οι περισσότεροι διάλεξαν τη δεύτερη επιλογή.⟫</p>`));
 }
 
@@ -1083,12 +1080,12 @@ function xpCoin(x, alive) {
     finish(x, `<div class="coins">${heads}<span class="coin ${flip === "H" ? "h" : ""}">${⟪flip¦flip === "H" ? "Κ" : "Γ"⟫}</span></div>
       <p class="big-answer">50 / 50</p>
       <p class="verdict">${c === "e" ? "⟪Right. The coin has no memory of the last five flips.¦Σωστά. Το νόμισμα δεν θυμάται τις πέντε προηγούμενες ρίψεις.⟫" : c === "t" ? "⟪Expecting tails because it feels due is the gambler's fallacy. Past flips don't change the next one.¦Αν περιμένεις γράμματα επειδή νιώθεις ότι «είναι η σειρά τους», πέφτεις στην πλάνη του τζογαδόρου. Οι προηγούμενες ρίψεις δεν αλλάζουν την επόμενη.⟫" : "⟪Expecting the streak to continue is the hot-hand fallacy. For a fair coin, the next flip is still 50/50.¦Αν περιμένεις να συνεχιστεί το σερί, πέφτεις στην πλάνη του ζεστού χεριού. Σε ένα κανονικό νόμισμα, η επόμενη ρίψη είναι πάλι 50/50.⟫"}</p>
-      <p>⟪You don't have to take that on trust. Simulate a million flips and look only at what came right after five heads in a row.¦Δεν χρειάζεται να το πάρεις τοις μετρητοίς. Κάνε μια προσομοίωση με ένα εκατομμύριο ρίψεις και κοίτα μόνο τι ήρθε αμέσως μετά από πέντε κορώνες στη σειρά.⟫</p>
+      <p>⟪You don't have to take that on trust. Simulate a million flips and look only at what came right after five heads in a row.¦Δεν χρειάζεται να το πιστέψεις στα τυφλά. Κάνε μια προσομοίωση με ένα εκατομμύριο ρίψεις και δες μόνο τι έρχεται αμέσως μετά από πέντε συνεχόμενες κορώνες.⟫</p>
       <div class="row"><button class="btn" type="button" id="sim">⟪Flip a million coins¦Ρίξε ένα εκατομμύριο νομίσματα⟫</button></div><p class="sim-out" id="simout" aria-live="polite"></p>`);
     $("#sim", stage).onclick = () => {
       let run = 0, h = 0, t = 0;
       for (let i = 0; i < 1e6; i++) { const f = Math.random() < 0.5; if (run >= 5) { if (f) h++; else t++; } run = f ? run + 1 : 0; }
-      $("#simout", stage).innerHTML = `⟪After a streak of five or more heads, the next flip came up <b>heads ${h.toLocaleString(LOCALE)}</b> times and <b>tails ${t.toLocaleString(LOCALE)}</b> times. That's ${(100 * h / (h + t)).toLocaleString(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% heads.¦Μετά από σερί πέντε ή περισσότερων κορωνών, η επόμενη ρίψη έφερε <b>κορώνα ${h.toLocaleString(LOCALE)}</b> φορές και <b>γράμματα ${t.toLocaleString(LOCALE)}</b> φορές. Δηλαδή ${(100 * h / (h + t)).toLocaleString(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% κορώνα.⟫`;
+      $("#simout", stage).innerHTML = `⟪After a streak of five or more heads, the next flip came up <b>heads ${h.toLocaleString(LOCALE)}</b> times and <b>tails ${t.toLocaleString(LOCALE)}</b> times. That's ${(100 * h / (h + t)).toLocaleString(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% heads.¦Μετά από πέντε ή περισσότερες συνεχόμενες κορώνες, η επόμενη ρίψη έφερε <b>κορώνα ${h.toLocaleString(LOCALE)}</b> φορές και <b>γράμματα ${t.toLocaleString(LOCALE)}</b> φορές. Δηλαδή ${(100 * h / (h + t)).toLocaleString(LOCALE, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% κορώνα.⟫`;
     };
   }
 }
@@ -1120,14 +1117,14 @@ function xpFake(x) {
       <div class="seq-row"><span class="label">⟪Real coin (Row ${realIsA ? "A" : "B"}): longest streak ${r.max}, switched sides ${r.sw} times¦Αληθινό νόμισμα (Σειρά ${realIsA ? "Α" : "Β"}): μεγαλύτερο σερί ${r.max}, άλλαξε πλευρά ${r.sw} φορές⟫</span>${seqHtml(real, true)}</div>
       <div class="seq-row"><span class="label">⟪Made by a person (Row ${realIsA ? "B" : "A"}): longest streak ${f.max}, switched sides ${f.sw} times¦Φτιαγμένη από άνθρωπο (Σειρά ${realIsA ? "Β" : "Α"}): μεγαλύτερο σερί ${f.max}, άλλαξε πλευρά ${f.sw} φορές⟫</span>${seqHtml(fake, true)}</div>
       <p class="verdict">${ok ? "⟪You spotted it. The streaky row is the real one.¦Το βρήκες. Η σειρά με τα σερί είναι η αληθινή.⟫" : "⟪You picked the row that looks random. The real coin is the one that looks rigged.¦Διάλεξες τη σειρά που μοιάζει τυχαία. Το αληθινό νόμισμα είναι αυτό που μοιάζει στημένο.⟫"}</p>
-      <p>⟪Real randomness is streakier than it feels. In 24 fair flips, a run of four or more of the same side happens about five times out of six. People faking it switch sides too often, so genuine clusters look suspicious. The same instinct finds hot streaks, lucky numbers and "patterns" in events that are pure chance.¦Η πραγματική τυχαιότητα έχει περισσότερα σερί απ’ όσο νομίζεις. Σε 24 ρίψεις ενός κανονικού νομίσματος, ένα σερί τεσσάρων ή περισσότερων ίδιων αποτελεσμάτων εμφανίζεται περίπου πέντε φορές στις έξι. Όσοι προσπαθούν να το μιμηθούν αλλάζουν πλευρά πολύ συχνά, κι έτσι τα πραγματικά σερί φαίνονται ύποπτα. Το ίδιο ένστικτο βλέπει σερί επιτυχιών, τυχερούς αριθμούς και «μοτίβα» σε γεγονότα που είναι καθαρή τύχη.⟫</p>`);
+      <p>⟪Real randomness is streakier than it feels. In 24 fair flips, a run of four or more of the same side happens about five times out of six. People faking it switch sides too often, so genuine clusters look suspicious. The same instinct finds hot streaks, lucky numbers and "patterns" in events that are pure chance.¦Η αληθινή τυχαιότητα έχει περισσότερα σερί απ’ όσο νομίζεις. Σε 24 ρίψεις ενός κανονικού νομίσματος, η πιθανότητα να έρθει το ίδιο αποτέλεσμα τέσσερις ή περισσότερες φορές στη σειρά είναι περίπου πέντε στις έξι. Όσοι προσπαθούν να τη μιμηθούν αλλάζουν πλευρά πολύ συχνά, κι έτσι τα πραγματικά σερί φαίνονται ύποπτα. Το ίδιο ένστικτο βλέπει σερί επιτυχιών, τυχερούς αριθμούς και «μοτίβα» σε γεγονότα που είναι καθαρή τύχη.⟫</p>`);
   });
 }
 
 function xpRule(x) {
   const tests = [];
   const draw = (msg, keep) => {
-    paint(head(x) + `<h3>⟪Guess my rule¦Μάντεψε τον κανόνα μου⟫</h3><p class="prompt">⟪The numbers <b>2, 4, 6</b> follow a rule I have in mind. Type any three numbers and I'll tell you if they fit. Test as many as you like, then name the rule.¦Οι αριθμοί <b>2, 4, 6</b> ακολουθούν έναν κανόνα που έχω στο μυαλό μου. Γράψε όποιους τρεις αριθμούς θέλεις και θα σου πω αν ταιριάζουν. Κάνε όσες δοκιμές θέλεις και μετά πες μου τον κανόνα.⟫</p>
+    paint(head(x) + `<h3>⟪Guess my rule¦Μάντεψε τον κανόνα⟫</h3><p class="prompt">⟪The numbers <b>2, 4, 6</b> follow a rule I have in mind. Type any three numbers and I'll tell you if they fit. Test as many as you like, then name the rule.¦Οι αριθμοί <b>2, 4, 6</b> ακολουθούν έναν κανόνα που έχω στο μυαλό μου. Γράψε όποιους τρεις αριθμούς θέλεις και θα σου πω αν ταιριάζουν. Κάνε όσες δοκιμές χρειαστείς και μετά πες μου τον κανόνα.⟫</p>
       <form class="triple" id="tf">${[1, 2, 3].map(i => `<input class="num" id="n${i}" inputmode="decimal" autocomplete="off" aria-label="⟪Number ${i}¦Αριθμός ${i}⟫">`).join("")}<button class="btn primary" type="submit">⟪Test¦Δοκίμασε⟫</button></form>
       ${msg ? `<p class="hint">${esc(msg)}</p>` : ""}
       <ul class="hist" aria-live="polite">${tests.map(t => `<li><span>${t.v.join(", ")}</span><em class="pill ${t.ok ? "yes" : "no"}">${t.ok ? "⟪Fits¦Ταιριάζει⟫" : "⟪Doesn't fit¦Δεν ταιριάζει⟫"}</em></li>`).reverse().join("")}<li><span>2, 4, 6</span><small>⟪Example¦Παράδειγμα⟫</small><em class="pill yes">⟪Fits¦Ταιριάζει⟫</em></li></ul>
@@ -1148,18 +1145,18 @@ function xpRule(x) {
       const yes = tests.filter(t => t.ok).length, no = tests.length - yes, right = c === "c";
       finish(x, `<p class="big-answer long">⟪The rule: any three numbers that go up.¦Ο κανόνας: οποιοιδήποτε τρεις αριθμοί που ανεβαίνουν.⟫</p>
         <p>⟪You ran ${tests.length} test${tests.length === 1 ? "" : "s"}. ${yes} fit and ${no} didn't.¦Έκανες ${tests.length} ${tests.length === 1 ? "δοκιμή" : "δοκιμές"}. Ταίριαξαν: ${yes}. Δεν ταίριαξαν: ${no}.⟫</p>
-        <p class="verdict">${right ? (no ? "⟪You found it the hard way, by running tests that could fail.¦Τον βρήκες με τον δύσκολο τρόπο, κάνοντας δοκιμές που μπορούσαν να αποτύχουν.⟫" : "⟪You got the rule, though every test you ran said yes. A test that can only say yes can't warn you when you're wrong.¦Βρήκες τον κανόνα, αν και όλες οι δοκιμές σου έβγαλαν «ναι». Μια δοκιμή που μπορεί να πει μόνο «ναι» δεν μπορεί να σε προειδοποιήσει όταν κάνεις λάθος.⟫")
-          : (no ? "⟪Some of your tests came back no, but the real rule is broader than your guess.¦Κάποιες δοκιμές σου έβγαλαν «όχι», αλλά ο πραγματικός κανόνας είναι ευρύτερος από την εικασία σου.⟫" : "⟪Every test you ran came back yes, so none of them could show you that your idea was too narrow.¦Όλες οι δοκιμές σου έβγαλαν «ναι», οπότε καμία δεν μπορούσε να σου δείξει ότι η ιδέα σου ήταν πολύ στενή.⟫")}</p>
-        <p>⟪Most people form an idea like "counting up by 2" and then test examples that fit it, such as 10, 12, 14. Each yes feels like proof. The faster route is to test a case your idea says should fail, like 1, 2, 3. If it fits anyway, your idea is wrong. In Peter Wason's 1960 version of this task, many people announced a wrong rule with confidence after seeing only confirming results.¦Οι περισσότεροι σχηματίζουν μια ιδέα όπως «ανεβαίνουν ανά 2» και μετά δοκιμάζουν παραδείγματα που ταιριάζουν σε αυτήν, όπως 10, 12, 14. Κάθε «ναι» μοιάζει με απόδειξη. Ο πιο γρήγορος δρόμος είναι να δοκιμάσεις μια περίπτωση που, σύμφωνα με την ιδέα σου, δεν θα έπρεπε να ταιριάζει, όπως 1, 2, 3. Αν ταιριάζει παρ’ όλα αυτά, η ιδέα σου είναι λάθος. Στην εκδοχή αυτού του πειράματος από τον Peter Wason το 1960, πολλοί ανακοίνωσαν με σιγουριά λάθος κανόνα, αφού είχαν δει μόνο αποτελέσματα που τον επιβεβαίωναν.⟫</p>`);
+        <p class="verdict">${right ? (no ? "⟪You found it the hard way, by running tests that could fail.¦Τον βρήκες με τον δύσκολο τρόπο, κάνοντας δοκιμές που μπορούσαν να αποτύχουν.⟫" : "⟪You got the rule, though every test you ran said yes. A test that can only say yes can't warn you when you're wrong.¦Βρήκες τον κανόνα, αν και όλες οι δοκιμές σου έβγαλαν «ναι». Μια δοκιμή που λέει μόνο «ναι» δεν θα σε προειδοποιήσει ποτέ όταν κάνεις λάθος.⟫")
+          : (no ? "⟪Some of your tests came back no, but the real rule is broader than your guess.¦Κάποιες δοκιμές σου έβγαλαν «όχι», αλλά ο πραγματικός κανόνας είναι πιο γενικός απ’ ό,τι μάντεψες.⟫" : "⟪Every test you ran came back yes, so none of them could show you that your idea was too narrow.¦Όλες οι δοκιμές έβγαλαν «ναι», οπότε καμία δεν μπορούσε να σου δείξει ότι η ιδέα σου ήταν πολύ στενή.⟫")}</p>
+        <p>⟪Most people form an idea like "counting up by 2" and then test examples that fit it, such as 10, 12, 14. Each yes feels like proof. The faster route is to test a case your idea says should fail, like 1, 2, 3. If it fits anyway, your idea is wrong. In Peter Wason's 1960 version of this task, many people announced a wrong rule with confidence after seeing only confirming results.¦Οι περισσότεροι καταλήγουν σε μια ιδέα όπως «ανεβαίνουν ανά 2» και μετά δοκιμάζουν παραδείγματα που ταιριάζουν σε αυτήν, όπως 10, 12, 14. Κάθε «ναι» μοιάζει με απόδειξη. Ο πιο γρήγορος δρόμος είναι να δοκιμάσεις μια περίπτωση που, σύμφωνα με την ιδέα σου, δεν θα έπρεπε να ταιριάζει, όπως 1, 2, 3. Αν ταιριάξει παρ’ όλα αυτά, η ιδέα σου είναι λάθος. Όταν ο Peter Wason έδωσε αυτό το πρόβλημα το 1960, πολλοί ανακοίνωσαν με σιγουριά λάθος κανόνα, αφού είχαν δει μόνο αποτελέσματα που τον επιβεβαίωναν.⟫</p>`);
     });
   }
 }
 
 function xpWords(x, alive) {
-  const W = ⟪["bed", "rest", "awake", "tired", "dream", "wake", "snooze", "blanket", "doze", "slumber", "snore", "nap"]¦["κρεβάτι", "ξεκούραση", "νύστα", "κούραση", "όνειρο", "μαξιλάρι", "λήθαργος", "κουβέρτα", "γαλήνη", "σεντόνι", "ροχαλητό", "πιτζάμες"]⟫;
+  const W = ⟪["bed", "rest", "awake", "tired", "dream", "wake", "snooze", "blanket", "doze", "slumber", "snore", "nap"]¦["κρεβάτι", "ξεκούραση", "νύστα", "κούραση", "όνειρο", "μαξιλάρι", "λήθαργος", "κουβέρτα", "σιέστα", "σεντόνι", "ροχαλητό", "πιτζάμες"]⟫;
   const LURE = ⟪["sleep", "sleeping", "sleepy", "asleep", "sleeps"]¦["ύπνος", "ύπνο", "ύπνου", "υπνος", "ύπνε"]⟫;
   const WF = W.map(fold), LUREF = LURE.map(fold);
-  paint(head(x) + `<h3>⟪Twelve words¦Δώδεκα λέξεις⟫</h3><p class="prompt">⟪Twelve words will appear one at a time, about a second each. Try to remember as many as you can. Afterwards you'll type the ones you remember.¦Δώδεκα λέξεις θα εμφανιστούν μία μία, για περίπου ένα δευτερόλεπτο η καθεμία. Προσπάθησε να θυμηθείς όσο περισσότερες μπορείς. Μετά θα γράψεις όσες θυμάσαι.⟫</p><div class="row"><button class="btn primary" type="button" id="go">⟪Start¦Ξεκίνα⟫</button></div>`);
+  paint(head(x) + `<h3>⟪Twelve words¦Δώδεκα λέξεις⟫</h3><p class="prompt">⟪Twelve words will appear one at a time, about a second each. Try to remember as many as you can. Afterwards you'll type the ones you remember.¦Θα δεις δώδεκα λέξεις, μία μία, για περίπου ένα δευτερόλεπτο την καθεμία. Προσπάθησε να συγκρατήσεις όσες περισσότερες μπορείς. Μετά θα γράψεις όσες θυμάσαι.⟫</p><div class="row"><button class="btn primary" type="button" id="go">⟪Start¦Ξεκίνα⟫</button></div>`);
   $("#go", stage).onclick = () => {
     paint(head(x, "⟪Word 1 of 12¦Λέξη 1 από 12⟫") + `<div class="flash" id="fl" aria-live="assertive"></div>`);
     let i = 0;
@@ -1174,7 +1171,7 @@ function xpWords(x, alive) {
   function norm(s) { s = fold(s).replace(/[^a-zα-ω]/g, ""); if (!WF.includes(s) && s.endsWith("s") && WF.includes(s.slice(0, -1))) s = s.slice(0, -1); return s; }
   function recall() {
     const got = [];
-    paint(head(x, "⟪Now recall¦Τώρα θυμήσου⟫") + `<p class="prompt">⟪Type every word you remember, one at a time. Order doesn't matter.¦Γράψε κάθε λέξη που θυμάσαι, μία τη φορά. Η σειρά δεν έχει σημασία.⟫</p>
+    paint(head(x, "⟪Now recall¦Ώρα να θυμηθείς⟫") + `<p class="prompt">⟪Type every word you remember, one at a time. Order doesn't matter.¦Γράψε όσες λέξεις θυμάσαι, μία μία. Η σειρά δεν παίζει ρόλο.⟫</p>
       <form class="recall" id="rf"><input class="text-in" id="rw" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="⟪A word you remember¦Μια λέξη που θυμάσαι⟫"><button class="btn" type="submit">⟪Add¦Πρόσθεσε⟫</button></form>
       <div class="sibs" id="got" aria-live="polite"></div><div class="row"><button class="btn primary" type="button" id="rd">⟪I'm done¦Τελείωσα⟫</button></div>`);
     const input = $("#rw", stage); input.focus({ preventScroll: true });
@@ -1183,7 +1180,7 @@ function xpWords(x, alive) {
     $("#rd", stage).onclick = () => {
       add();
       if (got.some(g => LUREF.includes(g))) return reveal(got, "typed");
-      paint(head(x, "⟪One more question¦Μία ακόμη ερώτηση⟫") + `<p class="prompt">⟪Was the word <b>sleep</b> on the list?¦Ήταν η λέξη <b>ύπνος</b> στη λίστα;⟫</p>` + choices([["y", "⟪Yes, I saw it¦Ναι, την είδα⟫"], ["n", "⟪No, it wasn't there¦Όχι, δεν ήταν εκεί⟫"]]));
+      paint(head(x, "⟪One more question¦Μία ακόμη ερώτηση⟫") + `<p class="prompt">⟪Was the word <b>sleep</b> on the list?¦Υπήρχε η λέξη <b>ύπνος</b> στη λίστα;⟫</p>` + choices([["y", "⟪Yes, I saw it¦Ναι, την είδα⟫"], ["n", "⟪No, it wasn't there¦Όχι, δεν υπήρχε⟫"]]));
       onChoice(c => reveal(got, c === "y" ? "yes" : "no"));
     };
   }
@@ -1192,9 +1189,9 @@ function xpWords(x, alive) {
     const part = (a, b) => hit.slice(a, b).filter(Boolean).length;
     finish(x, `<p class="big-answer">⟪${n} of 12¦${n} από 12⟫</p>
       <div class="positions">${W.map((w, i) => `<div class="pos${hit[i] ? " hit" : ""}"><b>${i + 1}</b><span>${w}</span></div>`).join("")}</div>
-      <p>⟪You recalled ${part(0, 3)} of the first 3 words, ${part(3, 9)} of the middle 6, and ${part(9, 12)} of the last 3. Across many people, the first and last few items on a list are remembered best and the middle sags. That U-shape is the serial position effect.¦Θυμήθηκες ${part(0, 3)} από τις 3 πρώτες λέξεις, ${part(3, 9)} από τις 6 μεσαίες και ${part(9, 12)} από τις 3 τελευταίες. Σε πολλούς ανθρώπους μαζί, οι πρώτες και οι τελευταίες λέξεις μιας λίστας μένουν καλύτερα στη μνήμη και η μέση βουλιάζει. Αυτή η καμπύλη σε σχήμα U είναι το φαινόμενο σειριακής θέσης.⟫</p>
-      <p class="verdict">${lure === "typed" ? `⟪You wrote "sleep". It was never on the list.¦Έγραψες «ύπνος». Δεν ήταν ποτέ στη λίστα.⟫` : lure === "yes" ? `⟪You remembered seeing "sleep". It was never on the list.¦Θυμήθηκες ότι είδες τη λέξη «ύπνος». Δεν ήταν ποτέ στη λίστα.⟫` : `⟪"Sleep" was never on the list, and you didn't fall for it. Many people are sure they saw it.¦Η λέξη «ύπνος» δεν ήταν ποτέ στη λίστα, και δεν σε ξεγέλασε. Πολλοί είναι σίγουροι ότι την είδαν.⟫`}</p>
-      <p>⟪Every word on the list is linked to sleep, so memory fills in the missing piece and it feels like something you saw. Researchers call this the Deese-Roediger-McDermott effect. It shows how a memory can feel vivid without ever having happened.¦Κάθε λέξη της λίστας συνδέεται με τον ύπνο, οπότε η μνήμη συμπληρώνει το κομμάτι που λείπει και σου φαίνεται σαν κάτι που είδες. Οι ερευνητές το λένε φαινόμενο Deese-Roediger-McDermott. Δείχνει πώς μια ανάμνηση μπορεί να μοιάζει ζωντανή χωρίς να έχει συμβεί ποτέ.⟫</p>`);
+      <p>⟪You recalled ${part(0, 3)} of the first 3 words, ${part(3, 9)} of the middle 6, and ${part(9, 12)} of the last 3. Across many people, the first and last few items on a list are remembered best and the middle sags. That U-shape is the serial position effect.¦Θυμήθηκες ${part(0, 3)} από τις 3 πρώτες λέξεις, ${part(3, 9)} από τις 6 μεσαίες και ${part(9, 12)} από τις 3 τελευταίες. Κατά μέσο όρο, οι πρώτες και οι τελευταίες λέξεις μιας λίστας μένουν καλύτερα στη μνήμη, ενώ οι μεσαίες ξεχνιούνται πιο εύκολα. Αυτή η καμπύλη σε σχήμα U λέγεται φαινόμενο σειριακής θέσης.⟫</p>
+      <p class="verdict">${lure === "typed" ? `⟪You wrote "sleep". It was never on the list.¦Έγραψες «ύπνος». Δεν υπήρχε καν στη λίστα.⟫` : lure === "yes" ? `⟪You remembered seeing "sleep". It was never on the list.¦Θυμήθηκες ότι είδες τη λέξη «ύπνος». Δεν υπήρχε καν στη λίστα.⟫` : `⟪"Sleep" was never on the list, and you didn't fall for it. Many people are sure they saw it.¦Η λέξη «ύπνος» δεν ήταν ποτέ στη λίστα, και δεν την πάτησες. Πολλοί είναι σίγουροι ότι την είδαν.⟫`}</p>
+      <p>⟪Every word on the list is linked to sleep, so memory fills in the missing piece and it feels like something you saw. Researchers call this the Deese-Roediger-McDermott effect. It shows how a memory can feel vivid without ever having happened.¦Κάθε λέξη της λίστας συνδέεται με τον ύπνο, οπότε η μνήμη συμπληρώνει το κομμάτι που λείπει και σου φαίνεται ότι το είδες. Οι ερευνητές το λένε φαινόμενο Deese-Roediger-McDermott. Δείχνει πώς μια ανάμνηση μπορεί να μοιάζει ζωντανή χωρίς να έχει συμβεί ποτέ.⟫</p>`);
   }
 }
 
@@ -1210,8 +1207,8 @@ function xpTest(x) {
       <div class="people" id="ppl" role="img" aria-label="⟪1,000 people tested. 1 sick person tests positive. About 10 healthy people also test positive.¦1.000 άνθρωποι κάνουν το τεστ. 1 άρρωστος βγαίνει θετικός. Περίπου 10 υγιείς βγαίνουν κι αυτοί θετικοί.⟫">${cells.map(c => `<i${c === 2 ? ' class="sick"' : c === 1 ? ' class="fp"' : ""}></i>`).join("")}</div>
       <div class="legend"><span><i class="sick"></i>⟪Sick, tests positive (1)¦Άρρωστος, θετικό τεστ (1)⟫</span><span><i class="fp"></i>⟪Healthy, tests positive (about 10)¦Υγιής, θετικό τεστ (περίπου 10)⟫</span><span><i></i>⟪Healthy, tests negative¦Υγιής, αρνητικό τεστ⟫</span></div>
       <p>⟪Picture 1,000 people taking the test. One has the disease and tests positive. Of the 999 healthy people, about 10 are wrongly flagged. So about 11 people get a positive result and only 1 of them is sick. That's roughly 1 in 11, or 9%.¦Φαντάσου 1.000 ανθρώπους που κάνουν το τεστ. Ένας έχει την ασθένεια και βγαίνει θετικός. Από τους 999 υγιείς, περίπου 10 βγαίνουν λανθασμένα θετικοί. Άρα περίπου 11 άνθρωποι παίρνουν θετικό αποτέλεσμα και μόνο 1 από αυτούς είναι άρρωστος. Δηλαδή περίπου 1 στους 11, ή 9%.⟫</p>
-      <p class="verdict">${g <= 15 ? `⟪You said ${g}%. You kept the rarity of the disease in view.¦Είπες ${g}%. Κράτησες στο μυαλό σου πόσο σπάνια είναι η ασθένεια.⟫` : `⟪You said ${g}%. The test's accuracy felt like the answer, and the rarity of the disease dropped out of the picture.¦Είπες ${g}%. Η ακρίβεια του τεστ έμοιαζε με την απάντηση, και η σπανιότητα της ασθένειας χάθηκε από την εικόνα.⟫`}</p>
-      <p>⟪Ignoring how common something is in the first place is the base rate fallacy. In published studies, many doctors given problems like this one also answered far too high.¦Όταν αγνοείς πόσο συχνό είναι κάτι εξαρχής, πέφτεις στην πλάνη του βασικού ποσοστού. Σε δημοσιευμένες μελέτες, πολλοί γιατροί που έλυσαν προβλήματα σαν αυτό απάντησαν κι αυτοί πολύ πιο ψηλά από το σωστό.⟫</p>`);
+      <p class="verdict">${g <= 15 ? `⟪You said ${g}%. You kept the rarity of the disease in view.¦Είπες ${g}%. Δεν ξέχασες πόσο σπάνια είναι η ασθένεια.⟫` : `⟪You said ${g}%. The test's accuracy felt like the answer, and the rarity of the disease dropped out of the picture.¦Είπες ${g}%. Η ακρίβεια του τεστ έμοιαζε να είναι η απάντηση, και ξέχασες πόσο σπάνια είναι η ασθένεια.⟫`}</p>
+      <p>⟪Ignoring how common something is in the first place is the base rate fallacy. In published studies, many doctors given problems like this one also answered far too high.¦Όταν αγνοείς πόσο συχνό είναι κάτι γενικά, πέφτεις στην πλάνη του βασικού ποσοστού. Σε δημοσιευμένες μελέτες, πολλοί γιατροί που έλυσαν παρόμοια προβλήματα έδωσαν κι αυτοί πολύ μεγαλύτερα ποσοστά από το σωστό.⟫</p>`);
     setTimeout(() => $("#ppl", stage)?.classList.add("lit"), reduced ? 0 : 350);
   };
 }
@@ -1221,10 +1218,10 @@ function xpPopcorn(x) {
   paint(head(x) + `<h3>⟪Popcorn¦Ποπ κορν⟫</h3><p class="prompt">⟪You're at the cinema and you want popcorn. Which size do you buy?¦Είσαι στο σινεμά και θέλεις ποπ κορν. Ποιο μέγεθος παίρνεις;⟫</p>
     <div class="menu">${M.map(([k, n, p, h]) => `<button class="cup" type="button" data-c="${k}"><svg viewBox="0 0 64 100" aria-hidden="true"><path d="M17 97 L47 97 L${56 - h / 12} ${97 - h} L${8 + h / 12} ${97 - h} Z"/><path class="band" d="M${14 - h / 40} ${97 - h * 0.62} L${50 + h / 40} ${97 - h * 0.62} L${50 + h / 40 + 1} ${97 - h * 0.62 - 7} L${13 - h / 40} ${97 - h * 0.62 - 7} Z"/></svg><b>${n}</b><span>${p}</span></button>`).join("")}</div>`);
   onChoice(c => finish(x, `
-    <div class="menus"><div><p class="label">⟪The menu you saw¦Ο κατάλογος που είδες⟫</p><ul class="mini"><li>⟪Small $3.00¦Μικρό 3,00 €⟫</li><li class="decoy">⟪Medium $6.50¦Μεσαίο 6,50 €⟫</li><li>⟪Large $7.00¦Μεγάλο 7,00 €⟫</li></ul></div>
-    <div><p class="label">⟪The same menu without the decoy¦Ο ίδιος κατάλογος χωρίς το δόλωμα⟫</p><ul class="mini"><li>⟪Small $3.00¦Μικρό 3,00 €⟫</li><li>⟪Large $7.00¦Μεγάλο 7,00 €⟫</li></ul></div></div>
-    <p class="verdict">${c === "l" ? "⟪You chose the large. That's the choice the medium was put there to sell.¦Διάλεξες το μεγάλο. Αυτή είναι η επιλογή που το μεσαίο μπήκε εκεί για να πουλήσει.⟫" : c === "m" ? "⟪You chose the medium. Few people do, and that's fine for the seller: the medium's job is to make the large look cheap.¦Διάλεξες το μεσαίο. Λίγοι το κάνουν, και αυτό δεν πειράζει τον πωλητή: η δουλειά του μεσαίου είναι να κάνει το μεγάλο να φαίνεται φθηνό.⟫" : "⟪You chose the small. The decoy had less pull on you, since you weren't weighing the bigger sizes against each other.¦Διάλεξες το μικρό. Το δόλωμα σε επηρέασε λιγότερο, αφού δεν σύγκρινες τα μεγαλύτερα μεγέθη μεταξύ τους.⟫"}</p>
-    <p>⟪The medium costs almost as much as the large and gives you much less, so next to it the large looks like a bargain at only 50 cents more. Take the medium away and the choice is $3 against $7, where the large looks expensive. Adding an option that almost nobody wants can change what people buy. This is the decoy effect.¦Το μεσαίο κοστίζει σχεδόν όσο το μεγάλο και σου δίνει πολύ λιγότερο, οπότε δίπλα του το μεγάλο μοιάζει ευκαιρία, με μόλις 50 λεπτά παραπάνω. Αν βγάλεις το μεσαίο, η επιλογή είναι 3 € έναντι 7 €, και το μεγάλο φαίνεται ακριβό. Μια επιλογή που δεν τη θέλει σχεδόν κανείς μπορεί να αλλάξει τι αγοράζει ο κόσμος. Αυτό είναι το φαινόμενο δολώματος.⟫</p>`));
+    <div class="menus"><div><p class="label">⟪The menu you saw¦Ο τιμοκατάλογος που είδες⟫</p><ul class="mini"><li>⟪Small $3.00¦Μικρό 3,00 €⟫</li><li class="decoy">⟪Medium $6.50¦Μεσαίο 6,50 €⟫</li><li>⟪Large $7.00¦Μεγάλο 7,00 €⟫</li></ul></div>
+    <div><p class="label">⟪The same menu without the decoy¦Ο ίδιος τιμοκατάλογος χωρίς το δόλωμα⟫</p><ul class="mini"><li>⟪Small $3.00¦Μικρό 3,00 €⟫</li><li>⟪Large $7.00¦Μεγάλο 7,00 €⟫</li></ul></div></div>
+    <p class="verdict">${c === "l" ? "⟪You chose the large. That's the choice the medium was put there to sell.¦Διάλεξες το μεγάλο. Γι’ αυτό ακριβώς μπήκε εκεί το μεσαίο.⟫" : c === "m" ? "⟪You chose the medium. Few people do, and that's fine for the seller: the medium's job is to make the large look cheap.¦Διάλεξες το μεσαίο. Λίγοι το κάνουν, και αυτό δεν πειράζει τον πωλητή: η δουλειά του μεσαίου είναι να κάνει το μεγάλο να φαίνεται φθηνό.⟫" : "⟪You chose the small. The decoy had less pull on you, since you weren't weighing the bigger sizes against each other.¦Διάλεξες το μικρό. Το δόλωμα σε επηρέασε λιγότερο, αφού δεν σύγκρινες τα μεγαλύτερα μεγέθη μεταξύ τους.⟫"}</p>
+    <p>⟪The medium costs almost as much as the large and gives you much less, so next to it the large looks like a bargain at only 50 cents more. Take the medium away and the choice is $3 against $7, where the large looks expensive. Adding an option that almost nobody wants can change what people buy. This is the decoy effect.¦Το μεσαίο κοστίζει σχεδόν όσο το μεγάλο και σου δίνει πολύ λιγότερο, οπότε δίπλα του το μεγάλο μοιάζει με ευκαιρία, με μόλις 50 λεπτά παραπάνω. Αν βγάλεις το μεσαίο, διαλέγεις ανάμεσα σε 3 € και 7 €, και το μεγάλο φαίνεται ακριβό. Μια επιλογή που δεν τη θέλει σχεδόν κανείς μπορεί να αλλάξει τι αγοράζει ο κόσμος. Λέγεται φαινόμενο δολώματος.⟫</p>`));
 }
 
 function xpJobs(x) {
@@ -1233,19 +1230,19 @@ function xpJobs(x) {
     choices([["sure", "⟪<span><b>Plan A.</b> 200 jobs will be saved.</span>¦<span><b>Σχέδιο Α.</b> Θα σωθούν 200 θέσεις εργασίας.</span>⟫"], ["gamble", "⟪<span><b>Plan B.</b> A one-in-three chance that all 600 jobs are saved, and a two-in-three chance that none are.</span>¦<span><b>Σχέδιο Β.</b> Μία πιθανότητα στις τρεις να σωθούν και οι 600 θέσεις, και δύο στις τρεις να μη σωθεί καμία.</span>⟫"]]));
   onChoice(c => {
     first = c;
-    paint(head(x, "⟪Round 2 of 2¦Γύρος 2 από 2⟫") + `<h3>⟪Another town¦Άλλη πόλη⟫</h3><p class="prompt">⟪Same size factory, same <b>600 jobs</b> at risk. Different plans on the table.¦Ίδιο μέγεθος εργοστασίου, οι ίδιες <b>600 θέσεις εργασίας</b> σε κίνδυνο. Άλλα σχέδια στο τραπέζι.⟫</p>` +
+    paint(head(x, "⟪Round 2 of 2¦Γύρος 2 από 2⟫") + `<h3>⟪Another town¦Άλλη πόλη⟫</h3><p class="prompt">⟪Same size factory, same <b>600 jobs</b> at risk. Different plans on the table.¦Εργοστάσιο ίδιου μεγέθους, οι ίδιες <b>600 θέσεις εργασίας</b> σε κίνδυνο. Στο τραπέζι όμως υπάρχουν άλλα σχέδια.⟫</p>` +
       choices([["sure", "⟪<span><b>Plan C.</b> 400 jobs will be lost.</span>¦<span><b>Σχέδιο Γ.</b> Θα χαθούν 400 θέσεις εργασίας.</span>⟫"], ["gamble", "⟪<span><b>Plan D.</b> A one-in-three chance that nobody loses their job, and a two-in-three chance that all 600 do.</span>¦<span><b>Σχέδιο Δ.</b> Μία πιθανότητα στις τρεις να μη χάσει κανείς τη δουλειά του, και δύο στις τρεις να τη χάσουν και οι 600.</span>⟫"]]));
     onChoice(second => {
       const pick = (r, k) => ((r === 1 ? first : second) === k ? ' class="picked"' : "");
-      const v = first === second ? "⟪You chose the same way both times. Nicely done, because the two rounds offered the exact same plans in different words.¦Διάλεξες με τον ίδιο τρόπο και τις δύο φορές. Μπράβο, γιατί οι δύο γύροι πρόσφεραν ακριβώς τα ίδια σχέδια με άλλα λόγια.⟫"
+      const v = first === second ? "⟪You chose the same way both times. Nicely done, because the two rounds offered the exact same plans in different words.¦Διάλεξες με την ίδια λογική και τις δύο φορές. Μπράβο, γιατί οι δύο γύροι είχαν ακριβώς τα ίδια σχέδια, απλώς διατυπωμένα αλλιώς.⟫"
         : first === "sure" ? "⟪You played it safe when the plan was described as jobs saved, and took the gamble when it was described as jobs lost. The plans were identical. Only the wording changed.¦Πήγες στο σίγουρο όταν το σχέδιο περιγραφόταν με θέσεις που σώζονται, και ρίσκαρες όταν περιγραφόταν με θέσεις που χάνονται. Τα σχέδια ήταν ίδια. Άλλαξε μόνο η διατύπωση.⟫"
-        : "⟪You switched between rounds. The plans were identical, so the wording changed your choice.¦Άλλαξες επιλογή από τον έναν γύρο στον άλλον. Τα σχέδια ήταν ίδια, οπότε η διατύπωση άλλαξε την επιλογή σου.⟫";
+        : "⟪You switched between rounds. The plans were identical, so the wording changed your choice.¦Άλλαξες επιλογή από τον έναν γύρο στον άλλον. Τα σχέδια ήταν ίδια, άρα αυτό που σε επηρέασε ήταν η διατύπωση.⟫";
       finish(x, `<div class="table-wrap"><table class="cmp"><thead><tr><th></th><th>⟪Round 1 wording¦Διατύπωση γύρου 1⟫</th><th>⟪Round 2 wording¦Διατύπωση γύρου 2⟫</th><th>⟪What actually happens¦Τι συμβαίνει στην πράξη⟫</th></tr></thead><tbody>
         <tr><td>⟪Sure plan¦Σίγουρο σχέδιο⟫</td><td${pick(1, "sure")}>⟪200 jobs saved¦Σώζονται 200 θέσεις⟫</td><td${pick(2, "sure")}>⟪400 jobs lost¦Χάνονται 400 θέσεις⟫</td><td>⟪200 keep their jobs, 400 lose them¦200 κρατούν τη δουλειά τους, 400 τη χάνουν⟫</td></tr>
         <tr><td>⟪Gamble¦Ρίσκο⟫</td><td${pick(1, "gamble")}>⟪1 in 3 chance all 600 saved¦1 στις 3 να σωθούν και οι 600⟫</td><td${pick(2, "gamble")}>⟪1 in 3 chance nobody loses a job¦1 στις 3 να μη χάσει κανείς τη δουλειά του⟫</td><td>⟪1 in 3 chance everyone keeps their job, 2 in 3 chance everyone loses it¦1 στις 3 να κρατήσουν όλοι τη δουλειά τους, 2 στις 3 να τη χάσουν όλοι⟫</td></tr>
         </tbody></table></div>
         <p class="verdict">${v}</p>
-        <p>⟪Words like "saved" make a sure thing feel precious, and words like "lost" make a gamble feel worth taking. In Tversky and Kahneman's 1981 version, about a disease outbreak, 72% chose the sure option when it was framed as lives saved. When the same options were framed as deaths, 78% chose the gamble.¦Λέξεις όπως «σώζονται» κάνουν το σίγουρο να μοιάζει πολύτιμο, και λέξεις όπως «χάνονται» κάνουν το ρίσκο να μοιάζει ότι αξίζει τον κόπο. Στην εκδοχή των Tversky και Kahneman το 1981, με θέμα μια επιδημία, το 72% διάλεξε τη σίγουρη επιλογή όταν διατυπωνόταν ως ζωές που σώζονται. Όταν οι ίδιες επιλογές διατυπώθηκαν ως θάνατοι, το 78% διάλεξε το ρίσκο.⟫</p>`);
+        <p>⟪Words like "saved" make a sure thing feel precious, and words like "lost" make a gamble feel worth taking. In Tversky and Kahneman's 1981 version, about a disease outbreak, 72% chose the sure option when it was framed as lives saved. When the same options were framed as deaths, 78% chose the gamble.¦Λέξεις όπως «σώζονται» κάνουν το σίγουρο να μοιάζει πολύτιμο, ενώ λέξεις όπως «χάνονται» κάνουν το ρίσκο να φαίνεται πως αξίζει. Στην εκδοχή των Tversky και Kahneman, το 1981, το σενάριο αφορούσε μια επιδημία: το 72% διάλεξε τη σίγουρη επιλογή όταν αυτή διατυπωνόταν ως ζωές που σώζονται. Όταν οι ίδιες επιλογές διατυπώθηκαν ως θάνατοι, το 78% διάλεξε το ρίσκο.⟫</p>`);
     });
   });
 }
@@ -1258,12 +1255,12 @@ function xpLater(x) {
     paint(head(x, "⟪Choice 2 of 2¦Επιλογή 2 από 2⟫") + `<h3>⟪Now or later¦Τώρα ή αργότερα⟫</h3><p class="prompt">⟪A different offer. Which would you take?¦Μια άλλη προσφορά. Τι θα διάλεγες;⟫</p>` + choices([["early", "⟪$100 in 12 months¦100 € σε 12 μήνες⟫"], ["late", "⟪$120 in 13 months¦120 € σε 13 μήνες⟫"]]));
     onChoice(second => {
       const v = first === "early" && second === "late" ? "⟪You took the money today, but you were happy to wait from month 12 to month 13. It's the same one-month wait for the same extra $20.¦Πήρες τα χρήματα σήμερα, αλλά δεν σε πείραζε να περιμένεις από τον 12ο στον 13ο μήνα. Είναι η ίδια αναμονή ενός μήνα για τα ίδια 20 € παραπάνω.⟫"
-        : first === "late" && second === "late" ? "⟪You waited both times. Consistent, and $20 for a one-month wait is a return few savings accounts can match.¦Περίμενες και τις δύο φορές. Συνεπές, και 20 € για αναμονή ενός μήνα είναι μια απόδοση που λίγοι λογαριασμοί ταμιευτηρίου πιάνουν.⟫"
-        : first === "early" && second === "early" ? "⟪You took the earlier money both times. Consistent, though an extra $20 for a one-month wait is a 20% return.¦Πήρες τα νωρίτερα χρήματα και τις δύο φορές. Συνεπές, αν και 20 € παραπάνω για αναμονή ενός μήνα είναι απόδοση 20%.⟫"
-        : "⟪You waited when the wait started now, then took the earlier money a year out. That reversal is less common, and it still means the timing changed your choice.¦Περίμενες όταν η αναμονή ξεκινούσε από τώρα, και μετά πήρες τα νωρίτερα χρήματα όταν όλα ήταν σε έναν χρόνο. Αυτή η αντιστροφή είναι πιο σπάνια, αλλά και πάλι σημαίνει ότι η χρονική στιγμή άλλαξε την επιλογή σου.⟫";
+        : first === "late" && second === "late" ? "⟪You waited both times. Consistent, and $20 for a one-month wait is a return few savings accounts can match.¦Περίμενες και τις δύο φορές. Είσαι συνεπής, και 20 € για έναν μήνα αναμονής είναι απόδοση που λίγοι λογαριασμοί ταμιευτηρίου πιάνουν.⟫"
+        : first === "early" && second === "early" ? "⟪You took the earlier money both times. Consistent, though an extra $20 for a one-month wait is a 20% return.¦Και τις δύο φορές διάλεξες τα χρήματα που έρχονται νωρίτερα. Είσαι συνεπής, αν και 20 € παραπάνω για έναν μήνα αναμονής είναι απόδοση 20%.⟫"
+        : "⟪You waited when the wait started now, then took the earlier money a year out. That reversal is less common, and it still means the timing changed your choice.¦Περίμενες όταν η αναμονή ξεκινούσε τώρα, αλλά διάλεξες τα νωρίτερα χρήματα όταν όλα απείχαν έναν χρόνο. Αυτή η αντιστροφή είναι πιο σπάνια, αλλά και πάλι σημαίνει ότι η επιλογή σου άλλαξε ανάλογα με το πότε έρχονται τα χρήματα.⟫";
       finish(x, `<p class="big-answer long">⟪Same trade, twice: wait one month, get $20 more.¦Το ίδιο δίλημμα, δύο φορές: περίμενε έναν μήνα, πάρε 20 € παραπάνω.⟫</p>
         <p class="verdict">${v}</p>
-        <p>⟪We value rewards less the further away they are, and the drop is steepest right at the start. A month's wait that begins today feels long. The same month a year from now feels like nothing. This is why "I'll start saving next month" is easy to promise and hard to do when next month arrives.¦Δίνουμε μικρότερη αξία στις ανταμοιβές όσο πιο μακριά βρίσκονται, και η πτώση είναι πιο απότομη ακριβώς στην αρχή. Ένας μήνας αναμονής που ξεκινά σήμερα μοιάζει μεγάλος. Ο ίδιος μήνας σε έναν χρόνο από τώρα δεν μοιάζει με τίποτα. Γι’ αυτό το «θα αρχίσω να αποταμιεύω από τον άλλο μήνα» είναι εύκολο να το υποσχεθείς και δύσκολο να το κάνεις όταν έρθει ο άλλος μήνας.⟫</p>`);
+        <p>⟪We value rewards less the further away they are, and the drop is steepest right at the start. A month's wait that begins today feels long. The same month a year from now feels like nothing. This is why "I'll start saving next month" is easy to promise and hard to do when next month arrives.¦Δίνουμε μικρότερη αξία στις ανταμοιβές όσο πιο μακριά βρίσκονται, και η πτώση είναι πιο απότομη ακριβώς στην αρχή. Ένας μήνας αναμονής που ξεκινά σήμερα μοιάζει μεγάλος. Τον ίδιο μήνα, αν πέφτει σε έναν χρόνο από τώρα, σχεδόν δεν τον λογαριάζουμε. Γι’ αυτό το «από τον άλλο μήνα θα αρχίσω να βάζω λεφτά στην άκρη» είναι εύκολο να το υποσχεθείς και δύσκολο να το κάνεις όταν έρθει ο άλλος μήνας.⟫</p>`);
     });
   });
 }
@@ -1273,7 +1270,7 @@ const LAB = [
   { id: "linda", title: "⟪Meet Linda¦Γνώρισε τη Λίντα⟫", time: "⟪30 sec¦30 δευτ.⟫", biases: ["Conjunction fallacy"], run: xpLinda },
   { id: "coin", title: "⟪Five heads in a row¦Πέντε κορώνες στη σειρά⟫", time: "⟪30 sec¦30 δευτ.⟫", biases: ["Gambler's fallacy", "Hot-hand fallacy"], run: xpCoin },
   { id: "fake", title: "⟪Which coin is real?¦Ποιο νόμισμα είναι αληθινό;⟫", time: "⟪30 sec¦30 δευτ.⟫", biases: ["Clustering illusion"], run: xpFake },
-  { id: "rule", title: "⟪Guess my rule¦Μάντεψε τον κανόνα μου⟫", time: "⟪2 min¦2 λεπτά⟫", biases: ["Congruence bias", "Confirmation bias"], run: xpRule },
+  { id: "rule", title: "⟪Guess my rule¦Μάντεψε τον κανόνα⟫", time: "⟪2 min¦2 λεπτά⟫", biases: ["Congruence bias", "Confirmation bias"], run: xpRule },
   { id: "words", title: "⟪Twelve words¦Δώδεκα λέξεις⟫", time: "⟪1 min¦1 λεπτό⟫", biases: ["Serial position effect", "False memory"], run: xpWords },
   { id: "test", title: "⟪A positive test¦Ένα θετικό τεστ⟫", time: "⟪1 min¦1 λεπτό⟫", biases: ["Base rate fallacy"], run: xpTest },
   { id: "popcorn", title: "⟪Popcorn¦Ποπ κορν⟫", time: "⟪20 sec¦20 δευτ.⟫", biases: ["Decoy effect"], run: xpPopcorn },
