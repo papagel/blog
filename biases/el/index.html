@@ -16,11 +16,11 @@
 <meta property="og:description" content="188 γνωστικές μεροληψίες σε έναν διαδραστικό χάρτη, με σύντομα βίντεο, πειράματα και συνήθειες που σε βοηθούν να τις πιάνεις.">
 <meta property="og:url" content="https://papangelis.com/biases/el/">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://papangelis.com/assets/og/biases-el.png?v=1be5333d">
+<meta property="og:image" content="https://papangelis.com/assets/og/biases-el.png?v=eac00453">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Εξερευνητής γνωστικών μεροληψιών">
-<meta name="twitter:image" content="https://papangelis.com/assets/og/biases-el.png?v=1be5333d">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/biases-el.png?v=eac00453">
 <meta name="twitter:title" content="Εξερευνητής γνωστικών μεροληψιών">
 <meta name="twitter:description" content="188 γνωστικές μεροληψίες σε έναν διαδραστικό χάρτη, με σύντομα βίντεο, πειράματα και συνήθειες που σε βοηθούν να τις πιάνεις.">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
@@ -601,7 +601,7 @@ footer cite{font-style:italic}
   <section class="block" id="browse" aria-labelledby="browse-h">
     <div class="block-head">
       <h2 id="browse-h">Όλες οι μεροληψίες, ανά οικογένεια</h2>
-      <p>Ψάξε με όνομα ή θέμα, όπως «χρήματα» ή «μνήμη».</p>
+      <p>Ψάξε με όνομα ή θέμα, όπως «χρήματα» ή «μνήμη». Ή <a href="list/">διάβασέ τες όλες σε μία σελίδα</a>, με τον ορισμό της καθεμίας.</p>
     </div>
     <div class="tools">
       <label class="search" for="q-input">
@@ -1037,7 +1037,7 @@ DATA.forEach((groups, qi) => {
     g.biases.forEach(b => {
       let slug = "b-" + slugify(b.en || b.n);
       if (BIASES.some(x => x.slug === slug)) slug += "-" + g.id;
-      const bias = { ...b, scen: b.q, g: grp, q: QUADS[qi], slug, i: BIASES.length };
+      const bias = { ...b, scen: b.q, g: grp, q: QUADS[qi], slug, page: BASE + slugify(b.en || b.n) + "/", i: BIASES.length };
       grp.items.push(bias); BIASES.push(bias);
     });
   });
@@ -1319,7 +1319,7 @@ function renderList() {
       n += hits.length;
       qh += `<div class="gsec q-${q.key}">
         <h4><button type="button" data-g="${GROUPS.indexOf(g)}">${esc(g.title)}</button></h4>
-        <div class="items">${hits.map(b => `<button class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" type="button" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? `<span class="vb">▶ 30″</span>` : ""}</button>`).join("")}</div>
+        <div class="items">${hits.map(b => `<a class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" href="${b.page}" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? `<span class="vb">▶ 30″</span>` : ""}</a>`).join("")}</div>
       </div>`;
     });
     if (qh) html += `<div class="qsec q-${q.key}" id="list-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
@@ -1327,7 +1327,8 @@ function renderList() {
   document.getElementById("list").innerHTML = html || `<p class="empty">Καμία μεροληψία δεν ταιριάζει με «${esc(query)}». Δοκίμασε μια πιο γενική λέξη, όπως «μνήμη» ή «ρίσκο».</p>`;
 }
 document.getElementById("list").addEventListener("click", e => {
-  const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i]);
+  const it = e.target.closest("[data-i]");
+  if (it) { if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); return openBias(BIASES[+it.dataset.i]); }   // a modified click opens its page
   const g = e.target.closest("[data-g]"); if (g) openGroup(GROUPS[+g.dataset.g]);
 });
 renderList();
@@ -1392,7 +1393,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
     ${video ? "" : `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}`}
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
     ${video ? `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}` : ""}
-    <div class="row">${catchBtn(b, "Το κάνω κι εγώ")}${XP_FOR[b.en] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.en].id}">Κάνε το πείραμα</button>` : ""}</div>
+    <div class="row">${catchBtn(b, "Το κάνω κι εγώ")}<button class="btn" type="button" data-share>Κοινοποίηση</button>${XP_FOR[b.en] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.en].id}">Κάνε το πείραμα</button>` : ""}</div>
     <div class="pblock"><h3>Στην καθημερινότητα</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Γιατί το κάνει το μυαλό σου</h3><p>${esc(g.why)}</p>${fam ? `
       <p class="fam-note">Η οικογένειά της σε 30 δευτερόλεπτα: <b>${esc(SHORT[g.id])}</b></p><div class="player-host" data-anim="${fam}"></div>` : ""}</div>
@@ -1495,8 +1496,14 @@ function openVideo(vi) {
   else if (v.kind === "g") openGroup(v.ref, { playlist:true });
   else openHabit(v.ref, { playlist:true });
 }
+async function shareBias(btn, b) {
+  const u = SITE + b.page;
+  if (navigator.share && matchMedia("(pointer: coarse)").matches) { try { await navigator.share({ title: b.n, url: u }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+  try { await navigator.clipboard.writeText(u); btn.textContent = "Ο σύνδεσμος αντιγράφηκε"; } catch (e) { btn.textContent = u; }
+}
 pBody.addEventListener("click", e => {
   const v = e.target.closest("[data-vi]"); if (v) return openVideo(+v.dataset.vi);
+  const sh = e.target.closest("[data-share]"); if (sh && current?.b) return shareBias(sh, current.b);
   if (e.target.closest("[data-open-videos]")) return openVideos();
   const s = e.target.closest("[data-i]"); if (s) return openBias(BIASES[+s.dataset.i]);
   if (e.target.closest("[data-open-g]") && current?.b) openGroup(current.b.g);

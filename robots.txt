@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://papangelis.com/biases/sitemap.xml
