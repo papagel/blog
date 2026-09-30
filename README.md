@@ -12,7 +12,7 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 ├── 404.html            # Not-found page
 ├── posts/              # One HTML file per post
 │   └── hello-world.html
-├── css/style.css       # All styling (light + dark)
+├── css/style.css       # All styling (light + dark); bump ?v= in every page when it changes
 ├── js/theme.js         # Dark mode toggle
 ├── assets/og/          # Per-page social-share cards (generated)
 ├── assets/experiments/ # 960x540 tile images for experiments.html

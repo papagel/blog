@@ -399,23 +399,8 @@ article li {
   transition: color 0.15s ease;
 }
 
-.exp-title::after {
-  content: "\2192";
-  display: inline-block;
-  margin-left: 8px;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
 .exp-card:hover .exp-title {
   color: var(--accent);
-}
-
-.exp-card:hover .exp-title::after {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .exp-desc {
@@ -427,9 +412,20 @@ article li {
 }
 
 .exp-host {
-  color: var(--text-muted);
-  font-size: 13px;
-  margin-top: 12px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 14px;
+}
+
+.exp-host::after {
+  content: " \2197";
+}
+
+.exp-card:hover .exp-host {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Audio player */
