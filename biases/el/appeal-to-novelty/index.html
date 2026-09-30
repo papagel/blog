@@ -93,7 +93,11 @@ h1{font:760 clamp(36px,8vw,58px)/1.03 var(--display);letter-spacing:-.025em;marg
 .alias{font:500 13.5px/1.4 var(--mono);color:var(--muted);margin:10px 0 0}
 .lede{font-size:clamp(19px,2.3vw,21px);line-height:1.5;margin:18px 0 0}
 .kind{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:14px 0 0;font-size:16px;line-height:1.5;color:var(--muted)}
-.ktag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap}
+.ktag{position:relative;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap;cursor:help}
+.ktag[data-tip]::after{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 8px);z-index:5;width:max-content;max-width:min(280px,70vw);padding:8px 11px;border-radius:8px;background:var(--ink);color:var(--ground);font:400 14px/1.45 var(--serif);letter-spacing:0;text-transform:none;white-space:normal;box-shadow:0 8px 20px -10px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-3px);transition:opacity .12s,transform .12s,visibility .12s;pointer-events:none}
+.ktag[data-tip]:hover::after,.ktag[data-tip]:focus::after{opacity:1;visibility:visible;transform:none}
+.ktag:focus{outline:none}
+.ktag:focus-visible{outline:2px solid var(--q);outline-offset:2px}
 .kind a{color:var(--ink);font-weight:600;text-underline-offset:3px}
 .kind a:hover{color:var(--q)}
 .kb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
@@ -174,7 +178,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 222px;align-ite
     <nav class="crumb" aria-label="Breadcrumb"><a href="/biases/el/list/">Όλες οι μεροληψίες</a><span aria-hidden="true">›</span><a href="/biases/el/list/#fast">Ανάγκη για γρήγορη δράση</a><span aria-hidden="true">›</span><a class="cf" href="/biases/el/list/#fam-immediate">Το εδώ &amp; τώρα</a></nav>
     <h1>Επίκληση στο καινούργιο</h1>
     <p class="alias">Λέγεται και Argumentum ad novitatem</p><p class="alias">Στα αγγλικά: Appeal to novelty</p>
-    <p class="kind"><span class="ktag">Λογική πλάνη</span><span>Λάθος συλλογισμού που περιγράφει η λογική, όχι μεροληψία που έχει μετρηθεί σε ψυχολογικά πειράματα.</span></p>
+    <p class="kind"><span class="ktag" tabindex="0" data-tip="Λάθος συλλογισμού που περιγράφει η λογική, όχι μεροληψία που έχει μετρηθεί σε ψυχολογικά πειράματα." aria-label="Λογική πλάνη: Λάθος συλλογισμού που περιγράφει η λογική, όχι μεροληψία που έχει μετρηθεί σε ψυχολογικά πειράματα.">Λογική πλάνη</span></p>
     <p class="lede">Λάθος συλλογισμός που μας κάνει να θεωρούμε μια ιδέα, ένα προϊόν ή μια μέθοδο καλύτερη απλώς επειδή είναι καινούργια. Είναι η άλλη όψη της πεποίθησης ότι ο παλιός τρόπος είναι ο καλύτερος επειδή είναι παραδοσιακός.</p>
     <p class="caveat">Πρόκειται για μια κλασική πλάνη από τον χώρο της λογικής και της ρητορικής, και όχι για ένα φαινόμενο που έχει τεκμηριωθεί με ψυχολογικά πειράματα.</p>
     

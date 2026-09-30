@@ -460,7 +460,12 @@ footer cite{font-style:italic}
 .wheel .leaf.caught .play circle{stroke:var(--ground);stroke-width:1.2}
 .wheel .leaf.vid .lt{font-weight:600}
 .kind{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-top:10px;font-size:15px;line-height:1.5;color:var(--muted)}
-.ktag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap}
+.ktag{position:relative;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap;cursor:help}
+/* the tag's meaning, on hover, or on tap on a phone */
+.ktag[data-tip]::after{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 8px);z-index:5;width:max-content;max-width:min(280px,70vw);padding:8px 11px;border-radius:8px;background:var(--ink);color:var(--ground);font:400 13.5px/1.45 var(--serif);letter-spacing:0;text-transform:none;white-space:normal;box-shadow:0 8px 20px -10px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-3px);transition:opacity .12s,transform .12s,visibility .12s;pointer-events:none}
+.ktag[data-tip]:hover::after,.ktag[data-tip]:focus::after{opacity:1;visibility:visible;transform:none}
+.ktag:focus{outline:none}
+.ktag:focus-visible{outline:2px solid var(--q);outline-offset:2px}
 .kind button{all:unset;cursor:pointer;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .kind button:hover,.kind button:focus-visible{color:var(--q)}
 .kb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
@@ -1074,8 +1079,10 @@ const VIDEO_ICON = `<svg class="vi" viewBox="0 0 16 16" role="img" aria-label="H
 function kindLine(b) {
   let out = "";
   if (b.main) out += `<p class="kind">${esc(KINDS.same_as).replace("{main}", `<button type="button" data-i="${b.main.i}">${esc(b.main.n)}</button>`)}</p>`;
-  else if (b.kind === "other") out += `<p class="kind"><span class="ktag">${esc(KINDS.labels.other)}</span><span>${esc(cap(b.what))}.</span></p>`;
-  else if (b.kind !== "bias") out += `<p class="kind"><span class="ktag">${esc(KINDS.labels[b.kind])}</span><span>${esc(KINDS.explain[b.kind])}</span></p>`;
+  else if (b.kind !== "bias") {
+    const tip = b.kind === "other" ? cap(b.what) + "." : KINDS.explain[b.kind];
+    out += `<p class="kind"><span class="ktag" tabindex="0" data-tip="${esc(tip)}" aria-label="${esc(KINDS.labels[b.kind] + ": " + tip)}">${esc(KINDS.labels[b.kind])}</span></p>`;
+  }
   return out;
 }
 const kindHead = b => b.kind === "bias" || b.kind === "fallacy" ? "bias" : "other";   // headings that fit what it is
@@ -1443,7 +1450,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
     ${video ? "" : `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}`}
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
     ${video ? `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}` : ""}
-    <div class="row">${catchBtn(b, "I've caught this in myself")}<button class="btn" type="button" data-share>Share</button>${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
+    <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p>${fam ? `
       <p class="fam-note">Its family, in 30 seconds: <b>${esc(SHORT[g.id])}</b></p><div class="player-host" data-anim="${fam}"></div>` : ""}</div>
@@ -1546,14 +1553,8 @@ function openVideo(vi) {
   else if (v.kind === "g") openGroup(v.ref, { playlist:true });
   else openHabit(v.ref, { playlist:true });
 }
-async function shareBias(btn, b) {
-  const u = SITE + b.page;
-  if (navigator.share && matchMedia("(pointer: coarse)").matches) { try { await navigator.share({ title: b.n, url: u }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
-  try { await navigator.clipboard.writeText(u); btn.textContent = "Link copied"; } catch (e) { btn.textContent = u; }
-}
 pBody.addEventListener("click", e => {
   const v = e.target.closest("[data-vi]"); if (v) return openVideo(+v.dataset.vi);
-  const sh = e.target.closest("[data-share]"); if (sh && current?.b) return shareBias(sh, current.b);
   if (e.target.closest("[data-open-videos]")) return openVideos();
   const s = e.target.closest("[data-i]"); if (s) return openBias(BIASES[+s.dataset.i]);
   if (e.target.closest("[data-open-g]") && current?.b) openGroup(current.b.g);
