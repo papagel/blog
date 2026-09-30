@@ -113,7 +113,8 @@ button{font:inherit;color:inherit}
 
 /* wheel */
 .map{position:relative;margin-top:clamp(18px,2.5vw,28px);padding-top:clamp(8px,1.5vw,16px);border-top:1px solid var(--rule);margin-bottom:24px}
-.wheel{display:block;width:100%;max-width:1060px;height:auto;margin-inline:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+/* the wheel grows with the window: past the page column on big screens, up to where the circle still fits the window's height */
+.wheel{--ww:min(100vw - 64px, max(1160px, 125vh), 1400px);display:block;width:var(--ww);max-width:none;height:auto;margin-inline:calc((100% - var(--ww)) / 2);touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .wheel .fan{fill:none;stroke:var(--q);stroke-width:1;opacity:.28;transition:opacity .15s}
 .wheel .dot{fill:var(--q)}
 .wheel .lt{font-family:var(--mono);fill:var(--q);dominant-baseline:central;cursor:pointer}
@@ -257,6 +258,10 @@ footer cite{font-style:italic}
 .panel-body{overflow-y:auto;padding:24px 26px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:22px;overscroll-behavior:contain}
 .crumb{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font:500 12px/1.4 var(--mono);color:var(--muted)}
 .crumb .qtag{color:var(--q);text-transform:uppercase;letter-spacing:.08em}
+.famline{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 2px}
+.famline button{all:unset;cursor:pointer;font:650 16px/1.3 var(--display);color:var(--ink)}
+.famline button:hover,.famline button:focus-visible{color:var(--q);text-decoration:underline;text-underline-offset:3px}
+.famline span{font:500 11.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .crumb button{all:unset;cursor:pointer;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .crumb button:hover,.crumb button:focus-visible{color:var(--ink)}
 .panel h2{font-size:clamp(30px,4vw,38px);letter-spacing:-.02em}
@@ -1397,6 +1402,8 @@ function mountPlayer() {
   });
 }
 const backToVideos = `<button type="button" data-open-videos>‹ All videos</button><span aria-hidden="true">·</span>`;
+// a card opened from the videos keeps a way back at the top; otherwise the top stays clean
+const backRow = playlist => playlist ? `<div class="crumb"><button type="button" data-open-videos>‹ All videos</button></div>` : "";
 // playlist: opened from the videos, so next and previous step through all of them and the position shows ▶ n / total
 function playPos(ref, playlist) {
   const vi = playlist ? VIDEOS.findIndex(v => v.ref === ref) : -1;
@@ -1414,7 +1421,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
   video = !!key && (video || playlist);
   current = { type:"b", b, playlist, vi };
   pBody.innerHTML = `
-    <div class="crumb">${playlist ? backToVideos : ""}<span class="qtag">${esc(b.q.name)}</span><span aria-hidden="true">›</span><button type="button" data-open-g title="${esc(g.title)}">${esc(SHORT[g.id] || g.title)}</button></div>
+    ${backRow(playlist)}
     <div><h2 id="p-title">${esc(b.n)}</h2>${b.alias && b.alias !== b.main?.n ? `<p class="alias">Also known as ${esc(b.alias)}</p>` : ""}${b.en && b.en !== b.n ? `<p class="alias">In English: ${esc(b.en)}</p>` : ""}${kindLine(b)}</div>
     ${video ? "" : `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}`}
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
@@ -1425,7 +1432,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
       <p class="fam-note">Its family, in 30 seconds: <b>${esc(SHORT[g.id])}</b></p><div class="player-host" data-anim="${fam}"></div>` : ""}</div>
     <div class="pblock"><h3>${esc(KINDS.spot[kindHead(b)])}</h3><p class="lead-tip">${esc(b.spot)}</p></div>
     <div class="pblock"><h3>${esc(KINDS.fix[kindHead(b)])}</h3><p class="lead-tip">${esc(b.fix)}</p></div>
-    <div class="pblock"><h3>Same family</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>
+    <div class="pblock"><h3>Same family</h3><p class="famline"><button type="button" data-open-g title="${esc(g.title)}">${esc(SHORT[g.id] || g.title)} ›</button><span>${esc(b.q.name)}</span></p><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}" class="${x === b ? "cur" : ""}">${esc(x.n)}</button>`).join("")}</div></div>
     ${srcLine(SOURCES.biases?.[b.en || b.n]?.src)}`;
   showPanel(b.q);
   panel.classList.toggle("video", video);
@@ -1473,14 +1480,14 @@ function openGroup(g, { video = false, playlist = false } = {}) {
   current = { type:"g", g, playlist, vi };
   const playerHtml = key ? `<div class="player-host" data-anim="${key}"></div>` : "";
   pBody.innerHTML = `
-    <div class="crumb">${playlist ? backToVideos : ""}<span class="qtag">${esc(g.q.name)}</span></div>
+    ${backRow(playlist)}
     <div><h2 id="p-title">${esc(g.title)}</h2>${key ? `<p class="alias">A family of ${g.items.length} biases: ${esc(SHORT[g.id])}</p>` : ""}</div>
     ${video ? playerHtml : ""}
     <div class="pblock"><h3>Why your mind does this</h3><p class="def">${esc(g.why)}</p>${video ? "" : playerHtml}</div>
     <div class="pblock"><h3>Where it goes wrong</h3><p>${esc(g.cost)}</p></div>
     ${listBlock("How to spot it", g.spot)}
     ${listBlock("How to counter it", g.fix)}
-    <div class="pblock"><h3>${g.items.length} biases in this family</h3><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}">${esc(x.n)}</button>`).join("")}</div></div>
+    <div class="pblock"><h3>${g.items.length} biases in this family</h3><p class="famline"><span>${esc(g.q.name)}</span></p><div class="sibs">${g.items.map(x => `<button type="button" data-i="${x.i}">${esc(x.n)}</button>`).join("")}</div></div>
     ${srcLine(SOURCES.families)}`;
   showPanel(g.q);
   panel.classList.toggle("video", video);
