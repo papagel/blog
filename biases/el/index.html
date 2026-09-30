@@ -331,24 +331,27 @@ footer cite{font-style:italic}
 .sibs button.on{border-color:var(--q);color:var(--q)}
 
 /* lab */
-.lab{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:20px;align-items:start}
-.lab-list{display:flex;flex-direction:column;gap:4px;position:sticky;top:calc(12px + env(safe-area-inset-top,0px))}
-.xp-tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:12px;border:1px solid transparent}
-.xp-tile:hover{background:var(--surface)}
+/* one column: the experiments as a grid of tiles, then the stage at full width */
+.lab{display:flex;flex-direction:column;gap:14px}
+.lab-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.xp-tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-radius:12px;border:1px solid var(--rule)}
+.xp-tile .dot{margin-top:5px}
+.xp-tile:hover{background:var(--surface);border-color:var(--q)}
 .xp-tile:focus-visible{outline:2px solid var(--q)}
-.xp-tile[aria-current="true"]{background:var(--surface);border-color:var(--rule)}
+.xp-tile[aria-current="true"]{background:var(--surface);border-color:var(--q);box-shadow:inset 0 0 0 1px var(--q)}
 .xp-tile .dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--q);flex:none}
 .xp-tile.done .dot{background:var(--q)}
-.xp-tile b{display:block;font:600 16px/1.25 var(--display)}
+.xp-tile b{display:block;font:600 15.5px/1.25 var(--display)}
 .xp-tile small{display:block;font:12px/1.35 var(--mono);color:var(--muted);margin-top:2px}
 .xp-tile.done small{color:var(--q)}
-.stage{background:var(--surface);border-radius:18px;padding:clamp(20px,3.5vw,40px);min-height:480px;display:flex;flex-direction:column;gap:18px;border-top:5px solid var(--q);scroll-margin-top:16px}
+.stage{background:var(--surface);border-radius:18px;padding:clamp(20px,3.5vw,40px);min-height:360px;display:flex;flex-direction:column;gap:18px;border-top:5px solid var(--q);scroll-margin-top:16px}
 .stage-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stage-top.titled{align-items:baseline;gap:6px 16px}
 .stage h3{font-size:clamp(26px,3vw,34px)}
 .prompt{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:60ch}
 .hint{font:13px/1.4 var(--mono);color:var(--bad)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.stage .opts{max-width:560px}
+.stage .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:900px}
 .result{display:flex;flex-direction:column;gap:14px}
 .result p{max-width:64ch}
 .big-answer{font:760 clamp(44px,6vw,64px)/1 var(--display);color:var(--q);letter-spacing:-.02em}
@@ -441,9 +444,8 @@ footer cite{font-style:italic}
 .xp-read span{display:block;font-size:14.5px;line-height:1.45;color:var(--muted)}
 .xp-read:focus-visible{outline:2px solid var(--q)}
 @media (max-width:760px){
-  .lab{grid-template-columns:minmax(0,1fr)}
-  .lab-list{flex-direction:row;overflow-x:auto;position:static;padding-bottom:6px;scrollbar-width:thin}
-  .xp-tile{flex:none;width:210px;background:var(--surface)}
+  .lab-list{display:flex;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+  .xp-tile{flex:none;width:200px;background:var(--surface)}
   .mine-grid{grid-template-columns:minmax(0,1fr)}
   .bar{grid-template-columns:minmax(0,1fr) 56px}
   .bar span{grid-column:1/-1}
@@ -1743,6 +1745,9 @@ function head(x, step) {
 }
 function paint(html, keep = true) {
   stage.innerHTML = html;
+  // when a step has its own title, the title takes the small name's place on the top row
+  const top = stage.querySelector(".stage-top"), h = top?.nextElementSibling;
+  if (h?.tagName === "H3") { top.firstElementChild.replaceWith(h); top.classList.add("titled"); }
   if (keep && stage.dataset.live && stage.getBoundingClientRect().top < 0) stage.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
 }
 function slider(id, val) {
@@ -2041,6 +2046,9 @@ function openExp(x, scroll) {
   const id = ++runId;
   stage.className = "stage q-" + x.q;
   renderTiles();
+  // on phones the tiles are one scrolling row: bring the chosen one into view
+  const tile = labList.querySelector('[aria-current="true"]');
+  if (tile && labList.scrollWidth > labList.clientWidth) labList.scrollTo({ left: tile.offsetLeft - labList.offsetLeft - 16, behavior: reduced ? "auto" : "smooth" });
   x.run(x, () => id === runId);
   if (scroll) stage.scrollIntoView({ block: "start" });
 }
