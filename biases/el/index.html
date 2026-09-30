@@ -95,15 +95,13 @@ button{font:inherit;color:inherit}
 .lang-link{letter-spacing:.06em}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;padding-block:clamp(16px,4vw,40px) 8px}
-.hero h1{font-size:clamp(34px,4.6vw,58px);font-weight:760;letter-spacing:-.03em;font-variation-settings:"opsz" 96}
-.hero h1 em{font-style:normal;color:var(--muted);font-weight:500}
-.hero-side{display:flex;flex-direction:column;gap:18px;padding-bottom:8px}
-.lede{font-size:18px;color:var(--muted);max-width:40ch}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:880px;margin-inline:auto;padding-block:clamp(12px,2.5vw,24px) 0}
+.hero h1{font-size:clamp(34px,4.4vw,56px);font-weight:760;letter-spacing:-.03em;font-variation-settings:"opsz" 96}
+.hero h1 em{font-style:normal;color:var(--muted);font-weight:500;display:block}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:64ch;text-wrap:balance}
 .quiet-link{font:500 14px/1 var(--mono);color:var(--muted);text-underline-offset:4px}
 .quiet-link:hover{color:var(--ink)}
-.actions{align-items:center;gap:18px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
+.actions{display:flex;align-items:center;justify-content:center;gap:10px 12px;flex-wrap:wrap;margin-top:4px}
 .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--surface);padding:10px 16px;border-radius:999px;cursor:pointer;font:500 14px/1 var(--mono);text-decoration:none;transition:border-color .15s,background .15s}
 .btn:hover{border-color:var(--ink)}
 .btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
@@ -114,7 +112,7 @@ button{font:inherit;color:inherit}
 .stats span{font:12px/1.4 var(--mono);color:var(--muted);letter-spacing:.04em}
 
 /* wheel */
-.map{position:relative;margin-top:clamp(28px,4vw,48px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--rule);margin-bottom:24px}
+.map{position:relative;margin-top:clamp(18px,2.5vw,28px);padding-top:clamp(8px,1.5vw,16px);border-top:1px solid var(--rule);margin-bottom:24px}
 .wheel{display:block;width:100%;max-width:1060px;height:auto;margin-inline:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .wheel .fan{fill:none;stroke:var(--q);stroke-width:1;opacity:.28;transition:opacity .15s}
 .wheel .dot{fill:var(--q)}
@@ -262,7 +260,9 @@ footer cite{font-style:italic}
   .quiz{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){
-  .hero,.block-head{grid-template-columns:minmax(0,1fr)}
+  .block-head{grid-template-columns:minmax(0,1fr)}
+  .hero{align-items:flex-start;text-align:left}
+  .actions{justify-content:flex-start}
   .foot-row{flex-direction:column;gap:8px}
   .gsec{grid-template-columns:minmax(0,1fr)}
   .panel{top:auto;height:88%;width:100%;border-left:0;border-top:5px solid var(--q,var(--rule));border-radius:18px 18px 0 0;transform:translateY(105%)}
@@ -525,12 +525,11 @@ footer cite{font-style:italic}
 
   <section class="hero" aria-labelledby="h1">
     <h1 id="h1">Ο εγκέφαλός σου κάνει συντομεύσεις. <em>Ορίστε ο χάρτης.</em></h1>
-    <div class="hero-side">
-      <p class="lede">Νοητικές συντομεύσεις που συνήθως βοηθούν, αλλά καμιά φορά μας ξεγελούν. Διάλεξε όποια θέλεις στον χάρτη για να δεις γιατί συμβαίνει και πώς να την εντοπίζεις.</p>
-      <div class="actions">
-        <a class="btn primary" href="#lab">Κάνε ένα πείραμα</a>
-        <a class="quiet-link" href="#quiz">ή λύσε το κουίζ</a>
-      </div>
+    <p class="lede">188 νοητικές συντομεύσεις που συνήθως βοηθούν, αλλά καμιά φορά μας ξεγελούν. Διάλεξε μία για να δεις γιατί συμβαίνει και πώς να την εντοπίζεις.</p>
+    <div class="actions">
+      <button class="btn primary" type="button" data-open-videos>▶ Δες ένα βίντεο 30″</button>
+      <a class="btn" href="#lab">Κάνε ένα πείραμα</a>
+      <a class="quiet-link" href="#quiz">ή λύσε το κουίζ</a>
     </div>
   </section>
 
@@ -1927,6 +1926,7 @@ reelEl.addEventListener("click", e => {
   const it = e.target.closest("[data-i]"); if (it) return openBias(BIASES[+it.dataset.i], { playlist:true });
   if (e.target.closest("[data-open-videos]")) openVideos();
 });
+document.querySelector(".hero [data-open-videos]").addEventListener("click", openVideos);
 document.querySelector(".reel-bar").addEventListener("click", e => {
   if (e.target.closest("[data-open-videos]")) return openVideos();
   const sc = e.target.closest("[data-scroll]"); if (sc) reelEl.scrollBy({ left: +sc.dataset.scroll * reelEl.clientWidth * 0.85, behavior: "smooth" });
