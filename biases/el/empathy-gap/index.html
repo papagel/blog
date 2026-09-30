@@ -137,9 +137,15 @@ h1{font:760 clamp(36px,8vw,58px)/1.03 var(--display);letter-spacing:-.025em;marg
 .fam h3 small{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);margin-bottom:3px}
 .fam>p{color:var(--muted);font-size:15.5px;margin:6px 0 10px;max-width:68ch}
 .fam ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:4px 28px}
-.fam li{padding:8px 0;border-top:1px solid var(--rule);font-size:15px;line-height:1.45;color:var(--muted)}
+.fam li{position:relative;padding:9px 10px;margin-inline:-10px;border-radius:8px;font-size:15px;line-height:1.45;color:var(--muted);transition:background .12s}
+.fam li::before{content:"";position:absolute;top:0;left:10px;right:10px;border-top:1px solid var(--rule)}
+.fam li:hover::before{border-color:transparent}
 .fam li a{display:block;font:650 16px/1.3 var(--display);color:var(--ink);text-decoration:none;margin-bottom:2px}
-.fam li a:hover{color:var(--q);text-decoration:underline}
+.fam li a::after{content:"";position:absolute;inset:0;border-radius:8px}   /* the whole box is the link */
+.fam li:hover{background:var(--surface)}
+.fam li:hover a{color:var(--q);text-decoration:underline;text-underline-offset:3px}
+.fam li a:focus-visible{outline:none}
+.fam li a:focus-visible::after{outline:2px solid var(--q);outline-offset:-2px}
 .fam li i{font-style:normal;color:var(--q);font-size:12px}
 @media (max-width:560px){.top .pill.all{display:none}}
 /* the social card, drawn at 600x315 and recorded at 2x (?capture=og) */
