@@ -298,22 +298,19 @@ footer cite{font-style:italic}
 }
 
 /* my map */
-.map-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px 16px;flex-wrap:wrap;max-width:1060px;margin-inline:auto}
-.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--surface)}
-.seg button{all:unset;cursor:pointer;padding:7px 13px;border-radius:999px;font:500 13px/1 var(--mono)}
-.seg button:focus-visible{outline:2px solid var(--nem)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
-.seg span{font-variant-numeric:tabular-nums;opacity:.75;margin-left:5px}
 .wheel .leaf.caught .dot{r:5.2;stroke:var(--ground);stroke-width:1.6}
 .wheel .leaf.caught .lt{fill:var(--ink);font-weight:600}
 .wheel .fan.caught{opacity:.75}
-.wheel[data-mine] .leaf:not(.caught){opacity:.12}
-.wheel[data-mine] .fan{opacity:.06}
-.wheel[data-mine] .fan.caught{opacity:.9;stroke-width:1.6}
-.mine{max-width:1060px;margin:18px auto 0;background:var(--surface);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
-.mine-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
-.mine-head h3{font-size:24px}
-.mine-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 32px}
+/* your biases */
+.mine{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.mine-card{background:var(--surface);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.mine-card .label b{color:var(--ink);font-weight:600}
+.mine-card .sibs button{display:inline-flex;align-items:center;gap:6px}
+.mine-habits{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.mine-habits li{display:flex;flex-direction:column;gap:3px}
+.mine-habits small{font:12.5px/1.45 var(--mono);color:var(--muted)}
+.mine-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.top nav #mine-n:not(:empty){margin-left:5px;padding:2px 6px;border-radius:999px;background:var(--ink);color:var(--ground);font-size:11px}
 .bars{display:flex;flex-direction:column;gap:10px}
 .bar{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 56px;gap:12px;align-items:center;font-size:14px}
 .bar span{color:var(--q);font:600 14px/1.2 var(--display)}
@@ -327,7 +324,7 @@ footer cite{font-style:italic}
 .catch{border:1.5px solid var(--q,var(--ink));background:transparent;color:var(--q,var(--ink));border-radius:999px;padding:9px 14px;font:500 13px/1 var(--mono);cursor:pointer;white-space:nowrap}
 .catch:hover{background:color-mix(in srgb,var(--q,var(--ink)) 12%,transparent)}
 .catch[aria-pressed="true"]{background:var(--q,var(--ink));color:var(--surface)}
-.item.caught::after{content:"on your map";font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--surface);background:var(--q);border-radius:999px;padding:3px 6px;margin-left:8px;vertical-align:2px}
+.item.caught::after{content:"✓";font-weight:700;color:var(--q);margin-left:7px;background:none;padding:0}
 .sibs button.on{border-color:var(--q);color:var(--q)}
 
 /* lab */
@@ -446,7 +443,6 @@ footer cite{font-style:italic}
 @media (max-width:760px){
   .lab-list{display:flex;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
   .xp-tile{flex:none;width:200px;background:var(--surface)}
-  .mine-grid{grid-template-columns:minmax(0,1fr)}
   .bar{grid-template-columns:minmax(0,1fr) 56px}
   .bar span{grid-column:1/-1}
   .positions{grid-template-columns:repeat(6,minmax(0,1fr))}
@@ -522,6 +518,8 @@ footer cite{font-style:italic}
 .dial-svg:focus-visible{outline:2px solid var(--nem);outline-offset:-4px}
 .dial-svg .dl{font-family:var(--display);fill:var(--ink);dominant-baseline:central;cursor:pointer}
 .dial-svg .dd{fill:var(--q)}
+.dial-svg g.caught .dd{r:4.4;stroke:var(--ground);stroke-width:1.6}
+.dial-svg g.caught .dl{fill:var(--q)}
 .dial-svg .dvp circle{fill:var(--q)}
 .dial-svg .dvp path{fill:var(--surface)}
 .dial-svg .band{fill:var(--surface)}
@@ -538,14 +536,14 @@ footer cite{font-style:italic}
 @media (max-width:760px){
   /* phones: things to do first, the map after them */
   .wrap{display:flex;flex-direction:column}
-  .top{order:0} .hero{order:1} #watch{order:2} #lab{order:3} #quiz{order:4} .map{order:5} #habits{order:6} #why{order:7} #browse{order:8} footer{order:9}
+  .top{order:0} .hero{order:1} #watch{order:2} #lab{order:3} #quiz{order:4} .map{order:5} #habits{order:6} #mine{order:7} #why{order:8} #browse{order:9} footer{order:10}
   .reel{margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px)}
   .habits{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1*clamp(16px,4vw,48px));padding:0 clamp(16px,4vw,48px) 8px;scroll-padding-inline:clamp(16px,4vw,48px);scrollbar-width:none}
   .reel .reel-item,.reel .reel-more{width:72vw;max-width:300px}
   .habit{flex:none;width:80vw;max-width:330px;scroll-snap-align:start}
 }
 @media (max-width:700px){
-  .wheel,.map-bar{display:none}
+  .wheel{display:none}
   .dial{display:block;margin-inline:calc(-1*clamp(16px,4vw,48px))}
 }
 
@@ -567,7 +565,7 @@ footer cite{font-style:italic}
   <header class="top">
     <a class="brand" href="#top" id="top"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Cognitive Bias Explorer</a><a class="home-link lang-link" href="el/" hreflang="el" lang="el" title="Ελληνικά" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">ΕΛ</a>
     <nav aria-label="Sections">
-      <a href="#watch">Watch</a><a href="#lab">Experiments</a><a href="#quiz">Quiz</a><a href="#habits">Habits</a><a href="#browse">All biases</a>
+      <a href="#watch">Watch</a><a href="#lab">Experiments</a><a href="#quiz">Quiz</a><a href="#habits">Habits</a><a href="#mine">Mine<span id="mine-n"></span></a><a href="#browse">All biases</a>
     </nav>
   </header>
 
@@ -582,16 +580,12 @@ footer cite{font-style:italic}
   </section>
 
   <div class="map" id="map">
-    <div class="map-bar">
-      <div class="seg" id="view-seg" hidden role="group" aria-label="Wheel view"><button type="button" data-view="all" aria-pressed="true">All biases</button><button type="button" data-view="mine" aria-pressed="false">My map<span id="mine-n">0</span></button></div>
-    </div>
     <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access."></svg>
     <div class="dial" id="dial">
       <div class="dial-chips" id="dial-chips" role="group" aria-label="Jump to a problem"></div>
       <svg class="dial-svg" id="dial-svg" viewBox="0 0 360 400" tabindex="0" role="slider" aria-label="The bias wheel. Drag up or down to turn it."></svg>
       <div class="dial-read" id="dial-read" aria-live="polite"></div>
     </div>
-    <div class="mine" id="mine" hidden aria-live="polite"></div>
   </div>
 
   <section class="block" id="watch" aria-labelledby="watch-h">
@@ -653,6 +647,14 @@ footer cite{font-style:italic}
     </div>
     <div class="habits" id="habit-list"></div>
     <div class="row habits-foot"><a class="btn primary" href="habits/">Open the one-page checklist</a></div>
+  </section>
+
+  <section class="block" id="mine" aria-labelledby="mine-h">
+    <div class="block-head">
+      <h2 id="mine-h">Your biases</h2>
+      <p>Recognise one in yourself? Press "I do this" on its card. They collect here, with the habits that catch them. Saved only on this device.</p>
+    </div>
+    <div class="mine" id="mine-body" aria-live="polite"></div>
   </section>
 
   <footer id="credits">
@@ -1452,7 +1454,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
     ${video ? "" : `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}`}
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
     ${video ? `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}` : ""}
-    <div class="row">${catchBtn(b, "I've caught this in myself")}</div>
+    <div class="row">${catchBtn(b, "I do this")}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p>${fam ? `
       <p class="fam-note">Its family, in 30 seconds: <b>${esc(SHORT[g.id])}</b></p><div class="player-host" data-anim="${fam}"></div>` : ""}</div>
@@ -1579,7 +1581,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .wheel.aiming, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-catch]";
+const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .wheel.aiming, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-catch], [data-habit-i]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
@@ -1677,12 +1679,14 @@ function renderFinal() {
 
 newQuiz();
 
-/* ---------- my map ---------- */
+/* ---------- your biases ---------- */
 const $ = (s, r = document) => r.querySelector(s);
-const mineEl = $("#mine"), seg = $("#view-seg");
+const mineEl = $("#mine-body");
+const START_WITH = ["Confirmation bias", "Planning fallacy", "Hindsight bias", "Sunk cost fallacy", "Spotlight effect", "Optimism bias"];
 function catchBtn(b, off) {
   const on = caught.has(b.slug);
-  return `<button class="catch q-${b.q.key}" type="button" data-catch="${b.i}" data-off="${esc(off)}" aria-pressed="${on}">${on ? "✓ On your map" : esc(off)}</button>`;
+  return `<button class="catch q-${b.q.key}" type="button" data-catch="${b.i}" data-off="${esc(off)}" aria-pressed="${on}">${on ? "✓ " : ""}${esc(off)}</button>` +
+    `<a class="quiet-link mine-go" href="#mine" data-mine-go${on ? "" : " hidden"}>See yours</a>`;
 }
 function toggleCaught(b) {
   if (caught.has(b.slug)) caught.delete(b.slug); else caught.add(b.slug);
@@ -1694,44 +1698,52 @@ function refreshCaught() {
   document.querySelectorAll("[data-catch]").forEach(el => {
     const on = caught.has(BIASES[+el.dataset.catch].slug);
     el.setAttribute("aria-pressed", on);
-    el.textContent = on ? "✓ On your map" : el.dataset.off;
+    el.textContent = (on ? "✓ " : "") + el.dataset.off;
+    const go = el.nextElementSibling; if (go?.matches("[data-mine-go]")) go.hidden = !on;
   });
+  if (typeof dialDraw === "function" && window.dialReady) dialDraw();
   renderMine();
   renderList();
 }
 function renderMine() {
-  const list = BIASES.filter(b => caught.has(b.slug));
-  $("#mine-n").textContent = new Set(list.map(b => b.n)).size;
-  seg.hidden = mineEl.hidden = !list.length;
-  if (!list.length) { setView("all"); return; }
-  const fam = GROUPS.map(g => ({ g, n: g.items.filter(b => caught.has(b.slug)).length }))
-    .filter(f => f.n).sort((a, b) => b.n - a.n || b.n / b.g.items.length - a.n / a.g.items.length)[0];
+  const seen = new Set(), list = BIASES.filter(b => caught.has(b.slug) && !seen.has(b.n) && seen.add(b.n));
+  $("#mine-n").textContent = list.length || "";
+  const chip = b => `<button type="button" class="on q-${b.q.key}" data-open="${b.i}">${esc(b.n)}</button>`;
+  if (!list.length) {
+    const start = START_WITH.map(n => BIASES.find(b => (b.en || b.n) === n)).filter(Boolean);
+    mineEl.innerHTML = `<div class="mine-card"><p class="label">Not sure where to start? Most people recognise these</p><div class="sibs">${start.map(chip).join("")}</div></div>`;
+    return;
+  }
+  // the habits that catch the most of yours
+  const mineEn = new Set(list.map(b => b.en || b.n));
+  const habits = HABITS.map((h, i) => ({ h, i, hits: h.catches.filter(n => mineEn.has(n)) })).filter(x => x.hits.length)
+    .sort((a, b) => b.hits.length - a.hits.length).slice(0, 3);
+  const nameOf = n => (BIASES.find(b => (b.en || b.n) === n) || { n }).n;
+  // and the family you catch yourself in most, with its first tip
+  const fam = GROUPS.map(g => ({ g, n: g.items.filter(b => caught.has(b.slug)).length })).filter(f => f.n > 1)
+    .sort((a, b) => b.n - a.n || b.n / b.g.items.length - a.n / a.g.items.length)[0];
   mineEl.innerHTML = `
-    <div class="mine-head"><h3>Your bias map</h3><span class="label">${new Set(list.map(b => b.n)).size} of ${UNIQUE} caught · saved in this browser</span></div>
-    <div class="mine-grid">
-      <div class="topfam q-${fam.g.q.key}">
-        <p class="label">Where you catch yourself most</p>
-        <button type="button" class="linkish" data-open-group="${GROUPS.indexOf(fam.g)}">${esc(fam.g.title)}</button>
-        <p><b>Try this:</b> ${esc(fam.g.fix[0])}</p>
-      </div>
-    </div>
-    <div class="sibs">${list.map(b => `<button type="button" class="on q-${b.q.key}" data-open="${b.i}">${esc(b.n)}</button>`).join("")}</div>
-    <div class="row" id="clear-row"><button class="btn" type="button" data-clear>Clear my map</button></div>`;
+    <div class="mine-card"><p class="label">You've marked <b>${list.length}</b></p><div class="sibs">${list.map(chip).join("")}</div></div>
+    ${habits.length ? `<div class="mine-card"><p class="label">Habits that catch yours</p><ol class="mine-habits">${habits.map(x => `<li>
+      <button type="button" class="linkish" data-habit-i="${x.i}">${esc(x.h.title)}</button>
+      <small>Catches ${x.hits.map(n => esc(nameOf(n))).join(" · ")}</small></li>`).join("")}</ol></div>` : ""}
+    ${fam ? `<div class="mine-card topfam q-${fam.g.q.key}"><p class="label">Where you catch yourself most</p>
+      <button type="button" class="linkish" data-open-group="${GROUPS.indexOf(fam.g)}">${esc(SHORT[fam.g.id] || fam.g.title)}</button>
+      <p><b>Try this:</b> ${esc(fam.g.fix[0])}</p></div>` : ""}
+    <div class="mine-foot" id="clear-row"><button class="btn" type="button" data-clear>Clear the list</button></div>`;
 }
 mineEl.addEventListener("click", e => {
   const g = e.target.closest("[data-open-group]"); if (g) return openGroup(GROUPS[+g.dataset.openGroup]);
+  const h = e.target.closest("[data-habit-i]"); if (h) return openHabit(HABITS[+h.dataset.habitI]);
   if (e.target.closest("[data-clear]")) {
-    $("#clear-row").innerHTML = `<span>Remove all ${caught.size} from your map?</span><button class="btn primary" type="button" data-clear-yes>Yes, clear it</button><button class="btn" type="button" data-clear-no>Keep them</button>`;
+    $("#clear-row").innerHTML = `<span>Remove all ${caught.size} from your list?</span><button class="btn primary" type="button" data-clear-yes>Yes, clear it</button><button class="btn" type="button" data-clear-no>Keep them</button>`;
     return;
   }
-  if (e.target.closest("[data-clear-yes]")) { caught.clear(); store.set(CAUGHT_KEY, []); setView("all"); refreshCaught(); return; }
+  if (e.target.closest("[data-clear-yes]")) { caught.clear(); store.set(CAUGHT_KEY, []); refreshCaught(); return; }
   if (e.target.closest("[data-clear-no]")) renderMine();
 });
-function setView(v) {
-  seg.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x.dataset.view === v));
-  if (v === "mine") svg.dataset.mine = "1"; else delete svg.dataset.mine;
-}
-seg.addEventListener("click", e => { const b = e.target.closest("[data-view]"); if (b) setView(b.dataset.view); });
+// from a card: close it and go to your list
+document.addEventListener("click", e => { if (e.target.closest("[data-mine-go]")) { e.preventDefault(); closePanel(); document.getElementById("mine").scrollIntoView({ behavior: reduced ? "auto" : "smooth" }); } });
 
 /* ---------- lab ---------- */
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2124,7 +2136,7 @@ function dialDraw() {
     const mark = vidKey(b)
       ? `<g class="dvp" transform="translate(${f1d(dx)} ${f1d(dy)})"><circle r="6"/><path d="M-2.1 -3.4v6.8L3.4 0z"/></g>`
       : `<circle class="dd" cx="${f1d(dx)}" cy="${f1d(dy)}" r="2.8"/>`;
-    h += `<g class="q-${b.q.key}" data-di="${i}" style="opacity:${Math.max(0.25, 1 - d * 0.065).toFixed(2)}">${mark}` +
+    h += `<g class="q-${b.q.key}${caught.has(b.slug) ? " caught" : ""}" data-di="${i}" style="opacity:${Math.max(0.25, 1 - d * 0.065).toFixed(2)}">${mark}` +
       `<text class="dl" x="${f1d(lx)}" y="${f1d(ly)}" transform="rotate(${a.toFixed(2)} ${f1d(lx)} ${f1d(ly)})" style="font-size:${f1d(fs)}px;font-weight:${d < 0.5 ? 650 : 450}">${esc(b.n)}</text></g>`;
   }
   dialSvg.innerHTML = h;
@@ -2213,6 +2225,7 @@ dialChips.addEventListener("click", e => {
 });
 dRot = Math.max(0, BIASES.findIndex(b => (b.en || b.n) === "Confirmation bias")) * DSTEP;
 dialDraw();
+window.dialReady = true;   // your biases can redraw it from now on
 
 /* ---------- habits ---------- */
 const byEn = new Map(BIASES.map(b => [b.en || b.n, b]));
