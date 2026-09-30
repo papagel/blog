@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Φαινόμενο πλαισίου: τι είναι, παραδείγματα και αντιμετώπιση · Εξερευνητής γνωστικών μεροληψιών</title>
+<title>Φαινόμενο πλαισίου: φαινόμενο μνήμης, με παραδείγματα · Εξερευνητής γνωστικών μεροληψιών</title>
 <meta name="description" content="Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη…">
 <meta name="author" content="Thanos Papangelis">
 <link rel="canonical" href="https://papangelis.com/biases/el/context-effect/">
@@ -13,17 +13,17 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Downstream">
 <meta property="og:locale" content="el_GR">
-<meta property="og:title" content="Φαινόμενο πλαισίου: τι είναι, παραδείγματα και αντιμετώπιση · Εξερευνητής γνωστικών μεροληψιών">
+<meta property="og:title" content="Φαινόμενο πλαισίου: φαινόμενο μνήμης, με παραδείγματα · Εξερευνητής γνωστικών μεροληψιών">
 <meta property="og:description" content="Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη…">
 <meta property="og:url" content="https://papangelis.com/biases/el/context-effect/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Φαινόμενο πλαισίου: τι είναι, παραδείγματα και αντιμετώπιση · Εξερευνητής γνωστικών μεροληψιών">
+<meta name="twitter:title" content="Φαινόμενο πλαισίου: φαινόμενο μνήμης, με παραδείγματα · Εξερευνητής γνωστικών μεροληψιών">
 <meta name="twitter:description" content="Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη…">
-<meta property="og:image" content="https://papangelis.com/assets/og/bias-context-effect-el.jpg?v=44963b00">
+<meta property="og:image" content="https://papangelis.com/assets/og/bias-context-effect-el.jpg?v=69a85b0c">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Φαινόμενο πλαισίου">
-<meta name="twitter:image" content="https://papangelis.com/assets/og/bias-context-effect-el.jpg?v=44963b00">
+<meta name="twitter:image" content="https://papangelis.com/assets/og/bias-context-effect-el.jpg?v=69a85b0c">
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
 <link rel="icon" href="/biases/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/biases/favicon-32.png" sizes="32x32" type="image/png">
@@ -92,6 +92,12 @@ a{color:inherit}
 h1{font:760 clamp(36px,8vw,58px)/1.03 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
 .alias{font:500 13.5px/1.4 var(--mono);color:var(--muted);margin:10px 0 0}
 .lede{font-size:clamp(19px,2.3vw,21px);line-height:1.5;margin:18px 0 0}
+.kind{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:14px 0 0;font-size:16px;line-height:1.5;color:var(--muted)}
+.ktag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap}
+.kind a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+.kind a:hover{color:var(--q)}
+.kb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
+.kinds-note{color:var(--muted);font-size:15.5px;margin:10px 0 0;max-width:68ch}
 .caveat{font:13px/1.5 var(--mono);color:var(--muted);border-left:2px solid var(--faint);padding-left:10px;margin:14px 0 0}
 .player{margin-top:24px}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -150,7 +156,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 222px;align-ite
 .og-w svg{display:block;width:222px;height:222px}
 
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTerm","@id":"https://papangelis.com/biases/el/context-effect/#term","name":"Φαινόμενο πλαισίου","description":"Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη, στη γεύση ή στην αίσθηση, και όσα μάθαμε ή ζήσαμε σε ένα μέρος δεν τα θυμόμαστε πάντα το ίδιο εύκολα σε κάποιο άλλο.","url":"https://papangelis.com/biases/el/context-effect/","inLanguage":"el","alternateName":["Context effect"],"inDefinedTermSet":{"@type":"DefinedTermSet","@id":"https://papangelis.com/biases/el/list/#set","name":"Όλες οι 188 γνωστικές μεροληψίες","url":"https://papangelis.com/biases/el/list/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Εξερευνητής γνωστικών μεροληψιών","item":"https://papangelis.com/biases/el/"},{"@type":"ListItem","position":2,"name":"Όλες οι μεροληψίες","item":"https://papangelis.com/biases/el/list/"},{"@type":"ListItem","position":3,"name":"Φαινόμενο πλαισίου","item":"https://papangelis.com/biases/el/context-effect/"}]}]}</script></head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTerm","@id":"https://papangelis.com/biases/el/context-effect/#term","name":"Φαινόμενο πλαισίου","description":"Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη, στη γεύση ή στην αίσθηση, και όσα μάθαμε ή ζήσαμε σε ένα μέρος δεν τα θυμόμαστε πάντα το ίδιο εύκολα σε κάποιο άλλο.","url":"https://papangelis.com/biases/el/context-effect/","inLanguage":"el","alternateName":["Context effect"],"inDefinedTermSet":{"@type":"DefinedTermSet","@id":"https://papangelis.com/biases/el/list/#set","name":"Όλες οι 188 μεροληψίες και τα φαινόμενα","url":"https://papangelis.com/biases/el/list/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Εξερευνητής γνωστικών μεροληψιών","item":"https://papangelis.com/biases/el/"},{"@type":"ListItem","position":2,"name":"Όλες οι μεροληψίες","item":"https://papangelis.com/biases/el/list/"},{"@type":"ListItem","position":3,"name":"Φαινόμενο πλαισίου","item":"https://papangelis.com/biases/el/context-effect/"}]}]}</script></head>
 <body class="q-tmi">
 <div class="pg">
   <header class="top"><a class="brand" href="/biases/el/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Εξερευνητής γνωστικών μεροληψιών</a><nav><a class="pill all" href="/biases/el/list/">Όλες οι μεροληψίες</a><a class="pill" href="/biases/context-effect/" hreflang="en" lang="en" title="English">EN</a></nav></header>
@@ -158,14 +164,15 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 222px;align-ite
     <nav class="crumb" aria-label="Breadcrumb"><a href="/biases/el/list/">Όλες οι μεροληψίες</a><span aria-hidden="true">›</span><a href="/biases/el/list/#tmi">Πάρα πολλή πληροφορία</a><span aria-hidden="true">›</span><a class="cf" href="/biases/el/list/#fam-primed">Ό,τι έχουμε ξαναδεί</a></nav>
     <h1>Φαινόμενο πλαισίου</h1>
     <p class="alias">Στα αγγλικά: Context effect</p>
+    <p class="kind"><span class="ktag">Φαινόμενο μνήμης</span><span>Φυσιολογικός τρόπος λειτουργίας της μνήμης, όχι λάθος κρίσης.</span></p>
     <p class="lede">Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη, στη γεύση ή στην αίσθηση, και όσα μάθαμε ή ζήσαμε σε ένα μέρος δεν τα θυμόμαστε πάντα το ίδιο εύκολα σε κάποιο άλλο.</p>
     
     
-    <div class="actions"><a class="pill primary" href="/biases/el/#b-context-effect">Δες τη στον χάρτη</a><button class="pill" type="button" id="share">Κοινοποίηση</button></div>
+    <div class="actions"><a class="pill primary" href="/biases/el/#b-context-effect">Δες τη θέση στον χάρτη</a><button class="pill" type="button" id="share">Κοινοποίηση</button></div>
     <section class="sec"><h2>Στην καθημερινότητα</h2><p class="example">Το ίδιο μπουκάλι κρασί έχει καλύτερη γεύση σε ένα εστιατόριο με κεριά απ' ό,τι στο σπίτι, ένα βράδυ καθημερινής γεμάτο τρεξίματα.</p><p class="example">Στην παραλία, μια φιλική κυρία σε χαιρετά με το όνομά σου και δεν μπορείς με τίποτα να θυμηθείς ποια είναι, μέχρι που αναφέρει τις συνταγές και καταλαβαίνεις ότι είναι η φαρμακοποιός που βλέπεις κάθε μήνα.</p></section>
-    <section class="sec"><h2>Γιατί το κάνει το μυαλό σου</h2><p>Δεχόμαστε πολύ περισσότερα απ' όσα μπορούμε να επεξεργαστούμε, γι' αυτό ο εγκέφαλος χρησιμοποιεί ως φίλτρο ό,τι είναι ήδη ενεργό στη μνήμη. Όσα συναντήσαμε πρόσφατα, συχνά ή με έντονο συναίσθημα είναι πιθανό να μετρήσουν ξανά, οπότε, φέρνοντάς τα μπροστά, ο εγκέφαλος γλιτώνει χρόνο και κόπο.</p><p class="fam-note">Η οικογένειά της σε 30 δευτερόλεπτα: <b>Ό,τι έχουμε ξαναδεί</b></p><div class="player" data-anim="family-primed"></div></section>
-    <section class="sec"><h2>Πώς να την εντοπίσεις</h2><p class="tip">Ρώτα τον εαυτό σου πόσο επηρεάζουν το σκηνικό, ο φωτισμός, η μουσική ή η παρέα την κρίση σου για το ίδιο το πράγμα.</p></section>
-    <section class="sec"><h2>Πώς να την αντιμετωπίσεις</h2><p class="tip">Όταν κρίνεις κάτι σημαντικό, ξανασκέψου το και σε άλλο περιβάλλον. Κι όταν διαβάζεις, να εξασκείσαι σε συνθήκες που μοιάζουν με εκείνες όπου θα χρειαστείς τη γνώση.</p></section>
+    <section class="sec"><h2>Γιατί το κάνει το μυαλό σου</h2><p>Δεχόμαστε πολύ περισσότερα απ' όσα μπορούμε να επεξεργαστούμε, γι' αυτό ο εγκέφαλος χρησιμοποιεί ως φίλτρο ό,τι είναι ήδη ενεργό στη μνήμη. Όσα συναντήσαμε πρόσφατα, συχνά ή με έντονο συναίσθημα είναι πιθανό να μετρήσουν ξανά, οπότε, φέρνοντάς τα μπροστά, ο εγκέφαλος γλιτώνει χρόνο και κόπο.</p><p class="fam-note">Η οικογένεια σε 30 δευτερόλεπτα: <b>Ό,τι έχουμε ξαναδεί</b></p><div class="player" data-anim="family-primed"></div></section>
+    <section class="sec"><h2>Τι να προσέχεις</h2><p class="tip">Ρώτα τον εαυτό σου πόσο επηρεάζουν το σκηνικό, ο φωτισμός, η μουσική ή η παρέα την κρίση σου για το ίδιο το πράγμα.</p></section>
+    <section class="sec"><h2>Τι μπορείς να κάνεις</h2><p class="tip">Όταν κρίνεις κάτι σημαντικό, ξανασκέψου το και σε άλλο περιβάλλον. Κι όταν διαβάζεις, να εξασκείσαι σε συνθήκες που μοιάζουν με εκείνες όπου θα χρειαστείς τη γνώση.</p></section>
     
     <section class="sec q-tmi"><h2>Στην ίδια οικογένεια: Ό,τι έχουμε ξαναδεί</h2><ul class="chips"><li><a href="/biases/el/availability-heuristic/">Ευρετική της διαθεσιμότητας</a></li><li><a href="/biases/el/attentional-bias/">Μεροληψία προσοχής</a></li><li><a href="/biases/el/illusory-truth-effect/">Φαινόμενο ψευδαίσθησης αλήθειας</a></li><li><a href="/biases/el/mere-exposure-effect/">Φαινόμενο απλής έκθεσης</a></li><li><span aria-current="page">Φαινόμενο πλαισίου</span></li><li><a href="/biases/el/cue-dependent-forgetting/">Λήθη εξαρτώμενη από ενδείξεις</a></li><li><a href="/biases/el/mood-congruent-memory-bias/">Μνήμη συμβατή με τη διάθεση</a></li><li><a href="/biases/el/frequency-illusion/">Ψευδαίσθηση συχνότητας</a></li><li><a href="/biases/el/baader-meinhof-phenomenon/">Φαινόμενο Baader-Meinhof</a></li><li><a href="/biases/el/empathy-gap/">Χάσμα ενσυναίσθησης</a></li><li><a href="/biases/el/omission-bias/">Μεροληψία παράλειψης</a></li><li><a href="/biases/el/base-rate-fallacy/">Πλάνη του βασικού ποσοστού</a></li></ul></section>
     <p class="srcs"><span>Πηγές</span><a href="https://doi.org/10.3758/BF03196157" target="_blank" rel="noopener">Smith &amp; Vela (2001)</a><i aria-hidden="true">·</i><a href="https://en.wikipedia.org/wiki/Context_effect" target="_blank" rel="noopener">Wikipedia</a></p>
@@ -175,7 +182,7 @@ html.cap-og .og{display:grid;grid-template-columns:minmax(0,1fr) 222px;align-ite
 <div class="og">
   <div class="og-l">
     <div class="og-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.2" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="5.4" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="9.6" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="6.4" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="10.2" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="15.8" cy="7.6" r="5" style="fill:var(--ink)"/><circle cx="18.6" cy="11.2" r="4.8" style="fill:var(--ink)"/><circle cx="14.4" cy="11.8" r="5.3" style="fill:var(--ink)"/><circle cx="17.6" cy="15.6" r="4.7" style="fill:var(--ink)"/><circle cx="13.8" cy="17.4" r="4.4" style="fill:var(--ink)"/><circle cx="8.2" cy="7.6" r="3.9" style="fill:var(--tmi)"/><circle cx="5.4" cy="11.2" r="3.7" style="fill:var(--tmi)"/><circle cx="9.6" cy="11.8" r="4.2" style="fill:var(--tmi)"/><circle cx="6.4" cy="15.6" r="3.6" style="fill:var(--fast)"/><circle cx="10.2" cy="17.4" r="3.3" style="fill:var(--fast)"/><circle cx="15.8" cy="7.6" r="3.9" style="fill:var(--nem)"/><circle cx="18.6" cy="11.2" r="3.7" style="fill:var(--nem)"/><circle cx="14.4" cy="11.8" r="4.2" style="fill:var(--nem)"/><circle cx="17.6" cy="15.6" r="3.6" style="fill:var(--mem)"/><circle cx="13.8" cy="17.4" r="3.3" style="fill:var(--mem)"/><g fill="none" stroke="#2a2320" stroke-width="1.2" stroke-linecap="round"><path d="M12 3.4V8M12 18.6V21M5.2 9.6Q7 9.4 7.6 11M6.4 17.4Q7.6 16.2 9 16.8M18.8 9.6Q17 9.4 16.4 11M17.6 17.4Q16.4 16.2 15 16.8"/><path d="M10.3 14.6Q12 16.3 13.7 14.6" stroke-width="1.4"/></g><circle cx="9.7" cy="12.4" r="1.1" fill="#2a2320"/><circle cx="14.3" cy="12.4" r="1.1" fill="#2a2320"/></svg>Εξερευνητής γνωστικών μεροληψιών</div>
-    <p class="og-k">Γνωστική μεροληψία · Ό,τι έχουμε ξαναδεί</p>
+    <p class="og-k">Φαινόμενο μνήμης · Ό,τι έχουμε ξαναδεί</p>
     <p class="og-t" style="font-size:36px">Φαινόμενο πλαισίου</p>
     <p class="og-s">Το περιβάλλον επηρεάζει το πώς αντιλαμβανόμαστε και θυμόμαστε τα πράγματα. Σε άλλο σκηνικό, το ίδιο αντικείμενο μπορεί να μας φανεί διαφορετικό στην όψη, στη γεύση ή στην αίσθηση, και όσα μάθαμε ή ζήσαμε σε ένα μέρος δεν τα θυμόμαστε πάντα το ίδιο εύκολα σε κάποιο άλλο.</p>
   </div>
