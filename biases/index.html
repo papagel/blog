@@ -1452,7 +1452,7 @@ function openBias(b, { video = false, playlist = false } = {}) {
     ${video ? "" : `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}`}
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
     ${video ? `<p class="def">${esc(b.d)}</p>${caveat(SOURCES.biases?.[b.en || b.n]?.note)}` : ""}
-    <div class="row">${catchBtn(b, "I've caught this in myself")}${XP_FOR[b.n] ? `<button class="btn" type="button" data-xp="${XP_FOR[b.n].id}">Try it on yourself</button>` : ""}</div>
+    <div class="row">${catchBtn(b, "I've caught this in myself")}</div>
     <div class="pblock"><h3>In everyday life</h3><p class="example">${esc(b.ex)}</p></div>
     <div class="pblock"><h3>Why your mind does this</h3><p>${esc(g.why)}</p>${fam ? `
       <p class="fam-note">Its family, in 30 seconds: <b>${esc(SHORT[g.id])}</b></p><div class="player-host" data-anim="${fam}"></div>` : ""}</div>
@@ -1579,7 +1579,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .wheel.aiming, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .wheel.aiming, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-catch]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
@@ -2031,8 +2031,6 @@ const LAB = [
   { id: "later", title: "Now or later", time: "20 sec", biases: ["Hyperbolic discounting"], run: xpLater }
 ];
 LAB.forEach(x => { x.q = byName(x.biases[0]).q.key; });
-const XP_FOR = {};
-LAB.forEach(x => x.biases.forEach(n => { XP_FOR[n] = x; }));
 
 function renderTiles() {
   labList.innerHTML = LAB.map(x => {
@@ -2064,7 +2062,6 @@ stage.addEventListener("click", e => {
 document.addEventListener("click", e => {
   const c = e.target.closest("[data-catch]"); if (c) return toggleCaught(BIASES[+c.dataset.catch]);
   const o = e.target.closest("[data-open]"); if (o) return openBias(BIASES[+o.dataset.open]);
-  const xb = e.target.closest("[data-xp]"); if (xb) { closePanel(); openExp(LAB.find(x => x.id === xb.dataset.xp), true); }
 });
 openExp(LAB[0]);
 stage.dataset.live = "1";
