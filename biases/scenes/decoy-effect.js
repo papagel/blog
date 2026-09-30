@@ -97,8 +97,8 @@
           "€4 more for the large? Most people pick the <b>small</b>.",
           "Then the cinema adds a medium, at <b>€6.50</b>.",
           "Next to the medium, the large looks like a <b>steal</b>.",
-          "Suddenly, most people <b>switch to the large</b>.",
-          "Nobody buys the medium. It's a <b>decoy</b>, there to sell the large.",
+          "Suddenly, many more people <b>switch to the large</b>.",
+          "Almost nobody buys the medium. It's a <b>decoy</b>, there to sell the large.",
           "<b>The fix:</b> cross out the option you'd never pick.",
           "Then ask: is the large worth €4 more <b>to you</b>?"
         ],
@@ -107,8 +107,8 @@
           "Four euros more for the large? Most people pick the small.",
           "Then the cinema adds a medium, at six fifty.",
           "Next to the medium, the large looks like a steal. Only fifty cents more!",
-          "Suddenly, most people switch to the large.",
-          "Nobody buys the medium. It's a decoy, there to sell the large.",
+          "Suddenly, many more people switch to the large.",
+          "Almost nobody buys the medium. It's a decoy, there to sell the large.",
           "The fix: cross out the option you'd never pick.",
           "Then ask yourself: is the large worth four euros more to you?",
           "The decoy effect. An option nobody wants can make another look like a bargain. Compare only the real choices."
@@ -124,8 +124,8 @@
           "4\u00a0€ παραπάνω για το μεγάλο; Οι\u00a0περισσότεροι παίρνουν το <b>μικρό</b>.",
           "Ύστερα το σινεμά βάζει και μεσαίο, στα <b>6,50\u00a0€</b>.",
           "Δίπλα στο μεσαίο, το μεγάλο φαίνεται <b>ευκαιρία</b>.",
-          "Ξαφνικά, οι περισσότεροι <b>γυρνάνε στο μεγάλο</b>.",
-          "Κανείς δεν παίρνει το μεσαίο. Είναι <b>δόλωμα</b>, για να πουλάει το μεγάλο.",
+          "Ξαφνικά, πολύ περισσότεροι <b>γυρνάνε στο μεγάλο</b>.",
+          "Σχεδόν κανείς δεν παίρνει το μεσαίο. Είναι <b>δόλωμα</b>, για να πουλάει το μεγάλο.",
           "<b>Η λύση:</b> σβήσε την επιλογή που δεν θα διάλεγες ποτέ.",
           "Μετά αναρωτήσου: <b>εσύ</b> θα έδινες 4\u00a0€ παραπάνω για το μεγάλο;"
         ],
@@ -134,8 +134,8 @@
           "Τέσσερα ευρώ παραπάνω για το μεγάλο; Οι περισσότεροι παίρνουν το μικρό.",
           "Ύστερα το σινεμά βάζει και μεσαίο, στα έξι και πενήντα.",
           "Δίπλα στο μεσαίο, το μεγάλο φαίνεται ευκαιρία. Μόνο πενήντα λεπτά παραπάνω!",
-          "Ξαφνικά, οι περισσότεροι γυρνάνε στο μεγάλο.",
-          "Κανείς δεν παίρνει το μεσαίο. Είναι δόλωμα, για να πουλάει το μεγάλο.",
+          "Ξαφνικά, πολύ περισσότεροι γυρνάνε στο μεγάλο.",
+          "Σχεδόν κανείς δεν παίρνει το μεσαίο. Είναι δόλωμα, για να πουλάει το μεγάλο.",
           "Η λύση: σβήσε την επιλογή που δεν θα διάλεγες ποτέ.",
           "Μετά αναρωτήσου: εσύ θα έδινες τέσσερα ευρώ παραπάνω για το μεγάλο;",
           "Φαινόμενο δολώματος. Μια επιλογή που κανείς δεν θέλει μπορεί να κάνει μια άλλη να μοιάζει ευκαιρία. Σύγκρινε μόνο όσα θα διάλεγες στ’ αλήθεια."

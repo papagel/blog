@@ -73,9 +73,9 @@
         caps: [
           "In WWII, bombers come back from missions riddled with <b>bullet holes</b>.",
           "Engineers map where the <b>returning planes</b> were hit.",
-          "The plan: add armour <b>where the holes are</b>.",
+          "The obvious idea: add armour <b>where the holes are</b>.",
           "But these are only the planes <b>that made it back</b>.",
-          "Planes hit in the engines <b>never came back</b> to be counted.",
+          "Planes hit in the engines <b>rarely came back</b> to be counted.",
           "The spots with no holes are where a hit is <b>fatal</b>.",
           "<b>The fix:</b> ask what's missing from your data.",
           "Armour the engines. Study the failures, <b>not only the survivors</b>."
@@ -83,9 +83,9 @@
         say: [
           "In the Second World War, bombers come back from their missions riddled with bullet holes.",
           "Engineers map where the returning planes were hit.",
-          "The plan: add armour where the holes are.",
+          "The obvious idea: add armour where the holes are.",
           "But these are only the planes that made it back.",
-          "Planes hit in the engines never came back to be counted.",
+          "Planes hit in the engines rarely came back to be counted.",
           "The spots with no holes are where a hit is fatal.",
           "The fix: ask what's missing from your data.",
           "Armour the engines. Study the failures, not only the survivors.",
@@ -100,9 +100,9 @@
         caps: [
           "Στον Δεύτερο Παγκόσμιο, τα βομβαρδιστικά γυρίζουν γεμάτα <b>τρύπες από σφαίρες</b>.",
           "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα <b>που γύρισαν</b>.",
-          "Το σχέδιο: θωράκιση <b>εκεί που είναι οι τρύπες</b>.",
+          "Η προφανής ιδέα: θωράκιση <b>εκεί που είναι οι τρύπες</b>.",
           "Όμως αυτά είναι μόνο όσα <b>κατάφεραν να γυρίσουν</b>.",
-          "Όσα χτυπήθηκαν στις μηχανές <b>δεν γύρισαν ποτέ</b>, άρα δεν μετρήθηκαν.",
+          "Όσα χτυπήθηκαν στις μηχανές <b>σπάνια γύριζαν</b> για να μετρηθούν.",
           "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι <b>μοιραίο</b>.",
           "<b>Η λύση:</b> αναρωτήσου τι λείπει από τα δεδομένα σου.",
           "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, <b>όχι μόνο όσα επέζησαν</b>."
@@ -110,9 +110,9 @@
         say: [
           "Στον Δεύτερο Παγκόσμιο Πόλεμο, τα βομβαρδιστικά γυρίζουν από τις αποστολές γεμάτα τρύπες από σφαίρες.",
           "Οι μηχανικοί σημειώνουν πού χτυπήθηκαν τα αεροπλάνα που γύρισαν.",
-          "Το σχέδιο: θωράκιση εκεί που είναι οι τρύπες.",
+          "Η προφανής ιδέα: θωράκιση εκεί που είναι οι τρύπες.",
           "Όμως αυτά είναι μόνο όσα κατάφεραν να γυρίσουν.",
-          "Όσα χτυπήθηκαν στις μηχανές δεν γύρισαν ποτέ, άρα δεν μετρήθηκαν.",
+          "Όσα χτυπήθηκαν στις μηχανές σπάνια γύριζαν για να μετρηθούν.",
           "Όπου δεν βλέπεις τρύπες, ένα χτύπημα είναι μοιραίο.",
           "Η λύση: αναρωτήσου τι λείπει από τα δεδομένα σου.",
           "Θωράκισε τις μηχανές. Μελέτησε και όσα χάθηκαν, όχι μόνο όσα επέζησαν.",
