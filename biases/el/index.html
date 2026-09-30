@@ -125,6 +125,15 @@ button{font:inherit;color:inherit}
 .wheel .hub{fill:var(--surface);stroke:var(--rule)}
 .wheel .hub-num{font:750 64px/1 var(--display);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
 .wheel .hub-sub{font:500 14px/1 var(--mono);fill:var(--muted);text-anchor:middle;letter-spacing:.1em}
+.wheel .hub-num,.wheel .hub-sub,.wheel .hub-fam{transition:opacity .15s}
+.wheel .hub-fam{opacity:0;pointer-events:none}
+.wheel .hub-fam text{text-anchor:middle;dominant-baseline:central}
+.wheel .hf-name{font:700 21px/1 var(--display);fill:var(--q);letter-spacing:-.01em}
+.wheel .hf-meta{font:500 11px/1 var(--mono);fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.wheel.focusing .hub-fam{opacity:1}
+.wheel.focusing .hub-num,.wheel.focusing .hub-sub{opacity:0}
+.wheel .gnode.hot circle{fill:var(--q)}
+.wheel .gnode.hot text{fill:var(--ink);font-weight:800}
 .wheel .ring{fill:none;stroke:var(--rule);stroke-width:1.2}
 .wheel .gnode{cursor:pointer}
 .wheel .gnode circle{fill:var(--surface);stroke:var(--q);stroke-width:2.5;transition:r .15s}
@@ -1073,6 +1082,29 @@ const hub = mk("g", {}, svg);
 mk("circle", { class:"hub", r:R_HUB - 8 }, hub);
 const hubNum = mk("text", { class:"hub-num", y:-8 }, hub); hubNum.textContent = new Set(BIASES.map(b => b.n)).size;
 const hubSub = mk("text", { class:"hub-sub", y:40 }, hub); hubSub.textContent = "ΜΕΡΟΛΗΨΙΕΣ";
+// while you explore, the hub names the family under the pointer, where nothing can overlap it
+const hubFam = mk("g", { class:"hub-fam" }, hub);
+const hfName = mk("text", { class:"hf-name" }, hubFam), hfMeta = mk("text", { class:"hf-meta" }, hubFam);
+let hubGroup = null;
+function setHub(g) {
+  hubFam.setAttribute("class", "hub-fam q-" + g.q.key);
+  const lines = []; let cur = "";
+  (SHORT[g.id] || g.title).split(" ").forEach(w => { if ((cur + " " + w).trim().length > 13 && cur) { lines.push(cur); cur = w; } else cur = (cur + " " + w).trim(); });
+  lines.push(cur);
+  hfName.textContent = "";
+  const top = -12 - (lines.length - 1) * 12;
+  lines.forEach((ln, i) => { const t = mk("tspan", { x:0, y:top + i * 24 }, hfName); t.textContent = ln; });
+  hfMeta.setAttribute("y", top + (lines.length - 1) * 24 + 32);
+  hfMeta.textContent = `${g.items.length} μεροληψίες`;
+}
+function groupAt(a) {
+  let best = null, bd = 1e9;
+  for (const g of GROUPS) {
+    if (a >= g.a0 && a <= g.a1) return g;
+    const d = Math.abs(((g.mid - a + 540) % 360) - 180); if (d < bd) { bd = d; best = g; }
+  }
+  return best;
+}
 
 BIASES.forEach(b => {
   b.fan = mk("path", { class:"fan q-" + b.q.key }, gFans);
@@ -1122,7 +1154,7 @@ QUADS.forEach(q => {
 
 // fisheye
 let focusAng = null, k = 0, kTarget = 0, raf = 0;
-const K_MAX = 3.2;
+const K_MAX = 2.6;
 function warp(a) {
   if (focusAng === null || k < 0.01) return [a, 1];
   let d = ((a - focusAng + 540) % 360) - 180;
@@ -1142,8 +1174,9 @@ function draw() {
   });
   BIASES.forEach(b => {
     const [a, dg] = warp(b.base);
-    const scale = Math.min(1.75, Math.max(0.85, 0.72 + dg * 0.3));
-    const fs = 9.6 * Math.min(1, 30 / b.n.length) * (k < 0.01 ? 1 : scale);
+    const scale = Math.min(1.6, Math.max(0.85, 0.72 + dg * 0.3));
+    const fs = Math.min(9.6 * Math.min(1, 30 / b.n.length) * (k < 0.01 ? 1 : scale),
+                        (R_RING - 10 - R_TXT) / (b.n.length * 0.6));   // long names end before the ring
     const [dx, dy] = pol(R_LEAF, a);
     b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
     if (b.play) b.play.setAttribute("transform", `translate(${f1(dx)} ${f1(dy)}) rotate(${f1(a)})`);
@@ -1164,15 +1197,13 @@ function draw() {
     const [c3x, c3y] = pol(R_LEAF - 40, a);
     b.fan.setAttribute("d", `M${f1(x0)} ${f1(y0)}Q${f1(c1x)} ${f1(c1y)} ${f1(fx)} ${f1(fy)}C${f1(c2x)} ${f1(c2y)} ${f1(c3x)} ${f1(c3y)} ${f1(dx)} ${f1(dy)}`);
   });
-  // fade ring labels near the magnified region so long names stay legible
-  GROUPS.forEach(g => {
-    let near = 1;
-    if (focusAng !== null && k > 0.3) {
-      const d = Math.abs(((g.mid - focusAng + 540) % 360) - 180);
-      near = d < 14 ? 0.12 : d < 24 ? 0.5 : 1;
-    }
-    g.label.style.opacity = near;
-  });
+  // the family under the pointer: named in the hub, highlighted on the ring (names no longer reach the ring)
+  const focusing = focusAng !== null && k > 0.3;
+  svg.classList.toggle("focusing", focusing);
+  const fg = focusing ? groupAt(focusAng) : null;
+  if (fg && fg !== hubGroup) setHub(fg);
+  hubGroup = fg;
+  GROUPS.forEach(g => g.node.classList.toggle("hot", g === fg));
 }
 function tick() {
   k += (kTarget - k) * 0.22;
