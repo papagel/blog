@@ -430,10 +430,13 @@ footer cite{font-style:italic}
 }
 
 /* videos: markers, the reel */
-.wheel .leaf.vid .dot{r:5.2;fill:var(--surface);stroke:var(--q);stroke-width:2.4}
+.wheel .leaf.vid .dot{display:none}
+.wheel .leaf .play{fill:var(--q)}
+.wheel .leaf.on .play,.wheel .leaf:hover .play{fill:var(--ink)}
+.wheel .leaf.caught .play{stroke:var(--ground);stroke-width:1.4}
 .wheel .leaf.vid .lt{font-weight:600}
 .map-legend{max-width:1060px;margin:4px auto 0;display:flex;justify-content:center;gap:8px;align-items:center;font:12px/1.3 var(--mono);color:var(--muted)}
-.map-legend i{width:11px;height:11px;border-radius:50%;border:2.4px solid var(--muted);box-sizing:border-box;flex:none}
+.map-legend i{font-style:normal;color:var(--ink);font-size:11px}
 .vb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
 .reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:4px;scrollbar-width:none}
 .reel::-webkit-scrollbar{display:none}
@@ -479,11 +482,10 @@ footer cite{font-style:italic}
 .dial-svg:focus-visible{outline:2px solid var(--nem);outline-offset:-4px}
 .dial-svg .dl{font-family:var(--display);fill:var(--ink);dominant-baseline:central;cursor:pointer}
 .dial-svg .dd{fill:var(--q)}
-.dial-svg .dv{fill:var(--surface);stroke:var(--q);stroke-width:2.2}
 .dial-svg .dvp{fill:var(--q)}
 .dial-svg .band{fill:var(--surface)}
 .dial-svg .rim{fill:none;stroke:var(--rule);stroke-width:1}
-.dial-svg .ptr{fill:var(--ink)}
+.dial-svg .ptr{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
 .dial-read{padding:4px 16px 0;min-height:120px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .dial-read .dq{font:500 11px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--q)}
 .dial-read b{font:700 25px/1.1 var(--display);letter-spacing:-.01em}
@@ -537,7 +539,7 @@ footer cite{font-style:italic}
       <div class="seg" id="view-seg" hidden role="group" aria-label="Wheel view"><button type="button" data-view="all" aria-pressed="true">All biases</button><button type="button" data-view="mine" aria-pressed="false">My map<span id="mine-n">0</span></button></div>
     </div>
     <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access."></svg>
-    <p class="map-legend"><i aria-hidden="true"></i>Ringed dots have a 30-second video</p>
+    <p class="map-legend"><i aria-hidden="true">▶</i>marks the biases with their own 30-second video</p>
     <div class="dial" id="dial">
       <div class="dial-chips" id="dial-chips" role="group" aria-label="Jump to a problem"></div>
       <svg class="dial-svg" id="dial-svg" viewBox="0 0 360 400" tabindex="0" role="slider" aria-label="The bias wheel. Drag up or down to turn it."></svg>
@@ -1068,7 +1070,7 @@ BIASES.forEach(b => {
   b.txt = mk("text", { class:"lt" }, leaf);
   b.txt.textContent = b.n;
   b.leaf = leaf;
-  if (vidKey(b)) leaf.classList.add("vid");
+  if (vidKey(b)) { leaf.classList.add("vid"); b.play = mk("path", { class:"play", d:"M-4.6 4 0 -5.4 4.6 4Z" }, leaf); }   // points outward
   leaf.addEventListener("click", () => openBias(b));
   leaf.addEventListener("mouseenter", () => b.fan.classList.add("hot"));
   leaf.addEventListener("mouseleave", () => b.fan.classList.remove("hot"));
@@ -1132,6 +1134,7 @@ function draw() {
     const fs = 9.6 * Math.min(1, 30 / b.n.length) * (k < 0.01 ? 1 : scale);
     const [dx, dy] = pol(R_LEAF, a);
     b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
+    if (b.play) b.play.setAttribute("transform", `translate(${f1(dx)} ${f1(dy)}) rotate(${f1(a)})`);
     const [tx, ty] = pol(R_TXT, a);
     const left = ((a % 360) + 360) % 360 > 180;
     b.txt.setAttribute("transform", `translate(${f1(tx)} ${f1(ty)}) rotate(${f1(left ? a + 90 : a - 90)})`);
@@ -1945,7 +1948,7 @@ const dMod = i => ((i % DN) + DN) % DN;
 const f1d = n => n.toFixed(1);
 function dialDraw() {
   const c = Math.round(dRot / DSTEP);
-  let h = `<circle class="rim" cx="${DCX}" cy="${DCY}" r="${DR}"/><rect class="band" x="150" y="${DCY - 17}" width="206" height="34" rx="10"/><path class="ptr" d="M131 ${DCY}l-9-6v12z"/>`;
+  let h = `<circle class="rim" cx="${DCX}" cy="${DCY}" r="${DR}"/><rect class="band" x="150" y="${DCY - 17}" width="206" height="34" rx="10"/><path class="ptr" d="M118 ${DCY}h14"/>`;
   for (let k = -17; k <= 17; k++) {
     const i = dMod(c + k), b = BIASES[i], a = (c + k) * DSTEP - dRot, d = Math.abs(a / DSTEP), r = a * Math.PI / 180;
     const dx = DCX + DR * Math.cos(r), dy = DCY + DR * Math.sin(r);
@@ -1953,7 +1956,7 @@ function dialDraw() {
     const lx = DCX + DRL * Math.cos(r), ly = DCY + DRL * Math.sin(r);
     const fs = Math.min(10.5 + 6.5 * Math.exp(-d * d / 4.5), 192 / (b.n.length * (LANG === "el" ? 0.62 : 0.55)));   // long names shrink to fit
     const mark = vidKey(b)
-      ? `<circle class="dv" cx="${f1d(dx)}" cy="${f1d(dy)}" r="5"/><path class="dvp" d="M${f1d(dx - 1.5)} ${f1d(dy - 2.4)}l4 2.4-4 2.4z" transform="rotate(${f1d(a)} ${f1d(dx)} ${f1d(dy)})"/>`
+      ? `<path class="dvp" d="M${f1d(dx - 4)} ${f1d(dy - 5)}l9 5-9 5z" transform="rotate(${f1d(a)} ${f1d(dx)} ${f1d(dy)})"/>`
       : `<circle class="dd" cx="${f1d(dx)}" cy="${f1d(dy)}" r="2.8"/>`;
     h += `<g class="q-${b.q.key}" data-di="${i}" style="opacity:${Math.max(0.25, 1 - d * 0.065).toFixed(2)}">${mark}` +
       `<text class="dl" x="${f1d(lx)}" y="${f1d(ly)}" transform="rotate(${a.toFixed(2)} ${f1d(lx)} ${f1d(ly)})" style="font-size:${f1d(fs)}px;font-weight:${d < 0.5 ? 650 : 450}">${esc(b.n)}</text></g>`;
