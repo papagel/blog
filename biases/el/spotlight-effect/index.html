@@ -146,8 +146,12 @@ h1{font:760 clamp(36px,8vw,58px)/1.03 var(--display);letter-spacing:-.025em;marg
 .fam li:hover a{color:var(--q);text-decoration:underline;text-underline-offset:3px}
 .fam li a:focus-visible{outline:none}
 .fam li a:focus-visible::after{outline:2px solid var(--q);outline-offset:-2px}
-.fam li i{font-style:normal;color:var(--q);font-size:12px}
+.vi{display:inline-block;width:1.05em;height:1.05em;margin-left:7px;vertical-align:-.16em}
+.vi circle{fill:var(--q,var(--ink))}
+.vi path{fill:var(--surface)}
 @media (max-width:560px){.top .pill.all{display:none}}
+
+
 /* the social card, drawn at 600x315 and recorded at 2x (?capture=og) */
 .og{display:none}
 html.cap-og,html.cap-og body{margin:0;padding:0;height:100%;overflow:hidden;background:#101317}

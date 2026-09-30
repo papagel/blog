@@ -122,7 +122,7 @@ button{font:inherit;color:inherit}
 .wheel .leaf .hit{fill:transparent;stroke:none}
 .wheel:not(.aiming) .leaf:hover .lt,.wheel .leaf.on .lt{font-weight:600;fill:var(--ink)}
 .wheel .leaf.aim .lt{font-weight:700;fill:var(--ink)}
-.wheel .leaf.aim .dot,.wheel .leaf.aim .play{fill:var(--ink)}
+.wheel .leaf.aim .dot,.wheel .leaf.aim .play circle{fill:var(--ink)}
 .wheel.aiming{cursor:pointer}
 .wheel .hub-fam.is-bias .hf-name{fill:var(--ink)}
 .wheel .hub-fam.is-bias .hf-meta{font:600 13px/1 var(--display);fill:var(--q);letter-spacing:0;text-transform:none}
@@ -454,17 +454,22 @@ footer cite{font-style:italic}
 
 /* videos: markers, the reel */
 .wheel .leaf.vid .dot{display:none}
-.wheel .leaf .play{fill:var(--q)}
-.wheel .leaf.on .play,.wheel:not(.aiming) .leaf:hover .play{fill:var(--ink)}
-.wheel .leaf.caught .play{stroke:var(--ground);stroke-width:1.4}
+.wheel .leaf .play circle{fill:var(--q)}
+.wheel .leaf .play path{fill:var(--surface)}
+.wheel .leaf.on .play circle,.wheel:not(.aiming) .leaf:hover .play circle{fill:var(--ink)}
+.wheel .leaf.caught .play circle{stroke:var(--ground);stroke-width:1.2}
 .wheel .leaf.vid .lt{font-weight:600}
-.map-legend{max-width:1060px;margin:4px auto 0;display:flex;justify-content:center;gap:8px;align-items:center;font:12px/1.3 var(--mono);color:var(--muted)}
-.map-legend i{font-style:normal;color:var(--ink);font-size:11px}
 .kind{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-top:10px;font-size:15px;line-height:1.5;color:var(--muted)}
 .ktag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:4px 8px;white-space:nowrap}
 .kind button{all:unset;cursor:pointer;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .kind button:hover,.kind button:focus-visible{color:var(--q)}
 .kb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
+.vi{display:inline-block;width:1.05em;height:1.05em;margin-left:7px;vertical-align:-.16em;flex:none}
+.vi circle{fill:var(--q,var(--ink))}
+.vi path{fill:var(--surface)}
+.chip .vi{margin:0}
+.chip[aria-pressed="true"] .vi circle{fill:var(--ground)}
+.chip[aria-pressed="true"] .vi path{fill:var(--ink)}
 .vb{display:inline-block;margin-left:8px;font:500 10.5px/1 var(--mono);letter-spacing:.03em;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:3px 6px;vertical-align:2px;white-space:nowrap}
 .reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:4px;scrollbar-width:none}
 .reel::-webkit-scrollbar{display:none}
@@ -510,7 +515,8 @@ footer cite{font-style:italic}
 .dial-svg:focus-visible{outline:2px solid var(--nem);outline-offset:-4px}
 .dial-svg .dl{font-family:var(--display);fill:var(--ink);dominant-baseline:central;cursor:pointer}
 .dial-svg .dd{fill:var(--q)}
-.dial-svg .dvp{fill:var(--q)}
+.dial-svg .dvp circle{fill:var(--q)}
+.dial-svg .dvp path{fill:var(--surface)}
 .dial-svg .band{fill:var(--surface)}
 .dial-svg .rim{fill:none;stroke:var(--rule);stroke-width:1}
 .dial-svg .ptr{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
@@ -532,7 +538,7 @@ footer cite{font-style:italic}
   .habit{flex:none;width:80vw;max-width:330px;scroll-snap-align:start}
 }
 @media (max-width:700px){
-  .wheel,.map-legend,.map-bar{display:none}
+  .wheel,.map-bar{display:none}
   .dial{display:block;margin-inline:calc(-1*clamp(16px,4vw,48px))}
 }
 
@@ -573,7 +579,6 @@ footer cite{font-style:italic}
       <div class="seg" id="view-seg" hidden role="group" aria-label="Wheel view"><button type="button" data-view="all" aria-pressed="true">All biases</button><button type="button" data-view="mine" aria-pressed="false">My map<span id="mine-n">0</span></button></div>
     </div>
     <svg class="wheel" id="wheel" viewBox="-660 -660 1320 1320" role="group" aria-label="The cognitive bias wheel. Four problems, twenty strategies, and every bias. Use the full list below for keyboard access."></svg>
-    <p class="map-legend"><i aria-hidden="true">▶</i>marks the biases with their own 30-second video</p>
     <div class="dial" id="dial">
       <div class="dial-chips" id="dial-chips" role="group" aria-label="Jump to a problem"></div>
       <svg class="dial-svg" id="dial-svg" viewBox="0 0 360 400" tabindex="0" role="slider" aria-label="The bias wheel. Drag up or down to turn it."></svg>
@@ -621,7 +626,7 @@ footer cite{font-style:italic}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="q-input" type="search" placeholder="Search biases" autocomplete="off" aria-label="Search biases">
       </label>
-      <button class="chip" type="button" id="vid-only" aria-pressed="false">▶ With a video <span class="reel-n"></span></button>
+      <button class="chip" type="button" id="vid-only" aria-pressed="false"><svg class="vi" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8"/><path d="M6.3 4.7v6.6L11.5 8z"/></svg>With a video <span class="reel-n"></span></button>
     </div>
     <div id="list"></div>
   </section>
@@ -1064,6 +1069,7 @@ BIASES.forEach(b => {
   b.main = k.same ? BIASES.find(x => (x.en || x.n) === k.same) : null;   // this entry is another name for b.main
 });
 const cap = s => s ? s[0].toUpperCase() + s.slice(1) : "";
+const VIDEO_ICON = `<svg class="vi" viewBox="0 0 16 16" role="img" aria-label="Has a 30-second video"><title>Has a 30-second video</title><circle cx="8" cy="8" r="8"/><path d="M6.3 4.7v6.6L11.5 8z"/></svg>`;
 // on a card and a bias's page: what this entry is, when it isn't simply a bias
 function kindLine(b) {
   let out = "";
@@ -1170,7 +1176,11 @@ BIASES.forEach(b => {
   b.txt = mk("text", { class:"lt" }, leaf);
   b.txt.textContent = b.n;
   b.leaf = leaf;
-  if (vidKey(b)) { leaf.classList.add("vid"); b.play = mk("path", { class:"play", d:"M-4.6 4 0 -5.4 4.6 4Z" }, leaf); }   // points outward
+  if (vidKey(b)) {   // a round play button: this bias has its own video
+    leaf.classList.add("vid");
+    b.play = mk("g", { class:"play" }, leaf);
+    mk("circle", { r:4.8 }, b.play); mk("path", { d:"M-1.7 -2.7v5.4L2.7 0z" }, b.play);
+  }
   leaf.addEventListener("click", () => { if (!aim) openBias(b); });
 });
 // hit lines are drawn in the leaf group; make them usable
@@ -1240,7 +1250,8 @@ function draw() {
   BIASES.forEach(b => {
     const [a, dg] = warp(b.base);
     const lean = k < 0.01 ? 0 : Math.min(1, Math.max(0, (dg - 1) / K_MAX));
-    const rLeaf = R_LEAF - LEAN * lean, rTxt = rLeaf + 7;
+    const ps = k < 0.01 ? 1 : Math.min(1.9, Math.max(0.9, 0.7 + dg * 0.35));   // the play button's size
+    const rLeaf = R_LEAF - LEAN * lean, rTxt = rLeaf + (b.play ? 3 + 4.8 * ps : 7);
     // the names at the pointer grow most: the lens, plus a peak for the one or two right under it
     const d = focusAng === null ? 180 : Math.abs(((b.base - focusAng + 540) % 360) - 180);
     const scale = Math.min(2.05, Math.max(0.85, 0.62 + dg * 0.4)) + 0.35 * lean * Math.exp(-(d * d) / 3);
@@ -1248,7 +1259,7 @@ function draw() {
                         (R_RING - 10 - rTxt) / b.em);   // every name ends before the ring
     const [dx, dy] = pol(rLeaf, a);
     b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
-    if (b.play) b.play.setAttribute("transform", `translate(${f1(dx)} ${f1(dy)}) rotate(${f1(a)})`);
+    if (b.play) b.play.setAttribute("transform", `translate(${f1(dx)} ${f1(dy)}) scale(${f1(ps)})`);
     const [tx, ty] = pol(rTxt, a);
     const left = ((a % 360) + 360) % 360 > 180;
     b.txt.setAttribute("transform", `translate(${f1(tx)} ${f1(ty)}) rotate(${f1(left ? a + 90 : a - 90)})`);
@@ -1332,9 +1343,15 @@ document.getElementById("problems").addEventListener("click", e => {
 /* ---------- browse ---------- */
 let query = "", onlyVid = false;
 const qInput = document.getElementById("q-input");
-qInput.addEventListener("input", () => { query = fold(qInput.value.trim()); renderList(); });
+// after a search or a filter, the results start right under the search bar
+function toResults() {
+  const tools = document.querySelector("#browse .tools"), list = document.getElementById("list");
+  const y = Math.round(list.getBoundingClientRect().top + scrollY - tools.offsetHeight - 8);
+  if (Math.abs(scrollY - y) > 4) scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
+qInput.addEventListener("input", () => { query = fold(qInput.value.trim()); renderList(); toResults(); });
 const vidOnly = document.getElementById("vid-only");
-vidOnly.addEventListener("click", () => { onlyVid = !onlyVid; vidOnly.setAttribute("aria-pressed", onlyVid); renderList(); });
+vidOnly.addEventListener("click", () => { onlyVid = !onlyVid; vidOnly.setAttribute("aria-pressed", onlyVid); renderList(); toResults(); });
 function matches(b) {
   if (onlyVid && !vidKey(b)) return false;
   if (!query) return true;
@@ -1350,7 +1367,7 @@ function renderList() {
       n += hits.length;
       qh += `<div class="gsec q-${q.key}">
         <h4><button type="button" data-g="${GROUPS.indexOf(g)}">${esc(g.title)}</button></h4>
-        <div class="items">${hits.map(b => `<a class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" href="${b.page}" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? `<span class="vb">▶ 30s</span>` : ""}${kindBadge(b)}</a>`).join("")}</div>
+        <div class="items">${hits.map(b => `<a class="item q-${q.key}${caught.has(b.slug) ? " caught" : ""}" href="${b.page}" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? VIDEO_ICON : ""}${kindBadge(b)}</a>`).join("")}</div>
       </div>`;
     });
     if (qh) html += `<div class="qsec q-${q.key}" id="list-${q.key}"><h3>${esc(q.name)}</h3>${qh}</div>`;
@@ -1510,7 +1527,7 @@ function openHabit(h, { playlist = false } = {}) {
     <div><h2 id="p-title">${esc(h.title)}</h2></div>
     ${key ? `<div class="player-host" data-anim="${key}"></div>` : ""}
     <p class="def">${esc(h.text)}</p>
-    <div class="pblock"><h3>Catches</h3><div class="sibs">${catches.map(b => `<button type="button" data-i="${b.i}">${vidKey(b) ? "▶ " : ""}${esc(b.n)}</button>`).join("")}</div></div>
+    <div class="pblock"><h3>Catches</h3><div class="sibs">${catches.map(b => `<button type="button" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? VIDEO_ICON : ""}</button>`).join("")}</div></div>
     <div class="row"><a class="btn" href="habits/">All 8 habits on one page</a></div>
     ${srcLine(SOURCES.habits?.[h.key])}`;
   panel.className = "panel open q-" + HQ[i % 4];
@@ -2099,7 +2116,7 @@ function dialDraw() {
     const lx = DCX + DRL * Math.cos(r), ly = DCY + DRL * Math.sin(r);
     const fs = Math.min(10.5 + 6.5 * Math.exp(-d * d / 4.5), 192 / (b.n.length * (LANG === "el" ? 0.62 : 0.55)));   // long names shrink to fit
     const mark = vidKey(b)
-      ? `<path class="dvp" d="M${f1d(dx - 4)} ${f1d(dy - 5)}l9 5-9 5z" transform="rotate(${f1d(a)} ${f1d(dx)} ${f1d(dy)})"/>`
+      ? `<g class="dvp" transform="translate(${f1d(dx)} ${f1d(dy)})"><circle r="6"/><path d="M-2.1 -3.4v6.8L3.4 0z"/></g>`
       : `<circle class="dd" cx="${f1d(dx)}" cy="${f1d(dy)}" r="2.8"/>`;
     h += `<g class="q-${b.q.key}" data-di="${i}" style="opacity:${Math.max(0.25, 1 - d * 0.065).toFixed(2)}">${mark}` +
       `<text class="dl" x="${f1d(lx)}" y="${f1d(ly)}" transform="rotate(${a.toFixed(2)} ${f1d(lx)} ${f1d(ly)})" style="font-size:${f1d(fs)}px;font-weight:${d < 0.5 ? 650 : 450}">${esc(b.n)}</text></g>`;
@@ -2199,7 +2216,7 @@ habitList.innerHTML = HABITS.map((h, i) => `<article class="habit q-${HQ[i % 4]}
   <span class="habit-no">${String(i + 1).padStart(2, "0")}</span>
   <h3>${esc(h.title)}</h3><p>${esc(h.text)}</p>
   <div class="habit-catches"><span class="label">Catches</span>${h.catches.map(n => byEn.get(n)).filter(Boolean)
-    .map(b => `<button type="button" class="hchip" data-i="${b.i}">${vidKey(b) ? "▶ " : ""}${esc(b.n)}</button>`).join("")}</div>
+    .map(b => `<button type="button" class="hchip" data-i="${b.i}">${esc(b.n)}${vidKey(b) ? VIDEO_ICON : ""}</button>`).join("")}</div>
 </article>`).join("");
 habitList.addEventListener("click", e => {
   const w = e.target.closest("[data-habit]"); if (w) return openHabit(HABITS[+w.dataset.habit]);
