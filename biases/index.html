@@ -261,13 +261,15 @@ footer cite{font-style:italic}
   .quiz{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){
-  .hero{align-items:flex-start;text-align:left}
+  .hero{align-items:flex-start;text-align:left;padding-bottom:clamp(28px,8vw,40px)}   /* on phones the next section's rule follows right after */
   .actions{justify-content:flex-start}
   .foot-row{flex-direction:column;gap:8px}
   .gsec{grid-template-columns:minmax(0,1fr)}
   .panel{top:auto;height:88%;width:100%;border-left:0;border-top:5px solid var(--q,var(--rule));border-radius:18px 18px 0 0;transform:translateY(105%)}
   .scrim.open{opacity:1;pointer-events:auto}
   .top nav{display:none}
+  .top{flex-wrap:nowrap}
+  .brand{min-width:0;line-height:1.2}   /* a long name wraps instead of pushing the language button down */
 }
 @media (max-width:520px){
   .problems{grid-template-columns:minmax(0,1fr)}
