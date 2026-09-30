@@ -344,19 +344,11 @@ article li {
 /* Experiments: image tiles */
 .exp-grid {
   list-style: none;
-  margin: 0 0 48px;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.exp-grid:last-child {
-  margin-bottom: 0;
-}
-
-.exp-grid-featured {
   grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .exp-grid li {
@@ -400,15 +392,11 @@ article li {
 
 .exp-title {
   color: var(--text);
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.35;
   transition: color 0.15s ease;
-}
-
-.exp-grid-featured .exp-title {
-  font-size: 21px;
 }
 
 .exp-title::after {
@@ -606,14 +594,7 @@ article li {
   .post-list {
     grid-template-columns: 1fr;
   }
-  .exp-grid,
-  .exp-grid-featured {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 860px) {
   .exp-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }

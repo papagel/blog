@@ -53,12 +53,11 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
 ## Adding an experiment
 
-1. Save a 16:9 image, 960x540 JPEG, as `assets/experiments/<slug>.jpg`. The game
-   tiles come from the PixelAgora hub's key art
+1. Save a 16:9 image, 960x540 JPEG, as `assets/experiments/<slug>.jpg`. The
+   PixelAgora tile is a mosaic of the hub's game art
    ([papagel/games-hub](https://github.com/papagel/games-hub), `assets/thumbs/fix-*.jpg`).
 2. Copy one `<li>` in `experiments.html` and change the link, image, title,
-   description, and host line. "Projects" holds the two wide tiles and "Games"
-   the three-column grid.
+   description, and host line.
 
 ## Cognitive Bias Explorer (/biases)
 
