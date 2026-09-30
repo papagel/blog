@@ -119,7 +119,12 @@ button{font:inherit;color:inherit}
 .wheel .lt{font-family:var(--mono);fill:var(--q);dominant-baseline:central;cursor:pointer}
 .wheel .leaf{cursor:pointer}
 .wheel .leaf .hit{fill:transparent;stroke:none}
-.wheel .leaf:hover .lt,.wheel .leaf.on .lt{font-weight:600;fill:var(--ink)}
+.wheel:not(.aiming) .leaf:hover .lt,.wheel .leaf.on .lt{font-weight:600;fill:var(--ink)}
+.wheel .leaf.aim .lt{font-weight:700;fill:var(--ink)}
+.wheel .leaf.aim .dot,.wheel .leaf.aim .play{fill:var(--ink)}
+.wheel.aiming{cursor:pointer}
+.wheel .hub-fam.is-bias .hf-name{fill:var(--ink)}
+.wheel .hub-fam.is-bias .hf-meta{font:600 13px/1 var(--display);fill:var(--q);letter-spacing:0;text-transform:none}
 .wheel .leaf.on .dot{fill:var(--ink)}
 .wheel .fan.hot{opacity:1;stroke-width:1.8}
 .wheel .hub{fill:var(--surface);stroke:var(--rule)}
@@ -443,7 +448,7 @@ footer cite{font-style:italic}
 /* videos: markers, the reel */
 .wheel .leaf.vid .dot{display:none}
 .wheel .leaf .play{fill:var(--q)}
-.wheel .leaf.on .play,.wheel .leaf:hover .play{fill:var(--ink)}
+.wheel .leaf.on .play,.wheel:not(.aiming) .leaf:hover .play{fill:var(--ink)}
 .wheel .leaf.caught .play{stroke:var(--ground);stroke-width:1.4}
 .wheel .leaf.vid .lt{font-weight:600}
 .map-legend{max-width:1060px;margin:4px auto 0;display:flex;justify-content:center;gap:8px;align-items:center;font:12px/1.3 var(--mono);color:var(--muted)}
@@ -1085,17 +1090,37 @@ const hubSub = mk("text", { class:"hub-sub", y:40 }, hub); hubSub.textContent = 
 // while you explore, the hub names the family under the pointer, where nothing can overlap it
 const hubFam = mk("g", { class:"hub-fam" }, hub);
 const hfName = mk("text", { class:"hf-name" }, hubFam), hfMeta = mk("text", { class:"hf-meta" }, hubFam);
-let hubGroup = null;
-function setHub(g) {
-  hubFam.setAttribute("class", "hub-fam q-" + g.q.key);
+let hubKey = null;
+// wrap at spaces, and after the hyphen of a long hyphenated word
+const wrapWords = (text, max) => {
   const lines = []; let cur = "";
-  (SHORT[g.id] || g.title).split(" ").forEach(w => { if ((cur + " " + w).trim().length > 13 && cur) { lines.push(cur); cur = w; } else cur = (cur + " " + w).trim(); });
-  lines.push(cur);
-  hfName.textContent = "";
-  const top = -12 - (lines.length - 1) * 12;
-  lines.forEach((ln, i) => { const t = mk("tspan", { x:0, y:top + i * 24 }, hfName); t.textContent = ln; });
-  hfMeta.setAttribute("y", top + (lines.length - 1) * 24 + 32);
-  hfMeta.textContent = `${g.items.length} biases`;
+  text.split(" ").flatMap(w => w.length > max && w.includes("-") ? w.split(/(?<=-)/) : [w]).forEach(w => {
+    const next = cur.endsWith("-") ? cur + w : (cur + " " + w).trim();
+    if (next.length > max && cur) { lines.push(cur); cur = w; } else cur = next;
+  });
+  lines.push(cur); return lines;
+};
+const setLines = (el, lines, y0, lh) => {
+  el.textContent = "";
+  lines.forEach((ln, i) => { const t = mk("tspan", { x:0, y:y0 + i * lh }, el); t.textContent = ln; });
+};
+// shrink a text until its widest line fits the hub
+const fitHub = (el, size, maxW) => {
+  el.style.fontSize = size + "px";
+  const ts = [...el.querySelectorAll("tspan")];
+  const w = ts.length ? Math.max(...ts.map(t => t.getComputedTextLength())) : el.getComputedTextLength();
+  if (w > maxW) el.style.fontSize = Math.max(9, size * maxW / w) + "px";
+};
+function setHub(g, b) {
+  hubFam.setAttribute("class", "hub-fam q-" + g.q.key + (b ? " is-bias" : ""));
+  const lines = wrapWords(b ? b.n : (SHORT[g.id] || g.title), 13);
+  const meta = b ? wrapWords(SHORT[g.id] || g.title, 18) : [`${g.items.length} biases`];
+  const lh = 24, mlh = 16, gap = b ? 22 : 26;
+  const top = -(lines.length * lh + gap + (meta.length - 1) * mlh) / 2 + lh / 2;
+  setLines(hfName, lines, top, lh);
+  fitHub(hfName, 21, lines.length > 2 ? 136 : 150);
+  setLines(hfMeta, meta, top + (lines.length - 1) * lh + gap + 6, mlh);
+  fitHub(hfMeta, b ? 13 : 11, 128);
 }
 function groupAt(a) {
   let best = null, bd = 1e9;
@@ -1115,9 +1140,7 @@ BIASES.forEach(b => {
   b.txt.textContent = b.n;
   b.leaf = leaf;
   if (vidKey(b)) { leaf.classList.add("vid"); b.play = mk("path", { class:"play", d:"M-4.6 4 0 -5.4 4.6 4Z" }, leaf); }   // points outward
-  leaf.addEventListener("click", () => openBias(b));
-  leaf.addEventListener("mouseenter", () => b.fan.classList.add("hot"));
-  leaf.addEventListener("mouseleave", () => b.fan.classList.remove("hot"));
+  leaf.addEventListener("click", () => { if (!aim) openBias(b); });
 });
 // hit lines are drawn in the leaf group; make them usable
 gLeaves.querySelectorAll(".hit").forEach(l => l.setAttribute("stroke", "transparent"));
@@ -1155,6 +1178,17 @@ QUADS.forEach(q => {
 // fisheye
 let focusAng = null, k = 0, kTarget = 0, raf = 0;
 const K_MAX = 2.6;
+const LEAN = 60;   // how far the leaves at the pointer move toward the hub, to give their names room
+// each name's width per unit of font size (monospace, but Greek may fall back to another font)
+function measure() {
+  BIASES.forEach(b => {
+    b.txt.setAttribute("font-size", 10);
+    const w = b.txt.getComputedTextLength() / 10;
+    b.em = w > 0 ? w : b.n.length * 0.6;
+  });
+}
+measure();
+document.fonts?.ready.then(() => { measure(); draw(); });
 function warp(a) {
   if (focusAng === null || k < 0.01) return [a, 1];
   let d = ((a - focusAng + 540) % 360) - 180;
@@ -1174,18 +1208,22 @@ function draw() {
   });
   BIASES.forEach(b => {
     const [a, dg] = warp(b.base);
-    const scale = Math.min(1.6, Math.max(0.85, 0.72 + dg * 0.3));
+    const lean = k < 0.01 ? 0 : Math.min(1, Math.max(0, (dg - 1) / K_MAX));
+    const rLeaf = R_LEAF - LEAN * lean, rTxt = rLeaf + 7;
+    // the names at the pointer grow most: the lens, plus a peak for the one or two right under it
+    const d = focusAng === null ? 180 : Math.abs(((b.base - focusAng + 540) % 360) - 180);
+    const scale = Math.min(2.05, Math.max(0.85, 0.62 + dg * 0.4)) + 0.35 * lean * Math.exp(-(d * d) / 3);
     const fs = Math.min(9.6 * Math.min(1, 30 / b.n.length) * (k < 0.01 ? 1 : scale),
-                        (R_RING - 10 - R_TXT) / (b.n.length * 0.6));   // long names end before the ring
-    const [dx, dy] = pol(R_LEAF, a);
+                        (R_RING - 10 - rTxt) / b.em);   // every name ends before the ring
+    const [dx, dy] = pol(rLeaf, a);
     b.dot.setAttribute("cx", f1(dx)); b.dot.setAttribute("cy", f1(dy));
     if (b.play) b.play.setAttribute("transform", `translate(${f1(dx)} ${f1(dy)}) rotate(${f1(a)})`);
-    const [tx, ty] = pol(R_TXT, a);
+    const [tx, ty] = pol(rTxt, a);
     const left = ((a % 360) + 360) % 360 > 180;
     b.txt.setAttribute("transform", `translate(${f1(tx)} ${f1(ty)}) rotate(${f1(left ? a + 90 : a - 90)})`);
     b.txt.setAttribute("text-anchor", left ? "end" : "start");
     b.txt.setAttribute("font-size", f1(fs));
-    const [hx2, hy2] = pol(R_TXT + b.n.length * fs * 0.6, a);
+    const [hx2, hy2] = pol(rTxt + b.em * fs, a);
     b.hit.setAttribute("x1", f1(dx)); b.hit.setAttribute("y1", f1(dy));
     b.hit.setAttribute("x2", f1(hx2)); b.hit.setAttribute("y2", f1(hy2));
     b.hit.setAttribute("stroke-width", f1(Math.max(7, fs)));
@@ -1194,15 +1232,16 @@ function draw() {
     const [c1x, c1y] = pol(R_HUB + 50, ga);
     const [fx, fy] = pol(R_FAN, ga);
     const [c2x, c2y] = pol(R_FAN + 40, ga);
-    const [c3x, c3y] = pol(R_LEAF - 40, a);
+    const [c3x, c3y] = pol(rLeaf - 40, a);
     b.fan.setAttribute("d", `M${f1(x0)} ${f1(y0)}Q${f1(c1x)} ${f1(c1y)} ${f1(fx)} ${f1(fy)}C${f1(c2x)} ${f1(c2y)} ${f1(c3x)} ${f1(c3y)} ${f1(dx)} ${f1(dy)}`);
   });
-  // the family under the pointer: named in the hub, highlighted on the ring (names no longer reach the ring)
+  // the hub names the bias under the pointer (or its family); the family is highlighted on the ring
   const focusing = focusAng !== null && k > 0.3;
   svg.classList.toggle("focusing", focusing);
-  const fg = focusing ? groupAt(focusAng) : null;
-  if (fg && fg !== hubGroup) setHub(fg);
-  hubGroup = fg;
+  const fg = focusing ? (aim ? aim.g : groupAt(focusAng)) : null;
+  const key = fg && (aim ? "b" + aim.i : "g" + fg.id);
+  if (key && key !== hubKey) setHub(fg, aim);
+  hubKey = key;
   GROUPS.forEach(g => g.node.classList.toggle("hot", g === fg));
 }
 function tick() {
@@ -1216,18 +1255,34 @@ function svgPoint(e) {
   const r = svg.getBoundingClientRect();
   return [(e.clientX - r.left) / r.width * 1320 - 660, (e.clientY - r.top) / r.height * 1320 - 660];
 }
+// the bias under the mouse: bold on the wheel, named in the hub, opened by a click anywhere near it
+let aim = null;
+function biasAt(a) {
+  let best = null, bd = 1e9;
+  for (const b of BIASES) { const d = Math.abs(((b.base - a + 540) % 360) - 180); if (d < bd) { bd = d; best = b; } }
+  return best;
+}
+function setAim(b) {
+  if (b === aim) return;
+  aim?.leaf.classList.remove("aim"); aim?.fan.classList.remove("hot");
+  aim = b;
+  svg.classList.toggle("aiming", !!b);
+  b?.leaf.classList.add("aim"); b?.fan.classList.add("hot");
+}
 svg.addEventListener("pointermove", e => {
   if (e.pointerType !== "mouse" || narrow.matches) return;
   const [x, y] = svgPoint(e);
   const r = Math.hypot(x, y);
-  if (r < R_FAN - 20 || r > R_RING + 10) { kTarget = 0; kick(); return; }
+  if (r < R_FAN - 20 || r > R_RING + 10) { setAim(null); kTarget = 0; kick(); return; }
   focusAng = (Math.atan2(x, -y) * 180 / Math.PI + 360) % 360;
+  setAim(r > R_LEAF - LEAN - 24 && r < R_RING - 6 ? biasAt(focusAng) : null);
   kTarget = K_MAX;
   if (raf) return;
   k = k < 0.01 ? 0.01 : k;
   kick();
 });
-svg.addEventListener("pointerleave", () => { kTarget = 0; kick(); });
+svg.addEventListener("pointerleave", () => { setAim(null); kTarget = 0; kick(); });
+svg.addEventListener("click", e => { if (aim && !e.target.closest(".gnode, .qname")) openBias(aim); });
 draw();
 
 /* ---------- why ---------- */
@@ -1464,7 +1519,7 @@ function randomBias() {
 document.getElementById("p-rand").onclick = randomBias;
 document.getElementById("p-close").onclick = closePanel;
 scrim.onclick = closePanel;
-const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
+const OPENERS = "[data-habit], [data-watch], [data-vi], [data-open-videos], [data-scroll], .dial-svg, .wheel.aiming, .leaf, .gnode, .item, [data-i], [data-open], [data-open-group], [data-g], [data-read], [data-xp], [data-catch]";
 document.addEventListener("click", e => {
   if (!panel.classList.contains("open") || panel.contains(e.target) || e.target.closest(OPENERS)) return;
   closePanel();
