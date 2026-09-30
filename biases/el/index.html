@@ -240,6 +240,9 @@ footer{border-top:1px solid var(--rule);padding-block:22px 36px;display:flex;fle
 .cc{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:5px 7px;margin-top:1px;white-space:nowrap}
 .cc:hover{background:var(--ink);color:var(--ground)}
 footer cite{font-style:italic}
+.foot-nav{display:flex;flex-wrap:wrap;gap:8px 22px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--rule);font:500 13.5px/1.4 var(--mono)}
+.foot-nav a{color:var(--ink);text-underline-offset:3px}
+.foot-nav a:hover{color:var(--q,var(--nem))}
 
 /* panel */
 .scrim{position:fixed;inset:0;background:color-mix(in srgb,var(--ground) 40%,transparent);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
@@ -600,7 +603,8 @@ footer cite{font-style:italic}
   <section class="block" id="browse" aria-labelledby="browse-h">
     <div class="block-head">
       <h2 id="browse-h">Όλες οι μεροληψίες, ανά οικογένεια</h2>
-      <p>Ψάξε με όνομα ή θέμα, όπως «χρήματα» ή «μνήμη». Ή <a href="list/">διάβασέ τες όλες σε μία σελίδα</a>, με τον ορισμό της καθεμίας.</p>
+      <p>Ψάξε με όνομα ή θέμα, όπως «χρήματα» ή «μνήμη».</p>
+      <div class="row"><a class="btn" href="list/">Και οι 188 σε μία σελίδα, με ορισμούς</a></div>
     </div>
     <div class="tools">
       <label class="search" for="q-input">
@@ -630,6 +634,7 @@ footer cite{font-style:italic}
   </section>
 
   <footer id="credits">
+    <nav class="foot-nav" aria-label="Περισσότερες σελίδες"><a href="list/">Και οι 188 μεροληψίες, με ορισμούς</a><a href="habits/">8 συνήθειες ενάντια στις μεροληψίες</a></nav>
     <div class="foot-row">
       <a class="cc" rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" aria-label="Creative Commons Αναφορά Δημιουργού - Παρόμοια Διανομή 4.0">CC BY-SA 4.0</a>
       <p>Προσαρμογή του <a href="https://commons.wikimedia.org/wiki/File:Cognitive_bias_codex_en.svg" target="_blank" rel="noopener"><cite>The Cognitive Bias Codex</cite></a> των John Manoogian III (σχεδιασμός), Buster Benson (κατηγορίες) και TilmannR (υλοποίηση), που βασίζεται στη <a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases" target="_blank" rel="noopener">λίστα γνωστικών μεροληψιών της Wikipedia</a>. Η σελίδα διατίθεται με την ίδια άδεια. Μέρος του Downstream, από τον Thanos Papangelis.</p>
