@@ -6,6 +6,7 @@
 // Requires `rsvg-convert` (brew install librsvg) to rasterize SVG -> PNG.
 //
 // Usage: node scripts/generate-og.mjs
+//        node scripts/generate-og.mjs experiments.html   (only the pages named)
 //        node scripts/generate-og.mjs --check   (verify rsvg-convert is present)
 
 import {
@@ -341,11 +342,13 @@ function run() {
   ensureRsvg();
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
 
+  const only = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   const files = [
     "index.html",
     "about.html",
+    "experiments.html",
     ...globSync("posts/*.html", { cwd: ROOT }),
-  ];
+  ].filter((rel) => only.length === 0 || only.includes(rel));
 
   const results = [];
 

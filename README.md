@@ -8,12 +8,14 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 .
 ├── index.html          # Home page (list of posts)
 ├── about.html          # About page
+├── experiments.html    # Experiments page (image tiles for games & tools)
 ├── 404.html            # Not-found page
 ├── posts/              # One HTML file per post
 │   └── hello-world.html
 ├── css/style.css       # All styling (light + dark)
 ├── js/theme.js         # Dark mode toggle
 ├── assets/og/          # Per-page social-share cards (generated)
+├── assets/experiments/ # 960x540 tile images for experiments.html
 ├── scripts/generate-og.mjs  # Builds the social cards
 ├── CNAME               # Your custom domain (for GitHub Pages)
 └── .nojekyll           # Tells GitHub Pages to serve files as-is
@@ -43,9 +45,20 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
    This regenerates `assets/og/<slug>.png` for every page and points each
    page's `og:image` / `twitter:image` at its own card. Requires
-   `rsvg-convert` (install once with `brew install librsvg`).
+   `rsvg-convert` (install once with `brew install librsvg`). To rebuild only
+   some cards, name the pages:
+   `node scripts/generate-og.mjs posts/your-post-name.html`.
 
 5. Save, commit, and push. It's live in a minute.
+
+## Adding an experiment
+
+1. Save a 16:9 image, 960x540 JPEG, as `assets/experiments/<slug>.jpg`. The game
+   tiles come from the PixelAgora hub's key art
+   ([papagel/games-hub](https://github.com/papagel/games-hub), `assets/thumbs/fix-*.jpg`).
+2. Copy one `<li>` in `experiments.html` and change the link, image, title,
+   description, and host line. "Projects" holds the two wide tiles and "Games"
+   the three-column grid.
 
 ## Cognitive Bias Explorer (/biases)
 

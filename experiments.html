@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiments &middot; Downstream</title>
+    <meta
+      name="description"
+      content="Games and tools Thanos Papangelis is building on the side &mdash; all running in a browser tab, no install, no account."
+    />
+    <meta name="author" content="Thanos Papangelis" />
+    <link rel="canonical" href="https://papangelis.com/experiments.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Downstream" />
+    <meta property="og:title" content="Experiments &middot; Downstream" />
+    <meta
+      property="og:description"
+      content="Games and tools I&rsquo;m building on the side &mdash; all running in a browser tab."
+    />
+    <meta property="og:url" content="https://papangelis.com/experiments.html" />
+    <meta
+      property="og:image"
+      content="https://papangelis.com/assets/og/experiments.png?v=5bf8fa9e"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Experiments" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://papangelis.com/assets/og/experiments.png?v=5bf8fa9e"
+    />
+    <meta name="twitter:title" content="Experiments &middot; Downstream" />
+    <meta
+      name="twitter:description"
+      content="Games and tools I&rsquo;m building on the side &mdash; all running in a browser tab."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme") || "dark";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrap wrap-home">
+      <header class="site-header">
+        <h1 class="site-title"><a href="/">Downstream</a></h1>
+        <nav class="site-nav">
+          <a href="/experiments.html">Experiments</a>
+          <a href="/about.html">About</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+              ></path>
+            </svg>
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <p class="intro">
+          Things I&rsquo;m building on the side, to see what one person with
+          AI can make now. They all run in a browser tab &mdash; no install, no
+          account.
+        </p>
+
+        <p class="section-label">Projects</p>
+        <ul class="exp-grid exp-grid-featured">
+          <!-- Add new experiments at the top of their section. Tiles are
+               960x540 JPEGs in /assets/experiments/. -->
+          <li>
+            <a class="exp-card" href="/biases/">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/cognitive-bias-explorer.jpg"
+                alt=""
+                width="960"
+                height="540"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Cognitive Bias Explorer</span>
+                <span class="exp-desc">
+                  An interactive map of 188 cognitive biases, with experiments
+                  that let you feel them work on you.
+                </span>
+                <span class="exp-host">papangelis.com/biases</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/pixelagora.jpg"
+                alt=""
+                width="960"
+                height="540"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">PixelAgora</span>
+                <span class="exp-desc">
+                  A hub for the strategy and world-building games I build
+                  &amp; play.
+                </span>
+                <span class="exp-host">pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="section-label">Games</p>
+        <ul class="exp-grid">
+          <li>
+            <a class="exp-card" href="https://chess.pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/chessmate.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Chessmate</span>
+                <span class="exp-desc">
+                  Chess against AI or a friend online, with a coach, puzzles,
+                  and a kids mode.
+                </span>
+                <span class="exp-host">chess.pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://www.polis-game.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/polis.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Polis</span>
+                <span class="exp-desc">
+                  A city builder that runs in a browser tab. One HTML file, no
+                  install, no account.
+                </span>
+                <span class="exp-host">polis-game.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://imperium.pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/imperium.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Imperium</span>
+                <span class="exp-desc">
+                  A 3D real-time strategy game in the spirit of Age of Empires,
+                  running in a tab.
+                </span>
+                <span class="exp-host">imperium.pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://orbis.pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/orbis.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Orbis</span>
+                <span class="exp-desc">
+                  A Civilization-style strategy game in a tab. Settle, research,
+                  and conquer as your hex map curls into a living planet.
+                </span>
+                <span class="exp-host">orbis.pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://neon.pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/neon-skyfall.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Neon Skyfall</span>
+                <span class="exp-desc">
+                  An arcade shooter in a tab. Defend a neon skyline from waves
+                  of planes, with combos, bosses, and a leaderboard.
+                </span>
+                <span class="exp-host">neon.pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="exp-card" href="https://loopway.pixelagora.com">
+              <img
+                class="exp-thumb"
+                src="/assets/experiments/loopway.jpg"
+                alt=""
+                width="960"
+                height="540"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="exp-body">
+                <span class="exp-title">Loopway</span>
+                <span class="exp-desc">
+                  A 3D toy-car racer with real loops &mdash; 14 circuits, 10
+                  cars, AI rivals, and split-screen.
+                </span>
+                <span class="exp-host">loopway.pixelagora.com</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </main>
+
+      <footer class="site-footer">
+        <span>&copy; 2026 Thanos Papangelis</span>
+        <span><a href="/">Home</a> &middot; <a href="/experiments.html">Experiments</a> &middot; <a href="/about.html">About</a></span>
+      </footer>
+    </div>
+
+    <script src="/js/theme.js"></script>
+  </body>
+</html>
