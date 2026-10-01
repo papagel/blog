@@ -59,13 +59,14 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 2. Copy one `<li>` in `experiments.html` and change the link, image, title,
    description, and host line.
 
-## Cognitive Bias Explorer (/biases)
+## Cognitive Bias Explorer (moved to thebiasmap.com)
 
-`biases/` (English, Greek, animation pages, icons, videos) and `assets/og/biases*.png`,
-`assets/og/watch-*.png` are built from a separate repository,
-[papagel/cognitive-bias](https://github.com/papagel/cognitive-bias), which lives next to
-this one (`~/Apps/cognitive-bias`). Don't edit them here. Change the source there, run
-`python3 build.py` (it writes into this repo), then commit and push this blog.
+The explorer used to live at `/biases/`. Since 2026-10-01 it has its own domain,
+[thebiasmap.com](https://thebiasmap.com), built from
+[papagel/cognitive-bias](https://github.com/papagel/cognitive-bias) into
+[papagel/thebiasmap](https://github.com/papagel/thebiasmap). What's left under `biases/` here are small
+pages that forward every old address to the same path on thebiasmap.com (keeping `#` links), made by
+`blog-redirects.py` in the cognitive-bias repo. Don't edit them by hand.
 
 ## Preview locally
 
