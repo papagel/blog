@@ -26,10 +26,10 @@
     <path d="M -60 300 C 300 360, 700 260, 1260 440" fill="none" stroke="url(#stream)" stroke-width="2" stroke-opacity="0.13"/>
     <path d="M -60 420 C 340 480, 720 380, 1260 560" fill="none" stroke="url(#stream)" stroke-width="2" stroke-opacity="0.08"/>
 
-    <g>
-      <rect x="552" y="128" width="96" height="96" rx="21" fill="url(#bar)"/>
-      <path d="M 588 201 V 156 h 16.5 a 15 15 0 0 1 0 30 H 588"
-        fill="none" stroke="#ffffff" stroke-width="13.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(552 128) scale(1.5)">
+      <rect width="64" height="64" rx="14" fill="url(#bar)"/>
+      <path d="M20 16 H30 C42 16 48 22 48 32 C48 42 42 48 30 48 H20 Z"
+        fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round"/>
     </g>
 
     <text x="600" y="366" text-anchor="middle" font-size="112" font-weight="700" letter-spacing="-3" fill="#f4f4f6">Downstream</text>

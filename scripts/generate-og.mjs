@@ -125,16 +125,12 @@ function fitHeadline(text, maxWidth, maxLines, sizes) {
   return { size, lines: wrapToWidth(text, size, 700, maxWidth) };
 }
 
-// The rounded-square "P" mark (same design as the favicon), at any size.
-function pMark(x, y, size) {
-  const s = size / 96;
-  const stemX = x + 36 * s;
-  const topY = y + 28 * s;
-  const bottomY = y + 73 * s;
-  return `<g>
-      <rect x="${x}" y="${y}" width="${size}" height="${size}" rx="${21 * s}" fill="url(#bar)"/>
-      <path d="M ${stemX} ${bottomY} V ${topY} h ${16.5 * s} a ${15 * s} ${15 * s} 0 0 1 0 ${30 * s} H ${stemX}"
-        fill="none" stroke="#ffffff" stroke-width="${13.5 * s}" stroke-linecap="round" stroke-linejoin="round"/>
+// The rounded-square "D" mark (same geometry as the favicon), at any size.
+function dMark(x, y, size) {
+  return `<g transform="translate(${x} ${y}) scale(${size / 64})">
+      <rect width="64" height="64" rx="14" fill="url(#bar)"/>
+      <path d="M20 16 H30 C42 16 48 22 48 32 C48 42 42 48 30 48 H20 Z"
+        fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round"/>
     </g>`;
 }
 
@@ -210,7 +206,7 @@ function homeSvg({ tagline }) {
     <rect width="${W}" height="${H}" fill="url(#glow)"/>
     ${streamPaths}
 
-    ${pMark(markX, markY, markSize)}
+    ${dMark(markX, markY, markSize)}
 
     <text x="${CX}" y="366" text-anchor="middle" font-size="112" font-weight="700" letter-spacing="-3" fill="${C.title}">Downstream</text>
     ${taglineSvg}
@@ -308,7 +304,7 @@ function articleSvg({ headline, subhead, footerRight }) {
     <rect x="0" y="0" width="10" height="${H}" fill="url(#bar)"/>
 
     <g>
-      ${pMark(PAD, 66, 40)}
+      ${dMark(PAD, 66, 40)}
       <text x="${PAD + 56}" y="96" font-size="30" font-weight="700" letter-spacing="-0.5" fill="${C.title}">Downstream</text>
     </g>
 
