@@ -53,8 +53,8 @@ A simple, static blog — plain HTML files, one shared stylesheet, no build step
 
 ## Adding an experiment
 
-1. Save a 16:9 image, 960x540 JPEG, as `assets/experiments/<slug>.jpg`. The
-   PixelAgora tile is a mosaic of the hub's game art
+1. Save a 16:9 image, 960x540 JPEG, as `assets/experiments/<slug>.jpg`.
+   Game tiles use the hub's original artwork
    ([papagel/games-hub](https://github.com/papagel/games-hub), `assets/thumbs/fix-*.jpg`).
 2. Copy one `<li>` in `experiments.html` and change the link, image, title,
    description, and host line.
