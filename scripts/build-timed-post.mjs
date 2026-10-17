@@ -82,6 +82,7 @@ function ensureFfmpeg() {
 // re-read a clause. Prefer commas over em dashes.
 function normalizeForSpeech(text) {
   return text
+    .replace(/(\d)\u2013(?=\d)/g, "$1 to ")
     .replace(/\u2014\s*/g, ", ")
     .replace(/\u2013\s*/g, ", ")
     .replace(/\s+/g, " ")
@@ -97,10 +98,9 @@ function extractBlocks(body) {
     const attrs = m[2] || "";
     if (tag === "h1") continue;
     if (/class\s*=\s*["'][^"']*\barticle-meta\b/.test(attrs)) continue;
-    const text = normalizeForSpeech(
-      decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim()
-    );
-    if (text) blocks.push({ tag, text });
+    const original = decodeEntities(stripTags(m[3])).replace(/\s+/g, " ").trim();
+    const text = normalizeForSpeech(original);
+    if (text) blocks.push({ tag, text, words: original.split(/\s+/) });
   }
   return blocks;
 }
@@ -272,6 +272,7 @@ async function run(file, html, blocks) {
       }
 
       const tokenRe = /\S+/g;
+      const blockTimings = [];
       let m;
       while ((m = tokenRe.exec(chunk)) !== null) {
         if (TAG_TOKEN.test(m[0])) continue;
@@ -286,10 +287,25 @@ async function run(file, html, blocks) {
           start = (s / chunk.length) * measured + offset;
           end = ((e + 1) / chunk.length) * measured + offset;
         }
-        timings.push([
+        blockTimings.push([
           Math.round(start * 1000) / 1000,
           Math.round(end * 1000) / 1000,
         ]);
+      }
+
+      // A printed date range is one highlighted word but several spoken words.
+      // Merge its spoken timestamps so subsequent highlighting stays aligned.
+      let cursor = 0;
+      for (const word of block.words) {
+        const count = normalizeForSpeech(word).split(/\s+/).length;
+        if (!blockTimings[cursor + count - 1]) {
+          throw new Error(`Speech/display token mismatch in block ${i + 1}`);
+        }
+        timings.push([blockTimings[cursor][0], blockTimings[cursor + count - 1][1]]);
+        cursor += count;
+      }
+      if (cursor !== blockTimings.length) {
+        throw new Error(`Unused speech timestamps in block ${i + 1}`);
       }
 
       pcmParts.push(pcm);
@@ -323,9 +339,23 @@ async function run(file, html, blocks) {
       wrapped = content;
     } else {
       let gi = 0;
+      let inWord = false;
       wrapped = content.replace(/<[^>]+>|[^<]+/g, (seg) => {
-        if (seg[0] === "<") return seg;
-        return seg.replace(/\S+/g, (w) => `<span class="w" data-i="${gi++}">${w}</span>`);
+        if (seg[0] === "<") {
+          if (/^<\/?(?:p|h[1-6]|li|blockquote)\b/i.test(seg)) inWord = false;
+          return seg;
+        }
+        return seg.replace(/\s+|\S+/g, (w) => {
+          if (/^\s/.test(w)) {
+            inWord = false;
+            return w;
+          }
+          // Punctuation immediately after an inline link belongs to the
+          // preceding spoken word, not to an additional timestamp.
+          if (inWord) return w;
+          inWord = true;
+          return `<span class="w" data-i="${gi++}">${w}</span>`;
+        });
       });
       if (gi !== timings.length) {
         console.log(
