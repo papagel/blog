@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<rect width="960" height="540" fill="#2F4A32"/>
+<circle cx="940" cy="15" r="200" fill="#365338"/>
+<circle cx="30" cy="550" r="165" fill="#365338"/>
+<g transform="translate(48 102) scale(.66)">
+<rect width="512" height="512" fill="#2F4A32"/>
+<g transform="translate(14 0)">
+  <path d="M112 420Q239 238 410 96" fill="none" stroke="#4C6A4A" stroke-width="9" stroke-linecap="round"/><path d="M0 0C24.0 -19.2 67.2 -19.2 96.0 0C67.2 19.2 24.0 19.2 0 0Z" fill="#4C6A4A" transform="translate(143.1 376.8) rotate(-15.3)"/><path d="M0 0C24.0 -19.2 67.2 -19.2 96.0 0C67.2 19.2 24.0 19.2 0 0Z" fill="#4C6A4A" transform="translate(175.5 334.8) rotate(-89.4)"/><path d="M0 0C23.0 -18.4 64.4 -18.4 92.0 0C64.4 18.4 23.0 18.4 0 0Z" fill="#4C6A4A" transform="translate(214.8 287.3) rotate(-11.3)"/><path d="M0 0C22.5 -18.0 63.0 -18.0 90.0 0C63.0 18.0 22.5 18.0 0 0Z" fill="#4C6A4A" transform="translate(255.9 241.4) rotate(-85.1)"/><path d="M0 0C21.5 -17.2 60.2 -17.2 86.0 0C60.2 17.2 21.5 17.2 0 0Z" fill="#4C6A4A" transform="translate(298.8 197.0) rotate(-6.9)"/><path d="M0 0C20.0 -16.0 56.0 -16.0 80.0 0C56.0 16.0 20.0 16.0 0 0Z" fill="#4C6A4A" transform="translate(343.3 154.3) rotate(-80.7)"/><path d="M0 0C18.0 -14.4 50.4 -14.4 72.0 0C50.4 14.4 18.0 14.4 0 0Z" fill="#4C6A4A" transform="translate(382.9 118.9) rotate(-2.9)"/><path d="M0 0C16.5 -13.2 46.2 -13.2 66.0 0C46.2 13.2 16.5 13.2 0 0Z" fill="#4C6A4A" transform="translate(410.0 96.0) rotate(-39.6)"/>
+  <path d="M111 842 71 855Q48 864 38.0 876.0Q28 888 28 905Q28 929 44.0 942.0Q60 955 87 955H145Q166 955 182.5 964.0Q199 973 220 998L358 1157Q384 1186 407.5 1200.0Q431 1214 454 1214Q478 1214 492.0 1198.0Q506 1182 506 1152V324Q506 252 532.5 214.5Q559 177 607 177Q644 177 664.5 193.5Q685 210 697.5 231.5Q710 253 722.5 270.0Q735 287 756 288Q773 288 783.0 276.0Q793 264 793 236Q793 165 750.5 106.0Q708 47 633.0 11.5Q558 -24 462 -24Q316 -24 235.5 47.0Q155 118 155 263V780Q155 808 144.5 820.5Q134 833 111 842ZM378 836V955H726Q753 955 768.5 943.5Q784 932 784 911Q784 879 753.0 857.5Q722 836 651 836Z" fill="#F5F0E6" transform="translate(126.5 406.2) scale(0.24233 -0.24233)"/>
+  <ellipse cx="306" cy="276" rx="26" ry="34" transform="rotate(20 306 276)" fill="#BC4726"/>
+</g>
+</g>
+<path d="M421 145V395" stroke="#678062" stroke-opacity=".5"/>
+<text x="471" y="245" font-family="Georgia,serif" font-size="76" font-weight="bold" letter-spacing="-3" fill="#F5F0E6">trofilog</text>
+<text x="476" y="300" font-family="Arial,sans-serif" font-size="27" fill="#D5DFC9">Food diary.</text>
+<text x="476" y="339" font-family="Arial,sans-serif" font-size="27" fill="#D5DFC9">Smarter shopping.</text>
+<rect x="476" y="375" width="42" height="5" rx="2.5" fill="#D77751"/>
+</svg>
