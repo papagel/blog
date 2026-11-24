@@ -95,3 +95,16 @@ python3 -m http.server 8000
    - **Subdomain** (`blog.example.com`): one `CNAME` record → `<you>.github.io`
 6. Wait for DNS, then enable **Enforce HTTPS**.
 ```
+
+## Article hero images
+
+Each published article has a 2:1 editorial illustration below its title and date,
+before the audio player. Assets live in `assets/heroes/<slug>.webp`; the shared
+`article-hero` class keeps them aligned to the article width. Retain explicit
+image dimensions and descriptive alt text when adding a new hero.
+
+Art direction: tactile cubist oil painting with restrained surrealism,
+ultramarine blue, terracotta, ochre and chalk tones. Use one readable metaphor
+from the article's argument, with understated visual humour where appropriate.
+Prefer simple compositions and meaningful negative space; avoid embedded titles.
+The illustrations are AI-generated. Social-sharing cards remain in `assets/og/`.
